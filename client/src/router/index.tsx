@@ -17,6 +17,8 @@ const router = createBrowserRouter([
         children: [
           { path: PATHS.home, element: <Home/> },
           { path: PATHS.topics, element: <Placeholder title="Temas"/> },
+          { path: PATHS.topic(":slug"), element: <Placeholder title="Categoría"/> },
+          { path: PATHS.resources, element: <Placeholder title="Más recursos"/> },
           { path: PATHS.centers, element: <Placeholder title="Centros cerca"/> },
           { path: PATHS.myHealth, element: <Placeholder title="Mi Salud"/> },
           { path: PATHS.firstAid, element: <Placeholder title="Primeros auxilios"/> },

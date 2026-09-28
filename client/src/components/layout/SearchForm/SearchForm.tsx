@@ -21,7 +21,7 @@ export const SearchForm = () => {
   return (
     // min-w-36: with large text on narrow screens the search drops to its own row instead of shrinking
     <form role="search" onSubmit={handleSubmit} className="min-w-36 flex-1 sm:max-w-md">
-      <label className="flex h-10 items-center gap-2 rounded-full border border-control-line bg-field px-3.5 transition-colors focus-within:border-brand hover:border-brand">
+      <label className="flex h-10 items-center gap-2 rounded-full border border-control-line bg-field px-3.5 transition-colors focus-within:border-brand focus-within:ring-2 focus-within:ring-brand hover:border-brand">
         <Search aria-hidden="true" className="size-4.5 flex-none text-muted" />
         <span className="sr-only">Buscar en AuxiliAR</span>
         <input

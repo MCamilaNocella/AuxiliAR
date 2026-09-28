@@ -19,7 +19,7 @@ export const BottomNav = () => {
     <nav
       ref={ref}
       aria-label="Navegación principal"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-line-strong bg-card pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_12px_rgba(0,0,0,.05)]"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-line-strong bg-card pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,.12)]"
     >
       <div className="mx-auto grid max-w-3xl grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.25fr)] gap-1.5 px-2 py-1.5 sm:gap-2 sm:px-6">
         {NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
