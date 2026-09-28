@@ -12,7 +12,7 @@ export const TEXT_SCALES: TextScaleOption[] = [
 ]
 
 export const COLOR_THEMES: ColorThemeOption[] = [
-  { value: "light", label: "Claro", preview: { background: "#ffffff", text: "#1f1a1a" } },
+  { value: "light", label: "Claro", preview: { background: "#f7f2ee", text: "#1f1a1a" } },
   { value: "dark", label: "Oscuro", preview: { background: "#2a2323", text: "#f4eeec" } },
   { value: "contrast", label: "Contraste alto", preview: { background: "#000000", text: "#ffff00" } },
 ]

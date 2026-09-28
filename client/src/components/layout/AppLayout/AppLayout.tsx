@@ -32,7 +32,7 @@ export const AppLayout = () => {
         tabIndex={-1}
         // Always at least one screen tall: guarantees the page can scroll
         // far enough to hide the emergency bar.
-        className="min-h-[calc(100dvh-var(--header-h)-var(--bottom-nav-h))] outline-none"
+        className="min-h-(--content-min-h) outline-none"
       >
         <Outlet />
       </main>
