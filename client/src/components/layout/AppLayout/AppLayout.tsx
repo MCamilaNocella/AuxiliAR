@@ -10,12 +10,12 @@ import { SkipLink } from "../SkipLink"
 import { CONTENT_ID } from "./AppLayout.constants"
 
 /**
- * Layout común a todas las páginas:
- *  header (sticky) → barra de emergencias → contenido → footer, + navegación inferior (fija).
+ * Layout shared by every page:
+ *  header (sticky) → emergency bar → content → footer, + bottom navigation (fixed).
  */
 export const AppLayout = () => {
   const contentRef = useRef<HTMLElement>(null)
-  // Corre después del <ScrollRestoration /> de abajo (los efectos de los hijos van primero)
+  // Runs after the <ScrollRestoration /> below (children's effects run first)
   useEmergencyAutoScroll(contentRef)
 
   return (
@@ -29,8 +29,8 @@ export const AppLayout = () => {
         ref={contentRef}
         id={CONTENT_ID}
         tabIndex={-1}
-        // Siempre al menos una pantalla de alto: garantiza que se pueda
-        // desplazar lo suficiente para ocultar la barra de emergencias.
+        // Always at least one screen tall: guarantees the page can scroll
+        // far enough to hide the emergency bar.
         className="min-h-[calc(100dvh-var(--header-h)-var(--bottom-nav-h))] outline-none"
       >
         <Outlet />

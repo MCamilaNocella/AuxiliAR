@@ -18,7 +18,7 @@ const setSettings = (next: AccessibilitySettings) => {
   listeners.forEach((listener) => listener())
 }
 
-/** Estado global de "Ver mejor", compatible con useSyncExternalStore. */
+/** Global "Ver mejor" state, compatible with useSyncExternalStore. */
 export const accessibilityStore = {
   subscribe: (listener: () => void) => {
     listeners.add(listener)

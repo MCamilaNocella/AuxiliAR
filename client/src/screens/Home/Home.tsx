@@ -1,2 +1,2 @@
-// El contenido del inicio se arma aparte; el layout ya aporta header, emergencias y navegación.
+// Home content is built separately; the layout already provides the header, emergencies and navigation.
 export const Home = () => null

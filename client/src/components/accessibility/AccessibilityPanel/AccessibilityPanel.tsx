@@ -9,9 +9,9 @@ import { TextSizeSelector } from "../TextSizeSelector"
 import type { AccessibilityPanelProps } from "./AccessibilityPanel.types"
 
 /**
- * Panel lateral "Ver mejor". Es un <dialog> modal nativo: atrapa el foco, se
- * cierra con Esc y devuelve el foco al botón que lo abrió. Los cambios se
- * aplican al instante, así se ve cómo queda la página detrás del panel.
+ * "Ver mejor" side panel. It's a native modal <dialog>: it traps focus, closes
+ * with Esc and returns focus to the button that opened it. Changes apply
+ * instantly, so the page behind the panel shows how it will look.
  */
 export const AccessibilityPanel = ({ open, onClose }: AccessibilityPanelProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -25,7 +25,7 @@ export const AccessibilityPanel = ({ open, onClose }: AccessibilityPanelProps) =
     if (!open && dialog.open) dialog.close()
   }, [open])
 
-  // Un clic fuera del panel (sobre el fondo) llega al propio <dialog>
+  // A click outside the panel (on the backdrop) targets the <dialog> itself
   const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
     if (event.target === event.currentTarget) onClose()
   }
@@ -63,7 +63,7 @@ export const AccessibilityPanel = ({ open, onClose }: AccessibilityPanelProps) =
           <ColorThemeSelector value={settings.theme} onChange={(theme) => update({ theme })} />
         </SettingGroup>
 
-        {/* Solo con mouse: en pantallas táctiles no hay cursor */}
+        {/* Mouse only: touch screens have no cursor */}
         <SettingGroup title="Mouse" className="hidden [@media(any-pointer:fine)]:flex">
           <CursorToggle checked={settings.largeCursor} onChange={(largeCursor) => update({ largeCursor })} />
         </SettingGroup>

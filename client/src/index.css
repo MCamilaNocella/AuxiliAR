@@ -4,36 +4,36 @@
 
 /*
  * Design tokens (AuxiliAR Home).
- * REGLA: los componentes usan SOLO estos tokens (bg-card, text-ink, text-on-alert…),
- * nunca colores fijos (bg-white, #hex): así respetan los temas de "Ver mejor".
- * Los tamaños van en rem (utilidades de Tailwind) para escalar con el tamaño de texto.
+ * RULE: components use ONLY these tokens (bg-card, text-ink, text-on-alert…),
+ * never hardcoded colors (bg-white, #hex), so they follow the "Ver mejor" themes.
+ * Sizes are in rem (Tailwind utilities) so they scale with the text size setting.
  */
 @theme {
   --font-sans: "Nunito Variable", "Nunito", system-ui, sans-serif;
   --font-display: "DM Serif Display", Georgia, serif;
 
-  /* Texto */
+  /* Text */
   --color-ink: #1f1a1a;
   --color-ink-soft: #3a302f;
   --color-muted: #5b5250;
 
-  /* Superficies y bordes */
+  /* Surfaces and borders */
   --color-surface: #faf8f6;
   --color-card: #ffffff;
   --color-surface-alt: #f4f0ee;
   --color-field: #f6f2f0;
   --color-line: #ede6e3;
   --color-line-strong: #e3dcd9;
-  /* Borde de controles (inputs, opciones): mínimo 3:1 contra el fondo (WCAG 1.4.11) */
+  /* Control borders (inputs, options): at least 3:1 against the background (WCAG 1.4.11) */
   --color-control-line: #8c817e;
 
-  /* Marca */
+  /* Brand */
   --color-brand: #7b2d2d;
   --color-brand-dark: #5a1f1f;
   --color-brand-soft: #f6e9e7;
   --color-on-brand: #ffffff;
 
-  /* Emergencias */
+  /* Emergencies */
   --color-alert: #b3261e;
   --color-alert-dark: #8f1d17;
   --color-alert-text: #9e1f1a;
@@ -43,7 +43,7 @@
   --color-on-alert: #ffffff;
 }
 
-/* ---------- Temas de color ("Ver mejor" → Colores) ---------- */
+/* ---------- Color themes ("Ver mejor" → Colores) ---------- */
 
 :root {
   color-scheme: light;
@@ -107,7 +107,7 @@
   --color-on-alert: #ffffff;
 }
 
-/* ---------- Cursor grande ("Ver mejor" → Mouse) ---------- */
+/* ---------- Large cursor ("Ver mejor" → Mouse) ---------- */
 
 :root {
   --cursor-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M4 2v17l4.5-4.2 3 6.7 2.8-1.2-2.9-6.6 6.1-.2z' fill='black' stroke='white' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 8 4;
@@ -130,13 +130,13 @@
 }
 
 /*
- * Alturas de las barras sticky, medidas en runtime (ver useElementHeightVar).
- * Los valores por defecto evitan saltos antes de la primera medición.
+ * Heights of the sticky bars, measured at runtime (see useElementHeightVar).
+ * The defaults avoid layout jumps before the first measurement.
  */
 :root {
   --header-h: 61px;
   --bottom-nav-h: 65px;
-  /* Anclas, foco con teclado y scrollIntoView no quedan tapados por las barras */
+  /* Anchors, keyboard focus and scrollIntoView don't end up hidden behind the bars */
   scroll-padding-top: var(--header-h);
   scroll-padding-bottom: var(--bottom-nav-h);
 }

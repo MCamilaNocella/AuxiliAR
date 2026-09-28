@@ -1,4 +1,4 @@
-/** Muestra cómo queda el texto del sitio con las opciones elegidas. */
+/** Shows how the site's text looks with the chosen settings. */
 export const TextPreview = () => (
   <div className="rounded-lg border border-line-strong bg-surface p-3" aria-hidden="true">
     <p className="m-0 text-sm text-muted">Vista previa</p>

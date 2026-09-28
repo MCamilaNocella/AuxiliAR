@@ -1,8 +1,8 @@
 import { useLayoutEffect, type RefObject } from "react"
 
 /**
- * Publica la altura de un elemento como variable CSS en :root y la mantiene
- * actualizada (el header, por ejemplo, cambia de alto al envolver en mobile).
+ * Publishes an element's height as a CSS variable on :root and keeps it up to
+ * date (the header, for example, changes height with the text size).
  */
 export const useElementHeightVar = (ref: RefObject<HTMLElement | null>, cssVar: `--${string}`) => {
   useLayoutEffect(() => {

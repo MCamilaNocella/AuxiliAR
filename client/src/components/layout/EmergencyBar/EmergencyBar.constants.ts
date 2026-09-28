@@ -1,11 +1,11 @@
-export const EMERGENCY_SECTION_ID = "urgencias"
-export const EMERGENCY_HEADING_ID = "urgencias-titulo"
+export const EMERGENCY_SECTION_ID = "emergencies"
+export const EMERGENCY_HEADING_ID = "emergencies-heading"
 
 /*
- * Grillas que se adaptan al tamaño de texto de "Ver mejor": cada columna necesita
- * un ancho mínimo en rem (crece con el texto); si no entra, pasan a menos columnas.
- * Números: hasta 3 por fila (apilados en mobile, en fila desde sm).
- * Guías: hasta 2 por fila ("Atragantamiento" mide ~10rem).
+ * Grids that adapt to the "Ver mejor" text size: each column needs a minimum
+ * width in rem (it grows with the text); when it doesn't fit, they drop columns.
+ * Numbers: up to 3 per row (stacked on mobile, inline from sm).
+ * Guides: up to 2 per row ("Atragantamiento" is ~10rem wide).
  */
 export const NUMBERS_GRID =
   "grid-cols-[repeat(auto-fill,minmax(min(100%,max(6rem,calc((100%_-_1rem)/3))),1fr))] sm:grid-cols-[repeat(auto-fill,minmax(min(100%,max(9rem,calc((100%_-_1rem)/3))),1fr))]"

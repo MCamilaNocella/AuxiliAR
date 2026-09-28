@@ -1,6 +1,6 @@
 import type { SkipLinkProps } from "./SkipLink.types"
 
-/** Link para teclado y lectores de pantalla: solo aparece al recibir foco. */
+/** Link for keyboard and screen reader users: only visible when focused. */
 export const SkipLink = ({ targetId }: SkipLinkProps) => (
   <a
     href={`#${targetId}`}

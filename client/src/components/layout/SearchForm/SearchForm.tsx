@@ -30,7 +30,7 @@ export const SearchForm = () => {
           defaultValue={currentQuery}
           placeholder={isWide ? PLACEHOLDER_WIDE : PLACEHOLDER_NARROW}
           enterKeyHint="search"
-          // 16px como mínimo: evita el zoom automático de iOS al enfocar
+          // At least 16px: prevents iOS from auto-zooming on focus
           className="min-w-0 flex-1 bg-transparent text-base text-ink outline-none placeholder:text-muted"
         />
       </label>

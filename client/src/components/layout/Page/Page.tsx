@@ -1,6 +1,6 @@
 import type { PageProps } from "./Page.types"
 
-/** Contenedor estándar de cada pantalla: mismo ancho y márgenes que el layout. */
+/** Standard container for every screen: same width and gutters as the layout. */
 export const Page = ({ title, description, children }: PageProps) => (
   <div className="mx-auto max-w-310 px-4 pt-6 pb-10 sm:px-6 lg:px-8">
     <div className="mb-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-1">

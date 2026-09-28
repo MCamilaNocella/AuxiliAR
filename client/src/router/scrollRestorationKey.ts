@@ -3,10 +3,10 @@ import type { Location } from "react-router"
 const DOCUMENT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`
 
 /**
- * `getKey` para <ScrollRestoration />. La primera entrada de cada carga sin
- * history.state (URL tipeada, link externo) siempre tiene key "default", así
- * que heredaría la posición guardada de una carga anterior en la misma pestaña
- * y deshacería el auto-scroll. Le damos una key única por documento.
+ * `getKey` for <ScrollRestoration />. The first entry of every load without
+ * history.state (typed URL, external link) always has key "default", so it would
+ * inherit the position saved by a previous load in the same tab and undo the
+ * auto-scroll. We give it a key that is unique per document.
  */
 export const getScrollRestorationKey = (location: Location) =>
   location.key === "default" ? `default-${DOCUMENT_ID}` : location.key

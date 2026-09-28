@@ -1,7 +1,7 @@
 import { PersonStanding } from "lucide-react"
 import type { AccessibilityButtonProps } from "./AccessibilityButton.types"
 
-/** Pestaña fija a la derecha, a media altura, que abre "Ver mejor". Solo ícono: el nombre va en aria-label. */
+/** Fixed tab on the right edge, vertically centered, that opens "Ver mejor". Icon only: the name is in aria-label. */
 export const AccessibilityButton = ({ expanded, onClick }: AccessibilityButtonProps) => (
   <button
     type="button"

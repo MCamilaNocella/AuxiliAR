@@ -1,4 +1,4 @@
 export type SkipLinkProps = {
-  /** id del elemento al que salta (normalmente el <main>) */
+  /** id of the element to jump to (usually <main>) */
   targetId: string
 }

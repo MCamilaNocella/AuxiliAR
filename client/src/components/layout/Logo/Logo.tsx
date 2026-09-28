@@ -3,7 +3,7 @@ import { PATHS } from "@/router/paths"
 
 export const Logo = () => (
   <Link to={PATHS.home} className="flex flex-none items-center gap-2 no-underline" aria-label="AuxiliAR, ir al inicio">
-    {/* Bandera argentina */}
+    {/* Argentine flag */}
     <span
       aria-hidden="true"
       className="flex h-4.5 w-6.5 flex-col overflow-hidden rounded-xs shadow-[0_0_0_1px_var(--color-line-strong)]"

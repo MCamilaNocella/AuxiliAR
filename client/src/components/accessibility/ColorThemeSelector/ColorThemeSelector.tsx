@@ -3,7 +3,7 @@ import { COLOR_THEMES } from "@/data/accessibility"
 import { THEMES_GRID } from "./ColorThemeSelector.constants"
 import type { ColorThemeSelectorProps } from "./ColorThemeSelector.types"
 
-/** Cada tema se elige viendo una muestra de cómo queda (diseño 5b). */
+/** Each theme is chosen by looking at a preview of how it looks (design 5b). */
 export const ColorThemeSelector = ({ value, onChange }: ColorThemeSelectorProps) => (
   <div className={`grid gap-2 ${THEMES_GRID}`}>
     {COLOR_THEMES.map(({ value: theme, label, preview }) => {

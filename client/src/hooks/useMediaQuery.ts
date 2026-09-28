@@ -1,6 +1,6 @@
 import { useCallback, useSyncExternalStore } from "react"
 
-/** `true` mientras la media query se cumpla; se actualiza al cambiar el tamaño de la pantalla. */
+/** `true` while the media query matches; updates when the screen size changes. */
 export const useMediaQuery = (query: string) => {
   const subscribe = useCallback(
     (onChange: () => void) => {

@@ -3,23 +3,23 @@ import { useLocation } from "react-router"
 import { PATHS } from "@/router/paths"
 import { animateWindowScroll, prefersReducedMotion, scrollTopBelowHeader } from "@/utils/scroll"
 
-/** Tiempo que la barra de emergencias queda a la vista antes de deslizarse. */
+/** How long the emergency bar stays visible before sliding away. */
 const REVEAL_DELAY_MS = 600
 const SCROLL_DURATION_MS = 700
 
-// Cualquiera de estos gestos significa que el usuario tomó el control del scroll
+// Any of these gestures means the user has taken control of scrolling
 const USER_SCROLL_EVENTS = ["wheel", "touchstart", "pointerdown", "keydown"] as const
 
 /**
- * Al entrar a una sección interna, la barra de emergencias se muestra un
- * instante y después la página se desliza hasta el contenido, que queda justo
- * debajo del header sticky. La animación deja claro que la barra existe y que
- * se puede volver a ella scrolleando hacia arriba (o con el botón "Emergencia").
+ * When entering an inner section, the emergency bar is shown for a moment
+ * and then the page slides down to the content, which ends up right below the
+ * sticky header. The animation makes it clear that the bar exists and that the
+ * user can get back to it by scrolling up (or with the "Emergencia" button).
  *
- * Debe ejecutarse después de <ScrollRestoration />, que en cada navegación
- * restaura la posición guardada (atrás/adelante) o vuelve arriba de todo.
- * Por eso solo actuamos si la página quedó en el tope: así se respetan la
- * restauración, los links con #ancla y `preventScrollReset`.
+ * Must run after <ScrollRestoration />, which on every navigation restores the
+ * saved position (back/forward) or goes back to the very top. That's why we
+ * only act when the page is at the top: this respects scroll restoration,
+ * #anchor links and `preventScrollReset`.
  */
 export const useEmergencyAutoScroll = (contentRef: RefObject<HTMLElement | null>) => {
   const location = useLocation()
@@ -31,7 +31,7 @@ export const useEmergencyAutoScroll = (contentRef: RefObject<HTMLElement | null>
     const content = contentRef.current
     if (!content) return
 
-    // El foco va al contenido de entrada: teclado y lectores de pantalla arrancan ahí
+    // Focus goes to the content right away so keyboard and screen reader users start there
     content.focus({ preventScroll: true })
 
     if (prefersReducedMotion()) {
@@ -41,7 +41,7 @@ export const useEmergencyAutoScroll = (contentRef: RefObject<HTMLElement | null>
 
     let cancelAnimation: (() => void) | undefined
     const timer = window.setTimeout(() => {
-      // Si mientras tanto el usuario ya scrolleó, no lo movemos
+      // If the user has scrolled in the meantime, don't move them
       if (window.scrollY > 0) return stop()
       cancelAnimation = animateWindowScroll(() => scrollTopBelowHeader(content), SCROLL_DURATION_MS, stop)
     }, REVEAL_DELAY_MS)

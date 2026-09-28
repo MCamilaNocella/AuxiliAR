@@ -1,6 +1,6 @@
 import type { CursorToggleProps } from "./CursorToggle.types"
 
-/** Interruptor con "Sí / No" escrito al lado, para quien no reconoce el símbolo (diseño 5a). */
+/** Switch with "Sí / No" written next to it, for people who don't recognize the symbol (design 5a). */
 export const CursorToggle = ({ checked, onChange }: CursorToggleProps) => (
   <button
     type="button"

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { AccessibilityButton } from "../AccessibilityButton"
 import { AccessibilityPanel } from "../AccessibilityPanel"
 
-/** Botón + panel "Ver mejor". Va en la raíz de la app para estar disponible en todas las pantallas. */
+/** "Ver mejor" button + panel. Lives at the app root so it is available on every screen. */
 export const AccessibilityControls = () => {
   const [open, setOpen] = useState(false)
 

@@ -1,7 +1,7 @@
 import type { AccessibilitySettings, ColorThemeOption, TextScaleOption } from "@/types/accessibility"
 
-/** Clave en localStorage. El script de index.html la lee antes de pintar: mantenerlas iguales. */
-export const ACCESSIBILITY_STORAGE_KEY = "auxiliar:accesibilidad"
+/** localStorage key. The script in index.html reads it before first paint: keep both in sync. */
+export const ACCESSIBILITY_STORAGE_KEY = "auxiliar:accessibility"
 
 export const TEXT_SCALES: TextScaleOption[] = [
   { value: 87.5, label: "Chico" },

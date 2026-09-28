@@ -1,7 +1,7 @@
 export type ColorTheme = "light" | "dark" | "contrast"
 
 export type AccessibilitySettings = {
-  /** Tamaño base del texto, en % del tamaño del navegador */
+  /** Base text size, as a % of the browser's default size */
   textScale: number
   theme: ColorTheme
   largeCursor: boolean
@@ -9,13 +9,13 @@ export type AccessibilitySettings = {
 
 export type TextScaleOption = {
   value: number
-  /** Nombre para lectores de pantalla */
+  /** Name announced by screen readers */
   label: string
 }
 
 export type ColorThemeOption = {
   value: ColorTheme
   label: string
-  /** Colores de la muestra "Aa": fijos, porque muestran el tema aunque no esté activo */
+  /** Colors of the "Aa" swatch: hardcoded, since they preview the theme even when it is not active */
   preview: { background: string; text: string }
 }

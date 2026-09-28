@@ -8,7 +8,7 @@ export const EMERGENCY_NUMBERS: EmergencyNumber[] = [
   { number: "102", label: "Niñez" },
 ]
 
-/** Guías destacadas en la barra de emergencias */
+/** Featured guides in the emergency bar */
 export const FEATURED_FIRST_AID: FirstAidGuide[] = [
   { slug: "rcp", title: "RCP · no respira" },
   { slug: "atragantamiento", title: "Atragantamiento" },

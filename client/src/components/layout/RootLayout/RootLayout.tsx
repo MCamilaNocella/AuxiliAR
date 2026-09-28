@@ -1,7 +1,7 @@
 import { Outlet } from "react-router"
 import { AccessibilityControls } from "@/components/accessibility/AccessibilityControls"
 
-/** Raíz de todas las rutas (con y sin AppLayout): lo que tiene que estar en todas las pantallas. */
+/** Root of every route (with or without AppLayout): whatever must be present on all screens. */
 export const RootLayout = () => (
   <>
     <Outlet />

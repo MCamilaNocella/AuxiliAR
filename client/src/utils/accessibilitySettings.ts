@@ -6,7 +6,7 @@ import {
 } from "@/data/accessibility"
 import type { AccessibilitySettings } from "@/types/accessibility"
 
-/** Lee las opciones guardadas; cualquier valor inválido vuelve al valor por defecto. */
+/** Reads the saved settings; any invalid value falls back to its default. */
 export const loadAccessibilitySettings = (): AccessibilitySettings => {
   try {
     const stored: Partial<AccessibilitySettings> = JSON.parse(localStorage.getItem(ACCESSIBILITY_STORAGE_KEY) ?? "{}")
@@ -28,11 +28,11 @@ export const saveAccessibilitySettings = (settings: AccessibilitySettings) => {
   try {
     localStorage.setItem(ACCESSIBILITY_STORAGE_KEY, JSON.stringify(settings))
   } catch {
-    // Sin almacenamiento (modo privado, bloqueado): las opciones duran hasta recargar
+    // No storage (private mode, blocked): settings last until the page is reloaded
   }
 }
 
-/** Aplica las opciones al <html>: tamaño base (todo usa rem), tema y cursor. */
+/** Applies the settings to <html>: base size (everything uses rem), theme and cursor. */
 export const applyAccessibilitySettings = ({ textScale, theme, largeCursor }: AccessibilitySettings) => {
   const root = document.documentElement
   root.style.fontSize = `${textScale}%`

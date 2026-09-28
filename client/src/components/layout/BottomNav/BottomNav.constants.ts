@@ -2,7 +2,7 @@ import { House, MapPin, User } from "lucide-react"
 import { PATHS } from "@/router/paths"
 import type { NavItem } from "./BottomNav.types"
 
-/** Secciones de la navegación; el botón "Emergencia" va aparte porque no navega */
+/** Navigation sections; the "Emergencia" button is separate because it doesn't navigate */
 export const NAV_ITEMS: NavItem[] = [
   { to: PATHS.home, label: "Inicio", icon: House, end: true },
   { to: PATHS.centers, label: "Centros cerca", icon: MapPin },
