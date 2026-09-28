@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import { Outlet, ScrollRestoration } from "react-router"
+import { HelpBot } from "@/components/help/HelpBot"
 import { useEmergencyAutoScroll } from "@/hooks/useEmergencyAutoScroll"
 import { getScrollRestorationKey } from "@/router/scrollRestorationKey"
 import { BottomNav } from "../BottomNav"
@@ -37,6 +38,8 @@ export const AppLayout = () => {
       </main>
 
       <Footer />
+      {/* TODO: pass onOpen once the help chat exists */}
+      <HelpBot />
       <BottomNav />
       <ScrollRestoration getKey={getScrollRestorationKey} />
     </div>
