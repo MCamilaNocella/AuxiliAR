@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/kmy/AuxiliAR-Project/Diseño web de salud accesible/**)",
+      "Bash(sed -e 's/<[^>]*>/ /g' \"Navegacion Wireframes.dc.html\")",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(npm install *)"
+    ]
+  }
+}

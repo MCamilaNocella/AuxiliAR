@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!--
+      Aplica las opciones de "Ver mejor" antes de pintar (evita ver un instante el tema claro).
+      Misma clave y lógica que src/utils/accessibilitySettings.ts; la app las valida al iniciar.
+    -->
+    <script>
+      try {
+        var s = JSON.parse(localStorage.getItem("auxiliar:accesibilidad") || "{}")
+        var root = document.documentElement
+        if (typeof s.textScale === "number") root.style.fontSize = s.textScale + "%"
+        if (s.theme) root.dataset.theme = s.theme
+        if (s.largeCursor) root.dataset.cursor = "large"
+      } catch (e) {}
+    </script>
+    <title>AuxiliAR · Recursos de salud gratuitos</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

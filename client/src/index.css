@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@import "@fontsource-variable/nunito";
+@import "@fontsource/dm-serif-display";
+
+/*
+ * Design tokens (AuxiliAR Home).
+ * REGLA: los componentes usan SOLO estos tokens (bg-card, text-ink, text-on-alert…),
+ * nunca colores fijos (bg-white, #hex): así respetan los temas de "Ver mejor".
+ * Los tamaños van en rem (utilidades de Tailwind) para escalar con el tamaño de texto.
+ */
+@theme {
+  --font-sans: "Nunito Variable", "Nunito", system-ui, sans-serif;
+  --font-display: "DM Serif Display", Georgia, serif;
+
+  /* Texto */
+  --color-ink: #1f1a1a;
+  --color-ink-soft: #3a302f;
+  --color-muted: #5b5250;
+
+  /* Superficies y bordes */
+  --color-surface: #faf8f6;
+  --color-card: #ffffff;
+  --color-surface-alt: #f4f0ee;
+  --color-field: #f6f2f0;
+  --color-line: #ede6e3;
+  --color-line-strong: #e3dcd9;
+  /* Borde de controles (inputs, opciones): mínimo 3:1 contra el fondo (WCAG 1.4.11) */
+  --color-control-line: #8c817e;
+
+  /* Marca */
+  --color-brand: #7b2d2d;
+  --color-brand-dark: #5a1f1f;
+  --color-brand-soft: #f6e9e7;
+  --color-on-brand: #ffffff;
+
+  /* Emergencias */
+  --color-alert: #b3261e;
+  --color-alert-dark: #8f1d17;
+  --color-alert-text: #9e1f1a;
+  --color-alert-soft: #fcedec;
+  --color-alert-line: #f3d6d3;
+  --color-alert-card-line: #e8c9c6;
+  --color-on-alert: #ffffff;
+}
+
+/* ---------- Temas de color ("Ver mejor" → Colores) ---------- */
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-ink: #f4eeec;
+  --color-ink-soft: #d9cfcc;
+  --color-muted: #b8aba8;
+
+  --color-surface: #171313;
+  --color-card: #221c1c;
+  --color-surface-alt: #1f1a1a;
+  --color-field: #2a2323;
+  --color-line: #3a3030;
+  --color-line-strong: #4d4141;
+  --color-control-line: #8a7a76;
+
+  --color-brand: #f0a3a3;
+  --color-brand-dark: #f8c6c6;
+  --color-brand-soft: #3d2727;
+  --color-on-brand: #171313;
+
+  --color-alert: #c62f26;
+  --color-alert-dark: #a3241d;
+  --color-alert-text: #ff8f86;
+  --color-alert-soft: #2a1817;
+  --color-alert-line: #4a2724;
+  --color-alert-card-line: #5c302c;
+  --color-on-alert: #ffffff;
+}
+
+:root[data-theme="contrast"] {
+  color-scheme: dark;
+
+  --color-ink: #ffffff;
+  --color-ink-soft: #ffffff;
+  --color-muted: #f0f0f0;
+
+  --color-surface: #000000;
+  --color-card: #000000;
+  --color-surface-alt: #000000;
+  --color-field: #000000;
+  --color-line: #ffffff;
+  --color-line-strong: #ffffff;
+  --color-control-line: #ffffff;
+
+  --color-brand: #ffff00;
+  --color-brand-dark: #ffff99;
+  --color-brand-soft: #333300;
+  --color-on-brand: #000000;
+
+  --color-alert: #d10000;
+  --color-alert-dark: #a00000;
+  --color-alert-text: #ff7070;
+  --color-alert-soft: #000000;
+  --color-alert-line: #ffffff;
+  --color-alert-card-line: #ffffff;
+  --color-on-alert: #ffffff;
+}
+
+/* ---------- Cursor grande ("Ver mejor" → Mouse) ---------- */
+
+:root {
+  --cursor-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M4 2v17l4.5-4.2 3 6.7 2.8-1.2-2.9-6.6 6.1-.2z' fill='black' stroke='white' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 8 4;
+  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M9 13V3.5a1.5 1.5 0 0 1 3 0V10a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1 3 0v5a5 5 0 0 1-5 5h-3.5a4 4 0 0 1-2.9-1.2l-4.4-4.4a1.5 1.5 0 0 1 2.1-2.1z' fill='white' stroke='black' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 21 4;
+  --cursor-text: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M8 3h8M12 3v18M8 21h8' fill='none' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M8 3h8M12 3v18M8 21h8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 24 24;
+}
+
+:root[data-cursor="large"],
+:root[data-cursor="large"] * {
+  cursor: var(--cursor-arrow), default;
+}
+
+:root[data-cursor="large"] :is(a[href], button:not(:disabled), [role="button"], label, summary, select),
+:root[data-cursor="large"] :is(a[href], button:not(:disabled), [role="button"], label, summary, select) * {
+  cursor: var(--cursor-hand), pointer;
+}
+
+:root[data-cursor="large"] :is(input:not([type="radio"], [type="checkbox"], [type="button"], [type="submit"]), textarea) {
+  cursor: var(--cursor-text), text;
+}
+
+/*
+ * Alturas de las barras sticky, medidas en runtime (ver useElementHeightVar).
+ * Los valores por defecto evitan saltos antes de la primera medición.
+ */
+:root {
+  --header-h: 61px;
+  --bottom-nav-h: 65px;
+  /* Anclas, foco con teclado y scrollIntoView no quedan tapados por las barras */
+  scroll-padding-top: var(--header-h);
+  scroll-padding-bottom: var(--bottom-nav-h);
+}
+
+@layer base {
+  body {
+    @apply bg-surface font-sans text-base/normal text-ink antialiased;
+  }
+
+  a {
+    @apply text-brand hover:text-brand-dark;
+  }
+
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-brand;
+  }
+}

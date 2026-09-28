@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: auxiliar-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: auxiliar
+      POSTGRES_USER: auxiliar
+      POSTGRES_PASSWORD: auxiliar
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: ./server
+    container_name: auxiliar-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auxiliar
+      SPRING_DATASOURCE_USERNAME: auxiliar
+      SPRING_DATASOURCE_PASSWORD: auxiliar
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
