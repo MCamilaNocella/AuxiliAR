@@ -1,0 +1,1 @@
+export { AnimalsScene } from "./AnimalsScene"

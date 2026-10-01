@@ -49,6 +49,11 @@
   /* Secondary text on the home background: ≥4.9:1 on every gradient stop, clearly dimmer than the title */
   --color-on-home-muted: #e0d2cf;
 
+  /* Text on the category banner / wallpaper (white passes 4.5:1 wherever text sits, see below) */
+  --color-on-category: #ffffff;
+  /* Border around the category banner: only visible in high contrast */
+  --color-category-edge: transparent;
+
   /* Auxi's wave lines (help bot): contrast with the page background */
   --color-auxi-motion: #000000;
 
@@ -133,6 +138,7 @@
   --color-on-alert: #ffffff;
 
   --color-auxi-motion: #ffffff;
+  --color-category-edge: #ffffff;
 }
 
 /* ---------- Home background ---------- */
@@ -148,6 +154,50 @@
 
 @utility bg-home {
   background: var(--home-background);
+}
+
+/* ---------- Category colors (banner on desktop, wallpaper on mobile) ---------- */
+
+/*
+ * Each category keeps its color in every theme, like the home background:
+ * light → mid → dark stops (from the reference site; the last three are our own).
+ * The banner runs dark → light towards the illustration, so the text sits on the dark side;
+ * `--category-dark-until` stretches the dark part for the lightest palettes (text ≥4.5:1).
+ */
+[data-category="salud-fisica"] { --category-light: #e63946; --category-mid: #b5172b; --category-dark: #7a0e1a; }
+[data-category="salud-mental"] { --category-light: #4361ee; --category-mid: #1a2a8c; --category-dark: #0a1050; }
+[data-category="esi"] { --category-light: #00b894; --category-mid: #007d5a; --category-dark: #00462f; }
+[data-category="animales"] { --category-light: #f4a200; --category-mid: #c97c00; --category-dark: #7a4900; --category-dark-until: 35%; }
+[data-category="primeros-auxilios"] { --category-light: #f77f00; --category-mid: #d45a1a; --category-dark: #8a3200; }
+[data-category="centros"] { --category-light: #8e5cf7; --category-mid: #5b2bbf; --category-dark: #2d1266; }
+[data-category="recursos"] { --category-light: #22b8cf; --category-mid: #0b7285; --category-dark: #073b4c; }
+[data-category="sobre-auxiliar"] { --category-light: #e0467c; --category-mid: #a3245a; --category-dark: #51102f; }
+
+[data-category] {
+  --category-banner:
+    linear-gradient(to right, rgb(0 0 0 / 0.3), transparent 70%),
+    linear-gradient(
+      to right,
+      var(--category-dark) 0%,
+      var(--category-dark) var(--category-dark-until, 20%),
+      var(--category-mid) calc(var(--category-dark-until, 20%) + 40%),
+      var(--category-light) 100%
+    );
+  --category-wallpaper: linear-gradient(to bottom, var(--category-dark) 0%, var(--category-mid) 45%, var(--category-light) 100%);
+}
+
+/* High contrast: the category's darkest shade, solid (white text ≥7:1 on every one) */
+:root[data-theme="contrast"] [data-category] {
+  --category-banner: var(--category-dark);
+  --category-wallpaper: var(--category-dark);
+}
+
+@utility bg-category-banner {
+  background: var(--category-banner);
+}
+
+@utility bg-category-wallpaper {
+  background: var(--category-wallpaper);
 }
 
 /* ---------- Large cursor ("Ver mejor" → Mouse) ---------- */
@@ -170,6 +220,70 @@
 
 :root[data-cursor="large"] :is(input:not([type="radio"], [type="checkbox"], [type="button"], [type="submit"]), textarea) {
   cursor: var(--cursor-text), text;
+}
+
+/* ---------- Screen transitions (links with viewTransition) ---------- */
+
+/* Shared elements (category icon and title) glide to their new place */
+::view-transition-group(*) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Header, emergency bar and navigation are the same on every screen: no fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* The content (<main>): stays in place, the old screen fades out and the new one fades in rising slightly */
+::view-transition-group(page-content) {
+  animation: none;
+}
+
+::view-transition-old(page-content) {
+  animation: 200ms ease-out both view-fade-out;
+}
+
+::view-transition-new(page-content) {
+  animation: 350ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both view-fade-in;
+}
+
+@keyframes view-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+/* Large screens: the icon and title travel farther, so everything goes a bit slower */
+@media (min-width: 64rem) {
+  ::view-transition-group(*) {
+    animation-duration: 700ms;
+  }
+
+  ::view-transition-old(page-content) {
+    animation-duration: 300ms;
+  }
+
+  ::view-transition-new(page-content) {
+    animation-duration: 550ms;
+    animation-delay: 120ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
 }
 
 /*

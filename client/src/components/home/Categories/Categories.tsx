@@ -1,5 +1,5 @@
 import { useId } from "react"
-import { CATEGORIES } from "@/data/categories"
+import { CATEGORIES } from "@/content/categories"
 import { CategoryCard } from "../CategoryCard"
 import { CATEGORIES_GRID } from "./Categories.constants"
 
