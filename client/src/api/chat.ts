@@ -1,8 +1,11 @@
 import type { EmergencyNumber } from "@/types/emergency"
 import type { Profile } from "@/types/profile"
 
-/** Backend base URL: VITE_API_URL in .env, the local Spring server by default */
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8080"
+/**
+ * Backend base URL: VITE_API_URL (a repo variable in the GitHub Pages build, or client/.env locally),
+ * the local Spring server if it's unset or empty. No trailing slash, so paths join cleanly.
+ */
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8080").replace(/\/+$/, "")
 
 /** An AuxiliAR page related to the question */
 export type ChatLink = {
