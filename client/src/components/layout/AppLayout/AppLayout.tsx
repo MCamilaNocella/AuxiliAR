@@ -32,7 +32,8 @@ export const AppLayout = () => {
         tabIndex={-1}
         // Always at least one screen tall: guarantees the page can scroll
         // far enough to hide the emergency bar.
-        className="min-h-(--content-min-h) outline-none"
+        // Named view transition: only the content animates when changing screens, the bars stay still.
+        className="min-h-(--content-min-h) outline-none [view-transition-name:page-content]"
       >
         <Outlet />
       </main>

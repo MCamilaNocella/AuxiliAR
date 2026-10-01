@@ -1,6 +1,7 @@
 import { useLayoutEffect, type RefObject } from "react"
 import { useLocation } from "react-router"
 import { PATHS } from "@/router/paths"
+import { notifyEntryScrollSettled } from "@/utils/entryScrollSettled"
 import { animateWindowScroll, prefersReducedMotion, scrollTopBelowHeader } from "@/utils/scroll"
 
 /** How long the emergency bar stays visible before sliding away. */
@@ -25,8 +26,12 @@ export const useEmergencyAutoScroll = (contentRef: RefObject<HTMLElement | null>
   const location = useLocation()
 
   useLayoutEffect(() => {
-    if (location.pathname === PATHS.home || location.hash) return
-    if (window.scrollY > 0) return
+    if (location.pathname === PATHS.home) return
+    // Restored position or #anchor: it's kept as is, the content is already where it should be
+    if (location.hash || window.scrollY > 0) {
+      notifyEntryScrollSettled()
+      return
+    }
 
     const content = contentRef.current
     if (!content) return
@@ -36,14 +41,23 @@ export const useEmergencyAutoScroll = (contentRef: RefObject<HTMLElement | null>
 
     if (prefersReducedMotion()) {
       window.scrollTo({ top: scrollTopBelowHeader(content), behavior: "instant" })
+      notifyEntryScrollSettled()
       return
     }
 
     let cancelAnimation: (() => void) | undefined
     const timer = window.setTimeout(() => {
-      // If the user has scrolled in the meantime, don't move them
-      if (window.scrollY > 0) return stop()
-      cancelAnimation = animateWindowScroll(() => scrollTopBelowHeader(content), SCROLL_DURATION_MS, stop)
+      // Already scrolled without any user gesture (those cancel this timer): on a full reload the
+      // browser restores the position a moment later. It's kept, and the content counts as settled.
+      if (window.scrollY > 0) {
+        stop()
+        notifyEntryScrollSettled()
+        return
+      }
+      cancelAnimation = animateWindowScroll(() => scrollTopBelowHeader(content), SCROLL_DURATION_MS, () => {
+        stop()
+        notifyEntryScrollSettled()
+      })
     }, REVEAL_DELAY_MS)
 
     const stop = () => {

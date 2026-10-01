@@ -10,4 +10,5 @@ export const PATHS = {
   search: "/buscar",
   about: "/sobre-auxiliar",
   login: "/login",
+  auxiModels: "/auxi-modelos",
 } as const

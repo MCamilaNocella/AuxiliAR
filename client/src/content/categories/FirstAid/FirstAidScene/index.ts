@@ -1,0 +1,1 @@
+export { FirstAidScene } from "./FirstAidScene"
