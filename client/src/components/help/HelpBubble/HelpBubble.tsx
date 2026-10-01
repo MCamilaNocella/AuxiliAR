@@ -1,9 +1,9 @@
 import { X } from "lucide-react"
 import type { HelpBubbleProps } from "./HelpBubble.types"
 
-/** Speech bubble next to Auxi. Pops out with an animation (static when reduced motion is on). */
+/** Speech bubble over Auxi's head, like a chat icon. Pops out with an animation (static when reduced motion is on). */
 export const HelpBubble = ({ message, onOpen, onClose }: HelpBubbleProps) => (
-  <div className="relative max-w-[calc(100vw-6.25rem)] min-w-0 origin-right animate-bubble-in rounded-2xl border border-line-strong bg-card px-4 py-2.5 text-ink shadow-lg motion-reduce:animate-none">
+  <div className="relative w-max max-w-[calc(100vw-5rem)] origin-bottom-right animate-bubble-in rounded-2xl border border-line-strong bg-card px-3.5 py-2 text-ink shadow-lg motion-reduce:animate-none">
     {/* Tapping the text also opens the chat; keyboard users reach the same action through Auxi's button */}
     <button
       type="button"
@@ -19,14 +19,14 @@ export const HelpBubble = ({ message, onOpen, onClose }: HelpBubbleProps) => (
       type="button"
       onClick={onClose}
       aria-label="Cerrar mensaje"
-      className="absolute -top-2.5 -left-2.5 flex size-7 cursor-pointer items-center justify-center rounded-full border border-line-strong bg-card text-ink shadow-sm transition-colors hover:bg-field"
+      className="absolute -top-2 -left-2 flex size-6 cursor-pointer items-center justify-center rounded-md border border-line-strong bg-card text-ink shadow-sm transition-colors hover:bg-field"
     >
-      <X aria-hidden="true" className="size-4" />
+      <X aria-hidden="true" className="stroke-3 size-3.5" />
     </button>
-    {/* Tail pointing at Auxi */}
+    {/* Tail pointing down at Auxi's head */}
     <span
       aria-hidden="true"
-      className="absolute top-1/2 -right-1.5 size-3 -translate-y-1/2 rotate-45 border-t border-r border-line-strong bg-card"
+      className="absolute right-4 -bottom-1.5 size-3 rotate-45 border-r border-b border-line-strong bg-card"
     />
   </div>
 )

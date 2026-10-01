@@ -19,6 +19,11 @@ export type CategorySection = {
   id: string
   /** Name in the sidebar and heading of the section */
   title: string
+  /**
+   * What information the section has, in a sentence. Write it once the section has real content:
+   * only then can Auxi's chat send people here (without it, Auxi answers on its own)
+   */
+  summary?: string
   /** Body of the section (the heading is rendered by the category screen) */
   Content: ComponentType
 }

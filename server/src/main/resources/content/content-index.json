@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Salud física",
+    "path": "/temas/salud-fisica",
+    "summary": "Presión, diabetes, vacunas. Hospitales públicos, guardias gratuitas y programas del Estado",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Salud mental",
+    "path": "/temas/salud-mental",
+    "summary": "Hablar con alguien, ansiedad. Ayuda gratuita, confidencial y disponible las 24 horas",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Educación sexual (ESI)",
+    "path": "/temas/esi",
+    "summary": "Cuidados y derechos. Educación Sexual Integral · Derechos y acceso gratuito",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Animales",
+    "path": "/temas/animales",
+    "summary": "Mascotas y mordeduras. Veterinarias gratuitas, vacunas y primeros auxilios",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Centros de atención",
+    "path": "/centros",
+    "summary": "Hospitales cerca. Hospitales, centros de salud y guardias cerca tuyo",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Más recursos",
+    "path": "/recursos",
+    "summary": "Preguntas frecuentes, derechos, leyes y trámites. Preguntas frecuentes, derechos, leyes y trámites",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Primeros auxilios",
+    "path": "/primeros-auxilios",
+    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias",
+    "firstAid": true,
+    "hasInfo": false
+  },
+  {
+    "title": "Sobre AuxiliAR",
+    "path": "/sobre-auxiliar",
+    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas",
+    "firstAid": false,
+    "hasInfo": false
+  },
+  {
+    "title": "Primeros auxilios › RCP · no respira",
+    "path": "/primeros-auxilios/rcp",
+    "summary": "Guía paso a paso: RCP · no respira",
+    "firstAid": true,
+    "hasInfo": false
+  },
+  {
+    "title": "Primeros auxilios › Atragantamiento",
+    "path": "/primeros-auxilios/atragantamiento",
+    "summary": "Guía paso a paso: Atragantamiento",
+    "firstAid": true,
+    "hasInfo": false
+  },
+  {
+    "title": "Primeros auxilios › Quemaduras",
+    "path": "/primeros-auxilios/quemaduras",
+    "summary": "Guía paso a paso: Quemaduras",
+    "firstAid": true,
+    "hasInfo": false
+  }
+]

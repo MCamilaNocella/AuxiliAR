@@ -49,7 +49,7 @@ export const AccessibilityPanel = ({ open, onClose }: AccessibilityPanelProps) =
             aria-label="Cerrar"
             className="flex size-11 flex-none cursor-pointer items-center justify-center rounded-full text-ink transition-colors hover:bg-field"
           >
-            <X aria-hidden="true" className="size-6" />
+            <X aria-hidden="true" className="stroke-3 size-6" />
           </button>
         </div>
 
