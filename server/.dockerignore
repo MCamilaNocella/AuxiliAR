@@ -1,0 +1,7 @@
+# Built inside the image; local secrets never go in
+target/
+.env
+*.log
+.idea/
+.vscode/
+HELP.md
