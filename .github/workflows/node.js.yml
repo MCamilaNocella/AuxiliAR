@@ -1,5 +1,4 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# Builds the client on every push / PR to main, and publishes it to GitHub Pages (auxiliar.estudy.ar) on push to main
 
 name: Node.js CI
 
@@ -8,25 +7,48 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push doesn't cancel one already publishing
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-    
+    defaults:
+      run:
+        working-directory: ./client
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    # Vite 8 needs Node 20.19+ / 22.12+
+    - uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 22.x
         cache: 'npm'
         cache-dependency-path: client/package-lock.json
     - run: npm ci
-      working-directory: ./client
-    - run: npm run build --if-present
-      working-directory: ./client
-    - run: npm test
-      working-directory: ./client
+    - run: npm run lint
+    - run: npm run build
+    # GitHub Pages has no SPA rewrites: serve the app for unknown paths too (e.g. /auxi-modelos on reload)
+    - run: cp dist/index.html dist/404.html
+    - uses: actions/upload-pages-artifact@v3
+      with:
+        path: client/dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - id: deployment
+      uses: actions/deploy-pages@v4
