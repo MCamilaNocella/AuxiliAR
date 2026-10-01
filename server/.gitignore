@@ -34,6 +34,5 @@ DS_Store
 *.bak
 # Miscellaneous
 vscode/
-# Local secrets
+# Local secrets (API keys): never committed
 .env
-npn
