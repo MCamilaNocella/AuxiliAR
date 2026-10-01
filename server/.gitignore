@@ -34,3 +34,6 @@ DS_Store
 *.bak
 # Miscellaneous
 vscode/
+# Local secrets
+.env
+npn

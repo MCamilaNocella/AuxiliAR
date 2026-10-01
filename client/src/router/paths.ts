@@ -12,3 +12,6 @@ export const PATHS = {
   login: "/login",
   auxiModels: "/auxi-modelos",
 } as const
+
+/** Query param with the open section of a category screen: /temas/salud-fisica?seccion=section-1 */
+export const SECTION_PARAM = "seccion"

@@ -9,7 +9,7 @@ export const ChatMessage = ({ from, children }: ChatMessageProps) =>
         <Auxi className="size-8" />
       </span>
       {/* Squared corner next to the avatar, like the design's bubbles */}
-      <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-line-strong bg-surface-alt px-3.5 py-2.5 text-base/snug wrap-break-word">
+      <div className="max-w-[85%] rounded-2xl rounded-tl-sm border border-line-strong bg-surface-alt px-3.5 py-2.5 text-base/snug wrap-break-word whitespace-pre-line">
         <span className="sr-only">Auxi: </span>
         {children}
       </div>

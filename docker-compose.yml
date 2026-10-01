@@ -23,6 +23,13 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auxiliar
       SPRING_DATASOURCE_USERNAME: auxiliar
       SPRING_DATASOURCE_PASSWORD: auxiliar
+      # Auxi's chat: taken from the shell or a .env next to this file (see server/.env.example)
+      AI_PROVIDER: ${AI_PROVIDER:-nvidia}
+      NVIDIA_API_KEY: ${NVIDIA_API_KEY:-}
+      NVIDIA_MODEL: ${NVIDIA_MODEL:-nvidia/nemotron-3-super-120b-a12b}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      AI_REASONING: ${AI_REASONING:-false}
     depends_on:
       - postgres
 
