@@ -60,6 +60,52 @@
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
+  /* "Ver mejor" button: pulsing halo for the first 3s after page load so people notice it */
+  --animate-attention-glow: attention-glow 1.25s ease-out 0.5s 2;
+  /* …and once the glow ends, its label slowly folds up into the icon */
+  --animate-label-collapse: label-collapse 900ms cubic-bezier(0.65, 0, 0.35, 1) 3s both;
+  --animate-label-slide-up: label-slide-up 900ms cubic-bezier(0.65, 0, 0.35, 1) 3s both;
+
+  @keyframes label-collapse {
+    from {
+      grid-template-rows: 1fr;
+    }
+    to {
+      grid-template-rows: 0fr;
+    }
+  }
+
+  @keyframes label-slide-up {
+    from {
+      translate: 0 0;
+      opacity: 1;
+    }
+    to {
+      translate: 0 -100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes attention-glow {
+    0% {
+      box-shadow:
+        -2px 2px 8px rgba(0, 0, 0, 0.15),
+        0 0 0 0 color-mix(in srgb, var(--color-brand) 70%, transparent);
+      filter: brightness(1.25);
+    }
+    70% {
+      box-shadow:
+        -2px 2px 8px rgba(0, 0, 0, 0.15),
+        0 0 0 0.875rem color-mix(in srgb, var(--color-brand) 0%, transparent);
+      filter: brightness(1);
+    }
+    100% {
+      box-shadow:
+        -2px 2px 8px rgba(0, 0, 0, 0.15),
+        0 0 0 0 transparent;
+    }
+  }
+
   @keyframes bubble-in {
     from {
       opacity: 0;
@@ -247,6 +293,23 @@
 
 ::view-transition-new(page-content) {
   animation: 350ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both view-fade-in;
+}
+
+/*
+ * The "Ver mejor" button gets its own snapshot, painted above everything else (otherwise the
+ * fading content covered it for a moment) and swapped without any animation.
+ */
+::view-transition-group(a11y-button) {
+  z-index: 1;
+  animation: none;
+}
+
+::view-transition-old(a11y-button) {
+  display: none;
+}
+
+::view-transition-new(a11y-button) {
+  animation: none;
 }
 
 @keyframes view-fade-out {
