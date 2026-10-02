@@ -15,6 +15,6 @@ export const CategoryIntro = ({ category }: CategoryIntroProps) => (
         </p>
       </div>
     </div>
-    <CategoryWallpaper scene={category.scene} className="min-h-80 flex-1 lg:hidden" />
+    <CategoryWallpaper category={category} className="min-h-80 flex-1 lg:hidden" />
   </>
 )

@@ -1,6 +1,6 @@
 import type { Category } from "@/types/category"
 
 export type CategoryWallpaperProps = {
-  scene: Category["scene"]
+  category: Category
   className?: string
 }

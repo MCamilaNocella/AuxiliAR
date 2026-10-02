@@ -11,6 +11,7 @@ export const PATHS = {
   about: "/sobre-auxiliar",
   login: "/login",
   auxiModels: "/auxi-modelos",
+  peerChatSketch: "/boceto-chat-personas",
 } as const
 
 /** Query param with the open section of a category screen: /temas/salud-fisica?seccion=section-1 */

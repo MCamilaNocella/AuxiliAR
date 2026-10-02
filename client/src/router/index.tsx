@@ -6,6 +6,7 @@ import { AuxiModels } from "@/screens/AuxiModels";
 import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
 import { Login } from "@/screens/Login";
+import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { Placeholder } from "@/screens/Placeholder";
 import { SearchResults } from "@/screens/SearchResults";
 import { PATHS } from "./paths";
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
           { path: PATHS.search, element: <SearchResults/> },
           { path: PATHS.about, element: <Category/> },
           { path: PATHS.auxiModels, element: <AuxiModels/> },
+          { path: PATHS.peerChatSketch, element: <PeerChatSketch/> },
         ],
       },
       {
