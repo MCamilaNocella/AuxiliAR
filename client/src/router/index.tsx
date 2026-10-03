@@ -8,7 +8,6 @@ import { Home } from "@/screens/Home";
 import { Login } from "@/screens/Login";
 import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { Placeholder } from "@/screens/Placeholder";
-import { SearchResults } from "@/screens/SearchResults";
 import { PATHS } from "./paths";
 
 const router = createBrowserRouter([
@@ -26,7 +25,6 @@ const router = createBrowserRouter([
           { path: PATHS.myHealth, element: <Placeholder title="Mi Salud"/> },
           { path: PATHS.firstAid, element: <Category/> },
           { path: PATHS.firstAidGuide(":slug"), element: <Placeholder title="Guía de primeros auxilios"/> },
-          { path: PATHS.search, element: <SearchResults/> },
           { path: PATHS.about, element: <Category/> },
           { path: PATHS.auxiModels, element: <AuxiModels/> },
           { path: PATHS.peerChatSketch, element: <PeerChatSketch/> },

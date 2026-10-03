@@ -7,7 +7,6 @@ export const PATHS = {
   myHealth: "/mi-salud",
   firstAid: "/primeros-auxilios",
   firstAidGuide: (slug: string) => `/primeros-auxilios/${slug}`,
-  search: "/buscar",
   about: "/sobre-auxiliar",
   login: "/login",
   auxiModels: "/auxi-modelos",
