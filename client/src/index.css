@@ -57,52 +57,83 @@
   /* Auxi's wave lines (help bot): contrast with the page background */
   --color-auxi-motion: #000000;
 
+  /* Metallic glint that sweeps over the "Ver mejor" gear and label on load: light on the dark (light theme) gear, a darker sheen on the white one */
+  --color-shine: #ffffff;
+
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
-  /* "Ver mejor" button: pulsing halo for the first 3s after page load so people notice it */
-  --animate-attention-glow: attention-glow 1.25s ease-out 0.5s 2;
-  /* …and once the glow ends, its label slowly folds up into the icon */
-  --animate-label-collapse: label-collapse 900ms cubic-bezier(0.65, 0, 0.35, 1) 3s both;
-  --animate-label-slide-up: label-slide-up 900ms cubic-bezier(0.65, 0, 0.35, 1) 3s both;
+  /*
+   * "Ver mejor" button in the header: on page load, once the label is out, a metallic glint sweeps
+   * across the gear and the label together, right to left and back. It's a copy of the shape in
+   * --color-shine, shown only through a moving gradient mask, so the light stays inside the shape
+   * and on its edges.
+   */
+  --animate-shine-sweep: shine-sweep 1.2s ease-in-out 1.5s 2 alternate-reverse both;
 
-  @keyframes label-collapse {
+  @keyframes shine-sweep {
     from {
-      grid-template-rows: 1fr;
+      mask-position: 100% 0;
     }
     to {
-      grid-template-rows: 0fr;
+      mask-position: 0% 0;
     }
   }
 
-  @keyframes label-slide-up {
-    from {
+  /*
+   * The "Ajustes" label rolls out of the gear, stays 5s and rolls back in, the gear spinning
+   * each way. One 6.8s timeline: 0.9s out (0–13.2%), 5s shown, 0.9s back in (86.8–100%).
+   */
+  --animate-label-reveal: label-reveal 6.8s 0.5s both;
+  --animate-label-roll: label-roll 6.8s 0.5s both;
+  --animate-gear-spin: gear-spin 6.8s 0.5s both;
+
+  @keyframes label-reveal {
+    0% {
+      grid-template-columns: 0fr;
+      animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    13.2%,
+    86.8% {
+      grid-template-columns: 1fr;
+      animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+    }
+    100% {
+      grid-template-columns: 0fr;
+    }
+  }
+
+  @keyframes label-roll {
+    0% {
+      translate: 100% 0;
+      opacity: 0;
+      animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    13.2%,
+    86.8% {
       translate: 0 0;
       opacity: 1;
+      animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
     }
-    to {
-      translate: 0 -100%;
+    100% {
+      translate: 100% 0;
       opacity: 0;
     }
   }
 
-  @keyframes attention-glow {
+  /* Rolling left while the label comes out (counterclockwise), right while it goes back in */
+  @keyframes gear-spin {
     0% {
-      box-shadow:
-        -2px 2px 8px rgba(0, 0, 0, 0.15),
-        0 0 0 0 color-mix(in srgb, var(--color-brand) 70%, transparent);
-      filter: brightness(1.25);
+      rotate: 0deg;
+      animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
     }
-    70% {
-      box-shadow:
-        -2px 2px 8px rgba(0, 0, 0, 0.15),
-        0 0 0 0.875rem color-mix(in srgb, var(--color-brand) 0%, transparent);
-      filter: brightness(1);
+    13.2%,
+    86.8% {
+      rotate: -180deg;
+      animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
     }
     100% {
-      box-shadow:
-        -2px 2px 8px rgba(0, 0, 0, 0.15),
-        0 0 0 0 transparent;
+      rotate: 0deg;
     }
   }
 
@@ -153,6 +184,7 @@
   --color-on-alert: #ffffff;
 
   --color-auxi-motion: #ffffff;
+  --color-shine: #8a817f;
 }
 
 :root[data-theme="contrast"] {
@@ -184,6 +216,7 @@
   --color-on-alert: #ffffff;
 
   --color-auxi-motion: #ffffff;
+  --color-shine: #8a8a8a;
   --color-category-edge: #ffffff;
 }
 
@@ -246,6 +279,14 @@
   background: var(--category-wallpaper);
 }
 
+/* Band of light for the shine-sweep animations: off to the left at 100%, off to the right at 0% */
+@utility shine-mask {
+  mask-image: linear-gradient(110deg, transparent 35%, rgb(0 0 0 / 0.55) 44%, #000 50%, rgb(0 0 0 / 0.55) 56%, transparent 65%);
+  mask-size: 300% 100%;
+  mask-repeat: no-repeat;
+  mask-position: 100% 0;
+}
+
 /* ---------- Large cursor ("Ver mejor" → Mouse) ---------- */
 
 :root {
@@ -293,23 +334,6 @@
 
 ::view-transition-new(page-content) {
   animation: 350ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both view-fade-in;
-}
-
-/*
- * The "Ver mejor" button gets its own snapshot, painted above everything else (otherwise the
- * fading content covered it for a moment) and swapped without any animation.
- */
-::view-transition-group(a11y-button) {
-  z-index: 1;
-  animation: none;
-}
-
-::view-transition-old(a11y-button) {
-  display: none;
-}
-
-::view-transition-new(a11y-button) {
-  animation: none;
 }
 
 @keyframes view-fade-out {
