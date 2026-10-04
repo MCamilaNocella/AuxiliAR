@@ -10,7 +10,7 @@ import { Section4 } from "./sections/Section4"
 export const HEALTH_CENTERS: Category = {
   id: "centros",
   title: "Centros de atención",
-  description: "Hospitales cerca",
+  description: "Hospitales, centros de salud y atención cercana",
   subtitle: "Hospitales, centros de salud y guardias cerca tuyo",
   icon: Hospital,
   to: PATHS.centers,

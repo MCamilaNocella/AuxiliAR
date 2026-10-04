@@ -2,42 +2,42 @@
   {
     "title": "Salud física",
     "path": "/temas/salud-fisica",
-    "summary": "Presión, diabetes, vacunas. Hospitales públicos, guardias gratuitas y programas del Estado",
+    "summary": "Centros, controles y primeros auxilios. Hospitales públicos, guardias gratuitas y programas del Estado",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Hablar con alguien, ansiedad. Ayuda gratuita, confidencial y disponible las 24 horas",
+    "summary": "Atención, orientación y bienestar. Ayuda gratuita, confidencial y disponible las 24 horas",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Educación sexual (ESI)",
     "path": "/temas/esi",
-    "summary": "Cuidados y derechos. Educación Sexual Integral · Derechos y acceso gratuito",
+    "summary": "Información, anticoncepción y derechos. Educación Sexual Integral · Derechos y acceso gratuito",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Animales",
     "path": "/temas/animales",
-    "summary": "Mascotas y mordeduras. Veterinarias gratuitas, vacunas y primeros auxilios",
+    "summary": "Atención veterinaria y cuidados. Veterinarias gratuitas, vacunas y primeros auxilios",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Centros de atención",
     "path": "/centros",
-    "summary": "Hospitales cerca. Hospitales, centros de salud y guardias cerca tuyo",
+    "summary": "Hospitales, centros de salud y atención cercana. Hospitales, centros de salud y guardias cerca tuyo",
     "firstAid": false,
     "hasInfo": false
   },
   {
-    "title": "Más recursos",
+    "title": "Mis recursos",
     "path": "/recursos",
-    "summary": "Preguntas frecuentes, derechos, leyes y trámites. Preguntas frecuentes, derechos, leyes y trámites",
+    "summary": "Donaciones, derechos y trámites. Preguntas frecuentes, derechos, leyes y trámites",
     "firstAid": false,
     "hasInfo": false
   },

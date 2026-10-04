@@ -6,6 +6,7 @@ import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
 import { Section4 } from "./sections/Section4"
+import { Section5 } from "./sections/Section5"
 
 export const FIRST_AID: Category = {
   id: "primeros-auxilios",
@@ -18,9 +19,10 @@ export const FIRST_AID: Category = {
   scene: FirstAidScene,
   /** Sidebar sections, in the order they are listed; each one's content lives in ./sections */
   sections: [
-    { id: "section-1", title: "Sección 1", Content: Section1 },
-    { id: "section-2", title: "Sección 2", Content: Section2 },
-    { id: "section-3", title: "Sección 3", Content: Section3 },
-    { id: "section-4", title: "Sección 4", Content: Section4 },
+    { id: "section-1", title: "RCP", Content: Section1 },
+    { id: "section-2", title: "ACV", Content: Section2 },
+    { id: "section-3", title: "Atragantamientos", Content: Section3 },
+    { id: "section-4", title: "Quemaduras", Content: Section4 },
+    { id: "section-5", title: "Otros temas", Content: Section5 },
   ],
 }

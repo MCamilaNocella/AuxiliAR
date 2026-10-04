@@ -10,7 +10,7 @@ import { Section4 } from "./sections/Section4"
 export const PHYSICAL_HEALTH: Category = {
   id: "salud-fisica",
   title: "Salud física",
-  description: "Presión, diabetes, vacunas",
+  description: "Centros, controles y primeros auxilios",
   subtitle: "Hospitales públicos, guardias gratuitas y programas del Estado",
   icon: HeartPulse,
   to: PATHS.topic("salud-fisica"),
@@ -18,9 +18,9 @@ export const PHYSICAL_HEALTH: Category = {
   scene: PhysicalHealthScene,
   /** Sidebar sections, in the order they are listed; each one's content lives in ./sections */
   sections: [
-    { id: "section-1", title: "Sección 1", Content: Section1 },
-    { id: "section-2", title: "Sección 2", Content: Section2 },
-    { id: "section-3", title: "Sección 3", Content: Section3 },
-    { id: "section-4", title: "Sección 4", Content: Section4 },
+    { id: "section-1", title: "Centros de atención", Content: Section1 },
+    { id: "section-2", title: "Controles de salud", Content: Section2 },
+    { id: "section-3", title: "Primeros auxilios", Content: Section3 },
+    { id: "section-4", title: "Quiz", Content: Section4 },
   ],
 }
