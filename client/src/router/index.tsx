@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, type RouteObject } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
+import { FloatingBubblePreview } from "@/screens/AuxiBubbleVariants/AuxiBubbleVariants.preview";
 import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
 import { MyHealth } from "@/screens/MyHealth";
@@ -19,6 +20,8 @@ const PROTOTYPES_ENABLED = import.meta.env.DEV
 const prototypeRoutes: RouteObject[] = PROTOTYPES_ENABLED
   ? [
       { path: PATHS.auxiModels, lazy: async () => ({ Component: (await import("@/screens/AuxiModels")).AuxiModels }) },
+      // The comparison of the bubbles of Auxi (review only): development only, like the other prototypes
+      { path: PATHS.auxiBubbleVariants, lazy: async () => ({ Component: (await import("@/screens/AuxiBubbleVariants")).AuxiBubbleVariants }) },
       { path: PATHS.peerChatSketch, lazy: async () => ({ Component: (await import("@/screens/PeerChatSketch")).PeerChatSketch }) },
     ]
   : []
@@ -27,7 +30,7 @@ const loginRoutes: RouteObject[] = PROTOTYPES_ENABLED ? [{ path: PATHS.login, la
 
 const router = createBrowserRouter([
   {
-    element: <RootLayout/>,
+    element: <><RootLayout/>{PROTOTYPES_ENABLED && <FloatingBubblePreview/>}</>,
     children: [
       {
         element: <AppLayout/>,
