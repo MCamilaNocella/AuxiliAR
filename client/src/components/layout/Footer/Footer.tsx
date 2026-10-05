@@ -4,7 +4,7 @@ import { PATHS } from "@/router/paths"
 export const Footer = () => (
   <footer className="border-t border-line bg-surface-alt">
     {/* Extra bottom padding so the floating help bot never covers the footer text */}
-    <div className="mx-auto flex max-w-310 flex-col items-center gap-1 px-4 pt-6 pb-24 text-center text-sm text-muted sm:px-6 lg:px-8">
+    <div className="mx-auto flex max-w-360 flex-col items-center gap-1 px-4 pt-6 pb-24 text-center text-sm text-muted sm:px-6 lg:px-8">
       <p className="m-0">
         <span className="font-display text-lg text-ink">AuxiliAR</span> · Recursos de salud gratuitos para Argentina
       </p>
