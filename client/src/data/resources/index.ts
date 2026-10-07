@@ -1,5 +1,5 @@
 import taxonomy from "./taxonomy.json"
-import type { CategoryId, Contact, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
+import type { CategoryId, Contact, ProvinceCode, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
 
 export type * from "./resources.types"
 
@@ -8,9 +8,27 @@ export type * from "./resources.types"
  * Nothing in the UI uses this yet. How it works and the editorial rules: ./README.md
  *
  * The files of lines/ are bundled with the app on purpose: emergency numbers can't depend on a request.
- * Places (hospitals, centers) will be loaded on demand, not bundled.
+ * Places (hospitals, centers) are not in that bundle: places/<province>.json is loaded on demand, one province at a
+ * time (loadPlaces). The functions below take the loaded places as their last argument.
  */
 const files = import.meta.glob<{ resources: Resource[] }>("./lines/*.json", { eager: true, import: "default" })
+
+const placeLoaders = import.meta.glob<{ resources: Resource[] }>("./places/*.json", { import: "default" })
+const placesByProvince = new Map<ProvinceCode, Promise<readonly Resource[]>>()
+
+/**
+ * The places of a province (places/<ar-c>.json), loaded the first time and kept. A province with no file has none.
+ * One request per province, never the whole country. A failed load is not kept, so it can be retried.
+ */
+export const loadPlaces = (province: ProvinceCode): Promise<readonly Resource[]> => {
+  const cached = placesByProvince.get(province)
+  if (cached) return cached
+  const load = placeLoaders[`./places/${province.toLowerCase()}.json`]
+  const loading = load ? load().then((file) => file.resources) : Promise.resolve([])
+  placesByProvince.set(province, loading)
+  loading.catch(() => placesByProvince.delete(province))
+  return loading
+}
 
 /** Every resource, whatever its verification status. For people and Auxi use the `getCurrent…` functions */
 export const RESOURCES: readonly Resource[] = Object.values(files).flatMap((file) => file.resources)
@@ -108,25 +126,27 @@ export const findCurrentResourcesByDial = (dial: string, day: string = todayInAr
 }
 
 /** Resources that can be shown: for a place, only if it has at least one current service */
-export const getCurrentResources = (day: string = todayInArgentina()) =>
-  RESOURCES.filter((resource) => isCurrent(resource, day) && ((resource.services ?? []).length === 0 || getCurrentServices(resource, day).length > 0))
+export const getCurrentResources = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
+  resources.filter((resource) => isCurrent(resource, day) && ((resource.services ?? []).length === 0 || getCurrentServices(resource, day).length > 0))
 
 /** In a category: a place by a current service of that category, any other resource by its own `categories` */
-export const getCurrentResourcesByCategory = (category: CategoryId, day: string = todayInArgentina()) =>
-  getCurrentResources(day).filter((resource) =>
+export const getCurrentResourcesByCategory = (category: CategoryId, day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
+  getCurrentResources(day, resources).filter((resource) =>
     (resource.services ?? []).length > 0
       ? getCurrentServices(resource, day).some((service) => service.categories.includes(category))
       : (resource.categories ?? []).includes(category),
   )
 
 /** Establishments (resources with services) that can be shown */
-export const getCurrentPlaces = (day: string = todayInArgentina()) => getCurrentResources(day).filter((resource) => (resource.services ?? []).length > 0)
+export const getCurrentPlaces = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
+  getCurrentResources(day, resources).filter((resource) => (resource.services ?? []).length > 0)
 
-export const getCurrentPlacesByCategory = (category: CategoryId, day: string = todayInArgentina()) =>
-  getCurrentResourcesByCategory(category, day).filter((resource) => (resource.services ?? []).length > 0)
+export const getCurrentPlacesByCategory = (category: CategoryId, day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
+  getCurrentResourcesByCategory(category, day, resources).filter((resource) => (resource.services ?? []).length > 0)
 
 /** Places that can be shown and drawn on the map */
-export const getCurrentMappablePlaces = (day: string = todayInArgentina()) => getCurrentPlaces(day).filter(isMappable)
+export const getCurrentMappablePlaces = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
+  getCurrentPlaces(day, resources).filter(isMappable)
 
 /** Current emergency resources that are in the emergency bar, in its order */
 export const getEmergencyBarResources = (day: string = todayInArgentina()) =>

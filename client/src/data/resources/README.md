@@ -13,7 +13,9 @@ client/src/data/resources/        ← LO ÚNICO QUE SE EDITA
   taxonomy.json                   valores permitidos (tipos, estados, provincias, áreas, categorías…)
   resources.types.ts              tipos de TypeScript
   index.ts                        cómo lo lee la app (consultas)
-  lines/*.json                    los recursos, por archivo (hoy: nacional.json, vacío; dónde irán los establecimientos, a definir)
+  lines/*.json                    líneas telefónicas (hoy: nacional.json, vacío). Van siempre en el build
+  places/<provincia>.json         establecimientos, un archivo por provincia (ar-c.json, ar-b.json…). Se cargan bajo demanda
+                                  (hoy no hay ninguno)
 
 client/scripts/resources-sync.mjs        valida y genera la copia del servidor
 client/scripts/resources-validate.mjs    las reglas de validación
@@ -28,7 +30,7 @@ El servidor se construye por separado (su Docker solo ve `server/`), por eso no 
 
 ## Cómo agregar o cambiar un recurso
 
-1. Editá un archivo de `lines/` (o creá uno nuevo, por ejemplo uno por provincia). Si el archivo empieza con `"$schema": "../resource.schema.json"`, el editor (VS Code) te sugiere los campos y marca los errores mientras escribís.
+1. Editá un archivo de `lines/` (líneas) o de `places/` (establecimientos), o creá uno nuevo. Si el archivo empieza con `"$schema": "../resource.schema.json"`, el editor (VS Code) te sugiere los campos y marca los errores mientras escribís.
 2. Corré `npm run resources:sync` (desde `client/`). Valida todo y actualiza la copia del servidor. Si algo está mal, dice qué y dónde, y no escribe nada.
 3. Hacé commit de **los dos**: tu cambio y la copia generada. `npm run resources:check` falla si no coinciden.
 
@@ -68,6 +70,8 @@ Un establecimiento (un hospital, un CeSAC, una veterinaria pública) se carga **
 
 **Teléfonos de un lugar.** Un establecimiento puede no tener ningún contacto. Dos o más **lugares** pueden compartir un número (una central de turnos); un número de una línea (emergencia, apoyo urgente u orientación) sigue siendo exclusivo. Cuando varios lugares comparten un número, el servidor lo da por válido si **alguno** está vigente.
 
+**Dónde va cada establecimiento.** En `places/<código de provincia en minúsculas>.json` (`ar-c.json` para CABA, `ar-b.json` para Buenos Aires…), según su **`address.province`**, no según quién lo administra: un hospital nacional que está en CABA va en `ar-c.json` con `jurisdiction.level: "national"`. Así cada establecimiento tiene un único lugar posible. Todo lo de `places/` es `kind: "service"`. Sigue siendo **una sola Base AuxiliAR**: mismo schema, misma taxonomía, y los `id` y `externalIds` son únicos entre `lines/` y todos los archivos de `places/`. La validación falla si el archivo no se llama como una provincia de la taxonomía o si un establecimiento está en el archivo de otra provincia.
+
 ## Reglas editoriales
 
 **Verificación**
@@ -100,12 +104,12 @@ También se valida que `taxonomy.categories` coincida con las categorías reales
 
 ## Cómo lo leen la app y el servidor
 
-- **Cliente:** `index.ts` incorpora `lines/*.json` en el build (los números de emergencia no pueden depender de un pedido de red). Expone `getCurrentResources`, `getEmergencyBarResources`, `findResourceByDial`, `contactHref` y similares, y para establecimientos `getServices` (con la herencia resuelta), `getCurrentServices`, `getCategories`, `getCurrentPlacesByCategory`, `isMappable` y `getCurrentMappablePlaces`. Los hospitales y centros, cuando existan, se cargarán por demanda y no irán en el build.
-- **Servidor:** `ResourceCatalog` lee `data/resources.json`, lo valida al arrancar (si está mal, el servidor **no arranca**) y ofrece `findCurrentByDial` (con lo que se va a comprobar que un número que Auxi quiere mostrar existe, está verificado y no venció), `current`, `currentByCategory`, `currentServices`, `currentMappablePlaces` y `categoriesOf`. **La copia del servidor ya trae las prestaciones resueltas** (la herencia la resuelve `resources-resolve.mjs`) y las categorías derivadas, así que el servidor no repite esa lógica.
+- **Cliente:** `index.ts` incorpora `lines/*.json` en el build (los números de emergencia no pueden depender de un pedido de red). Expone `getCurrentResources`, `getEmergencyBarResources`, `findResourceByDial`, `contactHref` y similares, y para establecimientos `getServices` (con la herencia resuelta), `getCurrentServices`, `getCategories`, `getCurrentPlacesByCategory`, `isMappable` y `getCurrentMappablePlaces`. Los establecimientos **no** van en el build: `loadPlaces("AR-C")` pide `places/ar-c.json` la primera vez (un pedido por provincia, nunca todo el país), lo guarda y devuelve la lista (vacía si la provincia no tiene archivo). Las consultas de lugares (`getCurrentPlaces`, `getCurrentPlacesByCategory`, `getCurrentMappablePlaces`, `getCurrentResources`…) reciben esa lista como último parámetro; sin él miran solo `lines/`.
+- **Servidor:** no carga por provincia: `resources.json` es una sola copia con `lines/` y todos los `places/` juntos. `ResourceCatalog` lee `data/resources.json`, lo valida al arrancar (si está mal, el servidor **no arranca**) y ofrece `findCurrentByDial` (con lo que se va a comprobar que un número que Auxi quiere mostrar existe, está verificado y no venció), `current`, `currentByCategory`, `currentServices`, `currentMappablePlaces` y `categoriesOf`. **La copia del servidor ya trae las prestaciones resueltas** (la herencia la resuelve `resources-resolve.mjs`) y las categorías derivadas, así que el servidor no repite esa lógica.
 
 ## Qué viene después
 
-Esto es solo la infraestructura. Las próximas fases, cada una en su propio cambio: cargar los números actuales como `unverified`, verificarlos con fuentes oficiales, y recién ahí hacer que `numeros.md`, `emergency.ts`, el footer, el chat y `SafetyRules.java` lean de acá; y, aparte, los datos de los establecimientos (primero un piloto en CABA) y las pantallas que los usan. **Dónde viven los establecimientos** (en `lines/` o en archivos por provincia que se cargan bajo demanda) se decide en esa fase de datos.
+Esto es solo la infraestructura. Las próximas fases, cada una en su propio cambio: cargar los números actuales como `unverified`, verificarlos con fuentes oficiales, y recién ahí hacer que `numeros.md`, `emergency.ts`, el footer, el chat y `SafetyRules.java` lean de acá; y, aparte, los datos de los establecimientos (primero un piloto en CABA) y las pantallas que los usan. **Dónde viven los establecimientos** ya está definido (`places/<provincia>.json`); en esa fase de datos se cargan.
 
 ## Datos de prueba
 

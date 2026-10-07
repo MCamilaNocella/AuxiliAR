@@ -14,13 +14,20 @@ import { DEFAULT_PATHS, buildServerCopy, run } from "./resources-sync.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const fixtureLines = join(here, "__fixtures__/resources/lines")
+const fixturePlaces = join(here, "__fixtures__/resources/places")
 // The server's own tests read this same file: this test keeps it equal to what the sync generates from the fixtures
 const serverFixture = resolve(here, "../../server/src/test/resources/data/resources-fixture.json")
 
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"))
 const schema = await readJson(join(DEFAULT_PATHS.sourceDir, "resource.schema.json"))
 const taxonomy = await readJson(join(DEFAULT_PATHS.sourceDir, "taxonomy.json"))
-const fixture = await readJson(join(fixtureLines, "fixture.json"))
+// The fixture is split like the real dataset: lines/ and one places/ file per province
+const fixtureFiles = [
+  { name: "lines/fixture.json", data: await readJson(join(fixtureLines, "fixture.json")) },
+  { name: "places/ar-c.json", data: await readJson(join(fixturePlaces, "ar-c.json")) },
+  { name: "places/ar-b.json", data: await readJson(join(fixturePlaces, "ar-b.json")) },
+]
+const fixture = { resources: fixtureFiles.flatMap(({ data }) => data.resources) }
 
 // Positions in the fixture (see fixture.json)
 const [EMERGENCY, UNVERIFIED, EXPIRED, CENTER, CESAC, HOSPITAL, VET] = [0, 1, 2, 3, 4, 5, 6]
@@ -50,7 +57,7 @@ test("the real dataset is valid", async () => {
 })
 
 test("the fixtures are valid", () => {
-  const result = validateDataset({ files: [{ name: "fixture.json", data: fixture }], schema, taxonomy })
+  const result = validateDataset({ files: fixtureFiles, schema, taxonomy })
   assert.deepEqual(result.errors, [])
   assert.equal(result.resources.length, 7)
 })
@@ -88,11 +95,39 @@ test("the taxonomy makes sense", () => {
 })
 
 test("the server's test fixture is what the sync generates from the client fixtures", async () => {
-  const result = validateDataset({ files: [{ name: "fixture.json", data: fixture }], schema, taxonomy })
+  const result = validateDataset({ files: fixtureFiles, schema, taxonomy })
   const expected = buildServerCopy(result.resources, taxonomy)
   if (process.env.UPDATE_FIXTURE) await writeFile(serverFixture, expected)
   const actual = (await readFile(serverFixture, "utf8")).replace(/\r\n/g, "\n")
   assert.equal(actual, expected, "Regenerala con: UPDATE_FIXTURE=1 npm run resources:test")
+})
+
+test("places/<province>.json: named after a province, only establishments of that province", () => {
+  const centro = fixture.resources[CENTER]
+  const validatePlaces = (name, resources) => validateDataset({ files: [{ name, data: { resources } }], schema, taxonomy })
+  assert.deepEqual(validatePlaces("places/ar-c.json", [centro]).errors, [])
+  assertProblem(validatePlaces("places/caba.json", [centro]), "tiene que llamarse como el código de una provincia")
+  assertProblem(validatePlaces("places/AR-C.json", [centro]), "tiene que llamarse como el código de una provincia")
+  assertProblem(validatePlaces("places/ar-b.json", [centro]), "solo si su address.province es \"AR-B\"")
+  const noAddress = structuredClone(centro)
+  delete noAddress.address
+  assertProblem(validatePlaces("places/ar-c.json", [noAddress]), "(es \"ninguna\")")
+  const line = fixture.resources[EMERGENCY]
+  assertProblem(validatePlaces("places/ar-c.json", [line]), "solo van establecimientos")
+  // The same rules don't apply to lines/
+  assert.deepEqual(validatePlaces("lines/otro.json", [centro]).errors, [])
+})
+
+test("ids and external ids are unique across lines/ and every places/ file", () => {
+  const [linesFile, arC, arB] = structuredClone(fixtureFiles)
+  const copy = structuredClone(arC.data.resources[0])
+  // Same id in another province's file
+  copy.address.province = "AR-B"
+  assertProblem(validateDataset({ files: [linesFile, arC, { name: arB.name, data: { resources: [...arB.data.resources, copy] } }], schema, taxonomy }), "el id ya está en places/ar-c.json")
+  // Same external id
+  arC.data.resources[0].externalIds = { refes: "1" }
+  const other = { ...structuredClone(arB.data.resources[0]), externalIds: { refes: "1" } }
+  assertProblem(validateDataset({ files: [arC, { name: arB.name, data: { resources: [other] } }], schema, taxonomy }), "ya está en")
 })
 
 test("the schema can only use keywords the validator enforces", () => {
@@ -287,7 +322,7 @@ test("the server copy is sorted by id and has no dates", () => {
 test("sync writes the server copy; check notices when it is out of date", async () => {
   const dir = await mkdtemp(join(tmpdir(), "resources-"))
   const outFile = join(dir, "data/resources.json")
-  const options = { linesDir: fixtureLines, outFile }
+  const options = { linesDir: fixtureLines, placesDir: fixturePlaces, outFile }
   try {
     // Missing copy
     assert.equal((await run({ ...options, mode: "check" })).ok, false)
@@ -375,6 +410,25 @@ test("the app and the script resolve services the same way", () => {
     })
     assert.deepEqual(app.getDerivedCategories(resource), derivedCategories(resource, taxonomy), resource.id)
   }
+})
+
+test("the app: places are loaded by province, on demand", async () => {
+  // The real dataset has no places yet: a province with no file has none, and the answer is kept
+  const first = app.loadPlaces("AR-C")
+  assert.deepEqual(await first, [])
+  assert.equal(app.loadPlaces("AR-C"), first)
+  assert.deepEqual(await app.loadPlaces("AR-B"), [])
+  // Nothing of places/ is in the bundled resources (emergency numbers don't wait for a request)
+  assert.equal(app.RESOURCES.some((resource) => (resource.services ?? []).length > 0), false)
+
+  // The queries work on the places that were loaded
+  const arC = fixtureFiles[1].data.resources
+  const ids = (list) => list.map(({ id }) => id)
+  // (fixture-centro has no services: it is a resource, not a place with services)
+  assert.deepEqual(ids(app.getCurrentPlaces("2026-03-01", arC)), ["fixture-cesac", "fixture-hospital"])
+  assert.deepEqual(ids(app.getCurrentPlacesByCategory("esi", "2026-03-01", arC)), ["fixture-cesac"])
+  assert.deepEqual(ids(app.getCurrentMappablePlaces("2026-03-01", arC)), ["fixture-cesac"])
+  assert.deepEqual(app.getCurrentPlaces("2026-03-01"), [])
 })
 
 test("the app: current services, categories and what can go on the map", () => {

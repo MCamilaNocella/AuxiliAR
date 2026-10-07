@@ -6,7 +6,7 @@
  *   npm run resources:sync    validate and write the server copy
  *   npm run resources:check   validate and fail if the server copy is out of date (nothing is written)
  *
- * The edited source is always client/src/data/resources. The server copy is never edited by hand.
+ * The edited source is always client/src/data/resources (lines/ and places/, one Base AuxiliAR). The server copy is never edited by hand.
  */
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
@@ -31,10 +31,16 @@ const readJson = async (file) => {
   }
 }
 
-/** Every file of lines/, in name order, parsed */
-const readLines = async (linesDir) => {
-  const names = (await readdir(linesDir)).filter((name) => name.endsWith(".json")).sort()
-  return Promise.all(names.map(async (name) => ({ name: `lines/${name}`, data: await readJson(join(linesDir, name)) })))
+/** Every .json file of a folder (lines/ or places/), in name order, parsed. A folder that doesn't exist has none */
+const readFolder = async (dir, folderName) => {
+  let names
+  try {
+    names = (await readdir(dir)).filter((name) => name.endsWith(".json")).sort()
+  } catch (error) {
+    if (error.code === "ENOENT") return []
+    throw error
+  }
+  return Promise.all(names.map(async (name) => ({ name: `${folderName}/${name}`, data: await readJson(join(dir, name)) })))
 }
 
 /** The server copy: deterministic (sorted by id, no dates), services resolved, with LF line endings */
@@ -69,9 +75,16 @@ export const run = async ({
   schemaFile = join(sourceDir, "resource.schema.json"),
   taxonomyFile = join(sourceDir, "taxonomy.json"),
   linesDir = join(sourceDir, "lines"),
+  placesDir = join(sourceDir, "places"),
   categoryIds = null,
 } = {}) => {
-  const [schema, taxonomy, files] = await Promise.all([readJson(schemaFile), readJson(taxonomyFile), readLines(linesDir)])
+  const [schema, taxonomy, lines, places] = await Promise.all([
+    readJson(schemaFile),
+    readJson(taxonomyFile),
+    readFolder(linesDir, "lines"),
+    readFolder(placesDir, "places"),
+  ])
+  const files = [...lines, ...places]
   const { errors, resources } = validateDataset({ files, schema, taxonomy, categoryIds })
   if (errors.length > 0) return { ok: false, errors, output: null }
 

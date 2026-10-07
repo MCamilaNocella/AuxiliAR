@@ -247,10 +247,24 @@ export const validateDataset = ({ files, schema, taxonomy, categoryIds = null })
     errors.push(...structural)
     if (structural.length > 0) continue
 
+    // places/<province>.json: only establishments, and only those whose address is in that province
+    const placesFile = /^places\/(.+)\.json$/.exec(name)
+    const fileProvince = placesFile ? (taxonomy.provinces ?? []).find(({ id }) => id.toLowerCase() === placesFile[1])?.id : undefined
+    if (placesFile && !fileProvince) {
+      errors.push(`${name}: el archivo tiene que llamarse como el código de una provincia de taxonomy.provinces, en minúsculas (ar-c.json, ar-b.json…)`)
+    }
+
     data.resources.forEach((resource, index) => {
       const path = `${name}: resources[${index}] (${resource.id})`
       resources.push(resource)
       const services = resource.services ?? []
+
+      if (placesFile && fileProvince) {
+        if (resource.kind !== "service") errors.push(`${path}: en places/ solo van establecimientos (kind "service")`)
+        if (resource.address?.province !== fileProvince) {
+          errors.push(`${path}: va en places/${fileProvince.toLowerCase()}.json solo si su address.province es "${fileProvince}" (es "${resource.address?.province ?? "ninguna"}")`)
+        }
+      }
 
       if (seenIds.has(resource.id)) errors.push(`${path}: el id ya está en ${seenIds.get(resource.id)}`)
       else seenIds.set(resource.id, name)
