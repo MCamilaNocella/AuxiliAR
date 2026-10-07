@@ -84,6 +84,17 @@ export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
         </section>
       )}
 
+      {guide.extraSigns?.map(({ title, items }) => (
+        <section key={title} aria-label={title} className="mt-8">
+          <Heading>{title}</Heading>
+          <ul className="m-0 flex list-disc flex-col gap-1.5 pl-5 text-lg">
+            {items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ))}
+
       {guide.checklists?.map(({ title, items }) => (
         <section key={title} aria-label={title} className="mt-8">
           <Heading>{title}</Heading>

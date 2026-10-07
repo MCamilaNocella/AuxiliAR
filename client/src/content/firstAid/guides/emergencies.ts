@@ -1,4 +1,5 @@
-import { CHECKED_AT, MANUAL, MINI_GUIA_RCP, RCP_ADULTOS } from "../sources"
+import { PATHS } from "@/router/paths"
+import { ANMAT_ALERGIAS, CABA_ALERGIAS, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, RCP_ADULTOS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Necesito actuar ahora": situations where a life can be at risk */
@@ -222,6 +223,76 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
     whenToCall: ["En niños y adultos mayores las quemaduras pueden ser más graves aunque sean del mismo tamaño y profundidad."],
     related: ["electrocucion"],
     sources: [MANUAL],
+    checkedAt: CHECKED_AT,
+  },
+  {
+    slug: "reacciones-alergicas",
+    title: "Reacciones alérgicas",
+    group: "now",
+    summary:
+      "Es la respuesta del cuerpo a una sustancia que a la mayoría de las personas no les hace daño, como ciertos alimentos, medicamentos, picaduras de insectos o el polen. Muchas reacciones son leves, pero otras pueden ser graves y poner en riesgo la vida. Pueden aparecer enseguida o después de unas horas.",
+    callFirst: true,
+    signs: {
+      title: "Señales de una reacción leve",
+      items: ["Algunas ronchas, sobre todo en el cuello y la cara.", "Picazón.", "Congestión nasal.", "Erupciones en la piel.", "Ojos rojos y llorosos."],
+    },
+    extraSigns: [
+      {
+        title: "Señales de una reacción grave (anafilaxia)",
+        items: [
+          "Dificultad para respirar, tos o silbidos al respirar.",
+          "Voz ronca o susurrante, o ruidos al tomar aire: pueden indicar que la garganta se está hinchando.",
+          "Dificultad para tragar.",
+          "Hinchazón de la cara, los ojos o la lengua.",
+          "Molestia u opresión en el pecho, o palpitaciones.",
+          "Mareo, o pérdida del conocimiento.",
+          "Urticaria en todo el cuerpo.",
+          "Dolor de panza, náuseas, vómitos o diarrea.",
+          "Cuando afecta a varias partes del cuerpo a la vez, es una reacción grave que, si no se atiende de inmediato, puede ser fatal.",
+        ],
+      },
+    ],
+    stepsTitle: "¿Qué hago ahora?",
+    stepSets: [
+      {
+        label: "Si la reacción es leve",
+        steps: [
+          "Calmá y tranquilizá a la persona: la ansiedad puede empeorar los síntomas.",
+          "Tratá de identificar qué le provocó la reacción (un alimento, un medicamento, una picadura, el polen…) y ayudala a evitar volver a tener contacto con eso.",
+          "Observá cómo está. Si aparecen señales de que se siente peor, seguí los pasos de la reacción grave.",
+          "Consultá a un equipo de salud. Para una reacción leve, quien la atienda puede recomendar qué medicamento tomar.",
+        ],
+      },
+      {
+        label: "Si hay señales de anafilaxia",
+        steps: [
+          "Llamá al número de emergencias de tu localidad o pedile a otra persona que lo haga, y pedí ayuda médica de inmediato.",
+          "Fijate si respira. Si hace falta, empezá con RCP (mirá la guía de RCP).",
+          "Calmá y tranquilizá a la persona.",
+          "Si tiene a mano su medicamento de emergencia para alergias (por ejemplo, epinefrina inyectable o intranasal), ayudala a usarlo cuanto antes, al comienzo de la reacción. No esperes a ver si empeora.",
+          "Si la causa fue una picadura de abeja, raspá el aguijón de la piel con algo firme, como una uña o una tarjeta de plástico.",
+          "Para evitar el shock, acostala boca arriba, levantale los pies unos 30 cm y cubrila con una campera o una manta. No lo hagas si sospechás una lesión en la cabeza, el cuello, la espalda o las piernas, si le causa molestias o si está vomitando.",
+        ],
+      },
+    ],
+    dont: [
+      "No supongas que una inyección para alergias que la persona ya recibió la protege por completo.",
+      "No le des nada por la boca, ni medicamentos en pastillas, si tiene problemas para respirar.",
+      "No le pongas una almohada debajo de la cabeza si le cuesta respirar: puede bloquear las vías respiratorias.",
+      "No uses pinzas para sacar un aguijón: al apretarlo libera más veneno.",
+      "No esperes a ver si la reacción empeora para usar su medicamento de emergencia.",
+    ],
+    whenToCall: [
+      "Siempre que haya señales de anafilaxia: es una emergencia y necesita atención médica inmediata.",
+      "Si la reacción parecía leve pero la persona se siente peor.",
+      "Si no sabés si es una reacción alérgica o si es grave: lo más acertado es consultar a un equipo de salud.",
+    ],
+    whileWaiting: ["Quedate con la persona, mantenela tranquila y fijate cómo respira. Si deja de respirar, empezá con RCP."],
+    actions: [{ label: "Buscar un centro de atención", to: PATHS.centers }],
+    note: "Esta guía no indica medicamentos ni dosis: eso lo define un equipo de salud. Está armada con fuentes oficiales y todavía falta que la revise un equipo de salud de AuxiliAR.",
+    clinicalReview: { status: "pending", note: "Pendiente de revisión clínica antes de publicarse. Las fuentes argentinas halladas no traen una guía de primeros auxilios para alergias; los pasos vienen de MedlinePlus (NIH)." },
+    related: ["rcp", "intoxicaciones"],
+    sources: [MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, ANMAT_ALERGIAS, CABA_ALERGIAS],
     checkedAt: CHECKED_AT,
   },
 ]

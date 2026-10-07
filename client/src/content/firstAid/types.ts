@@ -41,6 +41,8 @@ export type FirstAidGuideContent = {
   callFirst?: boolean
   /** Señales importantes */
   signs?: { title: string, items: string[] }
+  /** More groups of signs when one list is not enough (e.g. a mild reaction vs. a severe one), shown after `signs` */
+  extraSigns?: { title: string, items: string[] }[]
   /** Heading of the steps; "¿Qué hago ahora?" when missing */
   stepsTitle?: string
   stepSets?: GuideStepSet[]
@@ -61,4 +63,6 @@ export type FirstAidGuideContent = {
   sources: GuideSource[]
   /** YYYY-MM-DD: when the guide was last compared with its sources */
   checkedAt: string
+  /** Whether a health professional reviewed the guide. Missing: reviewed only against its sources. `pending` is a flag for the team, not a verdict */
+  clinicalReview?: { status: "pending" | "done", note?: string }
 }

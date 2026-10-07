@@ -27,6 +27,32 @@ export const VIA_PUBLICA: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/dinesa/recomendaciones/emergencias-via-publica",
 }
 
+/**
+ * Allergic reactions. The Argentine official pages found cover symptoms (ANMAT) and where to go (Ciudad de Buenos Aires), but
+ * none of them has a first aid page for allergic reactions; the steps come from MedlinePlus, the official health information
+ * service of the US National Library of Medicine (NIH). It is not an Argentine source: the guide says so and keeps the emergency
+ * number of each place out of the text.
+ */
+export const MEDLINEPLUS_ALERGIAS: GuideSource = {
+  label: "Reacciones alérgicas · MedlinePlus, Biblioteca Nacional de Medicina de EE. UU. (sitio oficial del Gobierno de EE. UU.)",
+  url: "https://medlineplus.gov/spanish/ency/article/000005.htm",
+}
+
+export const MEDLINEPLUS_ANAFILAXIA: GuideSource = {
+  label: "Anafilaxia · MedlinePlus, Biblioteca Nacional de Medicina de EE. UU. (sitio oficial del Gobierno de EE. UU.)",
+  url: "https://medlineplus.gov/spanish/ency/article/000844.htm",
+}
+
+export const ANMAT_ALERGIAS: GuideSource = {
+  label: "Alergias alimentarias: síntomas · ANMAT, argentina.gob.ar",
+  url: "https://www.argentina.gob.ar/anmat/regulados/alimentos/alergenos-alimentarios/alergenos-alimentarios/sintomas",
+}
+
+export const CABA_ALERGIAS: GuideSource = {
+  label: "Dónde acudir ante un ataque de alergia · Gobierno de la Ciudad de Buenos Aires (2 de enero de 2020)",
+  url: "https://buenosaires.gob.ar/gcaba_historico/noticias/donde-acudir-ante-un-ataque-de-alergia",
+}
+
 /** Centro Nacional de Intoxicaciones (Hospital Posadas): free line given by the Manual and by the app's help numbers */
 export const POISON_CENTER = { number: "0800-333-0160", tel: "08003330160" }
 

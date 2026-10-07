@@ -1,4 +1,4 @@
-import { Activity, Backpack, BriefcaseMedical, Brain, Car, Droplet, Flame, FlaskConical, HeartPulse, PersonStanding, Wind, Zap } from "lucide-react"
+import { Activity, Backpack, BriefcaseMedical, Brain, Car, Droplet, Flame, FlaskConical, HeartPulse, PersonStanding, ShieldAlert, Wind, Zap } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 /** An icon for each guide (by slug); a guide without one gets the generic one */
@@ -17,6 +17,7 @@ const ICONS: Record<string, LucideIcon> = {
   electrocucion: Zap,
   intoxicaciones: FlaskConical,
   botiquin: BriefcaseMedical,
+  "reacciones-alergicas": ShieldAlert,
 }
 
 /** Decorative icon of a guide */

@@ -31,7 +31,7 @@ const renderGuide = (guide) => renderToStaticMarkup(createElement(MemoryRouter, 
 const allText = (guide) => JSON.stringify(guide)
 
 const WANTED = {
-  now: ["rcp", "atragantamiento", "acv", "hemorragia-grave", "convulsiones", "quemaduras"],
+  now: ["rcp", "atragantamiento", "acv", "hemorragia-grave", "convulsiones", "quemaduras", "reacciones-alergicas"],
   injuries: ["heridas", "golpes-y-caidas", "golpe-en-la-cabeza", "fracturas", "accidentes-de-transito", "electrocucion", "intoxicaciones"],
   prepare: ["botiquin"],
 }
@@ -42,8 +42,8 @@ test("the three groups cover emergencies, everyday injuries and getting ready", 
     ["Necesito actuar ahora", "Accidentes y lesiones frecuentes", "Prepararte también ayuda"],
   )
   for (const [group, slugs] of Object.entries(WANTED)) assert.deepEqual(content.getGuidesOfGroup(group).map(({ slug }) => slug), slugs, group)
-  assert.equal(GUIDES.length, 14)
-  assert.equal(new Set(GUIDES.map(({ slug }) => slug)).size, 14)
+  assert.equal(GUIDES.length, 15)
+  assert.equal(new Set(GUIDES.map(({ slug }) => slug)).size, 15)
 })
 
 test("one copy of the content: whoever links a guide finds it", () => {
@@ -59,14 +59,14 @@ test("every guide has the same shape and an official source", () => {
     assert.ok((guide.stepSets ?? []).some(({ steps }) => steps.length > 0), `${guide.slug} has steps`)
     assert.ok(guide.sources.length > 0, `${guide.slug} has sources`)
     for (const { url, label } of guide.sources) {
-      assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|iah\.msal\.gov\.ar)\//, `${guide.slug}: official domain`)
+      assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|iah\.msal\.gov\.ar|medlineplus\.gov|buenosaires\.gob\.ar)\//, `${guide.slug}: official domain`)
       assert.ok(label.length > 10)
     }
     assert.match(guide.checkedAt, /^\d{4}-\d{2}-\d{2}$/)
     for (const { steps } of guide.stepSets ?? []) for (const step of steps) assert.ok(step.length > 15 && step.length < 420, `${guide.slug}: short, clear step`)
   }
   // the guides that tell what NOT to do
-  for (const slug of ["rcp", "atragantamiento", "hemorragia-grave", "convulsiones", "quemaduras", "heridas", "accidentes-de-transito", "electrocucion", "intoxicaciones", "fracturas"]) {
+  for (const slug of ["rcp", "atragantamiento", "hemorragia-grave", "convulsiones", "quemaduras", "heridas", "accidentes-de-transito", "electrocucion", "intoxicaciones", "fracturas", "reacciones-alergicas"]) {
     assert.ok(bySlug[slug].dont?.length > 0, `${slug} has "Qué NO hacer"`)
   }
 })
@@ -83,7 +83,7 @@ test("no emergency number is presented as universal: guides send people to the n
     assert.ok(text(html).includes("Qué decir cuando llamás"), guide.slug)
     assert.ok(!html.includes("tel:107"), guide.slug)
   }
-  for (const slug of ["rcp", "atragantamiento", "acv", "hemorragia-grave", "golpes-y-caidas", "golpe-en-la-cabeza", "accidentes-de-transito", "electrocucion"]) {
+  for (const slug of ["rcp", "atragantamiento", "acv", "hemorragia-grave", "golpes-y-caidas", "golpe-en-la-cabeza", "accidentes-de-transito", "electrocucion", "reacciones-alergicas"]) {
     assert.ok(bySlug[slug].callFirst, `${slug} puts asking for help first`)
   }
 })
@@ -189,4 +189,57 @@ test("the cards of the hub: every group, every one a link to its guide", () => {
   // a hub can show only some groups
   const only = text(renderToStaticMarkup(createElement(MemoryRouter, null, createElement(GuideCards, { groups: ["prepare"] }))))
   assert.ok(only.includes("Botiquín de primeros auxilios") && !only.includes("RCP"))
+})
+
+/* ── Reacciones alérgicas ── */
+
+test("reacciones alérgicas: mild signs, anaphylaxis signs, safe steps, what to avoid and when to ask for help", () => {
+  const guide = bySlug["reacciones-alergicas"]
+  const html = renderGuide(guide)
+  const content = text(html)
+  for (const piece of ["Señales de una reacción leve", "Señales de una reacción grave (anafilaxia)", "¿Qué hago ahora?", "Si la reacción es leve", "Si hay señales de anafilaxia", "Qué NO hacer", "Cuándo pedir ayuda", "Mientras llega la ayuda"]) {
+    assert.ok(content.includes(piece), piece)
+  }
+  // it asks for help first, without writing a number (they depend on the place)
+  assert.ok(guide.callFirst && content.includes("número de emergencias de tu localidad") && content.includes("Ver números de emergencia"))
+  assert.equal(guide.group, "now")
+  assert.ok(guide.extraSigns[0].items.some((item) => item.includes("Dificultad para respirar")))
+  assert.ok(guide.extraSigns[0].items.some((item) => item.includes("Hinchazón de la cara")))
+  assert.ok(guide.dont.length >= 4)
+  // next steps that exist
+  assert.ok(guide.related.every((slug) => bySlug[slug]))
+  assert.deepEqual(guide.actions, [{ label: "Buscar un centro de atención", to: "/centros" }])
+})
+
+test("reacciones alérgicas: no doses, no brand or drug names, no treatment beyond what the sources say", () => {
+  const guide = bySlug["reacciones-alergicas"]
+  const all = allText(guide).toLowerCase()
+  // no quantities of medicine, no named drugs: the only medicine the guide names is the person's own emergency epinephrine
+  assert.ok(!/\b\d+([.,]\d+)?\s?(mg|ml|mcg|µg|gotas|comprimidos|pastillas)\b/.test(all), "no dose")
+  for (const word of ["dosis de", "antihistam", "corticoid", "cortisona", "prednis", "difenhidramina", "loratadina", "hidrocortisona", "ibuprofeno", "adrenalina"]) {
+    assert.ok(!all.includes(word), word)
+  }
+  assert.ok(all.includes("epinefrina"), "the emergency epinephrine of the person is named, without dose")
+  // the 30 cm is the only measure, and it is the one the source gives for raising the legs
+  assert.deepEqual([...all.matchAll(/\b\d+\s?cm\b/g)].map((match) => match[0]), ["30 cm"])
+  assert.ok(!/\b(107|911|106|112)\b/.test(all))
+  assert.ok(!/gratis|gratuit|sin turno/.test(all))
+})
+
+test("reacciones alérgicas: official sources, a date, and the pending clinical review is flagged", () => {
+  const guide = bySlug["reacciones-alergicas"]
+  assert.equal(guide.checkedAt, "2026-10-07")
+  assert.deepEqual(
+    guide.sources.map(({ url }) => new URL(url).hostname),
+    ["medlineplus.gov", "medlineplus.gov", "www.argentina.gob.ar", "buenosaires.gob.ar"],
+  )
+  assert.equal(guide.clinicalReview.status, "pending")
+  assert.ok(guide.clinicalReview.note.includes("Pendiente de revisión clínica"))
+  // the reader knows too: it says that the review is still missing and that no medicine or dose is given
+  const content = text(renderGuide(guide))
+  assert.ok(content.includes("todavía falta que la revise un equipo de salud"))
+  assert.ok(content.includes("no indica medicamentos ni dosis"))
+  assert.ok(content.includes("Contenido comparado con estas fuentes el 7 de octubre de 2026"))
+  // only this guide is waiting for a review; the others come straight from the national Manual
+  assert.deepEqual(GUIDES.filter(({ clinicalReview }) => clinicalReview?.status === "pending").map(({ slug }) => slug), ["reacciones-alergicas"])
 })
