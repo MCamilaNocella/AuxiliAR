@@ -1,0 +1,1 @@
+export { FirstAidGuideScreen } from "./FirstAidGuide"

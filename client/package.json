@@ -11,7 +11,8 @@
     "content:index": "node scripts/content-index.mjs",
     "resources:sync": "node scripts/resources-sync.mjs",
     "resources:check": "node scripts/resources-sync.mjs --check",
-    "resources:test": "node --test scripts/resources-sync.test.mjs"
+    "resources:test": "node --test scripts/resources-sync.test.mjs",
+    "health:test": "node --test scripts/physical-health.test.mjs scripts/first-aid-guides.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/nunito": "^5.3.0",
