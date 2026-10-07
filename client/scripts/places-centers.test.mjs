@@ -106,3 +106,9 @@ test("the filters that other pages link to exist in the explorer", () => {
   const ids = PLACE_FILTERS.map(({ id }) => id)
   for (const id of ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency"]) assert.ok(ids.includes(id), id)
 })
+
+test("the category of Salud general is named so in the taxonomy, with the same id", async () => {
+  const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxonomy.json"), "utf8"))
+  assert.deepEqual(taxonomy.categories.find(({ id }) => id === "salud-fisica"), { id: "salud-fisica", label: "Salud general" })
+  assert.ok(!taxonomy.categories.some(({ label }) => /salud f[ií]sica/i.test(label)))
+})

@@ -129,7 +129,7 @@
     { "id": "gps-survey", "label": "Medido con GPS" }
   ],
   "categories": [
-    { "id": "salud-fisica", "label": "Salud física" },
+    { "id": "salud-fisica", "label": "Salud general" },
     { "id": "salud-mental", "label": "Salud mental" },
     { "id": "esi", "label": "Educación sexual (ESI)" },
     { "id": "animales", "label": "Animales" },
