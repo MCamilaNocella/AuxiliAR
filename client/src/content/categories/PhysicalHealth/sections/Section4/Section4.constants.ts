@@ -1,4 +1,4 @@
-import { physicalCentersLink } from "@/content/categories/PhysicalHealth/centersLink"
+import { centersLink } from "@/router/centersLink"
 import type { QuizQuestion } from "@/utils/quiz/quiz"
 
 /**
@@ -34,7 +34,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Un control sin urgencia se hace en la atención primaria: en un centro de salud, sin esperar a tener un problema.",
     learning: "Controles y consultas de rutina: centro de salud. No hace falta esperar a tener un problema.",
-    action: { label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) },
+    action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
   },
   {
     id: "carnet",
@@ -57,7 +57,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "El carnet es el registro de tus vacunas. Tenerlo a mano ayuda a saber qué te falta.",
     learning: "Llevá tu carnet de vacunación al vacunatorio. Si no lo tenés, consultá igual.",
-    action: { label: "Encontrar vacunatorio", to: physicalCentersLink({ filter: "vaccination" }) },
+    action: { label: "Encontrar vacunatorio", to: centersLink({ filter: "vaccination" }) },
   },
   {
     id: "desmayo",
@@ -116,7 +116,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Las guardias odontológicas existen para las urgencias de la boca; los turnos, para controles y tratamientos programados.",
     learning: "Urgencia odontológica: guardia odontológica. Controles y tratamientos: turno en un servicio de odontología.",
-    action: { label: "Ver guardias odontológicas", to: physicalCentersLink({ filter: "emergency", query: "odontol" }) },
+    action: { label: "Ver guardias odontológicas", to: centersLink({ filter: "emergency", query: "odontol" }) },
   },
   {
     id: "me-siento-bien",
@@ -139,7 +139,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Los controles preventivos te cuidan antes de que aparezca un problema. Cuáles te corresponden depende de tu edad y tu situación, y tu equipo de salud te orienta.",
     learning: "Sentirte bien no reemplaza los controles. Consultá cuáles te corresponden a vos.",
-    action: { label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) },
+    action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
   },
   {
     id: "odontologo",
@@ -168,7 +168,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Cuidar la boca incluye cepillarte bien y hacerte controles, no solo ir cuando hay dolor.",
     learning: "La salud bucal también se controla: no hace falta esperar a que duela.",
-    action: { label: "Buscar atención odontológica", to: physicalCentersLink({ filter: "dentistry" }) },
+    action: { label: "Buscar atención odontológica", to: centersLink({ filter: "dentistry" }) },
   },
   {
     id: "golpe-en-el-ojo",
@@ -198,7 +198,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Las guardias oftalmológicas existen para las urgencias de los ojos; los turnos, para controles.",
     learning: "Urgencia en los ojos: guardia oftalmológica. Control de la vista: atención de rutina.",
-    action: { label: "Ver guardias oftalmológicas", to: physicalCentersLink({ filter: "emergency", query: "oftalm" }) },
+    action: { label: "Ver guardias oftalmológicas", to: centersLink({ filter: "emergency", query: "oftalm" }) },
   },
   {
     id: "informacion-verificada",
@@ -227,6 +227,6 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "“Verificada” quiere decir que se comprobó contra una fuente oficial y que se vuelve a revisar en una fecha que figura en la ficha.",
     learning: "Cada ficha muestra qué atención hay, cómo contactar, cuándo se verificó y la fuente oficial.",
-    action: { label: "Ver centros de atención", to: physicalCentersLink() },
+    action: { label: "Ver centros de atención", to: centersLink() },
   },
 ]

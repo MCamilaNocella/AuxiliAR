@@ -1,6 +1,8 @@
 import { List, Map } from "lucide-react"
 
-export type PlacesView = "list" | "map"
+import type { PlacesView } from "@/utils/places"
+
+export type { PlacesView }
 
 type PlacesViewSwitchProps = {
   view: PlacesView
@@ -12,7 +14,7 @@ const OPTIONS: { id: PlacesView, label: string, icon: typeof List }[] = [
   { id: "map", label: "Mapa", icon: Map },
 ]
 
-/** Lista | Mapa: the same places, two ways to see them. The list is the main one (it has everything and works with any device) */
+/** Lista | Mapa: the same places, two ways to see them. The list has every action and works with any device, so nothing depends on the map */
 export const PlacesViewSwitch = ({ view, onChange }: PlacesViewSwitchProps) => (
   <div role="group" aria-label="Ver los lugares como" className="inline-flex rounded-2xl border-2 border-control-line bg-card p-1">
     {OPTIONS.map(({ id, label, icon: Icon }) => {

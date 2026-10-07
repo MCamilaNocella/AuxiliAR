@@ -1,10 +1,10 @@
 import { Quiz } from "@/components/quiz/Quiz"
 import { HEALTH_GENERAL_SLUG, PATHS } from "@/router/paths"
-import { physicalCentersLink } from "@/content/categories/PhysicalHealth/centersLink"
+import { centersLink } from "@/router/centersLink"
 import { PHYSICAL_HEALTH_QUIZ } from "./Section4.constants"
 
 const EXITS = [
-  { label: "Encontrar atención", to: physicalCentersLink() },
+  { label: "Encontrar atención", to: centersLink() },
   { label: "Volver a Salud general", to: PATHS.topic(HEALTH_GENERAL_SLUG) },
 ]
 

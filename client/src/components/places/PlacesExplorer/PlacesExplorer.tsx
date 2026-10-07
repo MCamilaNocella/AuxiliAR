@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router"
+import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
 import { todayInArgentina } from "@/data/resources"
 import type { ProvinceCode, Resource } from "@/data/resources"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlaces } from "@/hooks/usePlaces"
-import { PLACE_FILTER_PARAM, PLACE_PARAM, PLACE_QUERY_PARAM, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { filterPlaces, getPlaceEntries } from "@/utils/places"
+import { PLACE_FILTER_PARAM, PLACE_PARAM, PLACE_QUERY_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
+import { filterPlaces, getPlaceEntries, resolveView } from "@/utils/places"
 import type { PlaceFilterId, PlacesScope } from "@/utils/places"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
@@ -32,7 +34,7 @@ type PlacesExplorerProps = {
   /** Filters shown besides "Todos", suited to the context. None: no chips. Pass a stable value (a constant) */
   filters?: PlaceFilterId[]
   intro?: string
-  /** Adds the "Lista | Mapa" switch. The list stays the main view; the map shows the places with verified coordinates */
+  /** Adds the "Lista | Mapa" switch: the map opens on large screens, the list on phones (or what ?vista= asks for). Same results in both */
   map?: boolean
 }
 
@@ -56,14 +58,16 @@ export const PlacesExplorer = ({ province = "AR-C", scope, filters = NO_FILTERS,
   const allEntries = useMemo(() => getPlaceEntries(places, day, "all", scope), [places, day, scope])
   const results = useMemo(() => filterPlaces(places, day, { query, filterId, scope }), [places, day, query, filterId, scope])
 
-  // List or map: in the URL (?vista=mapa) so it survives Back and links; search and filters are the same for both
-  const view: PlacesView = map && searchParams.get(PLACE_VIEW_PARAM) === PLACE_VIEW_MAP ? "map" : "list"
+  // List or map: what the URL asks for (?vista=), or else the map on large screens and the list on phones.
+  // Search and filters are the same for both: they show the same results
+  const isDesktop = useMediaQuery(DESKTOP_QUERY)
+  const view: PlacesView = resolveView({ hasMap: map, requested: searchParams.get(PLACE_VIEW_PARAM), isDesktop })
   const changeView = (next: PlacesView) =>
     setSearchParams(
       (previous) => {
         const params = new URLSearchParams(previous)
-        if (next === "map") params.set(PLACE_VIEW_PARAM, PLACE_VIEW_MAP)
-        else params.delete(PLACE_VIEW_PARAM)
+        // Written either way, so a shared link opens the view the person was looking at
+        params.set(PLACE_VIEW_PARAM, next === "map" ? PLACE_VIEW_MAP : PLACE_VIEW_LIST)
         return params
       },
       { replace: true, preventScrollReset: true },

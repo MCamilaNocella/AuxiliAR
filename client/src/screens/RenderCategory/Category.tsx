@@ -16,7 +16,8 @@ export const Category = () => {
   const path = pathname.replace(/\/+$/, "") || "/"
   const category = ALL_CATEGORIES.find(({ to }) => to === path)
   const [searchParams, setSearchParams] = useSearchParams()
-  const activeSection = category?.sections.find(({ id }) => id === searchParams.get(SECTION_PARAM))
+  const activeSection =
+    category?.sections.find(({ id }) => id === searchParams.get(SECTION_PARAM)) ?? category?.sections.find(({ id }) => id === category.defaultSectionId)
   const activeSectionId = activeSection?.id ?? null
 
   if (!category) {

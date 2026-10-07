@@ -1,6 +1,6 @@
 import { Compass, Eye, HeartPulse, ScanSearch, Smile, Stethoscope, Syringe } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
-import { physicalCentersLink } from "@/content/categories/PhysicalHealth/centersLink"
+import { centersLink } from "@/router/centersLink"
 
 export type ControlAction = {
   label: string
@@ -37,7 +37,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Un centro de salud puede revisar tu situación y decirte qué controles te convienen y cada cuánto.",
       "Si tenés carnet de vacunación o estudios anteriores, llevalos a la consulta.",
     ],
-    actions: [{ label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) }],
+    actions: [{ label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) }],
   },
   {
     id: "vacunacion",
@@ -48,7 +48,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Revisá tu carnet de vacunación para ver si te falta alguna.",
       "Si no lo encontrás, consultá igual en un vacunatorio o en un centro de salud: te pueden orientar.",
     ],
-    actions: [{ label: "Encontrar vacunatorio", to: physicalCentersLink({ filter: "vaccination" }) }],
+    actions: [{ label: "Encontrar vacunatorio", to: centersLink({ filter: "vaccination" }) }],
   },
   {
     id: "generales",
@@ -59,7 +59,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Antes de ir, anotá tus dudas, los medicamentos que tomás y los estudios que ya te hiciste.",
       "Cada cuánto conviene controlarte lo define tu equipo de salud, según cada persona.",
     ],
-    actions: [{ label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) }],
+    actions: [{ label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) }],
   },
   {
     id: "corazon",
@@ -71,7 +71,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Si de golpe te sentís muy mal, es una emergencia: no esperes.",
     ],
     actions: [
-      { label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) },
+      { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
       { label: "Ver números de emergencia", emergency: true },
     ],
   },
@@ -84,7 +84,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Contale a tu equipo de salud tus antecedentes familiares y cualquier cambio que notes en tu cuerpo.",
       "Es el equipo de salud quien te dice qué estudios te corresponden.",
     ],
-    actions: [{ label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) }],
+    actions: [{ label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) }],
   },
   {
     id: "bucal",
@@ -96,8 +96,8 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Si tenés un dolor muy fuerte, hinchazón o un golpe en la boca y no podés esperar un turno, buscá una guardia odontológica.",
     ],
     actions: [
-      { label: "Buscar atención odontológica", to: physicalCentersLink({ filter: "dentistry" }) },
-      { label: "Urgencia odontológica", to: physicalCentersLink({ filter: "emergency", query: "odontol" }) },
+      { label: "Buscar atención odontológica", to: centersLink({ filter: "dentistry" }) },
+      { label: "Urgencia odontológica", to: centersLink({ filter: "emergency", query: "odontol" }) },
     ],
   },
   {
@@ -110,8 +110,8 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Si te golpeás un ojo, perdés la vista de golpe o tenés un dolor muy fuerte, necesitás atención urgente: buscá una guardia oftalmológica.",
     ],
     actions: [
-      { label: "Encontrar atención primaria", to: physicalCentersLink({ filter: "medical" }) },
-      { label: "Urgencia oftalmológica", to: physicalCentersLink({ filter: "emergency", query: "oftalm" }) },
+      { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
+      { label: "Urgencia oftalmológica", to: centersLink({ filter: "emergency", query: "oftalm" }) },
     ],
   },
 ]

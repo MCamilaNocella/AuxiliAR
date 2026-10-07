@@ -32,14 +32,16 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
 
   // Layout effect: it must subscribe before the entry scroll (a parent layout effect) settles,
   // which with reduced motion or a restored position happens right away
+  // A category that opens straight on a section (Centros de atención: its map) doesn't cover it with the hint
+  const opensOnSection = Boolean(category.defaultSectionId)
   useLayoutEffect(() => {
-    if (sectionsHintShown) return
+    if (sectionsHintShown || opensOnSection) return
     return onEntryScrollSettled(() => {
       if (sectionsHintShown || window.matchMedia(DESKTOP_QUERY).matches) return
       sectionsHintShown = true
       setDrawerState("auto")
     })
-  }, [])
+  }, [opensOnSection])
 
   return (
     // Small screens: the whole block is the sticky bar.
