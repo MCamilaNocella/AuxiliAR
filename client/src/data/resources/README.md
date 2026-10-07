@@ -58,7 +58,7 @@ Un establecimiento (un hospital, un CeSAC, una veterinaria pública) se carga **
 | `contacts` | Solo los propios (los del establecimiento se muestran al lado). |
 | `source`, `verification` | Heredan. Una prestación puede tener los suyos. |
 
-**Categorías.** No se escriben: salen del `type` de cada prestación, según `taxonomy.serviceTypes` (vaccination → Salud física, contraception → ESI, rabies-vaccination → Animales…). Con `services` no se escribe `categories` ni `sections`. Un CeSAC con vacunación, anticonceptivos y salud mental aparece en Salud física, ESI y Salud mental.
+**Categorías.** No se escriben: salen del `type` de cada prestación, según `taxonomy.serviceTypes` (vaccination → Salud física, contraception → ESI, rabies-vaccination → Animales…). Cada tipo tiene una **lista** de categorías: hoy casi todos tienen una sola, pero uno puede pertenecer a varias (aparecería en todas) con solo agregarla en la taxonomía, sin tocar código ni datos. Con `services` no se escribe `categories` ni `sections`. Un CeSAC con vacunación, anticonceptivos y salud mental aparece en Salud física, ESI y Salud mental.
 
 **Cuándo se muestra.** Un establecimiento se muestra si está verificado y vigente **y** tiene al menos una prestación vigente. Una prestación está vigente si su establecimiento lo está **y** su propia verificación (o la que hereda) lo está. Si vence el establecimiento, ninguna de sus prestaciones se muestra; si vence una prestación, el resto sigue.
 

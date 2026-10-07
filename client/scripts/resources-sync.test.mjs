@@ -55,6 +55,26 @@ test("the fixtures are valid", () => {
   assert.equal(result.resources.length, 7)
 })
 
+test("service types: the new ones are there, counseling was renamed, and a type can belong to several categories", () => {
+  const types = Object.fromEntries(taxonomy.serviceTypes.map((entry) => [entry.id, entry.categories]))
+  for (const id of ["laboratory", "diagnostic-imaging", "specialty-care", "pharmacy"]) assert.deepEqual(types[id], ["salud-fisica"], id)
+  for (const id of ["pregnancy-care", "sti-testing-care", "emergency-contraception", "ive-ile-care", "sexual-health-counseling"]) assert.deepEqual(types[id], ["esi"], id)
+  assert.equal(types.counseling, undefined)
+  assert.equal(taxonomy.serviceTypes.length, 23)
+
+  // the derivation is a list per type: with two categories the service and its place show up under both
+  const multi = structuredClone(taxonomy)
+  multi.serviceTypes.find(({ id }) => id === "pregnancy-care").categories = ["esi", "salud-fisica"]
+  assert.deepEqual(validateTaxonomy(multi), [])
+  const place = { id: "x", kind: "service", services: [{ id: "a", type: "pregnancy-care" }, { id: "b", type: "pharmacy" }] }
+  assert.deepEqual(resolveService(place, place.services[0], multi).categories, ["esi", "salud-fisica"])
+  assert.deepEqual(derivedCategories(place, multi), ["esi", "salud-fisica"])
+  assert.deepEqual(derivedCategories(place, taxonomy), ["esi", "salud-fisica"])
+
+  multi.serviceTypes.find(({ id }) => id === "pregnancy-care").categories = ["esi", "esi"]
+  assert.match(validateTaxonomy(multi)[0], /repite categorías/)
+})
+
 test("the taxonomy makes sense", () => {
   assert.deepEqual(validateTaxonomy(taxonomy), [])
   const broken = structuredClone(taxonomy)

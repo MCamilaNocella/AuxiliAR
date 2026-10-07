@@ -141,6 +141,7 @@ export const validateTaxonomy = (taxonomy) => {
   const categories = new Set((taxonomy.categories ?? []).map(({ id }) => id))
   for (const { id, categories: serviceCategories } of taxonomy.serviceTypes ?? []) {
     if (!Array.isArray(serviceCategories) || serviceCategories.length === 0) errors.push(`taxonomy.serviceTypes: "${id}" necesita al menos una categoría`)
+    if (Array.isArray(serviceCategories) && new Set(serviceCategories).size !== serviceCategories.length) errors.push(`taxonomy.serviceTypes: "${id}" repite categorías`)
     for (const category of serviceCategories ?? []) {
       if (!categories.has(category)) errors.push(`taxonomy.serviceTypes: "${id}" apunta a la categoría "${category}", que no existe`)
     }
