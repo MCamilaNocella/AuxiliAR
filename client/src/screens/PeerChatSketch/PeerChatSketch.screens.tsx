@@ -28,7 +28,7 @@ export const BeforeConnecting = () => (
     <p className="m-0 font-extrabold">¿De qué querés hablar?</p>
     <div className="flex flex-wrap gap-2">
       <Chip selected>Salud mental</Chip>
-      <Chip>Salud física</Chip>
+      <Chip>Salud general</Chip>
       <Chip>ESI</Chip>
       <Chip>Otra cosa</Chip>
     </div>
@@ -142,7 +142,7 @@ export const VolunteerSignUp = () => (
     <div className="flex flex-wrap gap-2">
       <Chip selected>Salud mental</Chip>
       <Chip selected>ESI</Chip>
-      <Chip>Salud física</Chip>
+      <Chip>Salud general</Chip>
       <Chip>Animales</Chip>
     </div>
     <p className="m-0 font-extrabold">Pasos</p>

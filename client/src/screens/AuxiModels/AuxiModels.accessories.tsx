@@ -16,7 +16,7 @@ const grow = (x: number, y: number, k: number) => `translate(${x} ${y}) scale(${
 
 const line = { fill: "none", strokeLinecap: "round", strokeLinejoin: "round" } as const
 
-/* ── Salud física ── */
+/* ── Salud general ── */
 
 /*
  * Big first-aid kit hugged in front of the body, traced from the reference

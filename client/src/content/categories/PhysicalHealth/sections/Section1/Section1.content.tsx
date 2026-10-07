@@ -1,15 +1,7 @@
-import { Building2, Hospital, Siren, Stethoscope } from "lucide-react"
+import { Building2, Hospital, Stethoscope } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { PlacesExplorer } from "@/components/places/PlacesExplorer"
-import type { PlaceFilterId, PlacesScope } from "@/utils/places"
-import { revealEmergencies } from "@/utils/revealEmergencies"
-
-/** Only what belongs to physical health: a place shows up here with just its physical health services */
-const SCOPE: PlacesScope = { category: "salud-fisica" }
-const FILTERS: PlaceFilterId[] = ["medical", "vaccination", "dentistry", "emergency"]
-
-const TRANSPARENCY = "Centros verificados por AuxiliAR. Estamos incorporando establecimientos progresivamente."
+import { PATHS } from "@/router/paths"
 
 const CHOICES: { icon: LucideIcon, title: string, text: string }[] = [
   { icon: Stethoscope, title: "Centro de salud (CeSAC)", text: "Para controles, consultas habituales, prevención y atención primaria." },
@@ -17,11 +9,14 @@ const CHOICES: { icon: LucideIcon, title: string, text: string }[] = [
   { icon: Building2, title: "Guardia", text: "Para problemas que necesitan atención en el momento." },
 ]
 
-/** Salud física · Centros de atención — how to choose where to go, and the verified places with their physical health services */
+/**
+ * Salud general · Dónde atenderme — a short explanation of where to go. The places themselves, with their map and
+ * filters, live in the Centros de atención category: from here it only opens that door.
+ */
 export default function Section1Content() {
   return (
-    <div className="mt-2 flex flex-col gap-8">
-      <section aria-labelledby="where-to-go" className="max-w-4xl">
+    <div className="mt-2 flex max-w-4xl flex-col gap-8">
+      <section aria-labelledby="where-to-go">
         <h3 id="where-to-go" className="m-0 text-xl font-extrabold">
           ¿Dónde me conviene atenderme?
         </h3>
@@ -36,23 +31,18 @@ export default function Section1Content() {
             </li>
           ))}
         </ul>
-        <div className="mt-3 rounded-2xl border border-alert-card-line bg-alert-soft p-4">
-          <p className="m-0 flex items-center gap-2 font-extrabold text-alert-text">
-            <Siren aria-hidden="true" className="size-5 shrink-0" />
-            Emergencia
-          </p>
-          <p className="m-0 mt-1">Cuando la situación es crítica o hay riesgo inmediato, no busques un centro: llamá al número de emergencias de tu localidad.</p>
-          <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-            <ActionLink onClick={revealEmergencies}>Ver números de emergencia</ActionLink>
-          </div>
-        </div>
       </section>
 
       <section aria-labelledby="find-center">
         <h3 id="find-center" className="m-0 text-xl font-extrabold">
-          Encontrá un centro
+          Buscá un centro cerca tuyo
         </h3>
-        <PlacesExplorer province="AR-C" scope={SCOPE} filters={FILTERS} intro={TRANSPARENCY} map />
+        <p className="m-0 mt-1">Centros de salud, hospitales y guardias están en la categoría Centros de atención.</p>
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <ActionLink to={PATHS.centers} variant="primary">
+            Ir a Centros de atención
+          </ActionLink>
+        </div>
       </section>
     </div>
   )

@@ -133,11 +133,6 @@ test("the explorer offers Lista | Mapa only when asked, and keeps search and fil
   assert.match(list, /aria-pressed="true"[^>]*>Guardias</)
 })
 
-test("the physical health section turns the map on", async () => {
-  const section = await readFile(join(root, "src/content/categories/PhysicalHealth/sections/Section1/Section1.content.tsx"), "utf8")
-  assert.match(section, /<PlacesExplorer[^>]*\smap\b/)
-})
-
 /* ── Map view states ── */
 
 test("map view: pins for what has them, a clear note for what doesn't, a way back to the list", () => {
