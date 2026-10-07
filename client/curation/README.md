@@ -77,7 +77,7 @@ Los tests comprueban la transformación con: el origen del CRS, una implementaci
 
 - Un lugar ya publicado **no se pisa**. Solo lo tocan estas decisiones explícitas:
   - `link`: agrega `externalIds` (exige evidencia de que es el mismo lugar: teléfono o dirección en común);
-  - `apply`: reemplaza `address` o `coordinates` (nada más: horarios, prestaciones, contactos y verificación son curación manual).
+  - `apply`: reemplaza `address`, `coordinates` o solo `address.department` (la división administrativa, que se agrega sin tocar el resto de la dirección). Nada más: horarios, prestaciones, contactos y verificación son curación manual.
 - Después de aplicar, un invariante compara antes y después: si algo cambió sin una decisión que lo explique, **se aborta todo**.
 - Se valida el resultado con el mismo validador de `resources:sync` **antes** de escribir.
 - Al escribir se conserva el texto exacto de los lugares que no cambian: un `link` es una línea de diff.

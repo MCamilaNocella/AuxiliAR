@@ -5,7 +5,7 @@
  *  - A place already published is NEVER overwritten. Only three things can touch it, each one only through an explicit
  *    decision with reviewer, date and reason:
  *      link   adds externalIds[source] (so the next update recognizes it); needs evidence that it is the same place
- *      apply  replaces one of APPLY_ALLOWED (address, coordinates) with what the source says now
+ *      apply  replaces one of APPLY_ALLOWED (address, address.department, coordinates) with what the source says now
  *      (nothing else: hours, cost, appointment, requirements, services, verification and contacts are never touched)
  *  - A new place (accept) is built only from what the official source says. Hours, cost, appointment, requirements and
  *    audience are never filled. It needs an approved facility type, at least one service whose mapping a person approved,
@@ -18,7 +18,8 @@ import { validateDataset, isCalendarDate } from "../resources-validate.mjs"
 import { deepEqual, stable } from "./lib/util.mjs"
 import { addressFor, coordinatesFor } from "./candidates.mjs"
 
-export const APPLY_ALLOWED = ["address", "coordinates"]
+/** `address.department` changes ONLY that key of the address (the division the source gives); `address` replaces the whole address */
+export const APPLY_ALLOWED = ["address", "address.department", "coordinates"]
 const OVERRIDABLE_ADDRESS = ["street", "number", "neighborhood", "reference"]
 const OVERRIDABLE = ["name", "shortName", "address"]
 const ACTIONS = ["accept", "reject", "defer", "link", "apply"]
@@ -42,6 +43,22 @@ const verificationOf = (batch, source = null) => ({
     ? `Verificación por lote (${batch.id}) contra la fuente oficial de esta prestación (${source.url}): solo lo que la cita dice. Gratuidad, turnos y requisitos no los informa y no se completan.`
     : `Verificación por lote (${batch.id}) de datos objetivos respaldados por la fuente oficial: nombre, dirección, teléfonos y coordenadas. Las prestaciones son las que la fuente lista; horarios, turnos, gratuidad y requisitos no los informa y no se completan.`,
 })
+
+/** The address with its division, right after the locality (the rest of the address, in its order, untouched) */
+const withDepartment = (address, department) => {
+  const next = {}
+  let placed = false
+  for (const [key, value] of Object.entries(address)) {
+    if (key === "department") continue
+    next[key] = value
+    if (key === "locality") {
+      next.department = department
+      placed = true
+    }
+  }
+  if (!placed) next.department = department
+  return next
+}
 
 const stampCoordinates = (coordinates, batch) => ({ ...coordinates, verifiedAt: batch.verifiedAt, verifiedBy: batch.verifiedBy })
 
@@ -96,8 +113,9 @@ export const planPublish = ({ province, placesData, candidates, decisions, batch
       return
     }
 
-    // One decision per record and kind of change: a link and then an apply of the same place are two different things
-    const key = `${decision.action === "accept" ? "accept" : decision.action}:${decision.source}:${decision.key}`
+    // One decision per record and kind of change: a link and then an apply of the same place are two different things,
+    // and so are two applies of different fields (its coordinates, its division)
+    const key = `${decision.action}:${decision.source}:${decision.key}${decision.action === "apply" ? `:${[...(decision.fields ?? [])].sort().join(",")}` : ""}`
     if (touched.has(key)) return fail("hay otra decisión para el mismo registro")
     touched.add(key)
 
@@ -125,6 +143,7 @@ export const planPublish = ({ province, placesData, candidates, decisions, batch
       if (!resource) return fail("el lugar enlazado no está en este archivo")
       if (!decision.reason) return fail('falta "reason"')
       const fields = decision.fields ?? []
+      const divisions = []
       if (fields.length === 0) return fail('falta "fields"')
       const batch = batches[decision.batch]
       if (!batch) return fail(`no existe el lote "${decision.batch}"`)
@@ -133,8 +152,18 @@ export const planPublish = ({ province, placesData, candidates, decisions, batch
       for (const field of fields) {
         if (!APPLY_ALLOWED.includes(field)) return fail(`"${field}" no se puede aplicar desde un dataset (solo ${APPLY_ALLOWED.join(", ")}): horarios, prestaciones, contactos y verificación son curación manual`)
       }
+      if (fields.includes("address") && fields.includes("address.department")) return fail('"address" ya incluye la división: pedí una cosa o la otra')
       for (const field of fields) {
-        if (field === "coordinates") {
+        if (field === "address.department") {
+          // The division comes from the source's own field, and the person approved that exact value for that exact row
+          const value = candidate.record.address?.department
+          if (!value) return fail("la fuente oficial no informa la división administrativa de este lugar: no se completa desde el barrio ni de otro dato")
+          if (!decision.rowHash) return fail('falta "rowHash": la división queda atada a la fila del dataset que se revisó')
+          if (decision.values?.["address.department"] !== value) return fail(`"values" tiene que traer el valor que se revisó para address.department (la fuente dice «${value}»)`)
+          if (!resource.address) return fail("el lugar no tiene dirección a la que agregarle la división")
+          resource.address = withDepartment(resource.address, value)
+          divisions.push({ resourceId: resource.id, value, source: decision.source, key: decision.key, rowHash: candidate.record.rowHash })
+        } else if (field === "coordinates") {
           const coordinates = coordinatesFor(candidate, manifest)
           if (!coordinates) return fail("el candidato no tiene coordenadas válidas (revisá sus avisos)")
           resource.coordinates = stampCoordinates(coordinates, batch)
@@ -142,9 +171,9 @@ export const planPublish = ({ province, placesData, candidates, decisions, batch
           if (candidate.gates.some((g) => g.level === "warn" && NEEDS_ADDRESS_OVERRIDE.includes(g.code)) && !decision.overrides?.address) return fail("la dirección del dataset es dudosa: escribí el valor en overrides.address")
           resource.address = { ...addressFor(candidate.record, manifest, candidate.resolved?.address ?? candidate.record.address), ...(decision.overrides?.address ?? {}) }
         }
-        allow(resource.id, field)
+        allow(resource.id, field === "address.department" ? "address" : field)
       }
-      applied.push({ action: "apply", resourceId: resource.id, fields, reason: decision.reason })
+      applied.push({ action: "apply", resourceId: resource.id, fields, reason: decision.reason, ...(divisions.length > 0 ? { division: divisions.pop() } : {}) })
       return
     }
 

@@ -11,7 +11,7 @@ import { cp, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { join, relative } from "node:path"
 import { test } from "node:test"
-import { buildCandidates, corroboration, servicesFor } from "./curation/candidates.mjs"
+import { addressFor, buildCandidates, corroboration, servicesFor } from "./curation/candidates.mjs"
 import { diffSnapshots, distanceMeters, proposalsFor } from "./curation/diff.mjs"
 import { loadCrs, fromWgs84, toWgs84 } from "./curation/lib/crs.mjs"
 import { cleanText, parseAddressCaba, parsePhonesCaba } from "./curation/lib/normalize.mjs"
@@ -701,4 +701,138 @@ test("bundle: nothing under src/ imports the pipeline, proj4 or csv-parse, and t
     assert.equal(pkg.dependencies[name], undefined, `${name} no puede ser dependency`)
   }
   assert.ok(!(await walk(join(clientRoot, "src/data"))).some((file) => file.includes("candidates")), "los candidatos no viven en src/")
+})
+
+// ─── address.department: the administrative division, from the source's own field ───────────────
+
+const noDivision = (resources) => resources.map((resource) => ({ ...resource, address: Object.fromEntries(Object.entries(resource.address).filter(([key]) => key !== "department")) }))
+const departmentDecision = (key, resourceId, value, extra = {}) => ({
+  ...base,
+  source: "caba-cesac",
+  key,
+  action: "apply",
+  resourceId,
+  fields: ["address.department"],
+  values: { "address.department": value },
+  batch: batch.id,
+  rowHash: byKey(cesacRecords, key).rowHash,
+  reason: "test",
+  ...extra,
+})
+const LINKED = [["3", "cesac-3", "Comuna 8"], ["41", "cesac-41", "Comuna 4"], ["46", "cesac-47", "Comuna 1"]]
+
+test("department: the adapters take the division from the dataset's comuna column, never from the neighborhood", async () => {
+  assert.equal(byKey(cesacRecords, "3").address.department, "Comuna 8")
+  assert.equal(byKey(cesacRecords, "3").address.neighborhood, "Villa Lugano", "the neighborhood stays a neighborhood")
+  assert.equal(byKey(hospRecords, "hospital-especializado-de-oftalmologia-santa-lucia").address.department, "Comuna 3")
+  // a row whose comuna is empty has no division, even if its neighborhood would tell
+  const text = (await fixture("cesac.sample.csv")).replace("Villa Lugano,Comuna 8,", "Villa Lugano,,")
+  const records = await normalizeText({ manifest: cesacManifest, text })
+  assert.equal(byKey(records, "3").address.neighborhood, "Villa Lugano")
+  assert.equal(byKey(records, "3").address.department, undefined)
+  assert.equal(byKey(records, "3").address.comuna, undefined)
+})
+
+test("department: a new place gets the division after its locality; without it from the source, none", () => {
+  const candidate = candidatesOf(cesacManifest, cesacRecords, cesacMapping, []).find((c) => c.key === "3")
+  const address = addressFor(candidate.record, cesacManifest, candidate.resolved?.address ?? candidate.record.address)
+  assert.deepEqual(Object.keys(address).slice(0, 5), ["street", "number", "neighborhood", "locality", "department"])
+  assert.equal(address.department, "Comuna 8")
+  const noComuna = { ...candidate.record, address: { ...candidate.record.address, department: undefined, comuna: undefined } }
+  assert.ok(!("department" in addressFor(noComuna, cesacManifest, noComuna.address)))
+})
+
+test("department: apply adds only that key to the address and leaves every other datum as it was", () => {
+  const candidates = candidatesOf(cesacManifest, cesacRecords, cesacMapping)
+  const before = noDivision(published)
+  const result = plan({ decisions: LINKED.map(([key, id, value]) => departmentDecision(key, id, value)), candidates, resources: before })
+  assert.deepEqual(result.errors, [])
+  for (const [, id, value] of LINKED) {
+    const was = before.find((r) => r.id === id)
+    const now = result.data.resources.find((r) => r.id === id)
+    assert.equal(now.address.department, value)
+    assert.deepEqual({ ...now, address: { ...now.address, department: undefined } }, { ...was, address: { ...was.address, department: undefined } })
+    assert.equal(now.address.locality, "Ciudad Autónoma de Buenos Aires", "the locality is not replaced")
+    assert.ok(now.address.neighborhood, "the neighborhood is not replaced")
+  }
+  // the places that were not decided are untouched
+  for (const resource of result.data.resources.filter((r) => !LINKED.some(([, id]) => id === r.id))) assert.deepEqual(resource, before.find((r) => r.id === resource.id))
+  const applied = result.applied.find((item) => item.resourceId === "cesac-3")
+  assert.deepEqual(applied.division, { resourceId: "cesac-3", value: "Comuna 8", source: "caba-cesac", key: "3", rowHash: byKey(cesacRecords, "3").rowHash })
+})
+
+test("department: the text of the file changes by one line per place", () => {
+  const text = readFileSync(placesPath, "utf8").replace(/\r\n/g, "\n")
+  const before = noDivision(published)
+  const candidates = candidatesOf(cesacManifest, cesacRecords, cesacMapping)
+  const result = plan({ decisions: LINKED.map(([key, id, value]) => departmentDecision(key, id, value)), candidates, resources: before })
+  const withoutLines = text.split("\n").filter((line) => !line.includes('"department"')).join("\n")
+  const written = serializePlacesPreserving(withoutLines, before, result.data.resources)
+  assert.ok(written, "the layout is the expected one")
+  assert.equal(written.split("\n").filter((line) => line.includes('"department"')).length, 3)
+  assert.equal(written.split("\n").length - withoutLines.split("\n").length, 3, "three lines added, nothing else rewritten")
+})
+
+test("department: a person has to approve that value for that row; nothing is worked out", () => {
+  const candidates = candidatesOf(cesacManifest, cesacRecords, cesacMapping)
+  const before = noDivision(published)
+  const refused = (decision, pattern) => {
+    const result = plan({ decisions: [decision], candidates, resources: before })
+    assert.ok(result.errors.some((error) => pattern.test(error)), JSON.stringify(result.errors))
+    assert.deepEqual(result.data.resources, before, "nothing changed")
+  }
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { rowHash: undefined }), /falta "rowHash"/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { rowHash: "0000000000000000" }), /la fila del dataset cambió/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 9"), /"values" tiene que traer el valor que se revisó/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { values: undefined }), /"values" tiene que traer/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { reason: undefined }), /falta "reason"/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { reviewer: undefined }), /falta "reviewer"/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { fields: ["address", "address.department"] }), /ya incluye la división/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { fields: ["address.street"] }), /no se puede aplicar desde un dataset/)
+  refused(departmentDecision("3", "cesac-3", "Comuna 8", { fields: ["address.department", "hours"] }), /no se puede aplicar desde un dataset/)
+  // a source that gives no division for the row: it is not filled in from the neighborhood
+  const blank = candidates.map((c) => (c.key === "3" ? { ...c, record: { ...c.record, address: { ...c.record.address, department: undefined, comuna: undefined } } } : c))
+  const noValue = plan({ decisions: [departmentDecision("3", "cesac-3", "Comuna 8")], candidates: blank, resources: before })
+  assert.ok(noValue.errors.some((error) => /no informa la división administrativa/.test(error)))
+  // the place has to be linked first, like any apply
+  const unlinked = plan({ decisions: [departmentDecision("3", "cesac-3", "Comuna 8")], candidates: candidatesOf(cesacManifest, cesacRecords, cesacMapping, []), resources: before })
+  assert.ok(unlinked.errors.some((error) => /solo se aplican cambios a un lugar ya enlazado/.test(error)))
+})
+
+test("department: two applies on one place (coordinates and division) are two decisions; the same one twice is not", () => {
+  const candidates = candidatesOf(hospManifest, hospRecords, hospMapping)
+  const key = "hospital-especializado-de-oftalmologia-santa-lucia"
+  const hospDecision = (fields, extra = {}) => ({ ...base, source: "caba-hospitales", key, action: "apply", resourceId: "hospital-oftalmologico-santa-lucia", fields, batch: batch.id, rowHash: byKey(hospRecords, key).rowHash, reason: "test", ...extra })
+  const division = hospDecision(["address.department"], { values: { "address.department": "Comuna 3" } })
+  const both = plan({ decisions: [hospDecision(["coordinates"]), division], candidates, resources: noDivision(published) })
+  assert.deepEqual(both.errors, [])
+  const twice = plan({ decisions: [division, division], candidates, resources: noDivision(published) })
+  assert.ok(twice.errors.some((error) => /hay otra decisión para el mismo registro/.test(error)))
+})
+
+test("department: the six published divisions are the approved ones", () => {
+  const approved = {
+    "cesac-3": "Comuna 8",
+    "cesac-41": "Comuna 4",
+    "cesac-47": "Comuna 1",
+    "hospital-oftalmologico-santa-lucia": "Comuna 3",
+    "hospital-odontologia-carrillo": "Comuna 2",
+    "hospital-odontologia-duenas": "Comuna 5",
+  }
+  assert.equal(published.length, 6)
+  for (const [id, value] of Object.entries(approved)) {
+    const place = published.find((r) => r.id === id)
+    assert.equal(place.address.department, value, id)
+    // neighborhood and locality are other things and are still there
+    assert.ok(place.address.neighborhood && place.address.neighborhood !== value, id)
+    assert.equal(place.address.locality, "Ciudad Autónoma de Buenos Aires", id)
+    assert.equal(place.address.province, "AR-C")
+  }
+})
+
+test("department: the report proposes the division when a published place lacks it", () => {
+  const candidate = candidatesOf(cesacManifest, cesacRecords, cesacMapping).find((c) => c.key === "3")
+  const lacking = noDivision(published).find((r) => r.id === "cesac-3")
+  assert.deepEqual(proposalsFor(candidate, lacking).find((p) => p.field === "address.department"), { field: "address.department", published: null, source: "Comuna 8" })
+  assert.equal(proposalsFor(candidate, published.find((r) => r.id === "cesac-3")).find((p) => p.field === "address.department"), undefined)
 })

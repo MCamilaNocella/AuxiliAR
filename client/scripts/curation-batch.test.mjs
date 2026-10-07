@@ -411,8 +411,12 @@ test("coordinates of Santa Lucía, Carrillo and Dueñas: official, reprojected b
   assert.deepEqual(result.errors, [])
   assert.equal(result.changed, false, "todo lo decidido ya está aplicado")
   const decisions = (await readJson(join(PATHS.decisions, "ar-c.decisions.json"))).decisions
-  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply"])
-  assert.ok(decisions.filter((d) => d.action === "apply").every((d) => d.fields.length === 1 && d.fields[0] === "coordinates" && d.batch === "caba-2" && d.rowHash))
+  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply"])
+  // three coordinates (the hospitals) and six divisions: each one tied to its row, its batch and a reviewer
+  const applies = decisions.filter((d) => d.action === "apply")
+  assert.ok(applies.every((d) => d.fields.length === 1 && d.batch === "caba-2" && d.rowHash && d.reviewer && d.decidedAt && d.reason))
+  assert.equal(applies.filter((d) => d.fields[0] === "coordinates").length, 3)
+  assert.equal(applies.filter((d) => d.fields[0] === "address.department").length, 6)
 })
 
 test("the hand-curated places keep everything but what the decisions applied; Santa Lucía reads in plain language", () => {

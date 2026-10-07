@@ -154,10 +154,10 @@ export type Address = {
   street?: string
   /** Street number, or "s/n" */
   number?: string
-  /** Neighborhood (or comuna, in CABA) */
+  /** Neighborhood (barrio): not the division, which has its own field */
   neighborhood?: string
   locality?: string
-  /** Departamento, partido or comuna */
+  /** Administrative division, as the official source gives it: comuna (CABA), partido (Buenos Aires) or departamento. Not the neighborhood nor the locality */
   department?: string
   province?: ProvinceCode
   postalCode?: string

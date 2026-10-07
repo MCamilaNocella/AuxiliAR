@@ -216,12 +216,17 @@ export const mergePhones = (record, facts) => {
   return { phones, gates }
 }
 
-/** The address as the source writes it: no street is invented, and the locality and province come from the manifest */
+/**
+ * The address as the source writes it: no street is invented, and the locality and province come from the manifest.
+ * The division (comuna, partido, departamento) is the one the source gives in its own field, separate from the neighborhood;
+ * if the source doesn't give it, there is none (it is never worked out from the neighborhood).
+ */
 export const addressFor = (record, manifest, address = record.address) => ({
   ...(address.street ? { street: address.street } : {}),
   ...(address.number ? { number: address.number } : {}),
   ...(address.neighborhood ? { neighborhood: address.neighborhood } : {}),
   locality: manifest.locality,
+  ...(record.address?.department ? { department: record.address.department } : {}),
   province: manifest.province,
   ...(address.reference ? { reference: address.reference } : {}),
 })

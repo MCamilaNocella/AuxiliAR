@@ -21,7 +21,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -81,7 +82,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Paternal",
-        "comuna": "Comuna 15"
+        "comuna": "Comuna 15",
+        "department": "Comuna 15"
       },
       "phones": [
         {
@@ -141,7 +143,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -196,7 +199,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -265,7 +269,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Almagro",
-        "comuna": "Comuna 5"
+        "comuna": "Comuna 5",
+        "department": "Comuna 5"
       },
       "phones": [
         {
@@ -320,7 +325,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Boca",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -381,7 +387,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "San Cristobal",
-        "comuna": "Comuna 3"
+        "comuna": "Comuna 3",
+        "department": "Comuna 3"
       },
       "phones": [
         {
@@ -443,7 +450,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Caballito",
-        "comuna": "Comuna 6"
+        "comuna": "Comuna 6",
+        "department": "Comuna 6"
       },
       "phones": [
         {
@@ -499,7 +507,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Monte Castro",
-        "comuna": "Comuna 10"
+        "comuna": "Comuna 10",
+        "department": "Comuna 10"
       },
       "phones": [
         {
@@ -558,7 +567,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -615,7 +625,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -675,7 +686,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -735,7 +747,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -793,7 +806,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -849,7 +863,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Recoleta",
-        "comuna": "Comuna 2"
+        "comuna": "Comuna 2",
+        "department": "Comuna 2"
       },
       "phones": [
         {
@@ -909,7 +924,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Villa Gral. Mitre",
-        "comuna": "Comuna 11"
+        "comuna": "Comuna 11",
+        "department": "Comuna 11"
       },
       "phones": [
         {
@@ -965,7 +981,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Devoto",
-        "comuna": "Comuna 11"
+        "comuna": "Comuna 11",
+        "department": "Comuna 11"
       },
       "phones": [
         {
@@ -1025,7 +1042,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Recoleta",
-        "comuna": "Comuna 2"
+        "comuna": "Comuna 2",
+        "department": "Comuna 2"
       },
       "phones": [
         {
@@ -1085,7 +1103,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Villa Soldati",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -1136,7 +1155,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Monte Castro",
-        "comuna": "Comuna 10"
+        "comuna": "Comuna 10",
+        "department": "Comuna 10"
       },
       "phones": [
         {
@@ -1190,7 +1210,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Liniers",
-        "comuna": "Comuna 9"
+        "comuna": "Comuna 9",
+        "department": "Comuna 9"
       },
       "phones": [
         {
@@ -1250,7 +1271,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Boca",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -1308,7 +1330,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Caballito",
-        "comuna": "Comuna 6"
+        "comuna": "Comuna 6",
+        "department": "Comuna 6"
       },
       "phones": [
         {
@@ -1381,7 +1404,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Chas",
-        "comuna": "Comuna 15"
+        "comuna": "Comuna 15",
+        "department": "Comuna 15"
       },
       "phones": [
         {
@@ -1440,7 +1464,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Coghlan",
-        "comuna": "Comuna 12"
+        "comuna": "Comuna 12",
+        "department": "Comuna 12"
       },
       "phones": [
         {
@@ -1499,7 +1524,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Palermo",
-        "comuna": "Comuna 14"
+        "comuna": "Comuna 14",
+        "department": "Comuna 14"
       },
       "phones": [
         {
@@ -1561,7 +1587,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -1621,7 +1648,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -1683,7 +1711,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Balvanera",
-        "comuna": "Comuna 3"
+        "comuna": "Comuna 3",
+        "department": "Comuna 3"
       },
       "phones": [
         {
@@ -1741,7 +1770,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -1801,7 +1831,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -1864,7 +1895,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Recoleta",
-        "comuna": "Comuna 2"
+        "comuna": "Comuna 2",
+        "department": "Comuna 2"
       },
       "phones": [
         {
@@ -1923,7 +1955,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Caballito",
-        "comuna": "Comuna 6"
+        "comuna": "Comuna 6",
+        "department": "Comuna 6"
       },
       "phones": [
         {
@@ -1978,7 +2011,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Caballito",
-        "comuna": "Comuna 6"
+        "comuna": "Comuna 6",
+        "department": "Comuna 6"
       },
       "phones": [
         {
@@ -2036,7 +2070,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Belgrano",
-        "comuna": "Comuna 13"
+        "comuna": "Comuna 13",
+        "department": "Comuna 13"
       },
       "phones": [
         {
@@ -2093,7 +2128,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {

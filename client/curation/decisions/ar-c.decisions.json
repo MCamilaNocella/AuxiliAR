@@ -97,6 +97,108 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-07",
       "reason": "Reproyección oficial aprobada para el lote CABA 2: el dataset de Hospitales publica el punto en EPSG:9498 y se convierte a WGS84 con el procedimiento reproducible del pipeline (method official-dataset-reprojected). Controlado contra USIG (geocodificador de la Ciudad)."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "3",
+      "action": "apply",
+      "resourceId": "cesac-3",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 8"
+      },
+      "batch": "caba-2",
+      "rowHash": "63275d0c9dcf6a91",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial CeSAC (Buenos Aires Data), fila id 3. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "41",
+      "action": "apply",
+      "resourceId": "cesac-41",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 4"
+      },
+      "batch": "caba-2",
+      "rowHash": "f542768098f64bcf",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial CeSAC (Buenos Aires Data), fila id 41. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "46",
+      "action": "apply",
+      "resourceId": "cesac-47",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 1"
+      },
+      "batch": "caba-2",
+      "rowHash": "a287f5b713d238eb",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial CeSAC (Buenos Aires Data), fila id 46 (CeSAC N° 47). Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-oftalmologia-santa-lucia",
+      "action": "apply",
+      "resourceId": "hospital-oftalmologico-santa-lucia",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 3"
+      },
+      "batch": "caba-2",
+      "rowHash": "407871e294f25b56",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial Hospitales (Buenos Aires Data), Santa Lucía. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional",
+      "action": "apply",
+      "resourceId": "hospital-odontologia-carrillo",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 2"
+      },
+      "batch": "caba-2",
+      "rowHash": "4fa2594822fb2c8b",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial Hospitales (Buenos Aires Data), Carrillo. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-odontologia-j-duenas",
+      "action": "apply",
+      "resourceId": "hospital-odontologia-duenas",
+      "fields": [
+        "address.department"
+      ],
+      "values": {
+        "address.department": "Comuna 5"
+      },
+      "batch": "caba-2",
+      "rowHash": "c85b6f67596fbddc",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial Hospitales (Buenos Aires Data), Dueñas. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
     }
   ]
 }

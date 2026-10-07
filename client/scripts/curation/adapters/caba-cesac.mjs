@@ -1,7 +1,7 @@
 import { parseCsv } from "../lib/csv.mjs"
 import { toWgs84, round7 } from "../lib/crs.mjs"
 import { parsePoint } from "../lib/wkt.mjs"
-import { cleanText, cleanUrl, parseAddressCaba, parsePhonesCaba, rowHash } from "../lib/normalize.mjs"
+import { cleanText, cleanUrl, divisionOfCaba, parseAddressCaba, parsePhonesCaba, rowHash } from "../lib/normalize.mjs"
 
 /*
  * Buenos Aires Data — Centros de Salud y Acción Comunitaria (CESAC). Columns:
@@ -64,7 +64,7 @@ export const normalizeRow = ({ rowNumber, fields }, context) => {
     name,
     ...(number ? { shortName: `CeSAC Nº ${number}`, officialNumber: number, idHint: `cesac-${number}` } : {}),
     facilityTypeRaw: "CeSAC",
-    address: { ...parseAddressCaba(fields.direccion), neighborhood: cleanText(fields.barrio) || undefined, comuna: cleanText(fields.comuna) || undefined },
+    address: { ...parseAddressCaba(fields.direccion), neighborhood: cleanText(fields.barrio) || undefined, ...divisionOfCaba(cleanText(fields.comuna)) },
     phones,
     phoneFragments: fragments,
     ...(detailUrl ? { detailUrl } : {}),

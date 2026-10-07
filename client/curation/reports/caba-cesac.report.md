@@ -51,7 +51,10 @@ No hay una descarga anterior con la que comparar.
 
 | lugar | campo | publicado | la fuente dice |
 |---|---|---|---|
+| cesac-3 | address.department | null | Comuna 8 |
 | cesac-3 | contacts | 541128213603, 541150481097 | sin publicar: 4605-7823 |
+| cesac-41 | address.department | null | Comuna 4 |
+| cesac-47 | address.department | null | Comuna 1 |
 
 ## Detalle
 
