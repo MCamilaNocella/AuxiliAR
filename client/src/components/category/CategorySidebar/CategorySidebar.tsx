@@ -46,11 +46,11 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
     // Large: the column stretches to the full content height; the menu inside stays in view while scrolling.
     <div
       ref={barRef}
-      className="sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:w-64 lg:flex-none lg:border-r lg:border-b-0"
+      className="sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
     >
       <nav
         aria-labelledby={headingId}
-        className="@container px-4 py-2 sm:px-6 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
+        className="@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
       >
         <div className="flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3">
           <button

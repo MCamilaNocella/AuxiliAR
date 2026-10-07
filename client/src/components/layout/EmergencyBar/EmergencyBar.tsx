@@ -12,7 +12,7 @@ export const EmergencyBar = () => (
     aria-labelledby={EMERGENCY_HEADING_ID}
     className="border-b border-alert-line bg-alert-soft"
   >
-    <div className="mx-auto grid max-w-360 grid-cols-[repeat(auto-fit,minmax(min(100%,25rem),1fr))] gap-x-8 gap-y-4 px-4 py-4 sm:px-6 lg:px-8">
+    <div className="page-container grid grid-cols-[repeat(auto-fit,minmax(min(100%,25rem),1fr))] gap-x-8 gap-y-4 py-4">
       <div className="flex flex-col gap-2.5">
         <h2 id={EMERGENCY_HEADING_ID} tabIndex={-1} className={`${headingClass} text-alert-text`}>
           <Phone aria-hidden="true" className="size-4.5 flex-none" />

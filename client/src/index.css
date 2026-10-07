@@ -70,6 +70,8 @@
    * and on its edges.
    */
   --animate-shine-sweep: shine-sweep 1.2s ease-in-out 1.5s 2 alternate-reverse both;
+  /* Mouse over the button (computers): a single pass of the same glint, right to left */
+  --animate-shine-hover: shine-hover 0.9s ease-in-out 0.15s both;
 
   @keyframes shine-sweep {
     from {
@@ -80,12 +82,23 @@
     }
   }
 
+  @keyframes shine-hover {
+    from {
+      mask-position: 0% 0;
+    }
+    to {
+      mask-position: 100% 0;
+    }
+  }
+
   /*
    * The "Ajustes" label rolls out of the gear, stays 5s and rolls back in, the gear spinning
    * each way. One 6.8s timeline: 0.9s out (0–13.2%), 5s shown, 0.9s back in (86.8–100%).
+   * Fill "backwards", not "both": once done, the label's own (hidden) styles take over again,
+   * so hovering the button can slide it out.
    */
-  --animate-label-reveal: label-reveal 6.8s 0.5s both;
-  --animate-label-roll: label-roll 6.8s 0.5s both;
+  --animate-label-reveal: label-reveal 6.8s 0.5s backwards;
+  --animate-label-roll: label-roll 6.8s 0.5s backwards;
   --animate-gear-spin: gear-spin 6.8s 0.5s both;
 
   @keyframes label-reveal {
@@ -277,6 +290,30 @@
 
 @utility bg-category-wallpaper {
   background: var(--category-wallpaper);
+}
+
+/* ---------- Page container ---------- */
+
+/*
+ * Every band (header, emergency bar, content, footer) lines up on the same column:
+ * same max content width and the same side gutter, which grows with the screen
+ * (so laptops don't get content stuck to the edges) and stops at 5rem.
+ */
+:root {
+  --page-max: 86rem;
+  --page-gutter: clamp(1rem, 5vw, 5rem);
+  /*
+   * Distance from the screen edge to that column, for full-width layouts (category screen) that
+   * line their content up with it. Needs a full-width @container ancestor (100cqw = its width).
+   */
+  --page-inset: max(var(--page-gutter), (100cqw - var(--page-max)) / 2);
+}
+
+@utility page-container {
+  width: 100%;
+  max-width: calc(var(--page-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
 }
 
 /* Band of light for the shine-sweep animations: off to the left at 100%, off to the right at 0% */
