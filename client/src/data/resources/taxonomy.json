@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kinds": [
+    { "id": "emergency", "label": "Emergencia", "description": "Riesgo inmediato para la vida; despacha ayuda (ambulancia, bomberos, policía)." },
+    { "id": "urgent-support", "label": "Apoyo urgente", "description": "Atención humana urgente que no despacha ayuda (líneas de crisis, violencia, intoxicaciones)." },
+    { "id": "orientation", "label": "Orientación", "description": "Consulta, información y asesoramiento." },
+    { "id": "service", "label": "Servicio", "description": "Un lugar o programa concreto (hospital, centro de salud, veterinaria)." }
+  ],
+  "verificationStatuses": [
+    { "id": "verified", "label": "Verificado", "description": "Comprobado contra la fuente oficial. Es el único estado que se muestra a las personas y que Auxi puede ofrecer, mientras no venza nextReviewDue." },
+    { "id": "needs-review", "label": "A revisar", "description": "Hay un dato dudoso o cambió algo; no se muestra." },
+    { "id": "unverified", "label": "Sin verificar", "description": "Cargado pero todavía no comprobado; no se muestra." },
+    { "id": "outdated", "label": "Desactualizado", "description": "La fuente indica que cambió; no se muestra." },
+    { "id": "disputed", "label": "En duda", "description": "Dos fuentes se contradicen; no se muestra." }
+  ],
+  "costs": [
+    { "id": "free", "label": "Gratuito" },
+    { "id": "paid", "label": "Arancelado" },
+    { "id": "mixed", "label": "Mixto" },
+    { "id": "unknown", "label": "No se sabe" }
+  ],
+  "audiences": [
+    { "id": "all", "label": "Todas las personas" },
+    { "id": "children", "label": "Niñas y niños" },
+    { "id": "adolescents", "label": "Adolescentes" },
+    { "id": "adults", "label": "Personas adultas" },
+    { "id": "older-adults", "label": "Personas mayores" },
+    { "id": "women", "label": "Mujeres" },
+    { "id": "lgbtq", "label": "Personas LGBTIQ+" },
+    { "id": "people-with-disabilities", "label": "Personas con discapacidad" }
+  ],
+  "contactTypes": [
+    { "id": "phone", "label": "Teléfono" },
+    { "id": "whatsapp", "label": "WhatsApp" }
+  ],
+  "coverageLevels": [
+    { "id": "national", "label": "Todo el país" },
+    { "id": "region", "label": "Región o área" },
+    { "id": "province", "label": "Provincia" },
+    { "id": "municipal", "label": "Municipio o localidad" }
+  ],
+  "areas": [
+    { "id": "amba", "label": "AMBA (CABA y Gran Buenos Aires)" },
+    { "id": "ugl-rosario", "label": "UGL Rosario (PAMI)" }
+  ],
+  "provinces": [
+    { "id": "AR-C", "label": "Ciudad Autónoma de Buenos Aires" },
+    { "id": "AR-B", "label": "Buenos Aires" },
+    { "id": "AR-K", "label": "Catamarca" },
+    { "id": "AR-H", "label": "Chaco" },
+    { "id": "AR-U", "label": "Chubut" },
+    { "id": "AR-X", "label": "Córdoba" },
+    { "id": "AR-W", "label": "Corrientes" },
+    { "id": "AR-E", "label": "Entre Ríos" },
+    { "id": "AR-P", "label": "Formosa" },
+    { "id": "AR-Y", "label": "Jujuy" },
+    { "id": "AR-L", "label": "La Pampa" },
+    { "id": "AR-F", "label": "La Rioja" },
+    { "id": "AR-M", "label": "Mendoza" },
+    { "id": "AR-N", "label": "Misiones" },
+    { "id": "AR-Q", "label": "Neuquén" },
+    { "id": "AR-R", "label": "Río Negro" },
+    { "id": "AR-A", "label": "Salta" },
+    { "id": "AR-J", "label": "San Juan" },
+    { "id": "AR-D", "label": "San Luis" },
+    { "id": "AR-Z", "label": "Santa Cruz" },
+    { "id": "AR-S", "label": "Santa Fe" },
+    { "id": "AR-G", "label": "Santiago del Estero" },
+    { "id": "AR-V", "label": "Tierra del Fuego" },
+    { "id": "AR-T", "label": "Tucumán" }
+  ],
+  "categories": [
+    { "id": "salud-fisica", "label": "Salud física" },
+    { "id": "salud-mental", "label": "Salud mental" },
+    { "id": "esi", "label": "Educación sexual (ESI)" },
+    { "id": "animales", "label": "Animales" },
+    { "id": "centros", "label": "Centros de atención" },
+    { "id": "recursos", "label": "Mis recursos" },
+    { "id": "primeros-auxilios", "label": "Primeros auxilios" },
+    { "id": "sobre-auxiliar", "label": "Sobre AuxiliAR" }
+  ]
+}
