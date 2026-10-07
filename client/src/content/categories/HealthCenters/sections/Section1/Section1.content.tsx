@@ -22,7 +22,7 @@ export default function Section1Content() {
         </button>
         .
       </p>
-      <PlacesExplorer province="AR-C" filters={FILTERS} intro={TRANSPARENCY} map />
+      <PlacesExplorer filters={FILTERS} intro={TRANSPARENCY} map />
     </div>
   )
 }
