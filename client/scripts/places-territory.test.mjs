@@ -60,11 +60,11 @@ test("the real places: every one has its division, apart from barrio and localit
   assert.equal(places.selectPlaces(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-B", zone: "Comuna 4" }).length, 0)
 })
 
-test("territory filters: the province select lists only the covered ones, with 'Todo el país' first", () => {
+test("territory filters: the province select lists only the covered ones, with 'Todas las zonas con cobertura' first", () => {
   const html = filters({})
   const content = text(html)
   assert.ok(content.includes("Provincia"))
-  assert.match(html, /<option value=""[^>]*>Todo el país<\/option><option value="AR-C">Ciudad Autónoma de Buenos Aires<\/option>/)
+  assert.match(html, /<option value=""[^>]*>Todas las zonas con cobertura<\/option><option value="AR-C">Ciudad Autónoma de Buenos Aires<\/option>/)
   assert.ok(!html.includes('value="AR-B"'), "a province with no verified places is not offered")
   assert.ok(content.includes("Por ahora hay centros verificados en Ciudad Autónoma de Buenos Aires."))
   assert.ok(content.includes("que no aparezcan no quiere decir que no haya servicios"))
@@ -95,14 +95,17 @@ test("territory filters: the division of the chosen province, in numeric order, 
   assert.ok(!text(filters({ province: "AR-B", zones })).includes("Comuna 2"))
 })
 
-test("an empty result says what it is: no data, an uncovered province, or no match - never 'there are no services'", () => {
+test("an empty result says what it is: no data, an uncovered province, no match, or too many to show - never 'there are no services'", () => {
   const ask = (input) => places.emptyStateOf({ ready: true, total: 6, shown: 0, province: null, coverage: ["AR-C"], ...input })
   assert.equal(places.emptyStateOf({ ready: false, total: 0, shown: 0, province: null, coverage: [] }), null, "still loading")
   assert.equal(ask({ shown: 3 }), null)
   assert.equal(ask({ total: 0 }), "no-data")
+  // a province with no verified places is known from the coverage alone: nothing was loaded for it
+  assert.equal(ask({ province: "AR-B", total: 0 }), "uncovered")
   assert.equal(ask({ province: "AR-B" }), "uncovered")
   assert.equal(ask({ province: "AR-C" }), "no-results")
   assert.equal(ask({}), "no-results")
+  assert.equal(ask({ total: 0, needsProvince: true }), "choose-province")
 })
 
 test("the messages of an empty result do not say there are no services", async () => {
@@ -112,14 +115,70 @@ test("the messages of an empty result do not say there are no services", async (
   assert.ok(!/no hay (servicios|centros|hospitales) en/i.test(source), "never states an absence as a fact")
 })
 
-test("the explorer reads the territory from the URL and keeps the other params, in the same view", () => {
+test("the explorer reads the territory from the URL and keeps the other params, in the same view", async () => {
+  await data.loadPlaces("AR-C")
   const render = (url, props = {}) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, ...props })))
-  // while loading (a server never runs effects) the territory block, search and view switch are already there
-  const html = render("/centros?provincia=AR-C&zona=Comuna%204&buscar=guardia&vista=lista")
-  assert.match(html, /value="guardia"/)
+  const html = render("/centros?provincia=AR-C&zona=Comuna%204&vista=lista")
   assert.match(html, /aria-pressed="true"[^>]*>(?:<[^>]+>)*Lista</)
+  assert.ok(text(html).includes("1 lugar encontrado en Comuna 4"))
+  assert.ok(html.includes('data-place-trigger="cesac-41"') && !html.includes('data-place-trigger="cesac-3"'))
+  // a search that finds nothing says so without saying there are no services
+  const none = text(render("/centros?provincia=AR-C&zona=Comuna%204&buscar=zzzz&vista=lista"))
+  assert.ok(none.includes("0 lugares encontrados en Comuna 4") && none.includes("Que no aparezcan no quiere decir que no existan"))
+  // a province with no verified places: said from the coverage, nothing is counted or listed
+  const uncovered = text(render("/centros?provincia=AR-B"))
+  assert.ok(uncovered.includes("Todavía no tenemos centros verificados en Buenos Aires. Eso no significa que no haya servicios"))
+  assert.ok(!uncovered.includes("lugares encontrados") && uncovered.includes("Ver todas las zonas con cobertura"))
   // an invalid province in the URL is just ignored
-  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("Cargando lugares…"))
+  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("6 lugares encontrados"))
   // the links that already exist keep working
   assert.match(render("/centros?filtro=emergency&buscar=oftalm", { filters: ["emergency"] }), /aria-pressed="true"[^>]*>Guardias</)
+})
+
+/* ── What is downloaded: decided from the coverage index ── */
+
+const DAY = "2026-10-07"
+const entry = (placesCount, currentUntil = "2027-01-05") => ({ places: placesCount, currentUntil, categories: [], serviceTypes: [], divisions: [] })
+
+test("the app's coverage index names the same provinces as the places files, and the loaders agree", () => {
+  const files = readdirSync(join(root, "src/data/resources/places")).filter((name) => name.endsWith(".json")).map((name) => name.replace(".json", "").toUpperCase()).sort()
+  assert.deepEqual(Object.keys(data.COVERAGE).sort(), files)
+  assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], files)
+  assert.equal(data.COVERAGE["AR-C"].places, 6)
+})
+
+test("load plan: opening /centros downloads the covered files only, and a province asked for downloads only its own", () => {
+  const coverage = { "AR-C": entry(6), "AR-B": entry(400), "AR-S": entry(300, "2026-09-01") }
+  // AR-S has nothing that can still be current: it is not offered and not downloaded
+  assert.deepEqual(places.planLoad({ coverage, day: DAY, province: null }), { covered: ["AR-B", "AR-C"], toLoad: ["AR-B", "AR-C"], needsProvince: false })
+  assert.deepEqual(places.planLoad({ coverage, day: DAY, province: "AR-C" }), { covered: ["AR-B", "AR-C"], toLoad: ["AR-C"], needsProvince: false })
+  // a province with no verified places: nothing to download
+  assert.deepEqual(places.planLoad({ coverage, day: DAY, province: "AR-S" }).toLoad, [])
+  assert.deepEqual(places.planLoad({ coverage, day: DAY, province: "AR-X" }).toLoad, [])
+  // too many places to show them all together: choose a province first, and nothing is downloaded until then
+  const big = { "AR-C": entry(6), "AR-B": entry(places.LOAD_ALL_UP_TO) }
+  assert.deepEqual(places.planLoad({ coverage: big, day: DAY, province: null }), { covered: ["AR-B", "AR-C"], toLoad: [], needsProvince: true })
+  assert.deepEqual(places.planLoad({ coverage: big, day: DAY, province: "AR-B" }).toLoad, ["AR-B"])
+  // the day matters: on the review date a province stops being offered
+  assert.deepEqual(places.planLoad({ coverage, day: "2027-01-05", province: null }).covered, [])
+  // nothing to plan with an empty index
+  assert.deepEqual(places.planLoad({ coverage: {}, day: DAY, province: null }), { covered: [], toLoad: [], needsProvince: false })
+  // the real index, today
+  assert.deepEqual(places.planLoad({ day: DAY, province: null }), { covered: ["AR-C"], toLoad: ["AR-C"], needsProvince: false })
+})
+
+test("the explorer does not download the other provinces: it asks the plan, and never lists the files itself", async () => {
+  const { readFile } = await import("node:fs/promises")
+  const source = await readFile(join(root, "src/components/places/PlacesExplorer/PlacesExplorer.tsx"), "utf8")
+  assert.match(source, /planLoad\(\{ day, province: query\.province \}\)/)
+  assert.match(source, /usePlacesOf\(plan\.toLoad\)/)
+  assert.ok(!source.includes("PROVINCES_WITH_PLACE_FILES"))
+})
+
+test("the numbers of the index are never shown: the screens count the results of the query", async () => {
+  const { readFile, readdir } = await import("node:fs/promises")
+  const dirs = ["src/components/places", "src/content/categories/HealthCenters"]
+  const walk = async (dir) => (await readdir(join(root, dir), { withFileTypes: true })).flatMap((e) => (e.isDirectory() ? [] : [join(dir, e.name)]))
+  const files = (await Promise.all(dirs.map(async (dir) => [...(await walk(dir)), ...(await Promise.all((await readdir(join(root, dir), { withFileTypes: true })).filter((e) => e.isDirectory()).map((e) => walk(join(dir, e.name))))).flat()]))).flat()
+  for (const file of files.filter((name) => /\.tsx?$/.test(name))) assert.ok(!/COVERAGE/.test(await readFile(join(root, file), "utf8")), file + " shows counts of the index")
 })

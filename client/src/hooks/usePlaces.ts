@@ -1,6 +1,15 @@
-import { useEffect, useState } from "react"
-import { loadPlaces } from "@/data/resources"
+import { useEffect, useMemo, useState } from "react"
+import { loadPlaces, peekPlaces } from "@/data/resources"
 import type { ProvinceCode, Resource } from "@/data/resources"
+
+const NO_PLACES: readonly Resource[] = []
+
+/** The places of several files together, each one once (ids are unique, so this only guards against a repeated one) */
+const uniqueById = (places: readonly Resource[]) => {
+  const byId = new Map<string, Resource>()
+  for (const place of places) if (!byId.has(place.id)) byId.set(place.id, place)
+  return [...byId.values()]
+}
 
 export type PlacesState =
   | { status: "loading" }
@@ -20,9 +29,7 @@ export const usePlacesOf = (provinces: readonly ProvinceCode[]) => {
     let cancelled = false
     Promise.all(provinces.map((province) => loadPlaces(province))).then(
       (lists) => {
-        const byId = new Map<string, Resource>()
-        for (const place of lists.flat()) if (!byId.has(place.id)) byId.set(place.id, place)
-        if (!cancelled) setAnswer({ key, state: { status: "ready", places: [...byId.values()] } })
+        if (!cancelled) setAnswer({ key, state: { status: "ready", places: uniqueById(lists.flat()) } })
       },
       () => {
         if (!cancelled) setAnswer({ key, state: { status: "error" } })
@@ -35,7 +42,15 @@ export const usePlacesOf = (provinces: readonly ProvinceCode[]) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key])
 
-  const state: PlacesState = answer?.key === key ? answer.state : { status: "loading" }
+  // Provinces already downloaded answer in the same render: switching between them never shows a loading state
+  // (what is downloaded for a set of provinces never changes, so the combined list is built once per set)
+  const downloaded = provinces.every((province) => peekPlaces(province) !== undefined)
+  const known = useMemo(
+    () => (downloaded ? (provinces.length === 0 ? NO_PLACES : provinces.length === 1 ? (peekPlaces(provinces[0]) as readonly Resource[]) : uniqueById(provinces.flatMap((province) => peekPlaces(province) ?? []))) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key, downloaded],
+  )
+  const state: PlacesState = known ? { status: "ready", places: known } : answer?.key === key ? answer.state : { status: "loading" }
   return { ...state, retry: () => setAttempt((count) => count + 1) }
 }
 

@@ -47,7 +47,7 @@ export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, 
             onChange={(event) => onProvinceChange((event.target.value || null) as ProvinceCode | null)}
             className={selectClass}
           >
-            <option value="">Todo el país</option>
+            <option value="">Todas las zonas con cobertura</option>
             {coverage.map((code) => (
               <option key={code} value={code}>
                 {provinceLabel(code)}

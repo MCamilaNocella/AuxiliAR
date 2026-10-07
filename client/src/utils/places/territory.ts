@@ -21,16 +21,34 @@ export const sortDivisions = (zones: readonly string[]) => [...zones].sort((a, b
 
 /**
  * Why there is nothing to show, because they are not the same thing:
+ *  - "choose-province": there are too many places to show them all together: a province has to be chosen first
  *  - "no-data": there are no verified, current places at all (in this context)
  *  - "uncovered": a province was asked for where AuxiliAR has no verified places yet - not "there are no services"
  *  - "no-results": there are places, but none answers this search or these filters
  *  - null: there are results (or it is still loading)
  */
-export type EmptyState = "no-data" | "uncovered" | "no-results" | null
+export type EmptyState = "choose-province" | "no-data" | "uncovered" | "no-results" | null
 
-export const emptyStateOf = ({ ready, total, shown, province, coverage }: { ready: boolean, total: number, shown: number, province: ProvinceCode | null, coverage: readonly ProvinceCode[] }): EmptyState => {
-  if (!ready || shown > 0) return null
-  if (total === 0) return "no-data"
+export const emptyStateOf = ({
+  ready,
+  total,
+  shown,
+  province,
+  coverage,
+  needsProvince = false,
+}: {
+  ready: boolean
+  total: number
+  shown: number
+  province: ProvinceCode | null
+  coverage: readonly ProvinceCode[]
+  needsProvince?: boolean
+}): EmptyState => {
+  if (!ready) return null
+  if (needsProvince) return "choose-province"
+  // A province without verified places is known from the coverage index alone: nothing was downloaded for it
   if (province && !coverage.includes(province)) return "uncovered"
+  if (shown > 0) return null
+  if (total === 0) return "no-data"
   return "no-results"
 }
