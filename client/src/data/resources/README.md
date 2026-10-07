@@ -2,7 +2,7 @@
 
 Una única fuente de verdad para los recursos de ayuda de AuxiliAR: líneas telefónicas hoy y, más adelante, hospitales, centros y otros servicios. De acá van a leer las categorías, el buscador, los mapas, Auxi y los botones de llamada.
 
-> **Estado: Fase 0 (infraestructura).** El formato, las validaciones y el código para leerlo ya están, pero **todavía no hay datos cargados** y **nada de la app los usa**. Los números que se ven hoy (`client/src/data/emergency.ts`, `server/.../prompts/numeros.md`, el footer, el chat y `SafetyRules.java`) siguen siendo los de siempre, sin cambios.
+> **Estado: infraestructura (fases 0 y 1).** El formato, las validaciones y el código para leerlo ya están —incluido el de **establecimientos con varias prestaciones**—, pero **todavía no hay datos cargados** y **nada de la app los usa** (ni mapa, ni categorías, ni Auxi). Los números que se ven hoy (`client/src/data/emergency.ts`, `server/.../prompts/numeros.md`, el footer, el chat y `SafetyRules.java`) siguen siendo los de siempre, sin cambios.
 
 ## Dónde está cada cosa
 
@@ -13,10 +13,11 @@ client/src/data/resources/        ← LO ÚNICO QUE SE EDITA
   taxonomy.json                   valores permitidos (tipos, estados, provincias, áreas, categorías…)
   resources.types.ts              tipos de TypeScript
   index.ts                        cómo lo lee la app (consultas)
-  lines/*.json                    los recursos, por archivo (hoy: nacional.json, vacío)
+  lines/*.json                    los recursos, por archivo (hoy: nacional.json, vacío; dónde irán los establecimientos, a definir)
 
 client/scripts/resources-sync.mjs        valida y genera la copia del servidor
 client/scripts/resources-validate.mjs    las reglas de validación
+client/scripts/resources-resolve.mjs     herencia de las prestaciones y categorías derivadas
 client/scripts/resources-sync.test.mjs   tests (datos de prueba en scripts/__fixtures__)
 
 server/src/main/resources/data/resources.json   COPIA GENERADA para el servidor: no se edita
@@ -42,10 +43,36 @@ El servidor se construye por separado (su Docker solo ve `server/`), por eso no 
 
 "Es una emergencia" **es** el `kind`: no hay un campo aparte que pueda contradecirlo.
 
+## Establecimientos y prestaciones
+
+Un establecimiento (un hospital, un CeSAC, una veterinaria pública) se carga **una sola vez**, con todo lo que ofrece en `services`. Aparece en cada categoría o filtro que corresponda sin duplicarse. Es un recurso `kind: "service"` con `facilityType` (hospital, health-center, public-veterinary…) y, de ahí en adelante, lleva dirección, coordenadas, jurisdicción y prestaciones.
+
+**Prestaciones (`services`).** Cada una tiene su `id` (estable, único dentro del establecimiento) y su `type` (vaccination, dentistry, ophthalmology, contraception, rabies-vaccination…). Dice solo lo que le es propio; **lo demás lo hereda del establecimiento**:
+
+| Campo de la prestación | Si no lo dice |
+|---|---|
+| `hours` | Hereda el del establecimiento. Con `hours: null` queda **"no se sabe"**: no hereda. |
+| `cost` | Hereda; si nadie lo dijo, es `unknown`. **Nunca se asume gratuito.** |
+| `costNote`, `requirements`, `audience` | Heredan. |
+| `appointment` (`mode`: required, recommended, not-required, unknown; `howTo`, `url`) | `unknown` |
+| `contacts` | Solo los propios (los del establecimiento se muestran al lado). |
+| `source`, `verification` | Heredan. Una prestación puede tener los suyos. |
+
+**Categorías.** No se escriben: salen del `type` de cada prestación, según `taxonomy.serviceTypes` (vaccination → Salud física, contraception → ESI, rabies-vaccination → Animales…). Con `services` no se escribe `categories` ni `sections`. Un CeSAC con vacunación, anticonceptivos y salud mental aparece en Salud física, ESI y Salud mental.
+
+**Cuándo se muestra.** Un establecimiento se muestra si está verificado y vigente **y** tiene al menos una prestación vigente. Una prestación está vigente si su establecimiento lo está **y** su propia verificación (o la que hereda) lo está. Si vence el establecimiento, ninguna de sus prestaciones se muestra; si vence una prestación, el resto sigue.
+
+**Cuándo va en el mapa.** Solo con `coordinates.status: "verified"`. Una dirección sin coordenadas verificadas va únicamente en la lista, sin distancia. Las coordenadas llevan `method` (de dónde salió el punto: dataset oficial, USIG, Georef, a mano…), `verifiedAt` y `verifiedBy`. Un punto `unverified` es solo un candidato. Se valida que caiga dentro de Argentina (atrapa latitud y longitud invertidas).
+
+**Datos del establecimiento.** `jurisdiction` es quién lo administra (nacional, provincial, municipal y el organismo); `coverage` sigue siendo dónde sirve. `address` admite número, barrio, departamento, referencia ("dentro del hospital") e ids de Georef. `externalIds` guarda los identificadores en otros registros (por ejemplo `refes`) y **no puede repetirse**: así se detecta un mismo establecimiento cargado dos veces.
+
+**Teléfonos de un lugar.** Un establecimiento puede no tener ningún contacto. Dos o más **lugares** pueden compartir un número (una central de turnos); un número de una línea (emergencia, apoyo urgente u orientación) sigue siendo exclusivo. Cuando varios lugares comparten un número, el servidor lo da por válido si **alguno** está vigente.
+
 ## Reglas editoriales
 
 **Verificación**
 - Solo se muestra a las personas, y solo puede ofrecerlo Auxi, lo que tiene `verification.status: "verified"` **y** cuya fecha `nextReviewDue` todavía no llegó. Desde ese día deja de mostrarse hasta que alguien lo vuelva a verificar. Lo mismo vale para el servidor (`ResourceCatalog.isCurrent`).
+- Esto vale igual para una prestación que tenga verificación propia (usa la fuente propia o, si no tiene, la del establecimiento).
 - Un recurso `verified` **tiene que** traer: `verifiedAt`, `verifiedBy`, `nextReviewDue` (posterior a `verifiedAt`) y `source` con `organization` y `url` de la **fuente oficial**. Sin eso, la validación falla.
 - El plazo hasta `nextReviewDue` lo decide quien verifica, según cuánto puede cambiar el dato y cuánto riesgo tiene que esté mal. No hay un plazo fijo para todos.
 - Los demás estados (`unverified`, `needs-review`, `outdated`, `disputed`) se pueden cargar pero **no se muestran**. Si un dato cambia o dudás, pasalo a `needs-review` en lugar de dejarlo como verificado.
@@ -54,7 +81,7 @@ El servidor se construye por separado (su Docker solo ve `server/`), por eso no 
 **Datos**
 - **No inventes ni completes.** Si no sabés un dato, no lo pongas: el campo se omite o queda `null`.
 - **Horarios:** `hours: null` significa "no se sabe". Nunca se completa con 24 horas por omisión. Si abre las 24 horas, `open24h: true`; si tiene franjas, `open24h: false` y `schedule` (días 0 = domingo … 6 = sábado).
-- **Teléfonos:** `dial` es solo dígitos (con `+` al principio si es internacional): es lo que se marca (`tel:`) y con lo que se comparan los números. `display` es cómo se escribe en pantalla (`0800-333-0160`). Un mismo número no puede estar en dos recursos.
+- **Teléfonos:** `dial` es solo dígitos (con `+` al principio si es internacional): es lo que se marca (`tel:`) y con lo que se comparan los números. `display` es cómo se escribe en pantalla (`0800-333-0160`). Un número de una línea no puede estar en dos recursos (los lugares sí pueden compartir el suyo; ver arriba).
 - **Alcance (`coverage`):** todo el país, una región o área, una provincia o un municipio. Un número que sirve solo en una zona tiene que decirlo. Si un mismo organismo tiene dos números con alcances distintos, es **un solo recurso con dos contactos**, y cada contacto lleva su propio `scope`.
 - **Gratuidad (`cost`):** `free`, `paid`, `mixed` o `unknown`. No pongas `free` si no está confirmado.
 - **Ids:** `id` es estable. No se reutiliza ni se cambia, aunque cambie el nombre. Formato: minúsculas, números y guiones.
@@ -73,12 +100,12 @@ También se valida que `taxonomy.categories` coincida con las categorías reales
 
 ## Cómo lo leen la app y el servidor
 
-- **Cliente:** `index.ts` incorpora `lines/*.json` en el build (los números de emergencia no pueden depender de un pedido de red). Expone `getCurrentResources`, `getEmergencyBarResources`, `findResourceByDial`, `contactHref` y similares. Los hospitales y centros, cuando existan, se cargarán por demanda y no irán en el build.
-- **Servidor:** `ResourceCatalog` lee `data/resources.json`, lo valida al arrancar (si está mal, el servidor **no arranca**) y ofrece `findCurrentByDial`, que es con lo que se va a comprobar que un número que Auxi quiere mostrar existe, está verificado y no venció.
+- **Cliente:** `index.ts` incorpora `lines/*.json` en el build (los números de emergencia no pueden depender de un pedido de red). Expone `getCurrentResources`, `getEmergencyBarResources`, `findResourceByDial`, `contactHref` y similares, y para establecimientos `getServices` (con la herencia resuelta), `getCurrentServices`, `getCategories`, `getCurrentPlacesByCategory`, `isMappable` y `getCurrentMappablePlaces`. Los hospitales y centros, cuando existan, se cargarán por demanda y no irán en el build.
+- **Servidor:** `ResourceCatalog` lee `data/resources.json`, lo valida al arrancar (si está mal, el servidor **no arranca**) y ofrece `findCurrentByDial` (con lo que se va a comprobar que un número que Auxi quiere mostrar existe, está verificado y no venció), `current`, `currentByCategory`, `currentServices`, `currentMappablePlaces` y `categoriesOf`. **La copia del servidor ya trae las prestaciones resueltas** (la herencia la resuelve `resources-resolve.mjs`) y las categorías derivadas, así que el servidor no repite esa lógica.
 
 ## Qué viene después
 
-Esto es solo la infraestructura. Las próximas fases, cada una en su propio cambio: cargar los números actuales como `unverified`, verificarlos con fuentes oficiales, y recién ahí hacer que `numeros.md`, `emergency.ts`, el footer, el chat y `SafetyRules.java` lean de acá.
+Esto es solo la infraestructura. Las próximas fases, cada una en su propio cambio: cargar los números actuales como `unverified`, verificarlos con fuentes oficiales, y recién ahí hacer que `numeros.md`, `emergency.ts`, el footer, el chat y `SafetyRules.java` lean de acá; y, aparte, los datos de los establecimientos (primero un piloto en CABA) y las pantallas que los usan. **Dónde viven los establecimientos** (en `lines/` o en archivos por provincia que se cargan bajo demanda) se decide en esa fase de datos.
 
 ## Datos de prueba
 
@@ -89,5 +116,5 @@ Los tests usan datos inventados, que nunca van en `lines/`: `client/scripts/__fi
 1. Actualizá `resource.schema.json` y, si agregás valores permitidos, `taxonomy.json`.
 2. Actualizá `resources.types.ts` (el test `resources:test` falla si sus listas dejan de coincidir con la taxonomía).
 3. Actualizá `HealthResource.java`.
-4. Si el cambio rompe lo existente, subí `schemaVersion` en `taxonomy.json` y `SCHEMA_VERSION` en `ResourceCatalog.java`: un servidor viejo se niega a leer un formato que no conoce.
+4. Si el cambio rompe lo existente, subí `schemaVersion` (hoy está en **2**: la fase 1 hizo obligatorio `coordinates.status`) en `taxonomy.json` y `SCHEMA_VERSION` en `ResourceCatalog.java`: un servidor viejo se niega a leer un formato que no conoce.
 5. `npm run resources:sync`.

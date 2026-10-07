@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "kinds": [
     { "id": "emergency", "label": "Emergencia", "description": "Riesgo inmediato para la vida; despacha ayuda (ambulancia, bomberos, policía)." },
     { "id": "urgent-support", "label": "Apoyo urgente", "description": "Atención humana urgente que no despacha ayuda (líneas de crisis, violencia, intoxicaciones)." },
@@ -68,6 +68,56 @@
     { "id": "AR-G", "label": "Santiago del Estero" },
     { "id": "AR-V", "label": "Tierra del Fuego" },
     { "id": "AR-T", "label": "Tucumán" }
+  ],
+  "facilityTypes": [
+    { "id": "hospital", "label": "Hospital" },
+    { "id": "health-center", "label": "Centro de salud (CeSAC, CAPS)" },
+    { "id": "mental-health-center", "label": "Centro de salud mental" },
+    { "id": "zoonosis-center", "label": "Centro de zoonosis" },
+    { "id": "public-veterinary", "label": "Veterinaria pública" },
+    { "id": "counseling-center", "label": "Consejería" },
+    { "id": "other", "label": "Otro" }
+  ],
+  "serviceTypes": [
+    { "id": "primary-care", "label": "Atención primaria / clínica médica", "categories": ["salud-fisica"] },
+    { "id": "vaccination", "label": "Vacunación", "categories": ["salud-fisica"] },
+    { "id": "dentistry", "label": "Odontología", "categories": ["salud-fisica"] },
+    { "id": "ophthalmology", "label": "Oftalmología", "categories": ["salud-fisica"] },
+    { "id": "emergency-room", "label": "Guardia", "categories": ["salud-fisica"] },
+    { "id": "mental-health-care", "label": "Atención de salud mental", "categories": ["salud-mental"] },
+    { "id": "mental-health-emergency", "label": "Guardia de salud mental", "categories": ["salud-mental"] },
+    { "id": "sexual-reproductive-health", "label": "Salud sexual y reproductiva", "categories": ["esi"] },
+    { "id": "contraception", "label": "Anticonceptivos", "categories": ["esi"] },
+    { "id": "condoms", "label": "Preservativos", "categories": ["esi"] },
+    { "id": "counseling", "label": "Consejería", "categories": ["esi"] },
+    { "id": "zoonosis", "label": "Zoonosis", "categories": ["animales"] },
+    { "id": "rabies-vaccination", "label": "Vacunación antirrábica", "categories": ["animales"] },
+    { "id": "spaying-neutering", "label": "Castración", "categories": ["animales"] },
+    { "id": "veterinary-care", "label": "Atención veterinaria", "categories": ["animales"] }
+  ],
+  "appointmentModes": [
+    { "id": "required", "label": "Con turno" },
+    { "id": "recommended", "label": "Turno recomendado" },
+    { "id": "not-required", "label": "Sin turno" },
+    { "id": "unknown", "label": "No se sabe" }
+  ],
+  "jurisdictionLevels": [
+    { "id": "national", "label": "Nacional" },
+    { "id": "provincial", "label": "Provincial" },
+    { "id": "municipal", "label": "Municipal" },
+    { "id": "other", "label": "Otra" }
+  ],
+  "coordinateStatuses": [
+    { "id": "verified", "label": "Verificadas", "description": "Una persona comprobó el punto contra la fuente oficial o en el mapa. Es el único estado con el que el lugar aparece en el mapa." },
+    { "id": "unverified", "label": "Sin verificar", "description": "Punto candidato (por ejemplo de un geocodificador): no se muestra en el mapa." }
+  ],
+  "coordinateMethods": [
+    { "id": "official-dataset", "label": "Dataset oficial" },
+    { "id": "geocoded-usig", "label": "Geocodificado con USIG" },
+    { "id": "geocoded-georef", "label": "Geocodificado con Georef" },
+    { "id": "geocoded-other", "label": "Geocodificado con otro servicio" },
+    { "id": "manual-map", "label": "Marcado a mano en un mapa" },
+    { "id": "gps-survey", "label": "Medido con GPS" }
   ],
   "categories": [
     { "id": "salud-fisica", "label": "Salud física" },

@@ -11,6 +11,7 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath, pathToFileURL } from "node:url"
+import { resolveResource } from "./resources-resolve.mjs"
 import { validateDataset } from "./resources-validate.mjs"
 
 const clientRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..")
@@ -36,9 +37,9 @@ const readLines = async (linesDir) => {
   return Promise.all(names.map(async (name) => ({ name: `lines/${name}`, data: await readJson(join(linesDir, name)) })))
 }
 
-/** The server copy: deterministic (sorted by id, no dates), with LF line endings */
+/** The server copy: deterministic (sorted by id, no dates), services resolved, with LF line endings */
 export const buildServerCopy = (resources, taxonomy) => {
-  const sorted = [...resources].sort((a, b) => a.id.localeCompare(b.id, "en"))
+  const sorted = resources.map((resource) => resolveResource(resource, taxonomy)).sort((a, b) => a.id.localeCompare(b.id, "en"))
   return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: NOTICE, resources: sorted }, null, 2)}\n`
 }
 

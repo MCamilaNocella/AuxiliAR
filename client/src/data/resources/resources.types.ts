@@ -62,6 +62,50 @@ export type CategoryId =
   | "primeros-auxilios"
   | "sobre-auxiliar"
 
+/** Type of establishment (taxonomy.facilityTypes) */
+export type FacilityType =
+  | "hospital"
+  | "health-center"
+  | "mental-health-center"
+  | "zoonosis-center"
+  | "public-veterinary"
+  | "counseling-center"
+  | "other"
+
+/** What a service is (taxonomy.serviceTypes); each type belongs to categories */
+export type ServiceType =
+  | "primary-care"
+  | "vaccination"
+  | "dentistry"
+  | "ophthalmology"
+  | "emergency-room"
+  | "mental-health-care"
+  | "mental-health-emergency"
+  | "sexual-reproductive-health"
+  | "contraception"
+  | "condoms"
+  | "counseling"
+  | "zoonosis"
+  | "rabies-vaccination"
+  | "spaying-neutering"
+  | "veterinary-care"
+
+export type AppointmentMode = "required" | "recommended" | "not-required" | "unknown"
+
+/** Only verified coordinates put a place on the map */
+export type CoordinateStatus = "verified" | "unverified"
+
+/** Where the point came from */
+export type CoordinateMethod =
+  | "official-dataset"
+  | "geocoded-usig"
+  | "geocoded-georef"
+  | "geocoded-other"
+  | "manual-map"
+  | "gps-survey"
+
+export type JurisdictionLevel = "national" | "provincial" | "municipal" | "other"
+
 /** Where it serves: the whole country, a region or area, a province or a municipality */
 export type Coverage = {
   level: CoverageLevel
@@ -99,15 +143,32 @@ export type Contact = {
 
 export type Address = {
   street?: string
+  /** Street number, or "s/n" */
+  number?: string
+  /** Neighborhood (or comuna, in CABA) */
+  neighborhood?: string
   locality?: string
+  /** Departamento, partido or comuna */
+  department?: string
   province?: ProvinceCode
   postalCode?: string
+  /** How to get there, or where it is inside the premises */
+  reference?: string
+  /** Ids of the Georef API (datos.gob.ar), to search by province, department or locality */
+  georef?: { provinceId?: string, departmentId?: string, localityId?: string }
 }
 
+/** Only a place with verified coordinates is shown on the map; without them it is only in the list */
 export type Coordinates = {
   lat: number
   lng: number
   precision: "exact" | "approximate"
+  status: CoordinateStatus
+  method?: CoordinateMethod
+  /** YYYY-MM-DD */
+  verifiedAt?: string | null
+  verifiedBy?: string | null
+  note?: string
 }
 
 export type Source = {
@@ -127,6 +188,63 @@ export type Verification = {
   notes?: string
 }
 
+/** Who runs the establishment (not where it serves: that is `coverage`) */
+export type Jurisdiction = {
+  level: JurisdictionLevel
+  province?: ProvinceCode
+  organization: string
+  note?: string
+}
+
+export type Appointment = {
+  mode: AppointmentMode
+  /** How the appointment is requested */
+  howTo?: string
+  url?: string
+}
+
+/**
+ * One thing an establishment offers. It says only what is its own; the rest it inherits from the establishment
+ * (hours, cost, requirements, audience, source, verification). `hours: null` means this service's hours are not
+ * known: it does not inherit. Categories are never written: they come from `type`.
+ */
+export type Service = {
+  /** Stable, unique inside the establishment */
+  id: string
+  type: ServiceType
+  /** Only if the name of the type isn't enough */
+  name?: string
+  description?: string
+  hours?: Hours | null
+  cost?: ResourceCost
+  costNote?: string
+  requirements?: string[]
+  audience?: Audience[]
+  appointment?: Appointment
+  /** The service's own contacts, besides the establishment's */
+  contacts?: Contact[]
+  source?: Source
+  verification?: Verification
+}
+
+/** A service with everything resolved (what it inherits filled in, categories derived): what the app and the server read */
+export type ResolvedService = {
+  id: string
+  type: ServiceType
+  name?: string
+  description?: string
+  hours: Hours | null
+  cost: ResourceCost
+  costNote?: string
+  requirements: string[]
+  audience: Audience[]
+  appointment: Appointment
+  contacts: Contact[]
+  source?: Source
+  verification: Verification
+  categories: CategoryId[]
+}
+
 export type Resource = {
   /** Stable: never reused or changed */
   id: string
@@ -134,13 +252,18 @@ export type Resource = {
   /** For buttons */
   shortName?: string
   kind: ResourceKind
+  /** Type of establishment; required when it has services */
+  facilityType?: FacilityType
   description?: string
   /** What it is for, in a sentence */
   whenToUse?: string
+  /** Only for resources without services: with services, categories come from the type of each one */
   categories?: CategoryId[]
   sections?: { category: CategoryId, section: string }[]
-  contacts: Contact[]
+  /** Optional for a place (kind service); required for the rest. A place can share a number with another */
+  contacts?: Contact[]
   coverage?: Coverage
+  jurisdiction?: Jurisdiction
   hours?: Hours | null
   cost?: ResourceCost
   costNote?: string
@@ -148,6 +271,10 @@ export type Resource = {
   audience?: Audience[]
   address?: Address | null
   coordinates?: Coordinates | null
+  /** A single establishment, with everything it offers */
+  services?: Service[]
+  /** Ids in other registers (e.g. refes), to avoid loading the same establishment twice */
+  externalIds?: Record<string, string>
   source?: Source
   verification: Verification
   /** Other names people search it by */

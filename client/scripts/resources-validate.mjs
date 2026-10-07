@@ -5,7 +5,7 @@
  *  1. The structure comes from resource.schema.json, checked by a small JSON Schema validator below.
  *     It only knows the keywords that file uses (plus "x-taxonomy": the value must be an id of taxonomy.json),
  *     and refuses to load a schema with any other keyword, so the schema can't say more than what is enforced.
- *  2. Rules that cross fields or records (unique ids and numbers, verification, dates, coverage...).
+ *  2. Rules that cross fields or records (unique ids, verification, dates, services, coordinates, shared numbers...).
  */
 
 const ANNOTATIONS = ["$schema", "$id", "$defs", "$comment", "title", "description", "default", "examples"]
@@ -54,10 +54,13 @@ const taxonomyIds = (taxonomy) =>
   )
 
 const validateNode = (value, schema, ctx, path, errors) => {
+  // The target of a $ref and the keywords next to it (maxLength, description...) all apply
   if (schema.$ref) {
     const target = resolveRef(schema.$ref, ctx.root)
     if (!target) throw new Error(`$ref sin destino: ${schema.$ref}`)
-    return validateNode(value, target, ctx, path, errors)
+    const before = errors.length
+    validateNode(value, target, ctx, path, errors)
+    if (errors.length > before) return
   }
 
   if (schema.oneOf) {
@@ -111,6 +114,9 @@ const validateNode = (value, schema, ctx, path, errors) => {
     for (const [key, child] of Object.entries(value)) {
       if (properties[key]) validateNode(child, properties[key], ctx, `${path}.${key}`, errors)
       else if (schema.additionalProperties === false) errors.push(`${path}: "${key}" no existe en el esquema`)
+      else if (schema.additionalProperties && typeof schema.additionalProperties === "object") {
+        validateNode(child, schema.additionalProperties, ctx, `${path}.${key}`, errors)
+      }
     }
   }
 }
@@ -120,6 +126,25 @@ export const validateStructure = (data, schema, taxonomy, label) => {
   assertSchemaSupported(schema)
   const errors = []
   validateNode(data, schema, { root: schema, taxonomy: taxonomyIds(taxonomy) }, label, errors)
+  return errors
+}
+
+/** The taxonomy itself has to make sense: unique ids, and every service type pointing to real categories */
+export const validateTaxonomy = (taxonomy) => {
+  const errors = []
+  for (const [name, list] of Object.entries(taxonomy)) {
+    if (!Array.isArray(list)) continue
+    const ids = list.map((entry) => entry.id)
+    if (ids.some((id) => typeof id !== "string" || id === "")) errors.push(`taxonomy.${name}: todas las entradas necesitan un id`)
+    if (new Set(ids).size !== ids.length) errors.push(`taxonomy.${name}: hay ids repetidos`)
+  }
+  const categories = new Set((taxonomy.categories ?? []).map(({ id }) => id))
+  for (const { id, categories: serviceCategories } of taxonomy.serviceTypes ?? []) {
+    if (!Array.isArray(serviceCategories) || serviceCategories.length === 0) errors.push(`taxonomy.serviceTypes: "${id}" necesita al menos una categoría`)
+    for (const category of serviceCategories ?? []) {
+      if (!categories.has(category)) errors.push(`taxonomy.serviceTypes: "${id}" apunta a la categoría "${category}", que no existe`)
+    }
+  }
   return errors
 }
 
@@ -156,8 +181,9 @@ const checkHours = (hours, path, errors) => {
   })
 }
 
-const checkVerification = (resource, path, errors) => {
-  const { status, verifiedAt, verifiedBy, nextReviewDue } = resource.verification
+/** `source` is the one that applies (a service without its own uses the establishment's) */
+const checkVerification = (verification, source, path, errors) => {
+  const { status, verifiedAt, verifiedBy, nextReviewDue } = verification
   if (verifiedAt && !isCalendarDate(verifiedAt)) errors.push(`${path}.verification.verifiedAt: "${verifiedAt}" no es una fecha real`)
   if (nextReviewDue && !isCalendarDate(nextReviewDue)) errors.push(`${path}.verification.nextReviewDue: "${nextReviewDue}" no es una fecha real`)
 
@@ -165,10 +191,27 @@ const checkVerification = (resource, path, errors) => {
     if (!verifiedAt) errors.push(`${path}.verification: un recurso verificado necesita verifiedAt`)
     if (!verifiedBy) errors.push(`${path}.verification: un recurso verificado necesita verifiedBy`)
     if (!nextReviewDue) errors.push(`${path}.verification: un recurso verificado necesita nextReviewDue (sin esa fecha no se sabe cuándo vence)`)
-    if (!resource.source?.url) errors.push(`${path}: un recurso verificado necesita source.url (la fuente oficial)`)
+    if (!source?.url) errors.push(`${path}: un recurso verificado necesita source.url (la fuente oficial)`)
   }
   if (verifiedAt && nextReviewDue && isCalendarDate(verifiedAt) && isCalendarDate(nextReviewDue) && nextReviewDue <= verifiedAt) {
     errors.push(`${path}.verification: nextReviewDue (${nextReviewDue}) tiene que ser posterior a verifiedAt (${verifiedAt})`)
+  }
+}
+
+/** Rough box around Argentina (Ushuaia to Jujuy, Mendoza to Misiones): catches latitude and longitude swapped or mistyped */
+const ARGENTINA = { lat: [-56, -21], lng: [-74, -53] }
+
+const checkCoordinates = (coordinates, path, errors) => {
+  if (!coordinates) return
+  const { lat, lng, status, method, verifiedAt, verifiedBy } = coordinates
+  if (lat < ARGENTINA.lat[0] || lat > ARGENTINA.lat[1] || lng < ARGENTINA.lng[0] || lng > ARGENTINA.lng[1]) {
+    errors.push(`${path}: el punto (${lat}, ${lng}) está fuera de Argentina: ¿lat y lng invertidas?`)
+  }
+  if (verifiedAt && !isCalendarDate(verifiedAt)) errors.push(`${path}.verifiedAt: "${verifiedAt}" no es una fecha real`)
+  if (status === "verified") {
+    if (!method) errors.push(`${path}: unas coordenadas verificadas necesitan method (de dónde salió el punto)`)
+    if (!verifiedAt) errors.push(`${path}: unas coordenadas verificadas necesitan verifiedAt`)
+    if (!verifiedBy) errors.push(`${path}: unas coordenadas verificadas necesitan verifiedBy`)
   }
 }
 
@@ -178,15 +221,24 @@ const checkVerification = (resource, path, errors) => {
  * `categoryIds` (optional): the ids of the real categories, to check taxonomy.categories against them.
  */
 export const validateDataset = ({ files, schema, taxonomy, categoryIds = null }) => {
-  const errors = []
+  const errors = [...validateTaxonomy(taxonomy)]
   const resources = []
   const seenIds = new Map()
-  const seenDials = new Map()
+  // number → who uses it. A number may be shared only among places (kind "service"): a central of appointments
+  const dialOwners = new Map()
+  const seenExternalIds = new Map()
 
   if (categoryIds) {
     const listed = new Set(taxonomy.categories.map(({ id }) => id))
     for (const id of categoryIds) if (!listed.has(id)) errors.push(`taxonomy.categories: falta la categoría "${id}", que existe en la app`)
     for (const id of listed) if (!categoryIds.includes(id)) errors.push(`taxonomy.categories: "${id}" no existe como categoría en la app`)
+  }
+
+  const registerContact = (resource, contact, where) => {
+    const key = dialKey(contact.dial)
+    const entry = dialOwners.get(key) ?? { where, owners: new Map() }
+    entry.owners.set(resource.id, resource.kind)
+    dialOwners.set(key, entry)
   }
 
   for (const { name, data } of files) {
@@ -197,28 +249,68 @@ export const validateDataset = ({ files, schema, taxonomy, categoryIds = null })
     data.resources.forEach((resource, index) => {
       const path = `${name}: resources[${index}] (${resource.id})`
       resources.push(resource)
+      const services = resource.services ?? []
 
       if (seenIds.has(resource.id)) errors.push(`${path}: el id ya está en ${seenIds.get(resource.id)}`)
       else seenIds.set(resource.id, name)
 
-      resource.contacts.forEach((contact, contactIndex) => {
-        const key = dialKey(contact.dial)
+      if (resource.kind !== "service" && (resource.contacts ?? []).length === 0) {
+        errors.push(`${path}: un recurso que no es "service" necesita al menos un contacto`)
+      }
+      if (resource.facilityType && resource.kind !== "service") errors.push(`${path}: facilityType solo va en recursos "service"`)
+      if (services.length > 0) {
+        if (resource.kind !== "service") errors.push(`${path}: las prestaciones (services) solo van en recursos "service"`)
+        if (!resource.facilityType) errors.push(`${path}: un establecimiento con services necesita facilityType`)
+        if ((resource.categories ?? []).length > 0) errors.push(`${path}: con services las categorías se derivan de las prestaciones: quitá categories`)
+        if ((resource.sections ?? []).length > 0) errors.push(`${path}: con services no se escribe sections`)
+      }
+
+      ;(resource.contacts ?? []).forEach((contact, contactIndex) => {
         const where = `${name}: ${resource.id}.contacts[${contactIndex}]`
-        if (seenDials.has(key)) errors.push(`${where}: el número ${contact.dial} ya está en ${seenDials.get(key)}`)
-        else seenDials.set(key, `${name}: ${resource.id}`)
+        registerContact(resource, contact, where)
         checkCoverage(contact.scope, `${where}.scope`, errors)
         checkHours(contact.hours, `${where}.hours`, errors)
       })
 
+      const serviceIds = new Set()
+      services.forEach((service, serviceIndex) => {
+        const where = `${path}.services[${serviceIndex}] (${service.id})`
+        if (serviceIds.has(service.id)) errors.push(`${where}: el id ya está en otra prestación de este establecimiento`)
+        else serviceIds.add(service.id)
+        checkHours(service.hours, `${where}.hours`, errors)
+        ;(service.contacts ?? []).forEach((contact, contactIndex) => {
+          const contactWhere = `${name}: ${resource.id}.services[${serviceIndex}].contacts[${contactIndex}]`
+          registerContact(resource, contact, contactWhere)
+          checkCoverage(contact.scope, `${contactWhere}.scope`, errors)
+          checkHours(contact.hours, `${contactWhere}.hours`, errors)
+        })
+        if (service.verification) checkVerification(service.verification, service.source ?? resource.source, where, errors)
+      })
+
       checkCoverage(resource.coverage, `${path}.coverage`, errors)
       checkHours(resource.hours, `${path}.hours`, errors)
-      checkVerification(resource, path, errors)
+      checkVerification(resource.verification, resource.source, path, errors)
+      checkCoordinates(resource.coordinates, `${path}.coordinates`, errors)
 
       const categories = resource.categories ?? []
       for (const { category } of resource.sections ?? []) {
         if (!categories.includes(category)) errors.push(`${path}.sections: la categoría "${category}" tiene que estar también en categories`)
       }
+
+      for (const [key, value] of Object.entries(resource.externalIds ?? {})) {
+        if (!/^[a-z][a-z0-9-]*$/.test(key)) errors.push(`${path}.externalIds: la clave "${key}" tiene que estar en minúsculas y guiones`)
+        const id = `${key}:${value}`
+        if (seenExternalIds.has(id) && seenExternalIds.get(id) !== resource.id) {
+          errors.push(`${path}.externalIds.${key}: "${value}" ya está en ${seenExternalIds.get(id)} (¿el mismo establecimiento cargado dos veces?)`)
+        } else seenExternalIds.set(id, resource.id)
+      }
     })
+  }
+
+  for (const [key, { where, owners }] of dialOwners) {
+    if (owners.size > 1 && [...owners.values()].some((kind) => kind !== "service")) {
+      errors.push(`${where}: el número ${key} está en más de un recurso (${[...owners.keys()].join(", ")}) y alguno no es un "service": solo los lugares pueden compartir un número`)
+    }
   }
 
   return { errors, resources: errors.length === 0 ? resources : [] }

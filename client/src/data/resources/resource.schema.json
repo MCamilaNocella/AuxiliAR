@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "resource.schema.json",
   "title": "Archivo de recursos de AuxiliAR",
-  "description": "Estructura de cada archivo de lines/. Los valores permitidos de los campos con x-taxonomy están en taxonomy.json; las reglas que cruzan campos (ids únicos, verificación, fechas) las revisa client/scripts/resources-validate.mjs.",
+  "description": "Estructura de cada archivo de lines/. Los valores permitidos de los campos con x-taxonomy están en taxonomy.json; las reglas que cruzan campos (ids únicos, verificación, fechas, prestaciones, coordenadas) las revisa client/scripts/resources-validate.mjs.",
   "type": "object",
   "required": ["resources"],
   "additionalProperties": false,
@@ -23,6 +23,10 @@
       "type": "string",
       "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
       "description": "Hora HH:mm, de 24 horas."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
     },
     "coverage": {
       "type": "object",
@@ -95,19 +99,39 @@
       "additionalProperties": false,
       "properties": {
         "street": { "type": "string", "minLength": 1 },
+        "number": { "type": "string", "minLength": 1, "description": "Altura, o \"s/n\"." },
+        "neighborhood": { "type": "string", "minLength": 1, "description": "Barrio (o comuna, en CABA)." },
         "locality": { "type": "string", "minLength": 1 },
+        "department": { "type": "string", "minLength": 1, "description": "Departamento, partido o comuna." },
         "province": { "type": "string", "x-taxonomy": "provinces" },
-        "postalCode": { "type": "string", "minLength": 1 }
+        "postalCode": { "type": "string", "minLength": 1 },
+        "reference": { "type": "string", "minLength": 1, "description": "Cómo llegar o dónde está dentro del predio (\"dentro del hospital\", piso, entrada)." },
+        "georef": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Ids de la API Georef de datos.gob.ar, para buscar por provincia, departamento o localidad sin depender del texto.",
+          "properties": {
+            "provinceId": { "type": "string", "minLength": 1 },
+            "departmentId": { "type": "string", "minLength": 1 },
+            "localityId": { "type": "string", "minLength": 1 }
+          }
+        }
       }
     },
     "coordinates": {
       "type": ["object", "null"],
-      "required": ["lat", "lng", "precision"],
+      "required": ["lat", "lng", "precision", "status"],
       "additionalProperties": false,
+      "description": "Solo un lugar con status verified aparece en el mapa. Una dirección sin coordenadas verificadas va solo en la lista.",
       "properties": {
         "lat": { "type": "number", "minimum": -90, "maximum": 90 },
         "lng": { "type": "number", "minimum": -180, "maximum": 180 },
-        "precision": { "type": "string", "enum": ["exact", "approximate"] }
+        "precision": { "type": "string", "enum": ["exact", "approximate"] },
+        "status": { "type": "string", "x-taxonomy": "coordinateStatuses" },
+        "method": { "type": "string", "x-taxonomy": "coordinateMethods", "description": "De dónde salió el punto." },
+        "verifiedAt": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "verifiedBy": { "type": ["string", "null"], "description": "Quién comprobó el punto (iniciales o rol)." },
+        "note": { "type": "string", "minLength": 1 }
       }
     },
     "source": {
@@ -133,36 +157,87 @@
         "notes": { "type": "string", "minLength": 1 }
       }
     },
-    "resource": {
+    "jurisdiction": {
       "type": "object",
-      "required": ["id", "name", "kind", "contacts", "verification"],
+      "required": ["level", "organization"],
+      "additionalProperties": false,
+      "description": "Quién administra el establecimiento (no confundir con coverage, que es dónde sirve).",
+      "properties": {
+        "level": { "type": "string", "x-taxonomy": "jurisdictionLevels" },
+        "province": { "type": "string", "x-taxonomy": "provinces" },
+        "organization": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "appointment": {
+      "type": "object",
+      "required": ["mode"],
       "additionalProperties": false,
       "properties": {
-        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 80, "description": "Identificador estable. No se reutiliza ni se cambia." },
+        "mode": { "type": "string", "x-taxonomy": "appointmentModes" },
+        "howTo": { "type": "string", "minLength": 1, "description": "Cómo se pide el turno." },
+        "url": { "type": "string", "pattern": "^https?://\\S+$" }
+      }
+    },
+    "service": {
+      "type": "object",
+      "required": ["id", "type"],
+      "additionalProperties": false,
+      "description": "Una prestación del establecimiento. Lo que no se indica acá lo hereda del establecimiento: horarios, gratuidad, requisitos, destinatarios, fuente y verificación. hours: null significa que el horario de esta prestación no se sabe (no hereda).",
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "maxLength": 60, "description": "Estable, único dentro del establecimiento." },
+        "type": { "type": "string", "x-taxonomy": "serviceTypes" },
+        "name": { "type": "string", "minLength": 1, "description": "Solo si el nombre del tipo no alcanza." },
+        "description": { "type": "string", "minLength": 1 },
+        "hours": { "$ref": "#/$defs/hours" },
+        "cost": { "type": "string", "x-taxonomy": "costs" },
+        "costNote": { "type": "string", "minLength": 1 },
+        "requirements": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "audience": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "x-taxonomy": "audiences" }
+        },
+        "appointment": { "$ref": "#/$defs/appointment" },
+        "contacts": { "type": "array", "items": { "$ref": "#/$defs/contact" }, "description": "Contactos propios de la prestación, además de los del establecimiento." },
+        "source": { "$ref": "#/$defs/source" },
+        "verification": { "$ref": "#/$defs/verification" }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "required": ["id", "name", "kind", "verification"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "maxLength": 80, "description": "Identificador estable. No se reutiliza ni se cambia." },
         "name": { "type": "string", "minLength": 1 },
         "shortName": { "type": "string", "minLength": 1, "description": "Para botones." },
         "kind": { "type": "string", "x-taxonomy": "kinds" },
+        "facilityType": { "type": "string", "x-taxonomy": "facilityTypes", "description": "Tipo de establecimiento. Solo para kind service; obligatorio si tiene services." },
         "description": { "type": "string", "minLength": 1 },
         "whenToUse": { "type": "string", "minLength": 1, "description": "Para qué sirve, en una frase." },
         "categories": {
           "type": "array",
           "uniqueItems": true,
+          "description": "Solo para recursos sin services. Con services, las categorías se derivan del tipo de cada prestación (taxonomy.serviceTypes) y este campo no se escribe.",
           "items": { "type": "string", "x-taxonomy": "categories" }
         },
         "sections": {
           "type": "array",
+          "description": "Solo para recursos sin services.",
           "items": {
             "type": "object",
             "required": ["category", "section"],
             "additionalProperties": false,
             "properties": {
               "category": { "type": "string", "x-taxonomy": "categories" },
-              "section": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" }
+              "section": { "$ref": "#/$defs/slug" }
             }
           }
         },
-        "contacts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/contact" } },
+        "contacts": { "type": "array", "items": { "$ref": "#/$defs/contact" }, "description": "Opcional para un servicio (kind service); obligatorio para el resto. Un número puede repetirse entre servicios (una central compartida)." },
         "coverage": { "$ref": "#/$defs/coverage" },
+        "jurisdiction": { "$ref": "#/$defs/jurisdiction" },
         "hours": { "$ref": "#/$defs/hours" },
         "cost": { "type": "string", "x-taxonomy": "costs" },
         "costNote": { "type": "string", "minLength": 1 },
@@ -174,6 +249,16 @@
         },
         "address": { "$ref": "#/$defs/address" },
         "coordinates": { "$ref": "#/$defs/coordinates" },
+        "services": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/service" },
+          "description": "Prestaciones de un establecimiento. Un establecimiento se carga una sola vez, con todas sus prestaciones."
+        },
+        "externalIds": {
+          "type": "object",
+          "description": "Identificadores en otros registros (por ejemplo refes), para no duplicar un establecimiento al cruzarlo con datasets oficiales. Clave en minúsculas y guiones.",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
         "source": { "$ref": "#/$defs/source" },
         "verification": { "$ref": "#/$defs/verification" },
         "aliases": { "type": "array", "items": { "type": "string", "minLength": 1 }, "description": "Otros nombres con los que la gente lo busca." },
