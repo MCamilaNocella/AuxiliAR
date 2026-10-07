@@ -1,0 +1,53 @@
+{
+  "id": "caba-cesac",
+  "label": "Centros de Salud y Acción Comunitaria (CESAC)",
+  "adapter": "caba-cesac",
+  "province": "AR-C",
+  "locality": "Ciudad Autónoma de Buenos Aires",
+  "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires",
+  "datasetUrl": "https://data.buenosaires.gob.ar/dataset/centros-salud-accion-comunitaria-cesac",
+  "downloadUrl": "https://data.buenosaires.gob.ar/dataset/centros-salud-accion-comunitaria-cesac/resource/d64d33e4-0e83-4862-b102-2949c0134926/download",
+  "downloadNote": "El portal rechaza pedidos sin User-Agent de navegador (devuelve una página 'Request Rejected' con código 200): ingest descarta esa respuesta.",
+  "format": "csv",
+  "encoding": "utf-8",
+  "license": "CC-BY-2.5-AR",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5/ar/",
+  "attribution": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Centros de Salud y Acción Comunitaria (CESAC)», licencia CC-BY-2.5-AR.",
+  "updateFrequency": "quarterly",
+  "crs": {
+    "declared": "EPSG:4326",
+    "axisOrder": "WKT POINT (lng lat)"
+  },
+  "idField": "id",
+  "idStrategy": "official-id",
+  "expectedBox": {
+    "south": -34.71,
+    "west": -58.54,
+    "north": -34.5,
+    "east": -58.29
+  },
+  "jurisdiction": {
+    "level": "other",
+    "province": "AR-C",
+    "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+  },
+  "mapping": "caba-cesac",
+  "knownLimits": [
+    "El campo especialid viene cortado por el publicador (254 bytes de UTF-8): el último ítem puede ser un fragmento.",
+    "El id del dataset no es el número del CeSAC (el id 46 es el CeSAC N° 47).",
+    "No informa horarios, turnos ni gratuidad."
+  ],
+  "supplements": {
+    "pages": {
+      "urlField": "detailUrl"
+    }
+  },
+  "current": {
+    "file": "curation/raw/caba-cesac/2026-10-07.csv",
+    "sha256": "9136d7b34b4e5ea00431664f75fa81ae32da14aea5ce153a8f7c5c9715bd9c2a",
+    "bytes": 21274,
+    "rows": 50,
+    "retrievedAt": "2026-10-07",
+    "officialUpdatedAt": "2026-10-02"
+  }
+}

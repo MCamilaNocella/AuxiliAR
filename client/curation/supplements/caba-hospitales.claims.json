@@ -1,0 +1,584 @@
+{
+  "source": "caba-hospitales",
+  "note": "AFIRMACIONES de fuentes oficiales complementarias sobre las guardias de los Hospitales Generales de Agudos, para revisión editorial. Cada una cita textualmente la página oficial guardada en caba-hospitales.pages.json (un test comprueba que la cita está ahí). 'proposal: approvable' = se propone aprobar; 'doubtful' = hay una duda y no se publica. Nada está aprobado: con approved:false el pipeline no publica nada.",
+  "approvedBy": null,
+  "approvedAt": null,
+  "sharedPages": {
+    "hospitales-generales-de-agudos": {
+      "title": "Hospitales Generales de Agudos",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/centros-de-salud-y-hospitales/hospitales-generales-de-agudos",
+      "retrievedAt": "2026-10-07"
+    },
+    "guardias-hospitalarias": {
+      "title": "Guardias hospitalarias",
+      "url": "https://buenosaires.gob.ar/gcaba_historico/salud/guardias-hospitalarias",
+      "retrievedAt": "2026-10-07"
+    }
+  },
+  "sourceInfo": {
+    "organization": "Gobierno de la Ciudad de Buenos Aires",
+    "license": "CC-BY-2.5-AR"
+  },
+  "claims": [
+    {
+      "key": "hospital-general-de-agudos-a-zubizarreta",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Zubizarreta"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-b-rivadavia",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Rivadavia"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-cecilia-grierson",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Grierson"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-d-velez-sarsfield",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Velez Sarsfield"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-donacion-f-santojanni",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Santojanni"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-c-argerich",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Argerich"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-c-durand",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Durand"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-e-tornu",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Tornú"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-i-pirovano",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Pirovano"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-j-a-fernandez",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Fernández"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-t-alvarez",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Álvarez"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-j-a-penna",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Penna"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-j-m-ramos-mejia",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Ramos Mejía"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-p-pinero",
+      "service": {
+        "id": "guardia",
+        "type": "emergency-room",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "hospitales-generales-de-agudos",
+        "quote": "cuentan con guardia las 24 hs del día los 365 días del año",
+        "alsoSaid": "cuenta con 14 Hospitales Generales de Agudos",
+        "listedAs": "Hospital Piñero"
+      },
+      "proposal": "approvable",
+      "approved": false,
+      "note": "La página oficial dice que los 14 Hospitales Generales de Agudos tienen guardia las 24 hs, los 365 días del año. NO dice que sea sin turno, ni gratuita, ni qué atiende: eso no se afirma."
+    },
+    {
+      "key": "hospital-general-de-agudos-a-zubizarreta",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Abel Zubizarreta",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-b-rivadavia",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Bernardino Rivadavia",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-cecilia-grierson",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dra. Cecilia Grierson",
+        "hasGuardiaEntry": false
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general; además este hospital aparece sin teléfono de guardia. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-d-velez-sarsfield",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dalmacio Vélez Sarfield",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-donacion-f-santojanni",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Donación Francisco Santojanni",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-c-argerich",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Cosme Argerich",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-c-durand",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos DR. Carlos Durand",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-e-tornu",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Enrique Tornú",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-i-pirovano",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Ignacio Pirovano",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-j-a-fernandez",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos DR. Juan A. Fernandez",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-t-alvarez",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Teodoro Álvarez",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-j-a-penna",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. José Penna",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-j-m-ramos-mejia",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. José María Ramos Mejía",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    },
+    {
+      "key": "hospital-general-de-agudos-p-pinero",
+      "service": {
+        "id": "guardia-salud-mental",
+        "type": "mental-health-emergency",
+        "hours": {
+          "open24h": true,
+          "note": "Todos los días del año."
+        }
+      },
+      "evidence": {
+        "page": "guardias-hospitalarias",
+        "quote": "las guardias de Salud Mental del Gobierno de la Ciudad de Buenos Aires las 24hs, los 365 días del año",
+        "listedAs": "Hospital General de Agudos Dr. Parmenio Piñero",
+        "hasGuardiaEntry": true
+      },
+      "proposal": "doubtful",
+      "approved": false,
+      "note": "La página lista al hospital bajo 'Guardias de Salud Mental' (24 hs, 365 días) pero no aclara si el teléfono 'Guardia' que figura es el de salud mental o el general. Requiere confirmación antes de afirmarlo."
+    }
+  ]
+}

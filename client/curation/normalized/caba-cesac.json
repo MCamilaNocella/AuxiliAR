@@ -1,0 +1,3089 @@
+{
+  "source": "caba-cesac",
+  "adapter": "caba-cesac",
+  "retrievedAt": "2026-10-07",
+  "officialUpdatedAt": "2026-10-02",
+  "sha256": "9136d7b34b4e5ea00431664f75fa81ae32da14aea5ce153a8f7c5c9715bd9c2a",
+  "count": 50,
+  "records": [
+    {
+      "source": "caba-cesac",
+      "key": "1",
+      "keyStrategy": "official-id",
+      "rowNumber": 2,
+      "rowHash": "fa1f8ccc191432e1",
+      "name": "Barracas 1 (CeSAC N° 1)",
+      "shortName": "CeSAC Nº 1",
+      "officialNumber": "1",
+      "idHint": "cesac-1",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Velez Sarsfield Av. 1271, Barrio 21-24",
+        "street": "Velez Sarsfield Av.",
+        "number": "1271",
+        "reference": "Barrio 21-24",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213601",
+          "display": "2821-3601"
+        },
+        {
+          "dial": "+541143020059",
+          "display": "4302-0059"
+        },
+        {
+          "dial": "+541143032634",
+          "display": "4303-2634"
+        }
+      ],
+      "phoneFragments": [
+        "5005"
+      ],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-1",
+      "coordinates": {
+        "lat": -34.6492744535276,
+        "lng": -58.38938080618587,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.38938080618587,
+          "y": -34.6492744535276,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Dermatología",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Sociología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "2",
+      "keyStrategy": "official-id",
+      "rowNumber": 3,
+      "rowHash": "8068db5f226a5841",
+      "name": "Villa Pueyrredón (CeSAC N° 2)",
+      "shortName": "CeSAC Nº 2",
+      "officialNumber": "2",
+      "idHint": "cesac-2",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Terrada 5850, Barrio Albarellos",
+        "street": "Terrada",
+        "number": "5850",
+        "reference": "Barrio Albarellos",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Pueyrredon",
+        "comuna": "Comuna 12"
+      },
+      "phones": [
+        {
+          "dial": "+541128213602",
+          "display": "2821-3602"
+        },
+        {
+          "dial": "+541145729520",
+          "display": "4572-9520"
+        }
+      ],
+      "phoneFragments": [
+        "6798"
+      ],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-2",
+      "coordinates": {
+        "lat": -34.57655104142053,
+        "lng": -58.50950355583599,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.50950355583599,
+          "y": -34.57655104142053,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psiquiatría",
+        "Tocoginecología"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. I. Pirovano",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "3",
+      "keyStrategy": "official-id",
+      "rowNumber": 4,
+      "rowHash": "63275d0c9dcf6a91",
+      "name": "Villa Lugano 9 (CeSAC N° 3)",
+      "shortName": "CeSAC Nº 3",
+      "officialNumber": "3",
+      "idHint": "cesac-3",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Soldado De La Frontera Av. 5144, Barrio Gral. Savio (ex Lugano I y II)",
+        "street": "Soldado de la Frontera Av.",
+        "number": "5144",
+        "reference": "Barrio Gral. Savio (ex Lugano I y II)",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213603",
+          "display": "2821-3603"
+        },
+        {
+          "dial": "+541146057823",
+          "display": "4605-7823"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-3",
+      "coordinates": {
+        "lat": -34.68463871592785,
+        "lng": -58.464336857206874,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.464336857206874,
+          "y": -34.68463871592785,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Ecografía",
+        "Farmacéutica",
+        "Medicina Familiar",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Cecilia Grierson",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "4",
+      "keyStrategy": "official-id",
+      "rowNumber": 5,
+      "rowHash": "80c436ef92b57df3",
+      "name": "Mataderos 1 (CeSAC N° 4)",
+      "shortName": "CeSAC Nº 4",
+      "officialNumber": "4",
+      "idHint": "cesac-4",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Alberdi, Juan Bautista Av. y Pilar",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Mataderos",
+        "comuna": "Comuna 9"
+      },
+      "phones": [
+        {
+          "dial": "+541128213604",
+          "display": "2821-3604"
+        },
+        {
+          "dial": "+541146866660",
+          "display": "4686-6660"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-4",
+      "coordinates": {
+        "lat": -34.655853000000015,
+        "lng": -58.506665000000005,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.506665000000005,
+          "y": -34.655853000000015,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "5",
+      "keyStrategy": "official-id",
+      "rowNumber": 6,
+      "rowHash": "64c3e1a406605017",
+      "name": "Villa Lugano 1 (CeSAC N° 5)",
+      "shortName": "CeSAC Nº 5",
+      "officialNumber": "5",
+      "idHint": "cesac-5",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Piedra Buena Av. 3140",
+        "street": "Piedra Buena Av.",
+        "number": "3140",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213605",
+          "display": "2821-3605"
+        },
+        {
+          "dial": "+541146864799",
+          "display": "4686-4799"
+        },
+        {
+          "dial": "+541146871672",
+          "display": "4687-1672"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-5",
+      "coordinates": {
+        "lat": -34.67046307523486,
+        "lng": -58.49512662384964,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.49512662384964,
+          "y": -34.67046307523486,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Anatomía Patológica",
+        "Antropología",
+        "Clínica Médica",
+        "Ecografía",
+        "Farmacéutica",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "6",
+      "keyStrategy": "official-id",
+      "rowNumber": 7,
+      "rowHash": "55c129e94afe5d80",
+      "name": "Villa Soldati 1 (CeSAC N° 6)",
+      "shortName": "CeSAC Nº 6",
+      "officialNumber": "6",
+      "idHint": "cesac-6",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Acosta, Mariano 3673",
+        "street": "Acosta, Mariano",
+        "number": "3673",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Villa Soldati",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213606",
+          "display": "2821-3606"
+        },
+        {
+          "dial": "+541149184879",
+          "display": "4918-4879"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-6",
+      "coordinates": {
+        "lat": -34.66677100000002,
+        "lng": -58.44144400000001,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.44144400000001,
+          "y": -34.66677100000002,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Salud Escolar",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "7",
+      "keyStrategy": "official-id",
+      "rowNumber": 8,
+      "rowHash": "b1a241cc3d3313dc",
+      "name": "Villa Lugano 2 (CeSAC N° 7)",
+      "shortName": "CeSAC Nº 7",
+      "officialNumber": "7",
+      "idHint": "cesac-7",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "2 De Abril De 1982 y Montiel, Barrio Piedrabuena",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213607",
+          "display": "2821-3607"
+        },
+        {
+          "dial": "+541146025161",
+          "display": "4602-5161"
+        },
+        {
+          "dial": "+541146012819",
+          "display": "4601-2819"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-7",
+      "coordinates": {
+        "lat": -34.67882400000001,
+        "lng": -58.49190000000002,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.49190000000002,
+          "y": -34.67882400000001,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "8",
+      "keyStrategy": "official-id",
+      "rowNumber": 9,
+      "rowHash": "e6be6821e9d89a0f",
+      "name": "Barracas 2 (CeSAC N° 8)",
+      "shortName": "CeSAC Nº 8",
+      "officialNumber": "8",
+      "idHint": "cesac-8",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Cruz, Osvaldo y Luna, Barrio 21-24",
+        "street": "Cruz, Osvaldo y Luna, Barrio",
+        "number": "21",
+        "reference": "24",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213608",
+          "display": "2821-3608"
+        },
+        {
+          "dial": "+541143023825",
+          "display": "4302-3825"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-8",
+      "coordinates": {
+        "lat": -34.65604188677472,
+        "lng": -58.397365308731274,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.397365308731274,
+          "y": -34.65604188677472,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Farmacéutica",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Psiquiatría",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "9",
+      "keyStrategy": "official-id",
+      "rowNumber": 10,
+      "rowHash": "d4584849da259c5c",
+      "name": "La Boca 1 (CeSAC N° 9)",
+      "shortName": "CeSAC Nº 9",
+      "officialNumber": "9",
+      "idHint": "cesac-9",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Irala 1254",
+        "street": "Irala",
+        "number": "1254",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "La Boca",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213609",
+          "display": "2821-3609"
+        },
+        {
+          "dial": "+541143029983",
+          "display": "4302-9983"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/cesac-9",
+      "coordinates": {
+        "lat": -34.640105339868605,
+        "lng": -58.36591218054233,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.36591218054233,
+          "y": -34.640105339868605,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Sociología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr C. Argerich",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "10",
+      "keyStrategy": "official-id",
+      "rowNumber": 11,
+      "rowHash": "a7cb078c621b0a4f",
+      "name": "Parque Patricios 1 (CeSAC N° 10)",
+      "shortName": "CeSAC Nº 10",
+      "officialNumber": "10",
+      "idHint": "cesac-10",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Alcorta, Amancio Av. 1402",
+        "street": "Alcorta, Amancio Av.",
+        "number": "1402",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213610",
+          "display": "2821-3610"
+        },
+        {
+          "dial": "+541143042002",
+          "display": "4304-2002"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-10",
+      "coordinates": {
+        "lat": -34.63341939052826,
+        "lng": -58.38349859472712,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.38349859472712,
+          "y": -34.63341939052826,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Diabetología",
+        "Ecografía",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Kinesiología",
+        "Neurología",
+        "Nutrición",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Servicio Social"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "11",
+      "keyStrategy": "official-id",
+      "rowNumber": 12,
+      "rowHash": "c425c1c80f5e1df8",
+      "name": "Balvanera (CeSAC N° 11)",
+      "shortName": "CeSAC Nº 11",
+      "officialNumber": "11",
+      "idHint": "cesac-11",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Aguero 940",
+        "street": "Aguero",
+        "number": "940",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Balvanera",
+        "comuna": "Comuna 3"
+      },
+      "phones": [
+        {
+          "dial": "+541128213611",
+          "display": "2821-3611"
+        },
+        {
+          "dial": "+541148641446",
+          "display": "4864-1446"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-11",
+      "coordinates": {
+        "lat": -34.598847211905706,
+        "lng": -58.410690577710724,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.410690577710724,
+          "y": -34.598847211905706,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Kinesiología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos J. M. Ramos Mejia",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "12",
+      "keyStrategy": "official-id",
+      "rowNumber": 13,
+      "rowHash": "a4b1ac0ebfe9eaac",
+      "name": "Villa Urquiza (CeSAC N° 12)",
+      "shortName": "CeSAC Nº 12",
+      "officialNumber": "12",
+      "idHint": "cesac-12",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Olazabal Av. 3960",
+        "street": "Olazabal Av.",
+        "number": "3960",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Urquiza",
+        "comuna": "Comuna 12"
+      },
+      "phones": [
+        {
+          "dial": "+541128213612",
+          "display": "2821-3612"
+        },
+        {
+          "dial": "+541145432494",
+          "display": "4543-2494"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-12",
+      "coordinates": {
+        "lat": -34.56989944722452,
+        "lng": -58.474181617278866,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.474181617278866,
+          "y": -34.56989944722452,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Epidemiología",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Odontología Pediátrica",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr. I. Pirovano",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "13",
+      "keyStrategy": "official-id",
+      "rowNumber": 14,
+      "rowHash": "97467759f718a46e",
+      "name": "Parque Avellaneda (CeSAC N° 13)",
+      "shortName": "CeSAC Nº 13",
+      "officialNumber": "13",
+      "idHint": "cesac-13",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Directorio Av. 4210",
+        "street": "Directorio Av.",
+        "number": "4210",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Parque Avellaneda",
+        "comuna": "Comuna 9"
+      },
+      "phones": [
+        {
+          "dial": "+541128213613",
+          "display": "2821-3613"
+        },
+        {
+          "dial": "+541146715693",
+          "display": "4671-5693"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-13",
+      "coordinates": {
+        "lat": -34.64347200000002,
+        "lng": -58.48202500000002,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.48202500000002,
+          "y": -34.64347200000002,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Salud Escolar",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "14",
+      "keyStrategy": "official-id",
+      "rowNumber": 15,
+      "rowHash": "73c723f6c0d30f05",
+      "name": "Villa Lugano 3 (CeSAC N° 14)",
+      "shortName": "CeSAC Nº 14",
+      "officialNumber": "14",
+      "idHint": "cesac-14",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Casco, Horacio, Dr. 4446",
+        "street": "Casco, Horacio, Dr.",
+        "number": "4446",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Parque Avellaneda",
+        "comuna": "Comuna 9"
+      },
+      "phones": [
+        {
+          "dial": "+541128213614",
+          "display": "2821-3614"
+        },
+        {
+          "dial": "+541146026527",
+          "display": "4602-6527"
+        }
+      ],
+      "phoneFragments": [
+        "5928"
+      ],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-14",
+      "coordinates": {
+        "lat": -34.66032309160519,
+        "lng": -58.47425100703917,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.47425100703917,
+          "y": -34.66032309160519,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psiquiatría",
+        "Servicio Social",
+        "Tocoginecología"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "15",
+      "keyStrategy": "official-id",
+      "rowNumber": 16,
+      "rowHash": "eafcbbef11e7f9f0",
+      "name": "San Telmo (CeSAC N° 15)",
+      "shortName": "CeSAC Nº 15",
+      "officialNumber": "15",
+      "idHint": "cesac-15",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Humberto 1° 470, Rodrigo Bueno",
+        "street": "Humberto 1°",
+        "number": "470",
+        "reference": "Rodrigo Bueno",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "San Telmo",
+        "comuna": "Comuna 1"
+      },
+      "phones": [
+        {
+          "dial": "+541128213615",
+          "display": "2821-3615"
+        },
+        {
+          "dial": "+541143614938",
+          "display": "4361-4938"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-15",
+      "coordinates": {
+        "lat": -34.620780733509214,
+        "lng": -58.37246327912388,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.37246327912388,
+          "y": -34.620780733509214,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Ciencias Educación",
+        "Clínica Médica",
+        "Ecografía",
+        "Enfermería",
+        "Farmacéutica",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr C. Argerich",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "16",
+      "keyStrategy": "official-id",
+      "rowNumber": 17,
+      "rowHash": "586f0851c4afd434",
+      "name": "Barracas 3 (CeSAC N° 16)",
+      "shortName": "CeSAC Nº 16",
+      "officialNumber": "16",
+      "idHint": "cesac-16",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Cruz, Osvaldo Av. 2055",
+        "street": "Cruz, Osvaldo Av.",
+        "number": "2055",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213616",
+          "display": "2821-3616"
+        },
+        {
+          "dial": "+541143016411",
+          "display": "4301-6411"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-16",
+      "coordinates": {
+        "lat": -34.65186950803099,
+        "lng": -58.37470540903001,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.37470540903001,
+          "y": -34.65186950803099,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Dermatología",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Tocoginecología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "17",
+      "keyStrategy": "official-id",
+      "rowNumber": 18,
+      "rowHash": "a39e664e127beaa3",
+      "name": "Palermo 1 (CeSAC N° 17)",
+      "shortName": "CeSAC Nº 17",
+      "officialNumber": "17",
+      "idHint": "cesac-17",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "El Salvador 4087",
+        "street": "El Salvador",
+        "number": "4087",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Palermo",
+        "comuna": "Comuna 14"
+      },
+      "phones": [
+        {
+          "dial": "+541128213617",
+          "display": "2821-3617"
+        },
+        {
+          "dial": "+541148621886",
+          "display": "4862-1886"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-17",
+      "coordinates": {
+        "lat": -34.592728641472995,
+        "lng": -58.420525018744215,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.420525018744215,
+          "y": -34.592728641472995,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Fonoaudiología",
+        "Ginecología",
+        "Laboratorio",
+        "Medicina Familiar",
+        "Medico Diagnóstico por Imágenes",
+        "Obstetricia",
+        "Orientación Vocacional",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr. J. A. Fernandez",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "18",
+      "keyStrategy": "official-id",
+      "rowNumber": 19,
+      "rowHash": "fdcefa8e079eb4c6",
+      "name": "Villa Lugano 4 (CeSAC N° 18)",
+      "shortName": "CeSAC Nº 18",
+      "officialNumber": "18",
+      "idHint": "cesac-18",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Corvalan y Fernandez De La Cruz, F., Gral. Av., Barrio 20",
+        "street": "Corvalan y Fernandez de la Cruz, F., Gral. Av., Barrio",
+        "number": "20",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213618",
+          "display": "2821-3618"
+        },
+        {
+          "dial": "+541146387226",
+          "display": "4638-7226"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/establecimientos-hospitales-",
+      "coordinates": {
+        "lat": -34.67474400000001,
+        "lng": -58.462947000000014,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.462947000000014,
+          "y": -34.67474400000001,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Kinesiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Tocoginecología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Cecilia Grierson",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "19",
+      "keyStrategy": "official-id",
+      "rowNumber": 20,
+      "rowHash": "1cf86c41f3395edd",
+      "name": "Flores 1 (CeSAC N° 19)",
+      "shortName": "CeSAC Nº 19",
+      "officialNumber": "19",
+      "idHint": "cesac-19",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Curapaligue 1905",
+        "street": "Curapaligue",
+        "number": "1905",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Flores",
+        "comuna": "Comuna 7"
+      },
+      "phones": [
+        {
+          "dial": "+541128213619",
+          "display": "2821-3619"
+        },
+        {
+          "dial": "+541149250992",
+          "display": "4925-0992"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-19",
+      "coordinates": {
+        "lat": -34.643207000000004,
+        "lng": -58.44222100000002,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.44222100000002,
+          "y": -34.643207000000004,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Psiquiatría Infantil",
+        "Terapia Ocupacional"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "20",
+      "keyStrategy": "official-id",
+      "rowNumber": 21,
+      "rowHash": "084e23f20f6c1515",
+      "name": "Flores 2 (CeSAC N° 20)",
+      "shortName": "CeSAC Nº 20",
+      "officialNumber": "20",
+      "idHint": "cesac-20",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Charrua y Janer, Ana Maria, Barrio Padre Ricciardelli (Villa 1-11-14)",
+        "street": "Charrua y Janer, Ana Maria, Barrio Padre Ricciardelli (Villa",
+        "number": "1",
+        "reference": "11-14)",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Flores",
+        "comuna": "Comuna 7"
+      },
+      "phones": [
+        {
+          "dial": "+541128213620",
+          "display": "2821-3620"
+        },
+        {
+          "dial": "+541149192144",
+          "display": "4919-2144"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-20",
+      "coordinates": {
+        "lat": -34.649535602837204,
+        "lng": -58.43806205101502,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.43806205101502,
+          "y": -34.649535602837204,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Antropología",
+        "Enfermería",
+        "Farmacéutica",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "21",
+      "keyStrategy": "official-id",
+      "rowNumber": 22,
+      "rowHash": "0d5cd1ff2653dce4",
+      "name": "Retiro 1 (CeSAC N° 21)",
+      "shortName": "CeSAC Nº 21",
+      "officialNumber": "21",
+      "idHint": "cesac-21",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Gendarmeria Nacional Av. y Ulla Ulla, Barrio Padre Mugica",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Retiro",
+        "comuna": "Comuna 1"
+      },
+      "phones": [
+        {
+          "dial": "+541128213621",
+          "display": "2821-3621"
+        },
+        {
+          "dial": "+541143136985",
+          "display": "4313-6985"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-21",
+      "coordinates": {
+        "lat": -34.583048,
+        "lng": -58.375835000000016,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.375835000000016,
+          "y": -34.583048,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Ecografía",
+        "Enfermería",
+        "Medicina Familiar",
+        "Medicina General",
+        "Medico Diagnóstico por Imágenes",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Tocoginecología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr. J. A. Fernandez",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "22",
+      "keyStrategy": "official-id",
+      "rowNumber": 23,
+      "rowHash": "43a93e9d39081c3e",
+      "name": "La Paternal 2 (CeSAC N° 22)",
+      "shortName": "CeSAC Nº 22",
+      "officialNumber": "22",
+      "idHint": "cesac-22",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Fragata Pres. Sarmiento 2152",
+        "street": "Fragata Pres. Sarmiento",
+        "number": "2152",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Paternal",
+        "comuna": "Comuna 15"
+      },
+      "phones": [
+        {
+          "dial": "+541128213622",
+          "display": "2821-3622"
+        },
+        {
+          "dial": "+541150309899",
+          "display": "5030-9899"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-22",
+      "coordinates": {
+        "lat": -34.600884455000596,
+        "lng": -58.459066400353365,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.459066400353365,
+          "y": -34.600884455000596,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Consejería en Interrupción Voluntaria del Embarazo (ILE-IVE)",
+        "Electrocardiograma",
+        "Enfermería",
+        "Farmacéutica",
+        "Gerontología",
+        "Kinesiología",
+        "Laboratorio",
+        "Medicina Familiar",
+        "Medicina General",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr. C. Durand",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "23",
+      "keyStrategy": "official-id",
+      "rowNumber": 24,
+      "rowHash": "f8a41003d72d0d1c",
+      "name": "Villa Luro (CeSAC N° 23)",
+      "shortName": "CeSAC Nº 23",
+      "officialNumber": "23",
+      "idHint": "cesac-23",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Bacacay 5640",
+        "street": "Bacacay",
+        "number": "5640",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Luro",
+        "comuna": "Comuna 10"
+      },
+      "phones": [
+        {
+          "dial": "+541128213623",
+          "display": "2821-3623"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-23",
+      "coordinates": {
+        "lat": -34.6357656804839,
+        "lng": -58.50592224194999,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.50592224194999,
+          "y": -34.6357656804839,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Consultorio de Adolescencia",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos D. Velez Sarsfield",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "24",
+      "keyStrategy": "official-id",
+      "rowNumber": 25,
+      "rowHash": "42e197588086f849",
+      "name": "Villa Soldati 2 (CeSAC N° 24)",
+      "shortName": "CeSAC Nº 24",
+      "officialNumber": "24",
+      "idHint": "cesac-24",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Pasaje L y Martinez Castro",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Villa Soldati",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213624",
+          "display": "2821-3624"
+        },
+        {
+          "dial": "+541146372002",
+          "display": "4637-2002"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-24",
+      "coordinates": {
+        "lat": -34.65783536357495,
+        "lng": -58.455395031081714,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.455395031081714,
+          "y": -34.65783536357495,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Antropología",
+        "Ciencias Educación",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Kinesiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Odontología Pediátrica",
+        "Pediatría",
+        "Psicología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "25",
+      "keyStrategy": "official-id",
+      "rowNumber": 26,
+      "rowHash": "7b2f6e0b9725937d",
+      "name": "Retiro 2 (CeSAC N° 25)",
+      "shortName": "CeSAC Nº 25",
+      "officialNumber": "25",
+      "idHint": "cesac-25",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Palo Santo y Vicuña, Barrio Padre Mugica",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Retiro",
+        "comuna": "Comuna 1"
+      },
+      "phones": [
+        {
+          "dial": "+541128213625",
+          "display": "2821-3625"
+        },
+        {
+          "dial": "+541143151553",
+          "display": "4315-1553"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-25",
+      "coordinates": {
+        "lat": -34.581511,
+        "lng": -58.384350000000005,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.384350000000005,
+          "y": -34.581511,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Fonoaudiología",
+        "Medicina General",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Psicología Adultos",
+        "Psicología Infantil",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. J. A. Fernandez",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "26",
+      "keyStrategy": "official-id",
+      "rowNumber": 27,
+      "rowHash": "48ea091a036b6af5",
+      "name": "Palermo 2 (CeSAC N° 26)",
+      "shortName": "CeSAC Nº 26",
+      "officialNumber": "26",
+      "idHint": "cesac-26",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Gurruchaga 1939",
+        "street": "Gurruchaga",
+        "number": "1939",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Palermo",
+        "comuna": "Comuna 14"
+      },
+      "phones": [
+        {
+          "dial": "+541128213626",
+          "display": "2821-3626"
+        },
+        {
+          "dial": "+541148972156",
+          "display": "4897-2156"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-26",
+      "coordinates": {
+        "lat": -34.587237525594176,
+        "lng": -58.42564618318975,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.42564618318975,
+          "y": -34.587237525594176,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Kinesiología",
+        "Nutrición",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. J. A. Fernandez",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "27",
+      "keyStrategy": "official-id",
+      "rowNumber": 28,
+      "rowHash": "5cb5693a44054ebe",
+      "name": "Saavedra (CeSAC N° 27)",
+      "shortName": "CeSAC Nº 27",
+      "officialNumber": "27",
+      "idHint": "cesac-27",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Arias 3781",
+        "street": "Arias",
+        "number": "3781",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Saavedra",
+        "comuna": "Comuna 12"
+      },
+      "phones": [
+        {
+          "dial": "+541128213627",
+          "display": "2821-3627"
+        },
+        {
+          "dial": "+541145432998",
+          "display": "4543-2998"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-27",
+      "coordinates": {
+        "lat": -34.547707999999986,
+        "lng": -58.48674800000002,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.48674800000002,
+          "y": -34.547707999999986,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. I. Pirovano",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "28",
+      "keyStrategy": "official-id",
+      "rowNumber": 29,
+      "rowHash": "2184cd9485e9efd6",
+      "name": "Villa Lugano 10 (CeSAC N° 28)",
+      "shortName": "CeSAC Nº 28",
+      "officialNumber": "28",
+      "idHint": "cesac-28",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Santander 5955, Barrio 15",
+        "street": "Santander",
+        "number": "5955",
+        "reference": "Barrio 15",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213628",
+          "display": "2821-3628"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-28",
+      "coordinates": {
+        "lat": -34.67308443949715,
+        "lng": -58.486252787391784,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.486252787391784,
+          "y": -34.67308443949715,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Sociología"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "29",
+      "keyStrategy": "official-id",
+      "rowNumber": 30,
+      "rowHash": "fe61f4d4a93d510a",
+      "name": "Villa Lugano 5 (CeSAC N° 29)",
+      "shortName": "CeSAC Nº 29",
+      "officialNumber": "29",
+      "idHint": "cesac-29",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Los Alamos y Paz, Gral. Av., Barrio INTA (ex Villa 19)",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213629",
+          "display": "2821-3629"
+        },
+        {
+          "dial": "+541146017973",
+          "display": "4601-7973"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-29",
+      "coordinates": {
+        "lat": -34.684785053405854,
+        "lng": -58.486724893452894,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.486724893452894,
+          "y": -34.684785053405854,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología Adultos",
+        "Psicología Infantil",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "30",
+      "keyStrategy": "official-id",
+      "rowNumber": 31,
+      "rowHash": "cae453311af3b664",
+      "name": "Barracas 4 (CeSAC N° 30)",
+      "shortName": "CeSAC Nº 30",
+      "officialNumber": "30",
+      "idHint": "cesac-30",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Alcorta, Amancio Av. y Iguazu, Barrio 21-24",
+        "street": "Alcorta, Amancio Av. y Iguazu, Barrio",
+        "number": "21",
+        "reference": "24",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213630",
+          "display": "2821-3630"
+        },
+        {
+          "dial": "+541149122620",
+          "display": "4912-2620"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-30",
+      "coordinates": {
+        "lat": -34.649873320303385,
+        "lng": -58.404618637628936,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.404618637628936,
+          "y": -34.649873320303385,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Ecografía",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "31",
+      "keyStrategy": "official-id",
+      "rowNumber": 32,
+      "rowHash": "cab875ced4c78da6",
+      "name": "Flores 3 (CeSAC N° 31)",
+      "shortName": "CeSAC Nº 31",
+      "officialNumber": "31",
+      "idHint": "cesac-31",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Vedia, Agustin De y Janer, Ana Maria",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Flores",
+        "comuna": "Comuna 7"
+      },
+      "phones": [
+        {
+          "dial": "+541128213631",
+          "display": "2821-3631"
+        },
+        {
+          "dial": "+541149193994",
+          "display": "4919-3994"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-31",
+      "coordinates": {
+        "lat": -34.64667504146545,
+        "lng": -58.434518972772125,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.434518972772125,
+          "y": -34.64667504146545,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "32",
+      "keyStrategy": "official-id",
+      "rowNumber": 33,
+      "rowHash": "db45c885012caddf",
+      "name": "Nueva Pompeya (CeSAC N° 32)",
+      "shortName": "CeSAC Nº 32",
+      "officialNumber": "32",
+      "idHint": "cesac-32",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Charrua 2900, Barrio Charrúa (ex Villa 12)",
+        "street": "Charrua",
+        "number": "2900",
+        "reference": "Barrio Charrúa (ex Villa 12)",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Nueva Pompeya",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213632",
+          "display": "2821-3632"
+        },
+        {
+          "dial": "+541149197106",
+          "display": "4919-7106"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-32",
+      "coordinates": {
+        "lat": -34.65413181045187,
+        "lng": -58.43111663056076,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.43111663056076,
+          "y": -34.65413181045187,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Pediatría",
+        "Psicología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "33",
+      "keyStrategy": "official-id",
+      "rowNumber": 34,
+      "rowHash": "c8f2992e3fbb464e",
+      "name": "Palermo 3 (CeSAC N° 33)",
+      "shortName": "CeSAC Nº 33",
+      "officialNumber": "33",
+      "idHint": "cesac-33",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Cordoba Av. 5741",
+        "street": "Cordoba Av.",
+        "number": "5741",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Palermo",
+        "comuna": "Comuna 14"
+      },
+      "phones": [
+        {
+          "dial": "+541128213633",
+          "display": "2821-3633"
+        },
+        {
+          "dial": "+541151975078",
+          "display": "5197-5078"
+        }
+      ],
+      "phoneFragments": [
+        "5079"
+      ],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-33",
+      "coordinates": {
+        "lat": -34.58637251866093,
+        "lng": -58.441618512751624,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.441618512751624,
+          "y": -34.58637251866093,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Ecografía",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Nutrición",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psiquiatría",
+        "Servicio Social",
+        "Tocoginecología"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. E. Tornu",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "34",
+      "keyStrategy": "official-id",
+      "rowNumber": 35,
+      "rowHash": "287e5f4ab472537f",
+      "name": "La Paternal 1 (CeSAC N° 34)",
+      "shortName": "CeSAC Nº 34",
+      "officialNumber": "34",
+      "idHint": "cesac-34",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Artigas, Jose Gervasio, Gral. 2262",
+        "street": "Artigas, Jose Gervasio, Gral.",
+        "number": "2262",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Villa Del Parque",
+        "comuna": "Comuna 11"
+      },
+      "phones": [
+        {
+          "dial": "+541128213634",
+          "display": "2821-3634"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-34",
+      "coordinates": {
+        "lat": -34.60660864922288,
+        "lng": -58.47824335246452,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.47824335246452,
+          "y": -34.60660864922288,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Consejería en Interrupción Voluntaria del Embarazo (ILE-IVE)",
+        "Enfermería",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología Infantil",
+        "Psicopedagogía"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos Dr. T. Alvarez",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "35",
+      "keyStrategy": "official-id",
+      "rowNumber": 36,
+      "rowHash": "16d48b7337b689c8",
+      "name": "Barracas 6 (CeSAC N° 35)",
+      "shortName": "CeSAC Nº 35",
+      "officialNumber": "35",
+      "idHint": "cesac-35",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Zavaleta y Cruz, Osvaldo, Barrio 21-24",
+        "street": "Zavaleta y Cruz, Osvaldo, Barrio",
+        "number": "21",
+        "reference": "24",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213635",
+          "display": "2821-3635"
+        },
+        {
+          "dial": "+541143018720",
+          "display": "4301-8720"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-35",
+      "coordinates": {
+        "lat": -34.65628,
+        "lng": -58.399715000000015,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.399715000000015,
+          "y": -34.65628,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Consultorio de Adolescencia",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Sociología",
+        "Tocoginecología"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "36",
+      "keyStrategy": "official-id",
+      "rowNumber": 37,
+      "rowHash": "0108643cb2f09157",
+      "name": "Floresta (CeSAC N° 36)",
+      "shortName": "CeSAC Nº 36",
+      "officialNumber": "36",
+      "idHint": "cesac-36",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Mercedes 1371",
+        "street": "Mercedes",
+        "number": "1371",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Floresta",
+        "comuna": "Comuna 10"
+      },
+      "phones": [
+        {
+          "dial": "+541128213636",
+          "display": "2821-3636"
+        },
+        {
+          "dial": "+541145671891",
+          "display": "4567-1891"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-36",
+      "coordinates": {
+        "lat": -34.62182330506299,
+        "lng": -58.49178456658519,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.49178456658519,
+          "y": -34.62182330506299,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicopedagogía",
+        "Salud Mental",
+        "Servicio Social",
+        "Tocoginecología"
+      ],
+      "referenceHospital": "Hospital General de Agudos D. Velez Sarsfield",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "37",
+      "keyStrategy": "official-id",
+      "rowNumber": 38,
+      "rowHash": "951b067ed3d3b0b0",
+      "name": "Mataderos 2 (CeSAC N° 37)",
+      "shortName": "CeSAC Nº 37",
+      "officialNumber": "37",
+      "idHint": "cesac-37",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "De Los Corrales Av. 6999",
+        "street": "De los Corrales Av.",
+        "number": "6999",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Mataderos",
+        "comuna": "Comuna 9"
+      },
+      "phones": [
+        {
+          "dial": "+541128213637",
+          "display": "2821-3637"
+        },
+        {
+          "dial": "+541146872657",
+          "display": "4687-2657"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-37",
+      "coordinates": {
+        "lat": -34.66567686615979,
+        "lng": -58.50417537376841,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.50417537376841,
+          "y": -34.66567686615979,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Fonoaudiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía"
+      ],
+      "referenceHospital": "Hospital General de Agudos Donacion F. Santojanni",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "38",
+      "keyStrategy": "official-id",
+      "rowNumber": 39,
+      "rowHash": "033be78c76fd205e",
+      "name": "Almagro (CeSAC N° 38)",
+      "shortName": "CeSAC Nº 38",
+      "officialNumber": "38",
+      "idHint": "cesac-38",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Medrano Av. 350",
+        "street": "Medrano Av.",
+        "number": "350",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Almagro",
+        "comuna": "Comuna 5"
+      },
+      "phones": [
+        {
+          "dial": "+541128213638",
+          "display": "2821-3638"
+        },
+        {
+          "dial": "+541149584783",
+          "display": "4958-4783"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-38",
+      "coordinates": {
+        "lat": -34.60658750655137,
+        "lng": -58.42157227850066,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.42157227850066,
+          "y": -34.60658750655137,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Clínica Médica",
+        "Ecografía",
+        "Enfermería",
+        "Farmacéutica",
+        "Gerontología",
+        "Kinesiología",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología Adultos",
+        "Psicología Infantil",
+        "Psiquiatría",
+        "Radiología",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr. C. Durand",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "39",
+      "keyStrategy": "official-id",
+      "rowNumber": 40,
+      "rowHash": "e168ae9ade167fba",
+      "name": "Parque Patricios 2 (CeSAC N° 39)",
+      "shortName": "CeSAC Nº 39",
+      "officialNumber": "39",
+      "idHint": "cesac-39",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "24 De Noviembre 1679",
+        "street": "24 de Noviembre",
+        "number": "1679",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Parque Patricios",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213639",
+          "display": "2821-3639"
+        },
+        {
+          "dial": "+541149113576",
+          "display": "4911-3576"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-39",
+      "coordinates": {
+        "lat": -34.63100361101813,
+        "lng": -58.409917800393295,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.409917800393295,
+          "y": -34.63100361101813,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Bioquímica",
+        "Cardiología",
+        "Clínica Médica",
+        "Comunicación",
+        "Ecografía",
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Hebiatría",
+        "Medicina Familiar",
+        "Medicina General",
+        "Neurología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "40",
+      "keyStrategy": "official-id",
+      "rowNumber": 41,
+      "rowHash": "a7aa3a4c289e1ed7",
+      "name": "Flores 4 (CeSAC N° 40)",
+      "shortName": "CeSAC Nº 40",
+      "officialNumber": "40",
+      "idHint": "cesac-40",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Bonorino, Esteban, Cnel. Av. 1729",
+        "street": "Bonorino, Esteban, Cnel. Av.",
+        "number": "1729",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Flores",
+        "comuna": "Comuna 7"
+      },
+      "phones": [
+        {
+          "dial": "+541128213640",
+          "display": "2821-3640"
+        },
+        {
+          "dial": "+541146314554",
+          "display": "4631-4554"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-40",
+      "coordinates": {
+        "lat": -34.64490693062918,
+        "lng": -58.445860559521115,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.445860559521115,
+          "y": -34.64490693062918,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "41",
+      "keyStrategy": "official-id",
+      "rowNumber": 42,
+      "rowHash": "f542768098f64bcf",
+      "name": "La Boca 2 (CeSAC N° 41)",
+      "shortName": "CeSAC Nº 41",
+      "officialNumber": "41",
+      "idHint": "cesac-41",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Brin, Ministro 843",
+        "street": "Brin, Ministro",
+        "number": "843",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "La Boca",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541128213641",
+          "display": "2821-3641"
+        },
+        {
+          "dial": "+541143618736",
+          "display": "4361-8736"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-41",
+      "coordinates": {
+        "lat": -34.63132509345374,
+        "lng": -58.35792934227024,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.35792934227024,
+          "y": -34.63132509345374,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Ciencias Educación",
+        "Clínica Médica",
+        "Enfermería",
+        "Geriatría",
+        "Ginecología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Psicología",
+        "Psicopedagogía",
+        "Psiquiatría Infantil",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Dr C. Argerich",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "42",
+      "keyStrategy": "official-id",
+      "rowNumber": 43,
+      "rowHash": "153057f13b66b054",
+      "name": "Villa Lugano 6 (CeSAC N° 43)",
+      "shortName": "CeSAC Nº 43",
+      "officialNumber": "43",
+      "idHint": "cesac-43",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Fonrouge 4377, CMV ex-Villa 20",
+        "street": "Fonrouge",
+        "number": "4377",
+        "reference": "CMV ex-Villa 20",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213643",
+          "display": "2821-3643"
+        },
+        {
+          "dial": "+541146024178",
+          "display": "4602-4178"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-43",
+      "coordinates": {
+        "lat": -34.67780682199105,
+        "lng": -58.466629068234,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.466629068234,
+          "y": -34.67780682199105,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Enfermería",
+        "Farmacéutica",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Psiquiatría",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos Cecilia Grierson",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "43",
+      "keyStrategy": "official-id",
+      "rowNumber": 44,
+      "rowHash": "f3a1254b6848d376",
+      "name": "Villa Lugano 7 (CeSAC N° 44)",
+      "shortName": "CeSAC Nº 44",
+      "officialNumber": "44",
+      "idHint": "cesac-44",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Saraza 4202",
+        "street": "Saraza",
+        "number": "4202",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Lugano",
+        "comuna": "Comuna 8"
+      },
+      "phones": [
+        {
+          "dial": "+541128213644",
+          "display": "2821-3644"
+        },
+        {
+          "dial": "+541146013686",
+          "display": "4601-3686"
+        }
+      ],
+      "phoneFragments": [
+        "5573",
+        "9776"
+      ],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-44",
+      "coordinates": {
+        "lat": -34.66072858892371,
+        "lng": -58.467363292941194,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.467363292941194,
+          "y": -34.66072858892371,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Cardiología",
+        "Clínica Médica",
+        "Enfermería",
+        "Farmacéutica",
+        "Ginecología",
+        "Kinesiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Radiología",
+        "Tocoginecología",
+        "Trabajo Social"
+      ],
+      "specialtiesTruncated": true,
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [
+        "specialties-truncated"
+      ],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "44",
+      "keyStrategy": "official-id",
+      "rowNumber": 45,
+      "rowHash": "45095cc3ee6c8ded",
+      "name": "San Cristóbal (CeSAC N° 45)",
+      "shortName": "CeSAC Nº 45",
+      "officialNumber": "45",
+      "idHint": "cesac-45",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Cochabamba 2622",
+        "street": "Cochabamba",
+        "number": "2622",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "San Cristobal",
+        "comuna": "Comuna 3"
+      },
+      "phones": [
+        {
+          "dial": "+541128213645",
+          "display": "2821-3645"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-45",
+      "coordinates": {
+        "lat": -34.62539011404649,
+        "lng": -58.40225260232648,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.40225260232648,
+          "y": -34.62539011404649,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Enfermería",
+        "Farmacéutica",
+        "Fonoaudiología",
+        "Gerontología",
+        "Ginecología",
+        "Kinesiología",
+        "Medicina Familiar",
+        "Medicina General",
+        "Nutrición",
+        "Pediatría",
+        "Psicología",
+        "Psicopedagogía",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos J. M. Ramos Mejia",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "45",
+      "keyStrategy": "official-id",
+      "rowNumber": 46,
+      "rowHash": "fa06d7237e913113",
+      "name": "La Boca 3 (CeSAC N° 46)",
+      "shortName": "CeSAC Nº 46",
+      "officialNumber": "46",
+      "idHint": "cesac-46",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Regimiento De Patricios Av. 1941",
+        "street": "Regimiento de Patricios Av.",
+        "number": "1941",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [
+        {
+          "dial": "+541143025950",
+          "display": "4302-5950"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-46",
+      "coordinates": {
+        "lat": -34.64884287904026,
+        "lng": -58.36798846286821,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.36798846286821,
+          "y": -34.64884287904026,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [],
+      "referenceHospital": "Hospital General de Agudos Dr C. Argerich",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "46",
+      "keyStrategy": "official-id",
+      "rowNumber": 47,
+      "rowHash": "a287f5b713d238eb",
+      "name": "Retiro 3 (CeSAC N° 47)",
+      "shortName": "CeSAC Nº 47",
+      "officialNumber": "47",
+      "idHint": "cesac-47",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Alpaca y Caña, Alpaca 620 - Barrio Padre Mugica",
+        "street": "Alpaca y Caña, Alpaca",
+        "number": "620",
+        "reference": "Barrio Padre Mugica",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Retiro",
+        "comuna": "Comuna 1"
+      },
+      "phones": [
+        {
+          "dial": "+541128213647",
+          "display": "2821-3647"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-47",
+      "coordinates": {
+        "lat": -34.584255999999996,
+        "lng": -58.37930900000001,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.37930900000001,
+          "y": -34.584255999999996,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [],
+      "referenceHospital": "Hospital General de Agudos Dr. J. A. Fernandez",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "47",
+      "keyStrategy": "official-id",
+      "rowNumber": 48,
+      "rowHash": "dc57afce6ecc2d36",
+      "name": "Flores 5 (CeSAC N° 48)",
+      "shortName": "CeSAC Nº 48",
+      "officialNumber": "48",
+      "idHint": "cesac-48",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Fernandez De La Cruz, F., Gral. Av. 1753",
+        "street": "Fernandez de la Cruz, F., Gral. Av.",
+        "number": "1753",
+        "confidence": "low",
+        "problems": [
+          "address-street-inverted"
+        ],
+        "neighborhood": "Flores",
+        "comuna": "Comuna 7"
+      },
+      "phones": [
+        {
+          "dial": "+541128213648",
+          "display": "2821-3648"
+        },
+        {
+          "dial": "+541150309763",
+          "display": "5030-9763"
+        }
+      ],
+      "phoneFragments": [],
+      "detailUrl": "https://buenosaires.gob.ar/salud/cesac-48",
+      "coordinates": {
+        "lat": -34.650040185707184,
+        "lng": -58.43112536634101,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.43112536634101,
+          "y": -34.650040185707184,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [
+        "Enfermería",
+        "Farmacéutica",
+        "Ginecología",
+        "Medicina General",
+        "Nutrición",
+        "Obstetricia",
+        "Odontología",
+        "Pediatría",
+        "Psicología",
+        "Trabajo Social"
+      ],
+      "referenceHospital": "Hospital General de Agudos P. Piñero",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "91",
+      "keyStrategy": "official-id",
+      "rowNumber": 49,
+      "rowHash": "124f49ba9aff6bf2",
+      "name": "Centro de Salud Nivel 1 (CeSAC Nº 49)",
+      "shortName": "CeSAC Nº 49",
+      "officialNumber": "49",
+      "idHint": "cesac-49",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Orma y Magaldi, Agustin",
+        "confidence": "low",
+        "problems": [
+          "address-unparsed"
+        ],
+        "neighborhood": "Barracas",
+        "comuna": "Comuna 4"
+      },
+      "phones": [],
+      "phoneFragments": [],
+      "coordinates": {
+        "lat": -34.661863000000004,
+        "lng": -58.393068000000014,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.393068000000014,
+          "y": -34.661863000000004,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [],
+      "referenceHospital": "Hospital General de Agudos J. M. Penna",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "92",
+      "keyStrategy": "official-id",
+      "rowNumber": 50,
+      "rowHash": "683de122dfba6fee",
+      "name": "Centro de Salud Nivel 1 Devoto (CeSAC Nº 50)",
+      "shortName": "CeSAC Nº 50",
+      "officialNumber": "50",
+      "idHint": "cesac-50",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "Lastra Av. 4180",
+        "street": "Lastra Av.",
+        "number": "4180",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Villa Devoto",
+        "comuna": "Comuna 11"
+      },
+      "phones": [],
+      "phoneFragments": [],
+      "coordinates": {
+        "lat": -34.60584393052252,
+        "lng": -58.52394930982568,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.52394930982568,
+          "y": -34.60584393052252,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [],
+      "referenceHospital": "Hospital General de Agudos A. Zubizarreta",
+      "signals": [],
+      "problems": []
+    },
+    {
+      "source": "caba-cesac",
+      "key": "93",
+      "keyStrategy": "official-id",
+      "rowNumber": 51,
+      "rowHash": "358598332baf0e22",
+      "name": "Centro de Salud Nivel 1 Boedo (CeSAC Nº 42)",
+      "shortName": "CeSAC Nº 42",
+      "officialNumber": "42",
+      "idHint": "cesac-42",
+      "facilityTypeRaw": "CeSAC",
+      "address": {
+        "raw": "La Plata Av. 2241",
+        "street": "La Plata Av.",
+        "number": "2241",
+        "confidence": "high",
+        "problems": [],
+        "neighborhood": "Nueva Pompeya",
+        "comuna": "Comuna 4"
+      },
+      "phones": [],
+      "phoneFragments": [],
+      "coordinates": {
+        "lat": -34.64071092540412,
+        "lng": -58.42351106275673,
+        "method": "official-dataset",
+        "precision": "approximate",
+        "raw": {
+          "x": -58.42351106275673,
+          "y": -34.64071092540412,
+          "crs": "EPSG:4326"
+        }
+      },
+      "specialtiesRaw": [],
+      "referenceHospital": "Hospital General de Agudos Dr. C. Durand",
+      "signals": [],
+      "problems": []
+    }
+  ]
+}

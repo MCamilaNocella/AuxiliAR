@@ -1,0 +1,102 @@
+{
+  "province": "AR-C",
+  "note": "Decisiones de una persona sobre los candidatos de CABA. Cada una lleva quién, cuándo y por qué. 'link' solo agrega externalIds a un lugar ya publicado (con evidencia de que es el mismo): no cambia ningún otro dato.",
+  "decisions": [
+    {
+      "source": "caba-cesac",
+      "key": "3",
+      "action": "link",
+      "resourceId": "cesac-3",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el lugar ya estaba cargado a mano; se enlaza con su registro del dataset para que las próximas actualizaciones lo reconozcan."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "41",
+      "action": "link",
+      "resourceId": "cesac-41",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el lugar ya estaba cargado a mano; se enlaza con su registro del dataset."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "46",
+      "action": "link",
+      "resourceId": "cesac-47",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el id 46 del dataset es el CeSAC N° 47 (sede Alpaca 620); se enlaza con el lugar ya cargado."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-oftalmologia-santa-lucia",
+      "action": "link",
+      "resourceId": "hospital-oftalmologico-santa-lucia",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el lugar ya estaba cargado a mano; el dataset no tiene id, la clave es el slug de su nombre."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional",
+      "action": "link",
+      "resourceId": "hospital-odontologia-carrillo",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el lugar ya estaba cargado a mano; el dataset no tiene id, la clave es el slug de su nombre."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-odontologia-j-duenas",
+      "action": "link",
+      "resourceId": "hospital-odontologia-duenas",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Primer lote CABA: el lugar ya estaba cargado a mano; el dataset no tiene id, la clave es el slug de su nombre."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-oftalmologia-santa-lucia",
+      "action": "apply",
+      "resourceId": "hospital-oftalmologico-santa-lucia",
+      "fields": [
+        "coordinates"
+      ],
+      "batch": "caba-2",
+      "rowHash": "407871e294f25b56",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Reproyección oficial aprobada para el lote CABA 2: el dataset de Hospitales publica el punto en EPSG:9498 y se convierte a WGS84 con el procedimiento reproducible del pipeline (method official-dataset-reprojected). Controlado contra USIG (geocodificador de la Ciudad)."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional",
+      "action": "apply",
+      "resourceId": "hospital-odontologia-carrillo",
+      "fields": [
+        "coordinates"
+      ],
+      "batch": "caba-2",
+      "rowHash": "4fa2594822fb2c8b",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Reproyección oficial aprobada para el lote CABA 2: el dataset de Hospitales publica el punto en EPSG:9498 y se convierte a WGS84 con el procedimiento reproducible del pipeline (method official-dataset-reprojected). Controlado contra USIG (geocodificador de la Ciudad)."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-odontologia-j-duenas",
+      "action": "apply",
+      "resourceId": "hospital-odontologia-duenas",
+      "fields": [
+        "coordinates"
+      ],
+      "batch": "caba-2",
+      "rowHash": "c85b6f67596fbddc",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-07",
+      "reason": "Reproyección oficial aprobada para el lote CABA 2: el dataset de Hospitales publica el punto en EPSG:9498 y se convierte a WGS84 con el procedimiento reproducible del pipeline (method official-dataset-reprojected). Controlado contra USIG (geocodificador de la Ciudad)."
+    }
+  ]
+}

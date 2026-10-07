@@ -11,7 +11,10 @@
     "content:index": "node scripts/content-index.mjs",
     "resources:sync": "node scripts/resources-sync.mjs",
     "resources:check": "node scripts/resources-sync.mjs --check",
-    "resources:test": "node --test scripts/resources-sync.test.mjs"
+    "resources:test": "node --test scripts/resources-sync.test.mjs",
+    "curation": "node scripts/curation/cli.mjs",
+    "curation:check": "node scripts/curation/cli.mjs check",
+    "curation:test": "node --test scripts/curation.test.mjs scripts/curation-batch.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/nunito": "^5.3.0",
@@ -32,7 +35,9 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
+    "csv-parse": "7.0.3",
     "oxlint": "^1.81.0",
+    "proj4": "2.22.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }
