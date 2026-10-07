@@ -1,6 +1,6 @@
 import taxonomy from "@/data/resources/taxonomy.json"
 import { getCurrentPlaces, getCurrentServices } from "@/data/resources"
-import type { CategoryId, ResolvedService, Resource, ServiceType } from "@/data/resources"
+import type { CategoryId, ProvinceCode, ResolvedService, Resource, ServiceType } from "@/data/resources"
 import { serviceName } from "./format"
 import { normalizeText } from "./text"
 
@@ -63,6 +63,34 @@ const matchesFilter = (service: ResolvedService, filterId: PlaceFilterId) => {
   return !types || types.includes(service.type)
 }
 
+/**
+ * Everything a person can ask of the places, in one value. List, map, counters and the options of every filter are
+ * computed from it (selectPlaces, getPlaceFacets), so there is one copy of the filtering logic.
+ *  - text: words that have to be somewhere in the place or its services
+ *  - filterId: a quick group of services ("Vacunación", "Guardias"…); "all" is none
+ *  - province / zone: where it is. The zone is the division of that province (comuna, partido, departamento), as the
+ *    data writes it in address.department; it only makes sense with a province
+ *  - category: the places that have a verified service of that category (a place can be in several)
+ *  - type: the places that have that service (prestación)
+ * Each criterion narrows the others (AND). The service criteria (filter, category, type) must hold for the same service.
+ */
+export type PlaceQuery = {
+  text: string
+  filterId: PlaceFilterId
+  province: ProvinceCode | null
+  zone: string | null
+  category: CategoryId | null
+  type: ServiceType | null
+}
+
+export const EMPTY_PLACE_QUERY: PlaceQuery = { text: "", filterId: "all", province: null, zone: null, category: null, type: null }
+
+const matchesServiceCriteria = (service: ResolvedService, { filterId, category, type }: PlaceQuery) =>
+  matchesFilter(service, filterId) && (!category || service.categories.includes(category)) && (!type || service.type === type)
+
+const matchesTerritory = (place: Resource, { province, zone }: PlaceQuery) =>
+  (!province || place.address?.province === province) && (!zone || place.address?.department === zone)
+
 const typeLabel = (type: ServiceType) => taxonomy.serviceTypes.find(({ id }) => id === type)?.label
 
 /** Everything a person could type to find the place: names, address, and what each service says about itself */
@@ -97,20 +125,69 @@ export const matchesQuery = (entry: PlaceEntry, query: string) => {
   return terms.every((term) => text.includes(term))
 }
 
-/** Places that can be shown today, each with its current services (the ones of the active filter first) */
-export const getPlaceEntries = (places: readonly Resource[], day: string, filterId: PlaceFilterId = "all", scope: PlacesScope = {}): PlaceEntry[] => {
+/**
+ * The places that answer a query: the single place where "which places do I show" is decided. Nothing expired or
+ * unverified comes out; each place keeps its current services, the ones that answer the query first.
+ */
+export const selectPlaces = (places: readonly Resource[], day: string, query: PlaceQuery, scope: PlacesScope = {}): PlaceEntry[] => {
   const allowed = scopeTypes(scope)
-  return getCurrentPlaces(day, places).flatMap((place) => {
-    const services = getCurrentServices(place, day).filter((service) => !allowed || allowed.has(service.type))
-    if (!services.some((service) => matchesFilter(service, filterId))) return []
-    // Stable sort: inside each group the data's order is kept
-    const sorted = [...services].sort((a, b) => Number(matchesFilter(b, filterId)) - Number(matchesFilter(a, filterId)))
-    return [{ place, services: sorted }]
-  })
+  return getCurrentPlaces(day, places)
+    .filter((place) => matchesTerritory(place, query))
+    .flatMap((place) => {
+      const services = getCurrentServices(place, day).filter((service) => !allowed || allowed.has(service.type))
+      if (!services.some((service) => matchesServiceCriteria(service, query))) return []
+      // Stable sort: inside each group the data's order is kept
+      const sorted = [...services].sort((a, b) => Number(matchesServiceCriteria(b, query)) - Number(matchesServiceCriteria(a, query)))
+      return [{ place, services: sorted }]
+    })
+    .filter((entry) => matchesQuery(entry, query.text))
 }
+
+/** A value of a filter and how many places have it */
+export type PlaceFacet<T> = { value: T, count: number }
+
+export type PlaceFacets = {
+  provinces: PlaceFacet<ProvinceCode>[]
+  /** The divisions of the chosen province; none while no province is chosen (a comuna and a partido are not comparable) */
+  zones: PlaceFacet<string>[]
+  categories: PlaceFacet<CategoryId>[]
+  types: PlaceFacet<ServiceType>[]
+}
+
+const tally = <T>(groups: T[][]): PlaceFacet<T>[] => {
+  const counts = new Map<T, number>()
+  for (const values of groups) for (const value of new Set(values)) counts.set(value, (counts.get(value) ?? 0) + 1)
+  return [...counts].map(([value, count]) => ({ value, count }))
+}
+
+/**
+ * What can be chosen next, with counts: for each filter, the places that answer the query WITHOUT that filter (so you
+ * can change your mind), counted once per place. A value with no places is never offered. A place counts in every
+ * category and type of its services that answer the other criteria.
+ */
+export const getPlaceFacets = (places: readonly Resource[], day: string, query: PlaceQuery, scope: PlacesScope = {}): PlaceFacets => {
+  const without = (criteria: Partial<PlaceQuery>) => selectPlaces(places, day, { ...query, ...criteria }, scope)
+  const matching = (entries: PlaceEntry[], criteria: PlaceQuery) => entries.map(({ services }) => services.filter((service) => matchesServiceCriteria(service, criteria)))
+
+  const byProvince = without({ province: null, zone: null })
+  const byZone = query.province ? without({ zone: null }) : []
+  const byCategory = without({ category: null })
+  const byType = without({ type: null })
+
+  return {
+    provinces: tally(byProvince.map(({ place }) => (place.address?.province ? [place.address.province] : []))),
+    zones: tally(byZone.map(({ place }) => (place.address?.department ? [place.address.department] : []))),
+    categories: tally(matching(byCategory, { ...query, category: null }).map((services) => services.flatMap((service) => service.categories))),
+    types: tally(matching(byType, { ...query, type: null }).map((services) => services.map((service) => service.type))),
+  }
+}
+
+/** Places that can be shown today, each with its current services (the ones of the active filter first) */
+export const getPlaceEntries = (places: readonly Resource[], day: string, filterId: PlaceFilterId = "all", scope: PlacesScope = {}): PlaceEntry[] =>
+  selectPlaces(places, day, { ...EMPTY_PLACE_QUERY, filterId }, scope)
 
 export const filterPlaces = (
   places: readonly Resource[],
   day: string,
   { query, filterId, scope }: { query: string, filterId: PlaceFilterId, scope?: PlacesScope },
-) => getPlaceEntries(places, day, filterId, scope).filter((entry) => matchesQuery(entry, query))
+) => selectPlaces(places, day, { ...EMPTY_PLACE_QUERY, text: query, filterId }, scope)

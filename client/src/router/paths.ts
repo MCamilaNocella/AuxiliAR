@@ -27,6 +27,12 @@ export const PLACE_PARAM = "lugar"
 export const PLACE_FILTER_PARAM = "filtro"
 export const PLACE_QUERY_PARAM = "buscar"
 
+/** What the Mapa AuxiliAR is filtered by: where (province, and the division of it: comuna, partido…), the kind of care and the service */
+export const PLACE_PROVINCE_PARAM = "provincia"
+export const PLACE_ZONE_PARAM = "zona"
+export const PLACE_CATEGORY_PARAM = "categoria"
+export const PLACE_TYPE_PARAM = "prestacion"
+
 /** How the places are shown: ?vista=mapa | lista. Without it: the map on large screens and the list on phones */
 export const PLACE_VIEW_PARAM = "vista"
 export const PLACE_VIEW_MAP = "mapa"
