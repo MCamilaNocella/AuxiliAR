@@ -61,7 +61,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -382,6 +383,7 @@
           "number": "1271",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -485,7 +487,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Pueyrredon",
-          "comuna": "Comuna 12"
+          "comuna": "Comuna 12",
+          "department": "Comuna 12"
         },
         "phones": [
           {
@@ -539,6 +542,7 @@
           "problems": [],
           "neighborhood": "Villa Pueyrredon",
           "comuna": "Comuna 12",
+          "department": "Comuna 12",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -800,6 +804,7 @@
           "number": "5850",
           "neighborhood": "Villa Pueyrredon",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 12",
           "province": "AR-C",
           "reference": "Barrio Albarellos"
         },
@@ -906,7 +911,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -1320,6 +1326,7 @@
           "number": "5144",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -1447,7 +1454,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Mataderos",
-          "comuna": "Comuna 9"
+          "comuna": "Comuna 9",
+          "department": "Comuna 9"
         },
         "phones": [
           {
@@ -1700,6 +1708,7 @@
           "number": "6300",
           "neighborhood": "Mataderos",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 9",
           "province": "AR-C"
         },
         "coordinates": {
@@ -1802,7 +1811,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -2167,6 +2177,7 @@
           "number": "3140",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -2286,7 +2297,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Villa Soldati",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -2555,6 +2567,7 @@
           "number": "3673",
           "neighborhood": "Villa Soldati",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -2652,7 +2665,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -2708,6 +2722,7 @@
           ],
           "neighborhood": "Villa Lugano",
           "comuna": "Comuna 8",
+          "department": "Comuna 8",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -3017,6 +3032,7 @@
         "address": {
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -3142,7 +3158,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -3196,6 +3213,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -3385,6 +3403,7 @@
           "number": "21",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C",
           "reference": "24"
         },
@@ -3473,7 +3492,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "La Boca",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -3788,6 +3808,7 @@
           "number": "1254",
           "neighborhood": "La Boca",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -3887,7 +3908,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -4192,6 +4214,7 @@
           "number": "1402",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -4279,7 +4302,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Balvanera",
-          "comuna": "Comuna 3"
+          "comuna": "Comuna 3",
+          "department": "Comuna 3"
         },
         "phones": [
           {
@@ -4608,6 +4632,7 @@
           "number": "940",
           "neighborhood": "Balvanera",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 3",
           "province": "AR-C"
         },
         "coordinates": {
@@ -4725,7 +4750,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Urquiza",
-          "comuna": "Comuna 12"
+          "comuna": "Comuna 12",
+          "department": "Comuna 12"
         },
         "phones": [
           {
@@ -5045,6 +5071,7 @@
           "number": "3960",
           "neighborhood": "Villa Urquiza",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 12",
           "province": "AR-C"
         },
         "coordinates": {
@@ -5147,7 +5174,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Avellaneda",
-          "comuna": "Comuna 9"
+          "comuna": "Comuna 9",
+          "department": "Comuna 9"
         },
         "phones": [
           {
@@ -5481,6 +5509,7 @@
           "number": "4210",
           "neighborhood": "Parque Avellaneda",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 9",
           "province": "AR-C"
         },
         "coordinates": {
@@ -5590,7 +5619,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Parque Avellaneda",
-          "comuna": "Comuna 9"
+          "comuna": "Comuna 9",
+          "department": "Comuna 9"
         },
         "phones": [
           {
@@ -5644,6 +5674,7 @@
           ],
           "neighborhood": "Parque Avellaneda",
           "comuna": "Comuna 9",
+          "department": "Comuna 9",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -5881,6 +5912,7 @@
           "number": "4446",
           "neighborhood": "Parque Avellaneda",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 9",
           "province": "AR-C"
         },
         "coordinates": {
@@ -5984,7 +6016,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "San Telmo",
-          "comuna": "Comuna 1"
+          "comuna": "Comuna 1",
+          "department": "Comuna 1"
         },
         "phones": [
           {
@@ -6043,6 +6076,7 @@
           "problems": [],
           "neighborhood": "San Telmo",
           "comuna": "Comuna 1",
+          "department": "Comuna 1",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -6232,6 +6266,7 @@
           "number": "470",
           "neighborhood": "San Telmo",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 1",
           "province": "AR-C",
           "reference": "Rodrigo Bueno"
         },
@@ -6327,7 +6362,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -6691,6 +6727,7 @@
           "number": "2055",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -6803,7 +6840,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Palermo",
-          "comuna": "Comuna 14"
+          "comuna": "Comuna 14",
+          "department": "Comuna 14"
         },
         "phones": [
           {
@@ -7043,6 +7081,7 @@
           "number": "4087",
           "neighborhood": "Palermo",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 14",
           "province": "AR-C"
         },
         "coordinates": {
@@ -7132,7 +7171,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -7192,6 +7232,7 @@
           ],
           "neighborhood": "Villa Lugano",
           "comuna": "Comuna 8",
+          "department": "Comuna 8",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -7495,6 +7536,7 @@
           "number": "20",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -7615,7 +7657,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -7896,6 +7939,7 @@
           "number": "1905",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -7996,7 +8040,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -8052,6 +8097,7 @@
           ],
           "neighborhood": "Flores",
           "comuna": "Comuna 7",
+          "department": "Comuna 7",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -8271,6 +8317,7 @@
           "number": "1",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C",
           "reference": "11-14)"
         },
@@ -8364,7 +8411,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Retiro",
-          "comuna": "Comuna 1"
+          "comuna": "Comuna 1",
+          "department": "Comuna 1"
         },
         "phones": [
           {
@@ -8691,6 +8739,7 @@
           "number": "2839",
           "neighborhood": "Retiro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 1",
           "province": "AR-C"
         },
         "coordinates": {
@@ -8808,7 +8857,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Paternal",
-          "comuna": "Comuna 15"
+          "comuna": "Comuna 15",
+          "department": "Comuna 15"
         },
         "phones": [
           {
@@ -8863,6 +8913,7 @@
           "problems": [],
           "neighborhood": "Paternal",
           "comuna": "Comuna 15",
+          "department": "Comuna 15",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -9108,6 +9159,7 @@
           "number": "2152",
           "neighborhood": "Paternal",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 15",
           "province": "AR-C"
         },
         "coordinates": {
@@ -9210,7 +9262,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Luro",
-          "comuna": "Comuna 10"
+          "comuna": "Comuna 10",
+          "department": "Comuna 10"
         },
         "phones": [
           {
@@ -9527,6 +9580,7 @@
           "number": "5640",
           "neighborhood": "Villa Luro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 10",
           "province": "AR-C"
         },
         "coordinates": {
@@ -9639,7 +9693,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Villa Soldati",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -9916,6 +9971,7 @@
           "number": "2300",
           "neighborhood": "Villa Soldati",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -10023,7 +10079,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Retiro",
-          "comuna": "Comuna 1"
+          "comuna": "Comuna 1",
+          "department": "Comuna 1"
         },
         "phones": [
           {
@@ -10256,6 +10313,7 @@
           "number": "1432",
           "neighborhood": "Retiro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 1",
           "province": "AR-C"
         },
         "coordinates": {
@@ -10358,7 +10416,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Palermo",
-          "comuna": "Comuna 14"
+          "comuna": "Comuna 14",
+          "department": "Comuna 14"
         },
         "phones": [
           {
@@ -10635,6 +10694,7 @@
           "number": "1939",
           "neighborhood": "Palermo",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 14",
           "province": "AR-C"
         },
         "coordinates": {
@@ -10737,7 +10797,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Saavedra",
-          "comuna": "Comuna 12"
+          "comuna": "Comuna 12",
+          "department": "Comuna 12"
         },
         "phones": [
           {
@@ -11051,6 +11112,7 @@
           "number": "3781",
           "neighborhood": "Saavedra",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 12",
           "province": "AR-C"
         },
         "coordinates": {
@@ -11154,7 +11216,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -11397,6 +11460,7 @@
           "number": "5955",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -11484,7 +11548,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -11821,6 +11886,7 @@
           "number": "15378",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -11931,7 +11997,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -11986,6 +12053,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -12240,6 +12308,7 @@
           "number": "21",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C",
           "reference": "24"
         },
@@ -12328,7 +12397,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -12700,6 +12770,7 @@
           "number": "262",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -12828,7 +12899,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Nueva Pompeya",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -13115,6 +13187,7 @@
           "number": "2900",
           "neighborhood": "Nueva Pompeya",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -13217,7 +13290,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Palermo",
-          "comuna": "Comuna 14"
+          "comuna": "Comuna 14",
+          "department": "Comuna 14"
         },
         "phones": [
           {
@@ -13463,6 +13537,7 @@
           "number": "5741",
           "neighborhood": "Palermo",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 14",
           "province": "AR-C"
         },
         "coordinates": {
@@ -13567,7 +13642,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Villa Del Parque",
-          "comuna": "Comuna 11"
+          "comuna": "Comuna 11",
+          "department": "Comuna 11"
         },
         "phones": [
           {
@@ -13843,6 +13919,7 @@
           "number": "2262",
           "neighborhood": "Villa Del Parque",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 11",
           "province": "AR-C"
         },
         "coordinates": {
@@ -13958,7 +14035,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -14018,6 +14096,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -14276,6 +14355,7 @@
           "number": "21",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C",
           "reference": "24"
         },
@@ -14379,7 +14459,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Floresta",
-          "comuna": "Comuna 10"
+          "comuna": "Comuna 10",
+          "department": "Comuna 10"
         },
         "phones": [
           {
@@ -14434,6 +14515,7 @@
           "problems": [],
           "neighborhood": "Floresta",
           "comuna": "Comuna 10",
+          "department": "Comuna 10",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -14697,6 +14779,7 @@
           "number": "1371",
           "neighborhood": "Floresta",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 10",
           "province": "AR-C"
         },
         "coordinates": {
@@ -14804,7 +14887,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Mataderos",
-          "comuna": "Comuna 9"
+          "comuna": "Comuna 9",
+          "department": "Comuna 9"
         },
         "phones": [
           {
@@ -15129,6 +15213,7 @@
           "number": "6999",
           "neighborhood": "Mataderos",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 9",
           "province": "AR-C"
         },
         "coordinates": {
@@ -15241,7 +15326,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Almagro",
-          "comuna": "Comuna 5"
+          "comuna": "Comuna 5",
+          "department": "Comuna 5"
         },
         "phones": [
           {
@@ -15555,6 +15641,7 @@
           "number": "350",
           "neighborhood": "Almagro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 5",
           "province": "AR-C"
         },
         "coordinates": {
@@ -15672,7 +15759,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -15970,6 +16058,7 @@
           "number": "1679",
           "neighborhood": "Parque Patricios",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -16059,7 +16148,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -16338,6 +16428,7 @@
           "number": "1729",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -16434,7 +16525,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "La Boca",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -16679,6 +16771,7 @@
           "number": "843",
           "neighborhood": "La Boca",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -16777,7 +16870,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -17011,6 +17105,7 @@
           "number": "4377",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -17108,7 +17203,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Lugano",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -17452,6 +17548,7 @@
           "number": "4202",
           "neighborhood": "Villa Lugano",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -17554,7 +17651,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "San Cristobal",
-          "comuna": "Comuna 3"
+          "comuna": "Comuna 3",
+          "department": "Comuna 3"
         },
         "phones": [
           {
@@ -17695,7 +17793,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -17898,6 +17997,7 @@
           "number": "1941",
           "neighborhood": "Barracas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -17990,7 +18090,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Retiro",
-          "comuna": "Comuna 1"
+          "comuna": "Comuna 1",
+          "department": "Comuna 1"
         },
         "phones": [
           {
@@ -18217,6 +18318,7 @@
           "number": "620",
           "neighborhood": "Retiro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 1",
           "province": "AR-C"
         },
         "coordinates": {
@@ -18311,7 +18413,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -18573,6 +18676,7 @@
           "number": "1753",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -18659,7 +18763,8 @@
             "address-unparsed"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [],
         "phoneFragments": [],
@@ -18688,6 +18793,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [],
@@ -18756,7 +18862,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Devoto",
-          "comuna": "Comuna 11"
+          "comuna": "Comuna 11",
+          "department": "Comuna 11"
         },
         "phones": [],
         "phoneFragments": [],
@@ -18785,6 +18892,7 @@
           "problems": [],
           "neighborhood": "Villa Devoto",
           "comuna": "Comuna 11",
+          "department": "Comuna 11",
           "resolvedBy": "dataset"
         },
         "phones": [],
@@ -18852,7 +18960,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Nueva Pompeya",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [],
         "phoneFragments": [],
@@ -18881,6 +18990,7 @@
           "problems": [],
           "neighborhood": "Nueva Pompeya",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [],
@@ -18946,7 +19056,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -19000,6 +19111,7 @@
           "problems": [],
           "neighborhood": "Parque Patricios",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19081,7 +19193,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Paternal",
-          "comuna": "Comuna 15"
+          "comuna": "Comuna 15",
+          "department": "Comuna 15"
         },
         "phones": [
           {
@@ -19135,6 +19248,7 @@
           "problems": [],
           "neighborhood": "Paternal",
           "comuna": "Comuna 15",
+          "department": "Comuna 15",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19239,7 +19353,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -19288,6 +19403,7 @@
           "problems": [],
           "neighborhood": "Parque Patricios",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19366,7 +19482,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -19429,6 +19546,7 @@
           "problems": [],
           "neighborhood": "Parque Patricios",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19513,7 +19631,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Almagro",
-          "comuna": "Comuna 5"
+          "comuna": "Comuna 5",
+          "department": "Comuna 5"
         },
         "phones": [
           {
@@ -19562,6 +19681,7 @@
           "problems": [],
           "neighborhood": "Almagro",
           "comuna": "Comuna 5",
+          "department": "Comuna 5",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19660,7 +19780,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Boca",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -19715,6 +19836,7 @@
           "problems": [],
           "neighborhood": "Boca",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19814,7 +19936,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "San Cristobal",
-          "comuna": "Comuna 3"
+          "comuna": "Comuna 3",
+          "department": "Comuna 3"
         },
         "phones": [
           {
@@ -19868,6 +19991,7 @@
           "problems": [],
           "neighborhood": "San Cristobal",
           "comuna": "Comuna 3",
+          "department": "Comuna 3",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -19978,7 +20102,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Caballito",
-          "comuna": "Comuna 6"
+          "comuna": "Comuna 6",
+          "department": "Comuna 6"
         },
         "phones": [
           {
@@ -20030,6 +20155,7 @@
           ],
           "neighborhood": "Caballito",
           "comuna": "Comuna 6",
+          "department": "Comuna 6",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20114,7 +20240,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Monte Castro",
-          "comuna": "Comuna 10"
+          "comuna": "Comuna 10",
+          "department": "Comuna 10"
         },
         "phones": [
           {
@@ -20167,6 +20294,7 @@
           "problems": [],
           "neighborhood": "Monte Castro",
           "comuna": "Comuna 10",
+          "department": "Comuna 10",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20250,7 +20378,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -20301,6 +20430,7 @@
           "problems": [],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20374,7 +20504,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -20426,6 +20557,7 @@
           "problems": [],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20532,7 +20664,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -20586,6 +20719,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20688,7 +20822,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -20740,6 +20875,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20847,7 +20983,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -20899,6 +21036,7 @@
           ],
           "neighborhood": "Parque Patricios",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -20980,7 +21118,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Recoleta",
-          "comuna": "Comuna 2"
+          "comuna": "Comuna 2",
+          "department": "Comuna 2"
         },
         "phones": [
           {
@@ -21032,6 +21171,7 @@
           "problems": [],
           "neighborhood": "Recoleta",
           "comuna": "Comuna 2",
+          "department": "Comuna 2",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -21133,7 +21273,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Villa Gral. Mitre",
-          "comuna": "Comuna 11"
+          "comuna": "Comuna 11",
+          "department": "Comuna 11"
         },
         "phones": [
           {
@@ -21185,6 +21326,7 @@
           ],
           "neighborhood": "Villa Gral. Mitre",
           "comuna": "Comuna 11",
+          "department": "Comuna 11",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -21295,7 +21437,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Villa Devoto",
-          "comuna": "Comuna 11"
+          "comuna": "Comuna 11",
+          "department": "Comuna 11"
         },
         "phones": [
           {
@@ -21508,6 +21651,7 @@
           "number": "3952",
           "neighborhood": "Villa Devoto",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 11",
           "province": "AR-C"
         },
         "coordinates": {
@@ -21592,7 +21736,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Recoleta",
-          "comuna": "Comuna 2"
+          "comuna": "Comuna 2",
+          "department": "Comuna 2"
         },
         "phones": [
           {
@@ -21803,6 +21948,7 @@
           "number": "2670",
           "neighborhood": "Recoleta",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 2",
           "province": "AR-C"
         },
         "coordinates": {
@@ -21884,7 +22030,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Villa Soldati",
-          "comuna": "Comuna 8"
+          "comuna": "Comuna 8",
+          "department": "Comuna 8"
         },
         "phones": [
           {
@@ -21929,6 +22076,7 @@
           ],
           "neighborhood": "Villa Soldati",
           "comuna": "Comuna 8",
+          "department": "Comuna 8",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -22062,6 +22210,7 @@
           "number": "4402",
           "neighborhood": "Villa Soldati",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 8",
           "province": "AR-C"
         },
         "coordinates": {
@@ -22153,7 +22302,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Monte Castro",
-          "comuna": "Comuna 10"
+          "comuna": "Comuna 10",
+          "department": "Comuna 10"
         },
         "phones": [
           {
@@ -22203,6 +22353,7 @@
           ],
           "neighborhood": "Monte Castro",
           "comuna": "Comuna 10",
+          "department": "Comuna 10",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -22354,6 +22505,7 @@
           "number": "1550",
           "neighborhood": "Monte Castro",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 10",
           "province": "AR-C"
         },
         "coordinates": {
@@ -22438,7 +22590,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Liniers",
-          "comuna": "Comuna 9"
+          "comuna": "Comuna 9",
+          "department": "Comuna 9"
         },
         "phones": [
           {
@@ -22659,6 +22812,7 @@
           "number": "950",
           "neighborhood": "Liniers",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 9",
           "province": "AR-C"
         },
         "coordinates": {
@@ -22748,7 +22902,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Boca",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -22958,6 +23113,7 @@
           "number": "750",
           "neighborhood": "Boca",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -23047,7 +23203,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Caballito",
-          "comuna": "Comuna 6"
+          "comuna": "Comuna 6",
+          "department": "Comuna 6"
         },
         "phones": [
           {
@@ -23280,6 +23437,7 @@
           "number": "5044",
           "neighborhood": "Caballito",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 6",
           "province": "AR-C"
         },
         "coordinates": {
@@ -23374,7 +23532,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Parque Chas",
-          "comuna": "Comuna 15"
+          "comuna": "Comuna 15",
+          "department": "Comuna 15"
         },
         "phones": [
           {
@@ -23589,6 +23748,7 @@
           "number": "3002",
           "neighborhood": "Parque Chas",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 15",
           "province": "AR-C"
         },
         "coordinates": {
@@ -23673,7 +23833,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Coghlan",
-          "comuna": "Comuna 12"
+          "comuna": "Comuna 12",
+          "department": "Comuna 12"
         },
         "phones": [
           {
@@ -23881,6 +24042,7 @@
           "number": "3555",
           "neighborhood": "Coghlan",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 12",
           "province": "AR-C"
         },
         "coordinates": {
@@ -23970,7 +24132,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Palermo",
-          "comuna": "Comuna 14"
+          "comuna": "Comuna 14",
+          "department": "Comuna 14"
         },
         "phones": [
           {
@@ -24194,6 +24357,7 @@
           "number": "3356",
           "neighborhood": "Palermo",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 14",
           "province": "AR-C"
         },
         "coordinates": {
@@ -24280,7 +24444,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -24489,6 +24654,7 @@
           "number": "2701",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -24580,7 +24746,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Parque Patricios",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -24782,6 +24949,7 @@
           "number": "3380",
           "neighborhood": "Parque Patricios",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 4",
           "province": "AR-C"
         },
         "coordinates": {
@@ -24873,7 +25041,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Balvanera",
-          "comuna": "Comuna 3"
+          "comuna": "Comuna 3",
+          "department": "Comuna 3"
         },
         "phones": [
           {
@@ -25073,6 +25242,7 @@
           "number": "609",
           "neighborhood": "Balvanera",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 3",
           "province": "AR-C"
         },
         "coordinates": {
@@ -25162,7 +25332,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Flores",
-          "comuna": "Comuna 7"
+          "comuna": "Comuna 7",
+          "department": "Comuna 7"
         },
         "phones": [
           {
@@ -25373,6 +25544,7 @@
           "number": "1301",
           "neighborhood": "Flores",
           "locality": "Ciudad Autónoma de Buenos Aires",
+          "department": "Comuna 7",
           "province": "AR-C"
         },
         "coordinates": {
@@ -25459,7 +25631,8 @@
             "address-street-inverted"
           ],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -25518,6 +25691,7 @@
           ],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -25606,7 +25780,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Recoleta",
-          "comuna": "Comuna 2"
+          "comuna": "Comuna 2",
+          "department": "Comuna 2"
         },
         "phones": [
           {
@@ -25659,6 +25834,7 @@
           "problems": [],
           "neighborhood": "Recoleta",
           "comuna": "Comuna 2",
+          "department": "Comuna 2",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -25741,7 +25917,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Caballito",
-          "comuna": "Comuna 6"
+          "comuna": "Comuna 6",
+          "department": "Comuna 6"
         },
         "phones": [
           {
@@ -25790,6 +25967,7 @@
           "problems": [],
           "neighborhood": "Caballito",
           "comuna": "Comuna 6",
+          "department": "Comuna 6",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -25868,7 +26046,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Caballito",
-          "comuna": "Comuna 6"
+          "comuna": "Comuna 6",
+          "department": "Comuna 6"
         },
         "phones": [
           {
@@ -25920,6 +26099,7 @@
           "problems": [],
           "neighborhood": "Caballito",
           "comuna": "Comuna 6",
+          "department": "Comuna 6",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -26003,7 +26183,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Belgrano",
-          "comuna": "Comuna 13"
+          "comuna": "Comuna 13",
+          "department": "Comuna 13"
         },
         "phones": [
           {
@@ -26054,6 +26235,7 @@
           "problems": [],
           "neighborhood": "Belgrano",
           "comuna": "Comuna 13",
+          "department": "Comuna 13",
           "resolvedBy": "dataset"
         },
         "phones": [
@@ -26127,7 +26309,8 @@
           "confidence": "high",
           "problems": [],
           "neighborhood": "Barracas",
-          "comuna": "Comuna 4"
+          "comuna": "Comuna 4",
+          "department": "Comuna 4"
         },
         "phones": [
           {
@@ -26172,6 +26355,7 @@
           "problems": [],
           "neighborhood": "Barracas",
           "comuna": "Comuna 4",
+          "department": "Comuna 4",
           "resolvedBy": "dataset"
         },
         "phones": [

@@ -83,3 +83,9 @@ export const cleanUrl = (raw) => {
   if (/^https?:\/\/\S+$/.test(text)) return text
   return /^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(text) ? `https://${text}` : undefined
 }
+
+/**
+ * The administrative division of a CABA row, as the dataset's own comuna column writes it ("Comuna 8"). `department` is what
+ * is published in address.department. It comes ONLY from that column: never from the neighborhood or the street.
+ */
+export const divisionOfCaba = (comuna) => (comuna ? { comuna, department: comuna } : {})

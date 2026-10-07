@@ -45,7 +45,10 @@ No hay una descarga anterior con la que comparar.
 
 | lugar | campo | publicado | la fuente dice |
 |---|---|---|---|
+| hospital-odontologia-duenas | address.department | null | Comuna 5 |
+| hospital-oftalmologico-santa-lucia | address.department | null | Comuna 3 |
 | hospital-oftalmologico-santa-lucia | contacts | 541141273100 | sin publicar: 4941-5555, 4941-8081 |
+| hospital-odontologia-carrillo | address.department | null | Comuna 2 |
 | hospital-odontologia-carrillo | contacts | 541148055521 | sin publicar: 4805-6407 |
 
 ## Detalle

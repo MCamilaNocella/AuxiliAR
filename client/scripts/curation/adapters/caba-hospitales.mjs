@@ -1,7 +1,7 @@
 import { parseCsv } from "../lib/csv.mjs"
 import { toWgs84, round7 } from "../lib/crs.mjs"
 import { parsePoint } from "../lib/wkt.mjs"
-import { cleanText, cleanUrl, parseAddressCaba, parsePhonesCaba, rowHash } from "../lib/normalize.mjs"
+import { cleanText, cleanUrl, divisionOfCaba, parseAddressCaba, parsePhonesCaba, rowHash } from "../lib/normalize.mjs"
 import { slugify } from "../lib/util.mjs"
 
 /*
@@ -47,7 +47,7 @@ export const normalizeRow = ({ rowNumber, fields }, { manifest, crs }) => {
     rowHash: rowHash(fields),
     name,
     facilityTypeRaw: cleanText(fields.gna),
-    address: { ...parseAddressCaba(fields.dir), neighborhood: cleanText(fields.bar) || undefined, comuna: fields.com ? `Comuna ${cleanText(fields.com)}` : undefined },
+    address: { ...parseAddressCaba(fields.dir), neighborhood: cleanText(fields.bar) || undefined, ...divisionOfCaba(fields.com ? `Comuna ${cleanText(fields.com)}` : undefined) },
     phones,
     phoneFragments: fragments,
     ...(detailUrl ? { detailUrl } : {}),

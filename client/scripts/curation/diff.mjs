@@ -39,6 +39,9 @@ export const proposalsFor = (candidate, resource) => {
   if (record.address?.number && record.address.number !== resource.address?.number) {
     proposals.push({ field: "address.number", published: resource.address?.number ?? null, source: record.address.number })
   }
+  if (record.address?.department && record.address.department !== resource.address?.department) {
+    proposals.push({ field: "address.department", published: resource.address?.department ?? null, source: record.address.department })
+  }
   if (!resource.coordinates) {
     if (record.coordinates) proposals.push({ field: "coordinates", published: null, source: `${record.coordinates.lat}, ${record.coordinates.lng}` })
   } else if (record.coordinates) {

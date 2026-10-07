@@ -25,7 +25,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -100,7 +101,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Pueyrredon",
-        "comuna": "Comuna 12"
+        "comuna": "Comuna 12",
+        "department": "Comuna 12"
       },
       "phones": [
         {
@@ -163,7 +165,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -222,7 +225,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Mataderos",
-        "comuna": "Comuna 9"
+        "comuna": "Comuna 9",
+        "department": "Comuna 9"
       },
       "phones": [
         {
@@ -284,7 +288,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -354,7 +359,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Villa Soldati",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -417,7 +423,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -485,7 +492,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -545,7 +553,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "La Boca",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -614,7 +623,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -682,7 +692,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Balvanera",
-        "comuna": "Comuna 3"
+        "comuna": "Comuna 3",
+        "department": "Comuna 3"
       },
       "phones": [
         {
@@ -744,7 +755,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Urquiza",
-        "comuna": "Comuna 12"
+        "comuna": "Comuna 12",
+        "department": "Comuna 12"
       },
       "phones": [
         {
@@ -811,7 +823,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Avellaneda",
-        "comuna": "Comuna 9"
+        "comuna": "Comuna 9",
+        "department": "Comuna 9"
       },
       "phones": [
         {
@@ -876,7 +889,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Parque Avellaneda",
-        "comuna": "Comuna 9"
+        "comuna": "Comuna 9",
+        "department": "Comuna 9"
       },
       "phones": [
         {
@@ -938,7 +952,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "San Telmo",
-        "comuna": "Comuna 1"
+        "comuna": "Comuna 1",
+        "department": "Comuna 1"
       },
       "phones": [
         {
@@ -1007,7 +1022,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -1074,7 +1090,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Palermo",
-        "comuna": "Comuna 14"
+        "comuna": "Comuna 14",
+        "department": "Comuna 14"
       },
       "phones": [
         {
@@ -1140,7 +1157,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -1207,7 +1225,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -1276,7 +1295,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -1338,7 +1358,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Retiro",
-        "comuna": "Comuna 1"
+        "comuna": "Comuna 1",
+        "department": "Comuna 1"
       },
       "phones": [
         {
@@ -1404,7 +1425,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Paternal",
-        "comuna": "Comuna 15"
+        "comuna": "Comuna 15",
+        "department": "Comuna 15"
       },
       "phones": [
         {
@@ -1468,7 +1490,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Luro",
-        "comuna": "Comuna 10"
+        "comuna": "Comuna 10",
+        "department": "Comuna 10"
       },
       "phones": [
         {
@@ -1527,7 +1550,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Villa Soldati",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -1594,7 +1618,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Retiro",
-        "comuna": "Comuna 1"
+        "comuna": "Comuna 1",
+        "department": "Comuna 1"
       },
       "phones": [
         {
@@ -1653,7 +1678,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Palermo",
-        "comuna": "Comuna 14"
+        "comuna": "Comuna 14",
+        "department": "Comuna 14"
       },
       "phones": [
         {
@@ -1713,7 +1739,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Saavedra",
-        "comuna": "Comuna 12"
+        "comuna": "Comuna 12",
+        "department": "Comuna 12"
       },
       "phones": [
         {
@@ -1776,7 +1803,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -1829,7 +1857,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -1892,7 +1921,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -1953,7 +1983,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -2016,7 +2047,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Nueva Pompeya",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -2076,7 +2108,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Palermo",
-        "comuna": "Comuna 14"
+        "comuna": "Comuna 14",
+        "department": "Comuna 14"
       },
       "phones": [
         {
@@ -2140,7 +2173,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Villa Del Parque",
-        "comuna": "Comuna 11"
+        "comuna": "Comuna 11",
+        "department": "Comuna 11"
       },
       "phones": [
         {
@@ -2202,7 +2236,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -2268,7 +2303,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Floresta",
-        "comuna": "Comuna 10"
+        "comuna": "Comuna 10",
+        "department": "Comuna 10"
       },
       "phones": [
         {
@@ -2332,7 +2368,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Mataderos",
-        "comuna": "Comuna 9"
+        "comuna": "Comuna 9",
+        "department": "Comuna 9"
       },
       "phones": [
         {
@@ -2389,7 +2426,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Almagro",
-        "comuna": "Comuna 5"
+        "comuna": "Comuna 5",
+        "department": "Comuna 5"
       },
       "phones": [
         {
@@ -2453,7 +2491,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Parque Patricios",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -2523,7 +2562,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -2585,7 +2625,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "La Boca",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -2649,7 +2690,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -2708,7 +2750,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Lugano",
-        "comuna": "Comuna 8"
+        "comuna": "Comuna 8",
+        "department": "Comuna 8"
       },
       "phones": [
         {
@@ -2779,7 +2822,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "San Cristobal",
-        "comuna": "Comuna 3"
+        "comuna": "Comuna 3",
+        "department": "Comuna 3"
       },
       "phones": [
         {
@@ -2837,7 +2881,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [
         {
@@ -2884,7 +2929,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Retiro",
-        "comuna": "Comuna 1"
+        "comuna": "Comuna 1",
+        "department": "Comuna 1"
       },
       "phones": [
         {
@@ -2930,7 +2976,8 @@
           "address-street-inverted"
         ],
         "neighborhood": "Flores",
-        "comuna": "Comuna 7"
+        "comuna": "Comuna 7",
+        "department": "Comuna 7"
       },
       "phones": [
         {
@@ -2989,7 +3036,8 @@
           "address-unparsed"
         ],
         "neighborhood": "Barracas",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [],
       "phoneFragments": [],
@@ -3027,7 +3075,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Villa Devoto",
-        "comuna": "Comuna 11"
+        "comuna": "Comuna 11",
+        "department": "Comuna 11"
       },
       "phones": [],
       "phoneFragments": [],
@@ -3065,7 +3114,8 @@
         "confidence": "high",
         "problems": [],
         "neighborhood": "Nueva Pompeya",
-        "comuna": "Comuna 4"
+        "comuna": "Comuna 4",
+        "department": "Comuna 4"
       },
       "phones": [],
       "phoneFragments": [],

@@ -21,6 +21,7 @@
         "number": "5144",
         "neighborhood": "Villa Lugano",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 8",
         "province": "AR-C"
       },
       "coordinates": {
@@ -78,6 +79,7 @@
         "number": "843",
         "neighborhood": "La Boca",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
         "postalCode": "C1158AAH",
         "province": "AR-C"
       },
@@ -162,6 +164,7 @@
         "number": "620",
         "neighborhood": "Barrio Mugica",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 1",
         "reference": "Al fondo del Paseo Comercial",
         "province": "AR-C"
       },
@@ -240,6 +243,7 @@
         "number": "2021",
         "neighborhood": "San Cristóbal",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 3",
         "province": "AR-C"
       },
       "coordinates": {
@@ -307,6 +311,7 @@
         "number": "2529",
         "neighborhood": "Recoleta",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 2",
         "province": "AR-C"
       },
       "coordinates": {
@@ -377,6 +382,7 @@
         "number": "15",
         "neighborhood": "Almagro",
         "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 5",
         "province": "AR-C"
       },
       "coordinates": {

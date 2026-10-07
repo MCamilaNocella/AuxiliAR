@@ -100,9 +100,9 @@
       "properties": {
         "street": { "type": "string", "minLength": 1 },
         "number": { "type": "string", "minLength": 1, "description": "Altura, o \"s/n\"." },
-        "neighborhood": { "type": "string", "minLength": 1, "description": "Barrio (o comuna, en CABA)." },
+        "neighborhood": { "type": "string", "minLength": 1, "description": "Barrio. La comuna, el partido o el departamento van en department." },
         "locality": { "type": "string", "minLength": 1 },
-        "department": { "type": "string", "minLength": 1, "description": "Departamento, partido o comuna." },
+        "department": { "type": "string", "minLength": 1, "description": "División administrativa, como la da la fuente oficial: comuna (CABA), partido (Buenos Aires) o departamento. No es el barrio ni la localidad." },
         "province": { "type": "string", "x-taxonomy": "provinces" },
         "postalCode": { "type": "string", "minLength": 1 },
         "reference": { "type": "string", "minLength": 1, "description": "Cómo llegar o dónde está dentro del predio (\"dentro del hospital\", piso, entrada)." },
