@@ -402,6 +402,7 @@ after(() => vite.close())
 const app = await vite.ssrLoadModule("/src/data/resources/index.ts")
 
 const json = (value) => JSON.parse(JSON.stringify(value))
+const realPlaces = (await readJson(join(DEFAULT_PATHS.sourceDir, "places/ar-c.json"))).resources
 
 test("the app and the script resolve services the same way", () => {
   for (const resource of fixture.resources.filter((candidate) => candidate.services)) {
@@ -413,9 +414,9 @@ test("the app and the script resolve services the same way", () => {
 })
 
 test("the app: places are loaded by province, on demand", async () => {
-  // The real dataset has no places yet: a province with no file has none, and the answer is kept
+  // A province loads its own file once and keeps the answer; a province with no file has none
   const first = app.loadPlaces("AR-C")
-  assert.deepEqual(await first, [])
+  assert.deepEqual((await first).map(({ id }) => id), realPlaces.map(({ id }) => id))
   assert.equal(app.loadPlaces("AR-C"), first)
   assert.deepEqual(await app.loadPlaces("AR-B"), [])
   // Nothing of places/ is in the bundled resources (emergency numbers don't wait for a request)
