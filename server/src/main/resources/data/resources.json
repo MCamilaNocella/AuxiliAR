@@ -289,6 +289,9 @@
           ]
         }
       ],
+      "externalIds": {
+        "caba-cesac": "3"
+      },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
         "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
@@ -598,6 +601,9 @@
           }
         ],
         "note": "Horario general del establecimiento: no es el de cada servicio. Los turnos se solicitan personalmente."
+      },
+      "externalIds": {
+        "caba-cesac": "41"
       },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
@@ -1035,6 +1041,9 @@
           ]
         }
       ],
+      "externalIds": {
+        "caba-cesac": "46"
+      },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
         "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
@@ -1083,6 +1092,16 @@
         "locality": "Ciudad Autónoma de Buenos Aires",
         "province": "AR-C"
       },
+      "coordinates": {
+        "lat": -34.5844599,
+        "lng": -58.4026497,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "guardia-odontologica",
@@ -1126,6 +1145,9 @@
           ]
         }
       ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional"
+      },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
         "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
@@ -1175,6 +1197,16 @@
         "locality": "Ciudad Autónoma de Buenos Aires",
         "province": "AR-C"
       },
+      "coordinates": {
+        "lat": -34.614634,
+        "lng": -58.4276615,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "guardia-odontologica",
@@ -1211,6 +1243,9 @@
           ]
         }
       ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-de-odontologia-j-duenas"
+      },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
         "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
@@ -1256,12 +1291,22 @@
         "locality": "Ciudad Autónoma de Buenos Aires",
         "province": "AR-C"
       },
+      "coordinates": {
+        "lat": -34.6227807,
+        "lng": -58.3944603,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "guardia-oftalmologica",
           "type": "emergency-room",
           "name": "Guardia oftalmológica",
-          "description": "Responde a la demanda espontánea de adultos y niños con patología oftalmológica clínica y quirúrgica de urgencia.",
+          "description": "Atención de urgencias de los ojos para adultos y niños, sin necesidad de turno.",
           "hours": {
             "open24h": true,
             "note": "Funciona las 24 hs, los 365 días del año."
@@ -1292,6 +1337,9 @@
           ]
         }
       ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-de-oftalmologia-santa-lucia"
+      },
       "source": {
         "organization": "Gobierno de la Ciudad de Buenos Aires",
         "url": "https://buenosaires.gob.ar/hospitalsantalucia/contacto",

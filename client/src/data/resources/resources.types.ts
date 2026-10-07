@@ -106,6 +106,7 @@ export type CoordinateStatus = "verified" | "unverified"
 /** Where the point came from */
 export type CoordinateMethod =
   | "official-dataset"
+  | "official-dataset-reprojected"
   | "geocoded-usig"
   | "geocoded-georef"
   | "geocoded-other"
@@ -183,6 +184,10 @@ export type Source = {
   /** Body that publishes the data */
   organization: string
   url?: string
+  /** YYYY-MM-DD: the day the source was consulted or downloaded */
+  retrievedAt?: string
+  /** License the body publishes the data under (e.g. CC-BY-2.5-AR) */
+  license?: string
   note?: string
 }
 

@@ -91,6 +91,12 @@ Un establecimiento (un hospital, un CeSAC, una veterinaria pública) se carga **
 - **Ids:** `id` es estable. No se reutiliza ni se cambia, aunque cambie el nombre. Formato: minúsculas, números y guiones.
 - **Categorías:** por id (`salud-mental`, `centros`…). Las secciones (`sections`) se pueden indicar, pero hoy sus ids son genéricos (`section-1`…) y no se verifica que existan.
 - **Dirección y coordenadas:** solo de establecimientos públicos, nunca de personas. `precision` dice si el punto es exacto o aproximado.
+- **Fuente (`source`):** además de `organization`, `url` y `note`, puede llevar `retrievedAt` (el día en que se consultó o descargó, AAAA-MM-DD) y `license` (la licencia con la que el organismo publica el dato, por ejemplo `CC-BY-2.5-AR`). Lo que viene de un dataset con licencia los lleva siempre.
+- **Método de las coordenadas:** `official-dataset` es un punto que el dataset publica ya en latitud y longitud; `official-dataset-reprojected` es uno que el dataset publica en otro sistema (por ejemplo EPSG:9498, en metros) y se convirtió a WGS84 con un procedimiento reproducible (ver `client/curation`). Nunca se convierte a mano.
+
+## Cargar muchos establecimientos desde datasets oficiales
+
+No se escriben a mano: el pipeline de `client/curation/` (ver su README) ingiere el dataset, normaliza, genera **candidatos** —que no se publican— y solo escribe en `places/` lo que una persona decidió. No pisa lo ya curado y valida con este mismo validador antes de escribir.
 
 ## Comandos (desde `client/`)
 

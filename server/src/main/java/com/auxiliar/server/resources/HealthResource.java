@@ -176,7 +176,8 @@ public record HealthResource(
                               String verifiedAt, String verifiedBy, String note) {
     }
 
-    public record Source(String organization, String url, String note) {
+    /** @param retrievedAt YYYY-MM-DD, the day the source was consulted or downloaded */
+    public record Source(String organization, String url, String retrievedAt, String license, String note) {
     }
 
     /** @param verifiedAt, nextReviewDue YYYY-MM-DD; from nextReviewDue on, the resource stops being shown */

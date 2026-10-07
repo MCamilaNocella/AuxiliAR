@@ -141,6 +141,8 @@
       "properties": {
         "organization": { "type": "string", "minLength": 1, "description": "Organismo que publica el dato." },
         "url": { "type": "string", "pattern": "^https?://\\S+$" },
+        "retrievedAt": { "$ref": "#/$defs/date", "description": "Día en que se consultó o descargó la fuente (AAAA-MM-DD)." },
+        "license": { "type": "string", "minLength": 1, "description": "Licencia con la que el organismo publica el dato (por ejemplo CC-BY-2.5-AR)." },
         "note": { "type": "string", "minLength": 1 }
       }
     },

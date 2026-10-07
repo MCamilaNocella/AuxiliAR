@@ -121,6 +121,7 @@
   ],
   "coordinateMethods": [
     { "id": "official-dataset", "label": "Dataset oficial" },
+    { "id": "official-dataset-reprojected", "label": "Dataset oficial, reproyectado a WGS84" },
     { "id": "geocoded-usig", "label": "Geocodificado con USIG" },
     { "id": "geocoded-georef", "label": "Geocodificado con Georef" },
     { "id": "geocoded-other", "label": "Geocodificado con otro servicio" },
