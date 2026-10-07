@@ -30,6 +30,15 @@ export const loadPlaces = (province: ProvinceCode): Promise<readonly Resource[]>
   return loading
 }
 
+/**
+ * The provinces that have a places file: where AuxiliAR has places to show, known without downloading any of them.
+ * Which of those have a place that is current today is decided with the data (getPlaceFacets).
+ */
+export const PROVINCES_WITH_PLACE_FILES: readonly ProvinceCode[] = Object.keys(placeLoaders)
+  .map((path) => /places\/(.+)\.json$/.exec(path)?.[1].toUpperCase() as ProvinceCode | undefined)
+  .filter((code): code is ProvinceCode => code !== undefined)
+  .sort()
+
 /** Every resource, whatever its verification status. For people and Auxi use the `getCurrent…` functions */
 export const RESOURCES: readonly Resource[] = Object.values(files).flatMap((file) => file.resources)
 

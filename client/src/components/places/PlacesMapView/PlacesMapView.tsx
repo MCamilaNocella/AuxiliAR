@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react"
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { countUnmapped, getMapPins } from "@/utils/places"
 import type { PlaceEntry } from "@/utils/places"
@@ -21,7 +21,8 @@ type PlacesMapViewProps = {
  * the list) and its "Ver información" opens the full panel.
  */
 export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewProps) => {
-  const pins = getMapPins(entries)
+  // Stable while the results are the same: the map redraws and re-frames only when the places shown change
+  const pins = useMemo(() => getMapPins(entries), [entries])
   const unmapped = countUnmapped(entries)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const summaryRef = useRef<HTMLDivElement>(null)
