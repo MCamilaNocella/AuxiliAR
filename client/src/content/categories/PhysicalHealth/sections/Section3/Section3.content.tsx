@@ -3,7 +3,7 @@ import { ActionLink } from "@/components/health/ActionLink"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /**
- * Salud física · Primeros auxilios: a door into the guides. It holds no instructions of its own: the cards open the
+ * Salud general · Primeros auxilios: a door into the guides. It holds no instructions of its own: the cards open the
  * guides of src/content/firstAid (the same ones the Primeros auxilios category will use).
  */
 export default function Section3Content() {

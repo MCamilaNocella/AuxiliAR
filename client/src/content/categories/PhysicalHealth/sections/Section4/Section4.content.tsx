@@ -1,14 +1,14 @@
 import { Quiz } from "@/components/quiz/Quiz"
-import { PATHS } from "@/router/paths"
+import { HEALTH_GENERAL_SLUG, PATHS } from "@/router/paths"
 import { physicalCentersLink } from "@/content/categories/PhysicalHealth/centersLink"
 import { PHYSICAL_HEALTH_QUIZ } from "./Section4.constants"
 
 const EXITS = [
   { label: "Encontrar atención", to: physicalCentersLink() },
-  { label: "Volver a Salud física", to: PATHS.topic("salud-fisica") },
+  { label: "Volver a Salud general", to: PATHS.topic(HEALTH_GENERAL_SLUG) },
 ]
 
-/** Salud física · Quiz — learn where to go and how to take care, one everyday situation at a time */
+/** Salud general · Quiz — learn where to go and how to take care, one everyday situation at a time */
 export default function Section4Content() {
   return (
     <div className="mt-2">

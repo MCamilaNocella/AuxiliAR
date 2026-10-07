@@ -1,6 +1,6 @@
 import { Figure, HAIR, SKIN } from "@/components/illustrations/Figure"
 
-/** Salud física: a doctor with a clipboard talking to an older patient on a stool */
+/** Salud general: a doctor with a clipboard talking to an older patient on a stool */
 export const PhysicalHealthScene = () => (
   <svg viewBox="0 0 480 320" aria-hidden="true" focusable="false" className="size-full">
     {/* Backdrop: soft disc, big cross and a heartbeat line */}

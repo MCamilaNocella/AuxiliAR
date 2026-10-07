@@ -14,7 +14,7 @@ type GuideCardsProps = {
 
 /**
  * The first aid guides as cards, grouped. Every card opens a real guide (/primeros-auxilios/:slug). Used by the
- * door in Salud física and meant for the Primeros auxilios category too: both read the same guides.
+ * door in Salud general and meant for the Primeros auxilios category too: both read the same guides.
  */
 export const GuideCards = ({ groups = GUIDE_GROUPS.map(({ id }) => id), headingLevel = "h3" }: GuideCardsProps) => {
   const Heading = headingLevel

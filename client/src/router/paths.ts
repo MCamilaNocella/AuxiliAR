@@ -13,5 +13,9 @@ export const PATHS = {
   peerChatSketch: "/boceto-chat-personas",
 } as const
 
-/** Query param with the open section of a category screen: /temas/salud-fisica?seccion=section-1 */
+/** Salud general (before: Salud física). The old address keeps working: it redirects, with its query, to the new one */
+export const HEALTH_GENERAL_SLUG = "salud-general"
+export const LEGACY_PHYSICAL_HEALTH_SLUG = "salud-fisica"
+
+/** Query param with the open section of a category screen: /temas/salud-general?seccion=section-1 */
 export const SECTION_PARAM = "seccion"

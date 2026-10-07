@@ -1,16 +1,20 @@
-import { PATHS, SECTION_PARAM } from "@/router/paths"
+import { PATHS } from "@/router/paths"
 
-/** The filters of the places explorer that Controles de salud and the Quiz send people to */
+/** The filters of the places map that Controles de salud and the Quiz send people to */
 export type CentersFilter = "medical" | "vaccination" | "dentistry" | "emergency"
 
-/** Query params of the places explorer (Centros de atención): the filter and the search text, already applied */
+/** Query params of the Centros de atención map: the filter and the search text, already applied */
 const FILTER_PARAM = "filtro"
 const QUERY_PARAM = "buscar"
 
-/** Salud física → Centros de atención, optionally with a filter and/or a search already applied. Only builds the address: the explorer lives in its own branch. */
+/**
+ * Salud general → Centros de atención, optionally with a filter and/or a search already applied. Centros de atención is
+ * its own category (/centros): the places and their map don't live inside Salud general. This only builds the address.
+ */
 export const physicalCentersLink = ({ filter, query }: { filter?: CentersFilter, query?: string } = {}) => {
-  const params = new URLSearchParams({ [SECTION_PARAM]: "section-1" })
+  const params = new URLSearchParams()
   if (filter) params.set(FILTER_PARAM, filter)
   if (query) params.set(QUERY_PARAM, query)
-  return `${PATHS.topic("salud-fisica")}?${params.toString()}`
+  const search = params.toString()
+  return search ? `${PATHS.centers}?${search}` : PATHS.centers
 }

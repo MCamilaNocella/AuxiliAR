@@ -166,7 +166,7 @@ test("the route opens the guide, or says it wasn't found", () => {
 
 test("guides never send people to the Primeros auxilios category while it is empty", () => {
   const hub = content.FIRST_AID_HUB_PATH
-  assert.equal(hub, "/temas/salud-fisica?seccion=section-3")
+  assert.equal(hub, "/temas/salud-general?seccion=section-3")
   for (const guide of GUIDES) {
     const hrefs = [...renderGuide(guide).matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&")).filter((href) => href.startsWith("/"))
     assert.ok(!hrefs.includes("/primeros-auxilios"), guide.slug)

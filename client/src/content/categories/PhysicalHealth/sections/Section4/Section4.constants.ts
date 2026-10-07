@@ -2,7 +2,7 @@ import { physicalCentersLink } from "@/content/categories/PhysicalHealth/centers
 import type { QuizQuestion } from "@/utils/quiz/quiz"
 
 /**
- * Quiz of Salud física: eight everyday situations about where to go, vaccines, prevention, mouth and eyes care,
+ * Quiz of Salud general: eight everyday situations about where to go, vaccines, prevention, mouth and eyes care,
  * and how to use AuxiliAR. It teaches how to find the right care; it never asks to diagnose anything.
  * Every wrong answer says why, kindly. Places named here are the ones AuxiliAR has verified in the Ciudad de Buenos Aires.
  */

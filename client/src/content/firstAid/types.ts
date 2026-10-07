@@ -23,7 +23,7 @@ export type GuideAction = {
 }
 
 /**
- * A first aid guide. One definition, many places: the Primeros auxilios category, the Salud física door and the
+ * A first aid guide. One definition, many places: the Primeros auxilios category, the Salud general door and the
  * emergency bar all read it from here (src/content/firstAid), so there is a single copy of every instruction.
  *
  * Rules for the content: it says only what the official sources say (DINESA / Ministerio de Salud de la Nación, see

@@ -4,11 +4,11 @@ import { ActionLink } from "@/components/health/ActionLink"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 import { CONTROL_TOPICS } from "./Section2.constants"
 
-/** Query param with the open topic: /temas/salud-fisica?seccion=section-2&tema=vacunacion */
+/** Query param with the open topic: /temas/salud-general?seccion=section-2&tema=vacunacion */
 const TOPIC_PARAM = "tema"
 
 /**
- * Salud física · Controles de salud. A grid of topics and, below, one block at a time: what to know → orientation →
+ * Salud general · Controles de salud. A grid of topics and, below, one block at a time: what to know → orientation →
  * next step. The open topic is in the URL (?tema=), so a link can open it. General orientation, never a diagnosis.
  */
 export default function Section2Content() {
