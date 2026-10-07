@@ -52,7 +52,9 @@ test("mapa auxiliar: one emergency line that points to the emergency numbers, no
   assert.ok(!html.includes("bg-alert-soft"))
   // the explorer comes with the transparency note and every kind of care as a quick filter
   assert.ok(content.includes("Centros verificados por AuxiliAR. Estamos incorporando establecimientos progresivamente."))
-  assert.match(content, /Todos Atención médica Salud mental Salud sexual Vacunación Odontología Guardias/)
+  // the kinds of care and services come from the data (category chips, service select); the quick chips of before are gone
+  assert.ok(content.includes("Provincia") && content.includes("Todas las zonas con cobertura"))
+  assert.ok(!content.includes("Todos Atención médica"))
   // list and map are both offered
   assert.ok(content.includes("Lista") && content.includes("Mapa"))
 })
@@ -88,11 +90,10 @@ test("the link other pages use opens the explorer with the search and filter it 
   assert.equal(centersLink(), "/centros")
   const html = render(() => createElement(PlacesExplorer, { filters: ["medical", "emergency"] }), url)
   assert.match(html, /value="oftalm"/)
-  assert.match(html, /aria-pressed="true"[^>]*>Guardias</)
-  assert.match(html, /aria-pressed="false"[^>]*>Todos</)
+  assert.ok(text(html).includes("Tipo: Guardias") && text(html).includes("Búsqueda: «oftalm»") && text(html).includes("Borrar filtros"))
   // a filter this context doesn't have is ignored
   const other = render(() => createElement(PlacesExplorer, { filters: ["medical"] }), "/x?filtro=dentistry")
-  assert.match(other, /aria-pressed="true"[^>]*>Todos</)
+  assert.ok(!text(other).includes("Tipo:") && !text(other).includes("Borrar filtros"))
   // the view asked for in the URL is the one that opens (without a map there is only the list)
   const map = render(() => createElement(PlacesExplorer, { map: true }), "/centros?vista=mapa")
   assert.match(map, /aria-pressed="true"[^>]*>(?:<[^>]+>)*Mapa</)

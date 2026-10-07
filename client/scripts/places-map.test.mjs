@@ -127,10 +127,10 @@ test("the explorer offers Lista | Mapa only when asked, and keeps search and fil
   const map = renderAt("/x?vista=mapa&filtro=emergency&buscar=oftalm", explorer({ map: true }))
   assert.match(map, /aria-pressed="true"[^>]*>(?:<svg[^>]*>.*?<\/svg>)?Mapa</)
   assert.match(map, /value="oftalm"/)
-  assert.match(map, /aria-pressed="true"[^>]*>Guardias</)
+  assert.ok(text(map).includes("Tipo: Guardias"), "the filter of the link shows as an active filter")
   const list = renderAt("/x?filtro=emergency&buscar=oftalm", explorer({ map: true }))
   assert.match(list, /value="oftalm"/)
-  assert.match(list, /aria-pressed="true"[^>]*>Guardias</)
+  assert.ok(text(list).includes("Tipo: Guardias") && text(list).includes("Borrar filtros"))
 })
 
 /* ── Map view states ── */

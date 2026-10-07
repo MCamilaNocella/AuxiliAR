@@ -1,6 +1,7 @@
 export * from "./coverage"
 export * from "./filters"
 export * from "./format"
+export * from "./labels"
 export * from "./map"
 export * from "./placeView"
 export * from "./queryParams"

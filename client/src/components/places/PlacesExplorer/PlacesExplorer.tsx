@@ -1,18 +1,22 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router"
 import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
-import { todayInArgentina } from "@/data/resources"
+import { categoriesOfServiceType, todayInArgentina } from "@/data/resources"
 import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, getPlaceFacets, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, resolveView, selectPlaces } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, getPlaceFacets, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
+import { ActiveFilters } from "../ActiveFilters"
+import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
+import { CategoryFilter } from "../CategoryFilter"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapView } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
+import { ServiceTypeFilter } from "../ServiceTypeFilter"
 import type { PlacesView } from "../PlacesViewSwitch"
 import { TerritoryFilters } from "../TerritoryFilters"
 import { PLACES_EXPLORER_INTRO } from "./PlacesExplorer.constants"
@@ -61,8 +65,10 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
   // Where there are verified places at all, whatever else is chosen: it doesn't move with the search
   const coverage = plan.covered
 
-  const changeQuery = (changes: Partial<PlaceQuery>) =>
-    setSearchParams((previous) => placeQueryToParams(previous, { ...query, ...changes }), { replace: true, preventScrollReset: true })
+  // Each change of filter is a step in the history (Back undoes it); typing replaces the step, so a search is not a hundred of them.
+  // Every other param (the view, the open place) stays
+  const changeQuery = (changes: Partial<PlaceQuery>, replace = false) =>
+    setSearchParams((previous) => placeQueryToParams(previous, { ...query, ...changes }), { replace, preventScrollReset: true })
 
   // List or map: what the URL asks for (?vista=), or else the map on large screens and the list on phones.
   // Search and filters are the same for both: they show the same results
@@ -137,6 +143,16 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
 
   const clearSearch = () => changeQuery(EMPTY_PLACE_QUERY)
 
+  // What is filtering right now, each one removable. A link with a filter from before ("filtro") shows up here too
+  const activeFilters: ActiveFilter[] = [
+    ...(query.text.trim() ? [{ key: "text", label: `Búsqueda: «${query.text.trim()}»`, onRemove: () => changeQuery({ text: "" }) }] : []),
+    ...(query.filterId !== "all" ? [{ key: "quick", label: `Tipo: ${quickFilterLabel(query.filterId)}`, onRemove: () => changeQuery({ filterId: "all" }) }] : []),
+    ...(query.province ? [{ key: "province", label: provinceLabel(query.province), onRemove: () => changeQuery({ province: null, zone: null }) }] : []),
+    ...(query.zone ? [{ key: "zone", label: query.zone, onRemove: () => changeQuery({ zone: null }) }] : []),
+    ...(query.category ? [{ key: "category", label: categoryLabel(query.category), onRemove: () => changeQuery({ category: null }) }] : []),
+    ...(query.type ? [{ key: "type", label: serviceTypeLabel(query.type), onRemove: () => changeQuery({ type: null }) }] : []),
+  ]
+
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
   const where = query.zone ? ` en ${query.zone}` : query.province ? ` en ${provinceLabel(query.province)}` : ""
   const count =
@@ -159,7 +175,18 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         onZoneChange={(zone) => changeQuery({ zone })}
       />
 
-      <PlacesToolbar filters={filters} query={query.text} onQueryChange={(text) => changeQuery({ text })} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
+      <PlacesToolbar filters={NO_FILTERS} query={query.text} onQueryChange={(text) => changeQuery({ text }, true)} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="sm:col-span-2">
+          <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
+            onChange={(category) => changeQuery({ category, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
+        </div>
+        <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
+      </div>
+
+      <ActiveFilters filters={activeFilters} onClear={clearSearch} />
+      {activeFilters.length > 0 && <p className="m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
 
       {map && <PlacesViewSwitch view={view} onChange={changeView} />}
 
@@ -202,7 +229,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
             {`No encontramos lugares verificados con esta búsqueda${where}. Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros.`}
           </p>
           <button type="button" onClick={clearSearch} className={buttonClass}>
-            Borrar búsqueda y filtros
+            Borrar filtros
           </button>
         </div>
       )}
