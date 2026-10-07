@@ -6,12 +6,16 @@
  *   npm run resources:sync    validate and write the server copy
  *   npm run resources:check   validate and fail if the server copy is out of date (nothing is written)
  *
+ * It also generates client/src/data/resources/coverage.json: a small index of what each places/<province>.json has (how many
+ * places, which categories, services and divisions, until when something is current). The app reads it to know where there are
+ * places WITHOUT downloading the files. Like the server copy, it is generated from the places, never edited by hand.
+ *
  * The edited source is always client/src/data/resources (lines/ and places/, one Base AuxiliAR). The server copy is never edited by hand.
  */
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath, pathToFileURL } from "node:url"
-import { resolveResource } from "./resources-resolve.mjs"
+import { derivedCategories, resolveResource } from "./resources-resolve.mjs"
 import { validateDataset } from "./resources-validate.mjs"
 
 const clientRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..")
@@ -19,6 +23,7 @@ const clientRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 export const DEFAULT_PATHS = {
   sourceDir: join(clientRoot, "src/data/resources"),
   outFile: resolve(clientRoot, "../server/src/main/resources/data/resources.json"),
+  coverageFile: join(clientRoot, "src/data/resources/coverage.json"),
 }
 
 const NOTICE = "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync."
@@ -49,6 +54,46 @@ export const buildServerCopy = (resources, taxonomy) => {
   return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: NOTICE, resources: sorted }, null, 2)}\n`
 }
 
+const COVERAGE_NOTICE = "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos."
+
+const later = (a, b) => (a === null ? b : b === null ? a : a > b ? a : b)
+
+/**
+ * Until when a place can be current: its own review date, or the latest of its services if none goes further. A day before
+ * that date the place MAY be current (the app decides with the data); on or after it, it is not. Null: never verified.
+ */
+const currentUntilOf = (place) => {
+  if (place.verification?.status !== "verified" || !place.verification.nextReviewDue) return null
+  let services = null
+  for (const service of place.services ?? []) {
+    const verification = service.verification ?? place.verification
+    if (verification.status === "verified" && verification.nextReviewDue) services = later(services, verification.nextReviewDue)
+  }
+  if (services === null) return null
+  return services < place.verification.nextReviewDue ? services : place.verification.nextReviewDue
+}
+
+/**
+ * The coverage index: for each province with a places file, what its places have. Counts every place of the file (not only
+ * the current ones), so the numbers are for planning what to download, never for showing people. Deterministic and sorted.
+ */
+export const buildCoverage = (placeFiles, taxonomy) => {
+  const provinces = {}
+  for (const { name, data } of [...placeFiles].sort((a, b) => a.name.localeCompare(b.name, "en"))) {
+    const code = /places\/(.+)\.json$/.exec(name)?.[1]?.toUpperCase()
+    if (!code) continue
+    const places = (data.resources ?? []).filter((resource) => (resource.services ?? []).length > 0)
+    provinces[code] = {
+      places: places.length,
+      currentUntil: places.reduce((latest, place) => later(latest, currentUntilOf(place)), null),
+      categories: [...new Set(places.flatMap((place) => derivedCategories(place, taxonomy)))].sort(),
+      serviceTypes: [...new Set(places.flatMap((place) => place.services.map((service) => service.type)))].sort(),
+      divisions: [...new Set(places.map((place) => place.address?.department).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", { numeric: true })),
+    }
+  }
+  return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: COVERAGE_NOTICE, provinces }, null, 2)}\n`
+}
+
 /** Ids of the app's real categories (same way content-index.mjs reads them): to keep taxonomy.categories honest */
 const loadCategoryIds = async () => {
   const { createServer } = await import("vite")
@@ -77,6 +122,8 @@ export const run = async ({
   linesDir = join(sourceDir, "lines"),
   placesDir = join(sourceDir, "places"),
   categoryIds = null,
+  /** Where the coverage index is written or checked; null: not generated (the tests of the other parts leave it alone) */
+  coverageFile = null,
 } = {}) => {
   const [schema, taxonomy, lines, places] = await Promise.all([
     readJson(schemaFile),
@@ -89,6 +136,7 @@ export const run = async ({
   if (errors.length > 0) return { ok: false, errors, output: null }
 
   const output = buildServerCopy(resources, taxonomy)
+  const coverage = buildCoverage(places, taxonomy)
 
   if (mode === "check") {
     let current = null
@@ -98,27 +146,40 @@ export const run = async ({
       // Missing file: reported below
     }
     if (current !== output) {
-      return { ok: false, errors: [`${outFile} no coincide con client/src/data/resources. Corré: npm run resources:sync`], output }
+      return { ok: false, errors: [`${outFile} no coincide con client/src/data/resources. Corré: npm run resources:sync`], output, coverage }
     }
-    return { ok: true, errors: [], output }
+    if (coverageFile) {
+      let index = null
+      try {
+        index = normalize(await readFile(coverageFile, "utf8"))
+      } catch {
+        // Missing file: reported below
+      }
+      if (index !== coverage) return { ok: false, errors: [`${coverageFile} (el índice de cobertura) no coincide con los lugares. Corré: npm run resources:sync`], output, coverage }
+    }
+    return { ok: true, errors: [], output, coverage }
   }
 
   await mkdir(dirname(outFile), { recursive: true })
   await writeFile(outFile, output)
-  return { ok: true, errors: [], output }
+  if (coverageFile) {
+    await mkdir(dirname(coverageFile), { recursive: true })
+    await writeFile(coverageFile, coverage)
+  }
+  return { ok: true, errors: [], output, coverage }
 }
 
 // Command line (not when imported by the tests)
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const mode = process.argv.includes("--check") ? "check" : "sync"
   try {
-    const result = await run({ mode, categoryIds: await loadCategoryIds() })
+    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile })
     if (!result.ok) {
       console.error(`resources:${mode} — hay problemas:\n${result.errors.map((error) => `  - ${error}`).join("\n")}`)
       process.exitCode = 1
     } else {
       const count = JSON.parse(result.output).resources.length
-      console.log(mode === "check" ? `resources:check — ok (${count} recursos, copia del servidor al día)` : `resources:sync — ${count} recursos escritos en el servidor`)
+      console.log(mode === "check" ? `resources:check — ok (${count} recursos, copia del servidor e índice de cobertura al día)` : `resources:sync — ${count} recursos escritos en el servidor`)
     }
   } catch (error) {
     console.error(`resources:${mode} — ${error.message}`)

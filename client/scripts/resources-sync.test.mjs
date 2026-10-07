@@ -10,7 +10,7 @@ import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
 import { derivedCategories, resolveResource, resolveService } from "./resources-resolve.mjs"
 import { assertSchemaSupported, dialKey, isCalendarDate, validateDataset, validateTaxonomy } from "./resources-validate.mjs"
-import { DEFAULT_PATHS, buildServerCopy, run } from "./resources-sync.mjs"
+import { DEFAULT_PATHS, buildCoverage, buildServerCopy, run } from "./resources-sync.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const fixtureLines = join(here, "__fixtures__/resources/lines")
@@ -454,4 +454,82 @@ test("the app: current services, categories and what can go on the map", () => {
   assert.equal(app.isMappable(hospital), false)
   assert.equal(app.isMappable(vet), false)
   assert.equal(app.isMappable(byId["fixture-centro"]), true)
+})
+
+/* ── Coverage index (src/data/resources/coverage.json) ── */
+
+const realPlaceFiles = async () => {
+  const dir = join(DEFAULT_PATHS.sourceDir, "places")
+  const { readdir } = await import("node:fs/promises")
+  const names = (await readdir(dir)).filter((name) => name.endsWith(".json")).sort()
+  return Promise.all(names.map(async (name) => ({ name: `places/${name}`, data: await readJson(join(dir, name)) })))
+}
+
+test("coverage index: the real file is exactly what the places generate, not a copy typed by hand", async () => {
+  const files = await realPlaceFiles()
+  const onDisk = (await readFile(join(DEFAULT_PATHS.sourceDir, "coverage.json"), "utf8")).replace(/\r\n/g, "\n")
+  assert.equal(onDisk, buildCoverage(files, taxonomy))
+  assert.match(JSON.parse(onDisk).notice, /No editar a mano/)
+})
+
+test("coverage index: each province agrees with its places - counts, categories, services, divisions and review dates", async () => {
+  const index = JSON.parse(await readFile(join(DEFAULT_PATHS.sourceDir, "coverage.json"), "utf8")).provinces
+  const files = await realPlaceFiles()
+  // one entry per places file, named like the province, and nothing for a province without a file
+  assert.deepEqual(Object.keys(index).sort(), files.map(({ name }) => /places\/(.+)\.json/.exec(name)[1].toUpperCase()).sort())
+  for (const { name, data } of files) {
+    const code = /places\/(.+)\.json/.exec(name)[1].toUpperCase()
+    const places = data.resources.filter((resource) => (resource.services ?? []).length > 0)
+    const entry = index[code]
+    assert.equal(entry.places, places.length, `${code}: places`)
+    assert.deepEqual(entry.categories, [...new Set(places.flatMap((place) => derivedCategories(place, taxonomy)))].sort(), `${code}: categories`)
+    assert.deepEqual(entry.serviceTypes, [...new Set(places.flatMap((place) => place.services.map((service) => service.type)))].sort(), `${code}: services`)
+    assert.deepEqual(entry.divisions, [...new Set(places.map((place) => place.address?.department).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", { numeric: true })), `${code}: divisions`)
+    // every value the index names exists in the taxonomy: nothing is invented
+    for (const type of entry.serviceTypes) assert.ok(taxonomy.serviceTypes.some(({ id }) => id === type), type)
+    for (const category of entry.categories) assert.ok(taxonomy.categories.some(({ id }) => id === category), category)
+    // nothing in the province can be current after currentUntil: it is the latest review date there is
+    for (const place of places) assert.ok(place.verification.nextReviewDue <= entry.currentUntil, `${place.id} expires after the index says`)
+    assert.ok(places.some((place) => place.verification.nextReviewDue === entry.currentUntil), `${code}: currentUntil is a real review date`)
+  }
+})
+
+test("coverage index: built from the fixtures - only places with services, the latest date that can still be current", () => {
+  const index = JSON.parse(buildCoverage(fixtureFiles.filter(({ name }) => name.startsWith("places/")), taxonomy)).provinces
+  assert.deepEqual(Object.keys(index), ["AR-B", "AR-C"], "sorted by province")
+  const caba = fixtureFiles.find(({ name }) => name === "places/ar-c.json").data.resources
+  assert.equal(index["AR-C"].places, caba.filter((resource) => (resource.services ?? []).length > 0).length)
+  assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(index["AR-C"].currentUntil))
+  // a province whose places were never verified has no date: it is never offered
+  const unverified = buildCoverage([{ name: "places/ar-m.json", data: { resources: [{ id: "x", name: "x", services: [{ id: "s", type: "primary-care" }], verification: { status: "unverified" } }] } }], taxonomy)
+  assert.equal(JSON.parse(unverified).provinces["AR-M"].currentUntil, null)
+  // a service that expires earlier than its place bounds the date
+  const bounded = buildCoverage(
+    [{ name: "places/ar-m.json", data: { resources: [{ id: "x", name: "x", services: [{ id: "s", type: "primary-care", verification: { status: "verified", nextReviewDue: "2027-02-01" } }], verification: { status: "verified", nextReviewDue: "2027-06-01" } }] } }],
+    taxonomy,
+  )
+  assert.equal(JSON.parse(bounded).provinces["AR-M"].currentUntil, "2027-02-01")
+})
+
+test("coverage index: sync writes it, check notices when it is out of date or missing", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "resources-"))
+  const options = { linesDir: fixtureLines, placesDir: fixturePlaces, outFile: join(dir, "data/resources.json"), coverageFile: join(dir, "coverage.json") }
+  try {
+    assert.equal((await run({ ...options, mode: "sync" })).ok, true)
+    assert.equal((await run({ ...options, mode: "check" })).ok, true)
+    const text = await readFile(options.coverageFile, "utf8")
+    // Windows checkouts may use CRLF: not a difference
+    await writeFile(options.coverageFile, text.replace(/\n/g, "\r\n"))
+    assert.equal((await run({ ...options, mode: "check" })).ok, true)
+    // a hand-edited index
+    await writeFile(options.coverageFile, text.replace('"places": 1', '"places": 999'))
+    const stale = await run({ ...options, mode: "check" })
+    assert.equal(stale.ok, false)
+    assert.match(stale.errors[0], /índice de cobertura.*resources:sync/)
+    // a missing index
+    await rm(options.coverageFile)
+    assert.equal((await run({ ...options, mode: "check" })).ok, false)
+  } finally {
+    await rm(dir, { recursive: true, force: true })
+  }
 })

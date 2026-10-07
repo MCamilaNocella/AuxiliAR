@@ -1,3 +1,4 @@
+import coverageIndex from "./coverage.json"
 import taxonomy from "./taxonomy.json"
 import type { CategoryId, Contact, ProvinceCode, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
 
@@ -15,6 +16,8 @@ const files = import.meta.glob<{ resources: Resource[] }>("./lines/*.json", { ea
 
 const placeLoaders = import.meta.glob<{ resources: Resource[] }>("./places/*.json", { import: "default" })
 const placesByProvince = new Map<ProvinceCode, Promise<readonly Resource[]>>()
+/** The provinces already downloaded, to answer at once when they are asked for again */
+const loadedPlaces = new Map<ProvinceCode, readonly Resource[]>()
 
 /**
  * The places of a province (places/<ar-c>.json), loaded the first time and kept. A province with no file has none.
@@ -24,11 +27,36 @@ export const loadPlaces = (province: ProvinceCode): Promise<readonly Resource[]>
   const cached = placesByProvince.get(province)
   if (cached) return cached
   const load = placeLoaders[`./places/${province.toLowerCase()}.json`]
-  const loading = load ? load().then((file) => file.resources) : Promise.resolve([])
+  const loading = load
+    ? load().then((file) => {
+        loadedPlaces.set(province, file.resources)
+        return file.resources
+      })
+    : Promise.resolve([])
   placesByProvince.set(province, loading)
   loading.catch(() => placesByProvince.delete(province))
   return loading
 }
+
+/** The places of a province if they were already downloaded, else undefined (never starts a download) */
+export const peekPlaces = (province: ProvinceCode): readonly Resource[] | undefined => loadedPlaces.get(province)
+
+/**
+ * What each places file has, WITHOUT downloading it: client/src/data/resources/coverage.json, generated from the places
+ * by resources:sync (never edited; resources:check fails if it is out of date). It counts every place of the file, the
+ * current and the expired, so it is for planning what to download - never for numbers shown to people.
+ */
+export type ProvinceCoverage = {
+  places: number
+  /** The day from which nothing in the file can be current anymore (null: nothing was verified) */
+  currentUntil: string | null
+  categories: CategoryId[]
+  serviceTypes: ServiceType[]
+  /** Divisions (comuna, partido…) the places are in */
+  divisions: string[]
+}
+
+export const COVERAGE = coverageIndex.provinces as Partial<Record<ProvinceCode, ProvinceCoverage>>
 
 /**
  * The provinces that have a places file: where AuxiliAR has places to show, known without downloading any of them.

@@ -121,6 +121,10 @@ Esto es solo la infraestructura. Las próximas fases, cada una en su propio camb
 
 Los tests usan datos inventados, que nunca van en `lines/`: `client/scripts/__fixtures__/` y `server/src/test/resources/data/resources-fixture.json` (este último se regenera con `UPDATE_FIXTURE=1 npm run resources:test`).
 
+## Índice de cobertura (`coverage.json`)
+
+Un archivo chico, **generado** por `npm run resources:sync` desde `places/` (nunca se edita a mano; `resources:check` falla si está desactualizado). Dice, por provincia, cuántos lugares tiene su archivo, qué categorías y prestaciones hay, en qué divisiones (comunas, partidos…) y hasta qué día algo puede estar vigente (`currentUntil`). La app lo lee para saber **dónde hay lugares sin descargar los archivos**: solo baja el de la provincia elegida, o todos si son pocos (`LOAD_ALL_UP_TO`). Cuenta todos los lugares del archivo, vigentes o no: sirve para planificar la descarga, **nunca para mostrar números a las personas**.
+
 ## Si cambia el formato
 
 1. Actualizá `resource.schema.json` y, si agregás valores permitidos, `taxonomy.json`.

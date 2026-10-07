@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 2,
+  "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos.",
+  "provinces": {
+    "AR-C": {
+      "places": 6,
+      "currentUntil": "2027-01-05",
+      "categories": [
+        "esi",
+        "salud-fisica",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "condoms",
+        "contraception",
+        "dentistry",
+        "diagnostic-imaging",
+        "emergency-contraception",
+        "emergency-room",
+        "ive-ile-care",
+        "laboratory",
+        "mental-health-care",
+        "pharmacy",
+        "pregnancy-care",
+        "primary-care",
+        "sexual-reproductive-health",
+        "sti-testing-care",
+        "vaccination"
+      ],
+      "divisions": [
+        "Comuna 1",
+        "Comuna 2",
+        "Comuna 3",
+        "Comuna 4",
+        "Comuna 5",
+        "Comuna 8"
+      ]
+    }
+  }
+}
