@@ -32,6 +32,8 @@ export const PLACE_PROVINCE_PARAM = "provincia"
 export const PLACE_ZONE_PARAM = "zona"
 export const PLACE_CATEGORY_PARAM = "categoria"
 export const PLACE_TYPE_PARAM = "prestacion"
+/** Only services whose gratuity is verified: /centros?gratuito=1 */
+export const PLACE_FREE_PARAM = "gratuito"
 
 /** How the places are shown: ?vista=mapa | lista. Without it: the map on large screens and the list on phones */
 export const PLACE_VIEW_PARAM = "vista"

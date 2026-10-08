@@ -3,6 +3,7 @@ import type { CategoryId, ProvinceCode, ServiceType } from "@/data/resources"
 import {
   PLACE_CATEGORY_PARAM,
   PLACE_FILTER_PARAM,
+  PLACE_FREE_PARAM,
   PLACE_PROVINCE_PARAM,
   PLACE_QUERY_PARAM,
   PLACE_TYPE_PARAM,
@@ -38,6 +39,7 @@ export const placeQueryFromParams = (params: URLSearchParams): PlaceQuery => {
     zone: validProvince && zone ? zone.slice(0, MAX_TEXT) : null,
     category: category && CARE_CATEGORIES.has(category) ? (category as CategoryId) : null,
     type: type && SERVICE_TYPES.has(type) ? (type as ServiceType) : null,
+    free: params.get(PLACE_FREE_PARAM) === "1",
   }
 }
 
@@ -51,5 +53,6 @@ export const placeQueryToParams = (previous: URLSearchParams, query: PlaceQuery)
   set(PLACE_ZONE_PARAM, query.province ? query.zone : null)
   set(PLACE_CATEGORY_PARAM, query.category)
   set(PLACE_TYPE_PARAM, query.type)
+  set(PLACE_FREE_PARAM, query.free ? "1" : null)
   return params
 }

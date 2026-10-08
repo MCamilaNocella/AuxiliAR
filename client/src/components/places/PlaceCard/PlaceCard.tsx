@@ -31,7 +31,7 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
 
       <ul role="list" aria-label="Prestaciones" className="m-0 flex list-none flex-col gap-2 p-0">
         {shown.map((service) => {
-          const highlights = serviceHighlights(service)
+          const highlights = serviceHighlights(service, place)
           return (
             <li key={service.id} className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="font-semibold text-ink">{serviceName(service)}</span>

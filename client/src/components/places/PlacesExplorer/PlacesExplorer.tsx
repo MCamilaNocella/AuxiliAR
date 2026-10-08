@@ -7,13 +7,14 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, getPlaceFacets, matchingServices, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
 import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
 import { CategoryFilter } from "../CategoryFilter"
 import { FiltersToggle } from "../FiltersToggle"
+import { FreeFilter } from "../FreeFilter"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapView } from "../PlacesMapView"
@@ -183,6 +184,11 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
 
   const clearSearch = () => changeQuery(EMPTY_PLACE_QUERY)
 
+  // Gratuity can come from the filter or from the words of the search ("gratis", "gratuita"): either way it is one filter,
+  // and taking it off takes the words off the text too (they would ask for it again). The text is never changed otherwise
+  const freeOn = effectiveQuery(query).free
+  const setFree = (free: boolean) => changeQuery(free ? { free: true } : { free: false, text: withoutConditionWords(query.text) })
+
   // What is filtering right now, each one removable. A link with a filter from before ("filtro") shows up here too
   const activeFilters: ActiveFilter[] = [
     ...(query.text.trim() ? [{ key: "text", label: `Búsqueda: «${query.text.trim()}»`, onRemove: () => changeQuery({ text: "" }) }] : []),
@@ -191,6 +197,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
     ...(query.zone ? [{ key: "zone", label: query.zone, onRemove: () => changeQuery({ zone: null }) }] : []),
     ...(query.category ? [{ key: "category", label: categoryLabel(query.category), onRemove: () => changeQuery({ category: null }) }] : []),
     ...(query.type ? [{ key: "type", label: serviceTypeLabel(query.type), onRemove: () => changeQuery({ type: null }) }] : []),
+    ...(freeOn ? [{ key: "free", label: "Gratuidad verificada", onRemove: () => setFree(false) }] : []),
   ]
 
   // The search box is always in sight, so it doesn't count for the button that folds the other filters
@@ -238,6 +245,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
             onZoneChange={(zone) => changeQuery({ zone })}
           />
           <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
+          <FreeFilter count={facets.free} checked={freeOn} onChange={setFree} />
           {activeFilters.length > 0 && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}
@@ -276,7 +284,17 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         </div>
       )}
 
-      {empty === "no-results" && (
+      {empty === "no-results" && freeOn && (
+        <div className="flex flex-col items-start gap-3">
+          <p className="m-0">{"No encontramos prestaciones con gratuidad verificada para esta búsqueda" + where + ". Eso no significa que no sean gratuitas: solo mostramos la gratuidad que la fuente oficial confirma."}</p>
+          <p className="m-0">Si quitás este filtro, vas a ver todas las prestaciones de la búsqueda, con o sin gratuidad verificada. Consultá el costo de cada una antes de ir.</p>
+          <button type="button" onClick={() => setFree(false)} className={buttonClass}>
+            Quitar el filtro de gratuidad
+          </button>
+        </div>
+      )}
+
+      {empty === "no-results" && !freeOn && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
             {"No encontramos lugares verificados con esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros."}

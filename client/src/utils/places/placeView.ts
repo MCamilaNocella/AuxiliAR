@@ -1,5 +1,5 @@
 import type { Contact } from "@/data/resources"
-import { appointmentLabel, audienceLabel, costLabel, describeHours, facilityTypeLabel, serviceHighlights, serviceName } from "./format"
+import { appointmentLabel, audienceLabel, costLabel, describeHours, facilityTypeLabel, isVerifiedFree, serviceHighlights, serviceName } from "./format"
 import type { PlaceEntry } from "./filters"
 import { normalizeText } from "./text"
 
@@ -71,7 +71,7 @@ const facilityLabelFor = (name: string, type: string | undefined) => {
 const SHOW_SERVICE_DESCRIPTIONS = false
 
 export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
-  const chipsByService = services.map((service) => serviceHighlights(service))
+  const chipsByService = services.map((service) => serviceHighlights(service, place))
   const highlights = (chipsByService[0] ?? []).filter((chip) => chipsByService.every((chips) => chips.includes(chip)))
 
   const allSame = (pick: (service: PlaceEntry["services"][number]) => unknown) => services.length > 0 && services.every((service) => sameValue(pick(service), pick(services[0])))
@@ -93,7 +93,7 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
       if (item) details.push(item)
     }
     if (commonAppointment.length === 0) details.push(...appointmentItems(service.appointment))
-    if (service.cost === "free" && service.costNote) details.push({ kind: "text", text: `${costLabel("free")}. ${service.costNote}` })
+    if (isVerifiedFree(place, service) && service.costNote) details.push({ kind: "text", text: `${costLabel("free")}. ${service.costNote}` })
     else if (service.cost === "paid" || service.cost === "mixed") {
       details.push({ kind: "text", text: [costLabel(service.cost), service.costNote].filter(Boolean).join(". ") })
     }

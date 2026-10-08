@@ -1,5 +1,5 @@
 import taxonomy from "@/data/resources/taxonomy.json"
-import type { Address, Appointment, Audience, Hours, ResolvedService, ResourceCost } from "@/data/resources"
+import type { Address, Appointment, Audience, Hours, ResolvedService, Resource, ResourceCost } from "@/data/resources"
 
 /*
  * How the verified data is written for people. Rule: only what the data says. A missing or unknown value
@@ -61,6 +61,16 @@ export const describeHours = (hours: Hours | null | undefined): HoursView => {
 /* ── Cost and appointment ── */
 
 /** `unknown` gives nothing here: not knowing the cost never means it is free */
+/**
+ * Gratuity that is verified FOR THIS SERVICE: the service itself declares `cost: "free"` and carries the source that says
+ * so (its own `source.note`). A `free` the establishment declares and the service merely inherits is not enough - a public
+ * establishment does not make every one of its services free - and neither is a missing or unknown cost.
+ */
+export const isVerifiedFree = (place: Resource, service: ResolvedService) => {
+  const own = place.services?.find(({ id }) => id === service.id)
+  return service.cost === "free" && own?.cost === "free" && Boolean(own.source?.note?.trim())
+}
+
 export const costLabel = (cost: ResourceCost) => {
   if (cost === "free") return "Atención gratuita"
   if (cost === "paid") return "Arancelado"
@@ -79,11 +89,11 @@ export const appointmentLabel = ({ mode }: Appointment) => {
  * What stands out about a service: only what its verified data states. Free care that comes with a condition
  * (costNote) is not highlighted as plain "Atención gratuita": the condition is shown instead.
  */
-export const serviceHighlights = (service: ResolvedService) => {
+export const serviceHighlights = (service: ResolvedService, place: Resource) => {
   const highlights: string[] = []
   if (service.hours?.open24h) highlights.push("24 h")
   if (service.appointment.mode === "not-required") highlights.push("Podés ir sin turno")
-  if (service.cost === "free" && !service.costNote) highlights.push("Atención gratuita")
+  if (isVerifiedFree(place, service) && !service.costNote) highlights.push("Atención gratuita")
   return highlights
 }
 

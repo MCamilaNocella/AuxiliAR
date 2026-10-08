@@ -95,9 +95,9 @@ test("cost, appointment and highlights are never assumed", () => {
   assert.equal(util.costLabel("free"), "Atención gratuita")
   assert.equal(util.appointmentLabel({ mode: "unknown" }), undefined)
   // CeSAC services say nothing about cost or hours: nothing to highlight
-  for (const resolved of data.getServices(find("cesac-3"))) assert.deepEqual(util.serviceHighlights(resolved), [], resolved.id)
-  assert.deepEqual(util.serviceHighlights(service("hospital-odontologia-carrillo", "guardia-odontologica")), ["24 h", "Atención gratuita"])
-  assert.deepEqual(util.serviceHighlights(service("hospital-oftalmologico-santa-lucia", "guardia-oftalmologica")), ["24 h", "Podés ir sin turno"])
+  for (const resolved of data.getServices(find("cesac-3"))) assert.deepEqual(util.serviceHighlights(resolved, find("cesac-3")), [], resolved.id)
+  assert.deepEqual(util.serviceHighlights(service("hospital-odontologia-carrillo", "guardia-odontologica"), find("hospital-odontologia-carrillo")), ["24 h", "Atención gratuita"])
+  assert.deepEqual(util.serviceHighlights(service("hospital-oftalmologico-santa-lucia", "guardia-oftalmologica"), find("hospital-oftalmologico-santa-lucia")), ["24 h", "Podés ir sin turno"])
 })
 
 test("address and date wording", () => {
@@ -218,7 +218,7 @@ test("conditions and common information are written once and only when verified"
     return util.getPlaceEntries([place], DAY, "all", { category: "salud-fisica" })[0]
   }
   // free with a condition: no plain highlight, the condition is shown
-  const conditioned = util.buildPlaceView(entryWith((place) => { place.services[0].cost = "free"; place.services[0].costNote = "Con DNI argentino" }))
+  const conditioned = util.buildPlaceView(entryWith((place) => { place.services[0].cost = "free"; place.services[0].costNote = "Con DNI argentino"; place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "La fuente dice que es gratuita con DNI argentino." } }))
   assert.deepEqual(conditioned.services[0].chips, [])
   assert.deepEqual(conditioned.services[0].details, [{ kind: "text", text: "Atención gratuita. Con DNI argentino" }])
   // the same requirements for every service: said once, under "Antes de ir"

@@ -43,7 +43,7 @@ const PLACES = [A, B, C, D, E, F]
 
 const ids = (entries) => entries.map(({ place: { id } }) => id).sort()
 const ask = (criteria) => ids(selectPlaces(PLACES, DAY, { ...EMPTY_PLACE_QUERY, ...criteria }))
-const facetValues = (facets) => Object.fromEntries(Object.entries(facets).map(([name, list]) => [name, Object.fromEntries(list.map(({ value, count }) => [value, count]))]))
+const facetValues = (facets) => Object.fromEntries(Object.entries({ ...facets, free: [] }).map(([name, list]) => [name, Object.fromEntries(list.map(({ value, count }) => [value, count]))]))
 
 test("an empty query shows every current place, and never an expired one", () => {
   assert.deepEqual(ask({}), ["A", "B", "C", "D", "F"])
@@ -122,7 +122,7 @@ test("facets never offer an option with no places", () => {
   ]
   for (const query of queries) {
     const facets = getPlaceFacets(PLACES, DAY, query)
-    for (const [name, list] of Object.entries(facets)) for (const { value, count } of list) assert.ok(count > 0, `${name}:${value}`)
+    for (const [name, list] of Object.entries({ ...facets, free: [] })) for (const { value, count } of list) assert.ok(count > 0, `${name}:${value}`)
     // and every option leads somewhere: choosing it returns exactly that many places
     for (const { value, count } of facets.categories) assert.equal(selectPlaces(PLACES, DAY, { ...query, category: value }).length, count, `category ${value}`)
     for (const { value, count } of facets.types) assert.equal(selectPlaces(PLACES, DAY, { ...query, type: value }).length, count, `type ${value}`)
@@ -148,7 +148,7 @@ test("the older entry points are the same query: one copy of the logic", () => {
 })
 
 test("URL: a query goes into the params and comes back the same, keeping the other params", () => {
-  const query = { text: "guardia", filterId: "emergency", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "emergency-room" }
+  const query = { text: "guardia", filterId: "emergency", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "emergency-room", free: false }
   const params = placeQueryToParams(new URLSearchParams("lugar=cesac-3&vista=mapa"), query)
   assert.equal(params.get("lugar"), "cesac-3")
   assert.equal(params.get("vista"), "mapa")

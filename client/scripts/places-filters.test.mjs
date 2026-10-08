@@ -107,7 +107,7 @@ test("the real places: every option offered leads to exactly its count, under an
     for (const { value, count } of facets.categories) assert.equal(places.selectPlaces(real, DAY, { ...query, category: value }).length, count, `${JSON.stringify(query)} category ${value}`)
     for (const { value, count } of facets.types) assert.equal(places.selectPlaces(real, DAY, { ...query, type: value }).length, count, `${JSON.stringify(query)} type ${value}`)
     if (query.province) for (const { value, count } of facets.zones) assert.equal(places.selectPlaces(real, DAY, { ...query, zone: value }).length, count, `${JSON.stringify(query)} zone ${value}`)
-    for (const list of Object.values(facets)) for (const { count } of list) assert.ok(count > 0)
+    for (const list of Object.values({ ...facets, free: [] })) for (const { count } of list) assert.ok(count > 0)
     // the list, the map and the count are the same results
     const entries = places.selectPlaces(real, DAY, query)
     assert.equal(places.getMapPins(entries).length + places.countUnmapped(entries), entries.length)
@@ -193,7 +193,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
 test("URL: every filter and the view travel together, and clearing keeps the view and the open place", () => {
   const asked = "provincia=AR-C&zona=Comuna+4&categoria=salud-fisica&prestacion=vaccination&buscar=cesac&filtro=vaccination&vista=mapa&lugar=cesac-41"
   const query = places.placeQueryFromParams(new URLSearchParams(asked))
-  assert.deepEqual(query, { text: "cesac", filterId: "vaccination", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "vaccination" })
+  assert.deepEqual(query, { text: "cesac", filterId: "vaccination", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "vaccination", free: false })
   const cleared = places.placeQueryToParams(new URLSearchParams(asked), EMPTY)
   assert.equal(cleared.toString(), "vista=mapa&lugar=cesac-41")
   // the older link still means the same
@@ -279,4 +279,111 @@ test("the explorer is arranged for phones and desktop: search and view first, th
   const section = await readFile(join(root, "src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx"), "utf8")
   // ~44 px of target without making the line taller (the padding is taken back with a negative margin)
   assert.match(section, /-my-2\.5 inline-block[^"]*py-2\.5/)
+})
+
+/* ── Gratuity: only what is verified for that very service ── */
+
+const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
+const rawFree = raw.filter((place) => place.services.some((service) => service.cost === "free" && service.source?.note)).map((place) => place.id).sort()
+
+test("the real data: every free service is declared by the service itself, with the note of the source that says so", () => {
+  for (const place of raw) {
+    // an establishment that has services does not declare gratuity for all of them
+    if (place.services?.length) assert.notEqual(place.cost, "free", place.id + " declares free for all its services")
+    for (const service of place.services ?? []) if (service.cost === "free") assert.ok(service.source?.note?.trim(), place.id + "/" + service.id + " is free without the note of its source")
+  }
+  assert.deepEqual(rawFree, ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
+})
+
+test("the free filter finds only services with verified gratuity, and nothing is inferred", () => {
+  assert.deepEqual(ids(ask({ free: true })), rawFree)
+  // it holds for the same service as the other criteria
+  assert.deepEqual(ids(ask({ free: true, type: "emergency-room" })), rawFree)
+  assert.deepEqual(ids(ask({ free: true, category: "salud-mental" })), [])
+  assert.deepEqual(ids(ask({ free: true, type: "vaccination" })), [])
+  // the only service shown with it is the free one
+  const [entry] = ask({ free: true })
+  assert.deepEqual(entry.services.map((service) => service.cost), ["free"])
+  // public is not free: no cost said, a free inherited from the establishment, or a free without the note of its source do not count
+  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const only = (change) => {
+    const place = structuredClone(base)
+    change(place)
+    return places.selectPlaces([place], DAY, { ...EMPTY, free: true }).length
+  }
+  const documented = (place, cost) => {
+    place.services[0].cost = cost
+    place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
+  }
+  assert.equal(only(() => {}), 0, "no cost said")
+  assert.equal(only((place) => { place.cost = "free" }), 0, "inherited from the establishment")
+  assert.equal(only((place) => { place.services[0].cost = "free" }), 0, "free without the note of its source")
+  assert.equal(only((place) => documented(place, "free")), 1, "declared and documented")
+  for (const cost of ["paid", "mixed", "unknown"]) assert.equal(only((place) => documented(place, cost)), 0, cost)
+})
+
+test("gratis, gratuito/a/s and sin costo in the search are the gratuity filter, and the text is left as it was typed", () => {
+  const expected = ids(ask({ text: "odontologia", free: true }))
+  assert.deepEqual(expected, rawFree)
+  for (const text of ["odontologia gratuita", "odontología GRATIS", "gratuitos odontologia", "odontologia sin costo", "gratuitas odontologia", "odontologia gratuito"]) assert.deepEqual(ids(ask({ text })), expected, text)
+  // alone, the word is just the filter
+  assert.deepEqual(ids(ask({ text: "gratuita" })), rawFree)
+  assert.deepEqual(places.conditionsOf("odontologia gratuita"), { rest: "odontologia", free: true })
+  assert.deepEqual(places.conditionsOf("odontologia"), { rest: "odontologia", free: false })
+  // not a condition when it is part of another word
+  assert.equal(places.conditionsOf("gratuidad").free, false)
+  assert.equal(places.conditionsOf("costo").free, false)
+  // the URL keeps what was typed
+  const query = places.placeQueryFromParams(new URLSearchParams("buscar=odontologia+gratuita"))
+  assert.equal(query.text, "odontologia gratuita")
+  assert.equal(places.effectiveQuery(query).free, true)
+  assert.equal(places.withoutConditionWords("Odontologia Gratuita para niños"), "Odontologia para niños")
+  assert.equal(places.withoutConditionWords("gratis"), "")
+  // the typed words are not looked for as free text
+  assert.deepEqual(ids(ask({ text: "psicologia gratuita" })), [])
+})
+
+test("gratuity facet: offered only with results, and counted without itself", () => {
+  assert.equal(places.getPlaceFacets(real, DAY, EMPTY).free, 2)
+  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, free: true }).free, 2, "turning it on does not change the count")
+  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, text: "odontologia gratuita" }).free, 2, "the words of the text count the same way")
+  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, category: "salud-mental" }).free, 0)
+  // the other facets follow the filter: the services and kinds of care offered are those with gratuity
+  const facets = places.getPlaceFacets(real, DAY, { ...EMPTY, free: true })
+  assert.deepEqual(facets.types.map(({ value }) => value), ["emergency-room"])
+  assert.deepEqual(facets.categories.map(({ value }) => value), ["salud-fisica"])
+})
+
+test("URL: gratuito=1 travels with the rest and anything else is ignored", () => {
+  assert.equal(places.placeQueryFromParams(new URLSearchParams("gratuito=1")).free, true)
+  for (const value of ["0", "true", "si", ""]) assert.equal(places.placeQueryFromParams(new URLSearchParams("gratuito=" + value)).free, false, value)
+  const params = places.placeQueryToParams(new URLSearchParams("vista=lista"), { ...EMPTY, free: true, text: "odontologia" })
+  assert.equal(params.get("gratuito"), "1")
+  assert.equal(params.get("vista"), "lista")
+  assert.equal(places.placeQueryToParams(params, EMPTY).has("gratuito"), false)
+})
+
+test("the free filter control: offered with results (or while on), with what it means", () => {
+  const draw = (props) => renderToStaticMarkup(createElement(FreeFilter, { count: 2, checked: false, onChange() {}, ...props }))
+  const html = draw({})
+  assert.ok(text(html).includes("Solo gratuidad verificada (2)") && text(html).includes("La fuente oficial dice que esa prestación es gratuita."))
+  assert.ok(html.includes('type="checkbox"') && !html.includes("checked"))
+  assert.ok(draw({ checked: true }).includes("checked"))
+  assert.equal(draw({ count: 0 }), "")
+  assert.ok(draw({ count: 0, checked: true }).includes("(0)"), "stays while it is on, so it can be turned off")
+  assert.ok(html.includes("aria-describedby"))
+})
+
+test("the explorer: gratuity from the search or the filter is one visible filter, and an empty result offers a way out", () => {
+  const render = (url) => text(renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true }))))
+  const typed = render("/centros?vista=lista&buscar=odontologia+gratuita")
+  assert.ok(typed.includes("2 lugares encontrados") && typed.includes("Gratuidad verificada Quitar filtro") && typed.includes("Búsqueda: «odontologia gratuita»"))
+  assert.ok(typed.includes("Filtros 1 (1 activo)"), "the button counts the gratuity, the search does not")
+  const chosen = render("/centros?vista=lista&gratuito=1")
+  assert.ok(chosen.includes("2 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
+  const none = render("/centros?vista=lista&gratuito=1&categoria=salud-mental")
+  for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad verificada", "Eso no significa que no sean gratuitas", "con o sin gratuidad verificada", "Consultá el costo de cada una antes de ir", "Quitar el filtro de gratuidad"]) assert.ok(none.includes(piece), piece)
+  assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")
+  // the cards say which services are free
+  assert.ok(chosen.includes("Atención gratuita"))
 })
