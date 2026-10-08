@@ -46,7 +46,7 @@ export default function Section2Content() {
         <p className="m-0 mt-1">Rechazar la atención de una persona por tener un padecimiento mental es una forma de discriminación.</p>
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
         <div className="mt-3">
-          <ActionLink to={centersLink({ filter: "mental-health" })}>Explorar centros de salud cercanos</ActionLink>
+          <ActionLink to={centersLink({ filter: "mental-health" })}>Explorar centros de salud en el mapa</ActionLink>
         </div>
       </section>
 

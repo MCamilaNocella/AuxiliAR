@@ -50,11 +50,11 @@ export default function Section1Content() {
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
         <div className="mt-3">
           <ActionLink to={centersLink({ filter: "mental-health" })} variant="primary">
-            Explorar centros de salud cercanos
+            Explorar centros de salud en el mapa
           </ActionLink>
         </div>
         <p className="m-0 mt-2 text-ink-soft">
-          Explorar no es recomendar: la ficha de cada centro marca la gratuidad solo cuando está confirmada; si no la marca, no está confirmada. Todavía no cubrimos todo el país.{" "}
+          Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.{" "}
           <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="font-bold">
             Cómo verificamos los datos y qué cobertura hay
           </Link>

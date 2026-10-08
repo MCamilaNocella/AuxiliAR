@@ -76,17 +76,19 @@ test("dónde buscar ayuda: the approved introduction, the emergency button, and 
   assert.ok(content.indexOf("Estamos para ayudarte") < content.indexOf("Ver números de emergencia"), "the introduction comes first")
   assert.ok(content.includes("Ver números de emergencia"), "the existing button to the emergency numbers")
   // the map is for exploring, not for recommending: the button says so and the page says what the map's file marks
-  assert.ok(content.includes("Explorar centros de salud cercanos"))
+  assert.ok(content.includes("Explorar centros de salud en el mapa"))
   assert.ok(!/Buscar en el mapa|centros verificados con salud mental/.test(content), "the old label is gone")
   assert.ok(hrefs(html).includes("/centros?filtro=mental-health"), "map")
-  assert.ok(content.includes("Explorar no es recomendar: la ficha de cada centro marca la gratuidad solo cuando está confirmada; si no la marca, no está confirmada"))
+  assert.ok(content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
+  assert.ok(!content.includes("Explorar no es recomendar"), "the technical sentence is gone")
+  assert.ok(!content.includes("Explorar centros de salud cercanos"), "the old button label is gone")
   assert.ok(hrefs(html).includes("/centros?seccion=section-2"), "how the data is verified")
   assert.ok(hrefs(html).includes("/temas/salud-mental?seccion=section-2"), "rights")
   assert.ok(content.includes("Conocé tus derechos"))
   // the way to access varies: said next to the resource (before the map button), not as a barrier before any information
   const access = "La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."
   assert.ok(content.includes(access))
-  assert.ok(content.indexOf(access) > content.indexOf("Estamos para ayudarte") && content.indexOf(access) < content.indexOf("Explorar centros de salud cercanos"))
+  assert.ok(content.indexOf(access) > content.indexOf("Estamos para ayudarte") && content.indexOf(access) < content.indexOf("Explorar centros de salud en el mapa"))
   assert.equal([...html.matchAll(/admisión, turno o derivación/g)].length, 1, "once, not repeated")
   assert.ok(content.includes("Si no tenés cobertura de salud, podés acercarte a un hospital o centro de salud cercano a tu domicilio"))
   assert.ok(content.includes("Todavía no cubrimos todo el país"))
@@ -101,7 +103,7 @@ test("cómo acceder a atención: the rights of the law, and nothing that is not 
   assert.ok(content.includes("Ley Nacional de Salud Mental (26.657)"))
   // the same sentence about how to access care, next to the only resource of this section
   assert.ok(content.includes("La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."))
-  assert.ok(content.includes("Explorar centros de salud cercanos") && !content.includes("Buscar en el mapa"))
+  assert.ok(content.includes("Explorar centros de salud en el mapa") && !content.includes("Buscar en el mapa"))
   // hospitalization and complaints are left out until a health professional reviews them
   assert.ok(!/involuntaria|juez|denunci|reclamo|internaci[oó]n voluntaria/i.test(content))
 })
@@ -125,7 +127,9 @@ test("no phone line is copied, and no promise of gratuity, hours or confidential
     assert.ok(!html.includes("tel:"), id)
     assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|911)\b/.test(content), `${id}: no number`)
     // "gratuidad" appears only to say that the map marks it when confirmed; nothing is called free, and nothing is promised
-    assert.ok(!/gratuit[oa]s?|gratis|24 horas|las 24|confidencial|garantiz|sin costo/i.test(content), id)
+    // (the only sentence allowed to name it sends the reader to each center's file to see what is confirmed)
+    const withoutAllowed = content.replace("Consultá cada ficha para saber qué servicios gratuitos están confirmados.", "")
+    assert.ok(!/gratuit[oa]s?|gratis|24 horas|las 24|confidencial|garantiz|sin costo/i.test(withoutAllowed), id)
   }
 })
 
