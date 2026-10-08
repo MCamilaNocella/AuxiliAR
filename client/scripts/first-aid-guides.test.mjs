@@ -164,12 +164,11 @@ test("the route opens the guide, or says it wasn't found", () => {
   assert.ok(text(open("/primeros-auxilios/inventada")).includes("No encontramos esta guía"))
 })
 
-test("guides never send people to the Primeros auxilios category while it is empty", () => {
+test("every guide goes back to the Primeros auxilios category, where the guides are listed", () => {
   const hub = content.FIRST_AID_HUB_PATH
-  assert.equal(hub, "/temas/salud-general?seccion=section-3")
+  assert.equal(hub, "/primeros-auxilios")
   for (const guide of GUIDES) {
     const hrefs = [...renderGuide(guide).matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&")).filter((href) => href.startsWith("/"))
-    assert.ok(!hrefs.includes("/primeros-auxilios"), guide.slug)
     assert.ok(hrefs.includes(hub), `${guide.slug} → back to the guides`)
   }
   const missing = renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: ["/primeros-auxilios/x"] }, createElement(Routes, null, createElement(Route, { path: "/primeros-auxilios/:slug", element: createElement(FirstAidGuideScreen) }))))
@@ -186,7 +185,7 @@ test("the cards of the hub: every group, every one a link to its guide", () => {
   const html = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(GuideCards)))
   for (const guide of GUIDES) assert.ok(html.includes(`href="/primeros-auxilios/${guide.slug}"`), guide.slug)
   assert.ok(!text(html).includes("en preparación"))
-  // a hub can show only some groups
+  // the page can show only some groups
   const only = text(renderToStaticMarkup(createElement(MemoryRouter, null, createElement(GuideCards, { groups: ["prepare"] }))))
   assert.ok(only.includes("Botiquín de primeros auxilios") && !only.includes("RCP"))
 })

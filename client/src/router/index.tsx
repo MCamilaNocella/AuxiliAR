@@ -8,8 +8,9 @@ import { Home } from "@/screens/Home";
 import { Login } from "@/screens/Login";
 import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { Placeholder } from "@/screens/Placeholder";
+import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
-import { LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
+import { HEALTH_GENERAL_SLUG, LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,8 @@ const router = createBrowserRouter([
           { path: PATHS.topics, element: <Placeholder title="Temas"/> },
           // Salud física was renamed Salud general: the old address redirects (before the generic :slug route)
           { path: PATHS.topic(LEGACY_PHYSICAL_HEALTH_SLUG), element: <RedirectToHealthGeneral/> },
+          // Salud general no longer has Primeros auxilios: its old section address redirects to /primeros-auxilios
+          { path: PATHS.topic(HEALTH_GENERAL_SLUG), element: <HealthGeneralRoute/> },
           { path: PATHS.topic(":slug"), element: <Category/> },
           { path: PATHS.resources, element: <Category/> },
           { path: PATHS.centers, element: <Category/> },

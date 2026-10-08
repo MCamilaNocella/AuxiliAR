@@ -1,7 +1,7 @@
 import { EMERGENCY_GUIDES } from "./guides/emergencies"
 import { INJURY_GUIDES } from "./guides/injuries"
 import { PREPARE_GUIDES } from "./guides/prepare"
-import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
+import { PATHS } from "@/router/paths"
 import type { FirstAidGuideContent, GuideGroupId } from "./types"
 
 export type * from "./types"
@@ -11,10 +11,9 @@ export { CALL_INFO } from "./call"
 export const FIRST_AID_GUIDE_CONTENT: FirstAidGuideContent[] = [...EMERGENCY_GUIDES, ...INJURY_GUIDES, ...PREPARE_GUIDES]
 
 /**
- * Where the guides are listed. For now it is Salud general → Primeros auxilios: the Primeros auxilios category
- * (/primeros-auxilios) still has no content, so nothing links there. Change this one line when it hosts the guides.
+ * Where the guides are listed: the Primeros auxilios category (it opens straight on them). Where a guide goes back to.
  */
-export const FIRST_AID_HUB_PATH = `${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-3`
+export const FIRST_AID_HUB_PATH = PATHS.firstAid
 
 export const getFirstAidGuide = (slug: string | undefined) => FIRST_AID_GUIDE_CONTENT.find((guide) => guide.slug === slug)
 

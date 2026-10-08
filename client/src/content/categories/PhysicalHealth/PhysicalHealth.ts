@@ -4,7 +4,6 @@ import type { Category } from "@/types/category"
 import { PhysicalHealthScene } from "./PhysicalHealthScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
-import { Section3 } from "./sections/Section3"
 import { Section4 } from "./sections/Section4"
 
 export const PHYSICAL_HEALTH: Category = {
@@ -21,7 +20,6 @@ export const PHYSICAL_HEALTH: Category = {
   sections: [
     { id: "section-1", title: "Dónde atenderme", Content: Section1 },
     { id: "section-2", title: "Controles de salud", Content: Section2 },
-    { id: "section-3", title: "Primeros auxilios", Content: Section3 },
     { id: "section-4", title: "Quiz", Content: Section4 },
   ],
 }

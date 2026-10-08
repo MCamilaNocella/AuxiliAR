@@ -58,9 +58,16 @@
   {
     "title": "Primeros auxilios",
     "path": "/primeros-auxilios",
-    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias",
+    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
     "firstAid": true,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Guías de primeros auxilios",
+    "path": "/primeros-auxilios?seccion=section-1",
+    "summary": "Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "firstAid": true,
+    "hasInfo": true
   },
   {
     "title": "Sobre AuxiliAR",

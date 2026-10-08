@@ -35,8 +35,8 @@ test("centros de atención: two sections, the first one is the Mapa AuxiliAR and
   assert.deepEqual(HEALTH_CENTERS.sections.map(({ title }) => title), ["Mapa AuxiliAR", "Sobre los datos"])
   assert.equal(HEALTH_CENTERS.defaultSectionId, "section-1")
   assert.ok(HEALTH_CENTERS.sections.some(({ id }) => id === HEALTH_CENTERS.defaultSectionId))
-  // only this category opens on a section
-  assert.deepEqual(ALL_CATEGORIES.filter((category) => category.defaultSectionId).map(({ id }) => id), ["centros"])
+  // only these open on a section: the map, and Primeros auxilios (its only section is the guides)
+  assert.deepEqual(ALL_CATEGORIES.filter((category) => category.defaultSectionId).map(({ id }) => id), ["centros", "primeros-auxilios"])
 })
 
 test("the category screen opens the default section without a portada, and still honors ?seccion=", async () => {

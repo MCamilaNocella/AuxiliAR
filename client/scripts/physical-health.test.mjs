@@ -1,6 +1,6 @@
 /*
- * Tests of the Salud física sections (Controles, Primeros auxilios, Quiz): the quiz (logic and content), the controls topics,
- * the first aid door and the links that lead to the places explorer. Loaded through Vite like the app does.
+ * Tests of the Salud general sections (Dónde atenderme, Controles, Quiz) and of the Primeros auxilios category that used to be one of them:
+ * the quiz (logic and content), the controls topics, the first aid page, the old address of that section and the links that lead to the places explorer. Loaded through Vite like the app does.
  *   npm run health:test
  */
 import assert from "node:assert/strict"
@@ -26,7 +26,10 @@ const { PHYSICAL_HEALTH } = await vite.ssrLoadModule("/src/content/categories/Ph
 const { ALL_CATEGORIES } = await vite.ssrLoadModule("/src/content/categories/index.ts")
 const { PATHS, HEALTH_GENERAL_SLUG, LEGACY_PHYSICAL_HEALTH_SLUG } = await vite.ssrLoadModule("/src/router/paths.ts")
 const Section2 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.content.tsx")).default
-const Section3 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section3/Section3.content.tsx")).default
+const FirstAidPage = (await vite.ssrLoadModule("/src/content/categories/FirstAid/sections/Section1/Section1.content.tsx")).default
+const { FIRST_AID } = await vite.ssrLoadModule("/src/content/categories/FirstAid/FirstAid.ts")
+const { CategorySidebar } = await vite.ssrLoadModule("/src/components/category/CategorySidebar/index.ts")
+const { legacyFirstAidTarget } = await vite.ssrLoadModule("/src/router/legacyFirstAid.ts")
 const Section4 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section4/Section4.content.tsx")).default
 const { FIRST_AID_GUIDE_CONTENT } = await vite.ssrLoadModule("/src/content/firstAid/index.ts")
 
@@ -157,8 +160,8 @@ test("controles de salud: the open topic comes from the URL and shows the three 
 
 /* ── Primeros auxilios ── */
 
-test("primeros auxilios: a door whose every card opens a real guide", () => {
-  const html = render(Section3)
+test("primeros auxilios: the page of the category, whose every card opens a real guide", () => {
+  const html = render(FirstAidPage, "/primeros-auxilios")
   const content = text(html)
   assert.ok(content.includes("¿Necesitás actuar ahora?"))
   for (const group of ["Necesito actuar ahora", "Accidentes y lesiones frecuentes", "Prepararte también ayuda"]) assert.ok(content.includes(group), group)
@@ -170,7 +173,7 @@ test("primeros auxilios: a door whose every card opens a real guide", () => {
     assert.ok(content.includes(guide.title), guide.title)
   }
   assert.equal([...html.matchAll(/href="\/primeros-auxilios\/[a-z-]+"/g)].length, FIRST_AID_GUIDE_CONTENT.length)
-  // the Primeros auxilios category has no content yet: nothing leads there (all the guides are listed here)
+  // it is the category itself: no link back to it
   assert.ok(!html.includes('href="/primeros-auxilios"'))
   assert.ok(!content.includes("Ver todas las guías"))
 })
@@ -179,13 +182,15 @@ test("primeros auxilios: a door whose every card opens a real guide", () => {
 
 test("every internal link of Salud física points somewhere real", () => {
   const topicIds = CONTROL_TOPICS.map(({ id }) => id)
-  const sectionIds = ["section-1", "section-2", "section-3", "section-4"]
+  // Salud general: section-3 (Primeros auxilios) moved out; the ids of the others are kept
+  const sectionIds = ["section-1", "section-2", "section-4"]
   const guideSlugs = FIRST_AID_GUIDE_CONTENT.map(({ slug }) => slug)
   const filterIds = FILTER_IDS
 
   // every href of what the four sections and the guides render, plus the actions the quiz and the topics carry
   const hrefsIn = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&"))
-  const rendered = [Section1, Section2, Section3, Section4].flatMap((section) => hrefsIn(render(section)))
+  const rendered = [Section1, Section2, Section4].flatMap((section) => hrefsIn(render(section)))
+  rendered.push(...hrefsIn(render(FirstAidPage, "/primeros-auxilios")))
   for (const topic of CONTROL_TOPICS) rendered.push(...hrefsIn(render(Section2, `/temas/salud-general?seccion=section-2&tema=${topic.id}`)))
   const fromData = [...QUESTIONS.map(({ action }) => action?.to), ...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to))].filter(Boolean)
   const links = [...new Set([...rendered, ...fromData])].filter((href) => href.startsWith("/"))
@@ -193,7 +198,6 @@ test("every internal link of Salud física points somewhere real", () => {
 
   for (const href of links) {
     const url = new URL(href, "http://x")
-    // "/primeros-auxilios" (the category) is not here on purpose: its sections are placeholders
     // "/centros" is the Centros de atención category: it has its own route
     const known = ["/temas/salud-general", PATHS.centers, ...guideSlugs.map((slug) => `/primeros-auxilios/${slug}`)]
     assert.ok(known.includes(url.pathname), `${href}: no route`)
@@ -209,7 +213,7 @@ test("every internal link of Salud física points somewhere real", () => {
   for (const { action } of QUESTIONS) assert.ok(action.to || action.emergency, "quiz action")
   for (const { actions } of CONTROL_TOPICS) for (const action of actions) assert.ok(action.to || action.emergency, action.label)
   // phone links are real numbers
-  for (const html of [render(Section3)]) for (const [, tel] of html.matchAll(/href="tel:([^"]+)"/g)) assert.match(tel, /^\+?\d{3,}$/)
+  for (const html of [render(FirstAidPage, "/primeros-auxilios")]) for (const [, tel] of html.matchAll(/href="tel:([^"]+)"/g)) assert.match(tel, /^\+?\d{3,}$/)
 })
 
 /* ── Salud general: the new name, the old address, Dónde atenderme ── */
@@ -224,11 +228,12 @@ test("the category is Salud general, at /temas/salud-general, with no trace of t
   assert.equal(PHYSICAL_HEALTH.title, "Salud general")
   assert.equal(PHYSICAL_HEALTH.to, "/temas/salud-general")
   assert.equal(PATHS.topic(HEALTH_GENERAL_SLUG), PHYSICAL_HEALTH.to)
-  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Primeros auxilios", "Quiz"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Quiz"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ id }) => id), ["section-1", "section-2", "section-4"])
   // internal id kept on purpose: the places taxonomy and the category styles use it
   assert.equal(PHYSICAL_HEALTH.id, "salud-fisica")
   const visible = [PHYSICAL_HEALTH.title, PHYSICAL_HEALTH.description, PHYSICAL_HEALTH.subtitle, ...PHYSICAL_HEALTH.sections.map(({ title }) => title)]
-  for (const Section of [Section1, Section2, Section3, Section4]) visible.push(text(render(Section)))
+  for (const Section of [Section1, Section2, FirstAidPage, Section4]) visible.push(text(render(Section)))
   for (const guide of FIRST_AID_GUIDE_CONTENT) visible.push(JSON.stringify(guide))
   assert.ok(!/salud f[ií]sica/i.test(visible.join(" ")), "no 'Salud física' left on screen")
 })
@@ -277,4 +282,51 @@ test("Salud general carries no map and no places explorer, and every link to cen
   for (const to of centers) assert.equal(new URL(to, "http://x").pathname, PATHS.centers, to)
   assert.equal(centersLink(), "/centros")
   assert.equal(centersLink({ filter: "emergency", query: "oftalm" }), "/centros?filtro=emergency&buscar=oftalm")
+})
+
+/* ── Primeros auxilios is its own page, and the old section of Salud general leads there ── */
+
+test("primeros auxilios: one section, which opens straight on the guides", () => {
+  assert.equal(FIRST_AID.to, "/primeros-auxilios")
+  assert.deepEqual(FIRST_AID.sections.map(({ title }) => title), ["Guías de primeros auxilios"])
+  assert.equal(FIRST_AID.defaultSectionId, FIRST_AID.sections[0].id)
+  assert.ok(FIRST_AID.sections[0].summary, "Auxi can send people here")
+  assert.ok(!text(render(FirstAidPage, "/primeros-auxilios")).includes("en construcción"))
+  // Salud general no longer lists it, and there is still one Primeros auxilios (the category in the list, not a second one)
+  assert.ok(!PHYSICAL_HEALTH.sections.some(({ title }) => /primeros auxilios/i.test(title)))
+  assert.equal(ALL_CATEGORIES.filter(({ title }) => title === "Primeros auxilios").length, 1)
+})
+
+test("a category with one section shows no section menu; one with several keeps it", () => {
+  const sidebar = (category) =>
+    renderToStaticMarkup(
+      createElement(MemoryRouter, null, createElement(CategorySidebar, { category, sections: category.sections, activeSectionId: category.sections[0].id, onSelectSection: () => {}, onShowIntro: () => {} })),
+    )
+  const single = sidebar(FIRST_AID)
+  assert.ok(single.includes("Primeros auxilios"), "the title is still there")
+  assert.ok(!single.includes('aria-label="Secciones"'), "no menu button")
+  assert.ok(!single.includes("Secciones de"), "no drawer")
+  assert.ok(!single.includes("Guías de primeros auxilios"), "no list with its only option")
+  const several = sidebar(PHYSICAL_HEALTH)
+  assert.ok(several.includes('aria-label="Secciones"'))
+  for (const { title } of PHYSICAL_HEALTH.sections) assert.ok(several.includes(title), title)
+})
+
+test("the old address of the section (?seccion=section-3) goes to /primeros-auxilios; the other sections stay", () => {
+  // only the section is dropped: any other param and the hash travel along
+  assert.deepEqual(legacyFirstAidTarget("?seccion=section-3", ""), { pathname: "/primeros-auxilios", search: "", hash: "" })
+  assert.deepEqual(legacyFirstAidTarget("?seccion=section-3&utm=x", "#guias"), { pathname: "/primeros-auxilios", search: "?utm=x", hash: "#guias" })
+  for (const search of ["", "?seccion=section-1", "?seccion=section-2&tema=bucal", "?seccion=section-4", "?tema=bucal"]) assert.equal(legacyFirstAidTarget(search, ""), null, search)
+  // the route is wired before the generic one,
+  const router = readFileSync(join(srcDir, "router/index.tsx"), "utf8")
+  assert.ok(router.indexOf("<HealthGeneralRoute/>") > 0 && router.indexOf("<HealthGeneralRoute/>") < router.indexOf('PATHS.topic(":slug")'))
+})
+
+test("no source points at the section that moved", () => {
+  for (const file of sourcesIn(srcDir)) {
+    const code = readFileSync(file, "utf8")
+    if (file.endsWith("legacyFirstAid.ts")) continue
+    assert.ok(!code.includes("salud-general?seccion=section-3"), file)
+    assert.ok(!code.includes("Salud general → Primeros auxilios"), file)
+  }
 })
