@@ -28,7 +28,7 @@ export default function Section2Content() {
         <p className="m-0 mt-1">El Ministerio de Salud de la Nación indica vacunar cada año a los perros y gatos contra la rabia, desde los 3 meses de edad y durante toda su vida.</p>
         <p className="m-0 mt-2">Ese cuidado también protege a las personas. Además, conviene evitar el contacto con animales silvestres.</p>
         <p className="m-0 mt-2">
-          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className="font-bold">
+          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
             Campañas y servicios municipales
           </Link>
         </p>

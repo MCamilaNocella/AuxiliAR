@@ -32,7 +32,7 @@ export default function Section3Content() {
           <li>Pedí que te indiquen la página oficial donde figura, y leela antes de ir.</li>
         </ol>
         <p className="m-0 mt-3">
-          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className="font-bold">
+          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
             Servicios que informan las páginas oficiales
           </Link>
         </p>

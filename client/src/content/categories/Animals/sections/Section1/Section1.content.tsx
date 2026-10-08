@@ -59,7 +59,7 @@ export default function Section1Content() {
         <p className="m-0 mt-1">Para perros y gatos, Senasa indica que se manejan a nivel municipal o provincial: consultá en tu municipalidad o en el centro de zoonosis de tu zona. Preguntá si el servicio es gratuito, quién puede usarlo y cómo se pide.</p>
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder puede variar según el lugar. Algunos servicios requieren turno, registro o domicilio en el municipio.</p>
         <p className="m-0 mt-2">
-          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-3`} className="font-bold">
+          <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-3`} className="inline-flex min-h-11 items-center font-bold">
             Cómo buscar atención veterinaria gratuita
           </Link>
         </p>
