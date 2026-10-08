@@ -512,15 +512,17 @@ test("urgent help: numbers from the emergency bar, where each works said, no cli
   const crisis = draw("crisis")
   const body = text(crisis)
   assert.ok(body.includes("Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora"))
-  // only what the table of numbers says: 911 and 107 are free and 24 h; nothing is claimed about the hours of the 135
-  assert.ok(body.includes("El 911 y el 107 son gratuitos y atienden las 24 horas."))
+  // only what the official sources say: the 911 is free, 24 h and nationwide; the 107 is not (CABA and localities of Buenos Aires); nothing about the hours of the 135
+  assert.ok(body.includes("llamá ya al 911: es gratuito, atiende las 24 horas y funciona en todo el país."))
+  assert.ok(body.includes("Está disponible en CABA y en localidades de la provincia de Buenos Aires. En otros lugares, pedí la ambulancia al 911."))
+  assert.ok(!/107[^.]*(todo el país|24 horas)/.test(body), "the 107 is not said to be nationwide or 24 h")
   assert.ok(!body.includes("135 atiende las 24"))
   // direct calls, and only to numbers that the emergency bar has
   const dialed = [...crisis.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1])
   assert.deepEqual(dialed, ["911", "107", "135"])
   for (const number of dialed) assert.ok(EMERGENCY_NUMBERS.some((entry) => entry.number === number), number + " is not in emergency.ts")
   // the 135 says where it works, and what to do elsewhere
-  assert.ok(body.includes("Atiende solo en CABA y Gran Buenos Aires. Si estás en otro lugar, llamá al 911 o al 107."))
+  assert.ok(body.includes("Atiende solo en CABA y Gran Buenos Aires. Si estás en otro lugar, llamá al 911."))
   assert.ok(body.includes("Ver todos los números de emergencia"))
   assert.ok(!/diagn[oó]stic|medicaci[oó]n|tratamiento|dosis|pastilla/i.test(body), "no clinical advice")
   // the usual search: a calm line that opens to the same numbers
@@ -528,11 +530,10 @@ test("urgent help: numbers from the emergency bar, where each works said, no cli
   assert.ok(text(habitual).includes("Si necesitás ayuda urgente ahora, tocá acá") && habitual.includes("<details"))
   assert.deepEqual([...habitual.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1]), ["911", "107", "135"])
   assert.equal(draw(null), "")
-  // the scope written here is the one of the table the chat uses
+  // the scope of the 135 and the 911 agrees with the table the chat uses. The table says the 107 is nationwide; the official page says it is not, and the card follows the official page
   const numeros = await readFile(join(root, "../server/src/main/resources/prompts/numeros.md"), "utf8")
   assert.ok(numeros.includes("| 135 | Prevención del suicidio | Solo CABA y Gran Buenos Aires |"), "numeros.md no longer says that the 135 is only for CABA and Gran Buenos Aires")
-  for (const row of ["| 911 | Emergencias | Todo el país |", "| 107 | Ambulancia (SAME) | Todo el país"]) assert.ok(numeros.includes(row), row)
-  for (const number of ["911", "107"]) assert.ok(numeros.split(String.fromCharCode(10)).some((line) => line.startsWith("| " + number + " |") && line.trimEnd().endsWith("| 24 h |")), number + " is no longer 24 h in numeros.md")
+  assert.ok(numeros.includes("| 911 | Emergencias | Todo el país |"))
 })
 
 test("the explorer: urgent help first in a crisis, a calm line for a usual search, nothing otherwise - and the results stay", () => {
