@@ -30,9 +30,30 @@
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Orientación, acompañamiento y recursos. Estamos preparando esta información con fuentes oficiales",
+    "summary": "Orientación, acompañamiento y recursos. Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende, y cómo buscar en el mapa centros verificados con salud mental. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
     "firstAid": false,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Dónde buscar ayuda",
+    "path": "/temas/salud-mental?seccion=section-1",
+    "summary": "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende, y cómo buscar en el mapa centros verificados con salud mental.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Cómo acceder a atención",
+    "path": "/temas/salud-mental?seccion=section-2",
+    "summary": "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Cuidarte día a día",
+    "path": "/temas/salud-mental?seccion=section-3",
+    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "firstAid": false,
+    "hasInfo": true
   },
   {
     "title": "Salud sexual y ESI",
