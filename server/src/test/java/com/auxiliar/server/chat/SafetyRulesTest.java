@@ -42,6 +42,17 @@ class SafetyRulesTest {
     }
 
     @Test
+    void theRowsProblemIsReportedWithoutStoppingAnything() throws IOException {
+        assertThat(SafetyRules.rowsProblem(helpNumbers)).isNull();
+        assertThat(SafetyRules.rowsProblem(table("| 911 | Emergencias | Todo el país | x | |"))).contains("138");
+        assertThat(SafetyRules.rowsProblem(table("| 138 | PAMI | Todo el país | x | |"))).contains("139");
+        // without the PAMI rows the rules only skip PAMI: they do not fail
+        HelpNumbers withoutPami = table("| 911 | Emergencias | Todo el país | x | |");
+        assertThat(numbers(SafetyRules.withPami(lines("911"), withoutPami, 4))).containsExactly("911");
+        assertThat(SafetyRules.pamiEmergenciesNote(withoutPami)).contains("139");
+    }
+
+    @Test
     void theServerDoesNotStartIfTheTableLosesOrChangesThePamiRows() throws IOException {
         HelpNumbers withoutPami = table("| 911 | Emergencias | Todo el país | x | |");
         org.assertj.core.api.Assertions.assertThatThrownBy(() -> SafetyRules.requireNumbers(withoutPami)).isInstanceOf(IllegalStateException.class).hasMessageContaining("138");

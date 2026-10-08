@@ -121,6 +121,20 @@ public class ResourceCatalog {
         return resources.stream().filter(resource -> isShown(resource, today)).toList();
     }
 
+    /**
+     * The help lines (not the places) that are verified but whose review date has arrived: they are still shown and still
+     * answered with, because a number a person may need must not vanish, but nobody has checked them again, so they are
+     * not presented as checked.
+     */
+    public List<HealthResource> uncheckedLines() {
+        LocalDate today = today();
+        return resources.stream()
+                .filter(resource -> resource.kind() != HealthResource.Kind.SERVICE)
+                .filter(resource -> resource.verification() != null && resource.verification().status() == HealthResource.Status.VERIFIED)
+                .filter(resource -> !isCurrent(resource, today))
+                .toList();
+    }
+
     /** The places (resources with services) that can be shown today */
     public List<HealthResource> currentPlaces() {
         return current().stream().filter(resource -> !resource.services().isEmpty()).toList();

@@ -62,7 +62,11 @@ public class AuxiGraphConfig {
                                        HelpNumbers helpNumbers,
                                        @Value("${auxiliar.ai.provider}") String providerName,
                                        @Value("${auxiliar.chat.reasoning}") boolean answerReasoning) throws GraphStateException {
-        SafetyRules.requireNumbers(helpNumbers);
+        // Not a reason to stop the server: resources:check and the tests catch it where the table is made
+        String rowsProblem = SafetyRules.rowsProblem(helpNumbers);
+        if (rowsProblem != null) {
+            log.warn(rowsProblem);
+        }
         ChatClient chatClient = chatClientBuilder.build();
         BeanOutputConverter<AuxiAnswer> answerConverter = new BeanOutputConverter<>(AuxiAnswer.class);
         AiProvider provider = AiProvider.from(providerName);

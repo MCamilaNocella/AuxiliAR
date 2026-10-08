@@ -35,15 +35,30 @@ final class SafetyRules {
      * verified lines) stops saying so, the server does not start: better than answering with a number that is wrong.
      */
     static void requireNumbers(HelpNumbers helpNumbers) {
-        if (helpNumbers.find(PAMI).isEmpty()) {
-            throw new IllegalStateException("The table of help numbers has no row for " + PAMI + " (PAMI): SafetyRules needs it");
+        String problem = rowsProblem(helpNumbers);
+        if (problem != null) {
+            throw new IllegalStateException(problem);
         }
-        HelpNumber emergencies = helpNumbers.find(PAMI_EMERGENCIES)
-                .orElseThrow(() -> new IllegalStateException("The table of help numbers has no row for " + PAMI_EMERGENCIES + " (PAMI emergencies): SafetyRules needs it"));
+    }
+
+    /**
+     * What is wrong with the rows these rules rely on, or null. It is checked where the table is made (resources:check, which
+     * reads this file, and the tests), not when the server starts: a server that does not start answers nobody, and without the
+     * PAMI rows the rules only skip PAMI's number (withNumber) and the note falls back to the constant.
+     */
+    static String rowsProblem(HelpNumbers helpNumbers) {
+        if (helpNumbers.find(PAMI).isEmpty()) {
+            return "The table of help numbers has no row for " + PAMI + " (PAMI): SafetyRules needs it";
+        }
+        HelpNumber emergencies = helpNumbers.find(PAMI_EMERGENCIES).orElse(null);
+        if (emergencies == null) {
+            return "The table of help numbers has no row for " + PAMI_EMERGENCIES + " (PAMI emergencies): SafetyRules needs it";
+        }
         String zone = normalize(emergencies.zone());
         if (!zone.contains("amba") || !zone.contains("rosario")) {
-            throw new IllegalStateException("SafetyRules assumes that " + PAMI_EMERGENCIES + " is for AMBA and Rosario, and its row says: " + emergencies.zone());
+            return "SafetyRules assumes that " + PAMI_EMERGENCIES + " is for AMBA and Rosario, and its row says: " + emergencies.zone();
         }
+        return null;
     }
 
     /** Said when the only thing left to say is that PAMI has its own emergency line in the person's zone: the number is the table's */

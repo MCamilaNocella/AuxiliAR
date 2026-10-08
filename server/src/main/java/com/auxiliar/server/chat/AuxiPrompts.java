@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import com.auxiliar.server.content.ContentCatalog;
 import com.auxiliar.server.content.ContentPage;
 import com.auxiliar.server.helplines.HelpNumbers;
+import com.auxiliar.server.resources.HealthResource;
+import com.auxiliar.server.resources.ResourceCatalog;
 
 /**
  * Auxi's instructions, written in Markdown in src/main/resources/prompts so they can be edited by hand
@@ -28,11 +30,13 @@ public class AuxiPrompts {
     private final String emergency;
     private final String pages;
     private final String numbers;
+    private final ResourceCatalog resources;
 
     public AuxiPrompts(@Value("classpath:prompts/auxi.md") Resource base,
                        @Value("classpath:prompts/emergencia.md") Resource emergency,
                        @Value("classpath:prompts/paginas.md") Resource pages,
-                       ContentCatalog catalog, HelpNumbers helpNumbers) throws IOException {
+                       ContentCatalog catalog, HelpNumbers helpNumbers, ResourceCatalog resources) throws IOException {
+        this.resources = resources;
         this.base = read(base);
         this.emergency = read(emergency);
         // Only pages with content: the ones under construction aren't even mentioned to the model
@@ -49,7 +53,23 @@ public class AuxiPrompts {
 
     /** Everything the model gets as system instructions for one turn */
     public String system(boolean emergencyButton, ChatProfile known, String answerFormat) {
-        return String.join("\n\n", base, emergencyButton ? emergency : "", knownData(known), numbers, pages, answerFormat).strip();
+        return String.join("\n\n", base, emergencyButton ? emergency : "", knownData(known), numbers, uncheckedNumbers(), pages, answerFormat).strip();
+    }
+
+    /**
+     * The numbers whose review date has arrived, said every turn (the date can pass while the server is up). They stay in the
+     * list, because a number a person may need must not vanish, but the model must not present them as checked.
+     */
+    String uncheckedNumbers() {
+        List<String> numbers = resources.uncheckedLines().stream()
+                .flatMap(line -> line.contacts().stream().map(HealthResource.Contact::display))
+                .distinct()
+                .toList();
+        if (numbers.isEmpty()) {
+            return "";
+        }
+        return "## Números sin nueva comprobación\n\nEstos números de la lista pasaron su fecha de revisión y todavía no se volvieron a comprobar: "
+                + String.join(", ", numbers) + ". Si das alguno, decile a la persona que si no responde llame al número de Emergencias de la lista.";
     }
 
     /** What's already known about the person, so the model uses it and doesn't ask again */

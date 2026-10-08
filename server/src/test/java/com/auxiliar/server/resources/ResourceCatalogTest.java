@@ -71,6 +71,11 @@ class ResourceCatalogTest {
                  "verification":%s}""".formatted(id, dial, verification);
     }
 
+    /** A line with the official source that a verified resource needs */
+    private static String withSource(String resource, String source) {
+        return resource.substring(0, resource.lastIndexOf("}")) + source + "}";
+    }
+
     /** A place (kind service) verified until 2030, with what goes after its verification (e.g. ,"services":[…]) */
     private static String place(String id, String extra) {
         return """
@@ -446,5 +451,19 @@ class ResourceCatalogTest {
         // The same value under another register is not the same establishment
         assertThatCode(() -> new ResourceCatalog(
                 read(datasetOf(place("a", refes), place("b", ",\"externalIds\":{\"gcba\":\"X-1\"}"))), Clock.systemUTC())).doesNotThrowAnyException();
+    }
+
+    @Test
+    void aLineWhoseReviewDateArrivedIsStillThereButIsReportedAsUnchecked() {
+        String dueOnJanuary = "{\"status\":\"verified\",\"verifiedAt\":\"2026-10-08\",\"verifiedBy\":\"test\",\"nextReviewDue\":\"2027-01-06\"}";
+        String source = ",\"source\":{\"organization\":\"x\",\"url\":\"https://example.org\"}";
+        ResourceDataset dataset = read(datasetOf(withSource(line("vence", "911", dueOnJanuary), source), line("no-verificada", "144", UNVERIFIED), withSource(line("vigente", "107", VERIFIED), source)));
+        // before the date: nothing to report
+        assertThat(new ResourceCatalog(dataset, on("2027-01-05")).uncheckedLines()).isEmpty();
+        // from the date on: it is reported (it is not shown as current), the unverified one is not a line anyone saw, the current one is fine
+        ResourceCatalog later = new ResourceCatalog(dataset, on("2027-01-06"));
+        assertThat(later.uncheckedLines()).extracting(HealthResource::id).containsExactly("vence");
+        assertThat(later.findCurrentByDial("911")).isEmpty();
+        assertThat(later.findByDial("911")).isPresent();
     }
 }
