@@ -16,9 +16,6 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
   const address = shortAddress(place.address)
   const shown = services.slice(0, MAX_SERVICES)
   const hidden = services.length - shown.length
-  // Said only when it tells them apart: some services have verified gratuity and some do not (they may be paid, mixed or not informed)
-  const someFree = services.some((service) => isVerifiedFree(place, service))
-  const someNot = services.some((service) => !isVerifiedFree(place, service))
 
   return (
     <article className="flex flex-col gap-3 rounded-2xl border border-line-strong bg-card p-4">
@@ -35,16 +32,18 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
       <ul role="list" aria-label="Prestaciones" className="m-0 flex list-none flex-col gap-2 p-0">
         {shown.map((service) => {
           const highlights = serviceHighlights(service, place)
+          // Gratuity is judged service by service, never for the whole place: each one is either verified or not confirmed
+          const confirmed = isVerifiedFree(place, service)
           return (
             <li key={service.id} className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="font-semibold text-ink">{serviceName(service)}</span>
               <HighlightBadges items={highlights} />
+              {!confirmed && <span className="rounded-full border border-line-strong px-2.5 py-0.5 text-sm font-bold text-ink-soft">Gratuidad no confirmada</span>}
             </li>
           )
         })}
       </ul>
       {hidden > 0 && <p className="m-0 text-muted">{`+${hidden} ${hidden === 1 ? "servicio más" : "servicios más"}`}</p>}
-      {someFree && someNot && <p className="m-0 text-ink-soft">Las demás prestaciones no tienen gratuidad verificada.</p>}
 
       <button
         type="button"

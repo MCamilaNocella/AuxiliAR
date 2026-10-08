@@ -419,21 +419,30 @@ test("the panel: unknown costs are told apart from verified ones, and said once 
   assert.equal(carrillo.costNotice, undefined)
 })
 
-test("the cards: verified free services are marked, and the others are not called anything", () => {
+test("the cards: gratuity is said service by service - verified ones are marked free, the rest are 'not confirmed'", () => {
   const render = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true })))
   const list = render("/centros?vista=lista")
   // each card of the hospitals is only the free service: marked
   assert.ok(text(list).includes("Atención gratuita"))
-  // a place with free and not-verified services says so once; the CeSAC (nothing verified) say nothing about cost
+  // a place with a verified-free service and others not confirmed marks each service on its own row; the place is never classified as a whole
   const [base] = real.filter(({ id }) => id === "cesac-3")
   const place = structuredClone(base)
   place.services[0].cost = "free"
   place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
   const card = (entry) => renderToStaticMarkup(createElement(PlaceCard, { entry, onOpen() {} }))
   const mixed = text(card(places.selectPlaces([place], DAY, EMPTY)[0]))
-  assert.ok(mixed.includes("Atención gratuita") && mixed.includes("Las demás prestaciones no tienen gratuidad verificada."))
-  const plain = text(card(places.selectPlaces([base], DAY, EMPTY)[0]))
-  assert.ok(!plain.includes("gratuit") && !plain.includes("Gratuita"))
+  const mixedHtml = card(places.selectPlaces([place], DAY, EMPTY)[0])
+  const rows = [...mixedHtml.matchAll(/<li class="flex flex-wrap[^>]*>(.*?)<\/li>(?=<li class="flex flex-wrap|<\/ul><\/article>|<\/ul><p|<\/ul><button)/gs)].map((m) => text(m[1]))
+  assert.ok(rows.length >= 2)
+  assert.ok(rows[0].includes("Atención gratuita") && !rows[0].includes("Gratuidad no confirmada"), "the verified service: free, not 'not confirmed'")
+  assert.ok(rows.slice(1).every((row) => row.includes("Gratuidad no confirmada") && !row.includes("Atención gratuita")), "each other service: not confirmed, never free")
+  assert.ok(!mixed.includes("Las demás prestaciones"), "no whole-place sentence")
+  // nothing verified: every service says it is not confirmed; the place is not called free
+  const plainHtml = card(places.selectPlaces([base], DAY, EMPTY)[0])
+  const plain = text(plainHtml)
+  // (a card lists at most 4 services and counts the rest)
+  assert.equal([...plainHtml.matchAll(/Gratuidad no confirmada/g)].length, Math.min(4, base.services.length))
+  assert.ok(!plain.includes("Atención gratuita") && !plain.includes("Gratuita con"))
 })
 
 test("the free hospitals' panel shows the condition when the source gives one", () => {
