@@ -32,10 +32,10 @@ const render = (component) => renderToStaticMarkup(createElement(MemoryRouter, n
 
 test("the emergency bar is what it always was - five numbers, their order, their labels - and now it is derived", () => {
   assert.deepEqual(emergency.EMERGENCY_NUMBERS, [
-    { number: "107", label: "Ambulancia" },
-    { number: "911", label: "Policía" },
+    { number: "107", label: "Ambulancias" },
+    { number: "911", label: "Emergencias" },
     { number: "144", label: "Violencia" },
-    { number: "135", label: "Crisis" },
+    { number: "135", label: "Asistencia en crisis" },
     { number: "102", label: "Niñez" },
   ])
   const html = render(EmergencyBar)

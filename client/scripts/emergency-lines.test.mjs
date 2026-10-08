@@ -104,7 +104,7 @@ test("the emergency bar keeps its five numbers, in its order and with its labels
     .filter((line) => line.display?.emergencyBarOrder !== undefined)
     .sort((a, b) => a.display.emergencyBarOrder - b.display.emergencyBarOrder)
   assert.deepEqual(bar.map((line) => line.contacts[0].dial), ["107", "911", "144", "135", "102"])
-  assert.deepEqual(bar.map((line) => line.shortName), ["Ambulancia", "Policía", "Violencia", "Crisis", "Niñez"])
+  assert.deepEqual(bar.map((line) => line.shortName), ["Ambulancias · según localidad", "Emergencias", "Violencia", "Asistencia en crisis · CABA y GBA", "Niñez"])
   assert.deepEqual(bar.map((line) => line.display.emergencyBarOrder), [1, 2, 3, 4, 5])
 })
 

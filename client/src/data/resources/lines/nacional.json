@@ -4,7 +4,7 @@
     {
       "id": "emergencias-107",
       "name": "Ambulancia (SAME)",
-      "shortName": "Ambulancia",
+      "shortName": "Ambulancias · según localidad",
       "kind": "emergency",
       "whenToUse": "Emergencias médicas: alguien no respira, se desmaya, sangra mucho, tiene un dolor fuerte en el pecho, un accidente",
       "contacts": [
@@ -61,7 +61,7 @@
     {
       "id": "emergencias-911",
       "name": "Emergencias",
-      "shortName": "Policía",
+      "shortName": "Emergencias",
       "kind": "emergency",
       "whenToUse": "Emergencias en general y policía; pide ambulancia o presencia de la policía",
       "contacts": [{ "type": "phone", "dial": "911", "display": "911" }],
@@ -108,7 +108,7 @@
     {
       "id": "prevencion-suicidio-cas",
       "name": "Prevención del suicidio",
-      "shortName": "Crisis",
+      "shortName": "Asistencia en crisis · CABA y GBA",
       "kind": "urgent-support",
       "description": "Centro de Asistencia al Suicida (organización sin fines de lucro).",
       "whenToUse": "Crisis emocional, angustia intensa o ideas de suicidio (Centro de Asistencia al Suicida)",
@@ -123,6 +123,7 @@
           "type": "phone",
           "dial": "08003451435",
           "display": "0800-345-1435",
+          "label": "Asistencia en crisis · todo el país",
           "scope": { "level": "national", "note": "Todo el país: lo mismo que el 135, desde el resto del país" }
         }
       ],
@@ -351,6 +352,7 @@
     {
       "id": "pami-emergencias-139",
       "name": "PAMI emergencias",
+      "shortName": "PAMI emergencias · AMBA y Rosario",
       "kind": "emergency",
       "whenToUse": "Emergencias médicas de afiliados de PAMI",
       "contacts": [{ "type": "phone", "dial": "139", "display": "139" }],

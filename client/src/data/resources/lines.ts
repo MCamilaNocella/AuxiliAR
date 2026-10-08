@@ -10,6 +10,11 @@ const files = import.meta.glob<{ resources: Resource[] }>("./lines/*.json", { ea
 /** Every resource of lines/, whatever its verification status. For people and Auxi use the `getCurrent…` functions of the index */
 export const RESOURCES: readonly Resource[] = Object.values(files).flatMap((file) => file.resources)
 
+const DAY_FORMAT = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Argentina/Buenos_Aires" })
+
+/** Today as YYYY-MM-DD in Argentina (the same day for everyone, wherever the browser is) */
+export const todayInArgentina = (now: Date = new Date()) => DAY_FORMAT.format(now)
+
 /** What numbers are compared by: digits only, so "0800-333-0160" and "08003330160" are the same one */
 export const dialKey = (dial: string) => dial.replace(/\D/g, "")
 

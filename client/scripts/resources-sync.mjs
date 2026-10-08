@@ -26,6 +26,7 @@ export const DEFAULT_PATHS = {
   coverageFile: join(clientRoot, "src/data/resources/coverage.json"),
   numbersTemplateFile: join(clientRoot, "src/data/resources/numeros.template.md"),
   numbersFile: resolve(clientRoot, "../server/src/main/resources/prompts/numeros.md"),
+  safetyRulesFile: resolve(clientRoot, "../server/src/main/java/com/auxiliar/server/chat/SafetyRules.java"),
 }
 
 const NOTICE = "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync."
@@ -142,6 +143,27 @@ export const buildNumbersDocument = (resources, template) => {
   return `${NUMBERS_NOTICE}\n${body.replace(/\n+$/, "")}\n`
 }
 
+/**
+ * What SafetyRules.java assumes about the table (it names PAMI's two numbers and where the second one works). It is checked here -
+ * in resources:check, which is what CI runs - and not when the server starts, where a failure would stop the whole server.
+ */
+export const checkSafetyRules = (resources, javaSource) => {
+  const errors = []
+  const constant = (name) => new RegExp(`${name}\\s*=\\s*"([0-9]+)"`).exec(javaSource)?.[1]
+  const pami = constant("PAMI")
+  const emergencies = constant("PAMI_EMERGENCIES")
+  if (!pami || !emergencies) return ["SafetyRules.java: no se encontraron las constantes PAMI y PAMI_EMERGENCIES (¿cambió el archivo? actualizá resources-sync.mjs)"]
+  const lineOf = (dial) => resources.find((resource) => resource.kind !== "service" && resource.verification?.status === "verified" && (resource.contacts ?? []).some((contact) => dialDigits(contact.dial) === dialDigits(dial)))
+  if (!lineOf(pami)) errors.push(`SafetyRules.java usa el ${pami} (PAMI), que no es una línea verificada de lines/`)
+  const emergencyLine = lineOf(emergencies)
+  if (!emergencyLine) errors.push(`SafetyRules.java usa el ${emergencies} (emergencias de PAMI), que no es una línea verificada de lines/`)
+  else {
+    const areas = emergencyLine.coverage?.areas ?? []
+    if (!areas.includes("amba") || !areas.includes("ugl-rosario")) errors.push(`SafetyRules.java supone que el ${emergencies} es del AMBA y de Rosario, y lines/ dice otra cosa (${areas.join(", ") || "sin áreas"})`)
+  }
+  return errors
+}
+
 /** Lines whose review date is past or near: the bar and the chat keep showing them, so someone has to be told */
 export const reviewWarnings = (resources, today, days = 30) => {
   const limit = new Date(`${today}T00:00:00Z`)
@@ -225,6 +247,8 @@ export const run = async ({
   /** The template of the table of numbers for the chat, and where the generated table goes; null: not generated */
   numbersTemplateFile = null,
   numbersFile = null,
+  /** SafetyRules.java: its assumptions about the table are checked against lines/ (null: not checked) */
+  safetyRulesFile = null,
   /** Today (AAAA-MM-DD), to warn about lines whose review is near */
   today = new Date().toISOString().slice(0, 10),
 } = {}) => {
@@ -237,6 +261,11 @@ export const run = async ({
   const files = [...lines, ...places]
   const { errors, resources } = validateDataset({ files, schema, taxonomy, categoryIds })
   if (errors.length > 0) return { ok: false, errors, output: null }
+
+  if (safetyRulesFile) {
+    const safetyErrors = checkSafetyRules(resources, await readFile(safetyRulesFile, "utf8"))
+    if (safetyErrors.length > 0) return { ok: false, errors: safetyErrors, output: null }
+  }
 
   const output = buildServerCopy(resources, taxonomy)
   const coverage = buildCoverage(places, taxonomy)
@@ -291,7 +320,7 @@ export const run = async ({
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const mode = process.argv.includes("--check") ? "check" : "sync"
   try {
-    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile, numbersTemplateFile: DEFAULT_PATHS.numbersTemplateFile, numbersFile: DEFAULT_PATHS.numbersFile })
+    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile, numbersTemplateFile: DEFAULT_PATHS.numbersTemplateFile, numbersFile: DEFAULT_PATHS.numbersFile, safetyRulesFile: DEFAULT_PATHS.safetyRulesFile })
     if (!result.ok) {
       console.error(`resources:${mode} — hay problemas:\n${result.errors.map((error) => `  - ${error}`).join("\n")}`)
       process.exitCode = 1

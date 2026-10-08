@@ -1,10 +1,10 @@
 import coverageIndex from "./coverage.json"
-import { RESOURCES, dialKey } from "./lines"
+import { RESOURCES, dialKey, todayInArgentina } from "./lines"
 import taxonomy from "./taxonomy.json"
 import type { CategoryId, Contact, ProvinceCode, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
 
 export type * from "./resources.types"
-export { RESOURCES, dialKey, getEmergencyBarResources, getHelpLine, lineContact } from "./lines"
+export { RESOURCES, dialKey, getEmergencyBarResources, getHelpLine, lineContact, todayInArgentina } from "./lines"
 
 /*
  * Verified resources (help lines, and places with their services): the one place the app reads them from.
@@ -66,11 +66,6 @@ export const PROVINCES_WITH_PLACE_FILES: readonly ProvinceCode[] = Object.keys(p
   .map((path) => /places\/(.+)\.json$/.exec(path)?.[1].toUpperCase() as ProvinceCode | undefined)
   .filter((code): code is ProvinceCode => code !== undefined)
   .sort()
-
-const DAY_FORMAT = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Argentina/Buenos_Aires" })
-
-/** Today as YYYY-MM-DD in Argentina (the same day for everyone, wherever the browser is) */
-export const todayInArgentina = (now: Date = new Date()) => DAY_FORMAT.format(now)
 
 /** Emergency or not is the kind, there's no separate flag to keep in step with it */
 export const isEmergency = (resource: Resource) => resource.kind === "emergency"

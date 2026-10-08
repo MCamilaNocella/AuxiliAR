@@ -1,5 +1,7 @@
 import { Phone } from "lucide-react"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { describeHelpContacts, describeHelpLine, telHref } from "@/utils/helpLines"
+import { formatDate } from "@/utils/places/format"
 import type { HelpLineView } from "@/utils/helpLines"
 import type { MentalHealthContext } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
@@ -29,7 +31,9 @@ const CallLink = ({ line, primary = false }: { line: HelpLineView, primary?: boo
 
 /** One number with what the sources say about it, under it */
 const Line = ({ line, primary = false }: { line: HelpLineView, primary?: boolean }) => {
-  const facts = [line.where, line.hours, line.cost].filter(Boolean)
+  // A line past its review date is still here (a number a person may need must not vanish) but it is not presented as checked
+  const unchecked = line.stale ? `Sin nueva comprobación desde el ${line.verifiedAt ? formatDate(line.verifiedAt) : "momento de su revisión"}: si no responde, llamá al ${GENERAL_EMERGENCY_NUMBER}.` : undefined
+  const facts = [line.where, line.hours, line.cost, unchecked].filter(Boolean)
   return (
     <div className="flex flex-col items-start gap-1">
       <CallLink line={line} primary={primary} />
@@ -51,6 +55,7 @@ const Card = ({ crisis }: { crisis: boolean }) => {
       <Line line={general} primary />
       <p className="m-0 font-bold">Para hablar con alguien en una crisis emocional:</p>
       <Line line={national} primary />
+      <p className="m-0 font-bold">Otras líneas, con su alcance y su horario:</p>
       <Line line={caba} />
       <Line line={nationalAlternative} />
       <p className="m-0 font-bold">Ambulancia:</p>
