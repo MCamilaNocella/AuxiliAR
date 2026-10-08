@@ -4,6 +4,7 @@ import { describeHelpContacts, describeHelpLine, telHref } from "@/utils/helpLin
 import { formatDate } from "@/utils/places/format"
 import type { HelpLineView } from "@/utils/helpLines"
 import type { MentalHealthContext } from "@/utils/places"
+import { AVOID_ATTRIBUTE } from "@/utils/auxiAvoidance"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /*
@@ -47,7 +48,7 @@ const Card = ({ crisis }: { crisis: boolean }) => {
   const [caba, nationalAlternative] = more()
   const same = ambulance()
   return (
-    <section {...(crisis ? { "data-auxi-avoid": "" } : {})} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
+    <section {...(crisis ? { [AVOID_ATTRIBUTE]: "" } : {})} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
       <h3 id="urgent-help-title" className="m-0 text-lg font-extrabold">
         {crisis ? "Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora" : "Ayuda urgente"}
       </h3>
