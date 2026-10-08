@@ -1,4 +1,4 @@
-import { getEmergencyBarResources, getHelpLine, lineContact } from "@/data/resources"
+import { getEmergencyBarResources, getHelpLine, lineContact } from "@/data/resources/lines"
 import type { EmergencyNumber, FirstAidGuide } from "@/types/emergency"
 
 /*

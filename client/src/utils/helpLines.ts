@@ -1,4 +1,4 @@
-import { dialKey, getHelpLine, lineContact } from "@/data/resources"
+import { dialKey, getHelpLine, lineContact } from "@/data/resources/lines"
 import type { Contact, Resource } from "@/data/resources"
 
 /*

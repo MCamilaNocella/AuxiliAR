@@ -1,4 +1,4 @@
-import { getHelpLine, lineContact } from "@/data/resources"
+import { getHelpLine, lineContact } from "@/data/resources/lines"
 import type { GuideSource } from "./types"
 
 /** Official sources of the guides: Ministerio de Salud de la Nación, Dirección Nacional de Emergencias Sanitarias (DINESA) */

@@ -57,6 +57,10 @@ test("the bar and the chat never lose their numbers because a review date passed
 test("a consumer that names a line the dataset does not have fails loudly, not in front of a person", () => {
   assert.throws(() => data.getHelpLine("no-existe"), /not in lines/)
   assert.equal(data.getHelpLine("emergencias-911").contacts[0].dial, "911")
+  // numbers are compared by their digits, however they are written
+  assert.equal(data.dialKey("0800-333-0160"), "08003330160")
+  assert.equal(data.findResourceByDial("0800 999 0091")?.id, "urgencias-salud-mental-0800")
+  assert.equal(data.findResourceByDial("0800-345-1435")?.id, "prevencion-suicidio-cas")
   assert.equal(data.lineContact(data.getHelpLine("prevencion-suicidio-cas"), "0800-345-1435").dial, "08003451435")
 })
 

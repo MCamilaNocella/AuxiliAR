@@ -1,8 +1,10 @@
 import coverageIndex from "./coverage.json"
+import { RESOURCES, dialKey } from "./lines"
 import taxonomy from "./taxonomy.json"
 import type { CategoryId, Contact, ProvinceCode, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
 
 export type * from "./resources.types"
+export { RESOURCES, dialKey, getEmergencyBarResources, getHelpLine, lineContact } from "./lines"
 
 /*
  * Verified resources (help lines, and places with their services): the one place the app reads them from.
@@ -12,8 +14,6 @@ export type * from "./resources.types"
  * Places (hospitals, centers) are not in that bundle: places/<province>.json is loaded on demand, one province at a
  * time (loadPlaces). The functions below take the loaded places as their last argument.
  */
-const files = import.meta.glob<{ resources: Resource[] }>("./lines/*.json", { eager: true, import: "default" })
-
 const placeLoaders = import.meta.glob<{ resources: Resource[] }>("./places/*.json", { import: "default" })
 const placesByProvince = new Map<ProvinceCode, Promise<readonly Resource[]>>()
 /** The provinces already downloaded, to answer at once when they are asked for again */
@@ -67,16 +67,10 @@ export const PROVINCES_WITH_PLACE_FILES: readonly ProvinceCode[] = Object.keys(p
   .filter((code): code is ProvinceCode => code !== undefined)
   .sort()
 
-/** Every resource, whatever its verification status. For people and Auxi use the `getCurrent…` functions */
-export const RESOURCES: readonly Resource[] = Object.values(files).flatMap((file) => file.resources)
-
 const DAY_FORMAT = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Argentina/Buenos_Aires" })
 
 /** Today as YYYY-MM-DD in Argentina (the same day for everyone, wherever the browser is) */
 export const todayInArgentina = (now: Date = new Date()) => DAY_FORMAT.format(now)
-
-/** What numbers are compared by: digits only, so "0800-333-0160" and "08003330160" are the same one */
-export const dialKey = (dial: string) => dial.replace(/\D/g, "")
 
 /** Emergency or not is the kind, there's no separate flag to keep in step with it */
 export const isEmergency = (resource: Resource) => resource.kind === "emergency"
@@ -184,33 +178,6 @@ export const getCurrentPlacesByCategory = (category: CategoryId, day: string = t
 /** Places that can be shown and drawn on the map */
 export const getCurrentMappablePlaces = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
   getCurrentPlaces(day, resources).filter(isMappable)
-
-/**
- * The lines of the emergency bar, in its order (display.emergencyBarOrder). Verified lines only, but NOT filtered by
- * their review date: a number a person may need must not vanish from the bar, or from the chat that reads the same list,
- * because nobody has re-verified it yet. `npm run resources:check` warns when a review is near or past; the page stays.
- */
-export const getEmergencyBarResources = (): Resource[] =>
-  RESOURCES.filter((resource) => resource.verification.status === "verified" && resource.display?.emergencyBarOrder !== undefined).sort(
-    (a, b) => (a.display?.emergencyBarOrder ?? 0) - (b.display?.emergencyBarOrder ?? 0),
-  )
-
-/**
- * A help line by id (lines/*.json), with the same rule as the bar: verified, whatever its review date. It throws when the
- * id does not exist, so a consumer that names a line the dataset does not have fails in the build and the tests, not in front of a person.
- */
-export const getHelpLine = (id: string): Resource => {
-  const line = RESOURCES.find((resource) => resource.id === id && resource.verification.status === "verified")
-  if (!line) throw new Error(`The help line "${id}" is not in lines/ (or is not verified)`)
-  return line
-}
-
-/** How a number is dialed and written: the first contact of the line, or the one with that dial */
-export const lineContact = (line: Resource, dial?: string): Contact => {
-  const contact = dial ? (line.contacts ?? []).find((entry) => dialKey(entry.dial) === dialKey(dial)) : (line.contacts ?? [])[0]
-  if (!contact) throw new Error(`The line "${line.id}" has no contact${dial ? ` ${dial}` : ""}`)
-  return contact
-}
 
 /** Link that dials (phone) or opens the chat (WhatsApp) */
 export const contactHref = ({ type, dial }: Contact) => (type === "whatsapp" ? `https://wa.me/${dialKey(dial)}` : `tel:${dial}`)
