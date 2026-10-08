@@ -78,7 +78,7 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
   // A cost is known when the data states it for that service: verified free, or paid / mixed. Anything else is "not informed"
   const costKnown = services.map((service) => isVerifiedFree(place, service) || service.cost === "paid" || service.cost === "mixed")
   const someCostKnown = costKnown.some(Boolean)
-  const chipsByService = services.map((service, index) => [...serviceHighlights(service, place), ...(someCostKnown && !costKnown[index] ? ["Costo no informado"] : [])])
+  const chipsByService = services.map((service, index) => [...serviceHighlights(service, place), ...(someCostKnown && !costKnown[index] ? ["Gratuidad no confirmada"] : [])])
   const highlights = (chipsByService[0] ?? []).filter((chip) => chipsByService.every((chips) => chips.includes(chip)))
 
   const allSame = (pick: (service: PlaceEntry["services"][number]) => unknown) => services.length > 0 && services.every((service) => sameValue(pick(service), pick(services[0])))
@@ -137,6 +137,6 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
         : !hoursKnown
           ? "Todavía no tenemos el horario verificado: llamá antes de ir."
           : "Todavía no tenemos información verificada sobre turnos: consultá antes de ir."
-  const costNotice = services.length > 0 && !someCostKnown ? "La fuente no informa el costo de estas prestaciones: consultalo antes de ir." : undefined
+  const costNotice = services.length > 0 && !someCostKnown ? "Gratuidad no confirmada: la fuente no informa el costo de estas prestaciones. Consultalo antes de ir." : undefined
   return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, costNotice, availabilityNotice }
 }
