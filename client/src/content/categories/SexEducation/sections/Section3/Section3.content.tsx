@@ -43,7 +43,7 @@ export default function Section3Content() {
           inmediato: la forma de acceder puede variar según el centro.
         </p>
         <p className="m-0 mt-2">
-          <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-1`} className="font-bold">
+          <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
             Dónde buscar atención
           </Link>
         </p>

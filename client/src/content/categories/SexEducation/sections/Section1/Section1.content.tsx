@@ -53,7 +53,7 @@ export default function Section1Content() {
         </div>
         <p className="m-0 mt-2 text-ink-soft">
           Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.{" "}
-          <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="font-bold">
+          <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
             Cómo verificamos los datos y qué cobertura hay
           </Link>
           .
@@ -107,7 +107,7 @@ export default function Section1Content() {
       </section>
 
       <p className="m-0">
-        <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-2`} className="font-bold">
+        <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
           Anticoncepción y prevención de ITS
         </Link>
       </p>

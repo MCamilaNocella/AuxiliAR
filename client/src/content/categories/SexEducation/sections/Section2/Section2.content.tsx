@@ -104,7 +104,7 @@ export default function Section2Content() {
       </section>
 
       <p className="m-0">
-        <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-3`} className="font-bold">
+        <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-3`} className="inline-flex min-h-11 items-center font-bold">
           Derechos y ESI
         </Link>
       </p>
