@@ -21,19 +21,21 @@ let sectionsHintShown = false
  */
 export const CategorySidebar = ({ category, sections, activeSectionId, onSelectSection, onShowIntro }: CategorySidebarProps) => {
   const { id, title, icon: Icon } = category
+  // A category with a single section has nothing to choose: no menu button, no list, no drawer
+  const hasMenu = sections.length > 1
   const barRef = useRef<HTMLDivElement>(null)
   const headingId = useId()
   const drawerId = useId()
   const [drawerState, setDrawerState] = useState<DrawerState>("closed")
   // If the screen grows to desktop size with the drawer open, it closes (the column takes over)
   const isDesktop = useMediaQuery(DESKTOP_QUERY)
-  const showDrawer = drawerState !== "closed" && !isDesktop
+  const showDrawer = hasMenu && drawerState !== "closed" && !isDesktop
   const closeDrawer = useCallback(() => setDrawerState("closed"), [])
 
   // Layout effect: it must subscribe before the entry scroll (a parent layout effect) settles,
   // which with reduced motion or a restored position happens right away
   // A category that opens straight on a section (Centros de atención: its map) doesn't cover it with the hint
-  const opensOnSection = Boolean(category.defaultSectionId)
+  const opensOnSection = Boolean(category.defaultSectionId) || !hasMenu
   useLayoutEffect(() => {
     if (sectionsHintShown || opensOnSection) return
     return onEntryScrollSettled(() => {
@@ -55,6 +57,7 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
         className="@container px-4 py-2 sm:px-6 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
       >
         <div className="flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3">
+          {hasMenu && (
           <button
             type="button"
             onClick={() => setDrawerState((state) => (state === "closed" ? "user" : "closed"))}
@@ -65,9 +68,10 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
           >
             {showDrawer ? <X aria-hidden="true" className="size-6" /> : <Menu aria-hidden="true" className="size-6" />}
           </button>
+          )}
 
           {/* Small screens: pushed to the other end of the bar. Tapping the name goes back to the category intro */}
-          <h1 id={headingId} className="m-0 ml-auto min-w-0 lg:ml-0 lg:flex-1">
+          <h1 id={headingId} className={`m-0 min-w-0 lg:ml-0 lg:flex-1 ${hasMenu ? "ml-auto" : ""}`}>
             <button
               type="button"
               onClick={onShowIntro}
@@ -92,11 +96,14 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
           </h1>
         </div>
 
-        <div className="hidden lg:block">
-          <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
-        </div>
+        {hasMenu && (
+          <div className="hidden lg:block">
+            <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
+          </div>
+        )}
       </nav>
 
+      {hasMenu && (
       <CategorySectionsDrawer
         id={drawerId}
         label={`Secciones de ${title}`}
@@ -108,6 +115,7 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
         activeSectionId={activeSectionId}
         onSelectSection={onSelectSection}
       />
+      )}
     </div>
   )
 }
