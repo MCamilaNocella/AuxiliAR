@@ -1,4 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react"
+import type { ReactNode } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router"
 import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
 import { categoriesOfServiceType, todayInArgentina } from "@/data/resources"
@@ -38,7 +39,7 @@ type PlacesExplorerProps = {
   scope?: PlacesScope
   /** Quick filters shown besides "Todos", suited to the context. None: no chips. Pass a stable value (a constant) */
   filters?: PlaceFilterId[]
-  intro?: string
+  intro?: ReactNode
   /** Adds the "Lista | Mapa" switch: the map opens on large screens, the list on phones (or what ?vista= asks for). Same results in both */
   map?: boolean
 }
@@ -204,7 +205,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         : `${results.length} ${results.length === 1 ? "lugar encontrado" : "lugares encontrados"}${where}`
 
   return (
-    <div className="mt-2 flex flex-col gap-4">
+    <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
       <p className="m-0 text-muted">{intro}</p>
 
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end">

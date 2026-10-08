@@ -1,11 +1,22 @@
+import { Link } from "react-router"
 import { PlacesExplorer } from "@/components/places/PlacesExplorer"
+import { PATHS, SECTION_PARAM } from "@/router/paths"
 import type { PlaceFilterId } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /** The quick filters of the map: every kind of care there is data for */
 const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency"]
 
-const TRANSPARENCY = "Centros verificados por AuxiliAR. Estamos incorporando establecimientos progresivamente."
+/** One line: what the map shows and where to read how it is verified (the section "Sobre los datos") */
+const TRANSPARENCY = (
+  <>
+    Centros verificados por AuxiliAR, incorporados de a poco.{" "}
+    <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="font-bold">
+      Cómo verificamos los datos
+    </Link>
+    .
+  </>
+)
 
 /**
  * Centros de atención · Mapa AuxiliAR: the one map and list of verified places. No scope: every category of care

@@ -51,7 +51,9 @@ test("mapa auxiliar: one emergency line that points to the emergency numbers, no
   assert.equal([...html.matchAll(/mirá los números de emergencia/g)].length, 1)
   assert.ok(!html.includes("bg-alert-soft"))
   // the explorer comes with the transparency note and every kind of care as a quick filter
-  assert.ok(content.includes("Centros verificados por AuxiliAR. Estamos incorporando establecimientos progresivamente."))
+  assert.ok(content.includes("Centros verificados por AuxiliAR, incorporados de a poco."))
+  // ...with the way to read how it is verified: the section "Sobre los datos" of this same category
+  assert.ok(html.includes('href="/centros?seccion=section-2"') && content.includes("Cómo verificamos los datos"))
   // the kinds of care and services come from the data (category chips, service select); the quick chips of before are gone
   // the filters live in a panel (always open on large screens, folded on phones: the server renders the phone's): the search, the view and the button are in sight
   assert.ok(content.includes("¿Qué necesitás?") && /<button[^>]*aria-expanded="false"[^>]*aria-controls=[^>]*>/.test(html) && content.includes("Filtros"))
@@ -67,11 +69,58 @@ test("mapa auxiliar: the map is on and no category is left out of it", async () 
   assert.ok(!/scope=/.test(section), "no scope: every category is shown")
 })
 
-test("sobre los datos: says what is shown, where it comes from and what is never assumed", () => {
-  const content = text(render(Data))
-  for (const piece of ["Solo lo verificado", "De dónde sale", "no damos por hecho", "Un lugar sin ubicación verificada aparece solo en la lista", "Ciudad de Buenos Aires"]) {
-    assert.ok(content.includes(piece), piece)
+test("sobre los datos: how it is verified, what free means, what the date means, why no result is not no service, sources and scope", async () => {
+  const html = render(Data)
+  const content = text(html)
+  const headings = [...html.matchAll(/<h3[^>]*>([^<]+)<[/]h3>/g)].map((match) => match[1])
+  assert.deepEqual(headings, ["Cómo verificamos", "Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
+  // verification: who, against what, when, and what happens when it is doubtful
+  for (const piece of ["una persona de AuxiliAR comprueba sus datos contra una fuente oficial", "quién lo verificó, cuándo y de qué fuente", "salvo que tenga la suya propia", "deja de mostrarse hasta que se vuelva a revisar"]) assert.ok(content.includes(piece), piece)
+  // free: per service, only when the source says so, conditions next to the service, and silence is not an answer
+  for (const piece of ["solo cuando la fuente oficial lo dice para esa prestación en particular", "prestación por prestación, nunca por centro entero", "Con DNI argentino", "no escribimos ni «gratuito» ni «arancelado»", "no lo sabemos"]) assert.ok(content.includes(piece), piece)
+  assert.ok(!/todos? (los|sus) (servicios|prestaciones) (son|es) gratuit/i.test(content), "never says that everything in a center is free")
+  // the date: the same words the panel of a place uses
+  for (const piece of ["Verificada el…", "Se vuelve a revisar antes del…", "no asegura que nada haya cambiado"]) assert.ok(content.includes(piece), piece)
+  // no result is not no service
+  for (const piece of ["todavía no esté verificado", "No significa que el servicio no exista"]) assert.ok(content.includes(piece), piece)
+  assert.ok(content.includes("Un lugar sin ubicación verificada aparece solo en la lista"))
+  // sources and the real scope: the provinces named are the ones that have verified places today (names, never counts)
+  const day = (await vite.ssrLoadModule("/src/data/resources/index.ts")).todayInArgentina()
+  const { planLoad, provinceLabel } = await vite.ssrLoadModule("/src/utils/places/index.ts")
+  const covered = planLoad({ day, province: null }).covered.map(provinceLabel)
+  assert.ok(covered.length > 0 && content.includes("Hoy solo hay centros verificados en " + covered[0]) === (covered.length === 1))
+  assert.ok(content.includes("datos abiertos del Gobierno de la Ciudad de Buenos Aires") && content.includes("En el resto del país todavía no tenemos cobertura"))
+  assert.ok(!/[0-9]+ (lugares|centros|establecimientos)/.test(content), "no numbers of the index")
+  // links: back to the map, and the emergency line
+  assert.ok(html.includes('href="/centros"') && content.includes("Mapa AuxiliAR"))
+  assert.ok(content.includes("mirá los números de emergencia"))
+})
+
+test("the chat finds Centros de atención and its sections: they have a summary and the generated index is up to date", async () => {
+  const index = JSON.parse(await readFile(join(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
+  const byPath = (path) => index.find((page) => page.path === path)
+  assert.ok(HEALTH_CENTERS.sections.every(({ summary }) => summary && summary.length > 40), "every section of the category has a summary")
+  for (const section of HEALTH_CENTERS.sections) {
+    const page = byPath(PATHS.centers + "?seccion=" + section.id)
+    assert.ok(page, section.id + " is in the index")
+    assert.equal(page.hasInfo, true)
+    assert.equal(page.summary, section.summary, "the index is stale: run npm run content:index")
+    assert.equal(page.title, "Centros de atención › " + section.title)
   }
+  const category = byPath(PATHS.centers)
+  assert.equal(category.hasInfo, true)
+  for (const section of HEALTH_CENTERS.sections) assert.ok(category.summary.includes(section.summary))
+  // the summary of the map says where there is coverage today: when another province is added, it has to change
+  assert.deepEqual(Object.keys((await vite.ssrLoadModule("/src/data/resources/index.ts")).COVERAGE), ["AR-C"], "the summary of the map says 'Ciudad de Buenos Aires' only: update it")
+})
+
+test("the sections drawer of a category: closed it is invisible (out of the tab order and the reading order), open it is the menu", async () => {
+  const drawer = await readFile(join(root, "src/components/category/CategorySectionsDrawer/CategorySectionsDrawer.tsx"), "utf8")
+  // closed: visibility hidden after the slide, so its buttons can't be reached by keyboard or screen reader
+  assert.ok(drawer.includes("open ? \"visible translate-x-0") && drawer.includes(": \"invisible -translate-x-full"))
+  assert.ok(drawer.includes("<nav") && drawer.includes("aria-label={label}"))
+  const sidebar = await readFile(join(root, "src/components/category/CategorySidebar/CategorySidebar.tsx"), "utf8")
+  for (const piece of ["aria-label=\"Secciones\"", "aria-expanded={showDrawer}", "aria-controls={drawerId}"]) assert.ok(sidebar.includes(piece), piece)
 })
 
 test("which view opens: the URL first, then the map on large screens and the list on phones", () => {
