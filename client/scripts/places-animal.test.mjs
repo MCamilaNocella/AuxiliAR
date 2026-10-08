@@ -130,8 +130,7 @@ const renderHtml = (url) => renderToStaticMarkup(createElement(MemoryRouter, { i
 test("a link to Salud animal with no veterinary service says so, clearly, and offers the way out", () => {
   const html = renderHtml("/centros?vista=lista&filtro=animal-health")
   const content = text(html)
-  assert.ok(content.includes("Todavía no hay recursos veterinarios verificados disponibles en el mapa"))
-  assert.ok(content.includes("Eso no significa que no existan: solo mostramos lo que está verificado"))
+  assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Salud animal"))
   assert.ok(content.includes("Tipo: Salud animal"), "the chip says which filter is on")
   assert.ok(content.includes("0 lugares encontrados"))
   assert.ok(html.includes('href="/temas/animales"') && content.includes("Ver Salud animal"), "the way to the campaigns that official pages inform")
@@ -143,15 +142,15 @@ test("a link to Salud animal with no veterinary service says so, clearly, and of
 
 test("the same with the free filter on: the message is about the veterinary resources, not about gratuity", () => {
   const content = render("/centros?vista=lista&filtro=animal-health&buscar=gratuita")
-  assert.ok(content.includes("Todavía no hay recursos veterinarios verificados disponibles en el mapa"))
+  assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa"))
   assert.ok(!content.includes("No encontramos prestaciones con gratuidad verificada"))
 })
 
 test("the other quick filters and the human vaccination link keep working as before", () => {
   const vaccination = render("/centros?vista=lista&filtro=vaccination")
-  assert.ok(vaccination.includes("Tipo: Vacunación") && vaccination.includes("lugares encontrados") && !vaccination.includes("recursos veterinarios"))
+  assert.ok(vaccination.includes("Tipo: Vacunación") && vaccination.includes("lugares encontrados") && !vaccination.includes("prestaciones veterinarias"))
   assert.ok(render("/centros?vista=lista&filtro=mental-health").includes("Tipo: Salud mental"))
   // the generic empty state of any other search is not replaced
   const none = render("/centros?vista=lista&buscar=zzzzqq")
-  assert.ok(none.includes("No encontramos lugares verificados con esta búsqueda") && !none.includes("recursos veterinarios"))
+  assert.ok(none.includes("No encontramos lugares verificados con esta búsqueda") && !none.includes("prestaciones veterinarias"))
 })
