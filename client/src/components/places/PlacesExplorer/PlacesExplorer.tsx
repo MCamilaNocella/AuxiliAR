@@ -296,12 +296,10 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
       {noAnimalResources && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">{"Todavía no hay recursos veterinarios verificados disponibles en el mapa" + where + ". Eso no significa que no existan: solo mostramos lo que está verificado."}</p>
-          <p className="m-0">
-            Mientras tanto, en Salud animal están las campañas y los servicios municipales que informan las páginas oficiales.{" "}
-            <Link to={PATHS.topic("animales")} className="inline-flex min-h-11 items-center font-bold">
-              Ver Salud animal
-            </Link>
-          </p>
+          <p className="m-0">Mientras tanto, en Salud animal están las campañas y los servicios municipales que informan las páginas oficiales.</p>
+          <Link to={PATHS.topic("animales")} className="inline-flex min-h-11 items-center font-bold">
+            Ver Salud animal
+          </Link>
           <button type="button" onClick={clearSearch} className={buttonClass}>
             Borrar filtros
           </button>

@@ -1,6 +1,6 @@
 # Propuesta técnica: filtro de Salud animal en el mapa compartido
 
-Fecha: 8/10/2026. **No se implementó nada y no se agregaron datos veterinarios.** Es una propuesta para que el equipo decida. El mapa es compartido (Encontrar atención, Cuidar mi salud, Salud sexual y ESI, Salud mental), así que cualquier cambio en su lógica necesita aprobación.
+Fecha: 8/10/2026. **Estado: la opción A se implementó en `feature/map-animal-filter` (con la variante: el botón no se ofrece, y un enlace directo muestra un estado vacío claro). No se agregaron datos veterinarios.** El texto de abajo es la propuesta original. El mapa es compartido (Encontrar atención, Cuidar mi salud, Salud sexual y ESI, Salud mental), así que cualquier cambio en su lógica necesita aprobación.
 
 ## Qué ya existe
 - **Datos:** el esquema ya prevé el tipo de establecimiento `public-veterinary` (Veterinaria pública), los tipos de prestación `rabies-vaccination`, `spaying-neutering`, `veterinary-care` y `zoonosis`, y la categoría `animales` (`taxonomy.json`, `resources.types.ts`). **No hay ninguna entrada veterinaria cargada.**
