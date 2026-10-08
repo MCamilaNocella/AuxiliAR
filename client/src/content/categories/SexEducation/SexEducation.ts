@@ -28,7 +28,7 @@ export const SEX_EDUCATION: Category = {
       id: "section-2",
       title: "Anticoncepción y prevención",
       summary:
-        "Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo como único método que también previene infecciones de transmisión sexual, y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos.",
+        "Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos.",
       Content: Section2,
     },
     {

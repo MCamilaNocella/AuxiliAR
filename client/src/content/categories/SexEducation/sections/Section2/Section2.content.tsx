@@ -11,7 +11,9 @@ import { CABA_COORDINACION, CABA_TEST, CHECKED_AT, HUESPED_METODOS, LEY_25673, M
  * advice about medication, doses, efficacy or side effects (the official page has no such numbers, and they are left to a
  * health professional). What it says and where it comes from:
  *  - the nine methods named by the ministry (METODOS), as names only
- *  - "el preservativo es el único método que además de evitar un embarazo sirve para prevenir ITS" (METODOS, PREGUNTAS)
+ *  - "el preservativo es el único método que además de evitar un embarazo sirve para prevenir ITS" (METODOS, PREGUNTAS); said here as "ayuda a reducir el riesgo"
+ *    and "no elimina el riesgo por completo", so it never suggests absolute protection
+ *  - the intro to the methods is general: it gives no personal indication, only that a professional helps to choose
  *  - "se obtienen en centros de salud, hospitales, obras sociales y prepagas" (PREGUNTAS)
  *  - the right of access to information, orientation, methods and services: Ley 25.673, art. 2
  *  - the testing and the condoms of the Ciudad: said as "el Gobierno de la Ciudad informa", with its page; no center is listed
@@ -38,7 +40,8 @@ export default function Section2Content() {
         <h3 id="ss-methods" className="m-0 text-xl font-extrabold">
           Métodos anticonceptivos
         </h3>
-        <p className="m-0 mt-1">El Ministerio de Salud nombra estos métodos:</p>
+        <p className="m-0 mt-1">Los métodos anticonceptivos permiten evitar un embarazo. Hay varios, y cuál conviene depende de cada persona: un profesional de la salud te ayuda a elegir. Esto es información general, no una indicación personal.</p>
+        <p className="m-0 mt-2">El Ministerio de Salud nombra estos métodos:</p>
         <ul className="m-0 mt-2 flex list-disc flex-col gap-1 pl-5">
           {METHODS.map((method) => (
             <li key={method}>{method}</li>
@@ -50,10 +53,10 @@ export default function Section2Content() {
 
       <section aria-labelledby="ss-condom" className="rounded-2xl border-2 border-control-line bg-field p-4">
         <h3 id="ss-condom" className="m-0 text-xl font-extrabold">
-          El preservativo también protege de las ITS
+          El preservativo ayuda a reducir el riesgo de ITS
         </h3>
         <p className="m-0 mt-1">
-          El preservativo es el único método que, además de evitar un embarazo, previene las infecciones de transmisión sexual (ITS), incluido el VIH. Se puede combinar con otro método.
+          El preservativo es el único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (ITS), incluido el VIH. No elimina el riesgo por completo. Se puede combinar con otro método.
         </p>
       </section>
 

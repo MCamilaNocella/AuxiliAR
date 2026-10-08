@@ -99,6 +99,8 @@ test("the other pages are pointers: named, with who runs them, and never present
   const urls = external(more)
   assert.deepEqual(urls, [sources.HUESPED_DONDE.url, sources.HUESPED_SERVICIOS.url, sources.PBA_SSR.url, sources.SANTA_FE_IVE.url, sources.TUCUMAN_ANTICONCEPCION.url])
   for (const href of urls) assert.match(href, /^https:\/\/(donde\.huesped\.org\.ar|new\.huesped\.org\.ar|www\.ms\.gba\.gov\.ar|www\.santafe\.gob\.ar|msptucuman\.gov\.ar)\//, href)
+  // each provincial page says that it is only for its province, and that it is not a service verified by AuxiliAR
+  for (const phrase of ["Solo para la provincia de Buenos Aires", "Solo para la provincia de Santa Fe", "Solo para la provincia de Tucumán", "Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR."]) assert.ok(content.includes(phrase), phrase)
   // nothing paid or commercial: Casa FUSA (SS08) and the university's program for its students (SS14) are not here
   for (const [id, page] of Object.entries(pages)) assert.ok(!/fusa|unlp|arancel|precio|descuento|obra social/i.test(text(page)) || /obras sociales y prepagas|obras sociales deben/.test(text(page)), id)
   for (const [id, page] of Object.entries(pages)) assert.ok(!/grupofusa|unlp\.edu/.test(page), id)
@@ -111,7 +113,12 @@ test("anticoncepción y prevención: the nine methods of the ministry as names, 
     assert.ok(content.includes(method), method)
   }
   assert.equal([...html.slice(0, html.indexOf('aria-labelledby="ss-condom"')).matchAll(/<li>/g)].length, 9)
-  assert.ok(content.includes("único método que, además de evitar un embarazo, previene las infecciones de transmisión sexual"))
+  assert.ok(content.includes("único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (ITS), incluido el VIH. No elimina el riesgo por completo"))
+  // the condom never reads as absolute protection
+  assert.ok(!/protege de las ITS|previene las infecciones|evita las ITS|100 ?%|totalmente|sin riesgo/i.test(content), "no absolute protection")
+  // the intro to the methods is general, with no personal indication
+  assert.ok(content.includes("Esto es información general, no una indicación personal"))
+  assert.ok(content.indexOf("Los métodos anticonceptivos permiten evitar un embarazo") < content.indexOf("El Ministerio de Salud nombra estos métodos"))
   // the testing is said as the Ciudad's statement, not as AuxiliAR's, and no center, hour, age rule or result time is made up
   assert.ok(content.includes("el Gobierno de la Ciudad informa que el test de VIH y sífilis es sencillo, confidencial y gratuito en el sistema público"))
   assert.ok(content.includes("AuxiliAR no verificó cada centro de la lista oficial"))

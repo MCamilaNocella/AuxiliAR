@@ -47,7 +47,10 @@ export const LEY_26150: Source = {
   url: "https://www.argentina.gob.ar/normativa/nacional/ley-26150-121222/texto",
 }
 
-/** Ley 27.610, arts. 1, 2 and 12: object, right to decide, and full and free coverage by the public sector. No weeks, no procedure */
+/**
+ * STATUS: in editorial and legal review (team decision, 8/10/2026) - not final for publication. Add no deadline, requirement or
+ * procedure unless a current official source backs it.
+ * Ley 27.610, arts. 1, 2 and 12: object, right to decide, and full and free coverage by the public sector. No weeks, no procedure */
 export const LEY_27610: Source = {
   label: "Ley 27.610, acceso a la interrupción voluntaria del embarazo · argentina.gob.ar",
   url: "https://www.argentina.gob.ar/normativa/nacional/ley-27610-346231/texto",
@@ -83,35 +86,35 @@ export type Pointer = {
 /** SS16: Dirección de ESI, Dirección General de Cultura y Educación de la Provincia de Buenos Aires */
 export const ESI_PBA: Pointer = {
   label: "Programa provincial de Educación Sexual Integral",
-  by: "Provincia de Buenos Aires",
+  by: "Solo para la provincia de Buenos Aires · Dirección General de Cultura y Educación",
   url: "https://abc.gob.ar/secretarias/areas/subsecretaria-de-educacion/programa-provincial-de-educacion-sexual-integral/programa",
 }
 
 /** SS17: "Educación Sexual Integral – Recursos", Ministerio de Educación del Chaco */
 export const ESI_CHACO: Pointer = {
   label: "Educación Sexual Integral: recursos",
-  by: "Chaco",
+  by: "Solo para la provincia del Chaco · Ministerio de Educación",
   url: "https://dirdocumentacion.educacion.chaco.gob.ar/esi/recursos/",
 }
 
 /** SS09: "Aborto Salud Sexual y Reproductiva", Ministerio de Salud de la Provincia de Buenos Aires: information and a map of public establishments */
 export const PBA_SSR: Pointer = {
   label: "Salud sexual y reproductiva, con mapa de establecimientos",
-  by: "Ministerio de Salud de la Provincia de Buenos Aires",
+  by: "Solo para la provincia de Buenos Aires · Ministerio de Salud",
   url: "https://www.ms.gba.gov.ar/sitios/aborto/",
 }
 
 /** SS13: "Interrupción Voluntaria del Embarazo (IVE) - Ley 27.610", Gobierno de Santa Fe, with a map of efectores */
 export const SANTA_FE_IVE: Pointer = {
   label: "Interrupción Voluntaria del Embarazo (Ley 27.610), con mapa de efectores",
-  by: "Gobierno de Santa Fe",
+  by: "Solo para la provincia de Santa Fe · Gobierno de Santa Fe",
   url: "https://www.santafe.gob.ar/index.php/web/content/view/full/139666/",
 }
 
 /** SS12, 19/8/2026: Ministerio de Salud Pública de Tucumán */
 export const TUCUMAN_ANTICONCEPCION: Pointer = {
   label: "Métodos anticonceptivos y asesoramiento en la provincia",
-  by: "Ministerio de Salud Pública de Tucumán",
+  by: "Solo para la provincia de Tucumán · Ministerio de Salud Pública",
   url: "https://msptucuman.gov.ar/el-sistema-de-salud-ofrece-metodos-anticonceptivos-y-asesoramiento-gratuito-en-toda-la-provincia/",
 }
 

@@ -100,6 +100,7 @@ export default function Section1Content() {
           <PointerList items={[HUESPED_DONDE, HUESPED_SERVICIOS]} />
         </div>
         <h4 className="m-0 mt-4 text-lg font-extrabold">Información oficial de algunas provincias</h4>
+        <p className="m-0 mt-1 text-ink-soft">Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR.</p>
         <div className="mt-2">
           <PointerList items={[PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION]} />
         </div>
