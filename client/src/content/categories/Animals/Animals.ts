@@ -1,6 +1,7 @@
 import { PawPrint } from "lucide-react"
 import { PATHS } from "@/router/paths"
 import type { Category } from "@/types/category"
+import { ANIMALS_PREPARING } from "../preparing"
 import { AnimalsScene } from "./AnimalsScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
@@ -9,10 +10,11 @@ import { Section4 } from "./sections/Section4"
 
 export const ANIMALS: Category = {
   id: "animales",
-  title: "Animales",
-  description: "Mascotas y mordeduras",
-  subtitle: "Veterinarias gratuitas, vacunas y primeros auxilios",
+  title: "Salud animal",
+  description: "Cuidados preventivos y orientación veterinaria",
+  subtitle: "Estamos preparando esta información con fuentes oficiales",
   icon: PawPrint,
+  preparing: ANIMALS_PREPARING,
   to: PATHS.topic("animales"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: AnimalsScene,

@@ -1,6 +1,7 @@
 import { Brain } from "lucide-react"
 import { PATHS } from "@/router/paths"
 import type { Category } from "@/types/category"
+import { MENTAL_HEALTH_PREPARING } from "../preparing"
 import { MentalHealthScene } from "./MentalHealthScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
@@ -10,9 +11,10 @@ import { Section4 } from "./sections/Section4"
 export const MENTAL_HEALTH: Category = {
   id: "salud-mental",
   title: "Salud mental",
-  description: "Hablar con alguien, ansiedad",
-  subtitle: "Ayuda gratuita, confidencial y disponible las 24 horas",
+  description: "Orientación, acompañamiento y recursos",
+  subtitle: "Estamos preparando esta información con fuentes oficiales",
   icon: Brain,
+  preparing: MENTAL_HEALTH_PREPARING,
   to: PATHS.topic("salud-mental"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: MentalHealthScene,

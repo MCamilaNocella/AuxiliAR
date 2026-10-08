@@ -224,8 +224,10 @@ const sourcesIn = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((en
   return entry.isDirectory() ? sourcesIn(path) : /\.(ts|tsx)$/.test(entry.name) ? [path] : []
 })
 
-test("the category is Salud general, at /temas/salud-general, with no trace of the old name on screen", () => {
-  assert.equal(PHYSICAL_HEALTH.title, "Salud general")
+test("the category is Cuidar mi salud, at /temas/salud-general (the address keeps its name), with no trace of the old name on screen", () => {
+  assert.equal(PHYSICAL_HEALTH.title, "Cuidar mi salud")
+  // it opens straight on the controls, the main content
+  assert.equal(PHYSICAL_HEALTH.defaultSectionId, "section-2")
   assert.equal(PHYSICAL_HEALTH.to, "/temas/salud-general")
   assert.equal(PATHS.topic(HEALTH_GENERAL_SLUG), PHYSICAL_HEALTH.to)
   assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Quiz"])
@@ -264,7 +266,7 @@ test("dónde atenderme: a short explanation, no emergency block, and one door to
   // one door to the Centros de atención category, which exists
   const links = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1])
   assert.deepEqual(links, [PATHS.centers])
-  assert.ok(ALL_CATEGORIES.some(({ to, title }) => to === PATHS.centers && title === "Centros de atención"), "the category exists")
+  assert.ok(ALL_CATEGORIES.some(({ to, title }) => to === PATHS.centers && title === "Encontrar atención"), "the category exists")
   // no places list or map inside Salud general
   assert.ok(!content.includes("Encontrá un centro") && !/leaflet|Mapa/.test(html))
 })
@@ -297,7 +299,7 @@ test("primeros auxilios: one section, which opens straight on the guides", () =>
   assert.equal(ALL_CATEGORIES.filter(({ title }) => title === "Primeros auxilios").length, 1)
 })
 
-test("a category with one section shows no section menu; one with several keeps it", () => {
+test("a category with one section shows no section menu; two or three get tabs on phones; more than that keep the drawer", () => {
   const sidebar = (category) =>
     renderToStaticMarkup(
       createElement(MemoryRouter, null, createElement(CategorySidebar, { category, sections: category.sections, activeSectionId: category.sections[0].id, onSelectSection: () => {}, onShowIntro: () => {} })),
@@ -307,9 +309,15 @@ test("a category with one section shows no section menu; one with several keeps 
   assert.ok(!single.includes('aria-label="Secciones"'), "no menu button")
   assert.ok(!single.includes("Secciones de"), "no drawer")
   assert.ok(!single.includes("Guías de primeros auxilios"), "no list with its only option")
-  const several = sidebar(PHYSICAL_HEALTH)
-  assert.ok(several.includes('aria-label="Secciones"'))
-  for (const { title } of PHYSICAL_HEALTH.sections) assert.ok(several.includes(title), title)
+  // three sections (Cuidar mi salud): tabs in sight, no drawer to open first
+  const tabs = sidebar(PHYSICAL_HEALTH)
+  assert.ok(!tabs.includes('aria-label="Secciones"') && !tabs.includes("Secciones de"), "no drawer")
+  for (const { title } of PHYSICAL_HEALTH.sections) assert.ok(tabs.includes(title), title)
+  assert.equal([...tabs.matchAll(/lg:hidden/g)].length >= 1, true, "the tabs are for small screens")
+  // four sections: the drawer
+  const four = { ...PHYSICAL_HEALTH, sections: [...PHYSICAL_HEALTH.sections, { id: "section-5", title: "Extra", Content: () => null }] }
+  const drawer = sidebar(four)
+  assert.ok(drawer.includes('aria-label="Secciones"') && drawer.includes("Secciones de"))
 })
 
 test("the old address of the section (?seccion=section-3) goes to /primeros-auxilios; the other sections stay", () => {

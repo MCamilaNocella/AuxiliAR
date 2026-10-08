@@ -35,13 +35,14 @@ test("centros de atención: two sections, the first one is the Mapa AuxiliAR and
   assert.deepEqual(HEALTH_CENTERS.sections.map(({ title }) => title), ["Mapa AuxiliAR", "Sobre los datos"])
   assert.equal(HEALTH_CENTERS.defaultSectionId, "section-1")
   assert.ok(HEALTH_CENTERS.sections.some(({ id }) => id === HEALTH_CENTERS.defaultSectionId))
-  // only these open on a section: the map, and Primeros auxilios (its only section is the guides)
-  assert.deepEqual(ALL_CATEGORIES.filter((category) => category.defaultSectionId).map(({ id }) => id), ["centros", "primeros-auxilios"])
+  // only these open straight on a section: the map, Cuidar mi salud (its controls), Primeros auxilios (the guides) and Sobre AuxiliAR (one page)
+  assert.deepEqual(ALL_CATEGORIES.filter((category) => category.defaultSectionId).map(({ id }) => id), ["centros", "salud-fisica", "primeros-auxilios", "sobre-auxiliar"])
 })
 
 test("the category screen opens the default section without a portada, and still honors ?seccion=", async () => {
   const source = await readFile(join(root, "src/screens/RenderCategory/Category.tsx"), "utf8")
-  assert.match(source, /\?\? category\?\.sections\.find\(\(\{ id \}\) => id === category\.defaultSectionId\)/)
+  assert.match(source, /\?\? sections\.find\(\(\{ id \}\) => id === defaultSectionId\)/)
+  assert.match(source, /const defaultSectionId = category\.preparing \? PREPARING_SECTION\.id : category\.defaultSectionId/)
 })
 
 test("mapa auxiliar: one emergency line that points to the emergency numbers, no alert block", () => {
@@ -96,7 +97,7 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   assert.ok(content.includes("mirá los números de emergencia"))
 })
 
-test("the chat finds Centros de atención and its sections: they have a summary and the generated index is up to date", async () => {
+test("the chat finds Encontrar atención and its sections: they have a summary and the generated index is up to date", async () => {
   const index = JSON.parse(await readFile(join(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
   const byPath = (path) => index.find((page) => page.path === path)
   assert.ok(HEALTH_CENTERS.sections.every(({ summary }) => summary && summary.length > 40), "every section of the category has a summary")
@@ -105,7 +106,7 @@ test("the chat finds Centros de atención and its sections: they have a summary 
     assert.ok(page, section.id + " is in the index")
     assert.equal(page.hasInfo, true)
     assert.equal(page.summary, section.summary, "the index is stale: run npm run content:index")
-    assert.equal(page.title, "Centros de atención › " + section.title)
+    assert.equal(page.title, "Encontrar atención › " + section.title)
   }
   const category = byPath(PATHS.centers)
   assert.equal(category.hasInfo, true)

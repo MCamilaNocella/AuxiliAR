@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react"
 import { categoryIconTransition, categoryTitleTransition } from "@/utils/viewTransition"
 import type { CategoryCardProps } from "./CategoryCard.types"
 
-export const CategoryCard = ({ category: { id, title, description, icon: Icon, to } }: CategoryCardProps) => (
+export const CategoryCard = ({ category: { id, title, description, icon: Icon, to, preparing } }: CategoryCardProps) => (
   <Link
     to={to}
     // Animates the change of screen (the icon and title fly to the category sidebar)
@@ -26,6 +26,8 @@ export const CategoryCard = ({ category: { id, title, description, icon: Icon, t
         {title}
       </span>
       <span className="mt-0.5 text-sm text-muted">{description}</span>
+      {/* Said on the card, so nobody opens a category expecting content that is not published yet */}
+      {preparing && <span className="mt-1.5 self-start rounded-full border border-line-strong bg-field px-2.5 py-0.5 text-xs font-bold text-ink-soft">Próximamente</span>}
     </span>
     <ChevronRight aria-hidden="true" className="size-5 flex-none text-brand" />
   </Link>

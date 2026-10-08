@@ -9,9 +9,9 @@ import { Section4 } from "./sections/Section4"
 export const PHYSICAL_HEALTH: Category = {
   /** Internal id, kept as it was ("salud-fisica"): the places taxonomy, the category colors and the illustrations use it. The title and the address are "Salud general" */
   id: "salud-fisica",
-  title: "Salud general",
-  description: "Presión, diabetes, vacunas",
-  subtitle: "Hospitales públicos, guardias gratuitas y programas del Estado",
+  title: "Cuidar mi salud",
+  description: "Controles, vacunas y prevención, con un quiz para empezar",
+  subtitle: "Qué controles y vacunas te corresponden, en lenguaje simple",
   icon: HeartPulse,
   to: PATHS.topic(HEALTH_GENERAL_SLUG),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -22,4 +22,6 @@ export const PHYSICAL_HEALTH: Category = {
     { id: "section-2", title: "Controles de salud", Content: Section2 },
     { id: "section-4", title: "Quiz", Content: Section4 },
   ],
+  /** It opens straight on the controls (the main content), not on a banner */
+  defaultSectionId: "section-2",
 }

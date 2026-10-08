@@ -1,6 +1,7 @@
 import { HeartHandshake } from "lucide-react"
 import { PATHS } from "@/router/paths"
 import type { Category } from "@/types/category"
+import { SEX_EDUCATION_PREPARING } from "../preparing"
 import { SexEducationScene } from "./SexEducationScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
@@ -9,10 +10,11 @@ import { Section4 } from "./sections/Section4"
 
 export const SEX_EDUCATION: Category = {
   id: "esi",
-  title: "Educación sexual (ESI)",
-  description: "Cuidados y derechos",
-  subtitle: "Educación Sexual Integral · Derechos y acceso gratuito",
+  title: "Salud sexual y ESI",
+  description: "Anticoncepción, derechos y acceso a atención",
+  subtitle: "Estamos preparando esta información con fuentes oficiales",
   icon: HeartHandshake,
+  preparing: SEX_EDUCATION_PREPARING,
   to: PATHS.topic("esi"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: SexEducationScene,

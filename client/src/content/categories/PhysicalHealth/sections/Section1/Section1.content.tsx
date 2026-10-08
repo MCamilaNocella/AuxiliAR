@@ -37,10 +37,10 @@ export default function Section1Content() {
         <h3 id="find-center" className="m-0 text-xl font-extrabold">
           Buscá un centro cerca tuyo
         </h3>
-        <p className="m-0 mt-1">Centros de salud, hospitales y guardias están en la categoría Centros de atención.</p>
+        <p className="m-0 mt-1">Centros de salud, hospitales y guardias están en Encontrar atención.</p>
         <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <ActionLink to={PATHS.centers} variant="primary">
-            Ir a Centros de atención
+            Ir a Encontrar atención
           </ActionLink>
         </div>
       </section>
