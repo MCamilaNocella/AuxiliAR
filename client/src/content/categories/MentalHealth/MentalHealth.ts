@@ -21,19 +21,19 @@ export const MENTAL_HEALTH: Category = {
       id: "section-1",
       title: "Dónde buscar ayuda",
       summary:
-        "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende, y cómo buscar en el mapa centros verificados con salud mental.",
+        "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
       Content: Section1,
     },
     {
       id: "section-2",
-      title: "Cómo acceder a atención",
+      title: "Conocé tus derechos",
       summary:
         "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
       Content: Section2,
     },
     {
       id: "section-3",
-      title: "Cuidarte día a día",
+      title: "Herramientas para cuidarte",
       summary:
         "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
       Content: Section3,

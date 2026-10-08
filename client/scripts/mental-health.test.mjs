@@ -36,8 +36,8 @@ const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) =
 test("salud mental has three sections that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(MENTAL_HEALTH.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Dónde buscar ayuda"],
-    ["section-2", "Cómo acceder a atención"],
-    ["section-3", "Cuidarte día a día"],
+    ["section-2", "Conocé tus derechos"],
+    ["section-3", "Herramientas para cuidarte"],
   ])
   assert.equal(MENTAL_HEALTH.defaultSectionId, "section-1")
   assert.equal(MENTAL_HEALTH.preparing, undefined)
@@ -63,21 +63,33 @@ test("every section has content, no placeholder, and ends with its official sour
 
 test("each source is named where its content comes from: the law, the plain-words law, the ministry pages and the OMS", () => {
   const urls = (id) => hrefs(pages[id]).filter((href) => href.startsWith("https://"))
-  assert.deepEqual(urls("section-1"), [sources.DIRECCION_NACIONAL.url, sources.ORIENTACION.url, sources.LEY_SIMPLE.url, sources.LEY_26657.url])
+  assert.deepEqual(urls("section-1"), [sources.ORIENTACION.url, sources.LEY_SIMPLE.url, sources.LEY_26657.url])
   assert.deepEqual(urls("section-2"), [sources.LEY_26657.url, sources.LEY_SIMPLE.url])
   assert.deepEqual(urls("section-3"), [sources.OMS_ESTRES.url])
   assert.match(sources.LEY_26657.url, /ley-26657-175977\/texto$/)
 })
 
-test("dónde buscar ayuda: the emergency button, the verified map filtered by mental health, and the way to read how it is verified", () => {
+test("dónde buscar ayuda: the approved introduction, the emergency button, and a map that only explores", () => {
   const html = pages["section-1"]
   const content = text(html)
+  assert.ok(content.includes("Estamos para ayudarte a encontrar orientación y recursos de salud mental. Acá vas a conocer tus derechos y descubrir dónde buscar atención. AuxiliAR no otorga turnos ni realiza consultas médicas directamente."))
+  assert.ok(content.indexOf("Estamos para ayudarte") < content.indexOf("Ver números de emergencia"), "the introduction comes first")
   assert.ok(content.includes("Ver números de emergencia"), "the existing button to the emergency numbers")
+  // the map is for exploring, not for recommending: the button says so and the page says what the map's file marks
+  assert.ok(content.includes("Explorar centros de salud cercanos"))
+  assert.ok(!/Buscar en el mapa|centros verificados con salud mental/.test(content), "the old label is gone")
   assert.ok(hrefs(html).includes("/centros?filtro=mental-health"), "map")
+  assert.ok(content.includes("Explorar no es recomendar: la ficha de cada centro marca la gratuidad solo cuando está confirmada; si no la marca, no está confirmada"))
   assert.ok(hrefs(html).includes("/centros?seccion=section-2"), "how the data is verified")
   assert.ok(hrefs(html).includes("/temas/salud-mental?seccion=section-2"), "rights")
+  assert.ok(content.includes("Conocé tus derechos"))
+  // the way to access varies: said next to the resource (before the map button), not as a barrier before any information
+  const access = "La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."
+  assert.ok(content.includes(access))
+  assert.ok(content.indexOf(access) > content.indexOf("Estamos para ayudarte") && content.indexOf(access) < content.indexOf("Explorar centros de salud cercanos"))
+  assert.equal([...html.matchAll(/admisión, turno o derivación/g)].length, 1, "once, not repeated")
   assert.ok(content.includes("Si no tenés cobertura de salud, podés acercarte a un hospital o centro de salud cercano a tu domicilio"))
-  assert.ok(content.includes("todavía no cubrimos todo el país"))
+  assert.ok(content.includes("Todavía no cubrimos todo el país"))
 })
 
 test("cómo acceder a atención: the rights of the law, and nothing that is not in it", () => {
@@ -87,11 +99,14 @@ test("cómo acceder a atención: the rights of the law, and nothing that is not 
   assert.equal([...body.matchAll(/<li>/g)].length, 6)
   for (const piece of ["tratamiento más conveniente", "acompañen", "historia clínica", "discriminada", "hospital general", "medicación"]) assert.ok(content.includes(piece), piece)
   assert.ok(content.includes("Ley Nacional de Salud Mental (26.657)"))
+  // the same sentence about how to access care, next to the only resource of this section
+  assert.ok(content.includes("La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."))
+  assert.ok(content.includes("Explorar centros de salud cercanos") && !content.includes("Buscar en el mapa"))
   // hospitalization and complaints are left out until a health professional reviews them
   assert.ok(!/involuntaria|juez|denunci|reclamo|internaci[oó]n voluntaria/i.test(content))
 })
 
-test("cuidarte día a día: habits from the OMS without numbers or doses, and when to ask for professional help", () => {
+test("herramientas para cuidarte: habits from the OMS without numbers or doses, and when to ask for professional help", () => {
   const html = pages["section-3"]
   const content = text(html)
   const body = html.slice(0, html.indexOf('aria-label="Fuentes"'))
@@ -109,7 +124,8 @@ test("no phone line is copied, and no promise of gratuity, hours or confidential
     const content = text(html)
     assert.ok(!html.includes("tel:"), id)
     assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|911)\b/.test(content), `${id}: no number`)
-    assert.ok(!/gratuit|24 horas|las 24|confidencial|garantiz/i.test(content), id)
+    // "gratuidad" appears only to say that the map marks it when confirmed; nothing is called free, and nothing is promised
+    assert.ok(!/gratuit[oa]s?|gratis|24 horas|las 24|confidencial|garantiz|sin costo/i.test(content), id)
   }
 })
 

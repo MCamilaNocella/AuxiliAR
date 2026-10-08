@@ -24,12 +24,6 @@ export const ORIENTACION: Source = {
   url: "https://www.argentina.gob.ar/derechoshumanos/grupos-en-situacion-de-vulnerabilidad/orientacion-en-salud-mental",
 }
 
-/** "Cualquier persona puede atravesar problemas de salud mental en algún momento de su vida" */
-export const DIRECCION_NACIONAL: Source = {
-  label: "Dirección Nacional de Abordaje Integral de Salud Mental · Ministerio de Salud de la Nación",
-  url: "https://www.argentina.gob.ar/salud/mental-y-adicciones",
-}
-
 /** "Estrés", OMS, 30 de marzo de 2026: routine, sleep, talking to others, exercise, food, limits with the news, when to ask for help */
 export const OMS_ESTRES: Source = {
   label: "Estrés · Organización Mundial de la Salud",

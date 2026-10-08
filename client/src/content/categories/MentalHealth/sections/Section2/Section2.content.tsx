@@ -29,7 +29,7 @@ export default function Section2Content() {
     <div className="mt-2 flex max-w-3xl flex-col gap-6">
       <section aria-labelledby="mh-rights">
         <h3 id="mh-rights" className="m-0 text-xl font-extrabold">
-          Qué podés esperar cuando pedís atención
+          Lo que reconoce la ley
         </h3>
         <p className="m-0 mt-1">La Ley Nacional de Salud Mental (26.657) reconoce estos derechos a las personas con padecimiento mental:</p>
         <ul className="m-0 mt-3 flex list-disc flex-col gap-2 pl-5">
@@ -44,8 +44,9 @@ export default function Section2Content() {
           Si te rechazan la atención
         </h3>
         <p className="m-0 mt-1">Rechazar la atención de una persona por tener un padecimiento mental es una forma de discriminación.</p>
+        <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
         <div className="mt-3">
-          <ActionLink to={centersLink({ filter: "mental-health" })}>Buscar en el mapa centros verificados con salud mental</ActionLink>
+          <ActionLink to={centersLink({ filter: "mental-health" })}>Explorar centros de salud cercanos</ActionLink>
         </div>
       </section>
 
