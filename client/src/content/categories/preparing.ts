@@ -12,11 +12,6 @@ export const MENTAL_HEALTH_PREPARING: CategoryPreparing = {
   meanwhile: [{ label: "Buscar en el mapa centros verificados con salud mental", to: centersLink({ filter: "mental-health" }) }],
 }
 
-export const SEX_EDUCATION_PREPARING: CategoryPreparing = {
-  will: "Va a reunir información sobre anticoncepción, derechos y cómo acceder a atención, solo con información de fuentes oficiales.",
-  meanwhile: [{ label: "Buscar en el mapa centros verificados con salud sexual y reproductiva", to: centersLink({ filter: "sexual-health" }) }],
-}
-
 export const ANIMALS_PREPARING: CategoryPreparing = {
   will: "Va a reunir cuidados preventivos y orientación veterinaria, solo con información de fuentes oficiales.",
   meanwhile: [],
