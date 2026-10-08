@@ -32,7 +32,7 @@ const { run } = await import(pathToFileURL(join(here, "resources-sync.mjs")).hre
 const DAY = data.todayInArgentina()
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, buildPlaceView, serviceHighlights, isVerifiedFree } = places
 
-// The real places with the proposal applied to a copy: the services it names get the fields it sets
+// The real places with the proposal applied (again) to a copy: it is already in the data, so this only checks it is idempotent: the services it names get the fields it sets
 const applied = () => {
   const copy = structuredClone(realPlaces)
   for (const change of proposal.serviceChanges) {
@@ -100,8 +100,34 @@ test("gratuity: only the services of the proposal are verified free, and the res
       assert.equal(free, proposed.has(`${id}/${own.id}`), `${id}/${own.id}`)
     }
   }
-  // Establishments that were free-by-nothing before stay so: a public centre does not make everything free
-  assert.equal(isVerifiedFree(realPlaces.resources[0], resolved(realPlaces, "cesac-3", "atencion-primaria")), false, "today nothing of the CeSAC is verified free")
+})
+
+test("the real data now has exactly the approved free services of the batch, and none of the ones left out", () => {
+  const free = []
+  for (const place of realPlaces.resources) {
+    for (const own of place.services ?? []) if (isVerifiedFree(place, data.resolveService(place, own))) free.push(`${place.id}/${own.id}${own.costNote ? " (con condiciones)" : ""}`)
+  }
+  assert.deepEqual(free.sort(), [
+    "cesac-3/atencion-primaria",
+    "cesac-3/vacunacion (con condiciones)",
+    "cesac-41/atencion-primaria",
+    "cesac-41/vacunacion (con condiciones)",
+    "cesac-47/atencion-primaria",
+    "cesac-47/pediatria",
+    "hospital-odontologia-carrillo/guardia-odontologica",
+    "hospital-odontologia-duenas/guardia-odontologica",
+  ])
+  for (const { placeId, serviceId } of proposal.notProposed) {
+    const place = realPlaces.resources.find(({ id }) => id === placeId)
+    assert.equal(isVerifiedFree(place, data.resolveService(place, place.services.find(({ id }) => id === serviceId))), false, `${placeId}/${serviceId} stays unconfirmed`)
+  }
+  for (const id of ["salud-mental", "psiquiatria", "psicologia"]) {
+    for (const place of realPlaces.resources.filter(({ id: placeId }) => placeId.startsWith("cesac-"))) {
+      const own = place.services.find((entry) => entry.id === id)
+      if (own) assert.equal(isVerifiedFree(place, data.resolveService(place, own)), false, `${place.id}/${id} stays unconfirmed`)
+    }
+  }
+  assert.equal(realPlaces.resources.some(({ id }) => id.startsWith("centro-fijo-veterinario")), false, "the veterinary centres are not loaded")
 })
 
 test("primary care: 'Atención gratuita' with no condition note, and nothing that promises a walk-in", () => {
@@ -151,7 +177,7 @@ test("limit of the model, why the vaccination hours are deferred: one service wi
   const withHours = structuredClone(file)
   const target = service(withHours, "cesac-3", "vacunacion")
   Object.assign(target, { hours: { open24h: false, schedule: [{ days: [1], from: "07:00", to: "12:00" }] } })
-  assert.equal(buildPlaceView(entry(withHours, "cesac-3")).availabilityNotice, undefined, "the notice disappears for primary care too")
+  assert.doesNotMatch(buildPlaceView(entry(withHours, "cesac-3")).availabilityNotice ?? "", /horario/, "the hours part of the notice disappears for primary care too")
   assert.ok(proposal.serviceChanges.every(({ set }) => !("hours" in set)), "so the proposal does not set any service hours")
   assert.ok(proposal.deferredHours["cesac-3/vacunacion"].length > 0, "the published hours are kept in the proposal, deferred")
 })

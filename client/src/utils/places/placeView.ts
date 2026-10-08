@@ -128,7 +128,8 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
 
   // When to go: hours and appointments are only said when verified. If either is missing, the person is told, not left to guess
   const hoursKnown = describeHours(place.hours).kind !== "unknown" || services.some((service) => describeHours(service.hours).kind !== "unknown")
-  const appointmentKnown = services.some(({ appointment }) => appointment.mode !== "unknown" || Boolean(appointment.howTo) || Boolean(appointment.url))
+  // How to ask for a turno (channels) is not whether a turno is needed or available: only a known mode counts as knowing about turns
+  const appointmentKnown = services.some(({ appointment }) => appointment.mode !== "unknown")
   const availabilityNotice =
     services.length === 0 || (hoursKnown && appointmentKnown)
       ? undefined

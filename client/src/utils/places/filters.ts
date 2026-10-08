@@ -147,6 +147,21 @@ export const matchesQuery = (entry: PlaceEntry, query: string) => {
 }
 
 /**
+ * Words typed together with the gratuity filter are about a FREE service: "odontología gratuita" is not a place that has some
+ * free service (say, primary care) and, elsewhere, an odontología one that is not confirmed free. Some free service has to be the one
+ * the words are about (or the words have to name the place itself).
+ */
+const freeServiceAnswersWords = (entry: PlaceEntry, query: PlaceQuery) => {
+  const terms = searchTerms(query.text)
+  const placeText = joinText(placeTexts(entry))
+  return entry.services.some((service) => {
+    if (!matchesServiceCriteria(entry.place, service, query)) return false
+    const own = joinText(serviceTexts(service))
+    return terms.every((term) => own.includes(term) || placeText.includes(term))
+  })
+}
+
+/**
  * The places that answer a query: the single place where "which places do I show" is decided. Nothing expired or
  * unverified comes out; each place keeps its current services, the ones that answer the query first.
  */
@@ -158,6 +173,7 @@ export const selectPlaces = (places: readonly Resource[], day: string, asked: Pl
     .flatMap((place) => {
       const services = getCurrentServices(place, day).filter((service) => !allowed || allowed.has(service.type))
       if (!services.some((service) => matchesServiceCriteria(place, service, query))) return []
+      if (query.free && searchTerms(query.text).length > 0 && !freeServiceAnswersWords({ place, services }, query)) return []
       // Stable sort: inside each group the data's order is kept
       const sorted = [...services].sort((a, b) => Number(matchesServiceCriteria(place, b, query)) - Number(matchesServiceCriteria(place, a, query)))
       return [{ place, services: sorted }]
@@ -230,7 +246,7 @@ export const getPlaceFacets = (places: readonly Resource[], day: string, asked: 
     zones: tally(byZone.map(({ place }) => (place.address?.department ? [place.address.department] : []))),
     categories: tally(matching(byCategory, { ...query, category: null }).map((services) => services.flatMap((service) => service.categories))),
     types: tally(matching(byType, { ...query, type: null }).map((services) => services.map((service) => service.type))),
-    free: matching(byFree, { ...query, free: true }).filter((services) => services.length > 0).length,
+    free: byFree.filter((entry) => freeServiceAnswersWords(entry, { ...query, free: true })).length,
   }
 }
 

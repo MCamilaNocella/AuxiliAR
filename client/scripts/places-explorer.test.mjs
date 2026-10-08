@@ -94,8 +94,9 @@ test("cost, appointment and highlights are never assumed", () => {
   assert.equal(util.costLabel("unknown"), undefined)
   assert.equal(util.costLabel("free"), "Atención gratuita")
   assert.equal(util.appointmentLabel({ mode: "unknown" }), undefined)
-  // CeSAC services say nothing about cost or hours: nothing to highlight
-  for (const resolved of data.getServices(find("cesac-3"))) assert.deepEqual(util.serviceHighlights(resolved, find("cesac-3")), [], resolved.id)
+  // Only what the data states is highlighted: primary care (free, no condition) and vaccination (free WITH conditions); the other services of the CeSAC say nothing
+  const highlightsOf = { "atencion-primaria": ["Atención gratuita"], vacunacion: ["Gratuita con condiciones"] }
+  for (const resolved of data.getServices(find("cesac-3"))) assert.deepEqual(util.serviceHighlights(resolved, find("cesac-3")), highlightsOf[resolved.id] ?? [], resolved.id)
   assert.deepEqual(util.serviceHighlights(service("hospital-odontologia-carrillo", "guardia-odontologica"), find("hospital-odontologia-carrillo")), ["24 h", "Atención gratuita"])
   assert.deepEqual(util.serviceHighlights(service("hospital-oftalmologico-santa-lucia", "guardia-oftalmologica"), find("hospital-oftalmologico-santa-lucia")), ["24 h", "Podés ir sin turno"])
 })
@@ -196,7 +197,7 @@ test("a CeSAC lists its services compactly and only details the ones with specif
   assert.deepEqual(cesac.highlights, [])
   assert.equal(cesac.services.length, 6)
   const withDetails = cesac.services.filter(({ details }) => details.length > 0).map(({ id }) => id)
-  assert.deepEqual(withDetails, ["vacunacion"])
+  assert.deepEqual(withDetails, ["atencion-primaria", "vacunacion"])
   // general hours go in "how to be attended"; the services with hours: null don't repeat them
   assert.equal(cesac.howTo[0].label, "Horario general")
   assert.equal(cesac.howTo[0].lines[0].times, "8:00 a 18:00 h")
@@ -204,16 +205,18 @@ test("a CeSAC lists its services compactly and only details the ones with specif
   assert.equal(text.split("8:00 a 18:00 h").length - 1, 1)
   assert.ok(text.includes("Los turnos se solicitan personalmente."))
   assert.ok(text.includes("Lunes, miércoles, jueves y viernes"))
-  // CeSAC 47 has no hours at all, so no "how to be attended" and no details
+  // CeSAC 47 has no hours at all, so no "how to be attended"; only the services approved in the first batch have details
   const cesac47 = view("cesac-47")
   assert.deepEqual(cesac47.howTo, [])
-  assert.ok(cesac47.services.every(({ details }) => details.length === 0))
+  assert.deepEqual(cesac47.services.filter(({ details }) => details.length > 0).map(({ id }) => id), ["atencion-primaria", "pediatria"])
 })
 
 test("conditions and common information are written once and only when verified", () => {
   const [base] = places.filter(({ id }) => id === "cesac-3")
   const entryWith = (change) => {
     const place = structuredClone(base)
+    // the bare establishment: without the gratuity, requirements and appointment the first batch added
+    for (const own of place.services) for (const key of ["cost", "costNote", "requirements", "appointment", "source"]) delete own[key]
     change(place)
     return util.getPlaceEntries([place], DAY, "all", { category: "salud-fisica" })[0]
   }

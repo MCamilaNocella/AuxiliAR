@@ -35,8 +35,40 @@
         "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
       },
       "services": [
-        { "id": "atencion-primaria", "type": "primary-care", "name": "Clínica médica", "hours": null },
-        { "id": "vacunacion", "type": "vaccination", "name": "Programas de vacunación", "hours": null },
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Clínica médica",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (clínica médica, pediatría, medicina general o de familia) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+          }
+        },
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Programas de vacunación",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio, sobre su disponibilidad ni sobre otras vacunas.",
+          "source": {
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
+          }
+        },
         { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
         { "id": "salud-mental", "type": "mental-health-care", "name": "Psicología (adultos e infanto-juvenil)", "hours": null },
         { "id": "anticonceptivos", "type": "contraception", "name": "Anticonceptivos", "hours": null },
@@ -94,7 +126,26 @@
         "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
       },
       "services": [
-        { "id": "atencion-primaria", "type": "primary-care", "name": "Medicina general", "hours": null },
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno. La página del área programática del Hospital Argerich dice que en este CeSAC «los turnos se solicitan personalmente»."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://www.buenosaires.gob.ar/salud/cesac-41, consultada el 8/10/2026). Horario «lunes a viernes de 8 a 18 h» y turnos «personalmente»: página del área programática del Hospital Argerich, consultada el 8/10/2026, sin fecha de actualización; sin confirmar con el centro."
+          }
+        },
         {
           "id": "vacunacion",
           "type": "vaccination",
@@ -109,16 +160,19 @@
             ]
           },
           "source": {
-            "organization": "Gobierno de la Ciudad de Buenos Aires",
-            "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
-            "note": "Lugares y horarios de vacunatorios."
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://www.buenosaires.gob.ar/salud/cesac-41) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
           },
           "verification": {
             "status": "verified",
             "verifiedAt": "2026-10-07",
             "verifiedBy": "equipo-auxiliar",
             "nextReviewDue": "2027-01-05"
-          }
+          },
+          "cost": "free",
+          "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio, sobre su disponibilidad ni sobre otras vacunas."
         },
         { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
         { "id": "salud-mental", "type": "mental-health-care", "name": "Salud mental (niños y adultos)", "hours": null },
@@ -196,8 +250,46 @@
             "nextReviewDue": "2027-01-05"
           }
         },
-        { "id": "atencion-primaria", "type": "primary-care", "name": "Medicina general", "hours": null },
-        { "id": "pediatria", "type": "primary-care", "name": "Pediatría", "hours": null },
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+          }
+        },
+        {
+          "id": "pediatria",
+          "type": "primary-care",
+          "name": "Pediatría",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Edades atendidas, horarios, turno o demanda espontánea: sin confirmar."
+          }
+        },
         { "id": "psiquiatria", "type": "mental-health-care", "name": "Psiquiatría", "hours": null },
         { "id": "psicologia", "type": "mental-health-care", "name": "Psicología", "hours": null },
         { "id": "obstetricia", "type": "pregnancy-care", "name": "Obstetricia", "hours": null },

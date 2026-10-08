@@ -30,6 +30,13 @@ const raw = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
 const real = await data.loadPlaces("AR-C")
+// CeSAC 3 as it was before the first batch of verified gratuity: no cost, requirements, appointment or source of its own on its services.
+// The tests that need "an establishment with nothing said about cost" use it, so they do not depend on what the real data has verified
+const bareCesac3 = () => {
+  const place = structuredClone(real.find(({ id }) => id === "cesac-3"))
+  for (const own of place.services) for (const key of ["cost", "costNote", "requirements", "appointment", "source"]) delete own[key]
+  return [place]
+}
 const { EMPTY_PLACE_QUERY: EMPTY } = places
 const ask = (criteria) => places.selectPlaces(real, DAY, { ...EMPTY, ...criteria })
 const ids = (entries) => entries.map(({ place }) => place.id).sort()
@@ -293,22 +300,25 @@ test("the real data: every free service is declared by the service itself, with 
     if (place.services?.length) assert.notEqual(place.cost, "free", place.id + " declares free for all its services")
     for (const service of place.services ?? []) if (service.cost === "free") assert.ok(service.source?.note?.trim(), place.id + "/" + service.id + " is free without the note of its source")
   }
-  assert.deepEqual(rawFree, ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
+  assert.deepEqual(rawFree, ["cesac-3", "cesac-41", "cesac-47", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
 })
 
 test("the free filter finds only services with verified gratuity, and nothing is inferred", () => {
   assert.deepEqual(ids(ask({ free: true })), rawFree)
   // it holds for the same service as the other criteria
-  assert.deepEqual(ids(ask({ free: true, type: "emergency-room" })), rawFree)
+  assert.deepEqual(ids(ask({ free: true, type: "emergency-room" })), ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
   assert.deepEqual(ids(ask({ free: true, category: "salud-mental" })), [])
-  assert.deepEqual(ids(ask({ free: true, type: "vaccination" })), [])
+  assert.deepEqual(ids(ask({ free: true, type: "vaccination" })), ["cesac-3", "cesac-41"], "CeSAC 47 vaccination is not in the first batch")
+  assert.deepEqual(ids(ask({ free: true, type: "primary-care" })), ["cesac-3", "cesac-41", "cesac-47"])
   // the only service shown with it is the free one
   const [entry] = ask({ free: true })
-  assert.deepEqual(entry.services.map((service) => service.cost), ["free"])
+  assert.ok(places.matchingServices(entry, { ...EMPTY, free: true }).every((service) => service.cost === "free"))
   // public is not free: no cost said, a free inherited from the establishment, or a free without the note of its source do not count
-  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const [base] = bareCesac3()
   const only = (change) => {
     const place = structuredClone(base)
+    // the bare establishment: without the gratuity the first batch added to its services
+    for (const own of place.services) for (const key of ["cost", "costNote", "requirements", "appointment", "source"]) delete own[key]
     change(place)
     return places.selectPlaces([place], DAY, { ...EMPTY, free: true }).length
   }
@@ -325,7 +335,7 @@ test("the free filter finds only services with verified gratuity, and nothing is
 
 test("gratis, gratuito/a/s and sin costo in the search are the gratuity filter, and the text is left as it was typed", () => {
   const expected = ids(ask({ text: "odontologia", free: true }))
-  assert.deepEqual(expected, rawFree)
+  assert.deepEqual(expected, ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"], "the dentistry of the CeSAC is not confirmed free")
   for (const text of ["odontologia gratuita", "odontología GRATIS", "gratuitos odontologia", "odontologia sin costo", "gratuitas odontologia", "odontologia gratuito"]) assert.deepEqual(ids(ask({ text })), expected, text)
   // alone, the word is just the filter
   assert.deepEqual(ids(ask({ text: "gratuita" })), rawFree)
@@ -345,13 +355,13 @@ test("gratis, gratuito/a/s and sin costo in the search are the gratuity filter, 
 })
 
 test("gratuity facet: offered only with results, and counted without itself", () => {
-  assert.equal(places.getPlaceFacets(real, DAY, EMPTY).free, 2)
-  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, free: true }).free, 2, "turning it on does not change the count")
+  assert.equal(places.getPlaceFacets(real, DAY, EMPTY).free, 5)
+  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, free: true }).free, 5, "turning it on does not change the count")
   assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, text: "odontologia gratuita" }).free, 2, "the words of the text count the same way")
   assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, category: "salud-mental" }).free, 0)
   // the other facets follow the filter: the services and kinds of care offered are those with gratuity
   const facets = places.getPlaceFacets(real, DAY, { ...EMPTY, free: true })
-  assert.deepEqual(facets.types.map(({ value }) => value), ["emergency-room"])
+  assert.deepEqual(facets.types.map(({ value }) => value).sort(), ["emergency-room", "primary-care", "vaccination"])
   assert.deepEqual(facets.categories.map(({ value }) => value), ["salud-fisica"])
 })
 
@@ -381,7 +391,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   assert.ok(typed.includes("2 lugares encontrados") && typed.includes("Gratuidad verificada Quitar filtro") && typed.includes("Búsqueda: «odontologia gratuita»"))
   assert.ok(typed.includes("Filtros 1 (1 activo)"), "the button counts the gratuity, the search does not")
   const chosen = render("/centros?vista=lista&gratuito=1")
-  assert.ok(chosen.includes("2 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
+  assert.ok(chosen.includes("5 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
   const none = render("/centros?vista=lista&gratuito=1&categoria=salud-mental")
   for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad verificada", "Eso no significa que no sean gratuitas", "con o sin gratuidad verificada", "Consultá el costo de cada una antes de ir", "Quitar el filtro de gratuidad"]) assert.ok(none.includes(piece), piece)
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")
@@ -392,7 +402,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
 /* ── Which services are free is said on the cards and in the panel, and the rest is not made up ── */
 
 test("the panel: unknown costs are told apart from verified ones, and said once when none is known", () => {
-  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const [base] = bareCesac3()
   const viewOf = (change) => {
     const place = structuredClone(base)
     change(place)
@@ -425,7 +435,7 @@ test("the cards: gratuity is said service by service - verified ones are marked 
   // each card of the hospitals is only the free service: marked
   assert.ok(text(list).includes("Atención gratuita"))
   // a place with a verified-free service and others not confirmed marks each service on its own row; the place is never classified as a whole
-  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const [base] = bareCesac3()
   const place = structuredClone(base)
   place.services[0].cost = "free"
   place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
@@ -601,8 +611,9 @@ test("a search with any form of the word finds the same places, and keeps every 
   assert.deepEqual(ids(ask({ text: "psicologo", type: "vaccination" })), ids(ask({ text: "psicologia", type: "vaccination" })))
   assert.deepEqual(ids(ask({ text: "psicologa", category: "salud-mental" })), same)
   // gratuity is still a condition, not free text, with the new forms
-  assert.deepEqual(ids(ask({ text: "odontologo gratis" })), rawFree)
-  assert.deepEqual(ids(ask({ text: "odontologa gratuita" })), rawFree)
+  const freeDentistry = ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"]
+  assert.deepEqual(ids(ask({ text: "odontologo gratis" })), freeDentistry)
+  assert.deepEqual(ids(ask({ text: "odontologa gratuita" })), freeDentistry)
   assert.deepEqual(ids(ask({ text: "psicologo gratis" })), [])
   // a word that is nowhere is still nowhere, and a different discipline is not found by the root of another
   assert.deepEqual(ids(ask({ text: "cardiologo" })), [])
