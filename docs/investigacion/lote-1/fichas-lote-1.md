@@ -1,5 +1,7 @@
 # Lote 1: fichas para aprobación
 
+> **Corrección del 8/10/2026 (ver `implementacion-lote-1.md`, §5.1):** el servicio `cesac-41/vacunacion` **ya tenía cargado** su horario de vacunación antes de este lote (no lo agregué yo ni lo toqué). Donde esta ficha habla de horarios de vacunación «no cargados», vale para el CeSAC 3; el CeSAC 41 ya los mostraba.
+
 Fecha de preparación: **8/10/2026**. **No se cambió ningún dato del mapa: ningún estado de gratuidad, ningún establecimiento, ninguna prestación.** Lo que se cambiaría está en [`client/curation/proposals/lote-1.cambios-propuestos.json`](../../../client/curation/proposals/lote-1.cambios-propuestos.json) y se aplica solo cuando el equipo apruebe estas fichas.
 
 Criterios del equipo que se aplican (decisiones del 8/10/2026):

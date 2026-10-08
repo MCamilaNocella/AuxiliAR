@@ -1,5 +1,7 @@
 # Control técnico: ¿el modelo separa gratuidad, condiciones y disponibilidad?
 
+> **Corrección del 8/10/2026 (ver `implementacion-lote-1.md`, §5.1 y §4):** (1) el servicio `cesac-41/vacunacion` ya tenía su horario de vacunación cargado, de modo que L1 no cambia nada allí; (2) durante la implementación se confirmó L4 y se corrigió en `placeView.ts`: un `howTo` con `mode: "unknown"` ya no cuenta como información de turnos conocida.
+
 Fecha: 8/10/2026. **No se cambió código de la aplicación ni datos.** Se agregó una prueba (`client/scripts/lote1-propuesta.test.mjs`, comando `npm run lote1:test`, incluida en `test:ci`) que aplica la propuesta del lote 1 **en memoria** sobre una copia de los datos reales y comprueba lo que sigue. Resultado: **11 pruebas, todas pasan**; el conjunto aplicado pasa la misma validación que los datos reales.
 
 ## 1. Cómo separa hoy el modelo cada cosa
