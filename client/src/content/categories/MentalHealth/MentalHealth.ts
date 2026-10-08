@@ -1,28 +1,44 @@
 import { Brain } from "lucide-react"
 import { PATHS } from "@/router/paths"
 import type { Category } from "@/types/category"
-import { MENTAL_HEALTH_PREPARING } from "../preparing"
 import { MentalHealthScene } from "./MentalHealthScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
-import { Section4 } from "./sections/Section4"
 
 export const MENTAL_HEALTH: Category = {
   id: "salud-mental",
   title: "Salud mental",
   description: "Orientación, acompañamiento y recursos",
-  subtitle: "Estamos preparando esta información con fuentes oficiales",
+  subtitle: "Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales",
   icon: Brain,
-  preparing: MENTAL_HEALTH_PREPARING,
   to: PATHS.topic("salud-mental"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: MentalHealthScene,
   /** Sidebar sections, in the order they are listed; each one's content lives in ./sections */
   sections: [
-    { id: "section-1", title: "Sección 1", Content: Section1 },
-    { id: "section-2", title: "Sección 2", Content: Section2 },
-    { id: "section-3", title: "Sección 3", Content: Section3 },
-    { id: "section-4", title: "Sección 4", Content: Section4 },
+    {
+      id: "section-1",
+      title: "Dónde buscar ayuda",
+      summary:
+        "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+      Content: Section1,
+    },
+    {
+      id: "section-2",
+      title: "Conocé tus derechos",
+      summary:
+        "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
+      Content: Section2,
+    },
+    {
+      id: "section-3",
+      title: "Herramientas para cuidarte",
+      summary:
+        "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+      Content: Section3,
+    },
   ],
+  /** It opens straight on the first section: no banner first */
+  defaultSectionId: "section-1",
 }
