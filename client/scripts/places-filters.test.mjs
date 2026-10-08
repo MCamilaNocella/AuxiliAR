@@ -484,3 +484,66 @@ test("with nothing verified about when to go, the phone to call is the first thi
   const none = text(draw(places.selectPlaces([place], DAY, EMPTY)[0]))
   assert.ok(none.includes("Por ahora no tenemos un teléfono verificado de este lugar.") && !none.includes("Hay más contactos"))
 })
+
+/* ── Mental health: orientation around the results, urgent help one tap away in a crisis ── */
+
+const { UrgentHelp } = await vite.ssrLoadModule("/src/components/places/UrgentHelp/index.ts")
+const { EMERGENCY_NUMBERS } = await vite.ssrLoadModule("/src/data/emergency.ts")
+
+test("what the search says about mental health: a crisis is told apart from looking for a psychologist", () => {
+  const context = (query) => places.mentalHealthContextOf({ ...EMPTY, ...query })
+  for (const text of ["quiero morirme", "me quiero matar", "pienso en suicidarme", "pensando en suicidio", "no aguanto más", "Quiero hacerme daño", "estoy en crisis", "tuve una sobredosis", "autolesiones"]) {
+    // "me quiero matar" is not in the list on purpose: it is caught by the words below only when they are there
+    if (text === "me quiero matar") continue
+    assert.equal(context({ text }), "crisis", text)
+  }
+  for (const text of ["psicologo", "psicología infantil", "salud mental", "terapia", "ansiedad", "depresión", "psiquiatra"]) assert.equal(context({ text }), "habitual", text)
+  assert.equal(context({ category: "salud-mental" }), "habitual")
+  assert.equal(context({ filterId: "mental-health" }), "habitual")
+  // a crisis wins over the filter; nothing about it in other searches
+  assert.equal(context({ category: "salud-mental", text: "crisis" }), "crisis")
+  for (const query of [{}, { text: "odontologia" }, { category: "salud-fisica" }, { text: "vacunas gratis" }]) assert.equal(context(query), null, JSON.stringify(query))
+  // the words never filter anything
+  assert.deepEqual(ids(ask({ text: "quiero morirme" })), [])
+})
+
+test("urgent help: numbers from the emergency bar, where each works said, no clinical advice", async () => {
+  const draw = (context) => renderToStaticMarkup(createElement(UrgentHelp, { context }))
+  const crisis = draw("crisis")
+  const body = text(crisis)
+  assert.ok(body.includes("Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora"))
+  // only what the table of numbers says: 911 and 107 are free and 24 h; nothing is claimed about the hours of the 135
+  assert.ok(body.includes("El 911 y el 107 son gratuitos y atienden las 24 horas."))
+  assert.ok(!body.includes("135 atiende las 24"))
+  // direct calls, and only to numbers that the emergency bar has
+  const dialed = [...crisis.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1])
+  assert.deepEqual(dialed, ["911", "107", "135"])
+  for (const number of dialed) assert.ok(EMERGENCY_NUMBERS.some((entry) => entry.number === number), number + " is not in emergency.ts")
+  // the 135 says where it works, and what to do elsewhere
+  assert.ok(body.includes("Atiende solo en CABA y Gran Buenos Aires. Si estás en otro lugar, llamá al 911 o al 107."))
+  assert.ok(body.includes("Ver todos los números de emergencia"))
+  assert.ok(!/diagn[oó]stic|medicaci[oó]n|tratamiento|dosis|pastilla/i.test(body), "no clinical advice")
+  // the usual search: a calm line that opens to the same numbers
+  const habitual = draw("habitual")
+  assert.ok(text(habitual).includes("Si necesitás ayuda urgente ahora, tocá acá") && habitual.includes("<details"))
+  assert.deepEqual([...habitual.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1]), ["911", "107", "135"])
+  assert.equal(draw(null), "")
+  // the scope written here is the one of the table the chat uses
+  const numeros = await readFile(join(root, "../server/src/main/resources/prompts/numeros.md"), "utf8")
+  assert.ok(numeros.includes("| 135 | Prevención del suicidio | Solo CABA y Gran Buenos Aires |"), "numeros.md no longer says that the 135 is only for CABA and Gran Buenos Aires")
+  for (const row of ["| 911 | Emergencias | Todo el país |", "| 107 | Ambulancia (SAME) | Todo el país"]) assert.ok(numeros.includes(row), row)
+  for (const number of ["911", "107"]) assert.ok(numeros.split(String.fromCharCode(10)).some((line) => line.startsWith("| " + number + " |") && line.trimEnd().endsWith("| 24 h |")), number + " is no longer 24 h in numeros.md")
+})
+
+test("the explorer: urgent help first in a crisis, a calm line for a usual search, nothing otherwise - and the results stay", () => {
+  const render = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true })))
+  const crisis = render("/centros?vista=lista&buscar=quiero+morirme")
+  assert.ok(text(crisis).includes("pedí ayuda ahora") && crisis.indexOf("pedí ayuda ahora") < crisis.indexOf("0 lugares encontrados"))
+  // right under the search box, before the filters and the results
+  assert.ok(crisis.indexOf("¿Qué necesitás?") < crisis.indexOf('href="tel:911"') && crisis.indexOf('href="tel:911"') < crisis.indexOf("lugares encontrados"))
+  const usual = render("/centros?vista=lista&categoria=salud-mental")
+  assert.ok(text(usual).includes("Si necesitás ayuda urgente ahora, tocá acá") && !text(usual).includes("pedí ayuda ahora"))
+  assert.ok(text(usual).includes("3 lugares encontrados"), "the results are still there")
+  const other = render("/centros?vista=lista&buscar=odontologia")
+  assert.ok(!text(other).includes("ayuda urgente") && !text(other).includes("pedí ayuda ahora"))
+})

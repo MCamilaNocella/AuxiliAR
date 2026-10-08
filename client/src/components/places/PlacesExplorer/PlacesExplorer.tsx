@@ -7,7 +7,7 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
@@ -23,6 +23,7 @@ import { PlacesViewSwitch } from "../PlacesViewSwitch"
 import { ServiceTypeFilter } from "../ServiceTypeFilter"
 import type { PlacesView } from "../PlacesViewSwitch"
 import { TerritoryFilters } from "../TerritoryFilters"
+import { UrgentHelp } from "../UrgentHelp"
 import { PLACES_EXPLORER_INTRO } from "./PlacesExplorer.constants"
 
 const NO_PLACES: readonly Resource[] = []
@@ -186,6 +187,8 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
 
   // Gratuity can come from the filter or from the words of the search ("gratis", "gratuita"): either way it is one filter,
   // and taking it off takes the words off the text too (they would ask for it again). The text is never changed otherwise
+  // Around the results only: in a crisis the urgent numbers come first, for a usual search for a psychologist a calm line
+  const mentalHealth = mentalHealthContextOf(query)
   const freeOn = effectiveQuery(query).free
   const setFree = (free: boolean) => changeQuery(free ? { free: true } : { free: false, text: withoutConditionWords(query.text) })
 
@@ -230,6 +233,8 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         </div>
       </div>
 
+      {mentalHealth === "crisis" && <UrgentHelp context="crisis" />}
+
       {showFilters && (
         <div id={panelId} onKeyDown={foldOnEscape} className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           <div className="col-span-full">
@@ -251,6 +256,8 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
       )}
 
       <ActiveFilters filters={activeFilters} onClear={clearSearch} />
+
+      {mentalHealth === "habitual" && <UrgentHelp context="habitual" />}
 
       <p ref={countRef} role="status" aria-live="polite" tabIndex={-1} className="m-0 font-bold outline-none">
         {count}
