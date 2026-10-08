@@ -1,0 +1,33 @@
+FUENTE: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica
+CONSULTADA: 2026-10-08
+MÉTODO: descarga directa del HTML original de la página y extracción de su texto visible, sin resumen automático; se omitieron los teléfonos y correos
+RECORTE: encabezado de la página, párrafo de los CeSAC del área y las entradas de los CeSAC 9, 15, 41 y 46. La página no muestra fecha de actualización.
+----------------------------------------------------------------------
+Departamento de Área Programática | Buenos Aires Ciudad - Gobierno de la Ciudad Autónoma de Buenos Aires
+Dentro de esta delimitación acciona desde los Centros de Salud y Acción Comunitaria Nº 9, 15, 41 y 46, Centro Médico Barrial (CMB) N° 30 y las escuelas que se encuentran en el circuito del Programa de Salud Escolar.
+El dispositivo de atención también está integrado por la División de Programas y Centros de Salud, por el Programa de Salud de la Comunidad Escolar; el Espacio epidemiológico interefectores y el dispositivo de Vigilancia Epidemiológica.
+Todos los efectores trabajan con diversos programas o equipos matriciales y desarrollan actividades grupales e individuales abiertas a la comunidad. Asimismo, cada CESAC divide su área de responsabilidad en subáreas y les asigna equipos interdisciplinarios para el trabajo en territorio.
+CESAC Nº 9 - Jefa de Unidad: Dra.Nora Giuliodibari
+Irala 1254. La Boca
+Tel: [teléfono omitido]
+Horario de atención: Lunes a viernes de 8 a 18 hs.
+Turnos: se solicitan personalmente
+Disciplinas: Medicina Familiar, Clínica, Pediatría, Ginecología, Enfermería, Obstetricia, Nutrición, Psicología, Psicopedagogía, Psiquiatría, Fonoaudiología, Terapia Ocupacional, Farmacia, Odontología, Trabajo Social Turnos: personalmente por ventanilla porque hay muchas modalidades según disciplinas o actividad.
+CESAC Nº 15 - Jefa de Unidad: Ada Berenstein / Jefe de Sección: Dra. Barbara Carnevale Mercuri
+Humberto Primo 470. San Telmo.
+Tel: [teléfono omitido]
+Horario de atención: lunes a viernes 7 a 19hs
+Turnos: se solicitan personalmente
+Disciplinas: Enfermería, Obstetricia, Ginecología, Pediatría, Clínica médica, Medicina general y comunitaria, , nutrición, trabajo social, psicología, psiquiatría, sociología, psicopedagogía, fonoaudiología, Odontología, Ciencias de la educación, Terapia ocupacional, Educación para la Salud y Farmacia.
+CESAC Nº 41 - Jefa de Unidad: Lic. Maria Cecilia Gianni
+Ministro Brin 843. La Boca.
+Tel: [teléfono omitido]
+Horario de atención: Lunes a viernes 8 a 18hs
+Turnos: se solicitan personalmente
+Disciplinas: Enfermería, Obstetricia, Ginecología, Pediatría, Clínica médica, Medicina familiar , nutrición, trabajo social, psicología, psiquiatría, sociología, psicopedagogía, antropología, fonoaudiología, Odontología, Hebiatría, Ciencias de la educación, Terapia ocupacional, Educación para la Salud y Farmacia.
+CESAC N° 46 - Jefa de Unidad: Dra. Cristina Ashifu
+Av. Regimiento Patricios 1941. Barracas
+Tel: [teléfono omitido]
+Horario de atención: Lunes a viernes de 8 a 18 hs
+Turnos: se solicitan personalmente
+Disciplinas: Odontología, Pediatría, Psicopedagogía, Enfermería, Medicina general y familiar, trabajo social, Educación para la Salud.

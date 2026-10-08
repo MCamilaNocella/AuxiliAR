@@ -1,0 +1,290 @@
+{
+  "$comment": "PROPUESTA DEL LOTE 1. NO ESTÁ APLICADA: ningún dato del mapa cambió. Cada entrada de serviceChanges dice qué campos se pondrían en una prestación que YA existe en client/src/data/resources/places/ar-c.json; newPlaces son borradores de establecimientos nuevos (con verification.status needs-review, que no se muestran). Se aplican solo cuando el equipo apruebe las fichas (docs/investigacion/lote-1/). La prueba client/scripts/lote1-propuesta.test.mjs aplica esta propuesta EN MEMORIA y comprueba que el modelo no confunde gratuidad, condiciones y disponibilidad.",
+  "status": "propuesta-no-aplicada",
+  "preparedAt": "2026-10-08",
+  "serviceChanges": [
+    {
+      "ficha": "L1-AP-3",
+      "placeId": "cesac-3",
+      "serviceId": "atencion-primaria",
+      "set": {
+        "cost": "free",
+        "requirements": [
+          "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+        ],
+        "appointment": {
+          "mode": "unknown",
+          "howTo": "Según el trámite oficial de la Ciudad, los turnos de los centros de salud se piden por la web de turnos, por Boti (WhatsApp de la Ciudad), por el 147 opción 1 o en el propio centro. La ficha de este CeSAC no dice si atiende sin turno."
+        },
+        "source": {
+          "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (clínica médica, pediatría, medicina general o de familia) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+        }
+      },
+      "doesNotSet": ["costNote", "hours", "audience", "appointment.mode"]
+    },
+    {
+      "ficha": "L1-AP-41",
+      "placeId": "cesac-41",
+      "serviceId": "atencion-primaria",
+      "set": {
+        "cost": "free",
+        "requirements": [
+          "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+        ],
+        "appointment": {
+          "mode": "unknown",
+          "howTo": "Según el trámite oficial de la Ciudad, los turnos de los centros de salud se piden por la web de turnos, por Boti (WhatsApp de la Ciudad), por el 147 opción 1 o en el propio centro. La página del área programática del Hospital Argerich dice que en este CeSAC «los turnos se solicitan personalmente»."
+        },
+        "source": {
+          "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://www.buenosaires.gob.ar/salud/cesac-41, consultada el 8/10/2026). Horario «lunes a viernes de 8 a 18 h» y turnos «personalmente»: página del área programática del Hospital Argerich, consultada el 8/10/2026, sin fecha de actualización; sin confirmar con el centro."
+        }
+      },
+      "doesNotSet": ["costNote", "hours", "audience", "appointment.mode"]
+    },
+    {
+      "ficha": "L1-AP-47",
+      "placeId": "cesac-47",
+      "serviceId": "atencion-primaria",
+      "set": {
+        "cost": "free",
+        "requirements": [
+          "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+        ],
+        "appointment": {
+          "mode": "unknown",
+          "howTo": "Según el trámite oficial de la Ciudad, los turnos de los centros de salud se piden por la web de turnos, por Boti (WhatsApp de la Ciudad), por el 147 opción 1 o en el propio centro. La ficha de este CeSAC no dice si atiende sin turno."
+        },
+        "source": {
+          "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+        }
+      },
+      "doesNotSet": ["costNote", "hours", "audience", "appointment.mode"]
+    },
+    {
+      "ficha": "L1-AP-47-PED",
+      "placeId": "cesac-47",
+      "serviceId": "pediatria",
+      "set": {
+        "cost": "free",
+        "requirements": [
+          "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+        ],
+        "appointment": {
+          "mode": "unknown",
+          "howTo": "Según el trámite oficial de la Ciudad, los turnos de pediatría de los centros de salud se piden por la web de turnos, por Boti (WhatsApp de la Ciudad), por el 147 opción 1 o en el propio centro. La ficha de este CeSAC no dice si atiende sin turno."
+        },
+        "source": {
+          "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+          "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Edades atendidas, horarios, turno o demanda espontánea: sin confirmar."
+        }
+      },
+      "doesNotSet": ["costNote", "hours", "audience", "appointment.mode"]
+    },
+    {
+      "ficha": "L1-VAC-3",
+      "placeId": "cesac-3",
+      "serviceId": "vacunacion",
+      "set": {
+        "cost": "free",
+        "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio ni sobre otras vacunas.",
+        "source": {
+          "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
+        }
+      },
+      "doesNotSet": ["audience", "requirements", "appointment", "hours"]
+    },
+    {
+      "ficha": "L1-VAC-41",
+      "placeId": "cesac-41",
+      "serviceId": "vacunacion",
+      "set": {
+        "cost": "free",
+        "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio ni sobre otras vacunas.",
+        "source": {
+          "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+          "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+          "retrievedAt": "2026-10-08",
+          "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://www.buenosaires.gob.ar/salud/cesac-41) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
+        }
+      },
+      "doesNotSet": ["audience", "requirements", "appointment", "hours"]
+    }
+  ],
+  "deferredHours": {
+    "reason": "Los horarios de vacunación están publicados por la Ciudad, pero NO se proponen cargarlos todavía. Con el modelo actual, el aviso «todavía no tenemos el horario verificado: llamá antes de ir» se calcula para toda la sede: si una sola prestación tiene horario, el aviso desaparece también para atención primaria y salud mental, que no tienen horario. Se cargan cuando el aviso sea por prestación o cuando el equipo confirme los horarios de todas las prestaciones de la sede (ver docs/investigacion/lote-1/control-tecnico-del-modelo.md).",
+    "source": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios (consultada el 8/10/2026, sin fecha de actualización)",
+    "cesac-3/vacunacion": [
+      { "days": [1, 2, 3, 4, 5], "from": "07:00", "to": "12:00" },
+      { "days": [1, 2, 3, 4, 5], "from": "13:00", "to": "16:00" }
+    ],
+    "cesac-41/vacunacion": [
+      { "days": [1, 3, 4, 5], "from": "08:00", "to": "12:00" },
+      { "days": [1, 3, 4, 5], "from": "13:00", "to": "17:00" },
+      { "days": [2], "from": "08:00", "to": "12:00" },
+      { "days": [2], "from": "14:00", "to": "17:00" }
+    ]
+  },
+  "notProposed": [
+    {
+      "placeId": "cesac-47",
+      "serviceId": "vacunacion",
+      "reason": "Fuera del lote 1: la dirección del vacunatorio («Calle playón, ex galpón SIC») no coincide con la de la ficha (Alpaca 620). Se aclara con el centro antes de proponer el cambio."
+    }
+  ],
+  "newPlaces": [
+    {
+      "ficha": "L1-VET-COSTANERA",
+      "draft": {
+        "id": "centro-fijo-veterinario-costanera-sur",
+        "name": "Centro Fijo Veterinario Costanera Sur (Animales BA)",
+        "shortName": "Centro Fijo Costanera Sur",
+        "kind": "service",
+        "facilityType": "public-veterinary",
+        "jurisdiction": {
+          "level": "other",
+          "province": "AR-C",
+          "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+        },
+        "address": {
+          "street": "Av. Dr. T. Achával Rodríguez",
+          "number": "1550",
+          "neighborhood": "Costanera Sur",
+          "locality": "Ciudad Autónoma de Buenos Aires",
+          "province": "AR-C",
+          "reference": "Según la página oficial, a 100 metros frente a la fuente de Lola Mora."
+        },
+        "coordinates": {
+          "lat": -34.61758,
+          "lng": -58.356442,
+          "precision": "approximate",
+          "status": "unverified",
+          "method": "geocoded-usig",
+          "note": "Normalizador USIG (servicios.usig.buenosaires.gob.ar/normalizar), consultado el 8/10/2026: una sola coincidencia para «Av. Achával Rodríguez 1550». PENDIENTE: la página oficial dice «a 100 metros frente a la fuente de Lola Mora»; hay que comprobar sobre el mapa que el punto coincide con esa referencia antes de pasarlo a verified."
+        },
+        "services": [
+          {
+            "id": "castracion",
+            "type": "spaying-neutering",
+            "name": "Castración de perros y gatos",
+            "hours": null,
+            "cost": "free",
+            "costNote": "Solo con turno previo, que se pide online con cuenta miBA: la página oficial dice que no se atiende a quienes se acercan sin turno. La persona que acompaña al animal tiene que ser mayor de 18 años.",
+            "requirements": [
+              "Cuenta miBA para pedir el turno online.",
+              "Acompañante mayor de 18 años, que tenga toda la mañana disponible hasta que termine el procedimiento.",
+              "Perro con collar y correa; gato en transportadora o bolso ventilado. Llevar una manta para abrigarlo después de la cirugía.",
+              "El animal debe estar en ayunas (12 h sin alimento y 8 h sin líquidos).",
+              "Avisar al veterinario si toma medicación o tiene alguna enfermedad."
+            ],
+            "appointment": {
+              "mode": "required",
+              "howTo": "Las agendas de la semana siguiente se habilitan los viernes a las 10 h. Los días y centros con turnos cambian por semana: mirá la agenda en la página oficial.",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
+            },
+            "source": {
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-08",
+              "note": "La página dice: «se brinda un servicio de castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito, a través de los Centros Fijos Veterinarios y las Unidades Móviles». Agenda leída el 8/10/2026: este centro figura con «Castración» en días de octubre de 2026. La página no dice si se exige domicilio en la Ciudad: sin confirmar. No informa atención veterinaria general, guardia ni vacunación antirrábica en el centro fijo."
+            }
+          }
+        ],
+        "source": {
+          "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+          "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+          "retrievedAt": "2026-10-08",
+          "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: dirección, requisitos y agenda del centro fijo."
+        },
+        "verification": {
+          "status": "needs-review",
+          "notes": "Borrador documental del 8/10/2026. Falta la comprobación operativa y la aprobación del equipo; mientras tanto no se muestra."
+        },
+        "aliases": ["Animales BA Costanera Sur", "Castraciones gratuitas Costanera Sur"]
+      }
+    },
+    {
+      "ficha": "L1-VET-INDOAMERICANO",
+      "draft": {
+        "id": "centro-fijo-veterinario-indoamericano",
+        "name": "Centro Fijo Veterinario Parque Indoamericano (Animales BA)",
+        "shortName": "Centro Fijo Indoamericano",
+        "kind": "service",
+        "facilityType": "public-veterinary",
+        "jurisdiction": {
+          "level": "other",
+          "province": "AR-C",
+          "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+        },
+        "address": {
+          "street": "Av. Escalada y Paseo Islas Malvinas",
+          "number": "s/n",
+          "neighborhood": "Villa Soldati",
+          "locality": "Ciudad Autónoma de Buenos Aires",
+          "province": "AR-C",
+          "reference": "Dentro del Parque Indoamericano. La página oficial da solo el cruce de calles, sin número."
+        },
+        "coordinates": {
+          "lat": -34.66457,
+          "lng": -58.468717,
+          "precision": "approximate",
+          "status": "unverified",
+          "method": "geocoded-usig",
+          "note": "Normalizador USIG, consultado el 8/10/2026: una sola coincidencia para el cruce «Av. Escalada y Paseo Islas Malvinas». PENDIENTE: es el punto del cruce, no del centro dentro del parque; hay que ubicar la entrada del centro con el equipo o con el área antes de pasarlo a verified."
+        },
+        "services": [
+          {
+            "id": "castracion",
+            "type": "spaying-neutering",
+            "name": "Castración de perros y gatos",
+            "hours": null,
+            "cost": "free",
+            "costNote": "Solo con turno previo, que se pide online con cuenta miBA: la página oficial dice que no se atiende a quienes se acercan sin turno. La persona que acompaña al animal tiene que ser mayor de 18 años.",
+            "requirements": [
+              "Cuenta miBA para pedir el turno online.",
+              "Acompañante mayor de 18 años, que tenga toda la mañana disponible hasta que termine el procedimiento.",
+              "Perro con collar y correa; gato en transportadora o bolso ventilado. Llevar una manta para abrigarlo después de la cirugía.",
+              "El animal debe estar en ayunas (12 h sin alimento y 8 h sin líquidos).",
+              "Avisar al veterinario si toma medicación o tiene alguna enfermedad."
+            ],
+            "appointment": {
+              "mode": "required",
+              "howTo": "Las agendas de la semana siguiente se habilitan los viernes a las 10 h. Los días y centros con turnos cambian por semana: mirá la agenda en la página oficial.",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
+            },
+            "source": {
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-08",
+              "note": "La página dice: «se brinda un servicio de castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito, a través de los Centros Fijos Veterinarios y las Unidades Móviles». Agenda leída el 8/10/2026: este centro figura con «Castración» en días de octubre de 2026. La página no dice si se exige domicilio en la Ciudad: sin confirmar. No informa atención veterinaria general, guardia ni vacunación antirrábica en el centro fijo."
+            }
+          }
+        ],
+        "source": {
+          "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+          "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+          "retrievedAt": "2026-10-08",
+          "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: dirección, requisitos y agenda del centro fijo."
+        },
+        "verification": {
+          "status": "needs-review",
+          "notes": "Borrador documental del 8/10/2026. Falta la comprobación operativa y la aprobación del equipo; mientras tanto no se muestra."
+        },
+        "aliases": ["Animales BA Indoamericano", "Castraciones gratuitas Indoamericano"]
+      }
+    }
+  ]
+}
