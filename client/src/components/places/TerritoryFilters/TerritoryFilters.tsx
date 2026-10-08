@@ -1,6 +1,6 @@
 import { useId } from "react"
 import type { ProvinceCode } from "@/data/resources"
-import { divisionNames, provinceLabel, sortDivisions } from "@/utils/places"
+import { divisionNames, provinceLabel, provinceOptions, sortDivisions } from "@/utils/places"
 import type { PlaceFacet } from "@/utils/places"
 
 type TerritoryFiltersProps = {
@@ -29,6 +29,7 @@ export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, 
   if (coverage.length === 0) return null
 
   const covered = province !== null && coverage.includes(province)
+  const provinces = provinceOptions(coverage)
   const names = province ? divisionNames(province) : null
   // The chosen division stays in the list even if another filter left it without places
   const options = sortDivisions([...new Set([...zones.map(({ value }) => value), ...(zone ? [zone] : [])])])
@@ -42,17 +43,26 @@ export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, 
           </label>
           <select
             id={provinceId}
-            value={covered ? province : ""}
+            value={province ?? ""}
             aria-describedby={coverageId}
             onChange={(event) => onProvinceChange((event.target.value || null) as ProvinceCode | null)}
             className={selectClass}
           >
             <option value="">Todas las zonas con cobertura</option>
-            {coverage.map((code) => (
-              <option key={code} value={code}>
-                {provinceLabel(code)}
-              </option>
-            ))}
+            <optgroup label="Con centros verificados">
+              {provinces.covered.map((code) => (
+                <option key={code} value={code}>
+                  {provinceLabel(code)}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Todavía sin centros verificados">
+              {provinces.uncovered.map((code) => (
+                <option key={code} value={code}>
+                  {provinceLabel(code) + " (sin centros verificados)"}
+                </option>
+              ))}
+            </optgroup>
           </select>
         </div>
 

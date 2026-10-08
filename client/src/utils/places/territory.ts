@@ -5,6 +5,18 @@ import type { ProvinceCode } from "@/data/resources"
 export const provinceLabel = (code: ProvinceCode) => taxonomy.provinces.find(({ id }) => id === code)?.label ?? code
 
 /**
+ * Every jurisdiction there is, told apart by whether AuxiliAR has verified places there: the covered ones first (in the
+ * order of the coverage), then the others alphabetically. A person from a province without places can still choose it and
+ * be told so, instead of finding that it does not exist.
+ */
+export const provinceOptions = (coverage: readonly ProvinceCode[]): { covered: ProvinceCode[], uncovered: ProvinceCode[] } => {
+  const all = taxonomy.provinces.map(({ id }) => id as ProvinceCode)
+  const covered = coverage.filter((code) => all.includes(code))
+  const uncovered = all.filter((code) => !covered.includes(code)).sort((a, b) => provinceLabel(a).localeCompare(provinceLabel(b), "es", { sensitivity: "base" }))
+  return { covered: [...covered], uncovered }
+}
+
+/**
  * What the administrative division of a province is called (address.department): a comuna in the Ciudad de Buenos
  * Aires, a partido in the province of Buenos Aires, a departamento in the rest. It is never the neighborhood (barrio)
  * nor the locality: those are other fields. A province whose division is called differently gets its own line here

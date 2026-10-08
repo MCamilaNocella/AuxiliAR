@@ -10,6 +10,7 @@ import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "
 import { EMPTY_PLACE_QUERY, categoryLabel, getPlaceFacets, matchingServices, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
+import { NoCoverageHelp } from "../NoCoverageHelp"
 import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
 import { CategoryFilter } from "../CategoryFilter"
 import { FiltersToggle } from "../FiltersToggle"
@@ -195,6 +196,10 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
   // The search box is always in sight, so it doesn't count for the button that folds the other filters
   const panelFilters = activeFilters.filter(({ key }) => key !== "text").length
 
+  // Choosing the covered places keeps whatever else was asked: nothing is cleared without the person seeing it
+  const otherFilters = activeFilters.filter(({ key }) => key !== "province" && key !== "zone")
+  const exploreCovered = () => changeQuery({ province: coverage.length === 1 ? coverage[0] : null, zone: null })
+
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
   const where = query.zone ? ` en ${query.zone}` : query.province ? ` en ${provinceLabel(query.province)}` : ""
   const count =
@@ -264,22 +269,27 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
       {empty === "uncovered" && query.province && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
-            {`Todavía no tenemos centros verificados en ${provinceLabel(query.province)}. Eso no significa que no haya servicios: estamos incorporando jurisdicciones de a poco.`}
+            {"Todavía no tenemos centros verificados en " + provinceLabel(query.province) + ". Eso no significa que no haya servicios: estamos incorporando jurisdicciones de a poco."}
           </p>
-          <button type="button" onClick={() => changeQuery({ province: null, zone: null })} className={buttonClass}>
-            Ver todas las zonas con cobertura
-          </button>
+          {otherFilters.length > 0 && <p className="m-0 text-ink-soft">{"Tus otros filtros siguen activos: " + otherFilters.map(({ label }) => label).join(", ") + "."}</p>}
+          <NoCoverageHelp coverage={coverage} onExploreCovered={exploreCovered} />
         </div>
       )}
 
       {empty === "no-results" && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
-            {`No encontramos lugares verificados con esta búsqueda${where}. Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros.`}
+            {"No encontramos lugares verificados con esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros."}
           </p>
           <button type="button" onClick={clearSearch} className={buttonClass}>
             Borrar filtros
           </button>
+          {!query.province && coverage.length > 0 && (
+            <>
+              <p className="m-0">Si buscás en otra zona del país, elegí tu provincia en los filtros: ahí ves si ya tenemos centros verificados cerca.</p>
+              <NoCoverageHelp coverage={coverage} onExploreCovered={exploreCovered} />
+            </>
+          )}
         </div>
       )}
 

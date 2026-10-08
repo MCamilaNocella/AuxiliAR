@@ -60,12 +60,19 @@ test("the real places: every one has its division, apart from barrio and localit
   assert.equal(places.selectPlaces(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-B", zone: "Comuna 4" }).length, 0)
 })
 
-test("territory filters: the province select lists only the covered ones, with 'Todas las zonas con cobertura' first", () => {
+test("territory filters: the province select lists the 24 jurisdictions, the covered ones apart, with 'Todas las zonas con cobertura' first", () => {
   const html = filters({})
   const content = text(html)
   assert.ok(content.includes("Provincia"))
-  assert.match(html, /<option value=""[^>]*>Todas las zonas con cobertura<\/option><option value="AR-C">Ciudad Autónoma de Buenos Aires<\/option>/)
-  assert.ok(!html.includes('value="AR-B"'), "a province with no verified places is not offered")
+  assert.ok(html.includes('<option value="" selected="">Todas las zonas con cobertura</option><optgroup label="Con centros verificados"><option value="AR-C">Ciudad Autónoma de Buenos Aires</option></optgroup><optgroup label="Todavía sin centros verificados">'))
+  // a person from a province without places can choose it, and it says so
+  assert.ok(html.includes('<option value="AR-B">Buenos Aires (sin centros verificados)</option>'))
+  assert.equal([...html.matchAll(/<option value="AR-[A-Z]"/g)].length, 24, "every jurisdiction, once")
+  // asked for by a link, a province without places is the one selected (not "Todas las zonas")
+  assert.ok(filters({ province: "AR-B" }).includes('<option value="AR-B" selected="">Buenos Aires (sin centros verificados)</option>'))
+  assert.deepEqual(places.provinceOptions(["AR-C"]).covered, ["AR-C"])
+  assert.equal(places.provinceOptions(["AR-C"]).uncovered.length, 23)
+  assert.ok(!places.provinceOptions(["AR-C"]).uncovered.includes("AR-C"))
   assert.ok(content.includes("Por ahora hay centros verificados en Ciudad Autónoma de Buenos Aires."))
   assert.ok(content.includes("Que otras provincias no aparezcan no quiere decir que no haya servicios"))
   // no division select until a province is chosen
@@ -128,7 +135,17 @@ test("the explorer reads the territory from the URL and keeps the other params, 
   // a province with no verified places: said from the coverage, nothing is counted or listed
   const uncovered = text(render("/centros?provincia=AR-B"))
   assert.ok(uncovered.includes("Todavía no tenemos centros verificados en Buenos Aires. Eso no significa que no haya servicios"))
-  assert.ok(!uncovered.includes("lugares encontrados") && uncovered.includes("Ver todas las zonas con cobertura"))
+  assert.ok(!uncovered.includes("lugares encontrados"))
+  // ...and what to do meanwhile: general steps, the emergency numbers, and the covered places as the secondary option
+  for (const piece of ["Qué podés hacer mientras tanto", "hospital o al centro de salud público más cercano", "Dónde atenderme", "llamá por teléfono", "Mirá los números de emergencia", "Explorar los centros verificados en CABA"]) assert.ok(uncovered.includes(piece), piece)
+  // the other filters stay, and the person is told so
+  const kept = text(render("/centros?provincia=AR-B&categoria=salud-mental"))
+  assert.ok(kept.includes("Tus otros filtros siguen activos: Salud mental") && kept.includes("Buenos Aires Quitar filtro") && kept.includes("Salud mental Quitar filtro"))
+  // a search with no result and no province: the same way out, and how to tell us where they are
+  const lost = text(render("/centros?buscar=La+Plata"))
+  assert.ok(lost.includes("0 lugares encontrados") && lost.includes("elegí tu provincia en los filtros") && lost.includes("Qué podés hacer mientras tanto"))
+  // with a covered province chosen, there is no such block
+  assert.ok(!text(render("/centros?provincia=AR-C&buscar=zzzz")).includes("Qué podés hacer mientras tanto"))
   // an invalid province in the URL is just ignored
   assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("6 lugares encontrados"))
   // the links that already exist keep working
