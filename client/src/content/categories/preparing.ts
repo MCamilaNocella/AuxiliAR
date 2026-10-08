@@ -7,11 +7,6 @@ import type { CategoryPreparing } from "@/types/category"
  * have real content.
  */
 
-export const MENTAL_HEALTH_PREPARING: CategoryPreparing = {
-  will: "Va a reunir orientación para saber con quién hablar y recursos de salud mental, solo con información de fuentes oficiales.",
-  meanwhile: [{ label: "Buscar en el mapa centros verificados con salud mental", to: centersLink({ filter: "mental-health" }) }],
-}
-
 export const SEX_EDUCATION_PREPARING: CategoryPreparing = {
   will: "Va a reunir información sobre anticoncepción, derechos y cómo acceder a atención, solo con información de fuentes oficiales.",
   meanwhile: [{ label: "Buscar en el mapa centros verificados con salud sexual y reproductiva", to: centersLink({ filter: "sexual-health" }) }],
