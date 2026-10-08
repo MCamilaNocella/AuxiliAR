@@ -35,6 +35,8 @@ export type PlaceView = {
   beforeGoing: string[]
   /** The place's contacts and those of its services (labelled with the service when they have no label) */
   contacts: Contact[]
+  /** When no service has a known cost: one line for all of them, instead of repeating it on each */
+  costNotice?: string
 }
 
 const sameValue = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
@@ -71,7 +73,10 @@ const facilityLabelFor = (name: string, type: string | undefined) => {
 const SHOW_SERVICE_DESCRIPTIONS = false
 
 export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
-  const chipsByService = services.map((service) => serviceHighlights(service, place))
+  // A cost is known when the data states it for that service: verified free, or paid / mixed. Anything else is "not informed"
+  const costKnown = services.map((service) => isVerifiedFree(place, service) || service.cost === "paid" || service.cost === "mixed")
+  const someCostKnown = costKnown.some(Boolean)
+  const chipsByService = services.map((service, index) => [...serviceHighlights(service, place), ...(someCostKnown && !costKnown[index] ? ["Costo no informado"] : [])])
   const highlights = (chipsByService[0] ?? []).filter((chip) => chipsByService.every((chips) => chips.includes(chip)))
 
   const allSame = (pick: (service: PlaceEntry["services"][number]) => unknown) => services.length > 0 && services.every((service) => sameValue(pick(service), pick(services[0])))
@@ -119,5 +124,6 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
   for (const contact of place.contacts ?? []) add(contact)
   for (const service of services) for (const contact of service.contacts) add({ ...contact, label: contact.label ?? serviceName(service) })
 
-  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts }
+  const costNotice = services.length > 0 && !someCostKnown ? "La fuente no informa el costo de estas prestaciones: consultalo antes de ir." : undefined
+  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, costNotice }
 }

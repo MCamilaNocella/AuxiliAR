@@ -87,13 +87,13 @@ export const appointmentLabel = ({ mode }: Appointment) => {
 
 /**
  * What stands out about a service: only what its verified data states. Free care that comes with a condition
- * (costNote) is not highlighted as plain "Atención gratuita": the condition is shown instead.
+ * (costNote) is not plain "Atención gratuita": it says "Gratuita con condiciones" and the panel shows the condition.
  */
 export const serviceHighlights = (service: ResolvedService, place: Resource) => {
   const highlights: string[] = []
   if (service.hours?.open24h) highlights.push("24 h")
   if (service.appointment.mode === "not-required") highlights.push("Podés ir sin turno")
-  if (isVerifiedFree(place, service) && !service.costNote) highlights.push("Atención gratuita")
+  if (isVerifiedFree(place, service)) highlights.push(service.costNote ? "Gratuita con condiciones" : "Atención gratuita")
   return highlights
 }
 

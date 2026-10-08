@@ -215,11 +215,13 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
 
           {matching.length === 0 ? (
             <Section title="Atención disponible">
+              {view.costNotice && <p className="m-0 mb-3 text-ink-soft">{view.costNotice}</p>}
               <ServiceList services={view.services} />
             </Section>
           ) : (
             <>
               <Section title="Coincide con tu búsqueda">
+                {view.costNotice && <p className="m-0 mb-3 text-ink-soft">{view.costNotice}</p>}
                 <div className="rounded-xl border-2 border-brand bg-brand-soft p-3">
                   <ServiceList services={matching} />
                 </div>

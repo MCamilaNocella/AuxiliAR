@@ -219,7 +219,7 @@ test("conditions and common information are written once and only when verified"
   }
   // free with a condition: no plain highlight, the condition is shown
   const conditioned = util.buildPlaceView(entryWith((place) => { place.services[0].cost = "free"; place.services[0].costNote = "Con DNI argentino"; place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "La fuente dice que es gratuita con DNI argentino." } }))
-  assert.deepEqual(conditioned.services[0].chips, [])
+  assert.deepEqual(conditioned.services[0].chips, ["Gratuita con condiciones"])
   assert.deepEqual(conditioned.services[0].details, [{ kind: "text", text: "Atención gratuita. Con DNI argentino" }])
   // the same requirements for every service: said once, under "Antes de ir"
   const shared = util.buildPlaceView(entryWith((place) => { place.requirements = ["Llevar DNI"] }))

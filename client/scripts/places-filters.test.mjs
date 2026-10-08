@@ -284,6 +284,7 @@ test("the explorer is arranged for phones and desktop: search and view first, th
 /* ── Gratuity: only what is verified for that very service ── */
 
 const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
+const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard/index.ts")
 const rawFree = raw.filter((place) => place.services.some((service) => service.cost === "free" && service.source?.note)).map((place) => place.id).sort()
 
 test("the real data: every free service is declared by the service itself, with the note of the source that says so", () => {
@@ -386,4 +387,60 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")
   // the cards say which services are free
   assert.ok(chosen.includes("Atención gratuita"))
+})
+
+/* ── Which services are free is said on the cards and in the panel, and the rest is not made up ── */
+
+test("the panel: unknown costs are told apart from verified ones, and said once when none is known", () => {
+  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const viewOf = (change) => {
+    const place = structuredClone(base)
+    change(place)
+    return places.buildPlaceView(places.selectPlaces([place], DAY, EMPTY)[0])
+  }
+  // nothing is said about the cost: one line, and no chip repeated on every service
+  const none = viewOf(() => {})
+  assert.equal(none.costNotice, "La fuente no informa el costo de estas prestaciones: consultalo antes de ir.")
+  assert.ok(none.services.every((service) => !service.chips.includes("Costo no informado")))
+  // one is verified free: it says so, and the others say that their cost is not informed (they may or may not be free)
+  const some = viewOf((place) => {
+    place.services[0].cost = "free"
+    place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
+  })
+  assert.equal(some.costNotice, undefined)
+  assert.ok(some.services[0].chips.includes("Atención gratuita"))
+  assert.ok(some.services.slice(1).every((service) => service.chips.includes("Costo no informado")))
+  // a free that the establishment declares for all is not verified for each: still "not informed"
+  const inherited = viewOf((place) => { place.cost = "free" })
+  assert.ok(inherited.costNotice && inherited.services.every((service) => !service.chips.includes("Atención gratuita")))
+  // the real hospital with a verified free service: said at the top, nothing about unknown costs
+  const carrillo = places.buildPlaceView(places.selectPlaces(real, DAY, EMPTY).find(({ place }) => place.id === "hospital-odontologia-carrillo"))
+  assert.deepEqual(carrillo.highlights, ["24 h", "Atención gratuita"])
+  assert.equal(carrillo.costNotice, undefined)
+})
+
+test("the cards: verified free services are marked, and the others are not called anything", () => {
+  const render = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true })))
+  const list = render("/centros?vista=lista")
+  // each card of the hospitals is only the free service: marked
+  assert.ok(text(list).includes("Atención gratuita"))
+  // a place with free and not-verified services says so once; the CeSAC (nothing verified) say nothing about cost
+  const [base] = real.filter(({ id }) => id === "cesac-3")
+  const place = structuredClone(base)
+  place.services[0].cost = "free"
+  place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
+  const card = (entry) => renderToStaticMarkup(createElement(PlaceCard, { entry, onOpen() {} }))
+  const mixed = text(card(places.selectPlaces([place], DAY, EMPTY)[0]))
+  assert.ok(mixed.includes("Atención gratuita") && mixed.includes("Las demás prestaciones no tienen gratuidad verificada."))
+  const plain = text(card(places.selectPlaces([base], DAY, EMPTY)[0]))
+  assert.ok(!plain.includes("gratuit") && !plain.includes("Gratuita"))
+})
+
+test("the free hospitals' panel shows the condition when the source gives one", () => {
+  const [base] = real.filter(({ id }) => id === "hospital-odontologia-carrillo")
+  const place = structuredClone(base)
+  place.services[0].costNote = "Con DNI argentino"
+  const view = places.buildPlaceView(places.selectPlaces([place], DAY, EMPTY)[0])
+  assert.ok(view.services[0].chips.includes("Gratuita con condiciones") || view.highlights.includes("Gratuita con condiciones"))
+  assert.ok(view.services[0].details.some((item) => item.kind === "text" && item.text === "Atención gratuita. Con DNI argentino"))
 })

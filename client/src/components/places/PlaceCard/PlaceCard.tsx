@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react"
-import { serviceHighlights, serviceName, shortAddress } from "@/utils/places"
+import { isVerifiedFree, serviceHighlights, serviceName, shortAddress } from "@/utils/places"
 import type { PlaceEntry } from "@/utils/places"
 import { HighlightBadges } from "../HighlightBadges"
 
@@ -16,6 +16,9 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
   const address = shortAddress(place.address)
   const shown = services.slice(0, MAX_SERVICES)
   const hidden = services.length - shown.length
+  // Said only when it tells them apart: some services have verified gratuity and some do not (they may be paid, mixed or not informed)
+  const someFree = services.some((service) => isVerifiedFree(place, service))
+  const someNot = services.some((service) => !isVerifiedFree(place, service))
 
   return (
     <article className="flex flex-col gap-3 rounded-2xl border border-line-strong bg-card p-4">
@@ -41,6 +44,7 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
         })}
       </ul>
       {hidden > 0 && <p className="m-0 text-muted">{`+${hidden} ${hidden === 1 ? "servicio más" : "servicios más"}`}</p>}
+      {someFree && someNot && <p className="m-0 text-ink-soft">Las demás prestaciones no tienen gratuidad verificada.</p>}
 
       <button
         type="button"
