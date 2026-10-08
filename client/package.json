@@ -22,6 +22,7 @@
     "sexual:test": "node --test scripts/sexual-health.test.mjs",
     "animal:test": "node --test scripts/animal-health.test.mjs",
     "emergency:test": "node --test scripts/emergency-lines.test.mjs scripts/emergency-consumers.test.mjs scripts/emergency-buttons.test.mjs",
+    "test:ci": "npm run structure:test && npm run mental:test && npm run sexual:test && npm run animal:test && npm run places:test && npm run health:test && npm run curation:test && npm run emergency:test && npm run help:test && npm run resources:check && npm run curation:check",
     "lines:due": "node scripts/lines-review.mjs",
     "help:test": "node --test scripts/help-bot.test.mjs"
   },
