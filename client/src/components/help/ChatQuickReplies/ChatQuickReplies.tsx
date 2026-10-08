@@ -2,7 +2,7 @@ import type { ChatQuickRepliesProps } from "./ChatQuickReplies.types"
 
 /** Answer buttons under Auxi's question, on the person's side of the chat */
 export const ChatQuickReplies = ({ label, replies }: ChatQuickRepliesProps) => (
-  <li>
+  <li className="motion-safe:animate-message-in">
     <div role="group" aria-label={label} className="flex flex-wrap justify-end gap-2">
       {replies.map((reply) => (
         <button

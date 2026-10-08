@@ -1,2 +1,2 @@
 export { EmergencyPass } from "./EmergencyPass"
-export type { EmergencyPassProps } from "./EmergencyPass.types"
+export type { EmergencyPassHandle, EmergencyPassProps } from "./EmergencyPass.types"

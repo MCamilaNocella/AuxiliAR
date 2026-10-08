@@ -1,8 +1,9 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { Outlet, ScrollRestoration } from "react-router"
 import { HelpBot } from "@/components/help/HelpBot"
 import { HelpChat } from "@/components/help/HelpChat"
 import { useEmergencyAutoScroll } from "@/hooks/useEmergencyAutoScroll"
+import { helpChatStore } from "@/stores/helpChatStore"
 import { getScrollRestorationKey } from "@/router/scrollRestorationKey"
 import { BottomNav } from "../BottomNav"
 import { EmergencyBar } from "../EmergencyBar"
@@ -17,7 +18,6 @@ import { CONTENT_ID } from "./AppLayout.constants"
  */
 export const AppLayout = () => {
   const contentRef = useRef<HTMLElement>(null)
-  const [chatOpen, setChatOpen] = useState(false)
   // Runs after the <ScrollRestoration /> below (children's effects run first)
   useEmergencyAutoScroll(contentRef)
 
@@ -41,8 +41,8 @@ export const AppLayout = () => {
       </main>
 
       <Footer />
-      <HelpBot onOpen={() => setChatOpen(true)} />
-      <HelpChat open={chatOpen} onClose={() => setChatOpen(false)} />
+      <HelpBot onOpen={helpChatStore.open} />
+      <HelpChat />
       <BottomNav />
       <ScrollRestoration getKey={getScrollRestorationKey} />
     </div>

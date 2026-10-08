@@ -1,7 +1,15 @@
-import type { EmergencyRecord } from "@/types/myHealth"
+import type { Ref } from "react"
+import type { CardFieldKey, HealthProfile } from "@/types/myHealth"
+
+/** What the screen can ask the card to do */
+export type EmergencyPassHandle = {
+  /** Edit mode with the focus on that field */
+  edit: (field: CardFieldKey) => void
+}
 
 export type EmergencyPassProps = {
-  name: string
-  age?: number
-  record: EmergencyRecord
+  profile: HealthProfile
+  /** "Guardar" in edit mode: the profile with the new data */
+  onSave: (profile: HealthProfile) => void
+  ref?: Ref<EmergencyPassHandle>
 }

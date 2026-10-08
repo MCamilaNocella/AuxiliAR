@@ -1,9 +1,13 @@
 import { useState } from "react"
-import { HEALTH_PROFILES } from "@/data/myHealth"
+import { useHealthProfiles } from "@/hooks/useHealthProfiles"
+import { healthProfilesStore } from "@/stores/healthProfilesStore"
+import type { HealthProfile } from "@/types/myHealth"
 
-/** The profile on view (you or a relative), picked with the chips under the greeting */
+/** The profiles (editable for now only in memory) and the one on view, picked with the chips under the greeting */
 export const useActiveProfile = () => {
-  const [activeId, setActiveId] = useState(HEALTH_PROFILES[0].id)
-  const profile = HEALTH_PROFILES.find(({ id }) => id === activeId) ?? HEALTH_PROFILES[0]
-  return { profile, activeId, setActiveId }
+  const profiles = useHealthProfiles()
+  const [activeId, setActiveId] = useState(profiles[0].id)
+  const profile = profiles.find(({ id }) => id === activeId) ?? profiles[0]
+  const updateProfile = (updated: HealthProfile) => healthProfilesStore.update(updated.id, () => updated)
+  return { profiles, profile, activeId, setActiveId, updateProfile }
 }

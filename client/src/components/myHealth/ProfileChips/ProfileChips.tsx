@@ -1,5 +1,4 @@
 import { UserPlus } from "lucide-react"
-import { HEALTH_PROFILES } from "@/data/myHealth"
 import type { ProfileChipsProps } from "./ProfileChips.types"
 
 const chipClass = "min-h-10 cursor-pointer rounded-lg px-4 py-1.5 font-bold transition-colors"
@@ -7,9 +6,9 @@ const idleClass = "bg-on-home/15 text-on-home hover:bg-on-home/25 in-data-[theme
 const activeClass = "bg-card text-brand in-data-[theme=contrast]:ring-2 in-data-[theme=contrast]:ring-brand"
 
 /** Profile chips + "Agregar familiar", on the home gradient */
-export const ProfileChips = ({ activeId, onSelect }: ProfileChipsProps) => (
+export const ProfileChips = ({ profiles, activeId, onSelect }: ProfileChipsProps) => (
   <div role="group" aria-label="Perfiles" className="flex flex-wrap items-center gap-2">
-    {HEALTH_PROFILES.map(({ id, name }) => (
+    {profiles.map(({ id, name }) => (
       <button
         key={id}
         type="button"
