@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, type RouteObject } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
@@ -9,6 +9,12 @@ import { Login } from "@/screens/Login";
 import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { Placeholder } from "@/screens/Placeholder";
 import { PATHS } from "./paths";
+
+// Local design pages in src/sandbox (git-ignored): each folder's route.tsx exports `sandboxRoute`.
+// In a clone without that folder the glob is empty and nothing changes.
+const sandboxRoutes = Object.values(
+  import.meta.glob<{ sandboxRoute: RouteObject }>("../sandbox/*/route.tsx", { eager: true }),
+).map(({ sandboxRoute }) => sandboxRoute);
 
 const router = createBrowserRouter([
   {
@@ -28,6 +34,7 @@ const router = createBrowserRouter([
           { path: PATHS.about, element: <Category/> },
           { path: PATHS.auxiModels, element: <AuxiModels/> },
           { path: PATHS.peerChatSketch, element: <PeerChatSketch/> },
+          ...sandboxRoutes,
         ],
       },
       {

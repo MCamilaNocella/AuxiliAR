@@ -1,0 +1,5 @@
+# Configuración local de Claude Code
+.claude/settings.local.json
+
+# Páginas de prueba/diseño locales (no se suben salvo que se pida)
+client/src/sandbox/

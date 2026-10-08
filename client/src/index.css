@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Local design pages (git-ignored, so Tailwind would skip them otherwise); nothing there in a fresh clone */
+@source "./sandbox";
 @import "@fontsource-variable/nunito";
 @import "@fontsource/dm-serif-display";
 
