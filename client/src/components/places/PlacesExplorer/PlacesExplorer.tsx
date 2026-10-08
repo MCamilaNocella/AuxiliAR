@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useId, useMemo, useRef, useState } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router"
 import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
 import { categoriesOfServiceType, todayInArgentina } from "@/data/resources"
@@ -6,11 +6,12 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, getPlaceFacets, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, getPlaceFacets, matchingServices, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
 import { CategoryFilter } from "../CategoryFilter"
+import { FiltersToggle } from "../FiltersToggle"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapView } from "../PlacesMapView"
@@ -50,6 +51,10 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
   const location = useLocation()
   const countRef = useRef<HTMLParagraphElement>(null)
   const lastOpenId = useRef<string | null>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const panelId = useId()
+  // On phones the filters live in a panel that opens on demand; on large screens they are always there
+  const [filtersOpen, setFiltersOpen] = useState(false)
 
   // What is asked, from the URL. A quick filter this context doesn't offer is ignored
   const asked = useMemo(() => placeQueryFromParams(searchParams), [searchParams])
@@ -65,10 +70,32 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
   // Where there are verified places at all, whatever else is chosen: it doesn't move with the search
   const coverage = plan.covered
 
-  // Each change of filter is a step in the history (Back undoes it); typing replaces the step, so a search is not a hundred of them.
-  // Every other param (the view, the open place) stays
+  // Each change of filter is a step in the history (Back undoes it). Typing is one step: the first letter adds it and the next
+  // ones replace it, so a search is not a hundred of them and Back undoes the whole word. Every other param (the view, the open place) stays
+  const typingFrom = useRef<string | null>(null)
   const changeQuery = (changes: Partial<PlaceQuery>, replace = false) =>
     setSearchParams((previous) => placeQueryToParams(previous, { ...query, ...changes }), { replace, preventScrollReset: true })
+
+  // What is typed is kept here as well as in the URL: the URL follows a moment later, and a fast typist must not lose letters in between.
+  // A change that comes from outside (Back, "Borrar filtros", a link) replaces what is typed
+  const [draft, setDraft] = useState(query.text)
+  const pendingText = useRef<string | null>(null)
+  const pendingTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  useEffect(() => {
+    if (pendingText.current !== null && query.text !== pendingText.current) return
+    setDraft(query.text)
+  }, [query.text])
+  useEffect(() => () => clearTimeout(pendingTimer.current), [])
+  const typeText = (text: string) => {
+    setDraft(text)
+    pendingText.current = text
+    clearTimeout(pendingTimer.current)
+    pendingTimer.current = setTimeout(() => { pendingText.current = null }, 600)
+    // Same filters as when the word was started: still the same step. Anything else changed (a filter, Back): a new one
+    const filtersNow = placeQueryToParams(searchParams, { ...query, text: "" }).toString()
+    changeQuery({ text }, typingFrom.current === filtersNow)
+    typingFrom.current = filtersNow
+  }
 
   // List or map: what the URL asks for (?vista=), or else the map on large screens and the list on phones.
   // Search and filters are the same for both: they show the same results
@@ -85,8 +112,19 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
       { replace: true, preventScrollReset: true },
     )
 
+  const showFilters = isDesktop || filtersOpen
+  // Esc folds the panel and puts focus back on the button that opened it
+  const foldOnEscape = (event: React.KeyboardEvent) => {
+    if (event.key !== "Escape" || isDesktop) return
+    event.stopPropagation()
+    setFiltersOpen(false)
+    toggleRef.current?.focus()
+  }
+
   const placeParam = searchParams.get(PLACE_PARAM)
   const activeEntry = allEntries.find(({ place }) => place.id === placeParam)
+  // The services of the open place that answer what was searched: the panel leads with them
+  const matchingIds = useMemo(() => (activeEntry ? matchingServices(activeEntry, query).map(({ id }) => id) : []), [activeEntry, query])
   const activeId = activeEntry?.place.id ?? null
 
   // A link to a place that doesn't exist (or isn't current anymore) just opens the list
@@ -153,6 +191,9 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
     ...(query.type ? [{ key: "type", label: serviceTypeLabel(query.type), onRemove: () => changeQuery({ type: null }) }] : []),
   ]
 
+  // The search box is always in sight, so it doesn't count for the button that folds the other filters
+  const panelFilters = activeFilters.filter(({ key }) => key !== "text").length
+
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
   const where = query.zone ? ` en ${query.zone}` : query.province ? ` en ${provinceLabel(query.province)}` : ""
   const count =
@@ -163,32 +204,39 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         : `${results.length} ${results.length === 1 ? "lugar encontrado" : "lugares encontrados"}${where}`
 
   return (
-    <div className="mt-2 flex flex-col gap-5">
-      <p className="m-0 max-w-prose text-muted">{intro}</p>
+    <div className="mt-2 flex flex-col gap-4">
+      <p className="m-0 text-muted">{intro}</p>
 
-      <TerritoryFilters
-        coverage={coverage}
-        province={query.province}
-        onProvinceChange={(province) => changeQuery({ province, zone: null })}
-        zones={facets.zones}
-        zone={query.zone}
-        onZoneChange={(zone) => changeQuery({ zone })}
-      />
-
-      <PlacesToolbar filters={NO_FILTERS} query={query.text} onQueryChange={(text) => changeQuery({ text }, true)} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="sm:col-span-2">
-          <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
-            onChange={(category) => changeQuery({ category, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
+        <div className="lg:flex-1">
+          <PlacesToolbar filters={NO_FILTERS} query={draft} onQueryChange={typeText} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
         </div>
-        <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
+        <div className="flex items-center gap-2">
+          {map && <PlacesViewSwitch view={view} onChange={changeView} />}
+          {!isDesktop && <FiltersToggle ref={toggleRef} open={filtersOpen} activeCount={panelFilters} controls={panelId} onToggle={() => setFiltersOpen((open) => !open)} />}
+        </div>
       </div>
 
-      <ActiveFilters filters={activeFilters} onClear={clearSearch} />
-      {activeFilters.length > 0 && <p className="m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
+      {showFilters && (
+        <div id={panelId} onKeyDown={foldOnEscape} className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <div className="col-span-full">
+            <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
+              onChange={(category) => changeQuery({ category, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
+          </div>
+          <TerritoryFilters
+            coverage={coverage}
+            province={query.province}
+            onProvinceChange={(province) => changeQuery({ province, zone: null })}
+            zones={facets.zones}
+            zone={query.zone}
+            onZoneChange={(zone) => changeQuery({ zone })}
+          />
+          <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
+          {activeFilters.length > 0 && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
+        </div>
+      )}
 
-      {map && <PlacesViewSwitch view={view} onChange={changeView} />}
+      <ActiveFilters filters={activeFilters} onClear={clearSearch} />
 
       <p ref={countRef} role="status" aria-live="polite" tabIndex={-1} className="m-0 font-bold outline-none">
         {count}
@@ -237,7 +285,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
       {results.length > 0 && view === "list" && <PlaceList entries={results} onOpen={open} />}
       {results.length > 0 && view === "map" && <PlacesMapView entries={results} onOpen={open} onBackToList={() => changeView("list")} />}
 
-      {activeEntry && <PlaceDetail entry={activeEntry} onClose={close} />}
+      {activeEntry && <PlaceDetail entry={activeEntry} matchingIds={matchingIds} onClose={close} />}
     </div>
   )
 }

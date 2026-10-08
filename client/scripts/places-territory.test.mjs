@@ -67,7 +67,7 @@ test("territory filters: the province select lists only the covered ones, with '
   assert.match(html, /<option value=""[^>]*>Todas las zonas con cobertura<\/option><option value="AR-C">Ciudad Autónoma de Buenos Aires<\/option>/)
   assert.ok(!html.includes('value="AR-B"'), "a province with no verified places is not offered")
   assert.ok(content.includes("Por ahora hay centros verificados en Ciudad Autónoma de Buenos Aires."))
-  assert.ok(content.includes("que no aparezcan no quiere decir que no haya servicios"))
+  assert.ok(content.includes("Que otras provincias no aparezcan no quiere decir que no haya servicios"))
   // no division select until a province is chosen
   assert.ok(!content.includes("Comuna"))
   // several provinces are listed together

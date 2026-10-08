@@ -167,14 +167,16 @@ test("the explorer with the real places: filters from the URL, active chips, cou
   assert.ok(content.includes("3 lugares encontrados en Ciudad Autónoma de Buenos Aires"))
   assert.ok(content.includes("Ciudad Autónoma de Buenos Aires Quitar filtro") && content.includes("Salud mental Quitar filtro"))
   for (const id of ["cesac-3", "cesac-41", "cesac-47"]) assert.ok(html.includes(`data-place-trigger="${id}"`), id)
-  assert.ok(content.includes("Borrar filtros") && content.includes("Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros"))
-  // chips and select reflect the URL
-  assert.match(html, /aria-pressed="true"[^>]*>Salud mental \(3\)</)
-  assert.match(html, /<option value="mental-health-care"[^>]*selected=""|selected=""[^>]*value="mental-health-care"/)
-  // no filters: no active chips, no note about the numbers
+  assert.ok(content.includes("Borrar filtros"))
+  // the panel is folded here (phone), but the button says how many filters are on, and the chips stay in sight
+  assert.ok(content.includes("Filtros 3 (3 activos)"), content)
+  // no filters: no active chips, no count on the button
   const plain = text(render("/centros?vista=lista"))
-  assert.ok(!plain.includes("Borrar filtros") && !plain.includes("Los números muestran"))
+  assert.ok(!plain.includes("Borrar filtros") && !plain.includes("activos)"))
   assert.ok(plain.includes("6 lugares encontrados"))
+  // the search box does not count: it is always in sight
+  const searched = text(render("/centros?vista=lista&buscar=cesac"))
+  assert.ok(!searched.includes("activo)") && searched.includes("Búsqueda: «cesac» Quitar filtro"))
 })
 
 test("the explorer: combinations with nothing, and animal care that does not exist", () => {
@@ -182,7 +184,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
   assert.ok(none.includes("0 lugares encontrados") && none.includes("Que no aparezcan no quiere decir que no existan") && none.includes("Borrar filtros"))
   // an animal category is asked for in a link: it is shown as the chosen filter, nothing is listed and nothing is said to exist
   const animals = text(render("/centros?vista=lista&categoria=animales"))
-  assert.ok(animals.includes("0 lugares encontrados") && animals.includes("Animales (0)"))
+  assert.ok(animals.includes("0 lugares encontrados") && animals.includes("Animales Quitar filtro"))
   assert.ok(!/veterinari|zoonosis|castraci/i.test(animals), "no animal service is made up")
   // an invalid category or service in the URL is ignored
   assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("6 lugares encontrados"))
@@ -203,4 +205,78 @@ test("the filters are labelled in plain words, from the taxonomy", () => {
   assert.equal(places.categoryLabel("esi"), "Educación sexual (ESI)")
   assert.equal(places.serviceTypeLabel("emergency-room"), "Guardia")
   assert.equal(places.quickFilterLabel("emergency"), "Guardias")
+})
+
+/* ── The panel leads with the service that answers the search ── */
+
+const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
+const { FiltersToggle } = await vite.ssrLoadModule("/src/components/places/FiltersToggle/index.ts")
+const cesac3 = real.find(({ id }) => id === "cesac-3")
+const entryOf = (query = {}) => places.selectPlaces([cesac3], DAY, { ...EMPTY, ...query })[0]
+const matchOf = (query) => places.matchingServices(entryOf(), { ...EMPTY, ...query }).map((service) => service.type)
+
+test("matching services: only what answers the search, nothing made up", () => {
+  // nothing asked: no service is singled out
+  assert.deepEqual(matchOf({}), [])
+  // a service filter or a kind of care picks the services that meet it
+  assert.deepEqual(matchOf({ type: "vaccination" }), ["vaccination"])
+  assert.ok(matchOf({ category: "salud-mental" }).length > 0 && matchOf({ category: "salud-mental" }).every((type) => categoriesOf(type).includes("salud-mental")))
+  // words that a service says about itself pick that service
+  assert.deepEqual(matchOf({ text: "psicolog" }).map((type) => categoriesOf(type).includes("salud-mental")), [true])
+  // words that only name the place pick nothing: the place matched, none of its services did
+  assert.deepEqual(matchOf({ text: "Soldado de la Frontera" }), [])
+  assert.deepEqual(matchOf({ text: "cesac" }), [])
+  // words from the place and from the service together still pick the service that says one of them
+  assert.deepEqual(matchOf({ text: "vacunacion cesac" }), ["vaccination"])
+  // words that appear nowhere pick nothing
+  assert.deepEqual(matchOf({ text: "veterinaria" }), [])
+  // the criteria and the words must hold for the same service
+  assert.deepEqual(matchOf({ type: "vaccination", text: "psicolog" }), [])
+  // every service picked is one of the place's verified services
+  const own = new Set(entryOf().services.map(({ id }) => id))
+  for (const query of [{ type: "dentistry" }, { text: "odont" }, { category: "esi" }]) assert.ok(places.matchingServices(entryOf(), { ...EMPTY, ...query }).every(({ id }) => own.has(id)))
+})
+
+test("the place panel: the matching service first, the others verified services apart, no split when nothing matches", () => {
+  const draw = (query) => {
+    const ids = places.matchingServices(entryOf(), { ...EMPTY, ...query }).map(({ id }) => id)
+    return renderToStaticMarkup(createElement(PlaceDetail, { entry: entryOf(), matchingIds: ids, onClose() {} }))
+  }
+  const headings = (html) => [...html.matchAll(/<h3[^>]*>([^<]+)<\/h3>/g)].map((match) => match[1])
+  const searched = draw({ text: "psicolog" })
+  assert.deepEqual(headings(searched).slice(0, 2), ["Coincide con tu búsqueda", "Otros servicios verificados"])
+  const [before, after] = text(searched).split("Otros servicios verificados")
+  assert.ok(before.includes("Psicología") && !after.includes("Psicología"), "the matching service is in the first block only")
+  assert.ok(after.includes("Clínica médica") && after.includes("Odontología"), "the others are still there")
+  // nothing matches (or nothing was asked): the usual list, nothing invented
+  for (const query of [{}, { text: "Soldado de la Frontera" }]) assert.deepEqual(headings(draw(query)).slice(0, 1), ["Atención disponible"], JSON.stringify(query))
+  assert.ok(!text(draw({})).includes("Coincide con tu búsqueda"))
+  // every service matches: one block, no empty "Otros"
+  const all = renderToStaticMarkup(createElement(PlaceDetail, { entry: entryOf(), matchingIds: entryOf().services.map(({ id }) => id), onClose() {} }))
+  assert.ok(headings(all).includes("Coincide con tu búsqueda") && !headings(all).includes("Otros servicios verificados"))
+})
+
+test("the filters button: says how many are on, controls the panel and tells its state", () => {
+  const draw = (props) => renderToStaticMarkup(createElement(FiltersToggle, { open: false, activeCount: 0, controls: "panel-1", onToggle() {}, ...props }))
+  const closed = draw({})
+  assert.match(closed, /<button[^>]*aria-expanded="false"[^>]*aria-controls="panel-1"|<button[^>]*aria-controls="panel-1"[^>]*aria-expanded="false"/)
+  assert.equal(text(closed).trim(), "Filtros")
+  assert.ok(text(draw({ activeCount: 1 })).includes("Filtros 1 (1 activo)"))
+  const open = draw({ open: true, activeCount: 3 })
+  assert.match(open, /aria-expanded="true"/)
+  assert.ok(text(open).includes("(3 activos)"))
+  // a good touch target
+  assert.ok(open.includes("min-h-11"))
+})
+
+test("the explorer is arranged for phones and desktop: search and view first, the filters in a panel, the emergency line easy to tap", async () => {
+  const explorer = await readFile(join(root, "src/components/places/PlacesExplorer/PlacesExplorer.tsx"), "utf8")
+  // the panel is always there on large screens and opens on demand on phones
+  assert.match(explorer, /const showFilters = isDesktop \|\| filtersOpen/)
+  assert.match(explorer, /\{!isDesktop && <FiltersToggle/)
+  // letters typed are not lost while the URL catches up
+  assert.match(explorer, /const \[draft, setDraft\] = useState\(query\.text\)/)
+  const section = await readFile(join(root, "src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx"), "utf8")
+  // ~44 px of target without making the line taller (the padding is taken back with a negative margin)
+  assert.match(section, /-my-2\.5 inline-block[^"]*py-2\.5/)
 })

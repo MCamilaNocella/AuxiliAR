@@ -53,7 +53,9 @@ test("mapa auxiliar: one emergency line that points to the emergency numbers, no
   // the explorer comes with the transparency note and every kind of care as a quick filter
   assert.ok(content.includes("Centros verificados por AuxiliAR. Estamos incorporando establecimientos progresivamente."))
   // the kinds of care and services come from the data (category chips, service select); the quick chips of before are gone
-  assert.ok(content.includes("Provincia") && content.includes("Todas las zonas con cobertura"))
+  // the filters live in a panel (always open on large screens, folded on phones: the server renders the phone's): the search, the view and the button are in sight
+  assert.ok(content.includes("¿Qué necesitás?") && /<button[^>]*aria-expanded="false"[^>]*aria-controls=[^>]*>/.test(html) && content.includes("Filtros"))
+  assert.ok(!html.includes("<select"), "folded: no selects until the panel is opened")
   assert.ok(!content.includes("Todos Atención médica"))
   // list and map are both offered
   assert.ok(content.includes("Lista") && content.includes("Mapa"))

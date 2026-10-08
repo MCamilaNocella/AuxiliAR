@@ -14,7 +14,7 @@ type ActiveFiltersProps = {
 export const ActiveFilters = ({ filters, onClear }: ActiveFiltersProps) => {
   if (filters.length === 0) return null
   return (
-    <div role="group" aria-label="Filtros activos" className="flex flex-col items-start gap-3">
+    <div role="group" aria-label="Filtros activos" className="flex flex-wrap items-center gap-2">
       <ul role="list" className="m-0 flex list-none flex-wrap gap-2 p-0">
         {filters.map(({ key, label, onRemove }) => (
           <li key={key}>

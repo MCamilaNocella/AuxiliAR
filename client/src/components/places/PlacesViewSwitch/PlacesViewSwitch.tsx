@@ -16,7 +16,7 @@ const OPTIONS: { id: PlacesView, label: string, icon: typeof List }[] = [
 
 /** Lista | Mapa: the same places, two ways to see them. The list has every action and works with any device, so nothing depends on the map */
 export const PlacesViewSwitch = ({ view, onChange }: PlacesViewSwitchProps) => (
-  <div role="group" aria-label="Ver los lugares como" className="inline-flex rounded-2xl border-2 border-control-line bg-card p-1">
+  <div role="group" aria-label="Ver los lugares como" className="inline-flex shrink-0 rounded-2xl border-2 border-control-line bg-card p-1">
     {OPTIONS.map(({ id, label, icon: Icon }) => {
       const isActive = id === view
       return (
@@ -25,11 +25,11 @@ export const PlacesViewSwitch = ({ view, onChange }: PlacesViewSwitchProps) => (
           type="button"
           aria-pressed={isActive}
           onClick={() => onChange(id)}
-          className={`inline-flex min-h-11 min-w-28 cursor-pointer items-center justify-center gap-2 rounded-xl px-4 py-2 font-extrabold ${
+          className={`inline-flex min-h-11 min-w-20 cursor-pointer items-center justify-center gap-2 rounded-xl px-3 py-2 sm:min-w-28 sm:px-4 font-extrabold ${
             isActive ? "bg-brand text-on-brand" : "bg-transparent text-ink hover:bg-field"
           }`}
         >
-          <Icon aria-hidden="true" className="size-5 shrink-0" />
+          <Icon aria-hidden="true" className="hidden size-5 shrink-0 sm:block" />
           {label}
         </button>
       )

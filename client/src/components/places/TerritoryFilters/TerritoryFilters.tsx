@@ -19,7 +19,8 @@ const selectClass = "min-h-11 w-full cursor-pointer rounded-xl border border-con
 /**
  * Where: the province (only those with verified places) and, once one is chosen, its division - a comuna, a partido or a
  * departamento, depending on the province. Native selects: they work with any device and assistive technology. It says
- * which provinces are covered, so that an empty result is never read as "there are no services there".
+ * which provinces are covered, so that an empty result is never read as "there are no services there". It renders into the
+ * grid of the filters panel (its fields, then the note across the whole row).
  */
 export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, zone, onZoneChange }: TerritoryFiltersProps) => {
   const provinceId = useId()
@@ -34,8 +35,7 @@ export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, 
   const countOf = (value: string) => zones.find((entry) => entry.value === value)?.count ?? 0
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <>
         <div>
           <label htmlFor={provinceId} className="mb-1 block font-bold">
             Provincia
@@ -71,14 +71,13 @@ export const TerritoryFilters = ({ coverage, province, onProvinceChange, zones, 
             </select>
           </div>
         )}
-      </div>
 
-      <p id={coverageId} className="m-0 text-ink-soft">
+      <p id={coverageId} className="order-last col-span-full m-0 text-ink-soft">
         {coverage.length === 1
           ? `Por ahora hay centros verificados en ${provinceLabel(coverage[0])}.`
           : `Por ahora hay centros verificados en ${coverage.map(provinceLabel).join(", ")}.`}{" "}
-        Otras provincias se suman a medida que se verifican: que no aparezcan no quiere decir que no haya servicios.
+        Que otras provincias no aparezcan no quiere decir que no haya servicios.
       </p>
-    </div>
+    </>
   )
 }

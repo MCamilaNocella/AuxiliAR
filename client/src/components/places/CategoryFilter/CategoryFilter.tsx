@@ -33,11 +33,11 @@ export const CategoryFilter = ({ facets, value, onChange }: CategoryFilterProps)
   const showGroupNames = groups.length > 1
 
   return (
-    <div role="group" aria-labelledby={headingId} className="flex flex-col gap-2">
+    <div role="group" aria-labelledby={headingId} className="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-3">
       <p id={headingId} className="m-0 font-bold">
         Tipo de atención
       </p>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 lg:flex-row lg:flex-wrap lg:gap-x-6">
         {groups.map((group, index) => (
           <div key={group.id} role={showGroupNames ? "group" : undefined} aria-label={showGroupNames ? group.label : undefined} className="flex flex-col gap-1">
             {showGroupNames && <p className="m-0 text-ink-soft">{group.label}</p>}

@@ -17,7 +17,7 @@ export default function Section1Content() {
     <div className="mt-2 flex flex-col gap-3">
       <p className="m-0 max-w-prose text-ink-soft">
         Si hay riesgo inmediato, no busques un centro:{" "}
-        <button type="button" onClick={revealEmergencies} className="cursor-pointer border-0 bg-transparent p-0 font-bold text-brand underline underline-offset-4">
+        <button type="button" onClick={revealEmergencies} className="-my-2.5 inline-block cursor-pointer border-0 bg-transparent py-2.5 font-bold text-brand underline underline-offset-4">
           mirá los números de emergencia
         </button>
         .
