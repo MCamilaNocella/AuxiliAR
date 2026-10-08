@@ -93,33 +93,22 @@ const matchesTerritory = (place: Resource, { province, zone }: PlaceQuery) =>
 
 const typeLabel = (type: ServiceType) => taxonomy.serviceTypes.find(({ id }) => id === type)?.label
 
+/** What a service says about itself, for the search */
+const serviceTexts = (service: ResolvedService) => [serviceName(service), typeLabel(service.type), service.description, service.costNote, service.appointment.howTo, ...service.requirements]
+
+/** What names the place itself: its names and where it is */
+const placeTexts = ({ place }: PlaceEntry) => [place.name, place.shortName, ...(place.aliases ?? []), place.address?.street, place.address?.neighborhood, place.address?.locality, place.address?.reference]
+
+const joinText = (texts: (string | undefined)[]) => normalizeText(texts.filter(Boolean).join(" "))
+
 /** Everything a person could type to find the place: names, address, and what each service says about itself */
-const searchableText = ({ place, services }: PlaceEntry) =>
-  normalizeText(
-    [
-      place.name,
-      place.shortName,
-      ...(place.aliases ?? []),
-      place.address?.street,
-      place.address?.neighborhood,
-      place.address?.locality,
-      place.address?.reference,
-      ...services.flatMap((service) => [
-        serviceName(service),
-        typeLabel(service.type),
-        service.description,
-        service.costNote,
-        service.appointment.howTo,
-        ...service.requirements,
-      ]),
-    ]
-      .filter(Boolean)
-      .join(" "),
-  )
+const searchableText = (entry: PlaceEntry) => joinText([...placeTexts(entry), ...entry.services.flatMap(serviceTexts)])
+
+const searchTerms = (text: string) => normalizeText(text).split(/\s+/).filter(Boolean)
 
 /** Every word typed has to be somewhere in the place or its services (accents and case don't matter) */
 export const matchesQuery = (entry: PlaceEntry, query: string) => {
-  const terms = normalizeText(query).split(/\s+/).filter(Boolean)
+  const terms = searchTerms(query)
   if (terms.length === 0) return true
   const text = searchableText(entry)
   return terms.every((term) => text.includes(term))
@@ -141,6 +130,25 @@ export const selectPlaces = (places: readonly Resource[], day: string, query: Pl
       return [{ place, services: sorted }]
     })
     .filter((entry) => matchesQuery(entry, query.text))
+}
+
+/**
+ * The services of a place that answer what was asked, for the panel to lead with them. A service answers when it meets the
+ * kind of care / service filters and, if words were typed, when those words are in the place or its services and at least one
+ * of them is something only the service says (a word the place's own name or address has too says nothing about which service).
+ * With nothing asked, or when the words only match the place, no service is picked: nothing is made up.
+ */
+export const matchingServices = (entry: PlaceEntry, query: PlaceQuery): ResolvedService[] => {
+  const terms = searchTerms(query.text)
+  const hasCriteria = query.filterId !== "all" || query.category !== null || query.type !== null
+  if (terms.length === 0 && !hasCriteria) return []
+  const placeText = joinText(placeTexts(entry))
+  return entry.services.filter((service) => {
+    if (!matchesServiceCriteria(service, query)) return false
+    if (terms.length === 0) return true
+    const own = joinText(serviceTexts(service))
+    return terms.every((term) => own.includes(term) || placeText.includes(term)) && terms.some((term) => own.includes(term) && !placeText.includes(term))
+  })
 }
 
 /** A value of a filter and how many places have it */

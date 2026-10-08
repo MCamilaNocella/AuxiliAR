@@ -3,15 +3,19 @@ import { ExternalLink, MapPin, MessageCircle, Phone, X } from "lucide-react"
 import { contactHref } from "@/data/resources"
 import type { Contact } from "@/data/resources"
 import { buildPlaceView, formatDate, streetLine } from "@/utils/places"
-import type { DetailItem, PlaceEntry } from "@/utils/places"
+import type { DetailItem, PlaceEntry, ServiceView } from "@/utils/places"
 import { HighlightBadges } from "../HighlightBadges"
 
 const FOCUSABLE = "a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex='-1'])"
 
 type PlaceDetailProps = {
   entry: PlaceEntry
+  /** The services that answer what was searched (see matchingServices): they come first. None: every service is shown together */
+  matchingIds?: readonly string[]
   onClose: () => void
 }
+
+const NO_IDS: readonly string[] = []
 
 const ContactLink = ({ contact }: { contact: Contact }) => {
   const isWhatsApp = contact.type === "whatsapp"
@@ -83,6 +87,26 @@ const Detail = ({ item }: { item: DetailItem }) => {
   )
 }
 
+const ServiceList = ({ services }: { services: ServiceView[] }) => (
+  <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
+    {services.map((service) => (
+      <li key={service.id}>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="font-bold">{service.name}</span>
+          <HighlightBadges items={service.chips} />
+        </div>
+        {service.details.length > 0 && (
+          <div className="mt-1 flex flex-col gap-1 border-l-2 border-line-strong pl-3 text-ink-soft">
+            {service.details.map((item, index) => (
+              <Detail key={index} item={item} />
+            ))}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+)
+
 const Section = ({ title, children }: { title: string, children: React.ReactNode }) => (
   <section className="mt-6">
     <h3 className="m-0 mb-2 text-lg font-extrabold">{title}</h3>
@@ -98,9 +122,12 @@ const Section = ({ title, children }: { title: string, children: React.ReactNode
  * the title when it opens and is trapped inside; Esc, the button or a tap outside close it (the explorer puts
  * focus back on the card).
  */
-export const PlaceDetail = ({ entry, onClose }: PlaceDetailProps) => {
+export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetailProps) => {
   const { place } = entry
   const view = buildPlaceView(entry)
+  // What answers the search leads, the rest of the verified services follow apart. Nothing answering: no split, nothing made up
+  const matching = view.services.filter((service) => matchingIds.includes(service.id))
+  const others = view.services.filter((service) => !matchingIds.includes(service.id))
   const titleId = useId()
   const titleRef = useRef<HTMLHeadingElement>(null)
   const panelRef = useRef<HTMLElement>(null)
@@ -186,25 +213,24 @@ export const PlaceDetail = ({ entry, onClose }: PlaceDetailProps) => {
             </div>
           )}
 
-          <Section title="Atención disponible">
-            <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
-              {view.services.map((service) => (
-                <li key={service.id}>
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="font-bold">{service.name}</span>
-                    <HighlightBadges items={service.chips} />
-                  </div>
-                  {service.details.length > 0 && (
-                    <div className="mt-1 flex flex-col gap-1 border-l-2 border-line-strong pl-3 text-ink-soft">
-                      {service.details.map((item, index) => (
-                        <Detail key={index} item={item} />
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </Section>
+          {matching.length === 0 ? (
+            <Section title="Atención disponible">
+              <ServiceList services={view.services} />
+            </Section>
+          ) : (
+            <>
+              <Section title="Coincide con tu búsqueda">
+                <div className="rounded-xl border-2 border-brand bg-brand-soft p-3">
+                  <ServiceList services={matching} />
+                </div>
+              </Section>
+              {others.length > 0 && (
+                <Section title="Otros servicios verificados">
+                  <ServiceList services={others} />
+                </Section>
+              )}
+            </>
+          )}
 
           {view.howTo.length > 0 && (
             <Section title="Cómo atenderte">
