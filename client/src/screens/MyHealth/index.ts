@@ -1,0 +1,1 @@
+export { MyHealth } from "./MyHealth"

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Local design pages (git-ignored, so Tailwind would skip them otherwise); nothing there in a fresh clone */
+@source "./sandbox";
 @import "@fontsource-variable/nunito";
 @import "@fontsource/dm-serif-display";
 
@@ -34,7 +36,8 @@
   --color-brand-dark: #5a1f1f;
   /* Icon tiles and active nav item: must stand out on card (brand text on it ≥7:1) */
   --color-brand-soft: #f1ded9;
-  --color-on-brand: #ffffff;
+  /* Light text on dark fills: #f5f5f5, never pure white (on a phone at full brightness #fff glares) */
+  --color-on-brand: #f5f5f5;
 
   /* Emergencies */
   --color-alert: #b3261e;
@@ -43,14 +46,14 @@
   --color-alert-soft: #fcedec;
   --color-alert-line: #f3d6d3;
   --color-alert-card-line: #e8c9c6;
-  --color-on-alert: #ffffff;
-  /* Text on the home background (white passes 4.5:1 on every gradient stop) */
-  --color-on-home: #ffffff;
+  --color-on-alert: #f5f5f5;
+  /* Text on the home background (passes 4.5:1 on every gradient stop) */
+  --color-on-home: #f5f5f5;
   /* Secondary text on the home background: ≥4.9:1 on every gradient stop, clearly dimmer than the title */
   --color-on-home-muted: #e0d2cf;
 
-  /* Text on the category banner / wallpaper (white passes 4.5:1 wherever text sits, see below) */
-  --color-on-category: #ffffff;
+  /* Text on the category banner / wallpaper (passes 4.5:1 wherever text sits, see below) */
+  --color-on-category: #f5f5f5;
   /* Border around the category banner: only visible in high contrast */
   --color-category-edge: transparent;
 
@@ -58,7 +61,7 @@
   --color-auxi-motion: #000000;
 
   /* Metallic glint that sweeps over the "Ver mejor" gear and label on load: light on the dark (light theme) gear, a darker sheen on the white one */
-  --color-shine: #ffffff;
+  --color-shine: #f5f5f5;
 
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -194,9 +197,8 @@
   --color-alert-soft: #2a1817;
   --color-alert-line: #4a2724;
   --color-alert-card-line: #5c302c;
-  --color-on-alert: #ffffff;
 
-  --color-auxi-motion: #ffffff;
+  --color-auxi-motion: #f5f5f5;
   --color-shine: #8a817f;
 }
 
@@ -226,7 +228,10 @@
   --color-alert-soft: #000000;
   --color-alert-line: #ffffff;
   --color-alert-card-line: #ffffff;
+  /* High contrast keeps pure white on purpose: maximum contrast is the point of this theme */
   --color-on-alert: #ffffff;
+  --color-on-home: #ffffff;
+  --color-on-category: #ffffff;
 
   --color-auxi-motion: #ffffff;
   --color-shine: #8a8a8a;
