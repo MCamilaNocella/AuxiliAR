@@ -1,13 +1,13 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react"
 import type { ReactNode } from "react"
-import { useLocation, useNavigate, useSearchParams } from "react-router"
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router"
 import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
 import { categoriesOfServiceType, todayInArgentina } from "@/data/resources"
 import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
-import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { PATHS, PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
+import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
@@ -211,6 +211,8 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
   const exploreCovered = () => changeQuery({ province: coverage.length === 1 ? coverage[0] : null, zone: null })
 
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
+  // A link to "Salud animal" while the map has no veterinary service says exactly that, instead of a generic "no results"
+  const noAnimalResources = empty === "no-results" && query.filterId === "animal-health" && !quickFilterHasData("animal-health", allEntries)
   const where = query.zone ? ` en ${query.zone}` : query.province ? ` en ${provinceLabel(query.province)}` : ""
   const count =
     state.status === "loading"
@@ -291,7 +293,22 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         </div>
       )}
 
-      {empty === "no-results" && freeOn && (
+      {noAnimalResources && (
+        <div className="flex flex-col items-start gap-3">
+          <p className="m-0">{"Todavía no hay recursos veterinarios verificados disponibles en el mapa" + where + ". Eso no significa que no existan: solo mostramos lo que está verificado."}</p>
+          <p className="m-0">
+            Mientras tanto, en Salud animal están las campañas y los servicios municipales que informan las páginas oficiales.{" "}
+            <Link to={PATHS.topic("animales")} className="inline-flex min-h-11 items-center font-bold">
+              Ver Salud animal
+            </Link>
+          </p>
+          <button type="button" onClick={clearSearch} className={buttonClass}>
+            Borrar filtros
+          </button>
+        </div>
+      )}
+
+      {empty === "no-results" && freeOn && !noAnimalResources && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">{"No encontramos prestaciones con gratuidad verificada para esta búsqueda" + where + ". Eso no significa que no sean gratuitas: solo mostramos la gratuidad que la fuente oficial confirma."}</p>
           <p className="m-0">Si quitás este filtro, vas a ver todas las prestaciones de la búsqueda, con o sin gratuidad verificada. Consultá el costo de cada una antes de ir.</p>
@@ -301,7 +318,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         </div>
       )}
 
-      {empty === "no-results" && !freeOn && (
+      {empty === "no-results" && !freeOn && !noAnimalResources && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
             {"No encontramos lugares verificados con esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros."}

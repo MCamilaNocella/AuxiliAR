@@ -10,11 +10,12 @@ export type PlaceEntry = {
   services: ResolvedService[]
 }
 
-export type PlaceFilterId = "all" | "medical" | "mental-health" | "sexual-health" | "vaccination" | "dentistry" | "emergency"
+export type PlaceFilterId = "all" | "medical" | "mental-health" | "sexual-health" | "vaccination" | "dentistry" | "emergency" | "animal-health"
 
 /**
  * The simple filters people see. Each one groups service types (taxonomy.serviceTypes); "all" has none.
- * Types outside every group (animals) are only in "Todos".
+ * Human care and animal care never share a group: the types of the category "animales" are only in "animal-health"
+ * (and in "Todos"), and no other group has one of them (the tests of places-animal check it).
  */
 export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceType[] | null }[] = [
   { id: "all", label: "Todos", types: null },
@@ -34,9 +35,10 @@ export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceTy
       "sexual-health-counseling",
     ],
   },
-  { id: "vaccination", label: "Vacunación", types: ["vaccination", "rabies-vaccination"] },
+  { id: "vaccination", label: "Vacunación", types: ["vaccination"] },
   { id: "dentistry", label: "Odontología", types: ["dentistry"] },
   { id: "emergency", label: "Guardias", types: ["emergency-room", "mental-health-emergency"] },
+  { id: "animal-health", label: "Salud animal", types: ["rabies-vaccination", "spaying-neutering", "veterinary-care", "zoonosis"] },
 ]
 
 /**
@@ -57,6 +59,9 @@ const scopeTypes = ({ category, serviceTypes }: PlacesScope): Set<ServiceType> |
   if (ofCategory || serviceTypes) return new Set(ofCategory ?? serviceTypes)
   return null
 }
+
+/** Whether any of the places has a service of that quick filter: a filter with none promises no results (it is not offered, and a link to it says so) */
+export const quickFilterHasData = (filterId: PlaceFilterId, entries: readonly PlaceEntry[]) => entries.some(({ services }) => services.some((service) => matchesFilter(service, filterId)))
 
 const matchesFilter = (service: ResolvedService, filterId: PlaceFilterId) => {
   const types = PLACE_FILTERS.find(({ id }) => id === filterId)?.types

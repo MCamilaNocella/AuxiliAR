@@ -5,7 +5,7 @@ import type { PlaceFilterId } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /** The quick filters of the map: every kind of care there is data for */
-const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency"]
+const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency", "animal-health"]
 
 /** One line: what the map shows and where to read how it is verified (the section "Sobre los datos") */
 const TRANSPARENCY = (

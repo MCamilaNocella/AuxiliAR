@@ -15,7 +15,7 @@
     "curation": "node scripts/curation/cli.mjs",
     "curation:check": "node scripts/curation/cli.mjs check",
     "curation:test": "node --test scripts/curation.test.mjs scripts/curation-batch.test.mjs",
-    "places:test": "node --test scripts/places-explorer.test.mjs scripts/places-map.test.mjs scripts/places-centers.test.mjs scripts/places-query.test.mjs scripts/places-territory.test.mjs scripts/places-filters.test.mjs",
+    "places:test": "node --test scripts/places-explorer.test.mjs scripts/places-map.test.mjs scripts/places-centers.test.mjs scripts/places-query.test.mjs scripts/places-territory.test.mjs scripts/places-filters.test.mjs scripts/places-animal.test.mjs",
     "health:test": "node --test scripts/physical-health.test.mjs scripts/first-aid-guides.test.mjs",
     "structure:test": "node --test scripts/structure.test.mjs",
     "mental:test": "node --test scripts/mental-health.test.mjs",
