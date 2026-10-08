@@ -19,10 +19,10 @@ const CallLink = ({ line, primary = false }: { line: HelpLineView, primary?: boo
   <a
     href={telHref(line.dial)}
     aria-label={`Llamar al ${line.display}: ${line.name}`}
-    className={`inline-flex min-h-12 items-center gap-2 rounded-xl border px-4 py-2 text-lg font-extrabold no-underline ${primary ? "border-brand bg-brand text-on-brand" : "border-control-line bg-field text-ink"}`}
+    className={`inline-flex min-h-12 max-w-full flex-wrap items-center gap-x-2 gap-y-0 rounded-xl border px-4 py-2 text-lg font-extrabold no-underline ${primary ? "border-brand bg-brand text-on-brand" : "border-control-line bg-field text-ink"}`}
   >
     <Phone aria-hidden="true" className="size-5 shrink-0" />
-    <span>{line.display}</span>
+    <span className="whitespace-nowrap">{line.display}</span>
     <span className="text-base font-semibold">{line.name}</span>
   </a>
 )

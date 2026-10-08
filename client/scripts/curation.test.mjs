@@ -410,7 +410,8 @@ test("the 6 places still published are exactly the 6 of the first batch; nothing
   assert.deepEqual(published.map((r) => r.id), ["cesac-3", "cesac-41", "cesac-47", "hospital-oftalmologico-santa-lucia", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
   for (const place of published) assert.equal(Object.keys(place.externalIds).length, 1)
   const server = JSON.parse(readFileSync(join(clientRoot, "../server/src/main/resources/data/resources.json"), "utf8"))
-  assert.equal(server.resources.length, 6)
+  // the server copy also carries the help lines (lines/): what is counted here are the places
+  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 6)
 })
 
 // ─── Publish: protection of manual curation ───────────────────────────────────────────────────────
