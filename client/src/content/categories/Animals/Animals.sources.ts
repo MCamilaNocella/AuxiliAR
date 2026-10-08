@@ -31,7 +31,7 @@ export type MunicipalService = {
 
 /** ── Services whose own official page says they are free (SA01, SA03, SA04, SA05) ── */
 
-/** SA01 "Animales BA": "castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito"; the page shows a schedule from October 2024 and says nothing about guardia or urgencias */
+/** SA01 "Animales BA": "castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito"; the page shows the agenda of the days of the month (read on 8/10/2026: 1 to 17 of October) and says nothing about guardia or urgencias */
 export const CABA: MunicipalService = {
   id: "caba",
   place: "Ciudad de Buenos Aires",
@@ -49,9 +49,9 @@ export const ROSARIO: MunicipalService = {
   place: "Rosario (Santa Fe)",
   by: "Municipalidad de Rosario · Salud animal",
   offers: "Esterilización y vacuna antirrábica de perros y gatos, que la página describe como gratuitas. Hay un hospital municipal y puestos en distintos barrios.",
-  who: "La página no informa requisitos de domicilio.",
-  how: "La vacuna se aplica sin turno previo en puestos y operativos. La página no detalla cómo pedir la esterilización.",
-  limit: "No informa si otras vacunas, consultas o estudios son gratuitos.",
+  who: "Para esterilizar: DNI y el animal, llevado por una persona mayor. La atención en el hospital municipal es sin costo para personas adscritas al sistema de salud pública municipal.",
+  how: "La esterilización se pide en persona en los puestos fijos o por WhatsApp. La vacuna antirrábica se aplica sin turno previo.",
+  limit: "Las personas que no están adscritas al sistema de salud pública municipal pagan la atención del hospital. La página no dice si otras vacunas son gratuitas.",
   url: "https://www.rosario.gob.ar/inicio/salud-animal",
 }
 
@@ -63,7 +63,7 @@ export const CORDOBA: MunicipalService = {
   offers: "Castración de perros y gatos, que la página describe como gratuita y masiva.",
   who: "Vecinos de la ciudad de Córdoba.",
   how: "Se pide turno por WhatsApp, por el canal que publica la página.",
-  limit: "Otras notas del municipio publican otro canal: confirmá cuál es el vigente.",
+  limit: "La página reconoce que hay mucha demanda y pocos turnos. Otras notas del municipio publican otro canal: confirmá cuál es el vigente.",
   url: "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
 }
 
@@ -75,7 +75,7 @@ export const SALTA: MunicipalService = {
   offers: "Atención veterinaria, vacunación antirrábica y castraciones que la página informa como gratuitas, en el hospital municipal de salud animal y en otros centros.",
   who: "Mayores de 18 años con DNI con domicilio en la ciudad de Salta. Para los controles posteriores piden un certificado de carencia de recursos.",
   how: "Cada centro tiene sus horarios: consultalos en la página.",
-  limit: "No hacen internaciones ni estudios complementarios. Algunas razas requieren turno previo. Una de las sedes publica horarios que se contradicen: confirmalos.",
+  limit: "No hacen internaciones ni estudios complementarios. La página se contradice sobre las razas braquicéfalas (en un lugar dice que no se operan y en otro, que se operan con turno previo). Tiene un apartado «Guardia y urgencias» sin horario propio: no lo tomes como una guardia confirmada.",
   url: "https://municipalidadsalta.gob.ar/bienestar-animal-7/",
 }
 

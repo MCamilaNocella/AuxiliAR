@@ -8,7 +8,7 @@ Cómo se dice cada cosa: lo que una página municipal informa como gratuito se e
 
 | Ficha | Recurso | Uso | Qué se dice o por qué no |
 |---|---|---|---|
-| SA01 | Animales BA (CABA) | **Informado como gratuito** (sección 1) | Castración y vacunación antirrábica «totalmente gratuito». Castración con turno online y cuenta miBA; vacuna en operativos sin turno según cronograma; el animal va con un mayor de 18 años. La página muestra un cronograma de **octubre de 2024**: se avisa que no hay fecha de actualización. No informa guardia ni urgencias. **No es una guardia veterinaria general.** |
+| SA01 | Animales BA (CABA) | **Informado como gratuito** (sección 1) | Castración y vacunación antirrábica «totalmente gratuito». Castración con turno online y cuenta miBA; vacuna en operativos sin turno según cronograma; el animal va con un mayor de 18 años. La página muestra la agenda de octubre de 2026 (leída el 8/10/2026) y tiene dos **centros fijos** (Indoamericano y Costanera Sur) para castración; la vacuna antirrábica va en operativos. No informa guardia ni urgencias. **No es una guardia veterinaria general.** |
 | SA02 | Vacunación del Instituto Pasteur (CABA) | **Sin confirmar** (sección 1) | Vacuna antirrábica anual desde los 3 meses, sin turno y por orden de llegada, según la página. **La página no informa el costo.** No se copian dirección ni horarios. |
 | SA03 | Salud animal de Rosario | **Informado como gratuito** (sección 1) | Esterilización y vacuna antirrábica «gratuita». No informa requisitos de domicilio ni cómo pedir la esterilización, ni si otras vacunas o estudios son gratuitos: se dice así. |
 | SA04 | Castraciones de Córdoba Capital | **Informado como gratuito** (sección 1) | Castraciones gratuitas y masivas para vecinos de la ciudad. El turno es por WhatsApp (no se copia el número). **Pendiente:** otras notas de 2025 publican otro canal (0800); confirmar cuál es el vigente. |
@@ -30,7 +30,7 @@ Cómo se dice cada cosa: lo que una página municipal informa como gratuito se e
 
 ## Pendiente de verificación (nada se publica sin aprobación)
 1. Cotejar con la página original cada afirmación de las seis páginas municipales y la nacional.
-2. Fecha vigente del cronograma de CABA (la página muestra octubre de 2024) y canal de turno de Córdoba.
+2. Canal de turno vigente de Córdoba y que los centros fijos de CABA sigan operando según la agenda.
 3. Costo del vacunatorio del Instituto Pasteur y de la esterilización de Neuquén.
 4. Contradicciones de Salta (razas, horarios).
 5. Vigencia de Protenencia en cada localidad.

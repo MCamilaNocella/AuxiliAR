@@ -72,7 +72,7 @@ Detalle en `client/curation/proposals/salud-animal.fichas-sa01-sa14.md`. **Las c
 | Candidato | Evidencia que falta | Comprobación operativa |
 |---|---|---|
 | Instituto Pasteur (CABA), vacuna antirrábica | **Costo**: la página no lo informa. Es el primer candidato porque es una sede fija con dirección y horarios publicados | **Sí**: confirmar costo por teléfono |
-| Animales BA (CABA) | Cronograma vigente (la página muestra octubre de 2024); si hay sedes fijas permanentes o solo operativos | **Sí** |
+| Animales BA (CABA) | El cronograma está vigente (octubre de 2026); hay dos centros fijos permanentes: ver `docs/investigacion/salud-animal-sedes-permanentes.md` | **Sí** |
 | Córdoba (3 centros municipales en barrios) | Direcciones, vigencia y **canal de turno vigente** (hay dos notas con canales distintos) | **Sí** |
 | Salta (hospital municipal y 5 CIC) | Horarios (una sede los contradice), reglas por raza, vigencia | **Sí** |
 | Rosario (hospital municipal y puestos) | Requisitos y cómo pedir esterilización; direcciones | **Sí** |

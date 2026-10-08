@@ -1,0 +1,27 @@
+FUENTE: https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios
+CONSULTADA: 2026-10-08
+MÉTODO: descarga directa del HTML original de la página y extracción de su texto visible, sin resumen automático; se omitieron los teléfonos y correos
+RECORTE: solo el encabezado de la página y las entradas de CeSac 3, 41 y 47 (la página lista 51 establecimientos)
+----------------------------------------------------------------------
+Pasar al contenido principal
+Lugares y horarios de Vacunatorios
+Consultá en esta página los horarios de los Vacunatorios de la Ciudad de Buenos Aires.
+Compartir en redes
+
+CeSac 41
+Ministro Brin 843
+La Boca
+Lunes, miércoles, jueves y viernes: 8:00 a 12:00 h. y de 13:00 a 17:00 h.
+Martes: 8:00 a 12:00 y de 14:00 a 17:00 h.
+
+CeSac 47
+Calle playón (ex galpón SIC)
+Barrio 31 (Retiro)
+Lunes, miércoles y jueves: 8:30 a 12:00 h. y de 13:00 a 15:00 h.
+Martes y viernes: 10:00 a 12:30 y de 13:00 a 15:30 h.
+
+CeSac 3
+Soldado de la Frontera 5144
+Villa Lugano
+Lunes a viernes de 7:00 a 12:00 h. y de 13:00 a 16:00 h.
+

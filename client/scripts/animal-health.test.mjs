@@ -77,7 +77,8 @@ test("vacunación y castración: only what each municipality's page says, and ea
   assert.ok(content.includes("mayor de 18 años") && content.includes("turno online con cuenta miBA") && content.includes("sin turno previo"))
   assert.ok(content.includes("Vecinos de la ciudad de Córdoba"))
   assert.ok(content.includes("DNI con domicilio en la ciudad de Salta") && content.includes("No hacen internaciones ni estudios complementarios"))
-  assert.ok(content.includes("No informa si otras vacunas, consultas o estudios son gratuitos"))
+  assert.ok(content.includes("sin costo para personas adscritas al sistema de salud pública municipal") && content.includes("La página no dice si otras vacunas son gratuitas"))
+  assert.ok(content.includes("hay mucha demanda y pocos turnos") && content.includes("se contradice sobre las razas braquicéfalas"))
 })
 
 test("a free campaign is never called free veterinary care, and no guardia or urgencias is promised", () => {
