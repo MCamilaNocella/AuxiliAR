@@ -140,6 +140,32 @@ Todos los números de ayuda de AuxiliAR salen de **`lines/nacional.json`**. No h
 - **Contradicciones entre fuentes oficiales** (se registran en `verification.notes` de la línea, con las URL de cada una, y se decide cómo mostrarlas): el 107 (la página nacional lo limita a CABA y localidades de Buenos Aires; páginas oficiales de Córdoba y Jujuy lo muestran funcionando allí), el 102 (16 jurisdicciones en una nota de 2020; todas en una de 2022) y la tabla del chat sobre el 139 de PAMI (decía que en el resto del país era el 107 o el 911; PAMI dice que cada afiliado tiene el número de su prestador).
 - **Cómo agregar una línea:** abrir la página oficial, anotar la URL, la fecha en que se consultó y la frase que dice el número, el alcance y el horario; cargar solo lo que esa frase dice; `npm run resources:sync`; `npm run emergency:test`.
 
+## Revisión periódica de los números
+
+Los números de `lines/` se verifican por fecha (`verification.nextReviewDue`, hoy 6 de enero de 2027 para todos). Un número **vencido no desaparece** (la barra, el chat y la tarjeta de ayuda urgente lo siguen mostrando) pero **no se presenta como comprobado**: lo dicen los avisos, y por eso hay que renovarlos antes de la fecha.
+
+1. **Ver qué toca:** `npm run lines:due` (todas las líneas, la más próxima primero, con la página a abrir de cada una) o `npm run lines:due -- --days 60`. `npm run resources:check` también avisa 30 días antes.
+2. **Para cada línea:** abrir `source.url` y comparar, con lo que dice la página hoy, el número, el alcance (`coverage`, `scope`), el horario (`hours`, y que siga sin afirmarse lo que la fuente no dice), la gratuidad (`cost`, solo si la página lo dice) y, si cambia, `shortName` y `whenToUse`.
+3. **Si coincide:** actualizar `verification.verifiedAt` (hoy), `verification.nextReviewDue` (90 días después) y `source.retrievedAt` (hoy). **Si cambió algo:** corregir el dato, citar en `source.note` la frase nueva y anotarlo en `verification.notes`. **Si dos páginas oficiales se contradicen:** no elegir en silencio; registrarlo en `verification.notes` con las URL (como el 107 o el 102) y decidir cómo mostrarlo.
+4. **Si no se puede comprobar** (la página no está, cambió de sitio, no dice lo que decía): **no renovar la fecha**. Dejar que venza (se avisa) o pasar la línea a `needs-review`, que la saca de la barra y del chat: eso es una decisión editorial, no un descuido.
+5. `npm run resources:sync`, `npm run emergency:test`, `npm run resources:check` y el commit de **los dos** (el dato y las copias generadas: `resources.json` y `numeros.md`).
+6. **Líneas nuevas:** solo con una página oficial que diga el número; ver "Cómo agregar una línea".
+
+## Las ocho filas "(sin verificar)" de la tabla del chat
+
+Siguen a mano en `numeros.template.md` y no están en `lines/` porque todavía no hay una fuente oficial leída que diga su alcance y su horario. Quién las usa: **solo** la tabla del chat (`numeros.md` → `HelpNumbers` → las instrucciones de Auxi y la validación de sus botones). No están en la barra, en la tarjeta de ayuda urgente ni en ningún texto del cliente (un test lo comprueba). Cuando el chat las da, el botón dice "sin verificar", sin alcance, horario ni gratuidad, y a Auxi se le indica que pida confirmar.
+
+| Fila | Qué se encontró (consulta del 8-10-2026) | Qué falta para pasarla a `lines/` |
+|---|---|---|
+| 100 Bomberos, 103 Defensa Civil, 106 Emergencia náutica | Las lista la página oficial `argentina.gob.ar/tema/emergencias` con su descripción, sin alcance ni horario | Una página que diga dónde funciona cada una y cuándo atiende (el 100 y el 103 dependen de cada jurisdicción) |
+| 101 Policía (donde no funciona el 911) | No aparece en esa página | Cualquier fuente oficial |
+| 149 Víctimas de siniestros viales | Nota oficial del 5-1-2022: atiende las 24 horas, los 365 días | Alcance explícito y si la llamada es gratuita |
+| 0800-444-8694 Intoxicaciones en chicos | Resultado de búsqueda sobre la página del Gobierno de la Ciudad (Hospital de Niños Gutiérrez): línea gratuita, guardia de toxicología | Leer la página y su horario telefónico |
+| 0800-222-7264 PAMI | No figura en la página de contacto de PAMI; aparece en un PDF de PAMI | Leer el PDF y guardar su URL |
+| 0800-222-0381 PAMI traslados | Sin fuente encontrada | Cualquier fuente oficial de PAMI |
+
+Borrarlas sin analizarlo dejaría a Auxi sin bomberos, defensa civil, policía fuera del 911 y emergencia náutica, que son números que alguien puede necesitar: se mantienen, marcadas, hasta verificarlas.
+
 ## Si cambia el formato
 
 1. Actualizá `resource.schema.json` y, si agregás valores permitidos, `taxonomy.json`.

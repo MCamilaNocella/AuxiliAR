@@ -170,3 +170,30 @@ test("lines whose review is near or past are reported - and they keep showing", 
   assert.ok(near.every((warning) => warning.includes("vence el 2027-01-06") && warning.includes("sigue mostrándose")))
   assert.ok(reviewWarnings(lines, "2027-02-01").every((warning) => warning.includes("venció el 2027-01-06")))
 })
+
+/* ── The periodic review ── */
+
+test("npm run lines:due lists every line with the days left, the nearest first, and marks the past ones", async () => {
+  const { linesDue } = await import("./lines-review.mjs")
+  const all = linesDue(lines, "2026-10-08")
+  assert.equal(all.length, lines.length)
+  assert.ok(all.every((entry) => entry.state === "vigente" && entry.daysLeft === 90 && entry.url.startsWith("https://")))
+  const soon = linesDue(lines, "2026-12-20")
+  assert.ok(soon.every((entry) => entry.state === "por vencer" && entry.daysLeft === 17))
+  const past = linesDue(lines, "2027-02-01")
+  assert.ok(past.every((entry) => entry.state === "VENCIDA" && entry.daysLeft < 0))
+  // the day of the date it is already past, like the bar and the chat treat it
+  assert.ok(linesDue(lines, "2027-01-06").every((entry) => entry.state === "VENCIDA"))
+  // a filter by days, and the order
+  assert.equal(linesDue(lines, "2026-10-08", 30).length, 0)
+  const shifted = structuredClone(lines)
+  shifted.find((line) => line.id === "emergencias-911").verification.nextReviewDue = "2026-11-01"
+  assert.deepEqual(linesDue(shifted, "2026-10-08", 30).map((entry) => entry.id), ["emergencias-911"])
+  assert.equal(linesDue(shifted, "2026-10-08")[0].id, "emergencias-911")
+  // the procedure is written where the script says it is
+  const readme = await readFile(join(root, "src/data/resources/README.md"), "utf8")
+  assert.ok(readme.includes("## Revisión periódica de los números") && readme.includes("npm run lines:due"))
+  assert.ok(readme.includes("## Las ocho filas \"(sin verificar)\" de la tabla del chat"))
+  const testing = await readFile(join(root, "../server/TESTING.md"), "utf8")
+  assert.ok(testing.includes("contextLoads") && testing.includes("-Dspring.ai.openai.api-key=dummy"))
+})
