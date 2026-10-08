@@ -2,7 +2,7 @@ import taxonomy from "@/data/resources/taxonomy.json"
 import { getCurrentPlaces, getCurrentServices } from "@/data/resources"
 import type { CategoryId, ProvinceCode, ResolvedService, Resource, ServiceType } from "@/data/resources"
 import { isVerifiedFree, serviceName } from "./format"
-import { normalizeText } from "./text"
+import { normalizeText, stemOf } from "./text"
 
 /** A place with the services that can be shown today (the verified, not expired ones) */
 export type PlaceEntry = {
@@ -130,7 +130,8 @@ const joinText = (texts: (string | undefined)[]) => normalizeText(texts.filter(B
 /** Everything a person could type to find the place: names, address, and what each service says about itself */
 const searchableText = (entry: PlaceEntry) => joinText([...placeTexts(entry), ...entry.services.flatMap(serviceTexts)])
 
-const searchTerms = (text: string) => normalizeText(text).split(/\s+/).filter(Boolean)
+/** The words of a search, each reduced to its root (see stemOf) */
+const searchTerms = (text: string) => normalizeText(text).split(/\s+/).filter(Boolean).map(stemOf)
 
 /** Every word typed has to be somewhere in the place or its services (accents and case don't matter) */
 export const matchesQuery = (entry: PlaceEntry, query: string) => {

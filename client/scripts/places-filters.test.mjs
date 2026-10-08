@@ -559,3 +559,39 @@ test("the note about the numbers is shown only when some filter shows numbers", 
   assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 0 }), false)
   assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 2 }), true)
 })
+
+/* ── Search: psicólogo, psicóloga, psicólogos and psicología find the same ── */
+
+test("the root of a searched word: gender, plural and the name of the discipline find each other, short words stay", () => {
+  const stem = places.stemOf
+  for (const word of ["psicologo", "psicologa", "psicologos", "psicologas", "psicologia", "psicologias"]) assert.equal(stem(word), "psicolog", word)
+  for (const word of ["odontologo", "odontologia", "odontologos"]) assert.equal(stem(word), "odontolog", word)
+  assert.equal(stem("vacunas"), "vacun")
+  // not cut: too short to keep a root of 5 letters, or no known ending
+  for (const word of ["salud", "esi", "ive", "vih", "mama", "centro", "ansiedad", "mental", "cesac", "guardia"]) assert.equal(stem(word), word === "centro" ? "centr" : word === "guardia" ? "guard" : word, word)
+})
+
+test("a search with any form of the word finds the same places, and keeps every other rule", () => {
+  const same = ids(ask({ text: "psicologia" }))
+  assert.equal(same.length, 2, "the places whose services say psychology")
+  for (const text of ["psicologo", "psicóloga", "psicologos", "Psicólogas", "PSICOLOGO"]) assert.deepEqual(ids(ask({ text })), same, text)
+  assert.deepEqual(ids(ask({ text: "odontologo" })), ids(ask({ text: "odontologia" })))
+  // the other criteria still hold for the same service
+  assert.deepEqual(ids(ask({ text: "psicologo", category: "esi" })), ids(ask({ text: "psicologia", category: "esi" })))
+  assert.deepEqual(ids(ask({ text: "psicologo", type: "vaccination" })), ids(ask({ text: "psicologia", type: "vaccination" })))
+  assert.deepEqual(ids(ask({ text: "psicologa", category: "salud-mental" })), same)
+  // gratuity is still a condition, not free text, with the new forms
+  assert.deepEqual(ids(ask({ text: "odontologo gratis" })), rawFree)
+  assert.deepEqual(ids(ask({ text: "odontologa gratuita" })), rawFree)
+  assert.deepEqual(ids(ask({ text: "psicologo gratis" })), [])
+  // a word that is nowhere is still nowhere, and a different discipline is not found by the root of another
+  assert.deepEqual(ids(ask({ text: "cardiologo" })), [])
+  assert.deepEqual(ids(ask({ text: "veterinario" })), [])
+  // every word still has to be somewhere
+  assert.deepEqual(ids(ask({ text: "psicologo cardiologo" })), [])
+  // the service that answers is the one that says it
+  const entry = places.selectPlaces(real, DAY, { ...EMPTY, text: "psicologo" }).find(({ place }) => place.id === "cesac-3")
+  assert.deepEqual(places.matchingServices(entry, { ...EMPTY, text: "psicologo" }).map((service) => service.type), ["mental-health-care"])
+  // the crisis and mental health orientation does not depend on the form of the word
+  for (const text of ["psicologo", "psicologa", "psicologia"]) assert.equal(places.mentalHealthContextOf({ ...EMPTY, text }), "habitual", text)
+})
