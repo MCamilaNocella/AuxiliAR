@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import { ArrowRight, Bandage, ChevronRight, Phone } from "lucide-react"
 import { EMERGENCY_NUMBERS, FEATURED_FIRST_AID, GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
-import { callButton, callButtonLabel } from "@/utils/helpLines"
+import { callButton, callButtonDetail, callButtonLabel, uncheckedNotice } from "@/utils/helpLines"
 import { PATHS } from "@/router/paths"
 import { EMERGENCY_HEADING_ID, EMERGENCY_SECTION_ID, GUIDES_GRID, NUMBERS_GRID } from "./EmergencyBar.constants"
 
@@ -12,7 +12,8 @@ const buttons = () => EMERGENCY_NUMBERS.map(({ number, label }) => callButton(nu
 
 export const EmergencyBar = () => {
   const calls = buttons()
-  const unchecked = calls.filter((button) => button.stale)
+  // Said once, above the buttons (and marked with * on each one), not repeated on every button
+  const notice = uncheckedNotice(calls, GENERAL_EMERGENCY_NUMBER)
   return (
   <section
     id={EMERGENCY_SECTION_ID}
@@ -23,8 +24,14 @@ export const EmergencyBar = () => {
       <div className="flex flex-col gap-2.5">
         <h2 id={EMERGENCY_HEADING_ID} tabIndex={-1} className={`${headingClass} text-alert-text`}>
           <Phone aria-hidden="true" className="size-4.5 flex-none" />
-          ¿Es una emergencia? Llamá gratis
+          ¿Es una emergencia? Pedí ayuda ahora
         </h2>
+        {notice && (
+          <p className="m-0 text-sm text-alert-text">
+            <span aria-hidden="true">* </span>
+            {notice}
+          </p>
+        )}
         <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${NUMBERS_GRID}`}>
           {calls.map((button) => (
             <li key={button.number}>
@@ -33,21 +40,16 @@ export const EmergencyBar = () => {
                 aria-label={callButtonLabel(button)}
                 className="flex h-full min-h-11 flex-col justify-center rounded-lg bg-alert px-3 py-1.5 text-on-alert no-underline transition-colors hover:bg-alert-dark hover:text-on-alert sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-2"
               >
-                <b className="text-lg/tight font-extrabold">{button.number}</b>
+                <b className="text-lg/tight font-extrabold">
+                  {button.number}
+                  {button.stale && <span aria-hidden="true">*</span>}
+                </b>
                 <span className="text-xs font-semibold sm:text-sm">{button.label}</span>
-                {(button.scope || button.hours) && (
-                  <span className="text-xs/tight font-semibold opacity-95 sm:basis-full">{[button.scope, button.hours ? `de ${button.hours}` : undefined].filter(Boolean).join(" · ")}</span>
-                )}
-                {button.stale && <span className="text-xs/tight font-bold underline decoration-dotted sm:basis-full">sin nueva comprobación</span>}
+                {callButtonDetail(button) && <span className="text-xs/tight font-semibold opacity-95 sm:basis-full">{callButtonDetail(button)}</span>}
               </a>
             </li>
           ))}
         </ul>
-        {unchecked.length > 0 && (
-          <p className="m-0 text-sm text-alert-text">
-            {unchecked.length === 1 ? "Un número no se volvió a comprobar" : "Algunos números no se volvieron a comprobar"} desde su fecha de revisión. Si no responde, llamá al {GENERAL_EMERGENCY_NUMBER}.
-          </p>
-        )}
       </div>
 
       <div className="flex flex-col gap-2.5">

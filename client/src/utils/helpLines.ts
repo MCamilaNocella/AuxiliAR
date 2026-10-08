@@ -82,12 +82,18 @@ export type CallButton = {
   scope?: string
   /** When it answers, only if it is not all day and the source says it ("8:00 a 0:00") */
   hours?: string
+  /** The line is recorded as free, with its source: the only case in which a button says so */
+  free: boolean
+  /** The number is not in the verified lines (the server's table still carries a few by hand): it is shown, but said not to be verified */
+  unverified: boolean
   /** The review date of the line has arrived */
   stale: boolean
-  verifiedAt?: string
+  /** The review date of the line (when `stale`, the day it arrived) */
+  reviewDue?: string
 }
 
 const SCOPE_SEPARATOR = " · "
+const UNVERIFIED_TAG = /\s*\(sin verificar\)/i
 
 /** "8:00 a 0:00" out of the dataset's own words ("Atiende de 8:00 a 0:00 (medianoche), no las 24 horas.") */
 const shortHours = (line: Resource, contact: Contact) => {
@@ -97,8 +103,8 @@ const shortHours = (line: Resource, contact: Contact) => {
 }
 
 /**
- * The button of a number as the dataset names it. `fallbackLabel` is for a number the dataset does not have (the chat can name
- * one from the server's table that is still written by hand there): it is shown as it comes, with no scope.
+ * The button of a number as the dataset names it. `fallbackLabel` is for a number the dataset does not have: it is shown with the
+ * name it comes with, with no scope, no hours and no gratuity, and always as "sin verificar" - whether or not the name says so.
  */
 export const callButton = (number: string, fallbackLabel?: string, day: string = todayInArgentina()): CallButton => {
   const key = dialKey(number)
@@ -110,11 +116,54 @@ export const callButton = (number: string, fallbackLabel?: string, day: string =
     const listedByJurisdiction = (line.contacts ?? []).filter((entry) => dialKey(entry.dial) === key).length > 1
     const named = listedByJurisdiction ? (line.shortName ?? line.name) : (contact.label ?? line.shortName ?? line.name)
     const [label, ...scope] = named.split(SCOPE_SEPARATOR)
-    return { number: contact.display, dial: contact.dial, label, scope: scope.join(SCOPE_SEPARATOR) || undefined, hours: shortHours(line, contact), stale: isStale(line, day), verifiedAt: line.verification.verifiedAt ?? undefined }
+    return {
+      number: contact.display,
+      dial: contact.dial,
+      label,
+      scope: scope.join(SCOPE_SEPARATOR) || undefined,
+      hours: shortHours(line, contact),
+      free: line.cost === "free",
+      unverified: false,
+      stale: isStale(line, day),
+      reviewDue: line.verification.nextReviewDue ?? undefined,
+    }
   }
-  return { number, dial: key, label: fallbackLabel ?? number, stale: false }
+  return { number, dial: key, label: (fallbackLabel ?? number).replace(UNVERIFIED_TAG, ""), free: false, unverified: true, stale: false }
 }
 
-/** What a screen reader says for a call button: everything the button shows, in one sentence */
+/** What a button adds under its name, in order: where, when, and whether the call is free - each only if it is recorded; "sin verificar" if it is not */
+export const callButtonDetail = (button: CallButton) =>
+  [button.scope, button.hours ? `de ${button.hours}` : undefined, button.free ? "gratuita" : undefined, button.unverified ? "sin verificar" : undefined].filter(Boolean).join(" · ")
+
+/** What a screen reader says for a call button: everything the button shows, in one sentence (the review notice is said once, above the buttons) */
 export const callButtonLabel = (button: CallButton) =>
-  [`Llamar al ${button.number}`, button.label, button.scope, button.hours ? `de ${button.hours}` : undefined, button.stale ? "sin nueva comprobación" : undefined].filter(Boolean).join(", ")
+  [`Llamar al ${button.number}`, button.label, button.scope, button.hours ? `de ${button.hours}` : undefined, button.free ? "gratuita" : undefined, button.unverified ? "sin verificar" : undefined].filter(Boolean).join(", ")
+
+/* ── The notice of lines past their review date: said once, not on every button ── */
+
+const DAY_WORDS = new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+
+/** "6 de enero de 2027" from "2027-01-06" */
+const spokenDay = (day: string) => DAY_WORDS.format(new Date(`${day}T00:00:00Z`))
+
+/**
+ * One sentence for all the numbers shown together (a row of buttons, a card) that have not been checked again since their review
+ * date: which ones (or "ninguno" if it is all of them), since when, and what to do if one does not answer. Undefined when all are current.
+ * The numbers stay on screen and can be called: the notice only says they are not presented as checked.
+ */
+export const uncheckedNotice = (buttons: readonly CallButton[], generalNumber: string): string | undefined => {
+  const stale = buttons.filter((button) => button.stale)
+  if (stale.length === 0) return undefined
+  const since = stale.map((button) => button.reviewDue).filter((day): day is string => Boolean(day)).sort()[0]
+  const when = since ? ` desde su fecha de revisión (${spokenDay(since)})` : " desde su fecha de revisión"
+  const all = stale.length === buttons.length
+  const lead = all
+    ? buttons.length === 1
+      ? "Este número no se volvió a comprobar"
+      : "Ninguno de estos números se volvió a comprobar"
+    : stale.length === 1
+      ? "Un número no se volvió a comprobar"
+      : "Algunos números no se volvieron a comprobar"
+  const which = all ? "" : `: ${stale.map((button) => button.number).join(", ")}`
+  return `${lead}${when}${which}. Si no responde, llamá al ${generalNumber}.`
+}

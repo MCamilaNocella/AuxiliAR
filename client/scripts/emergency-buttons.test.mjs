@@ -79,7 +79,7 @@ test("the buttons: 107 'Ambulancias · según localidad', 911 'Emergencias', 135
   // never national, never exclusive of CABA/PBA
   assert.ok(!/todo el pa[ií]s|CABA|Buenos Aires/i.test(b("107").scope))
   // a number that is not in the lines is shown as it comes, with no scope that nobody verified
-  assert.deepEqual(helpLines.callButton("100", "Bomberos (sin verificar)"), { number: "100", dial: "100", label: "Bomberos (sin verificar)", stale: false })
+  assert.deepEqual(helpLines.callButton("100", "Bomberos (sin verificar)"), { number: "100", dial: "100", label: "Bomberos", free: false, unverified: true, stale: false })
   // what the server calls a number does not change what the button says about it
   assert.equal(helpLines.callButton("107", "Ambulancia (SAME)").label, "Ambulancias")
 })
@@ -94,31 +94,90 @@ test("the bar and the chat show those words on the call buttons, and the links s
   const chat = render(createElement(ChatEmergencyCalls, { numbers: [{ number: "107", label: "Ambulancia (SAME)" }, { number: "135", label: "Prevención del suicidio" }, { number: "0800-345-1435", label: "Prevención del suicidio" }, { number: "100", label: "Bomberos (sin verificar)" }] }))
   assert.deepEqual(calls(chat), ["107", "135", "08003451435", "100"])
   const said = text(chat)
-  assert.ok(said.includes("Ambulancias según localidad") && said.includes("Asistencia en crisis CABA y GBA · de 8:00 a 0:00") && said.includes("Asistencia en crisis todo el país · de 8:00 a 0:00") && said.includes("Bomberos (sin verificar)"))
+  assert.ok(said.includes("Ambulancias según localidad") && said.includes("Asistencia en crisis CABA y GBA · de 8:00 a 0:00") && said.includes("Asistencia en crisis todo el país · de 8:00 a 0:00") && said.includes("Bomberos sin verificar"))
 })
 
-test("a line past its review date keeps its button, but is not presented as checked: the bar, the chat and the card say so", () => {
+test("a line past its review date keeps its button, but is not presented as checked: said once, not on every button", () => {
   const today = render(createElement(EmergencyBar))
-  assert.ok(!text(today).includes("sin nueva comprobación") && !today.includes("no se volvieron a comprobar"))
+  assert.ok(!today.includes("no se volvió a comprobar") && !today.includes("no se volvieron a comprobar") && !today.includes("*"))
   const past = onDay("2027-02-01", () => ({
     bar: render(createElement(EmergencyBar)),
-    chat: render(createElement(ChatEmergencyCalls, { numbers: [{ number: "911", label: "Emergencias" }] })),
+    chat: render(createElement(ChatEmergencyCalls, { numbers: [{ number: "911", label: "Emergencias" }, { number: "144", label: "Violencia" }] })),
     card: render(createElement(UrgentHelp, { context: "crisis" })),
   }))
   // nothing vanishes
   assert.deepEqual(calls(past.bar), ["107", "911", "144", "135", "102"])
-  assert.deepEqual(calls(past.chat), ["911"])
+  assert.deepEqual(calls(past.chat), ["911", "144"])
   assert.deepEqual(calls(past.card), ["911", "08009990091", "135", "08003451435", "107"])
-  // but none is presented as current
-  assert.equal([...past.bar.matchAll(/sin nueva comprobación/g)].length >= 5, true)
-  assert.ok(text(past.bar).includes("Algunos números no se volvieron a comprobar desde su fecha de revisión. Si no responde, llamá al 911."))
-  assert.ok(text(past.chat).includes("sin nueva comprobación"))
-  assert.ok(text(past.card).includes("Sin nueva comprobación desde el 8 de octubre de 2026"))
-  // the day before the review date, they are current
-  const before = onDay("2027-01-05", () => render(createElement(EmergencyBar)))
-  assert.ok(!before.includes("no se volvieron a comprobar"))
-  // the day of the review date, they are not
-  assert.ok(onDay("2027-01-06", () => render(createElement(EmergencyBar))).includes("no se volvieron a comprobar"))
+  // the bar says it once, with the date, and marks each number with an asterisk that screen readers skip
+  const sentence = "Ninguno de estos números se volvió a comprobar desde su fecha de revisión (6 de enero de 2027). Si no responde, llamá al 911."
+  assert.equal(text(past.bar).split(sentence).length - 1, 1, "the notice is there once")
+  assert.equal([...past.bar.matchAll(/sin nueva comprobación/g)].length, 0, "no per-button repetition")
+  assert.equal([...past.bar.matchAll(/<b[^>]*>[0-9]+<span aria-hidden="true">\*<\/span><\/b>/g)].length, 5)
+  assert.ok(past.bar.indexOf("Ninguno de estos números") < past.bar.indexOf('href="tel:107"'), "the notice comes before the buttons, so it is read first")
+  // the chat: once, under its buttons ("este número" / "ninguno" depending on how many are shown)
+  assert.equal(text(past.chat).split("Ninguno de estos números se volvió a comprobar").length - 1, 1)
+  assert.equal(text(render(createElement(ChatEmergencyCalls, { numbers: [{ number: "911", label: "Emergencias" }] }))).includes("Este número no se volvió"), false)
+  // the card: once, at the top, and the lines say nothing about it
+  assert.equal(text(past.card).split("Ninguno de estos números se volvió a comprobar desde su fecha de revisión (6 de enero de 2027). Si no responde, llamá al 911.").length - 1, 1)
+  assert.equal(text(past.card).split("comprobar").length - 1, 1, "and nothing else in the card says it")
+  assert.ok(!text(past.card).includes("Sin nueva comprobación desde"))
+  // the day before the review date, they are current; the day of the date, they are not
+  assert.ok(!onDay("2027-01-05", () => render(createElement(EmergencyBar))).includes("comprobar"))
+  assert.ok(onDay("2027-01-06", () => render(createElement(EmergencyBar))).includes("comprobar"))
+})
+
+test("the notice names which numbers when only some are unchecked, and says 'este número' for one", () => {
+  const button = (number, stale, reviewDue = "2027-01-06") => ({ number, dial: number, label: "x", free: false, unverified: false, stale, reviewDue })
+  assert.equal(helpLines.uncheckedNotice([button("107", false), button("911", false)], "911"), undefined)
+  assert.equal(helpLines.uncheckedNotice([button("107", true), button("911", false), button("144", true, "2027-03-01")], "911"), "Algunos números no se volvieron a comprobar desde su fecha de revisión (6 de enero de 2027): 107, 144. Si no responde, llamá al 911.")
+  assert.equal(helpLines.uncheckedNotice([button("107", true), button("911", false)], "911"), "Un número no se volvió a comprobar desde su fecha de revisión (6 de enero de 2027): 107. Si no responde, llamá al 911.")
+  assert.equal(helpLines.uncheckedNotice([button("107", true)], "911"), "Este número no se volvió a comprobar desde su fecha de revisión (6 de enero de 2027). Si no responde, llamá al 911.")
+  // a line with no date: still said
+  assert.ok(helpLines.uncheckedNotice([{ ...button("107", true), reviewDue: undefined }], "911").includes("desde su fecha de revisión."))
+})
+
+test("the bar says 'Pedí ayuda ahora', and a call is called free only on the lines where that is recorded", () => {
+  const bar = render(createElement(EmergencyBar))
+  const content = text(bar)
+  assert.ok(content.includes("¿Es una emergencia? Pedí ayuda ahora") && !/llamá gratis/i.test(content))
+  // free: only what the dataset records as free (144, 102); never the 107, the 911 or the 135
+  for (const number of ["144", "102"]) assert.ok(helpLines.callButton(number).free, number)
+  for (const number of ["107", "911", "135", "0800-345-1435"]) assert.equal(helpLines.callButton(number).free, false, number)
+  assert.ok(content.includes("144 Violencia gratuita") && content.includes("102 Niñez gratuita"))
+  assert.ok(!/107 Ambulancias según localidad[^0-9]*gratuita/.test(content) && !/911 Emergencias gratuita/.test(content) && !/135 Asistencia en crisis CABA y GBA · de 8:00 a 0:00 gratuita/.test(content))
+  assert.ok(bar.includes('aria-label="Llamar al 144, Violencia, gratuita"'))
+  // the national mental health line is free, in the chat
+  assert.ok(text(render(createElement(ChatEmergencyCalls, { numbers: [{ number: "0800-999-0091", label: "Urgencias de salud mental" }] }))).includes("gratuita"))
+  // and the header of the card says nothing global either
+  const source = text(render(createElement(UrgentHelp, { context: "crisis" })))
+  assert.ok(!/llam[aá] gratis|todos? (los )?n[uú]meros? (son )?gratu/i.test(source))
+})
+
+test("the rows the server still keeps by hand are never presented as verified: in the table, in the buttons, in the chat", async () => {
+  const table = (await readFile(DEFAULT_PATHS.numbersFile, "utf8")).split("\n").filter((row) => /^\|\s*[0-9]/.test(row)).map((row) => row.split("|").slice(1, -1).map((cell) => cell.trim()))
+  const verified = new Set(lines.flatMap((line) => line.contacts.map((contact) => contact.dial)))
+  const manual = table.filter((row) => !verified.has(row[0].replace(/\D/g, "")))
+  assert.equal(manual.length, 8)
+  for (const [number, name] of manual) {
+    // the table says it
+    assert.ok(name.endsWith("(sin verificar)"), number + " is in the table as verified")
+    // the button says it, whatever name the server sends, and says nothing that nobody verified
+    for (const sent of [name, name.replace(" (sin verificar)", "")]) {
+      const button = helpLines.callButton(number, sent)
+      assert.deepEqual([button.unverified, button.free, button.stale, button.scope, button.hours], [true, false, false, undefined, undefined], number)
+      assert.ok(!button.label.includes("sin verificar"), "the tag moves to the detail: " + button.label)
+      assert.equal(helpLines.callButtonDetail(button), "sin verificar")
+      assert.ok(helpLines.callButtonLabel(button).endsWith("sin verificar"))
+    }
+  }
+  const chat = text(render(createElement(ChatEmergencyCalls, { numbers: manual.map(([number, name]) => ({ number, label: name })) })))
+  assert.equal(chat.split("sin verificar").length - 1, 8, "each of the eight says it")
+  // none of them is in the emergency bar nor in the crisis card
+  const surfaces = [render(createElement(EmergencyBar)), render(createElement(UrgentHelp, { context: "crisis" }))].join(" ")
+  for (const [number] of manual) assert.ok(!surfaces.includes(`tel:${number.replace(/\D/g, "")}"`), number + " is on a surface for verified numbers")
+  // and the verified ones never carry the tag
+  for (const [number] of table.filter((row) => verified.has(row[0].replace(/\D/g, "")))) assert.equal(helpLines.callButton(number).unverified, false, number)
 })
 
 test("SafetyRules' assumptions about PAMI are checked against the lines, where the table is made (resources:check), not when the server starts", async () => {

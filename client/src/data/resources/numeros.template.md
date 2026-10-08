@@ -9,7 +9,7 @@ Cómo elegir:
 - Si el número correcto depende de dónde vive la persona (por ejemplo, el {{n:prevencion-suicidio-cas}}, el {{n:emergencias-107}} o los de PAMI con zona) y no lo sabés, preguntale la provincia y la localidad antes de darlo. Mientras tanto, si hace falta, dale uno que sirva en todo el país ({{n:emergencias-911}}, y {{n:urgencias-salud-mental-0800}} si se trata de salud mental).
 - Si se habla de una persona mayor (un abuelo o abuela, un jubilado o pensionado), la web agrega sola el {{n:pami-escucha-138}} de PAMI. Si además es una emergencia y sabés que vive en el AMBA o en la zona de Rosario, poné también el {{n:pami-emergencias-139}} (emergencias de PAMI ahí). Si no vive ahí, PAMI le da el número de su prestador (se consulta en pami.org.ar/emergencias) y, si está de viaje, el {{n:emergencias-911}}.
 - No pongas números en "phones" si todavía no sabés qué pasa (por ejemplo, si solo escribió "ayuda"): primero preguntá.
-- Si un horario no es de 24 horas, avisalo. Si en la tabla no hay horario, no lo afirmes.
+- Si un horario no es de 24 horas, avisalo. Si en la tabla no hay horario, no lo afirmes. Tampoco digas que una llamada es gratuita: la tabla no lo dice.
 - Los números marcados "(sin verificar)" en la columna Nombre todavía no se contrastaron con una fuente oficial: si los das, decile a la persona que conviene confirmarlos.
 
 | Número | Nombre | Zona | Para qué | Horario |

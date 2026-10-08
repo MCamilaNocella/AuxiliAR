@@ -1,7 +1,6 @@
 import { Phone } from "lucide-react"
 import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
-import { describeHelpContacts, describeHelpLine, telHref } from "@/utils/helpLines"
-import { formatDate } from "@/utils/places/format"
+import { callButton, describeHelpContacts, describeHelpLine, telHref, uncheckedNotice } from "@/utils/helpLines"
 import type { HelpLineView } from "@/utils/helpLines"
 import type { MentalHealthContext } from "@/utils/places"
 import { AVOID_ATTRIBUTE } from "@/utils/auxiAvoidance"
@@ -32,9 +31,7 @@ const CallLink = ({ line, primary = false }: { line: HelpLineView, primary?: boo
 
 /** One number with what the sources say about it, under it */
 const Line = ({ line, primary = false }: { line: HelpLineView, primary?: boolean }) => {
-  // A line past its review date is still here (a number a person may need must not vanish) but it is not presented as checked
-  const unchecked = line.stale ? `Sin nueva comprobación desde el ${line.verifiedAt ? formatDate(line.verifiedAt) : "momento de su revisión"}: si no responde, llamá al ${GENERAL_EMERGENCY_NUMBER}.` : undefined
-  const facts = [line.where, line.hours, line.cost, unchecked].filter(Boolean)
+  const facts = [line.where, line.hours, line.cost].filter(Boolean)
   return (
     <div className="flex flex-col items-start gap-1">
       <CallLink line={line} primary={primary} />
@@ -47,11 +44,19 @@ const Card = ({ crisis }: { crisis: boolean }) => {
   const [general, national] = first()
   const [caba, nationalAlternative] = more()
   const same = ambulance()
+  // A line past its review date is still here (a number a person may need must not vanish) but it is not presented as checked:
+  // said once for the whole card, not on every line
+  const notice = uncheckedNotice([general, national, caba, nationalAlternative, same].map((line) => callButton(line.display)), GENERAL_EMERGENCY_NUMBER)
   return (
     <section {...(crisis ? { [AVOID_ATTRIBUTE]: "" } : {})} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
       <h3 id="urgent-help-title" className="m-0 text-lg font-extrabold">
         {crisis ? "Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora" : "Ayuda urgente"}
       </h3>
+      {notice && (
+        <p role="note" className="m-0 rounded-lg bg-surface-alt p-2 text-ink-soft">
+          {notice}
+        </p>
+      )}
       <p className="m-0">Si hay riesgo para tu vida o la de otra persona, llamá ya al {general.display}.</p>
       <Line line={general} primary />
       <p className="m-0 font-bold">Para hablar con alguien en una crisis emocional:</p>
