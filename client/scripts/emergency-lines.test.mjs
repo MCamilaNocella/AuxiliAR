@@ -107,3 +107,66 @@ test("the emergency bar keeps its five numbers, in its order and with its labels
   assert.deepEqual(bar.map((line) => line.shortName), ["Ambulancia", "Policía", "Violencia", "Crisis", "Niñez"])
   assert.deepEqual(bar.map((line) => line.display.emergencyBarOrder), [1, 2, 3, 4, 5])
 })
+
+/* ── The table of numbers of the chat (server/.../prompts/numeros.md) is generated from the lines ── */
+
+const { buildNumbersDocument, buildNumberRows, reviewWarnings, DEFAULT_PATHS } = await import("./resources-sync.mjs")
+const normalize = (text) => text.replace(/\r\n/g, "\n")
+const template = normalize(await readFile(DEFAULT_PATHS.numbersTemplateFile, "utf8"))
+const serverTable = normalize(await readFile(DEFAULT_PATHS.numbersFile, "utf8"))
+const rowsOf = (markdown) => markdown.split("\n").filter((line) => /^\|\s*[0-9]/.test(line)).map((line) => line.split("|").slice(1, -1).map((cell) => cell.trim()))
+
+test("numeros.md is exactly what the lines and the template generate (npm run resources:sync writes it)", () => {
+  assert.equal(serverTable, buildNumbersDocument(lines, template))
+  assert.ok(serverTable.startsWith("<!-- GENERADO por client/scripts/resources-sync.mjs"))
+})
+
+test("every number of the lines is in the table once, and the rows kept by hand are marked as not verified and do not repeat a verified number", () => {
+  const rows = rowsOf(serverTable)
+  const tableDials = rows.map((row) => digits(row[0]))
+  assert.equal(new Set(tableDials).size, tableDials.length, "a number twice")
+  for (const { contact } of allContacts) assert.ok(tableDials.includes(contact.dial), contact.dial + " is not in the table")
+  const datasetDials = new Set(allContacts.map(({ contact }) => contact.dial))
+  const manual = rows.filter((row) => !datasetDials.has(digits(row[0])))
+  assert.deepEqual(manual.map((row) => row[0]), ["100", "101", "103", "106", "149", "0800-444-8694", "0800-222-7264", "0800-222-0381"])
+  assert.ok(manual.every((row) => row[1].endsWith("(sin verificar)")), "a row written by hand has to say that it is not verified")
+  // the rows of the dataset say what the dataset says
+  const row = (number) => rows.find((entry) => digits(entry[0]) === digits(number))
+  assert.deepEqual([row("135")[2], row("0800-999-0091")[2], row("911")[2]], ["Solo CABA y Gran Buenos Aires", "Todo el país", "Todo el país"])
+  assert.equal(row("0800-999-0091")[4], "24 h")
+  assert.equal(row("911")[4], "", "no hours for the 911: its source gives none")
+  assert.ok(row("107")[2].startsWith("Depende de la jurisdicción") && !row("107")[2].startsWith("Todo el país"))
+})
+
+test("no help number is written in the instructions: they are named by line and filled in from the dataset", async () => {
+  const prose = template.slice(0, template.indexOf("| Número |"))
+  // (the ids of the lines inside {{…}} contain numbers: they are not numbers written by hand)
+  assert.ok(!/\b(107|911|135|144|102|138|139|141|137|145|149)\b|0800-?\d/.test(prose.replace(/\{\{[^}]+\}\}/g, "")), "a number is written by hand in the instructions")
+  assert.equal([...prose.matchAll(/\{\{n:/g)].length >= 10, true)
+  const prompt = await readFile(join(root, "../server/src/main/resources/prompts/auxi.md"), "utf8")
+  assert.ok(!/\b(107|911|135|144|102|138|139)\b|0800-?\d{3}/.test(prompt), "auxi.md names a help number: it should say which row of the list")
+})
+
+test("the generator refuses what would make two answers or an invented one", () => {
+  assert.throws(() => buildNumbersDocument(lines, template.replace("{{n:emergencias-911}}", "{{n:no-existe}}")), /no-existe/)
+  assert.throws(() => buildNumbersDocument(lines, template + "| 911 | Emergencias (a mano) | Todo el país | x | |\n"), /dos veces/)
+  assert.throws(() => buildNumbersDocument(lines, template.replace("{{h:prevencion-suicidio-cas}}", "{{h:emergencias-911}}")), /no dice su horario/)
+  assert.throws(() => buildNumbersDocument(lines, template.replace("{{ROWS}}", "{{ROWS}}{{OTRO}}")), /sin reemplazar/)
+  // a line without verification does not make a row, and cannot be named
+  const unverified = structuredClone(lines)
+  unverified.find((line) => line.id === "linea-144").verification.status = "needs-review"
+  assert.ok(!buildNumberRows(unverified).some((row) => row.key === "144"))
+  assert.throws(() => buildNumbersDocument(unverified, template), /linea-144/)
+  // a line with no scope cannot be written
+  const noScope = structuredClone(lines)
+  delete noScope.find((line) => line.id === "linea-102").coverage
+  assert.throws(() => buildNumberRows(noScope), /sin alcance/)
+})
+
+test("lines whose review is near or past are reported - and they keep showing", () => {
+  assert.deepEqual(reviewWarnings(lines, "2026-10-08"), [])
+  const near = reviewWarnings(lines, "2026-12-20")
+  assert.equal(near.length, lines.length)
+  assert.ok(near.every((warning) => warning.includes("vence el 2027-01-06") && warning.includes("sigue mostrándose")))
+  assert.ok(reviewWarnings(lines, "2027-02-01").every((warning) => warning.includes("venció el 2027-01-06")))
+})

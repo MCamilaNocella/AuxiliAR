@@ -15,16 +15,41 @@ import com.auxiliar.server.helplines.HelpNumbers;
  */
 final class SafetyRules {
 
-    /** PAMI Escucha y Responde: free, 24 h, the whole country (the emergency 139 depends on the zone, the model picks it) */
+    /**
+     * PAMI Escucha y Responde: free, 24 h, the whole country (the emergency line depends on the zone, the model picks it).
+     * This and the next one are the numbers of two rows of the table of help numbers, which is generated from the verified
+     * help lines (client/src/data/resources/lines): {@link #requireNumbers} checks at startup that the rows are there.
+     */
     static final String PAMI = "138";
     /** PAMI emergencies, only for members in AMBA and UGL Rosario */
     static final String PAMI_EMERGENCIES = "139";
-    static final String PAMI_EMERGENCIES_NOTE = "Gracias. Si tiene PAMI, en tu zona también podés llamar al 139, la línea de emergencias de PAMI.";
     static final String THANKS_NOTE = "Gracias, ya lo tengo en cuenta. Seguí las indicaciones de arriba y, si algo cambia, contame.";
     private static final java.util.List<String> PAMI_EMERGENCY_PLACES = java.util.List.of(
             "rosario", "caba", "ciudad autonoma de buenos aires", "ciudad de buenos aires", "capital federal");
 
     private SafetyRules() {
+    }
+
+    /**
+     * The rules below name two rows of the table and assume where the second one works. If the table (generated from the
+     * verified lines) stops saying so, the server does not start: better than answering with a number that is wrong.
+     */
+    static void requireNumbers(HelpNumbers helpNumbers) {
+        if (helpNumbers.find(PAMI).isEmpty()) {
+            throw new IllegalStateException("The table of help numbers has no row for " + PAMI + " (PAMI): SafetyRules needs it");
+        }
+        HelpNumber emergencies = helpNumbers.find(PAMI_EMERGENCIES)
+                .orElseThrow(() -> new IllegalStateException("The table of help numbers has no row for " + PAMI_EMERGENCIES + " (PAMI emergencies): SafetyRules needs it"));
+        String zone = normalize(emergencies.zone());
+        if (!zone.contains("amba") || !zone.contains("rosario")) {
+            throw new IllegalStateException("SafetyRules assumes that " + PAMI_EMERGENCIES + " is for AMBA and Rosario, and its row says: " + emergencies.zone());
+        }
+    }
+
+    /** Said when the only thing left to say is that PAMI has its own emergency line in the person's zone: the number is the table's */
+    static String pamiEmergenciesNote(HelpNumbers helpNumbers) {
+        String number = helpNumbers.find(PAMI_EMERGENCIES).map(HelpNumber::number).orElse(PAMI_EMERGENCIES);
+        return "Gracias. Si tiene PAMI, en tu zona también podés llamar al " + number + ", la línea de emergencias de PAMI.";
     }
 
     static List<HelpNumber> withPami(List<HelpNumber> phones, HelpNumbers helpNumbers, int max) {

@@ -24,6 +24,8 @@ export const DEFAULT_PATHS = {
   sourceDir: join(clientRoot, "src/data/resources"),
   outFile: resolve(clientRoot, "../server/src/main/resources/data/resources.json"),
   coverageFile: join(clientRoot, "src/data/resources/coverage.json"),
+  numbersTemplateFile: join(clientRoot, "src/data/resources/numeros.template.md"),
+  numbersFile: resolve(clientRoot, "../server/src/main/resources/prompts/numeros.md"),
 }
 
 const NOTICE = "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync."
@@ -54,7 +56,103 @@ export const buildServerCopy = (resources, taxonomy) => {
   return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: NOTICE, resources: sorted }, null, 2)}\n`
 }
 
-const COVERAGE_NOTICE = "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos."
+/* ── The table of help numbers the chat reads (server/.../prompts/numeros.md), generated from lines/ ── */
+
+const NUMBERS_NOTICE = "<!-- GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/lines y numeros.template.md. No editar a mano: se pisa con npm run resources:sync. -->"
+
+const dialDigits = (dial) => String(dial).replace(/\D/g, "")
+
+const cell = (text, where) => {
+  const clean = String(text ?? "").replace(/\s+/g, " ").trim()
+  if (clean.includes("|")) throw new Error(`${where}: el texto no puede llevar "|" (rompe la tabla de números)`)
+  return clean
+}
+
+/** Where a number works, in the words of the dataset: the contact's own note, "Todo el país" for a national line, or the line's note */
+const zoneOf = (resource, contact) => {
+  // A number listed once per jurisdiction (the 107): what is said about the number is the line's note
+  const listedByJurisdiction = (resource.contacts ?? []).filter((entry) => dialDigits(entry.dial) === dialDigits(contact.dial)).length > 1
+  if (listedByJurisdiction) return resource.coverage?.note
+  if (contact.scope?.note) return contact.scope.note
+  const scope = contact.scope ?? resource.coverage
+  return scope?.level === "national" ? "Todo el país" : resource.coverage?.note
+}
+
+/** "24 h" for a line that answers all day; the dataset's own words when it gives its hours; nothing when they are not known */
+const hoursOf = (resource, contact) => {
+  const hours = contact.hours ?? resource.hours
+  if (!hours) return ""
+  return hours.open24h ? "24 h" : (hours.note ?? "").replace(/\.$/, "")
+}
+
+/** The verified lines (not the places) in the order of the files, one row per number */
+export const buildNumberRows = (resources) => {
+  const seen = new Set()
+  const rows = []
+  for (const resource of resources) {
+    if (resource.kind === "service" || resource.verification?.status !== "verified") continue
+    for (const contact of resource.contacts ?? []) {
+      const key = dialDigits(contact.dial)
+      if (seen.has(key)) continue
+      seen.add(key)
+      const where = `${resource.id} ${contact.display}`
+      const zone = cell(zoneOf(resource, contact), where)
+      if (!zone) throw new Error(`${where}: sin alcance no se puede escribir la tabla de números (falta coverage o scope)`)
+      rows.push({ key, line: `| ${cell(contact.display, where)} | ${cell(resource.name, where)} | ${zone} | ${cell(resource.whenToUse ?? resource.description ?? "", where)} | ${cell(hoursOf(resource, contact), where)} |` })
+    }
+  }
+  return rows
+}
+
+/**
+ * The instructions of numeros.template.md with the numbers and hours that they name taken from the dataset ({{n:id}} the
+ * number of a line, {{n:id:1}} its second contact, {{h:id}} its hours) and the verified rows where {{ROWS}} is. The rows that
+ * the template still carries by hand (not verified yet) cannot repeat a number of the dataset: that would be two answers.
+ */
+export const buildNumbersDocument = (resources, template) => {
+  const lines = resources.filter((resource) => resource.kind !== "service")
+  const byId = (id) => {
+    const line = lines.find((resource) => resource.id === id && resource.verification?.status === "verified")
+    if (!line) throw new Error(`numeros.template.md nombra la línea "${id}", que no está verificada en lines/`)
+    return line
+  }
+  const rows = buildNumberRows(resources)
+  const body = template
+    .replace(/\{\{n:([a-z0-9-]+)(?::(\d+))?\}\}/g, (_, id, index) => {
+      const contact = (byId(id).contacts ?? [])[Number(index ?? 0)]
+      if (!contact) throw new Error(`numeros.template.md: la línea "${id}" no tiene el contacto ${index ?? 0}`)
+      return contact.display
+    })
+    .replace(/\{\{h:([a-z0-9-]+)\}\}/g, (_, id) => {
+      const note = byId(id).hours?.note
+      if (!note) throw new Error(`numeros.template.md: la línea "${id}" no dice su horario`)
+      return note
+    })
+    .replace("{{ROWS}}", rows.map((row) => row.line).join("\n"))
+  if (/\{\{/.test(body)) throw new Error("numeros.template.md: queda un {{…}} sin reemplazar")
+
+  const seen = new Set()
+  for (const line of body.split("\n")) {
+    const match = /^\|\s*([^|]+?)\s*\|/.exec(line)
+    const digits = match ? dialDigits(match[1]) : ""
+    if (!digits || /Número/.test(line)) continue
+    if (seen.has(digits)) throw new Error(`El número ${match[1]} está dos veces en la tabla de numeros.md: una fila a mano repite una del dataset (hay que borrar la de mano)`)
+    seen.add(digits)
+  }
+  return `${NUMBERS_NOTICE}\n${body.replace(/\n+$/, "")}\n`
+}
+
+/** Lines whose review date is past or near: the bar and the chat keep showing them, so someone has to be told */
+export const reviewWarnings = (resources, today, days = 30) => {
+  const limit = new Date(`${today}T00:00:00Z`)
+  limit.setUTCDate(limit.getUTCDate() + days)
+  const near = limit.toISOString().slice(0, 10)
+  return resources
+    .filter((resource) => resource.kind !== "service" && resource.verification?.status === "verified" && resource.verification.nextReviewDue && resource.verification.nextReviewDue <= near)
+    .map((resource) => `la línea ${resource.id} ${resource.verification.nextReviewDue <= today ? "venció" : "vence"} el ${resource.verification.nextReviewDue}: hay que volver a verificarla (sigue mostrándose)`)
+}
+
+const COVERAGE_NOTICE ="GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos."
 
 const later = (a, b) => (a === null ? b : b === null ? a : a > b ? a : b)
 
@@ -124,6 +222,11 @@ export const run = async ({
   categoryIds = null,
   /** Where the coverage index is written or checked; null: not generated (the tests of the other parts leave it alone) */
   coverageFile = null,
+  /** The template of the table of numbers for the chat, and where the generated table goes; null: not generated */
+  numbersTemplateFile = null,
+  numbersFile = null,
+  /** Today (AAAA-MM-DD), to warn about lines whose review is near */
+  today = new Date().toISOString().slice(0, 10),
 } = {}) => {
   const [schema, taxonomy, lines, places] = await Promise.all([
     readJson(schemaFile),
@@ -137,6 +240,8 @@ export const run = async ({
 
   const output = buildServerCopy(resources, taxonomy)
   const coverage = buildCoverage(places, taxonomy)
+  const numbers = numbersFile && numbersTemplateFile ? buildNumbersDocument(resources, await readFile(numbersTemplateFile, "utf8").then(normalize)) : null
+  const warnings = reviewWarnings(resources, today)
 
   if (mode === "check") {
     let current = null
@@ -148,6 +253,15 @@ export const run = async ({
     if (current !== output) {
       return { ok: false, errors: [`${outFile} no coincide con client/src/data/resources. Corré: npm run resources:sync`], output, coverage }
     }
+    if (numbers !== null) {
+      let table = null
+      try {
+        table = normalize(await readFile(numbersFile, "utf8"))
+      } catch {
+        // Missing file: reported below
+      }
+      if (table !== numbers) return { ok: false, errors: [`${numbersFile} (la tabla de números del chat) no coincide con lines/ y numeros.template.md. Corré: npm run resources:sync`], output, coverage }
+    }
     if (coverageFile) {
       let index = null
       try {
@@ -157,7 +271,7 @@ export const run = async ({
       }
       if (index !== coverage) return { ok: false, errors: [`${coverageFile} (el índice de cobertura) no coincide con los lugares. Corré: npm run resources:sync`], output, coverage }
     }
-    return { ok: true, errors: [], output, coverage }
+    return { ok: true, errors: [], output, coverage, numbers, warnings }
   }
 
   await mkdir(dirname(outFile), { recursive: true })
@@ -166,20 +280,25 @@ export const run = async ({
     await mkdir(dirname(coverageFile), { recursive: true })
     await writeFile(coverageFile, coverage)
   }
-  return { ok: true, errors: [], output, coverage }
+  if (numbers !== null) {
+    await mkdir(dirname(numbersFile), { recursive: true })
+    await writeFile(numbersFile, numbers)
+  }
+  return { ok: true, errors: [], output, coverage, numbers, warnings }
 }
 
 // Command line (not when imported by the tests)
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const mode = process.argv.includes("--check") ? "check" : "sync"
   try {
-    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile })
+    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile, numbersTemplateFile: DEFAULT_PATHS.numbersTemplateFile, numbersFile: DEFAULT_PATHS.numbersFile })
     if (!result.ok) {
       console.error(`resources:${mode} — hay problemas:\n${result.errors.map((error) => `  - ${error}`).join("\n")}`)
       process.exitCode = 1
     } else {
       const count = JSON.parse(result.output).resources.length
-      console.log(mode === "check" ? `resources:check — ok (${count} recursos, copia del servidor e índice de cobertura al día)` : `resources:sync — ${count} recursos escritos en el servidor`)
+      for (const warning of result.warnings ?? []) console.warn(`resources:${mode} — aviso: ${warning}`)
+      console.log(mode === "check" ? `resources:check — ok (${count} recursos, copia del servidor, índice de cobertura y tabla de números del chat al día)` : `resources:sync — ${count} recursos escritos en el servidor`)
     }
   } catch (error) {
     console.error(`resources:${mode} — ${error.message}`)
