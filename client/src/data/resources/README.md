@@ -125,6 +125,18 @@ Los tests usan datos inventados, que nunca van en `lines/`: `client/scripts/__fi
 
 Un archivo chico, **generado** por `npm run resources:sync` desde `places/` (nunca se edita a mano; `resources:check` falla si está desactualizado). Dice, por provincia, cuántos lugares tiene su archivo, qué categorías y prestaciones hay, en qué divisiones (comunas, partidos…) y hasta qué día algo puede estar vigente (`currentUntil`). La app lo lee para saber **dónde hay lugares sin descargar los archivos**: solo baja el de la provincia elegida, o todos si son pocos (`LOAD_ALL_UP_TO`). Cuenta todos los lugares del archivo, vigentes o no: sirve para planificar la descarga, **nunca para mostrar números a las personas**.
 
+## Líneas de ayuda y números de emergencia (fuente única)
+
+Todos los números de ayuda de AuxiliAR salen de **`lines/nacional.json`**. No hay otro lugar donde se escriban a mano: la barra de emergencia, el chat (cliente y servidor), la tarjeta de ayuda urgente del Mapa AuxiliAR y los textos que nombran un número **leen o se generan de ahí**. Si dos lugares dicen cosas distintas, uno está mal: se corrige el dato, no el consumidor.
+
+- **Qué lleva cada línea:** nombre, tipo (`emergency`, `urgent-support`, `orientation`), contactos (cada uno puede tener su `scope` y su `hours`), alcance, horario, fuente oficial (`source.url`, `source.retrievedAt` y `source.note` con lo que dice la fuente, entre comillas) y verificación.
+- **Qué NO se afirma sin fuente:** un horario (`hours: null` = no se sabe, nunca se completa con 24 h), la gratuidad, ni el alcance. Una línea sin verificación suficiente **no se agrega**.
+- **Dónde hay varias jurisdicciones** (el 107, el 135) se registra lo verificado por jurisdicción en los contactos (`scope`) y el `coverage.note` dice que no es una lista completa. Nunca se escribe "todo el país" para algo que las fuentes oficiales no dicen así.
+- **Barra de emergencia:** las líneas con `display.emergencyBarOrder`, en ese orden, y su primer contacto. La barra y el chat **no desaparecen si vence una revisión**: para estas líneas, una verificación vencida se avisa (`resources:check`) pero no oculta el número.
+- **Servidor:** `resources.json` lleva estas líneas, y `prompts/numeros.md` (la tabla que lee Auxi y con la que se validan los botones de llamada) se **genera** con `npm run resources:sync` a partir de ellas y de `numeros.template.md`. `resources:check` falla si no coinciden.
+- **Contradicciones entre fuentes oficiales** (se registran en `verification.notes` de la línea, con las URL de cada una, y se decide cómo mostrarlas): el 107 (la página nacional lo limita a CABA y localidades de Buenos Aires; páginas oficiales de Córdoba y Jujuy lo muestran funcionando allí), el 102 (16 jurisdicciones en una nota de 2020; todas en una de 2022) y la tabla del chat sobre el 139 de PAMI (decía que en el resto del país era el 107 o el 911; PAMI dice que cada afiliado tiene el número de su prestador).
+- **Cómo agregar una línea:** abrir la página oficial, anotar la URL, la fecha en que se consultó y la frase que dice el número, el alcance y el horario; cargar solo lo que esa frase dice; `npm run resources:sync`; `npm run emergency:test`.
+
 ## Si cambia el formato
 
 1. Actualizá `resource.schema.json` y, si agregás valores permitidos, `taxonomy.json`.
