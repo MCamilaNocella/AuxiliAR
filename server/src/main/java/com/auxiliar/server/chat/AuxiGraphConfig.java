@@ -62,6 +62,11 @@ public class AuxiGraphConfig {
                                        HelpNumbers helpNumbers,
                                        @Value("${auxiliar.ai.provider}") String providerName,
                                        @Value("${auxiliar.chat.reasoning}") boolean answerReasoning) throws GraphStateException {
+        // Not a reason to stop the server: resources:check and the tests catch it where the table is made
+        String rowsProblem = SafetyRules.rowsProblem(helpNumbers);
+        if (rowsProblem != null) {
+            log.warn(rowsProblem);
+        }
         ChatClient chatClient = chatClientBuilder.build();
         BeanOutputConverter<AuxiAnswer> answerConverter = new BeanOutputConverter<>(AuxiAnswer.class);
         AiProvider provider = AiProvider.from(providerName);
@@ -122,7 +127,7 @@ public class AuxiGraphConfig {
                     if (replies.isEmpty()) {
                         // Everything was a repeat: a short acknowledgement instead, explaining PAMI's line if it just showed up
                         replies.add(phones.stream().anyMatch(line -> line.number().equals(SafetyRules.PAMI_EMERGENCIES))
-                                ? SafetyRules.PAMI_EMERGENCIES_NOTE
+                                ? SafetyRules.pamiEmergenciesNote(helpNumbers)
                                 : SafetyRules.THANKS_NOTE);
                     }
                     // Only if Auxi didn't ask it itself (otherwise the question would show twice)

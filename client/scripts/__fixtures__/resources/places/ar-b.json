@@ -1,0 +1,48 @@
+{
+  "resources": [
+    {
+      "id": "fixture-veterinaria",
+      "name": "FIXTURE: veterinaria pública de prueba",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-B",
+        "organization": "FIXTURE Ministerio de prueba"
+      },
+      "externalIds": {
+        "refes": "FIXTURE-0003"
+      },
+      "address": {
+        "street": "Calle Veterinaria",
+        "locality": "Ciudad de prueba",
+        "province": "AR-B"
+      },
+      "services": [
+        {
+          "id": "antirrabica",
+          "type": "rabies-vaccination",
+          "cost": "free"
+        },
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "appointment": {
+            "mode": "recommended",
+            "howTo": "Consultar antes de ir"
+          }
+        }
+      ],
+      "source": {
+        "organization": "Fixture",
+        "url": "https://example.org/fixture-veterinaria"
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-02-01",
+        "verifiedBy": "test",
+        "nextReviewDue": "2030-01-01"
+      }
+    }
+  ]
+}

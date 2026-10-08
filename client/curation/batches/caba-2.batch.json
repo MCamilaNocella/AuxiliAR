@@ -1,0 +1,11 @@
+{
+  "id": "caba-2",
+  "province": "AR-C",
+  "label": "Lote CABA 2: CeSAC y Hospitales Generales de Agudos",
+  "verifiedAt": "2026-10-07",
+  "verifiedBy": "equipo-auxiliar",
+  "nextReviewDue": "2027-01-05",
+  "reviewDays": 90,
+  "scope": "Datos objetivos respaldados por fuentes oficiales: nombre, dirección, teléfonos, coordenadas y las prestaciones que una fuente oficial lista o afirma. Horarios, turnos, gratuidad y requisitos no se completan: salvo la guardia 24 h de los Hospitales Generales de Agudos, que una página oficial afirma textualmente.",
+  "sources": ["caba-cesac", "caba-hospitales"]
+}

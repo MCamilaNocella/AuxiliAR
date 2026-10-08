@@ -11,5 +11,6 @@ export const useMediaQuery = (query: string) => {
     [query],
   )
 
-  return useSyncExternalStore(subscribe, () => window.matchMedia(query).matches)
+  // Rendered on a server (the tests, or a static page) nothing matches: the answer is the small-screen one
+  return useSyncExternalStore(subscribe, () => window.matchMedia(query).matches, () => false)
 }

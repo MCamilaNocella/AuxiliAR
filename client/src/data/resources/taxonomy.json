@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 2,
+  "kinds": [
+    { "id": "emergency", "label": "Emergencia", "description": "Riesgo inmediato para la vida; despacha ayuda (ambulancia, bomberos, policía)." },
+    { "id": "urgent-support", "label": "Apoyo urgente", "description": "Atención humana urgente que no despacha ayuda (líneas de crisis, violencia, intoxicaciones)." },
+    { "id": "orientation", "label": "Orientación", "description": "Consulta, información y asesoramiento." },
+    { "id": "service", "label": "Servicio", "description": "Un lugar o programa concreto (hospital, centro de salud, veterinaria)." }
+  ],
+  "verificationStatuses": [
+    { "id": "verified", "label": "Verificado", "description": "Comprobado contra la fuente oficial. Es el único estado que se muestra a las personas y que Auxi puede ofrecer, mientras no venza nextReviewDue." },
+    { "id": "needs-review", "label": "A revisar", "description": "Hay un dato dudoso o cambió algo; no se muestra." },
+    { "id": "unverified", "label": "Sin verificar", "description": "Cargado pero todavía no comprobado; no se muestra." },
+    { "id": "outdated", "label": "Desactualizado", "description": "La fuente indica que cambió; no se muestra." },
+    { "id": "disputed", "label": "En duda", "description": "Dos fuentes se contradicen; no se muestra." }
+  ],
+  "costs": [
+    { "id": "free", "label": "Gratuito" },
+    { "id": "paid", "label": "Arancelado" },
+    { "id": "mixed", "label": "Mixto" },
+    { "id": "unknown", "label": "No se sabe" }
+  ],
+  "audiences": [
+    { "id": "all", "label": "Todas las personas" },
+    { "id": "children", "label": "Niñas y niños" },
+    { "id": "adolescents", "label": "Adolescentes" },
+    { "id": "adults", "label": "Personas adultas" },
+    { "id": "older-adults", "label": "Personas mayores" },
+    { "id": "women", "label": "Mujeres" },
+    { "id": "lgbtq", "label": "Personas LGBTIQ+" },
+    { "id": "people-with-disabilities", "label": "Personas con discapacidad" }
+  ],
+  "contactTypes": [
+    { "id": "phone", "label": "Teléfono" },
+    { "id": "whatsapp", "label": "WhatsApp" }
+  ],
+  "coverageLevels": [
+    { "id": "national", "label": "Todo el país" },
+    { "id": "region", "label": "Región o área" },
+    { "id": "province", "label": "Provincia" },
+    { "id": "municipal", "label": "Municipio o localidad" }
+  ],
+  "areas": [
+    { "id": "amba", "label": "AMBA (CABA y Gran Buenos Aires)" },
+    { "id": "ugl-rosario", "label": "UGL Rosario (PAMI)" }
+  ],
+  "provinces": [
+    { "id": "AR-C", "label": "Ciudad Autónoma de Buenos Aires" },
+    { "id": "AR-B", "label": "Buenos Aires" },
+    { "id": "AR-K", "label": "Catamarca" },
+    { "id": "AR-H", "label": "Chaco" },
+    { "id": "AR-U", "label": "Chubut" },
+    { "id": "AR-X", "label": "Córdoba" },
+    { "id": "AR-W", "label": "Corrientes" },
+    { "id": "AR-E", "label": "Entre Ríos" },
+    { "id": "AR-P", "label": "Formosa" },
+    { "id": "AR-Y", "label": "Jujuy" },
+    { "id": "AR-L", "label": "La Pampa" },
+    { "id": "AR-F", "label": "La Rioja" },
+    { "id": "AR-M", "label": "Mendoza" },
+    { "id": "AR-N", "label": "Misiones" },
+    { "id": "AR-Q", "label": "Neuquén" },
+    { "id": "AR-R", "label": "Río Negro" },
+    { "id": "AR-A", "label": "Salta" },
+    { "id": "AR-J", "label": "San Juan" },
+    { "id": "AR-D", "label": "San Luis" },
+    { "id": "AR-Z", "label": "Santa Cruz" },
+    { "id": "AR-S", "label": "Santa Fe" },
+    { "id": "AR-G", "label": "Santiago del Estero" },
+    { "id": "AR-V", "label": "Tierra del Fuego" },
+    { "id": "AR-T", "label": "Tucumán" }
+  ],
+  "facilityTypes": [
+    { "id": "hospital", "label": "Hospital" },
+    { "id": "health-center", "label": "Centro de salud (CeSAC, CAPS)" },
+    { "id": "mental-health-center", "label": "Centro de salud mental" },
+    { "id": "zoonosis-center", "label": "Centro de zoonosis" },
+    { "id": "public-veterinary", "label": "Veterinaria pública" },
+    { "id": "counseling-center", "label": "Consejería" },
+    { "id": "other", "label": "Otro" }
+  ],
+  "serviceTypes": [
+    { "id": "primary-care", "label": "Atención primaria / clínica médica", "categories": ["salud-fisica"] },
+    { "id": "vaccination", "label": "Vacunación", "categories": ["salud-fisica"] },
+    { "id": "dentistry", "label": "Odontología", "categories": ["salud-fisica"] },
+    { "id": "ophthalmology", "label": "Oftalmología", "categories": ["salud-fisica"] },
+    { "id": "emergency-room", "label": "Guardia", "categories": ["salud-fisica"] },
+    { "id": "laboratory", "label": "Laboratorio", "categories": ["salud-fisica"] },
+    { "id": "diagnostic-imaging", "label": "Diagnóstico por imágenes", "categories": ["salud-fisica"] },
+    { "id": "specialty-care", "label": "Atención de especialidades", "categories": ["salud-fisica"] },
+    { "id": "pharmacy", "label": "Farmacia", "categories": ["salud-fisica"] },
+    { "id": "mental-health-care", "label": "Atención de salud mental", "categories": ["salud-mental"] },
+    { "id": "mental-health-emergency", "label": "Guardia de salud mental", "categories": ["salud-mental"] },
+    { "id": "sexual-reproductive-health", "label": "Salud sexual y reproductiva", "categories": ["esi"] },
+    { "id": "contraception", "label": "Anticonceptivos", "categories": ["esi"] },
+    { "id": "condoms", "label": "Preservativos", "categories": ["esi"] },
+    { "id": "emergency-contraception", "label": "Anticoncepción de emergencia", "categories": ["esi"] },
+    { "id": "pregnancy-care", "label": "Atención del embarazo", "categories": ["esi"] },
+    { "id": "sti-testing-care", "label": "Testeo y atención de ITS", "categories": ["esi"] },
+    { "id": "ive-ile-care", "label": "Atención de IVE/ILE", "categories": ["esi"] },
+    { "id": "sexual-health-counseling", "label": "Consejería en salud sexual", "categories": ["esi"] },
+    { "id": "zoonosis", "label": "Zoonosis", "categories": ["animales"] },
+    { "id": "rabies-vaccination", "label": "Vacunación antirrábica", "categories": ["animales"] },
+    { "id": "spaying-neutering", "label": "Castración", "categories": ["animales"] },
+    { "id": "veterinary-care", "label": "Atención veterinaria", "categories": ["animales"] }
+  ],
+  "appointmentModes": [
+    { "id": "required", "label": "Con turno" },
+    { "id": "recommended", "label": "Turno recomendado" },
+    { "id": "not-required", "label": "Sin turno" },
+    { "id": "unknown", "label": "No se sabe" }
+  ],
+  "jurisdictionLevels": [
+    { "id": "national", "label": "Nacional" },
+    { "id": "provincial", "label": "Provincial" },
+    { "id": "municipal", "label": "Municipal" },
+    { "id": "other", "label": "Otra" }
+  ],
+  "coordinateStatuses": [
+    { "id": "verified", "label": "Verificadas", "description": "Una persona comprobó el punto contra la fuente oficial o en el mapa. Es el único estado con el que el lugar aparece en el mapa." },
+    { "id": "unverified", "label": "Sin verificar", "description": "Punto candidato (por ejemplo de un geocodificador): no se muestra en el mapa." }
+  ],
+  "coordinateMethods": [
+    { "id": "official-dataset", "label": "Dataset oficial" },
+    { "id": "official-dataset-reprojected", "label": "Dataset oficial, reproyectado a WGS84" },
+    { "id": "geocoded-usig", "label": "Geocodificado con USIG" },
+    { "id": "geocoded-georef", "label": "Geocodificado con Georef" },
+    { "id": "geocoded-other", "label": "Geocodificado con otro servicio" },
+    { "id": "manual-map", "label": "Marcado a mano en un mapa" },
+    { "id": "gps-survey", "label": "Medido con GPS" }
+  ],
+  "categories": [
+    { "id": "salud-fisica", "label": "Salud general" },
+    { "id": "salud-mental", "label": "Salud mental" },
+    { "id": "esi", "label": "Educación sexual (ESI)" },
+    { "id": "animales", "label": "Animales" },
+    { "id": "centros", "label": "Centros de atención" },
+    { "id": "recursos", "label": "Mis recursos" },
+    { "id": "primeros-auxilios", "label": "Primeros auxilios" },
+    { "id": "sobre-auxiliar", "label": "Sobre AuxiliAR" }
+  ]
+}

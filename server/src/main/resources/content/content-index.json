@@ -1,57 +1,85 @@
 [
   {
-    "title": "Salud física",
-    "path": "/temas/salud-fisica",
-    "summary": "Presión, diabetes, vacunas. Hospitales públicos, guardias gratuitas y programas del Estado",
+    "title": "Encontrar atención",
+    "path": "/centros",
+    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires. Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Encontrar atención › Mapa AuxiliAR",
+    "path": "/centros?seccion=section-1",
+    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Encontrar atención › Sobre los datos",
+    "path": "/centros?seccion=section-2",
+    "summary": "Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Cuidar mi salud",
+    "path": "/temas/salud-general",
+    "summary": "Controles, vacunas y prevención, con un quiz para empezar. Qué controles y vacunas te corresponden, en lenguaje simple",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Hablar con alguien, ansiedad. Ayuda gratuita, confidencial y disponible las 24 horas",
+    "summary": "Orientación, acompañamiento y recursos. Estamos preparando esta información con fuentes oficiales",
     "firstAid": false,
     "hasInfo": false
   },
   {
-    "title": "Educación sexual (ESI)",
+    "title": "Salud sexual y ESI",
     "path": "/temas/esi",
-    "summary": "Cuidados y derechos. Educación Sexual Integral · Derechos y acceso gratuito",
+    "summary": "Anticoncepción, derechos y acceso a atención. Estamos preparando esta información con fuentes oficiales",
     "firstAid": false,
     "hasInfo": false
   },
   {
-    "title": "Animales",
+    "title": "Salud animal",
     "path": "/temas/animales",
-    "summary": "Mascotas y mordeduras. Veterinarias gratuitas, vacunas y primeros auxilios",
-    "firstAid": false,
-    "hasInfo": false
-  },
-  {
-    "title": "Centros de atención",
-    "path": "/centros",
-    "summary": "Hospitales cerca. Hospitales, centros de salud y guardias cerca tuyo",
-    "firstAid": false,
-    "hasInfo": false
-  },
-  {
-    "title": "Más recursos",
-    "path": "/recursos",
-    "summary": "Preguntas frecuentes, derechos, leyes y trámites. Preguntas frecuentes, derechos, leyes y trámites",
+    "summary": "Cuidados preventivos y orientación veterinaria. Estamos preparando esta información con fuentes oficiales",
     "firstAid": false,
     "hasInfo": false
   },
   {
     "title": "Primeros auxilios",
     "path": "/primeros-auxilios",
-    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias",
+    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
     "firstAid": true,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Guías de primeros auxilios",
+    "path": "/primeros-auxilios?seccion=section-1",
+    "summary": "Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "firstAid": true,
+    "hasInfo": true
   },
   {
     "title": "Sobre AuxiliAR",
     "path": "/sobre-auxiliar",
-    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas",
+    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Sobre AuxiliAR › Sobre AuxiliAR",
+    "path": "/sobre-auxiliar?seccion=section-1",
+    "summary": "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos",
+    "path": "/recursos",
+    "summary": "Preguntas frecuentes, derechos, leyes y trámites. Preguntas frecuentes, derechos, leyes y trámites",
     "firstAid": false,
     "hasInfo": false
   },

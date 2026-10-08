@@ -1,12 +1,20 @@
 import { Link } from "react-router"
 import { ArrowRight, Bandage, ChevronRight, Phone } from "lucide-react"
-import { EMERGENCY_NUMBERS, FEATURED_FIRST_AID } from "@/data/emergency"
+import { EMERGENCY_NUMBERS, FEATURED_FIRST_AID, GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
+import { callButton, callButtonDetail, callButtonLabel, uncheckedNotice } from "@/utils/helpLines"
 import { PATHS } from "@/router/paths"
 import { EMERGENCY_HEADING_ID, EMERGENCY_SECTION_ID, GUIDES_GRID, NUMBERS_GRID } from "./EmergencyBar.constants"
 
 const headingClass = "m-0 flex items-center gap-2 text-base font-extrabold"
 
-export const EmergencyBar = () => (
+/** The numbers as buttons that say where each one works and when it answers, and which ones have not been checked again since their review date */
+const buttons = () => EMERGENCY_NUMBERS.map(({ number, label }) => callButton(number, label))
+
+export const EmergencyBar = () => {
+  const calls = buttons()
+  // Said once, above the buttons (and marked with * on each one), not repeated on every button
+  const notice = uncheckedNotice(calls, GENERAL_EMERGENCY_NUMBER)
+  return (
   <section
     id={EMERGENCY_SECTION_ID}
     aria-labelledby={EMERGENCY_HEADING_ID}
@@ -16,18 +24,28 @@ export const EmergencyBar = () => (
       <div className="flex flex-col gap-2.5">
         <h2 id={EMERGENCY_HEADING_ID} tabIndex={-1} className={`${headingClass} text-alert-text`}>
           <Phone aria-hidden="true" className="size-4.5 flex-none" />
-          ¿Es una emergencia? Llamá gratis
+          ¿Es una emergencia? Pedí ayuda ahora
         </h2>
+        {notice && (
+          <p className="m-0 text-sm text-alert-text">
+            <span aria-hidden="true">* </span>
+            {notice}
+          </p>
+        )}
         <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${NUMBERS_GRID}`}>
-          {EMERGENCY_NUMBERS.map(({ number, label }) => (
-            <li key={number}>
+          {calls.map((button) => (
+            <li key={button.number}>
               <a
-                href={`tel:${number}`}
-                aria-label={`Llamar al ${number}, ${label}`}
-                className="flex min-h-11 flex-col justify-center rounded-lg bg-alert px-3 py-1.5 text-on-alert no-underline transition-colors hover:bg-alert-dark hover:text-on-alert sm:flex-row sm:items-center sm:justify-start sm:gap-2"
+                href={`tel:${button.dial}`}
+                aria-label={callButtonLabel(button)}
+                className="flex h-full min-h-11 flex-col justify-center rounded-lg bg-alert px-3 py-1.5 text-on-alert no-underline transition-colors hover:bg-alert-dark hover:text-on-alert sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-2"
               >
-                <b className="text-lg/tight font-extrabold">{number}</b>
-                <span className="text-xs font-semibold sm:text-sm">{label}</span>
+                <b className="text-lg/tight font-extrabold">
+                  {button.number}
+                  {button.stale && <span aria-hidden="true">*</span>}
+                </b>
+                <span className="text-xs font-semibold sm:text-sm">{button.label}</span>
+                {callButtonDetail(button) && <span className="text-xs/tight font-semibold opacity-95 sm:basis-full">{callButtonDetail(button)}</span>}
               </a>
             </li>
           ))}
@@ -64,4 +82,5 @@ export const EmergencyBar = () => (
       </div>
     </div>
   </section>
-)
+  )
+}

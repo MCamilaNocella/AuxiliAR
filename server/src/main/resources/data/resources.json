@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": 2,
+  "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync.",
+  "resources": [
+    {
+      "id": "cesac-3",
+      "name": "Centro de Salud Nivel 1: Villa Lugano 9 (CeSAC Nº 3)",
+      "shortName": "CeSAC Nº 3",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541128213603",
+          "display": "2821-3603",
+          "label": "Principal"
+        },
+        {
+          "type": "phone",
+          "dial": "+541150481097",
+          "display": "11 5048-1097",
+          "label": "Alternativo"
+        }
+      ],
+      "address": {
+        "street": "Soldado de la Frontera",
+        "number": "5144",
+        "neighborhood": "Villa Lugano",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 8",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.68463871592785,
+        "lng": -58.464336857206874,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Clínica médica",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Programas de vacunación",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "odontologia",
+          "type": "dentistry",
+          "name": "Odontología",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "salud-mental",
+          "type": "mental-health-care",
+          "name": "Psicología (adultos e infanto-juvenil)",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-mental"
+          ]
+        },
+        {
+          "id": "anticonceptivos",
+          "type": "contraception",
+          "name": "Anticonceptivos",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "ive-ile",
+          "type": "ive-ile-care",
+          "name": "IVE/ILE",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "vih",
+          "type": "sti-testing-care",
+          "name": "Pruebas de VIH",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "ecografia",
+          "type": "diagnostic-imaging",
+          "name": "Ecografía",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "farmacia",
+          "type": "pharmacy",
+          "name": "Farmacia",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-cesac": "3"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+        "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "CeSAC 3",
+        "Villa Lugano 9"
+      ],
+      "derivedCategories": [
+        "esi",
+        "salud-fisica",
+        "salud-mental"
+      ]
+    },
+    {
+      "id": "cesac-41",
+      "name": "Centro de Salud Nivel 1: La Boca 2 (CeSAC Nº 41)",
+      "shortName": "CeSAC Nº 41",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541128213641",
+          "display": "2821-3641",
+          "label": "Principal"
+        },
+        {
+          "type": "phone",
+          "dial": "+541143618736",
+          "display": "4361-8736",
+          "label": "Alternativo"
+        }
+      ],
+      "address": {
+        "street": "Ministro Brin",
+        "number": "843",
+        "neighborhood": "La Boca",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "postalCode": "C1158AAH",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.63132509345374,
+        "lng": -58.35792934227024,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Vacunatorio",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              },
+              {
+                "days": [
+                  1,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              },
+              {
+                "days": [
+                  2
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              },
+              {
+                "days": [
+                  2
+                ],
+                "from": "14:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+            "note": "Lugares y horarios de vacunatorios."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "odontologia",
+          "type": "dentistry",
+          "name": "Odontología",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "salud-mental",
+          "type": "mental-health-care",
+          "name": "Salud mental (niños y adultos)",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-mental"
+          ]
+        },
+        {
+          "id": "ecografia",
+          "type": "diagnostic-imaging",
+          "name": "Ecografía",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "laboratorio",
+          "type": "laboratory",
+          "name": "Laboratorio",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "farmacia",
+          "type": "pharmacy",
+          "name": "Farmacia",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "hours": {
+        "open24h": false,
+        "schedule": [
+          {
+            "days": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "from": "08:00",
+            "to": "18:00"
+          }
+        ],
+        "note": "Horario general del establecimiento: no es el de cada servicio. Los turnos se solicitan personalmente."
+      },
+      "externalIds": {
+        "caba-cesac": "41"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+        "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "CeSAC 41",
+        "La Boca 2"
+      ],
+      "derivedCategories": [
+        "salud-fisica",
+        "salud-mental"
+      ]
+    },
+    {
+      "id": "cesac-47",
+      "name": "Centro de Salud Nivel 1: Retiro 3 (CeSAC Nº 47)",
+      "shortName": "CeSAC Nº 47",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541128213647",
+          "display": "2821-3647"
+        }
+      ],
+      "address": {
+        "street": "Alpaca",
+        "number": "620",
+        "neighborhood": "Barrio Mugica",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 1",
+        "reference": "Al fondo del Paseo Comercial",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.584255999999996,
+        "lng": -58.37930900000001,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR. Corresponde a la sede de Alpaca 620."
+      },
+      "services": [
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Vacunación (programa ampliado de inmunizaciones)",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/desarrollohumanoyhabitat/integracion/salud/centro-de-salud-nivel-1-retiro-3-cesac-ndeg-47",
+            "note": "Ficha de la sede: sala de vacunación."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "pediatria",
+          "type": "primary-care",
+          "name": "Pediatría",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "psiquiatria",
+          "type": "mental-health-care",
+          "name": "Psiquiatría",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-mental"
+          ]
+        },
+        {
+          "id": "psicologia",
+          "type": "mental-health-care",
+          "name": "Psicología",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-mental"
+          ]
+        },
+        {
+          "id": "obstetricia",
+          "type": "pregnancy-care",
+          "name": "Obstetricia",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "salud-sexual",
+          "type": "sexual-reproductive-health",
+          "name": "Salud sexual",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "anticonceptivos",
+          "type": "contraception",
+          "name": "Métodos anticonceptivos",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "ive-ile",
+          "type": "ive-ile-care",
+          "name": "IVE/ILE",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "preservativos",
+          "type": "condoms",
+          "name": "Preservativos",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "anticoncepcion-emergencia",
+          "type": "emergency-contraception",
+          "name": "Anticoncepción de emergencia",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "test-vih-sifilis",
+          "type": "sti-testing-care",
+          "name": "Test rápido de VIH y sífilis",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "esi"
+          ]
+        },
+        {
+          "id": "odontologia",
+          "type": "dentistry",
+          "name": "Odontología",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "farmacia",
+          "type": "pharmacy",
+          "name": "Farmacia",
+          "hours": null,
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-cesac": "46"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+        "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "CeSAC 47",
+        "Retiro 3",
+        "Barrio Mugica"
+      ],
+      "derivedCategories": [
+        "esi",
+        "salud-fisica",
+        "salud-mental"
+      ]
+    },
+    {
+      "id": "consumos-problematicos-141",
+      "name": "Consumos problemáticos",
+      "kind": "urgent-support",
+      "whenToUse": "Alcohol, drogas o medicamentos (SEDRONAR)",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "141",
+          "display": "141"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, todos los días."
+      },
+      "cost": "free",
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/node/191981",
+        "retrievedAt": "2026-10-08",
+        "note": "Nota oficial del 30-03-2020: línea gratuita \"disponible todos los días durante las 24 horas, brindando orientación y acompañamiento en cualquier punto del país\". Fuente de 2020: revisar antes que las demás."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "emergencias-107",
+      "name": "Ambulancia (SAME)",
+      "shortName": "Ambulancias · según localidad",
+      "kind": "emergency",
+      "whenToUse": "Emergencias médicas: alguien no respira, se desmaya, sangra mucho, tiene un dolor fuerte en el pecho, un accidente",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "107",
+          "display": "107",
+          "label": "Ciudad de Buenos Aires",
+          "scope": {
+            "level": "province",
+            "provinces": [
+              "AR-C"
+            ],
+            "note": "SAME de la Ciudad: cubre toda la Ciudad, atención permanente las 24 hs (buenosaires.gob.ar/telefonos-utiles)"
+          }
+        },
+        {
+          "type": "phone",
+          "dial": "107",
+          "display": "107",
+          "label": "Provincia de Buenos Aires",
+          "scope": {
+            "level": "municipal",
+            "provinces": [
+              "AR-B"
+            ],
+            "note": "Localidades de la provincia de Buenos Aires, no toda la provincia (argentina.gob.ar/tema/emergencias)"
+          }
+        },
+        {
+          "type": "phone",
+          "dial": "107",
+          "display": "107",
+          "label": "Ciudad de Córdoba",
+          "scope": {
+            "level": "municipal",
+            "provinces": [
+              "AR-X"
+            ],
+            "note": "Servicio de Emergencias Médicas Municipal 107, ciudad de Córdoba, 24 horas, los 365 días (cordoba.gob.ar, nota del 26-12-2025)"
+          }
+        },
+        {
+          "type": "phone",
+          "dial": "107",
+          "display": "107",
+          "label": "Jujuy",
+          "scope": {
+            "level": "province",
+            "provinces": [
+              "AR-Y"
+            ],
+            "note": "SAME 107 de la provincia de Jujuy, 24 horas (salud.jujuy.gob.ar, nota del 25-05-2025)"
+          }
+        }
+      ],
+      "coverage": {
+        "level": "region",
+        "provinces": [
+          "AR-C",
+          "AR-B",
+          "AR-X",
+          "AR-Y"
+        ],
+        "note": "Depende de la jurisdicción. Está verificado en la Ciudad de Buenos Aires, en localidades de la provincia de Buenos Aires, en la ciudad de Córdoba y en Jujuy; no es una lista completa ni quiere decir que funcione en todo el país. Confirmá el número local. En cualquier lugar del país, 911."
+      },
+      "hours": null,
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/tema/emergencias",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial: \"107 · SAME Emergencias Médicas. Servicio disponible en Ciudad de Buenos Aires y localidades de la provincia de Buenos Aires.\" Otras páginas oficiales lo muestran en otras jurisdicciones (Gobierno de la Ciudad de Buenos Aires: https://buenosaires.gob.ar/telefonos-utiles ; Municipalidad de Córdoba: https://cordoba.gob.ar/el-servicio-de-emergencias-medicas-municipal-107-cumple-25-anos-de-historia-compromiso-y-vocacion-al-servicio-de-los-cordobeses/ ; Ministerio de Salud de Jujuy: https://salud.jujuy.gob.ar/2025/05/25/el-same-107-celebra-22-anos-al-servicio-de-jujuy/)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06",
+        "notes": "Contradicción entre fuentes oficiales sobre la cobertura: la página nacional lo limita a CABA y localidades de Buenos Aires, y páginas oficiales de Córdoba y Jujuy lo muestran funcionando allí. No se afirma que sea universal ni que se limite a CABA y Buenos Aires: se registra lo verificado por jurisdicción y se recomienda confirmar el número local."
+      },
+      "display": {
+        "emergencyBarOrder": 1
+      }
+    },
+    {
+      "id": "emergencias-911",
+      "name": "Emergencias",
+      "shortName": "Emergencias",
+      "kind": "emergency",
+      "whenToUse": "Emergencias en general y policía; pide ambulancia o presencia de la policía",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "911",
+          "display": "911"
+        }
+      ],
+      "coverage": {
+        "level": "national",
+        "note": "Central de Emergencias Nacional"
+      },
+      "hours": null,
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/tema/emergencias",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial: \"911 · Central de Emergencias Nacional. Llamalos si necesitás pedir una ambulancia de emergencias o presencia de la policía.\" La página no da horario: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      },
+      "display": {
+        "emergencyBarOrder": 2
+      }
+    },
+    {
+      "id": "hospital-odontologia-carrillo",
+      "name": "Hospital de Odontología Dr. Ramón Carrillo",
+      "shortName": "Hospital Carrillo",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541148055521",
+          "display": "4805-5521",
+          "label": "Hospital"
+        }
+      ],
+      "address": {
+        "street": "Sánchez de Bustamante",
+        "number": "2529",
+        "neighborhood": "Recoleta",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 2",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.5844599,
+        "lng": -58.4026497,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-odontologica",
+          "type": "emergency-room",
+          "name": "Guardia odontológica",
+          "hours": {
+            "open24h": true,
+            "note": "Atiende las 24 horas, los 365 días del año."
+          },
+          "cost": "free",
+          "requirements": [],
+          "audience": [
+            "adults",
+            "children",
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+541148056407",
+              "display": "4805-6407",
+              "label": "Guardia"
+            }
+          ],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/gerencia-operativa-de-odontologia/guardias-odontologicas",
+            "note": "Guardias odontológicas de los hospitales de odontología: 24 horas, 365 días, gratuitas. No informa si hace falta turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
+        "note": "Listado de hospitales de odontología (dirección y teléfono)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "Hospital Carrillo",
+        "Odontología Carrillo"
+      ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-odontologia-duenas",
+      "name": "Hospital de Odontología Dr. José Dueñas",
+      "shortName": "Hospital Dueñas",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541149838983",
+          "display": "4983-8983"
+        },
+        {
+          "type": "phone",
+          "dial": "+541149830392",
+          "display": "4983-0392"
+        }
+      ],
+      "address": {
+        "street": "Muñiz",
+        "number": "15",
+        "neighborhood": "Almagro",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 5",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.614634,
+        "lng": -58.4276615,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-odontologica",
+          "type": "emergency-room",
+          "name": "Guardia odontológica",
+          "hours": {
+            "open24h": true,
+            "note": "Atiende las 24 horas, los 365 días del año."
+          },
+          "cost": "free",
+          "requirements": [],
+          "audience": [
+            "adults",
+            "children",
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/gerencia-operativa-de-odontologia/guardias-odontologicas",
+            "note": "Guardias odontológicas de los hospitales de odontología: 24 horas, 365 días, gratuitas. No informa si hace falta turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-de-odontologia-j-duenas"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
+        "note": "Listado de hospitales de odontología (dirección y teléfonos)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "Hospital Dueñas",
+        "Odontología Dueñas"
+      ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-oftalmologico-santa-lucia",
+      "name": "Hospital Oftalmológico Santa Lucía",
+      "shortName": "Hospital Santa Lucía",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541141273100",
+          "display": "4127-3100",
+          "label": "Hospital"
+        }
+      ],
+      "address": {
+        "street": "San Juan",
+        "number": "2021",
+        "neighborhood": "San Cristóbal",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 3",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6227807,
+        "lng": -58.3944603,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-oftalmologica",
+          "type": "emergency-room",
+          "name": "Guardia oftalmológica",
+          "description": "Atención de urgencias de los ojos para adultos y niños, sin necesidad de turno.",
+          "hours": {
+            "open24h": true,
+            "note": "Funciona las 24 hs, los 365 días del año."
+          },
+          "cost": "unknown",
+          "requirements": [],
+          "audience": [
+            "adults",
+            "children"
+          ],
+          "appointment": {
+            "mode": "not-required"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/hospitalsantalucia/guardia-del-hospital-oftalmologico-santa-lucia",
+            "note": "Página de la guardia. Los teléfonos y el email que publica son solo para derivaciones: no se cargan como contacto público. No informa costo."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-hospitales": "hospital-especializado-de-oftalmologia-santa-lucia"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/hospitalsantalucia/contacto",
+        "note": "Página de contacto del hospital (dirección y teléfono general)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": [
+        "Santa Lucía",
+        "Oftalmológico Santa Lucía"
+      ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "intoxicaciones-cni-posadas",
+      "name": "Intoxicaciones",
+      "kind": "urgent-support",
+      "description": "Centro Nacional de Intoxicaciones (Hospital Posadas).",
+      "whenToUse": "Tragó o respiró algo tóxico, medicamentos, productos de limpieza, picaduras o mordeduras venenosas",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "08003330160",
+          "display": "0800-333-0160"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, todos los días del año."
+      },
+      "cost": "free",
+      "source": {
+        "organization": "Hospital Nacional Prof. Alejandro Posadas (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/node/145981",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial del Centro Nacional de Intoxicaciones: \"0800-333-0160 (línea gratuita nacional)\", disponible las 24 horas, todos los días del año."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "linea-102",
+      "name": "Niñez y adolescencia",
+      "shortName": "Niñez",
+      "kind": "urgent-support",
+      "whenToUse": "Derechos de chicos y adolescentes, situaciones de riesgo o maltrato",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "102",
+          "display": "102"
+        }
+      ],
+      "coverage": {
+        "level": "national",
+        "note": "Servicio provincial coordinado con la Nación; ver la nota de verificación."
+      },
+      "hours": null,
+      "cost": "free",
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/noticias/la-linea-102-estara-disponible-en-todas-las-provincias",
+        "retrievedAt": "2026-10-08",
+        "note": "Nota oficial del 27-05-2022: \"estará disponible a partir de julio en todas las provincias del país\" y es \"un servicio telefónico gratuito y confidencial\". Las páginas oficiales consultadas no dan horario: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06",
+        "notes": "Contradicción entre fuentes oficiales: una nota del 31-03-2020 (https://www.argentina.gob.ar/noticias/linea-102-una-herramienta-para-proteger-los-derechos-de-ninos-ninas-y-adolescentes) la ubica en 16 provincias y jurisdicciones; la nota del 27-05-2022 anuncia las 24 jurisdicciones. Se usa la más reciente. Cada provincia opera su propio servicio."
+      },
+      "display": {
+        "emergencyBarOrder": 5
+      }
+    },
+    {
+      "id": "linea-144",
+      "name": "Violencia de género",
+      "shortName": "Violencia",
+      "kind": "urgent-support",
+      "whenToUse": "Orientación, contención y asesoramiento ante violencia de género",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "144",
+          "display": "144"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, los 365 días del año."
+      },
+      "cost": "free",
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/noticias/linea-144-en-10-anos-se-recibieron-mas-de-900-mil-comunicaciones-por-violencia-de-genero",
+        "retrievedAt": "2026-10-08",
+        "note": "Nota oficial del 17-09-2023: \"el servicio funciona de manera gratuita, las 24 horas del día, durante los 365 días de año y en todo el país\"."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      },
+      "display": {
+        "emergencyBarOrder": 3
+      }
+    },
+    {
+      "id": "pami-emergencias-139",
+      "name": "PAMI emergencias",
+      "shortName": "PAMI emergencias · AMBA y Rosario",
+      "kind": "emergency",
+      "whenToUse": "Emergencias médicas de afiliados de PAMI",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "139",
+          "display": "139"
+        }
+      ],
+      "coverage": {
+        "level": "region",
+        "areas": [
+          "amba",
+          "ugl-rosario"
+        ],
+        "note": "Solo afiliados de PAMI del AMBA y de la UGL Rosario. En el resto del país cada afiliado tiene el número de su prestador asignado (se consulta en pami.org.ar/emergencias); si está de viaje, 911."
+      },
+      "hours": null,
+      "audience": [
+        "older-adults"
+      ],
+      "source": {
+        "organization": "INSSJP - PAMI",
+        "url": "https://www.pami.org.ar/emergencias",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial de PAMI: \"Si residís en el área metropolitana de Buenos Aires (AMBA) llamá al 139. Si pertenecés a la UGL Rosario llamá al 139. Si residís en el resto del país ingresá tus datos personales y obtené el número de tu prestador asignado. Si estás de viaje o no te encontrás en tu lugar de residencia, llamá al 911.\" La página no da horario: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06",
+        "notes": "La tabla anterior del chat decía que en el resto del país eran el 107 o el 911: la página de PAMI dice que cada afiliado tiene el número de su prestador. Corregido."
+      }
+    },
+    {
+      "id": "pami-escucha-138",
+      "name": "PAMI",
+      "kind": "orientation",
+      "whenToUse": "PAMI Escucha y Responde: consultas de afiliados (jubilados y pensionados) sobre medicamentos, turnos y autorizaciones",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "138",
+          "display": "138"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, los 365 días del año."
+      },
+      "cost": "free",
+      "audience": [
+        "older-adults"
+      ],
+      "source": {
+        "organization": "INSSJP - PAMI",
+        "url": "https://www.pami.org.ar/contacto",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial de PAMI: \"llamá de forma gratuita al 138. La línea se encuentra disponible en todo el país las 24 horas, los 365 días del año.\""
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "prevencion-suicidio-cas",
+      "name": "Prevención del suicidio",
+      "shortName": "Asistencia en crisis · CABA y GBA",
+      "kind": "urgent-support",
+      "description": "Centro de Asistencia al Suicida (organización sin fines de lucro).",
+      "whenToUse": "Crisis emocional, angustia intensa o ideas de suicidio (Centro de Asistencia al Suicida)",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "135",
+          "display": "135",
+          "scope": {
+            "level": "region",
+            "areas": [
+              "amba"
+            ],
+            "note": "Solo CABA y Gran Buenos Aires"
+          }
+        },
+        {
+          "type": "phone",
+          "dial": "08003451435",
+          "display": "0800-345-1435",
+          "label": "Asistencia en crisis · todo el país",
+          "scope": {
+            "level": "national",
+            "note": "Todo el país: lo mismo que el 135, desde el resto del país"
+          }
+        }
+      ],
+      "coverage": {
+        "level": "national",
+        "note": "El 135 es la línea gratuita desde Capital y Gran Buenos Aires; desde todo el país, 0800-345-1435."
+      },
+      "hours": {
+        "open24h": false,
+        "note": "Atiende de 8:00 a 0:00 (medianoche), no las 24 horas."
+      },
+      "source": {
+        "organization": "Centro de Asistencia al Suicida",
+        "url": "https://www.asistenciaalsuicida.org.ar/horarios-de-atencion",
+        "retrievedAt": "2026-10-08",
+        "note": "Sitio del Centro: \"En nuestra línea de Prevención del Suicidio atendemos de 8:00 a 0:00.\" Teléfonos publicados en https://www.asistenciaalsuicida.org.ar : \"135 (línea gratuita)\", \"(011) 5275-1135\" y \"0800 345 1435 desde todo el país\". La nota de Presidencia de la Nación https://www.argentina.gob.ar/tema/emergencias lista el 135 como prevención del suicidio sin dar alcance ni horario."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06",
+        "notes": "Algunas fuentes secundarias hablan de franjas distintas (por ejemplo, también de 0 a 2): se usa lo que publica el propio Centro. Teléfono (011) 5275-1135 no incluido: no es gratuito desde todo el país."
+      },
+      "display": {
+        "emergencyBarOrder": 4
+      }
+    },
+    {
+      "id": "salud-responde-0800",
+      "name": "Salud Responde",
+      "kind": "orientation",
+      "whenToUse": "Consultas de salud del Ministerio de Salud de la Nación: vacunas, donación de sangre, medicamentos de alto costo, enfermedades respiratorias, lactancia, Chagas",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "08002221002",
+          "display": "0800-222-1002"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": null,
+      "cost": "free",
+      "source": {
+        "organization": "Ministerio de Salud de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/salud/0800saludresponde",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial: líneas con cobertura nacional y llamadas gratuitas. La página no da el horario de esta línea: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "salud-sexual-reproductiva-0800",
+      "name": "Salud sexual",
+      "kind": "orientation",
+      "whenToUse": "Anticoncepción, interrupción del embarazo, identidad de género, violencia obstétrica o sexual; confidencial",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "08002223444",
+          "display": "0800-222-3444"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": null,
+      "cost": "free",
+      "source": {
+        "organization": "Ministerio de Salud de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/salud/0800saludresponde",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial: línea de salud sexual y reproductiva con cobertura nacional, llamadas gratuitas y atención confidencial. La página no da el horario: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "trata-145",
+      "name": "Trata de personas",
+      "kind": "urgent-support",
+      "whenToUse": "Denuncias y ayuda ante trata o explotación",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "145",
+          "display": "145"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": null,
+      "cost": "free",
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/noticias/la-ciudad-de-parana-se-suma-la-campana-de-difusion-de-la-linea-145",
+        "retrievedAt": "2026-10-08",
+        "note": "Nota oficial del 06-01-2022: línea \"anónima y gratuita\", con denuncias \"de los 24 distritos de la Argentina\". La nota no da horario: no se afirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "urgencias-salud-mental-0800",
+      "name": "Urgencias de salud mental",
+      "kind": "urgent-support",
+      "description": "Línea Nacional de Orientación y Apoyo en la Urgencia de Salud Mental (Ministerio de Salud de la Nación, Hospital Nacional Laura Bonaparte).",
+      "whenToUse": "Crisis emocional, angustia intensa, ideas de muerte o de hacerse daño, consumos, situaciones traumáticas",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "08009990091",
+          "display": "0800-999-0091"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, los 365 días del año."
+      },
+      "cost": "free",
+      "costNote": "Atención gratuita y confidencial.",
+      "source": {
+        "organization": "Ministerio de Salud de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/noticias/la-linea-nacional-de-orientacion-y-apoyo-en-la-urgencia-de-salud-mental-funciona-las-24-0",
+        "retrievedAt": "2026-10-08",
+        "note": "Nota oficial del 10-09-2026: atención gratuita y confidencial ante situaciones de urgencia de salud mental en todo el país, las 24 horas, los 365 días. Misma información en https://www.argentina.gob.ar/dispositivo-0800."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    },
+    {
+      "id": "violencia-familiar-sexual-137",
+      "name": "Violencia familiar y sexual",
+      "kind": "urgent-support",
+      "whenToUse": "Víctimas de violencia familiar o sexual",
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "137",
+          "display": "137"
+        }
+      ],
+      "coverage": {
+        "level": "national"
+      },
+      "hours": {
+        "open24h": true,
+        "note": "Atiende las 24 horas, los 365 días del año."
+      },
+      "cost": "free",
+      "source": {
+        "organization": "Presidencia de la Nación (argentina.gob.ar)",
+        "url": "https://www.argentina.gob.ar/violencia-familiar-y-sexual",
+        "retrievedAt": "2026-10-08",
+        "note": "Página oficial: servicio disponible las 24 horas, los 365 días del año, \"desde todo el país y de manera gratuita\"."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-08",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-06"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "note": "Puntos de CONTROL independientes: geocodificación de la dirección con USIG (normalizador del Gobierno de la Ciudad de Buenos Aires). No son datos publicados ni se usan para producir coordenadas: solo comprueban que la reproyección EPSG:9498→4326 cae donde está la dirección (tolerancia: la de una geocodificación por dirección, no la de un relevamiento).",
+  "service": "https://servicios.usig.buenosaires.gob.ar/normalizar/",
+  "retrievedAt": "2026-10-07",
+  "toleranceMeters": 150,
+  "points": [
+    {
+      "key": "hospital-especializado-de-oftalmologia-santa-lucia",
+      "address": "San Juan Av. 2021",
+      "usig": {
+        "direccion": "SAN JUAN AV. 2021, CABA",
+        "lat": -34.622832,
+        "lng": -58.394469
+      }
+    },
+    {
+      "key": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional",
+      "address": "Sanchez De Bustamante 2529",
+      "usig": {
+        "direccion": "SANCHEZ DE BUSTAMANTE 2529, CABA",
+        "lat": -34.584427,
+        "lng": -58.402698
+      }
+    },
+    {
+      "key": "hospital-especializado-de-odontologia-j-duenas",
+      "address": "Muñiz 15",
+      "usig": {
+        "direccion": "MUÑIZ 15, CABA",
+        "lat": -34.614694,
+        "lng": -58.42757
+      }
+    },
+    {
+      "key": "hospital-de-pediatria-dr-j-garrahan",
+      "address": "Combate De Los Pozos 1881",
+      "usig": {
+        "direccion": "COMBATE DE LOS POZOS 1881, CABA",
+        "lat": -34.630835,
+        "lng": -58.391528
+      }
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-c-argerich",
+      "address": "Pi Y Margall 750",
+      "usig": {
+        "direccion": "PI Y MARGALL 750, CABA",
+        "lat": -34.627784,
+        "lng": -58.366028
+      }
+    },
+    {
+      "key": "hospital-general-de-agudos-dr-i-pirovano",
+      "address": "Monroe Av. 3555",
+      "usig": {
+        "direccion": "MONROE AV. 3555, CABA",
+        "lat": -34.565108,
+        "lng": -58.470986
+      }
+    }
+  ]
+}

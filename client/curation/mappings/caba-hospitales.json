@@ -1,0 +1,102 @@
+{
+  "source": "caba-hospitales",
+  "status": "draft",
+  "approvedBy": null,
+  "approvedAt": null,
+  "notes": "PROPUESTA para revisión editorial (nada está aprobado). 'Basicas - Criticas - Otras' no es una especialidad y NO se convierte en prestación. Las guardias de los Hospitales Generales de Agudos no salen de esta tabla sino de una fuente oficial complementaria: curation/supplements/caba-hospitales.claims.json.",
+  "facilityTypes": {
+    "Hospital General de Agudos": {
+      "facilityType": "hospital",
+      "approved": false,
+      "proposal": "approvable"
+    },
+    "Hospital de Niños": {
+      "facilityType": "hospital",
+      "approved": false,
+      "proposal": "approvable"
+    },
+    "Hospital Especializado": {
+      "facilityType": "hospital",
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Incluye institutos y talleres que no son hospitales (Zoonosis, Talleres Protegidos…): revisar caso por caso."
+    }
+  },
+  "specialties": {
+    "Odontologia": {
+      "serviceType": "dentistry",
+      "approved": false,
+      "proposal": "approvable"
+    },
+    "Oftalmologia": {
+      "serviceType": "ophthalmology",
+      "approved": false,
+      "proposal": "approvable"
+    },
+    "Salud Mental": {
+      "serviceType": "mental-health-care",
+      "approved": false,
+      "proposal": "approvable"
+    },
+    "Pediatria": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Materno-Infantil": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Infectologia": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Oncologia": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Neumonologia": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Quemados": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Enf. Apar. Digestivo": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Med. Fisica - Rehabilitacion": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Zoonosis": {
+      "serviceType": null,
+      "approved": false,
+      "proposal": "doubtful",
+      "note": "Sin tipo de prestación equivalente: no se publica como prestación."
+    },
+    "Basicas - Criticas - Otras": {
+      "serviceType": null,
+      "approved": false,
+      "note": "No es una especialidad: es la clasificación de los hospitales generales.",
+      "proposal": "doubtful"
+    }
+  }
+}
