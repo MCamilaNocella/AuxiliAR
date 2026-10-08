@@ -62,6 +62,10 @@ test("what the bot must not cover: a small control under it counts, the corner o
   // a wide button: covered at its end, not its middle, still matters when it is a quarter or more
   const wide = box(16, 740, 374, 790)
   assert.equal(avoid.overlapMatters(box(300, 700, 372, 772), wide), false, "a fifth of it")
+  // the bubble is stricter with controls: touching the end of a button is already too much; a big card is still judged as before
+  assert.equal(avoid.overlapMatters(box(300, 700, 372, 772), wide, true), true)
+  assert.equal(avoid.overlapMatters(box(300, 700, 372, 772), card, true), false)
+  assert.equal(avoid.overlapMatters(box(300, 700, 372, 772), box(16, 740, 302, 790), true), false, "2 px is not an overlap that matters")
   assert.equal(avoid.overlapMatters(box(200, 700, 372, 772), wide), true, "covers its right half")
 })
 

@@ -28,11 +28,11 @@ const isShown = (element: Element) => {
 }
 
 /** Whether pressing something is made harder by a bot occupying `bot`: the bot's own elements don't count */
-const coversInteractive = (bot: Box, own: Element) => {
+const coversInteractive = (bot: Box, own: Element, strict = false) => {
   for (const element of document.querySelectorAll(INTERACTIVE_SELECTOR)) {
     if (own.contains(element)) continue
     const box = boxOf(element)
-    if (!onScreen(box) || !overlapMatters(bot, box) || !isShown(element)) continue
+    if (!onScreen(box) || !overlapMatters(bot, box, strict) || !isShown(element)) continue
     return true
   }
   return false
@@ -60,7 +60,7 @@ export const useAuxiAvoidance = (measureRef: RefObject<HTMLElement | null>, bubb
       const urgent = [...document.querySelectorAll(`[${AVOID_ATTRIBUTE}]`)].some((element) => onScreen(boxOf(element)))
       const botBlocked = modal || urgent || coversInteractive(boxOf(measure), measure)
       const bubble = bubbleRef.current
-      const bubbleBlocked = botBlocked || (bubble !== null && coversInteractive(boxOf(bubble), measure))
+      const bubbleBlocked = botBlocked || (bubble !== null && coversInteractive(boxOf(bubble), measure, true))
       setAvoidance((previous) => (previous.botBlocked === botBlocked && previous.bubbleBlocked === bubbleBlocked ? previous : { botBlocked, bubbleBlocked }))
     }
 

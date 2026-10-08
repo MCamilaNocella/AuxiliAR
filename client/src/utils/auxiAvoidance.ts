@@ -19,13 +19,17 @@ const intersection = (a: Box, b: Box): Box => ({ left: Math.max(a.left, b.left),
  * Whether covering `element` with `bot` gets in the way: a small control (up to 64 px) with any overlap, a big one
  * (a card, a wide button) when the bot sits on its center or on at least a quarter of it. The corner of a big card
  * under the bot is not a problem; a phone number or a chevron under it is.
+ * `strict` is for the bubble, which has text and no reason to touch a control: a control (up to 80 px tall) with an
+ * overlap of 4 px or more in both directions already counts.
  */
-export const overlapMatters = (bot: Box, element: Box) => {
-  const covered = area(intersection(bot, element))
+export const overlapMatters = (bot: Box, element: Box, strict = false) => {
+  const overlap = intersection(bot, element)
+  const covered = area(overlap)
   if (covered === 0) return false
   const width = element.right - element.left
   const height = element.bottom - element.top
   if (width <= 64 && height <= 64) return true
+  if (strict && height <= 80 && overlap.right - overlap.left >= 4 && overlap.bottom - overlap.top >= 4) return true
   const centerX = (element.left + element.right) / 2
   const centerY = (element.top + element.bottom) / 2
   const centered = centerX >= bot.left && centerX <= bot.right && centerY >= bot.top && centerY <= bot.bottom
