@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef } from "react"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { Auxi } from "../Auxi"
 import { ChatEmergencyCalls } from "../ChatEmergencyCalls"
 import { ChatInput } from "../ChatInput"
@@ -35,7 +36,7 @@ export const ChatConversation = ({ onNavigate, onStartedChange }: ChatConversati
       <li className="flex flex-col items-center gap-2 pb-2 text-center">
         {/* Nudged left: the waving hand fills the left side of the drawing, this centers Auxi's body */}
         <Auxi className="size-24 -translate-x-[10%]" />
-        <span className="text-sm text-muted">No reemplazo una consulta médica. En una emergencia, llamá al 107.</span>
+        <span className="text-sm text-muted">No reemplazo una consulta médica. En una emergencia, llamá al {GENERAL_EMERGENCY_NUMBER}.</span>
       </li>
       {messages.map((message) => (
         <Fragment key={message.id}>

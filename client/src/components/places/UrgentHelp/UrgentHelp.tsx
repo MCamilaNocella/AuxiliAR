@@ -1,61 +1,60 @@
 import { Phone } from "lucide-react"
-import { EMERGENCY_NUMBERS } from "@/data/emergency"
+import { describeHelpContacts, describeHelpLine, telHref } from "@/utils/helpLines"
+import type { HelpLineView } from "@/utils/helpLines"
 import type { MentalHealthContext } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /*
- * The numbers are the ones of the emergency bar (src/data/emergency.ts): they are looked up there by number, never typed
- * again here, so there is one list. What emergency.ts does not say - where each one works - comes from the official sources
- * (argentina.gob.ar, consulted 2026-10-07): 911 works all over the country; 107 (SAME) only in CABA and in localities of the
- * province of Buenos Aires; 135 (Centro de Asistencia al Suicida) is the free line from CABA and Gran Buenos Aires.
- * (numeros.md, the chat's table, says that 107 is nationwide: that is not what the official page says. See the proposal
- * for a single structured source.) Nothing is said about hours except for the 911.
+ * Nothing about a number is written here: which numbers, where each one works, when it answers and whether it is free
+ * come from the verified help lines (data/resources/lines/nacional.json) through describeHelpLine. If the dataset says
+ * less, this card says less. The order is the one that helps most in a crisis: the general emergency, the national
+ * mental health line, the suicide prevention line (with where it works and its hours) and, last, the ambulance, which
+ * exists by jurisdiction.
  */
-const NATIONWIDE = [{ number: "911", what: "Emergencias", where: "Funciona en todo el país: pide ambulancia o policía." }]
-const AMBULANCE = { number: "107", what: "Ambulancia (SAME)", where: "Está disponible en CABA y en localidades de la provincia de Buenos Aires. En otros lugares, pedí la ambulancia al 911." }
-const CRISIS_LINE = { number: "135", what: "Hablar con alguien ahora (prevención del suicidio)", where: "Atiende solo en CABA y Gran Buenos Aires." }
+const first = () => [describeHelpLine("emergencias-911"), describeHelpLine("urgencias-salud-mental-0800")]
+const more = () => describeHelpContacts("prevencion-suicidio-cas")
+const ambulance = () => describeHelpLine("emergencias-107")
 
-const dialOf = (number: string) => EMERGENCY_NUMBERS.find((entry) => entry.number === number)?.number
-
-const CallLink = ({ number, what, primary = false }: { number: string, what: string, primary?: boolean }) => (
+const CallLink = ({ line, primary = false }: { line: HelpLineView, primary?: boolean }) => (
   <a
-    href={`tel:${number}`}
-    aria-label={`Llamar al ${number}: ${what}`}
+    href={telHref(line.dial)}
+    aria-label={`Llamar al ${line.display}: ${line.name}`}
     className={`inline-flex min-h-12 items-center gap-2 rounded-xl border px-4 py-2 text-lg font-extrabold no-underline ${primary ? "border-brand bg-brand text-on-brand" : "border-control-line bg-field text-ink"}`}
   >
     <Phone aria-hidden="true" className="size-5 shrink-0" />
-    <span>{number}</span>
-    <span className="text-base font-semibold">{what}</span>
+    <span>{line.display}</span>
+    <span className="text-base font-semibold">{line.name}</span>
   </a>
 )
 
-const Card = ({ crisis }: { crisis: boolean }) => {
-  const nationwide = NATIONWIDE.filter(({ number }) => dialOf(number))
-  const ambulance = dialOf(AMBULANCE.number) ? AMBULANCE : null
-  const line = dialOf(CRISIS_LINE.number) ? CRISIS_LINE : null
+/** One number with what the sources say about it, under it */
+const Line = ({ line, primary = false }: { line: HelpLineView, primary?: boolean }) => {
+  const facts = [line.where, line.hours, line.cost].filter(Boolean)
   return (
-    <section aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
+    <div className="flex flex-col items-start gap-1">
+      <CallLink line={line} primary={primary} />
+      {facts.length > 0 && <p className="m-0 text-ink-soft">{facts.map((fact) => (fact?.endsWith(".") ? fact : `${fact}.`)).join(" ")}</p>}
+    </div>
+  )
+}
+
+const Card = ({ crisis }: { crisis: boolean }) => {
+  const [general, national] = first()
+  const [caba, nationalAlternative] = more()
+  const same = ambulance()
+  return (
+    <section {...(crisis ? { "data-auxi-avoid": "" } : {})} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
       <h3 id="urgent-help-title" className="m-0 text-lg font-extrabold">
         {crisis ? "Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora" : "Ayuda urgente"}
       </h3>
-      <p className="m-0">Si hay riesgo para tu vida o la de otra persona, llamá ya al 911: es gratuito, atiende las 24 horas y funciona en todo el país.</p>
-      <div className="flex flex-col items-start gap-1">
-        {nationwide.map(({ number, what }) => (
-          <CallLink key={number} number={number} what={what} primary />
-        ))}
-      </div>
-      {ambulance && (
-        <div className="flex flex-col items-start gap-1">
-          <CallLink number={ambulance.number} what={ambulance.what} />
-          <p className="m-0 text-ink-soft">{ambulance.where}</p>
-        </div>
-      )}
-      {line && (
-        <div className="flex flex-col items-start gap-1">
-          <CallLink number={line.number} what={line.what} />
-          <p className="m-0 text-ink-soft">{line.where} Si estás en otro lugar, llamá al 911.</p>
-        </div>
-      )}
+      <p className="m-0">Si hay riesgo para tu vida o la de otra persona, llamá ya al {general.display}.</p>
+      <Line line={general} primary />
+      <p className="m-0 font-bold">Para hablar con alguien en una crisis emocional:</p>
+      <Line line={national} primary />
+      <Line line={caba} />
+      <Line line={nationalAlternative} />
+      <p className="m-0 font-bold">Ambulancia:</p>
+      <Line line={same} />
       <button type="button" onClick={revealEmergencies} className="inline-flex min-h-11 w-fit cursor-pointer items-center rounded-xl border border-control-line bg-field px-4 py-2 font-extrabold">
         Ver todos los números de emergencia
       </button>

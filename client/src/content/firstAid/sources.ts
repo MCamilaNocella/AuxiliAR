@@ -1,3 +1,4 @@
+import { getHelpLine, lineContact } from "@/data/resources"
 import type { GuideSource } from "./types"
 
 /** Official sources of the guides: Ministerio de Salud de la Nación, Dirección Nacional de Emergencias Sanitarias (DINESA) */
@@ -54,7 +55,7 @@ export const CABA_ALERGIAS: GuideSource = {
 }
 
 /** Centro Nacional de Intoxicaciones (Hospital Posadas): free line given by the Manual and by the app's help numbers */
-export const POISON_CENTER = { number: "0800-333-0160", tel: "08003330160" }
+export const POISON_CENTER = { number: lineContact(getHelpLine("intoxicaciones-cni-posadas")).display, tel: lineContact(getHelpLine("intoxicaciones-cni-posadas")).dial }
 
 /** The last time the guides were compared with these sources */
 export const CHECKED_AT = "2026-10-07"

@@ -488,7 +488,7 @@ test("with nothing verified about when to go, the phone to call is the first thi
 /* ── Mental health: orientation around the results, urgent help one tap away in a crisis ── */
 
 const { UrgentHelp } = await vite.ssrLoadModule("/src/components/places/UrgentHelp/index.ts")
-const { EMERGENCY_NUMBERS } = await vite.ssrLoadModule("/src/data/emergency.ts")
+const lineFile = await readFile(join(root, "src/data/resources/lines/nacional.json"), "utf8")
 
 test("what the search says about mental health: a crisis is told apart from looking for a psychologist", () => {
   const context = (query) => places.mentalHealthContextOf({ ...EMPTY, ...query })
@@ -507,33 +507,34 @@ test("what the search says about mental health: a crisis is told apart from look
   assert.deepEqual(ids(ask({ text: "quiero morirme" })), [])
 })
 
-test("urgent help: numbers from the emergency bar, where each works said, no clinical advice", async () => {
+test("urgent help: every number, where it works, its hours and its cost come from the verified help lines, and no clinical advice", () => {
   const draw = (context) => renderToStaticMarkup(createElement(UrgentHelp, { context }))
   const crisis = draw("crisis")
   const body = text(crisis)
   assert.ok(body.includes("Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora"))
-  // only what the official sources say: the 911 is free, 24 h and nationwide; the 107 is not (CABA and localities of Buenos Aires); nothing about the hours of the 135
-  assert.ok(body.includes("llamá ya al 911: es gratuito, atiende las 24 horas y funciona en todo el país."))
-  assert.ok(body.includes("Está disponible en CABA y en localidades de la provincia de Buenos Aires. En otros lugares, pedí la ambulancia al 911."))
-  assert.ok(!/107[^.]*(todo el país|24 horas)/.test(body), "the 107 is not said to be nationwide or 24 h")
-  assert.ok(!body.includes("135 atiende las 24"))
-  // direct calls, and only to numbers that the emergency bar has
+  assert.ok(body.includes("Si hay riesgo para tu vida o la de otra persona, llamá ya al 911."))
+  // direct calls, in this order, and only to numbers of the verified lines (and of the emergency bar for those it has)
   const dialed = [...crisis.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1])
-  assert.deepEqual(dialed, ["911", "107", "135"])
-  for (const number of dialed) assert.ok(EMERGENCY_NUMBERS.some((entry) => entry.number === number), number + " is not in emergency.ts")
-  // the 135 says where it works, and what to do elsewhere
-  assert.ok(body.includes("Atiende solo en CABA y Gran Buenos Aires. Si estás en otro lugar, llamá al 911."))
+  assert.deepEqual(dialed, ["911", "08009990091", "135", "08003451435", "107"])
+  const verified = new Set(JSON.parse(lineFile).resources.flatMap((line) => line.contacts.map((contact) => contact.dial)))
+  for (const dial of dialed) assert.ok(verified.has(dial), dial + " is not in the verified help lines")
+  // what the sources say, and nothing else
+  assert.ok(body.includes("Funciona en todo el país"), "911 and the national line: national")
+  assert.ok(body.includes("Atiende las 24 horas, los 365 días del año.") && body.includes("Atención gratuita y confidencial"), "0800-999-0091: 24 h, free")
+  assert.ok(body.includes("Solo CABA y Gran Buenos Aires.") && body.includes("Atiende de 8:00 a 0:00 (medianoche), no las 24 horas."), "135 and its hours")
+  assert.ok(body.includes("Todo el país: lo mismo que el 135, desde el resto del país."), "0800-345-1435: the national alternative")
+  // the 107 is neither national nor only CABA and Buenos Aires: it depends on the jurisdiction, confirm the local number, 911 is the general one
+  assert.ok(body.includes("Depende de la jurisdicción") && body.includes("Confirmá el número local") && body.includes("En cualquier lugar del país, 911"))
+  assert.ok(!/107[^.]*(todo el país|24 horas)/.test(body), "the 107 is not said to be nationwide or 24 h")
+  assert.ok(!/solo (en )?CABA y (en )?(localidades de )?(la provincia de )?Buenos Aires/i.test(body), "the 107 is not limited to CABA and Buenos Aires")
+  assert.ok(!body.includes("911 atiende las 24") && !/911[^.]*24 horas/.test(body), "no hours are claimed for the 911: its source does not give them")
   assert.ok(body.includes("Ver todos los números de emergencia"))
   assert.ok(!/diagn[oó]stic|medicaci[oó]n|tratamiento|dosis|pastilla/i.test(body), "no clinical advice")
   // the usual search: a calm line that opens to the same numbers
   const habitual = draw("habitual")
   assert.ok(text(habitual).includes("Si necesitás ayuda urgente ahora, tocá acá") && habitual.includes("<details"))
-  assert.deepEqual([...habitual.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1]), ["911", "107", "135"])
+  assert.deepEqual([...habitual.matchAll(/href="tel:([0-9]+)"/g)].map((match) => match[1]), dialed)
   assert.equal(draw(null), "")
-  // the scope of the 135 and the 911 agrees with the table the chat uses. The table says the 107 is nationwide; the official page says it is not, and the card follows the official page
-  const numeros = await readFile(join(root, "../server/src/main/resources/prompts/numeros.md"), "utf8")
-  assert.ok(numeros.includes("| 135 | Prevención del suicidio | Solo CABA y Gran Buenos Aires |"), "numeros.md no longer says that the 135 is only for CABA and Gran Buenos Aires")
-  assert.ok(numeros.includes("| 911 | Emergencias | Todo el país |"))
 })
 
 test("the explorer: urgent help first in a crisis, a calm line for a usual search, nothing otherwise - and the results stay", () => {

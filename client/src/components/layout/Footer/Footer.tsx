@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { PATHS } from "@/router/paths"
 
 export const Footer = () => (
@@ -10,7 +11,7 @@ export const Footer = () => (
       </p>
       <p className="m-0 text-pretty">
         AuxiliAR no reemplaza la atención médica ni psicológica profesional. Ante una emergencia, llamá al{" "}
-        <b className="text-ink">911</b> o al <b className="text-ink">107</b>.
+        <b className="text-ink">{GENERAL_EMERGENCY_NUMBER}</b>.
       </p>
       <p className="m-0">
         Información verificada de fuentes oficiales ·{" "}

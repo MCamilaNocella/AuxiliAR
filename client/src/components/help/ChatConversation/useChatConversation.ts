@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { sendChat, type ChatTurn } from "@/api/chat"
-import { EMERGENCY_NUMBERS } from "@/data/emergency"
+import { BASIC_EMERGENCY_NUMBERS, EMERGENCY_NUMBERS } from "@/data/emergency"
 import { loadProfile, saveProfile } from "@/utils/profileStorage"
 import {
   CONNECTION_ERROR_REPLY,
@@ -13,9 +13,6 @@ import {
   WORKING_MESSAGES,
 } from "./ChatConversation.constants"
 import type { Message, MessageDraft } from "./ChatConversation.types"
-
-/** Fallback when Auxi says it's an emergency but picks no number: the two that work everywhere */
-const BASIC_EMERGENCY_NUMBERS = EMERGENCY_NUMBERS.filter(({ number }) => number === "107" || number === "911")
 
 let lastId = 0
 const withId = (draft: MessageDraft): Message => ({ ...draft, id: ++lastId })
