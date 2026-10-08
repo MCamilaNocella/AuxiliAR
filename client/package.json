@@ -20,6 +20,7 @@
     "structure:test": "node --test scripts/structure.test.mjs",
     "mental:test": "node --test scripts/mental-health.test.mjs",
     "sexual:test": "node --test scripts/sexual-health.test.mjs",
+    "animal:test": "node --test scripts/animal-health.test.mjs",
     "emergency:test": "node --test scripts/emergency-lines.test.mjs scripts/emergency-consumers.test.mjs scripts/emergency-buttons.test.mjs",
     "lines:due": "node scripts/lines-review.mjs",
     "help:test": "node --test scripts/help-bot.test.mjs"

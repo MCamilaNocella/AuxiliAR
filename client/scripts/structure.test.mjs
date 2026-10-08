@@ -52,11 +52,11 @@ test("the home has the six approved accesses, in order, each one going where it 
   assert.ok(text(html).includes("¿Qué necesitás hoy?"))
 })
 
-test("every card has a clear description, and the ones without published information (only Salud animal now) say 'Próximamente'", () => {
+test("every card has a clear description, and none says 'Próximamente' now that every category has published information", () => {
   for (const category of CATEGORIES) assert.ok(category.description.length > 15, category.title)
   const html = render(Categories)
   const soon = CATEGORIES.filter(({ preparing }) => preparing).map(({ title }) => title)
-  assert.deepEqual(soon, ["Salud animal"])
+  assert.deepEqual(soon, [])
   assert.equal([...html.matchAll(/Próximamente/g)].length, soon.length)
   // the others have content: Encontrar atención, Cuidar mi salud and Primeros auxilios are not marked
   for (const [title] of HOME.filter(([name]) => !soon.includes(name))) assert.ok(!CATEGORIES.find((category) => category.title === title).preparing, title)
@@ -78,7 +78,7 @@ test("no empty or provisional page is visible: no 'Sección N', no 'en construcc
   }
   const home = text(render(Categories))
   assert.ok(!/en construcci[oó]n/i.test(home) && !/Sección \d/.test(home))
-  for (const url of ["/temas/animales", "/sobre-auxiliar"]) {
+  for (const url of ["/temas/salud-mental", "/temas/esi", "/temas/animales", "/sobre-auxiliar"]) {
     const page = text(render(Category, url))
     assert.ok(!/en construcci[oó]n/i.test(page) && !/Sección \d/.test(page), url)
   }
@@ -112,10 +112,10 @@ test("a category without published information shows one honest page, with no se
 })
 
 test("the page of a category without information links only to what exists", () => {
-  const links = (category) => hrefs(render(CategoryPreparing, "/", { preparing: category.preparing }))
-  const byTitle = (title) => CATEGORIES.find((category) => category.title === title)
-  assert.deepEqual(links(byTitle("Salud animal")), [])
-  assert.ok(!text(render(CategoryPreparing, "/", { preparing: byTitle("Salud animal").preparing })).includes("Mientras tanto"))
+  // no category is in preparation any more: the page is checked with a fixture, because the component stays for the next category
+  const fixture = { will: "Va a reunir información de ejemplo.", meanwhile: [{ label: "Ejemplo", to: "/centros" }] }
+  assert.deepEqual(hrefs(render(CategoryPreparing, "/", { preparing: fixture })), ["/centros"])
+  assert.ok(!text(render(CategoryPreparing, "/", { preparing: { ...fixture, meanwhile: [] } })).includes("Mientras tanto"))
 })
 
 test("the filters those links open exist in the map", async () => {

@@ -29,13 +29,14 @@ class ContentCatalogTest {
 
     @Test
     void knowsWhichPagesHaveContent() {
-        // Encontrar atención (its map and "Sobre los datos"), Salud mental and Salud sexual y ESI (their three sections each), Primeros auxilios and
-        // Sobre AuxiliAR have a summary; the rest has none yet. Update this list when another section gets one
+        // Encontrar atención (its map and "Sobre los datos"), Salud mental, Salud sexual y ESI and Salud animal (their three sections each),
+        // Primeros auxilios and Sobre AuxiliAR have a summary. Update this list when another section gets one
         assertThat(catalog.pages()).filteredOn(ContentPage::hasInfo).extracting(ContentPage::path)
                 .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1", "/centros?seccion=section-2",
                         "/temas/salud-mental", "/temas/salud-mental?seccion=section-1", "/temas/salud-mental?seccion=section-2",
                         "/temas/salud-mental?seccion=section-3",
                         "/temas/esi", "/temas/esi?seccion=section-1", "/temas/esi?seccion=section-2", "/temas/esi?seccion=section-3",
+                        "/temas/animales", "/temas/animales?seccion=section-1", "/temas/animales?seccion=section-2", "/temas/animales?seccion=section-3",
                         "/primeros-auxilios", "/primeros-auxilios?seccion=section-1",
                         "/sobre-auxiliar", "/sobre-auxiliar?seccion=section-1");
     }
