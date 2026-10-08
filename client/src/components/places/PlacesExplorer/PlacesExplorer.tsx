@@ -7,7 +7,7 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
@@ -251,7 +251,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
           />
           <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
           <FreeFilter count={facets.free} checked={freeOn} onChange={setFree} />
-          {activeFilters.length > 0 && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
+          {activeFilters.length > 0 && hasVisibleCounts(facets) && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}
 

@@ -547,3 +547,15 @@ test("the explorer: urgent help first in a crisis, a calm line for a usual searc
   const other = render("/centros?vista=lista&buscar=odontologia")
   assert.ok(!text(other).includes("ayuda urgente") && !text(other).includes("pedí ayuda ahora"))
 })
+
+/* ── Explanations only where there is something to explain ── */
+
+test("the note about the numbers is shown only when some filter shows numbers", () => {
+  const facetsOf = (query) => places.getPlaceFacets(real, DAY, { ...EMPTY, ...query })
+  assert.equal(places.hasVisibleCounts(facetsOf({ province: "AR-C" })), true)
+  assert.equal(places.hasVisibleCounts(facetsOf({})), true)
+  // a province with no places loaded: no options, no numbers, so no note about them
+  assert.equal(places.hasVisibleCounts(places.getPlaceFacets([], DAY, { ...EMPTY, province: "AR-B" })), false)
+  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 0 }), false)
+  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 2 }), true)
+})

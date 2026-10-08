@@ -192,6 +192,9 @@ export type PlaceFacets = {
   free: number
 }
 
+/** Whether any option of the filters shows a number: the note that explains the numbers only makes sense then */
+export const hasVisibleCounts = (facets: PlaceFacets) => facets.categories.length > 0 || facets.types.length > 0 || facets.zones.length > 0 || facets.free > 0
+
 const tally = <T>(groups: T[][]): PlaceFacet<T>[] => {
   const counts = new Map<T, number>()
   for (const values of groups) for (const value of new Set(values)) counts.set(value, (counts.get(value) ?? 0) + 1)
