@@ -29,8 +29,20 @@ class ContentCatalogTest {
 
     @Test
     void knowsWhichPagesHaveContent() {
-        // Every section is still "en construcción": update this test when the first one gets a summary
-        assertThat(catalog.pages()).noneMatch(ContentPage::hasInfo);
+        // Centros de atención is the first category with real content (its map and "Sobre los datos"); the rest is still
+        // "en construcción". Update this list when another section gets a summary
+        assertThat(catalog.pages()).filteredOn(ContentPage::hasInfo).extracting(ContentPage::path)
+                .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1", "/centros?seccion=section-2");
+    }
+
+    @Test
+    void findsTheCentersCategoryAndItsDataSection() {
+        assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Centros de atención");
+        assertThat(catalog.findByPath("/centros?seccion=section-2")).hasValueSatisfying(page -> {
+            assertThat(page.title()).isEqualTo("Centros de atención › Sobre los datos");
+            assertThat(page.hasInfo()).isTrue();
+            assertThat(page.summary()).contains("verifica").contains("gratuito").contains("fecha de verificación");
+        });
     }
 
     @Test

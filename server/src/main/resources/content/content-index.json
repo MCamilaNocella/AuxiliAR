@@ -30,9 +30,23 @@
   {
     "title": "Centros de atención",
     "path": "/centros",
-    "summary": "Hospitales cerca. Hospitales, centros de salud y guardias cerca tuyo",
+    "summary": "Hospitales cerca. Hospitales, centros de salud y guardias cerca tuyo Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires. Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
     "firstAid": false,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Centros de atención › Mapa AuxiliAR",
+    "path": "/centros?seccion=section-1",
+    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Centros de atención › Sobre los datos",
+    "path": "/centros?seccion=section-2",
+    "summary": "Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
+    "firstAid": false,
+    "hasInfo": true
   },
   {
     "title": "Más recursos",
