@@ -44,9 +44,30 @@
   {
     "title": "Salud animal",
     "path": "/temas/animales",
-    "summary": "Cuidados preventivos y orientación veterinaria. Estamos preparando esta información con fuentes oficiales",
+    "summary": "Cuidados preventivos y orientación veterinaria. Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales Campañas y servicios municipales de vacunación antirrábica y castración de perros y gatos que la página oficial de cada municipio informa como gratuitos (Ciudad de Buenos Aires, Rosario, Córdoba, Salta), y los que todavía no están confirmados. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Cómo buscar atención veterinaria gratuita para perros y gatos: consultar a la municipalidad o al centro de zoonosis, qué preguntar y por qué un hospital universitario no es gratuito por ser público. No hay guardias gratuitas confirmadas.",
     "firstAid": false,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Salud animal › Vacunación y castración gratuitas",
+    "path": "/temas/animales?seccion=section-1",
+    "summary": "Campañas y servicios municipales de vacunación antirrábica y castración de perros y gatos que la página oficial de cada municipio informa como gratuitos (Ciudad de Buenos Aires, Rosario, Córdoba, Salta), y los que todavía no están confirmados. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud animal › Cuidado y prevención",
+    "path": "/temas/animales?seccion=section-2",
+    "summary": "Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud animal › Atención veterinaria gratuita",
+    "path": "/temas/animales?seccion=section-3",
+    "summary": "Cómo buscar atención veterinaria gratuita para perros y gatos: consultar a la municipalidad o al centro de zoonosis, qué preguntar y por qué un hospital universitario no es gratuito por ser público. No hay guardias gratuitas confirmadas.",
+    "firstAid": false,
+    "hasInfo": true
   },
   {
     "title": "Primeros auxilios",

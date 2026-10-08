@@ -1,2 +1,4 @@
-/** Animales · Sección 1 — placeholder until the real content is written */
-export const Section1 = () => <p className="text-muted">Sección en construcción.</p>
+import { lazyContent } from "@/components/health/LazyContent"
+
+/** Salud animal · section 1 — see Section1.content.tsx (downloaded when the section is opened) */
+export const Section1 = lazyContent(() => import("./Section1.content"))
