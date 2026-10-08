@@ -17,7 +17,7 @@ type PlaceDetailProps = {
 
 const NO_IDS: readonly string[] = []
 
-const ContactLink = ({ contact }: { contact: Contact }) => {
+const ContactLink = ({ contact, prominent = false }: { contact: Contact, prominent?: boolean }) => {
   const isWhatsApp = contact.type === "whatsapp"
   const Icon = isWhatsApp ? MessageCircle : Phone
   const action = isWhatsApp ? "Escribir por WhatsApp a" : "Llamar a"
@@ -26,7 +26,7 @@ const ContactLink = ({ contact }: { contact: Contact }) => {
       href={contactHref(contact)}
       aria-label={`${action} ${contact.label ? `${contact.label}: ` : ""}${contact.display}`}
       {...(isWhatsApp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-control-line bg-field px-3 py-2 font-bold no-underline"
+      className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 font-bold no-underline ${prominent ? "min-h-12 border-brand bg-brand text-lg text-on-brand" : "min-h-11 border-control-line bg-field"}`}
     >
       <Icon aria-hidden="true" className="size-5 shrink-0" />
       <span>{contact.label ? `${contact.label}: ${contact.display}` : contact.display}</span>
@@ -168,6 +168,8 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
     }
   }
 
+  // The phone to call first when there is nothing verified about when to go: the first one that is a phone (a WhatsApp is not a call)
+  const callFirst = view.contacts.find((contact) => contact.type !== "whatsapp")
   const address = place.address
   const addressLine = address ? [streetLine(address), address.neighborhood, address.locality].filter(Boolean).join(", ") : ""
 
@@ -210,6 +212,19 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
           {view.highlights.length > 0 && (
             <div className="mt-3">
               <HighlightBadges items={view.highlights} />
+            </div>
+          )}
+          {view.availabilityNotice && (
+            <div role="note" className="mt-4 flex flex-col items-start gap-3 rounded-xl border-2 border-line-strong bg-surface-alt p-4">
+              <p className="m-0 font-bold">{view.availabilityNotice}</p>
+              {callFirst ? (
+                <>
+                  <ContactLink contact={callFirst} prominent />
+                  {view.contacts.length > 1 && <p className="m-0 text-ink-soft">Hay más contactos más abajo.</p>}
+                </>
+              ) : (
+                <p className="m-0 text-ink-soft">Por ahora no tenemos un teléfono verificado de este lugar.</p>
+              )}
             </div>
           )}
 

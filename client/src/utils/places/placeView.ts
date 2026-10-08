@@ -37,6 +37,8 @@ export type PlaceView = {
   contacts: Contact[]
   /** When no service has a known cost: one line for all of them, instead of repeating it on each */
   costNotice?: string
+  /** What is missing about when to go - the hours and/or how to be attended - said plainly, so the person calls first. None when both are verified */
+  availabilityNotice?: string
 }
 
 const sameValue = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
@@ -124,6 +126,17 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
   for (const contact of place.contacts ?? []) add(contact)
   for (const service of services) for (const contact of service.contacts) add({ ...contact, label: contact.label ?? serviceName(service) })
 
+  // When to go: hours and appointments are only said when verified. If either is missing, the person is told, not left to guess
+  const hoursKnown = describeHours(place.hours).kind !== "unknown" || services.some((service) => describeHours(service.hours).kind !== "unknown")
+  const appointmentKnown = services.some(({ appointment }) => appointment.mode !== "unknown" || Boolean(appointment.howTo) || Boolean(appointment.url))
+  const availabilityNotice =
+    services.length === 0 || (hoursKnown && appointmentKnown)
+      ? undefined
+      : !hoursKnown && !appointmentKnown
+        ? "Todavía no tenemos horarios ni información de turnos verificados: llamá antes de ir."
+        : !hoursKnown
+          ? "Todavía no tenemos el horario verificado: llamá antes de ir."
+          : "Todavía no tenemos información verificada sobre turnos: consultá antes de ir."
   const costNotice = services.length > 0 && !someCostKnown ? "La fuente no informa el costo de estas prestaciones: consultalo antes de ir." : undefined
-  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, costNotice }
+  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, costNotice, availabilityNotice }
 }

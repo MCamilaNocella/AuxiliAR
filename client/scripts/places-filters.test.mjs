@@ -444,3 +444,43 @@ test("the free hospitals' panel shows the condition when the source gives one", 
   assert.ok(view.services[0].chips.includes("Gratuita con condiciones") || view.highlights.includes("Gratuita con condiciones"))
   assert.ok(view.services[0].details.some((item) => item.kind === "text" && item.text === "Atención gratuita. Con DNI argentino"))
 })
+
+/* ── When to go: what is missing is said, and the phone is the first thing offered ── */
+
+const { PlaceDetail: Detail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
+const entryById = (id) => places.selectPlaces(real, DAY, EMPTY).find(({ place }) => place.id === id)
+
+test("the panel says what is missing about when to go, from the verified data of each place", () => {
+  const notice = (id) => places.buildPlaceView(entryById(id)).availabilityNotice
+  assert.equal(notice("cesac-3"), "Todavía no tenemos horarios ni información de turnos verificados: llamá antes de ir.")
+  assert.equal(notice("cesac-47"), "Todavía no tenemos horarios ni información de turnos verificados: llamá antes de ir.")
+  // hours are verified (24 h) but whether a turn is needed is not
+  assert.equal(notice("hospital-odontologia-carrillo"), "Todavía no tenemos información verificada sobre turnos: consultá antes de ir.")
+  // the hospital that says both (hours and no turn needed) has nothing to apologize for
+  assert.equal(notice("hospital-oftalmologico-santa-lucia"), undefined)
+  // the other way round: turns known, hours not
+  const [base] = real.filter(({ id }) => id === "hospital-oftalmologico-santa-lucia")
+  const place = structuredClone(base)
+  place.hours = null
+  place.services[0].hours = null
+  assert.equal(places.buildPlaceView(places.selectPlaces([place], DAY, EMPTY)[0]).availabilityNotice, "Todavía no tenemos el horario verificado: llamá antes de ir.")
+})
+
+test("with nothing verified about when to go, the phone to call is the first thing in the panel", () => {
+  const draw = (entry) => renderToStaticMarkup(createElement(Detail, { entry, onClose() {} }))
+  const html = draw(entryById("cesac-3"))
+  const body = text(html)
+  assert.ok(body.includes("llamá antes de ir") && body.includes("Hay más contactos más abajo."))
+  // the notice comes before the services, with a call link (the first phone), bigger than the others
+  assert.ok(html.indexOf('role="note"') < html.indexOf("Atención disponible"))
+  assert.match(html, /role="note"[\s\S]*?href="tel:\+54[0-9]+"[^>]*aria-label="Llamar a Principal: 2821-3603"[^>]*min-h-12/)
+  // a place that says everything has no notice
+  assert.ok(!draw(entryById("hospital-oftalmologico-santa-lucia")).includes('role="note"'))
+  // no phone: it says so, and does not invent one
+  const [base] = real.filter(({ id }) => id === "cesac-47")
+  const place = structuredClone(base)
+  delete place.contacts
+  for (const service of place.services) delete service.contacts
+  const none = text(draw(places.selectPlaces([place], DAY, EMPTY)[0]))
+  assert.ok(none.includes("Por ahora no tenemos un teléfono verificado de este lugar.") && !none.includes("Hay más contactos"))
+})
