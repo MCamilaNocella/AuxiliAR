@@ -7,13 +7,19 @@ import type { ChatEmergencyCallsProps } from "./ChatEmergencyCalls.types"
  * Numbers to call straight from the chat (chosen for the situation), lined up with Auxi's bubble. Each button says what the
  * verified help lines say about its number: where it works, when it answers if it is not all day, and that it is free only if
  * that is recorded. A number that is not in the lines (the server's table still has a few by hand) is shown, and said not to be
- * verified. The numbers that nobody has checked again since their review date are named once, under the buttons.
+ * verified. The numbers that nobody has checked again since their review date are named once, above the buttons (so it is read first).
  */
 export const ChatEmergencyCalls = ({ numbers }: ChatEmergencyCallsProps) => {
   const buttons = numbers.map(({ number, label }) => callButton(number, label))
   const notice = uncheckedNotice(buttons, GENERAL_EMERGENCY_NUMBER)
   return (
     <li className="pl-11">
+      {notice && (
+        <p className="m-0 mb-2 text-sm text-ink-soft">
+          <span aria-hidden="true">* </span>
+          {notice}
+        </p>
+      )}
       <ul aria-label="Números para llamar" className="m-0 flex list-none flex-wrap gap-2 p-0">
         {buttons.map((button) => (
           <li key={button.dial}>
@@ -36,12 +42,6 @@ export const ChatEmergencyCalls = ({ numbers }: ChatEmergencyCallsProps) => {
           </li>
         ))}
       </ul>
-      {notice && (
-        <p className="m-0 mt-2 text-sm text-ink-soft">
-          <span aria-hidden="true">* </span>
-          {notice}
-        </p>
-      )}
     </li>
   )
 }
