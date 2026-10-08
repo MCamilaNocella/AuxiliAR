@@ -1,6 +1,7 @@
 import { Phone } from "lucide-react"
 import { EMERGENCY_NUMBERS } from "@/data/emergency"
 import type { MentalHealthContext } from "@/utils/places"
+import { AVOID_ATTRIBUTE } from "@/utils/auxiAvoidance"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /*
@@ -32,8 +33,10 @@ const CallLink = ({ number, what, primary = false }: { number: string, what: str
 const Card = ({ crisis }: { crisis: boolean }) => {
   const nationwide = NATIONWIDE.filter(({ number }) => dialOf(number))
   const line = dialOf(CRISIS_LINE.number) ? CRISIS_LINE : null
+  // In a crisis, Auxi's bubble and mascot step aside while this card is on screen: nothing may stand between a person and the call
+  const avoid = crisis ? { [AVOID_ATTRIBUTE]: "" } : {}
   return (
-    <section aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
+    <section {...avoid} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
       <h3 id="urgent-help-title" className="m-0 text-lg font-extrabold">
         {crisis ? "Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora" : "Ayuda urgente"}
       </h3>
