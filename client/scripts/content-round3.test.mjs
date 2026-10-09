@@ -43,42 +43,75 @@ test("the vaccination calendar is the section-5 of Salud general (section-3 redi
   assert.equal(calendar.CHECKED_AT, "2026-10-09")
 })
 
-test("the calendar has the eight stages of the Ministerio, each with its own official page, and nothing is there that its text does not say", () => {
+test("the calendar has the eight stages of the Ministerio, each with its own official page, and every vaccine is named in the saved official text", () => {
   const stages = calendar.VACCINATION_STAGES
   assert.deepEqual(stages.map(({ id }) => id), ["embarazo", "recien-nacidos", "hasta-un-ano", "hasta-2-anios", "5-anios", "11-anios", "15-a-64", "65-o-mas"])
+  const corpus = norm(
+    ["calendario-vacunacion-2026-por-etapas.txt", "calendario-2026-fuentes-complementarias.txt", "calendario-2026-lineamientos-antigripal-y-triple-viral.txt", "calendario-2026-pdf-poster-transcripcion.txt"].map(evidence).join("\n"),
+  )
   const official = norm(evidence("calendario-vacunacion-2026-por-etapas.txt"))
   for (const stage of stages) {
-    assert.match(stage.source.url, /^https:\/\/www\.argentina\.gob\.ar\/salud\/vacunas\/[a-z-]+$/, stage.id)
-    assert.ok(official.includes(stage.source.url.replace("https://", "")), `${stage.id}: its page is in the saved evidence`)
-    for (const { items } of stage.groups) {
+    assert.match(stage.sources[0].url, /^https:\/\/www\.argentina\.gob\.ar\/salud\/vacunas\/[a-z-]+$/, stage.id)
+    assert.ok(official.includes(stage.sources[0].url.replace("https://", "")), `${stage.id}: its page is in the saved evidence`)
+    for (const { items = [] } of stage.groups) {
       for (const { vaccine } of items) {
-        // the vaccine is named in the saved text of the Ministerio (accents and case aside)
         const name = norm(vaccine).replace(/ \(.*\)/, "")
-        assert.ok(official.includes(name), `${stage.id}: ${vaccine}`)
+        assert.ok(corpus.includes(name), `${stage.id}: ${vaccine}`)
       }
     }
-  }
-  // the doses and ages that matter most, as the pages say them
-  const everything = norm(JSON.stringify(stages))
-  for (const piece of ["12 horas de vida", "semana 20 de gestacion", "entre las semanas 32 y 36,6", "a los 2 meses", "a los 12 meses", "a los 15 meses", "refuerzo cada 10 anos", "vcn20", "nacieron en 2021", "nacieron en 2015", "nacidas antes de 1965"]) {
-    assert.ok(everything.includes(piece), piece)
+    // every source of every stage is an official address of the Ministerio
+    for (const { url } of stage.sources) assert.match(url, /^https:\/\/www\.argentina\.gob\.ar\//, url)
   }
 })
 
-test("the page shows one stage at a time, opens a stage from ?etapa=, and ends with its sources and the day they were compared", () => {
+test("the conditions that the review confirmed are in the calendar, as the official documents say them", () => {
+  const everything = norm(JSON.stringify(calendar.VACCINATION_STAGES))
+  for (const piece of [
+    "12 horas de vida", "tan pronto como sea posible", "semana 20 de embarazo", "sin importar las dosis recibidas antes", "entre la semana 32 y la semana 36,6", "temporada de circulacion del virus",
+    "14 semanas y 6 dias de vida", "24 semanas de vida", "a los 2 meses", "a los 12 meses", "a los 15 meses", "al menos 28 dias",
+    "1.° de julio de 2024", "30 de junio de 2024", "campana de seguimiento 2022", "nacieron en 2021", "nacieron en 2015", "varones y mujeres",
+    "recibieron la primera dosis antes de los 2 anos", "serologia igg positiva", "antes de 1965", "cada 5 anos", "refuerzo cada 10 anos", "vcn20", "zona endemica",
+    "cada campana estacional", "personas de 9 a 64 anos",
+  ]) {
+    assert.ok(everything.includes(norm(piece)), piece)
+  }
+})
+
+test("the 16 pending phrases (P1-P16) are NOT published as clinical recommendations: each one is reserved or goes to the official source", () => {
+  const everything = norm(JSON.stringify(calendar.VACCINATION_STAGES))
+  for (const reserved of [
+    "obesidad morbida", "imc", "mayor a 40", "metilprednisona", "adyuvantada", "entre 1 y 2 meses", "meses antes del inicio de la circulacion",
+    "3 meses y 15 dias", "tres meses y medio", "hasta los 6 meses de edad", "ley 27.491, art", "obligatorias para quienes trabajan", "precauciones a partir de los 60",
+    "nacidas desde el ano 2000", "varones nacidos desde 2006", "con orden medica para personal", "unica dosis (g)", "dosis anual",
+  ]) {
+    assert.ok(!everything.includes(norm(reserved)), `reserved text is published: ${reserved}`)
+  }
+  // the antigripal never says a dose count the sources do not agree on for children's groups beyond the 2-dose rule both documents state
+  assert.ok(everything.includes("dos dosis, con un mes de intervalo"))
+})
+
+test("the page shows one stage at a time, opens a stage from ?etapa=, has the general note, and ends with its sources and the day they were compared", () => {
   const first = render(CalendarPage, "/temas/salud-general?seccion=section-5")
   assert.ok(text(first).includes("Antigripal") && text(first).includes("Triple bacteriana acelular"))
+  for (const { id } of calendar.VACCINATION_STAGES) {
+    const html = render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`)
+    const content = text(html)
+    // the general note on every stage, and no "En revisión" marks scattered over the interface
+    assert.ok(content.includes("resumen informativo del Calendario Nacional de Vacunación oficial") && content.includes("deben confirmarse con tu equipo de salud o en el vacunatorio"), id)
+    assert.ok(!/en revisi[oó]n/i.test(content), `${id}: no review marks`)
+    // at most ONE note per stage that sends to the official source
+    assert.ok([...html.matchAll(/role="note"/g)].length <= 1, id)
+    assert.equal([...html.matchAll(/aria-pressed="true"/g)].length, 1, id)
+    assert.ok(content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"), id)
+    assert.ok(hrefs(html).includes("https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf"), `${id}: the poster is a source`)
+    for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/www\.argentina\.gob\.ar\//, href)
+    assert.ok(!/\b0800\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b/.test(content), `${id}: no phone number`)
+  }
   const elders = text(render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=65-o-mas"))
-  assert.ok(elders.includes("VCN20") && !elders.includes("Hepatitis B"))
-  const html = render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=hasta-un-ano")
-  const content = text(html)
-  assert.ok(content.includes("A los 2 meses") && content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"))
-  assert.equal([...html.matchAll(/aria-pressed="true"/g)].length, 1)
-  // official sources only, and no phone number or personal advice
-  for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/www\.argentina\.gob\.ar\/(salud\/vacunas|sites\/default\/files\/2026-03-10_calendario_nacional_vacunacion_70x50_web\.pdf$)/)
-  assert.ok(!/\b0800\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b/.test(content))
-  assert.ok(content.includes("no reemplaza la consulta con un equipo de salud"))
-  assert.ok(hrefs(html).includes("/centros?filtro=vaccination"))
+  assert.ok(elders.includes("VCN20") && !elders.includes("BCG"))
+  const year = text(render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=hasta-un-ano"))
+  assert.ok(year.includes("A los 2 meses") && year.includes("Límite de edad para esta dosis: 14 semanas y 6 días de vida"))
+  assert.ok(hrefs(render(CalendarPage, "/temas/salud-general?seccion=section-5")).includes("/centros?filtro=vaccination"))
 })
 
 test("the vaccination topic of Controles leads to the calendar", () => {
@@ -171,16 +204,18 @@ test("every 'vaccine: dose' line of each official stage page is in the stage of 
   let checked = 0
   for (const block of blocks) {
     const url = block.split(" ")[0]
-    const stage = calendar.VACCINATION_STAGES.find(({ source }) => source.url === url)
+    const stage = calendar.VACCINATION_STAGES.find(({ sources }) => sources[0].url === url)
     assert.ok(stage, url)
     const ours = squash(JSON.stringify(stage))
     const lines = block.split("\n").map((line) => line.trim())
     const body = lines.slice(lines.findIndex((line) => /^Calendario Nacional/.test(line)), lines.findIndex((line) => /^Recordá/.test(line)))
     for (const line of body) {
       const match = line.match(/^([A-Za-zÁÉÍÓÚáéíóúñ()/ .,+0-9-]{3,70}?) ?: ?(.{10,})$/)
+      // the antigripal of the adults is reserved on purpose (P1-P3): its count of doses and periodicity are not copied from the stage pages
+      if (match && /^Antigripal/.test(match[1]) && /adultos|adultosmayores/.test(url)) continue
       if (match && !/^(Control|Antigripal:$)/.test(line) && !/^Las vacunas|^Es importante|^Control/.test(line)) {
         assert.ok(ours.includes(squash(match[1]).replace(/ iniciar.*/, "")), `${url}: vaccine «${match[1]}»`)
-        assert.ok(ours.includes(words(match[2], 2)), `${url}: dose «${words(match[2], 2)}» of ${match[1]}`)
+        assert.ok(ours.includes(words(match[2], /^refuerzo/i.test(match[2]) ? 1 : 2)), `${url}: dose «${words(match[2], /^refuerzo/i.test(match[2]) ? 1 : 2)}» of ${match[1]}`)
         checked++
       }
       if (/^(A los \d+ meses|Entre los \d+ y los? \d+ meses|Entre los \d+ y \d+ meses)$/.test(line)) {

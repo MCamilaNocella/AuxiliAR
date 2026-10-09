@@ -1,0 +1,26 @@
+320 embarazo: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=651 errors=0
+320 recien-nacidos: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=388 errors=0
+320 hasta-un-ano: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=662 errors=0
+320 hasta-2-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=795 errors=0
+320 5-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=571 errors=0
+320 11-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=575 errors=0
+320 15-a-64: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=1049 errors=0
+320 65-o-mas: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=597 errors=0
+390 embarazo: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=651 errors=0
+390 recien-nacidos: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=388 errors=0
+390 hasta-un-ano: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=662 errors=0
+390 hasta-2-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=795 errors=0
+390 5-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=571 errors=0
+390 11-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=575 errors=0
+390 15-a-64: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=1049 errors=0
+390 65-o-mas: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=597 errors=0
+1280 embarazo: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=660 errors=0
+1280 recien-nacidos: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=397 errors=0
+1280 hasta-un-ano: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=671 errors=0
+1280 hasta-2-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=804 errors=0
+1280 5-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=0 pressed=1 words=580 errors=0
+1280 11-anios: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=584 errors=0
+1280 15-a-64: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=1058 errors=0
+1280 65-o-mas: overflow=0 smallTargets=[] headingJump=false wide=[] notes=1 pressed=1 words=606 errors=0
+teclado: {"focus":"vaccination-stage-title","title":"Hasta un año","url":"?seccion=section-5&etapa=hasta-un-ano"}
+siguiente Tab: A:Encontrar vacunatorio
