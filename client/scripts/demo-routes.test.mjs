@@ -36,7 +36,22 @@ test("404: it is the last route, inside the app layout (header, emergency bar an
   const star = router.indexOf('path: "*"')
   assert.ok(layout > 0 && star > layout, "inside AppLayout")
   assert.ok(star > router.indexOf("PATHS.peerChatSketch"), "after every known route")
-  assert.ok(router.indexOf("PATHS.login") > star || router.indexOf("PATHS.login") < layout, "the login route is not shadowed")
+})
+
+test("prototypes: /login, /auxi-modelos and /boceto-chat-personas exist only in development (import.meta.env.DEV), loaded on demand, none deleted", async () => {
+  const router = await read("src/router/index.tsx")
+  assert.ok(router.includes("const PROTOTYPES_ENABLED = import.meta.env.DEV"))
+  for (const path of ["PATHS.auxiModels", "PATHS.peerChatSketch", "PATHS.login"]) {
+    const at = router.indexOf(path)
+    assert.ok(at > 0, path)
+    // each one is inside a list that is empty when the flag is off
+    const before = router.slice(0, at)
+    assert.ok(before.lastIndexOf("PROTOTYPES_ENABLED") > before.lastIndexOf("const router"), `${path} only behind the flag`)
+    assert.ok(router.slice(at, at + 120).includes("lazy:"), `${path} loaded on demand`)
+  }
+  assert.ok(!new RegExp('from "@[/]screens[/](AuxiModels|PeerChatSketch|Login)"').test(router),"no static import: nothing of them in the first load")
+  // the screens are still there
+  for (const dir of ["AuxiModels", "PeerChatSketch", "Login"]) await read(`src/screens/${dir}/index.ts`)
 })
 
 test("fractures: the page of argentina.gob.ar that cannot be opened is not a source of the guides; the Manual stays", async () => {

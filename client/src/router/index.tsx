@@ -1,16 +1,28 @@
-import { createBrowserRouter, Navigate } from "react-router";
+import { createBrowserRouter, Navigate, type RouteObject } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
-import { AuxiModels } from "@/screens/AuxiModels";
 import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
-import { Login } from "@/screens/Login";
 import { NotFound } from "@/screens/NotFound";
-import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
 import { HEALTH_GENERAL_SLUG, LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
+
+/**
+ * Prototype screens (the Auxi models comparison, the peer chat sketch, the empty login): registered only in development, so the
+ * demo and production builds answer them with the 404. Their code is kept, and loaded only when one of them is opened.
+ */
+const PROTOTYPES_ENABLED = import.meta.env.DEV
+
+const prototypeRoutes: RouteObject[] = PROTOTYPES_ENABLED
+  ? [
+      { path: PATHS.auxiModels, lazy: async () => ({ Component: (await import("@/screens/AuxiModels")).AuxiModels }) },
+      { path: PATHS.peerChatSketch, lazy: async () => ({ Component: (await import("@/screens/PeerChatSketch")).PeerChatSketch }) },
+    ]
+  : []
+
+const loginRoutes: RouteObject[] = PROTOTYPES_ENABLED ? [{ path: PATHS.login, lazy: async () => ({ Component: (await import("@/screens/Login")).Login }) }] : []
 
 const router = createBrowserRouter([
   {
@@ -37,16 +49,12 @@ const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import("@/screens/FirstAidGuide")).FirstAidGuideScreen }),
           },
           { path: PATHS.about, element: <Category/> },
-          { path: PATHS.auxiModels, element: <AuxiModels/> },
-          { path: PATHS.peerChatSketch, element: <PeerChatSketch/> },
+          ...prototypeRoutes,
           // Last: any other address
           { path: "*", element: <NotFound/> },
         ],
       },
-      {
-        path: PATHS.login,
-        element: <Login/>,
-      },
+      ...loginRoutes,
     ],
   },
 ]);
