@@ -1,0 +1,37 @@
+FUENTE: https://data.buenosaires.gob.ar/dataset/centros-salud-accion-comunitaria-cesac (CC-BY-2.5-AR)
+CONSULTADA: 2026-10-09
+MÉTODO: archivo CSV oficial descargado el 2026-10-07 y guardado en client/curation/raw/caba-cesac/2026-10-07.csv; se copian las filas de los CeSAC 3, 41 y 47 sin los teléfonos
+RECORTE: NOTA: el campo id del dataset no coincide con el número del CeSAC (la fila id 46 es el CeSAC 47; la fila id 47 es el CeSAC 48). Se identifica por el nombre.
+----------------------------------------------------------------------
+  id: 3
+  nombre: Villa Lugano 9 (CeSAC N° 3)
+  direccion: Soldado De La Frontera Av. 5144, Barrio Gral. Savio (ex Lugano I y II)
+  barrio: Villa Lugano
+  comuna: Comuna 8
+  telefono: [teléfono omitido]
+  web: https://buenosaires.gob.ar/salud/cesac-3
+  area_progr: Hospital General de Agudos Cecilia Grierson
+  especialid: Ecografía - Farmacéutica - Medicina Familiar - Nutrición - Obstetricia - Odontología - Pediatría - Psicología - Tocoginecología - Trabajo Social
+  geometry: POINT (-58.464336857206874 -34.68463871592785)
+
+  id: 41
+  nombre: La Boca 2 (CeSAC N° 41)
+  direccion: Brin, Ministro 843
+  barrio: La Boca
+  comuna: Comuna 4
+  telefono: [teléfono omitido]
+  web: https://buenosaires.gob.ar/salud/cesac-41
+  area_progr: Hospital General de Agudos Dr C. Argerich
+  especialid: Ciencias Educación - Clínica Médica - Enfermería - Geriatría - Ginecología - Medicina Familiar - Medicina General - Nutrición - Obstetricia - Odontología - Psicología - Psicopedagogía - Psiquiatría Infantil - Trabajo Social
+  geometry: POINT (-58.35792934227024 -34.63132509345374)
+
+  id: 46
+  nombre: Retiro 3 (CeSAC N° 47)
+  direccion: Alpaca y Caña, Alpaca 620 - Barrio Padre Mugica
+  barrio: Retiro
+  comuna: Comuna 1
+  telefono: [teléfono omitido]
+  web: https://buenosaires.gob.ar/salud/cesac-47
+  area_progr: Hospital General de Agudos Dr. J. A. Fernandez
+  especialid: 
+  geometry: POINT (-58.37930900000001 -34.584255999999996)

@@ -1,0 +1,25 @@
+FUENTE: https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas
+CONSULTADA: 2026-10-09
+MÉTODO: descarga directa del HTML original de la página y extracción de su texto visible, sin resumen automático; se omitieron los teléfonos y correos; además, los enlaces de mapa oficial de la propia página, tal como están en el HTML
+RECORTE: enlaces de mapa, líneas de dirección y agenda de los centros fijos. La página no muestra fecha de actualización; la agenda va del 3 al 17 de octubre de 2026.
+----------------------------------------------------------------------
+ENLACES DE MAPA OFICIAL (mapa.buenosaires.gob.ar) QUE LA PÁGINA TRAE:
+https://mapa.buenosaires.gob.ar/mapas/?lat=-34.664567&lng=-58.468717&zl=15&modo=transporte&dir=Paseo+Islas+Malvinas+y+Escalada+Av.&map=comunas
+https://mapa.buenosaires.gob.ar/mapas/?lat=-34.617546&lng=-58.356478&zl=15&modo=transporte&dir=Achaval+Rodriguez%2C+T.%2C+Dr.+Av.+1550&map=comunas
+
+DIRECCIONES EN EL TEXTO:
+Además de los ocho móviles que recorren las comunas de lunes a viernes, contás con dos centros fijos de atención veterinaria y castración que funcionan uno en Villa Soldati en el Parque Indoamericano (Av. Escalada y Paseo Islas Malvinas) y el otro en Costanera Sur (Av. Dr. T. Achaval Rodriguez 1550) , a 100 metros frente a la fuente de Lola Mora.
+
+AGENDA DE LOS CENTROS FIJOS (día | centro | prestación):
+Sábado 03 de octubre | Centro Fijo Indoamericano - Paseo Islas Malvinas y Av. Escalada | Castración
+Martes 06 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Miércoles 07 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Jueves 08 de octubre | Centro Fijo Indoamericano - Paseo Islas Malvinas y Av. Escalada | Castración
+Jueves 08 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Sábado 10 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Martes 13 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Jueves 15 de octubre | Centro Fijo Indoamericano - Paseo Islas Malvinas y Av. Escalada | Castración
+Jueves 15 de octubre | Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550 | Castración
+Sábado 17 de octubre | Centro Fijo Indoamericano - Paseo Islas Malvinas y Av. Escalada | Castración
+
+NOTA: la agenda da días y prestación («Castración»), no horarios. No hay entradas de vacunación antirrábica en los centros fijos.
