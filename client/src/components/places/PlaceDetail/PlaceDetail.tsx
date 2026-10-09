@@ -281,11 +281,28 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
             </Section>
           )}
 
+          {view.sources.length > 0 && (
+            <Section title="Fuentes oficiales">
+              <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
+                {view.sources.map((source) => (
+                  <li key={source.url}>
+                    <ExternalLinkText url={source.url}>{source.organization}</ExternalLinkText>
+                    <ul role="list" className="m-0 mt-1 flex list-none flex-col gap-0.5 p-0 text-ink-soft">
+                      {source.backs.map((text) => (
+                        <li key={text}>{text}</li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
+
           <section className="mt-8 rounded-xl border border-line-strong bg-surface-alt p-4">
             <h3 className="m-0 mb-1 text-lg font-extrabold">Información verificada por AuxiliAR</h3>
             {place.verification.verifiedAt && <p className="m-0">{`Verificada el ${formatDate(place.verification.verifiedAt)}.`}</p>}
             {place.verification.nextReviewDue && <p className="m-0">{`Se vuelve a revisar antes del ${formatDate(place.verification.nextReviewDue)}.`}</p>}
-            {place.source && (
+            {place.source && !view.sources.some(({ url }) => url === place.source?.url) && (
               <p className="m-0 mt-1">
                 Fuente oficial:{" "}
                 {place.source.url ? <ExternalLinkText url={place.source.url}>{place.source.organization}</ExternalLinkText> : <span className="font-bold">{place.source.organization}</span>}

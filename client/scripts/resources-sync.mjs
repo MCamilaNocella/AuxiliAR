@@ -51,9 +51,13 @@ const readFolder = async (dir, folderName) => {
   return Promise.all(names.map(async (name) => ({ name: `${folderName}/${name}`, data: await readJson(join(dir, name)) })))
 }
 
+/** The server has no use for the evidence of a service (it is for the panel of the app): it stays out of its copy, so the server file does not change with it */
+const withoutEvidence = (resource) =>
+  resource.services ? { ...resource, services: resource.services.map(({ evidence: _evidence, ...service }) => service) } : resource
+
 /** The server copy: deterministic (sorted by id, no dates), services resolved, with LF line endings */
 export const buildServerCopy = (resources, taxonomy) => {
-  const sorted = resources.map((resource) => resolveResource(resource, taxonomy)).sort((a, b) => a.id.localeCompare(b.id, "en"))
+  const sorted = resources.map((resource) => withoutEvidence(resolveResource(resource, taxonomy))).sort((a, b) => a.id.localeCompare(b.id, "en"))
   return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: NOTICE, resources: sorted }, null, 2)}\n`
 }
 

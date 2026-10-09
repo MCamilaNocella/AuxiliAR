@@ -62,7 +62,7 @@ const resolved = (file, placeId, serviceId) => {
 }
 
 test("the proposal only touches services that exist and only sets fields that are fields of a service", () => {
-  const allowed = new Set(["cost", "costNote", "requirements", "appointment", "hours", "source", "audience"])
+  const allowed = new Set(["cost", "costNote", "requirements", "appointment", "hours", "source", "audience", "evidence"])
   for (const change of proposal.serviceChanges) {
     const place = realPlaces.resources.find(({ id }) => id === change.placeId)
     assert.ok(place?.services.some(({ id }) => id === change.serviceId), `${change.ficha}: that service does not exist`)
@@ -172,12 +172,12 @@ test("the panel of a CeSAC keeps saying what is missing about when to go", () =>
   }
 })
 
-test("limit of the model, why the vaccination hours are deferred: one service with hours silences the notice of the whole place", () => {
+test("the hours of one service no longer silence the notice of the others (it was a limit of the model, now corrected)", () => {
   const file = applied()
   const withHours = structuredClone(file)
   const target = service(withHours, "cesac-3", "vacunacion")
   Object.assign(target, { hours: { open24h: false, schedule: [{ days: [1], from: "07:00", to: "12:00" }] } })
-  assert.doesNotMatch(buildPlaceView(entry(withHours, "cesac-3")).availabilityNotice ?? "", /horario/, "the hours part of the notice disappears for primary care too")
+  assert.match(buildPlaceView(entry(withHours, "cesac-3")).availabilityNotice ?? "", /horario/, "primary care and the rest still have no hours: the notice stays")
   assert.ok(proposal.serviceChanges.every(({ set }) => !("hours" in set)), "so the proposal does not set any service hours")
   assert.ok(proposal.deferredHours["cesac-3/vacunacion"].length > 0, "the published hours are kept in the proposal, deferred")
 })

@@ -1,4 +1,4 @@
-import type { Contact } from "@/data/resources"
+import type { Contact, EvidenceKind } from "@/data/resources"
 import { appointmentLabel, audienceLabel, costLabel, describeHours, facilityTypeLabel, isVerifiedFree, serviceHighlights, serviceName } from "./format"
 import type { PlaceEntry } from "./filters"
 import { normalizeText } from "./text"
@@ -24,6 +24,13 @@ export type ServiceView = {
   details: DetailItem[]
 }
 
+/** One official source in the panel's "Fuentes oficiales": the link once, and what it backs for which services */
+export type SourceView = {
+  url: string
+  organization: string
+  backs: string[]
+}
+
 export type PlaceView = {
   facilityType?: string
   /** What every service shown has: 24 h, demanda espontánea, atención gratuita */
@@ -37,11 +44,43 @@ export type PlaceView = {
   contacts: Contact[]
   /** When no service has a known cost: one line for all of them, instead of repeating it on each */
   costNotice?: string
+  /** The official sources of the services in scope, each link once (empty when no service has evidence) */
+  sources: SourceView[]
   /** What is missing about when to go - the hours and/or how to be attended - said plainly, so the person calls first. None when both are verified */
   availabilityNotice?: string
 }
 
 const sameValue = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
+
+/**
+ * What each kind of evidence backs, said in those terms and no more. A norm that backs gratuity does not back that there are
+ * turns, and the page that says how to ask for a turn does not confirm that there are any (nor that none is needed).
+ */
+const BACKS: Record<EvidenceKind, (names: string) => string> = {
+  cost: (names) => `Respalda la gratuidad de: ${names}`,
+  scope: (names) => `Dice hasta dónde llega la gratuidad de: ${names}`,
+  existence: (names) => `Confirma que la sede ofrece: ${names}`,
+  access: (names) => `Explica cómo pedir turno para: ${names}. No confirma que haya turnos disponibles`,
+  hours: (names) => `Publica el horario de: ${names}`,
+}
+
+const joinNames = (names: string[]) => (names.length < 2 ? names.join("") : `${names.slice(0, -1).join(", ")} y ${names[names.length - 1]}`)
+
+/** Every evidence link of the services shown, once each, with what it backs for which of them */
+const sourcesOf = (services: PlaceEntry["services"]): SourceView[] => {
+  const byUrl = new Map<string, { organization: string, kinds: Map<EvidenceKind, string[]> }>()
+  for (const service of services) {
+    for (const { kind, url, organization } of service.evidence) {
+      const entry = byUrl.get(url) ?? { organization, kinds: new Map<EvidenceKind, string[]>() }
+      const names = entry.kinds.get(kind) ?? []
+      const name = serviceName(service)
+      if (!names.includes(name)) names.push(name)
+      entry.kinds.set(kind, names)
+      byUrl.set(url, entry)
+    }
+  }
+  return [...byUrl].map(([url, { organization, kinds }]) => ({ url, organization, backs: [...kinds].map(([kind, names]) => BACKS[kind](joinNames(names))) }))
+}
 
 const hoursItem = (label: string, hours: Parameters<typeof describeHours>[0]): DetailItem | undefined => {
   const view = describeHours(hours)
@@ -96,7 +135,8 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
     if (SHOW_SERVICE_DESCRIPTIONS && service.description) details.push({ kind: "text", text: service.description })
     // Hours inherited from the place are the general hours, already said
     if (service.hours && !sameValue(service.hours, place.hours)) {
-      const item = hoursItem("Horario", service.hours)
+      // Said as the hours of THIS service, so they are never read as the hours of the establishment or of another service
+      const item = hoursItem(`Horario de ${serviceName(service).toLocaleLowerCase("es")}`, service.hours)
       if (item) details.push(item)
     }
     if (commonAppointment.length === 0) details.push(...appointmentItems(service.appointment))
@@ -109,7 +149,8 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
       details.push({ kind: "list", label: "Qué llevar o tener en cuenta", items: service.requirements })
     }
     // Its own source only backs something that is shown: on its own it would be noise
-    if (details.length > 0 && service.source?.url && service.source.url !== placeSourceUrl) {
+    // A service with evidence shows it under "Fuentes oficiales", so the link is not repeated here
+    if (details.length > 0 && service.evidence.length === 0 && service.source?.url && service.source.url !== placeSourceUrl) {
       details.push({ kind: "link", label: "Fuente", text: service.source.organization, url: service.source.url })
     }
     return { id: service.id, name: serviceName(service), chips: chipsByService[index].filter((chip) => !highlights.includes(chip)), details }
@@ -127,7 +168,9 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
   for (const service of services) for (const contact of service.contacts) add({ ...contact, label: contact.label ?? serviceName(service) })
 
   // When to go: hours and appointments are only said when verified. If either is missing, the person is told, not left to guess
-  const hoursKnown = describeHours(place.hours).kind !== "unknown" || services.some((service) => describeHours(service.hours).kind !== "unknown")
+  // Known for the place when it states general hours, or when EVERY service states its own: the hours of one service
+  // (vaccination, say) do not tell when another one (primary care, mental health) is open
+  const hoursKnown = describeHours(place.hours).kind !== "unknown" || services.every((service) => describeHours(service.hours).kind !== "unknown")
   // How to ask for a turno (channels) is not whether a turno is needed or available: only a known mode counts as knowing about turns
   const appointmentKnown = services.some(({ appointment }) => appointment.mode !== "unknown")
   const availabilityNotice =
@@ -139,5 +182,5 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
           ? "Todavía no tenemos el horario verificado: llamá antes de ir."
           : "Todavía no tenemos información verificada sobre turnos: consultá antes de ir."
   const costNotice = services.length > 0 && !someCostKnown ? "Gratuidad no confirmada: la fuente no informa el costo de estas prestaciones. Consultalo antes de ir." : undefined
-  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, costNotice, availabilityNotice }
+  return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, sources: sourcesOf(services), costNotice, availabilityNotice }
 }

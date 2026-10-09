@@ -100,6 +100,7 @@ export const resolveService = (resource: Resource, service: Service): ResolvedSe
   appointment: service.appointment ?? { mode: "unknown" },
   contacts: service.contacts ?? [],
   source: service.source ?? resource.source,
+  evidence: service.evidence ?? [],
   verification: service.verification ?? resource.verification,
   categories: categoriesOfServiceType(service.type),
 })

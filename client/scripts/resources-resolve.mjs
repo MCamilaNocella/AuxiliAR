@@ -12,6 +12,7 @@
  *   appointment   own, else { mode: "unknown" }
  *   contacts      own only (the establishment's contacts are shown beside them)
  *   source, verification   own, else the establishment's
+ *   evidence      own only (a list; [] if none). It is for the app: the server copy leaves it out (see resources-sync.mjs)
  *   categories    derived from the type, through taxonomy.serviceTypes (never written by hand)
  */
 
@@ -31,6 +32,7 @@ export const resolveService = (resource, service, taxonomy) => ({
   appointment: service.appointment ?? { mode: "unknown" },
   contacts: service.contacts ?? [],
   source: service.source ?? resource.source,
+  evidence: service.evidence ?? [],
   verification: service.verification ?? resource.verification,
   categories: categoriesOfServiceType(service.type, taxonomy),
 })

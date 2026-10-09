@@ -21,7 +21,30 @@
           "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (clínica médica, pediatría, medicina general o de familia) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 3",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "retrievedAt": "2026-10-08",
+            "note": "Especialidades: «clínica médica, pediatría, medicina general o de familia»."
+          },
+          {
+            "kind": "access",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+            "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+            "retrievedAt": "2026-10-08",
+            "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+          }
+        ]
       },
       "doesNotSet": [
         "costNote",
@@ -48,7 +71,37 @@
           "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://www.buenosaires.gob.ar/salud/cesac-41, consultada el 8/10/2026). Horario «lunes a viernes de 8 a 18 h» y turnos «personalmente»: página del área programática del Hospital Argerich, consultada el 8/10/2026, sin fecha de actualización; sin confirmar con el centro."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 41",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "retrievedAt": "2026-10-08",
+            "note": "Especialidades: «Medicina General, Pediatría…»."
+          },
+          {
+            "kind": "access",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+            "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+            "retrievedAt": "2026-10-08",
+            "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+          },
+          {
+            "kind": "access",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Área Programática del Hospital Argerich",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica",
+            "retrievedAt": "2026-10-08",
+            "note": "Para el CeSAC 41: «Turnos: se solicitan personalmente» y horario de atención del centro, lunes a viernes de 8 a 18 h (horario general, no de cada prestación). Sin fecha de actualización publicada."
+          }
+        ]
       },
       "doesNotSet": [
         "costNote",
@@ -75,7 +128,30 @@
           "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 47",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "retrievedAt": "2026-10-08",
+            "note": "Especialidades: «Medicina General, Pediatría…»."
+          },
+          {
+            "kind": "access",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+            "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+            "retrievedAt": "2026-10-08",
+            "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+          }
+        ]
       },
       "doesNotSet": [
         "costNote",
@@ -102,7 +178,30 @@
           "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Edades atendidas, horarios, turno o demanda espontánea: sin confirmar."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 47",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+            "retrievedAt": "2026-10-08",
+            "note": "Especialidades: «Medicina General, Pediatría…»."
+          },
+          {
+            "kind": "access",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+            "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+            "retrievedAt": "2026-10-08",
+            "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+          }
+        ]
       },
       "doesNotSet": [
         "costNote",
@@ -123,7 +222,44 @@
           "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación»; art. 7: son obligatorias las vacunas del Calendario, las de grupos en riesgo y las de emergencia. Norma general: no dice qué vacunas aplica cada vacunatorio ni si hay disponibilidad."
+          },
+          {
+            "kind": "scope",
+            "organization": "Nación: Resolución 339/2026 del Ministerio de Salud (Calendario Nacional de Vacunación)",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/norma-423397/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Modificación vigente del Calendario Nacional (publicada el 26/2/2026): define cuáles son las vacunas del Calendario."
+          },
+          {
+            "kind": "scope",
+            "organization": "Nación: Calendario Nacional de Vacunación (Ministerio de Salud)",
+            "url": "https://www.argentina.gob.ar/salud/vacunas",
+            "retrievedAt": "2026-10-08",
+            "note": "Lista las vacunas por etapa de la vida; informa que están en centros de salud y hospitales públicos y que no requieren orden médica."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 3",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+            "retrievedAt": "2026-10-08",
+            "note": "Programas: «vacunación»."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+            "retrievedAt": "2026-10-08",
+            "note": "Lista el vacunatorio del CeSAC Nº 3 con su dirección. No dice qué vacunas se aplican ni si son gratuitas."
+          }
+        ]
       },
       "doesNotSet": [
         "audience",
@@ -144,7 +280,51 @@
           "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
           "retrievedAt": "2026-10-08",
           "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://www.buenosaires.gob.ar/salud/cesac-41) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
-        }
+        },
+        "evidence": [
+          {
+            "kind": "cost",
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación»; art. 7: son obligatorias las vacunas del Calendario, las de grupos en riesgo y las de emergencia. Norma general: no dice qué vacunas aplica cada vacunatorio ni si hay disponibilidad."
+          },
+          {
+            "kind": "scope",
+            "organization": "Nación: Resolución 339/2026 del Ministerio de Salud (Calendario Nacional de Vacunación)",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/norma-423397/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Modificación vigente del Calendario Nacional (publicada el 26/2/2026): define cuáles son las vacunas del Calendario."
+          },
+          {
+            "kind": "scope",
+            "organization": "Nación: Calendario Nacional de Vacunación (Ministerio de Salud)",
+            "url": "https://www.argentina.gob.ar/salud/vacunas",
+            "retrievedAt": "2026-10-08",
+            "note": "Lista las vacunas por etapa de la vida; informa que están en centros de salud y hospitales públicos y que no requieren orden médica."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 41",
+            "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+            "retrievedAt": "2026-10-08",
+            "note": "Actividades: «Vacunatorio»."
+          },
+          {
+            "kind": "existence",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+            "retrievedAt": "2026-10-08",
+            "note": "Lista el vacunatorio del CeSAC Nº 41 con su dirección. No dice qué vacunas se aplican ni si son gratuitas."
+          },
+          {
+            "kind": "hours",
+            "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+            "retrievedAt": "2026-10-08",
+            "note": "Horario del vacunatorio del CeSAC Nº 41. Sin fecha de actualización publicada; sin confirmar con el centro."
+          }
+        ]
       },
       "doesNotSet": [
         "audience",

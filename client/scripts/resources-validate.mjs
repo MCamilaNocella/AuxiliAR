@@ -216,6 +216,22 @@ const checkCoordinates = (coordinates, path, errors) => {
   }
 }
 
+/** The evidence of a service: no repeated (kind, link), and a service that declares free care with evidence has the evidence of its gratuity */
+const checkEvidence = (service, path, errors) => {
+  const evidence = service.evidence ?? []
+  if (evidence.length === 0) return
+  const seen = new Set()
+  evidence.forEach(({ kind, url, retrievedAt }, index) => {
+    const key = `${kind} ${url}`
+    if (seen.has(key)) errors.push(`${path}.evidence[${index}]: la misma fuente (${kind}) está repetida`)
+    seen.add(key)
+    if (!isCalendarDate(retrievedAt)) errors.push(`${path}.evidence[${index}].retrievedAt: "${retrievedAt}" no es una fecha real`)
+  })
+  if (service.cost === "free" && !evidence.some(({ kind }) => kind === "cost")) {
+    errors.push(`${path}: declara gratuidad y tiene evidence, pero ninguna es de kind "cost" (la fuente de la gratuidad)`)
+  }
+}
+
 /**
  * Whole dataset: `files` is [{ name, data }] (each one already parsed).
  * Returns the problems found and, when there are none, the resources of every file.
@@ -300,6 +316,7 @@ export const validateDataset = ({ files, schema, taxonomy, categoryIds = null })
           checkHours(contact.hours, `${contactWhere}.hours`, errors)
         })
         if (service.verification) checkVerification(service.verification, service.source ?? resource.source, where, errors)
+        checkEvidence(service, where, errors)
       })
 
       checkCoverage(resource.coverage, `${path}.coverage`, errors)

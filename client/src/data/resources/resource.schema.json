@@ -146,6 +146,19 @@
         "note": { "type": "string", "minLength": 1 }
       }
     },
+    "evidence": {
+      "type": "object",
+      "required": ["kind", "organization", "url", "retrievedAt"],
+      "additionalProperties": false,
+      "description": "Una fuente oficial de UNA prestación y lo que respalda. La gratuidad, la existencia de la prestación, cómo pedirla y su horario pueden tener fuentes distintas; una norma general respalda la gratuidad, nunca que haya turnos.",
+      "properties": {
+        "kind": { "type": "string", "enum": ["cost", "scope", "existence", "access", "hours"], "description": "cost: la gratuidad; scope: hasta dónde llega la gratuidad; existence: el establecimiento ofrece la prestación; access: cómo se pide (no confirma turnos); hours: el horario publicado." },
+        "organization": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https?://\\S+$", "description": "Un enlace que cualquiera pueda abrir para comprobarlo." },
+        "retrievedAt": { "$ref": "#/$defs/date", "description": "Día en que se consultó (AAAA-MM-DD)." },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
     "verification": {
       "type": "object",
       "required": ["status"],
@@ -203,6 +216,7 @@
         "appointment": { "$ref": "#/$defs/appointment" },
         "contacts": { "type": "array", "items": { "$ref": "#/$defs/contact" }, "description": "Contactos propios de la prestación, además de los del establecimiento." },
         "source": { "$ref": "#/$defs/source" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" }, "description": "Opcional. Más de una fuente oficial, cada una con lo que respalda. No reemplaza a source." },
         "verification": { "$ref": "#/$defs/verification" }
       }
     },

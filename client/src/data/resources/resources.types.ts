@@ -180,6 +180,30 @@ export type Coordinates = {
   note?: string
 }
 
+/** What a piece of evidence backs up about ONE service: never more than that (a general norm backs gratuity, not that turns exist) */
+export type EvidenceKind =
+  /** The gratuity of this service */
+  | "cost"
+  /** What the gratuity covers (for example, which vaccines the Calendar includes) */
+  | "scope"
+  /** The establishment offers this service */
+  | "existence"
+  /** How to ask for it. It does not confirm that there are turns available nor that no turn is needed */
+  | "access"
+  /** The hours published for this service */
+  | "hours"
+
+/** One official source of a service, with what it backs. A service may have several; `source` stays as it was */
+export type Evidence = {
+  kind: EvidenceKind
+  organization: string
+  /** A link anyone can open to check it */
+  url: string
+  /** YYYY-MM-DD: the day it was consulted */
+  retrievedAt: string
+  note?: string
+}
+
 export type Source = {
   /** Body that publishes the data */
   organization: string
@@ -237,6 +261,8 @@ export type Service = {
   /** The service's own contacts, besides the establishment's */
   contacts?: Contact[]
   source?: Source
+  /** More than one official source, each saying what it backs (optional: a service without it works as before) */
+  evidence?: Evidence[]
   verification?: Verification
 }
 
@@ -254,6 +280,8 @@ export type ResolvedService = {
   appointment: Appointment
   contacts: Contact[]
   source?: Source
+  /** Its own only: the evidence of a service is never inherited */
+  evidence: Evidence[]
   verification: Verification
   categories: CategoryId[]
 }
