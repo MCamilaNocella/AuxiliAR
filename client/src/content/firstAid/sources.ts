@@ -18,6 +18,12 @@ export const RCP_ADULTOS: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/primerosauxilios/rcp/adultos",
 }
 
+/**
+ * Temporarily out of the guides (9/10/2026): the whole /salud/primerosauxilios/situaciones/ section of argentina.gob.ar answers
+ * an error page ("500 - Error", sent as 403) to every request we made, so the link could not be verified. The guides that cited it
+ * keep the Manual (Ministerio de Salud), whose "Caídas - Fracturas" chapter covers the immobilization. Put it back in their
+ * `sources` once the page opens again and its text is checked.
+ */
 export const FRACTURAS: GuideSource = {
   label: "Fracturas · Primeros auxilios, argentina.gob.ar/salud",
   url: "https://www.argentina.gob.ar/salud/primerosauxilios/situaciones/fracturas",

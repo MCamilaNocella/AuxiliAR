@@ -1,4 +1,4 @@
-import { CHECKED_AT, FRACTURAS, MANUAL, POISON_CENTER, VIA_PUBLICA } from "../sources"
+import { CHECKED_AT, MANUAL, POISON_CENTER, VIA_PUBLICA } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Accidentes y lesiones frecuentes": everyday injuries. Each says only what the official sources say. */
@@ -50,7 +50,7 @@ export const INJURY_GUIDES: FirstAidGuideContent[] = [
     whenToCall: ["Si dudás, no la muevas hasta que el personal de salud te confirme (también puede ser por teléfono) que hay que hacerlo."],
     whileWaiting: ["Prestá especial atención con los niños: como es fácil moverlos, se puede empeorar una lesión o aumentar el dolor."],
     related: ["golpe-en-la-cabeza", "fracturas"],
-    sources: [MANUAL, FRACTURAS],
+    sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },
   {
@@ -103,7 +103,7 @@ export const INJURY_GUIDES: FirstAidGuideContent[] = [
     ],
     note: "Esta guía es solo sobre posibles fracturas: las fuentes oficiales no tienen una guía específica de esguinces. Si después de un golpe, una caída o una torcedura tenés dudas, consultá a un servicio de salud.",
     related: ["golpes-y-caidas"],
-    sources: [MANUAL, FRACTURAS],
+    sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },
   {

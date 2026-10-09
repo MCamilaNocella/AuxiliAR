@@ -11,7 +11,7 @@ const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "
 const TRANSPARENCY = (
   <>
     Centros verificados por AuxiliAR, incorporados de a poco.{" "}
-    <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="font-bold">
+    <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="inline-block py-0.5 font-bold">
       Cómo verificamos los datos
     </Link>
     .

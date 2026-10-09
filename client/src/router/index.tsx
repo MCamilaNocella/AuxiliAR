@@ -6,6 +6,7 @@ import { AuxiModels } from "@/screens/AuxiModels";
 import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
 import { Login } from "@/screens/Login";
+import { NotFound } from "@/screens/NotFound";
 import { PeerChatSketch } from "@/screens/PeerChatSketch";
 import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
           { path: PATHS.about, element: <Category/> },
           { path: PATHS.auxiModels, element: <AuxiModels/> },
           { path: PATHS.peerChatSketch, element: <PeerChatSketch/> },
+          // Last: any other address
+          { path: "*", element: <NotFound/> },
         ],
       },
       {
