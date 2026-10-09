@@ -5,7 +5,7 @@ import { SpeechBubble } from "../SpeechBubble"
 import type { GreetingHeroProps } from "./GreetingHero.types"
 
 /** Top of Mi Salud: greeting on the home gradient, profiles, and Auxi talking from a bubble */
-export const GreetingHero = ({ profiles, profile, activeId, onSelect, bubble }: GreetingHeroProps) => (
+export const GreetingHero = ({ profiles, profile, activeId, onSelect, onAddRelative, bubble }: GreetingHeroProps) => (
   <section aria-labelledby="greeting-title" className="relative overflow-hidden rounded-3xl bg-home p-5 text-on-home shadow-sm sm:p-7">
     <div aria-hidden="true" className="absolute -top-16 -left-10 size-48 rounded-full bg-on-home/6" />
     <div aria-hidden="true" className="absolute -right-14 -bottom-20 size-56 rounded-full bg-on-home/5" />
@@ -18,7 +18,7 @@ export const GreetingHero = ({ profiles, profile, activeId, onSelect, bubble }: 
             Hola, {profile.name}
           </h1>
         </div>
-        <ProfileChips profiles={profiles} activeId={activeId} onSelect={onSelect} />
+        <ProfileChips profiles={profiles} activeId={activeId} onSelect={onSelect} onAddRelative={onAddRelative} />
       </div>
 
       {/* Narrow screens with big text: the bubble takes its own line instead of getting squeezed */}

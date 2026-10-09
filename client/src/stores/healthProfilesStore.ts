@@ -17,6 +17,14 @@ export const healthProfilesStore = {
     }
   },
   getSnapshot: () => profiles,
+  add: (profile: HealthProfile) => {
+    profiles = [...profiles, profile]
+    listeners.forEach((listener) => listener())
+  },
+  remove: (id: string) => {
+    profiles = profiles.filter((profile) => profile.id !== id)
+    listeners.forEach((listener) => listener())
+  },
   /** Changes one profile from its latest version (two quick answers don't overwrite each other) */
   update: (id: string, change: (profile: HealthProfile) => HealthProfile) => {
     profiles = profiles.map((profile) => (profile.id === id ? change(profile) : profile))

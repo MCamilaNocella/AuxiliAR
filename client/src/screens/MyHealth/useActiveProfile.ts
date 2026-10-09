@@ -9,5 +9,16 @@ export const useActiveProfile = () => {
   const [activeId, setActiveId] = useState(profiles[0].id)
   const profile = profiles.find(({ id }) => id === activeId) ?? profiles[0]
   const updateProfile = (updated: HealthProfile) => healthProfilesStore.update(updated.id, () => updated)
-  return { profiles, profile, activeId, setActiveId, updateProfile }
+  /** A new relative, with just the name and age, shown right away */
+  const addRelative = ({ name, age }: { name: string; age: number }) => {
+    const id = `relative-${Date.now()}`
+    healthProfilesStore.add({ id, name, age, record: {}, ageTopics: [] })
+    setActiveId(id)
+  }
+  /** Deletes a relative's profile and goes back to your own */
+  const deleteProfile = (id: string) => {
+    setActiveId(profiles.find(({ own }) => own)?.id ?? profiles[0].id)
+    healthProfilesStore.remove(id)
+  }
+  return { profiles, profile, activeId, setActiveId, updateProfile, addRelative, deleteProfile }
 }

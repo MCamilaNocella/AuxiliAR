@@ -6,7 +6,7 @@ const idleClass = "bg-on-home/15 text-on-home hover:bg-on-home/25 in-data-[theme
 const activeClass = "bg-card text-brand in-data-[theme=contrast]:ring-2 in-data-[theme=contrast]:ring-brand"
 
 /** Profile chips + "Agregar familiar", on the home gradient */
-export const ProfileChips = ({ profiles, activeId, onSelect }: ProfileChipsProps) => (
+export const ProfileChips = ({ profiles, activeId, onSelect, onAddRelative }: ProfileChipsProps) => (
   <div role="group" aria-label="Perfiles" className="flex flex-wrap items-center gap-2">
     {profiles.map(({ id, name }) => (
       <button
@@ -19,7 +19,7 @@ export const ProfileChips = ({ profiles, activeId, onSelect }: ProfileChipsProps
         {name}
       </button>
     ))}
-    <button type="button" className={`flex items-center gap-1.5 ${chipClass} ${idleClass}`}>
+    <button type="button" onClick={onAddRelative} aria-haspopup="dialog" className={`flex items-center gap-1.5 ${chipClass} ${idleClass}`}>
       <UserPlus aria-hidden="true" className="size-4.5 flex-none" />
       Agregar familiar
     </button>

@@ -6,6 +6,8 @@ export type GreetingHeroProps = {
   profile: HealthProfile
   activeId: string
   onSelect: (id: string) => void
+  /** "Agregar familiar" */
+  onAddRelative: () => void
   /** What Auxi says (inside its speech bubble) */
   bubble?: ReactNode
 }
