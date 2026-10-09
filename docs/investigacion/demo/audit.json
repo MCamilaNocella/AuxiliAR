@@ -1,0 +1,703 @@
+{
+ "routes": {
+  "/": {
+   "landed": "/",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "¿Qué necesitás hoy?"
+   ],
+   "links": 21
+  },
+  "/temas/salud-general": {
+   "landed": "/temas/salud-general",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Cuidar mi salud"
+   ],
+   "links": 16
+  },
+  "/temas/salud-mental": {
+   "landed": "/temas/salud-mental",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud mental"
+   ],
+   "links": 21
+  },
+  "/temas/salud-sexual-y-esi": {
+   "landed": "/temas/salud-sexual-y-esi",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Categoría no encontrada"
+   ],
+   "links": 15
+  },
+  "/temas/salud-animal": {
+   "landed": "/temas/salud-animal",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Categoría no encontrada"
+   ],
+   "links": 15
+  },
+  "/centros": {
+   "landed": "/centros",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 20
+  },
+  "/primeros-auxilios": {
+   "landed": "/primeros-auxilios",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Primeros auxilios"
+   ],
+   "links": 30
+  },
+  "/sobre-auxiliar": {
+   "landed": "/sobre-auxiliar",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Sobre AuxiliAR"
+   ],
+   "links": 16
+  },
+  "/login": {
+   "landed": "/login",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "login"
+   ],
+   "links": 0
+  },
+  "/auxi-modelos": {
+   "landed": "/auxi-modelos",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Modelos de Auxi"
+   ],
+   "links": 15
+  },
+  "/boceto-chat-personas": {
+   "landed": "/boceto-chat-personas",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Boceto: chat entre personas"
+   ],
+   "links": 15
+  },
+  "/recursos": {
+   "landed": "/",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "¿Qué necesitás hoy?"
+   ],
+   "links": 21
+  },
+  "/mi-salud": {
+   "landed": "/",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "¿Qué necesitás hoy?"
+   ],
+   "links": 21
+  },
+  "/temas": {
+   "landed": "/",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "¿Qué necesitás hoy?"
+   ],
+   "links": 21
+  },
+  "/temas/salud-fisica": {
+   "landed": "/temas/salud-general",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Cuidar mi salud"
+   ],
+   "links": 16
+  },
+  "/ruta-que-no-existe": {
+   "landed": "/ruta-que-no-existe",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [],
+   "links": 0
+  },
+  "/centros?vista=mapa": {
+   "landed": "/centros?vista=mapa",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 20
+  },
+  "/centros?vista=lista&filtro=animal-health": {
+   "landed": "/centros?vista=lista&filtro=animal-health",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 16
+  },
+  "/centros?vista=lista&gratuito=1": {
+   "landed": "/centros?vista=lista&gratuito=1",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 16
+  },
+  "/centros?lugar=cesac-3&vista=lista": {
+   "landed": "/centros?lugar=cesac-3&vista=lista",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 26
+  },
+  "/primeros-auxilios/rcp": {
+   "landed": "/primeros-auxilios/rcp",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "RCP: la persona no responde y no respira"
+   ],
+   "links": 21
+  },
+  "/primeros-auxilios/atragantamiento": {
+   "landed": "/primeros-auxilios/atragantamiento",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Atragantamiento"
+   ],
+   "links": 18
+  },
+  "/primeros-auxilios/quemaduras": {
+   "landed": "/primeros-auxilios/quemaduras",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Quemaduras"
+   ],
+   "links": 18
+  },
+  "/temas/esi": {
+   "landed": "/temas/esi",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud sexual y ESI"
+   ],
+   "links": 26
+  },
+  "/temas/animales": {
+   "landed": "/temas/animales",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud animal"
+   ],
+   "links": 31
+  },
+  "/centros?filtro=medical": {
+   "landed": "/centros?filtro=medical",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 20
+  },
+  "/centros?filtro=mental-health": {
+   "landed": "/centros?filtro=mental-health",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 25
+  },
+  "/centros?seccion=section-2": {
+   "landed": "/centros?seccion=section-2",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 16
+  },
+  "/temas/salud-mental?seccion=section-2": {
+   "landed": "/temas/salud-mental?seccion=section-2",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud mental"
+   ],
+   "links": 18
+  },
+  "/primeros-auxilios/acv": {
+   "landed": "/primeros-auxilios/acv",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "ACV: accidente cerebrovascular"
+   ],
+   "links": 18
+  },
+  "/primeros-auxilios/hemorragia-grave": {
+   "landed": "/primeros-auxilios/hemorragia-grave",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Hemorragia grave"
+   ],
+   "links": 19
+  },
+  "/primeros-auxilios/convulsiones": {
+   "landed": "/primeros-auxilios/convulsiones",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Convulsiones"
+   ],
+   "links": 18
+  },
+  "/primeros-auxilios/reacciones-alergicas": {
+   "landed": "/primeros-auxilios/reacciones-alergicas",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Reacciones alérgicas"
+   ],
+   "links": 23
+  },
+  "/primeros-auxilios/heridas": {
+   "landed": "/primeros-auxilios/heridas",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Heridas y cortes"
+   ],
+   "links": 18
+  },
+  "/primeros-auxilios/golpes-y-caidas": {
+   "landed": "/primeros-auxilios/golpes-y-caidas",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Golpes y caídas"
+   ],
+   "links": 20
+  },
+  "/primeros-auxilios/golpe-en-la-cabeza": {
+   "landed": "/primeros-auxilios/golpe-en-la-cabeza",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Golpe en la cabeza"
+   ],
+   "links": 19
+  },
+  "/primeros-auxilios/fracturas": {
+   "landed": "/primeros-auxilios/fracturas",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Posibles fracturas"
+   ],
+   "links": 19
+  },
+  "/primeros-auxilios/accidentes-de-transito": {
+   "landed": "/primeros-auxilios/accidentes-de-transito",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Accidentes de tránsito"
+   ],
+   "links": 21
+  },
+  "/primeros-auxilios/electrocucion": {
+   "landed": "/primeros-auxilios/electrocucion",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Electrocución"
+   ],
+   "links": 19
+  },
+  "/primeros-auxilios/intoxicaciones": {
+   "landed": "/primeros-auxilios/intoxicaciones",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Intoxicaciones"
+   ],
+   "links": 19
+  },
+  "/primeros-auxilios/botiquin": {
+   "landed": "/primeros-auxilios/botiquin",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Botiquín de primeros auxilios"
+   ],
+   "links": 20
+  },
+  "/centros?filtro=sexual-health": {
+   "landed": "/centros?filtro=sexual-health",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Encontrar atención"
+   ],
+   "links": 20
+  },
+  "/temas/esi?seccion=section-2": {
+   "landed": "/temas/esi?seccion=section-2",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud sexual y ESI"
+   ],
+   "links": 25
+  },
+  "/temas/animales?seccion=section-3": {
+   "landed": "/temas/animales?seccion=section-3",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud animal"
+   ],
+   "links": 21
+  },
+  "/temas/esi?seccion=section-3": {
+   "landed": "/temas/esi?seccion=section-3",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud sexual y ESI"
+   ],
+   "links": 24
+  },
+  "/temas/animales?seccion=section-1": {
+   "landed": "/temas/animales?seccion=section-1",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud animal"
+   ],
+   "links": 31
+  },
+  "/temas/esi?seccion=section-1": {
+   "landed": "/temas/esi?seccion=section-1",
+   "title": "AuxiliAR · Recursos de salud gratuitos",
+   "h1": [
+    "Salud sexual y ESI"
+   ],
+   "links": 26
+  }
+ },
+ "external": [
+  "https://www.argentina.gob.ar/derechoshumanos/grupos-en-situacion-de-vulnerabilidad/orientacion-en-salud-mental",
+  "https://www.argentina.gob.ar/justicia/derechofacil/leysimple/salud-mental",
+  "https://www.argentina.gob.ar/normativa/nacional/ley-26657-175977/texto",
+  "https://leafletjs.com",
+  "https://www.openstreetmap.org/copyright",
+  "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+  "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+  "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+  "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+  "https://www.argentina.gob.ar/normativa/nacional/norma-423397/texto",
+  "https://www.argentina.gob.ar/salud/vacunas",
+  "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+  "https://www.argentina.gob.ar/sites/default/files/mini-guia-reanimacion-cardiovascular-2025.pdf",
+  "https://www.argentina.gob.ar/salud/primerosauxilios/rcp/adultos",
+  "https://iah.msal.gov.ar/doc/Documento152.pdf",
+  "https://www.argentina.gob.ar/salud/saludsexual/lineasaludsexual",
+  "https://donde.huesped.org.ar/",
+  "https://new.huesped.org.ar/servicios",
+  "https://www.ms.gba.gov.ar/sitios/aborto/",
+  "https://www.santafe.gob.ar/index.php/web/content/view/full/139666/",
+  "https://msptucuman.gov.ar/el-sistema-de-salud-ofrece-metodos-anticonceptivos-y-asesoramiento-gratuito-en-toda-la-provincia/",
+  "https://www.argentina.gob.ar/salud/sexual/preguntas-frecuentes",
+  "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+  "https://www.rosario.gob.ar/inicio/salud-animal",
+  "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+  "https://municipalidadsalta.gob.ar/bienestar-animal-7/",
+  "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+  "https://www.neuquencapital.gov.ar/tramites/bienestar-animal/esterilizacion-de-canes/",
+  "https://www.argentina.gob.ar/salud/protenencia/castraciones",
+  "https://www.argentina.gob.ar/senasa/programas-sanitarios/zoonosis",
+  "https://medlineplus.gov/spanish/ency/article/000005.htm",
+  "https://medlineplus.gov/spanish/ency/article/000844.htm",
+  "https://www.argentina.gob.ar/anmat/regulados/alimentos/alergenos-alimentarios/alergenos-alimentarios/sintomas",
+  "https://buenosaires.gob.ar/gcaba_historico/noticias/donde-acudir-ante-un-ataque-de-alergia",
+  "https://www.argentina.gob.ar/salud/primerosauxilios/situaciones/fracturas",
+  "https://www.argentina.gob.ar/salud/dinesa/recomendaciones/emergencias-via-publica",
+  "https://buenosaires.gob.ar/gcaba_historico/test-de-vih-y-sifilis-y-centros-de-testeo-0",
+  "https://buenosaires.gob.ar/gcaba_historico/salud/coordinacion-salud-sexual-vih-infecciones-de-transmision-sexual",
+  "https://huesped.org.ar/informacion/metodos-anticonceptivos",
+  "https://www.argentina.gob.ar/salud/sexual/metodos-anticonceptivos",
+  "https://www.argentina.gob.ar/normativa/nacional/ley-25673-79831/texto",
+  "https://www.fvet.uba.ar/hospital/",
+  "https://www.fcv.unlp.edu.ar/index.php/hospital/servicio-de-atencion-clinica-primaria-de-pequenos-animales/",
+  "https://www.argentina.gob.ar/noticias/educacion-sexual-integral-nuevos-materiales-educativos",
+  "https://abc.gob.ar/secretarias/areas/subsecretaria-de-educacion/programa-provincial-de-educacion-sexual-integral/programa",
+  "https://dirdocumentacion.educacion.chaco.gob.ar/esi/recursos/",
+  "https://www.argentina.gob.ar/normativa/nacional/ley-26150-121222/texto",
+  "https://www.argentina.gob.ar/normativa/nacional/ley-27610-346231/texto",
+  "https://www.argentina.gob.ar/salud/sexual"
+ ],
+ "internalBroken": [],
+ "consoleErrors": [
+  "crawl: Error handled by React Router default ErrorBoundary: JSHandle@object"
+ ],
+ "pageErrors": [],
+ "failedRequests": [],
+ "overflow": [],
+ "covered": [
+  "320 / (scroll 0): Atragantamiento",
+  "320 / (scroll 0): Quemaduras",
+  "320 / (scroll 520): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "320 / (scroll 520): Salud mental\nOrientación, acompañamiento y recurso",
+  "320 / (scroll 1040): Primeros auxilios\nQué hacer ya ante una emergencia",
+  "320 /temas/salud-general (scroll 0): Atragantamiento",
+  "320 /temas/salud-general (scroll 0): Quemaduras",
+  "320 /temas/salud-general (scroll 520): Controles generales",
+  "320 /temas/salud-mental (scroll 0): Quemaduras",
+  "320 /temas/salud-mental (scroll 1560): Orientación en Salud Mental · Derechos Humanos, ar",
+  "320 /temas/salud-sexual-y-esi (scroll 0): Quemaduras",
+  "320 /temas/salud-animal (scroll 0): Quemaduras",
+  "320 /centros (scroll 0): Atragantamiento",
+  "320 /centros (scroll 0): Quemaduras",
+  "320 /centros (scroll 520): INPUT",
+  "320 /primeros-auxilios (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios (scroll 0): Quemaduras",
+  "320 /primeros-auxilios (scroll 520): RCP: la persona no responde y no respira",
+  "320 /primeros-auxilios (scroll 1040): Quemaduras",
+  "320 /primeros-auxilios (scroll 1040): Reacciones alérgicas",
+  "320 /primeros-auxilios (scroll 1560): Posibles fracturas",
+  "320 /primeros-auxilios (scroll 1560): Accidentes de tránsito",
+  "320 /sobre-auxiliar (scroll 0): Atragantamiento",
+  "320 /sobre-auxiliar (scroll 0): Quemaduras",
+  "320 /sobre-auxiliar (scroll 520): Cómo verificamos los datos",
+  "320 /auxi-modelos (scroll 0): Atragantamiento",
+  "320 /auxi-modelos (scroll 0): Quemaduras",
+  "320 /auxi-modelos (scroll 1040): Probar 20. Estetoscopio colgado en el bot flotante",
+  "320 /auxi-modelos (scroll 1560): Probar 21. Globito con corazón en el bot flotante",
+  "320 /boceto-chat-personas (scroll 0): Quemaduras",
+  "320 /recursos (scroll 0): Atragantamiento",
+  "320 /recursos (scroll 0): Quemaduras",
+  "320 /recursos (scroll 520): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "320 /recursos (scroll 520): Salud mental\nOrientación, acompañamiento y recurso",
+  "320 /recursos (scroll 1040): Primeros auxilios\nQué hacer ya ante una emergencia",
+  "320 /mi-salud (scroll 0): Atragantamiento",
+  "320 /mi-salud (scroll 0): Quemaduras",
+  "320 /mi-salud (scroll 520): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "320 /mi-salud (scroll 520): Salud mental\nOrientación, acompañamiento y recurso",
+  "320 /mi-salud (scroll 1040): Primeros auxilios\nQué hacer ya ante una emergencia",
+  "320 /temas (scroll 0): Atragantamiento",
+  "320 /temas (scroll 0): Quemaduras",
+  "320 /temas (scroll 520): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "320 /temas (scroll 520): Salud mental\nOrientación, acompañamiento y recurso",
+  "320 /temas (scroll 1040): Primeros auxilios\nQué hacer ya ante una emergencia",
+  "320 /temas/salud-fisica (scroll 0): Atragantamiento",
+  "320 /temas/salud-fisica (scroll 0): Quemaduras",
+  "320 /temas/salud-fisica (scroll 520): Controles generales",
+  "320 /centros?vista=mapa (scroll 0): Atragantamiento",
+  "320 /centros?vista=mapa (scroll 0): Quemaduras",
+  "320 /centros?vista=mapa (scroll 520): INPUT",
+  "320 /centros?vista=lista&filtro=animal-health (scroll 0): Atragantamiento",
+  "320 /centros?vista=lista&filtro=animal-health (scroll 0): Quemaduras",
+  "320 /centros?vista=lista&filtro=animal-health (scroll 520): INPUT",
+  "320 /centros?vista=lista&gratuito=1 (scroll 0): Atragantamiento",
+  "320 /centros?vista=lista&gratuito=1 (scroll 0): Quemaduras",
+  "320 /centros?vista=lista&gratuito=1 (scroll 520): INPUT",
+  "320 /centros?lugar=cesac-3&vista=lista (scroll 0): Atragantamiento",
+  "320 /centros?lugar=cesac-3&vista=lista (scroll 0): Quemaduras",
+  "320 /centros?lugar=cesac-3&vista=lista (scroll 520): INPUT",
+  "320 /primeros-auxilios/rcp (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/rcp (scroll 4680): Manual de primeros auxilios y prevención de lesion",
+  "320 /primeros-auxilios/atragantamiento (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/atragantamiento (scroll 3640): Manual de primeros auxilios y prevención de lesion",
+  "320 /primeros-auxilios/quemaduras (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios/quemaduras (scroll 0): Quemaduras",
+  "320 /temas/esi (scroll 0): Quemaduras",
+  "320 /temas/esi (scroll 1040): Explorar centros de salud en el mapa",
+  "320 /temas/esi (scroll 2600): Salud sexual y reproductiva, con mapa de estableci",
+  "320 /temas/esi (scroll 3120): Línea nacional de salud sexual · Ministerio de Sal",
+  "320 /temas/animales (scroll 0): Quemaduras",
+  "320 /temas/animales (scroll 1560): Página oficial: Gobierno de la Ciudad · Animales B",
+  "320 /temas/animales (scroll 5200): Cómo buscar atención veterinaria gratuita",
+  "320 /centros?filtro=medical (scroll 0): Atragantamiento",
+  "320 /centros?filtro=medical (scroll 0): Quemaduras",
+  "320 /centros?filtro=medical (scroll 520): INPUT",
+  "320 /centros?filtro=mental-health (scroll 0): Atragantamiento",
+  "320 /centros?filtro=mental-health (scroll 0): Quemaduras",
+  "320 /centros?filtro=mental-health (scroll 520): INPUT",
+  "320 /centros?filtro=mental-health (scroll 1040): Llamar al 911: Emergencias",
+  "320 /centros?filtro=mental-health (scroll 1560): Llamar al 0800-345-1435: Prevención del suicidio",
+  "320 /centros?filtro=mental-health (scroll 2080): BUTTON",
+  "320 /centros?seccion=section-2 (scroll 0): Quemaduras",
+  "320 /temas/salud-mental?seccion=section-2 (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/acv (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/hemorragia-grave (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/hemorragia-grave (scroll 520): Ver números de emergencia",
+  "320 /primeros-auxilios/hemorragia-grave (scroll 2600): Manual de primeros auxilios y prevención de lesion",
+  "320 /primeros-auxilios/convulsiones (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios/convulsiones (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/convulsiones (scroll 2600): Manual de primeros auxilios y prevención de lesion",
+  "320 /primeros-auxilios/reacciones-alergicas (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/reacciones-alergicas (scroll 5720): Reacciones alérgicas · MedlinePlus, Biblioteca Nac",
+  "320 /primeros-auxilios/heridas (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios/heridas (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/golpes-y-caidas (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/golpe-en-la-cabeza (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios/golpe-en-la-cabeza (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/fracturas (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/fracturas (scroll 2600): Fracturas · Primeros auxilios, argentina.gob.ar/sa",
+  "320 /primeros-auxilios/accidentes-de-transito (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/electrocucion (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/intoxicaciones (scroll 0): Atragantamiento",
+  "320 /primeros-auxilios/intoxicaciones (scroll 0): Quemaduras",
+  "320 /primeros-auxilios/botiquin (scroll 0): Quemaduras",
+  "320 /centros?filtro=sexual-health (scroll 0): Atragantamiento",
+  "320 /centros?filtro=sexual-health (scroll 0): Quemaduras",
+  "320 /centros?filtro=sexual-health (scroll 520): INPUT",
+  "320 /temas/esi?seccion=section-2 (scroll 0): Quemaduras",
+  "320 /temas/animales?seccion=section-3 (scroll 0): Quemaduras",
+  "320 /temas/esi?seccion=section-3 (scroll 0): Quemaduras",
+  "320 /temas/animales?seccion=section-1 (scroll 0): Quemaduras",
+  "320 /temas/animales?seccion=section-1 (scroll 1560): Página oficial: Gobierno de la Ciudad · Animales B",
+  "320 /temas/animales?seccion=section-1 (scroll 5200): Cómo buscar atención veterinaria gratuita",
+  "320 /temas/esi?seccion=section-1 (scroll 0): Quemaduras",
+  "320 /temas/esi?seccion=section-1 (scroll 1040): Explorar centros de salud en el mapa",
+  "320 /temas/esi?seccion=section-1 (scroll 2600): Salud sexual y reproductiva, con mapa de estableci",
+  "320 /temas/esi?seccion=section-1 (scroll 3120): Línea nacional de salud sexual · Ministerio de Sal",
+  "320 /centros?vista=lista (scroll 0): Atragantamiento",
+  "320 /centros?vista=lista (scroll 0): Quemaduras",
+  "320 /centros?vista=lista (scroll 520): INPUT",
+  "390 / (scroll 0): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "390 /temas/salud-general (scroll 0): No sé qué controles me corresponden",
+  "390 /temas/salud-general (scroll 0): Controles generales",
+  "390 /temas/salud-mental (scroll 724): Cómo verificamos los datos y qué cobertura hay",
+  "390 /primeros-auxilios (scroll 724): Reacciones alérgicas",
+  "390 /primeros-auxilios (scroll 1448): Botiquín de primeros auxilios",
+  "390 /auxi-modelos (scroll 2172): Blanca",
+  "390 /boceto-chat-personas (scroll 5792): Sobre AuxiliAR",
+  "390 /recursos (scroll 0): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "390 /mi-salud (scroll 0): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "390 /temas (scroll 0): Cuidar mi salud\nControles, vacunas y prevención, c",
+  "390 /temas/salud-fisica (scroll 0): No sé qué controles me corresponden",
+  "390 /temas/salud-fisica (scroll 0): Controles generales",
+  "390 /temas/animales (scroll 1448): Página oficial: Municipalidad de Rosario · Salud a",
+  "390 /temas/animales (scroll 2896): Página oficial: Instituto de Zoonosis Luis Pasteur",
+  "390 /temas/animales (scroll 3620): Página oficial: Ministerio de Salud de la Nación ·",
+  "390 /temas/salud-mental?seccion=section-2 (scroll 724): Ley Nacional de Salud Mental 26.657 (texto origina",
+  "390 /primeros-auxilios/hemorragia-grave (scroll 2172): Sobre AuxiliAR",
+  "390 /primeros-auxilios/convulsiones (scroll 2172): Sobre AuxiliAR",
+  "390 /primeros-auxilios/heridas (scroll 1448): Sobre AuxiliAR",
+  "390 /primeros-auxilios/golpe-en-la-cabeza (scroll 2172): Sobre AuxiliAR",
+  "390 /primeros-auxilios/fracturas (scroll 2172): Sobre AuxiliAR",
+  "390 /primeros-auxilios/accidentes-de-transito (scroll 2172): Qué hacer ante emergencias en la vía pública · DIN",
+  "390 /primeros-auxilios/intoxicaciones (scroll 2172): Manual de primeros auxilios y prevención de lesion",
+  "390 /primeros-auxilios/botiquin (scroll 2172): Sobre AuxiliAR",
+  "390 /centros?filtro=sexual-health (scroll 1448): Sobre AuxiliAR",
+  "390 /temas/esi?seccion=section-2 (scroll 2172): Salud sexual, VIH e ITS · Gobierno de la Ciudad de",
+  "390 /temas/animales?seccion=section-3 (scroll 724): Atención clínica primaria de pequeños animales · F",
+  "390 /temas/animales?seccion=section-3 (scroll 1448): Sobre AuxiliAR",
+  "390 /temas/esi?seccion=section-3 (scroll 1448): Ley 25.673, Programa Nacional de Salud Sexual y Pr",
+  "390 /temas/animales?seccion=section-1 (scroll 1448): Página oficial: Municipalidad de Rosario · Salud a",
+  "390 /temas/animales?seccion=section-1 (scroll 2896): Página oficial: Instituto de Zoonosis Luis Pasteur",
+  "390 /temas/animales?seccion=section-1 (scroll 3620): Página oficial: Ministerio de Salud de la Nación ·"
+ ],
+ "a11y": [
+  "320 /: objetivos táctiles < 24 px: 1",
+  "320 /temas/salud-general: objetivos táctiles < 24 px: 1",
+  "320 /temas/salud-mental: objetivos táctiles < 24 px: 2",
+  "320 /temas/salud-sexual-y-esi: objetivos táctiles < 24 px: 1",
+  "320 /temas/salud-animal: objetivos táctiles < 24 px: 1",
+  "320 /centros: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios: objetivos táctiles < 24 px: 1",
+  "320 /sobre-auxiliar: objetivos táctiles < 24 px: 1",
+  "320 /login: sin landmark main",
+  "320 /auxi-modelos: objetivos táctiles < 24 px: 1",
+  "320 /boceto-chat-personas: objetivos táctiles < 24 px: 1",
+  "320 /recursos: objetivos táctiles < 24 px: 1",
+  "320 /mi-salud: objetivos táctiles < 24 px: 1",
+  "320 /temas: objetivos táctiles < 24 px: 1",
+  "320 /temas/salud-fisica: objetivos táctiles < 24 px: 1",
+  "320 /centros?vista=mapa: objetivos táctiles < 24 px: 3",
+  "320 /centros?vista=lista&filtro=animal-health: objetivos táctiles < 24 px: 1",
+  "320 /centros?vista=lista&gratuito=1: objetivos táctiles < 24 px: 1",
+  "320 /centros?lugar=cesac-3&vista=lista: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/rcp: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/atragantamiento: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/quemaduras: objetivos táctiles < 24 px: 1",
+  "320 /temas/esi: objetivos táctiles < 24 px: 1",
+  "320 /temas/animales: objetivos táctiles < 24 px: 1",
+  "320 /centros?filtro=medical: objetivos táctiles < 24 px: 1",
+  "320 /centros?filtro=mental-health: botón sin nombre: <button type=\"button\" class=\"inline-flex min-h-11 w-fit cursor-pointer items-center rounde",
+  "320 /centros?filtro=mental-health: objetivos táctiles < 24 px: 1",
+  "320 /centros?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "320 /temas/salud-mental?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/acv: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/hemorragia-grave: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/convulsiones: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/reacciones-alergicas: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/heridas: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/golpes-y-caidas: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/golpe-en-la-cabeza: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/fracturas: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/accidentes-de-transito: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/electrocucion: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/intoxicaciones: objetivos táctiles < 24 px: 1",
+  "320 /primeros-auxilios/botiquin: objetivos táctiles < 24 px: 1",
+  "320 /centros?filtro=sexual-health: objetivos táctiles < 24 px: 1",
+  "320 /temas/esi?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "320 /temas/animales?seccion=section-3: objetivos táctiles < 24 px: 1",
+  "320 /temas/esi?seccion=section-3: objetivos táctiles < 24 px: 1",
+  "320 /temas/animales?seccion=section-1: objetivos táctiles < 24 px: 1",
+  "320 /temas/esi?seccion=section-1: objetivos táctiles < 24 px: 1",
+  "320 /centros?vista=lista: objetivos táctiles < 24 px: 1",
+  "390 /temas/salud-mental: objetivos táctiles < 24 px: 1",
+  "390 /centros: objetivos táctiles < 24 px: 1",
+  "390 /login: sin landmark main",
+  "390 /centros?vista=mapa: objetivos táctiles < 24 px: 3",
+  "390 /centros?vista=lista&filtro=animal-health: objetivos táctiles < 24 px: 1",
+  "390 /centros?vista=lista&gratuito=1: objetivos táctiles < 24 px: 1",
+  "390 /centros?lugar=cesac-3&vista=lista: objetivos táctiles < 24 px: 1",
+  "390 /centros?filtro=medical: objetivos táctiles < 24 px: 1",
+  "390 /centros?filtro=mental-health: botón sin nombre: <button type=\"button\" class=\"inline-flex min-h-11 w-fit cursor-pointer items-center rounde",
+  "390 /centros?filtro=mental-health: objetivos táctiles < 24 px: 1",
+  "390 /centros?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "390 /centros?filtro=sexual-health: objetivos táctiles < 24 px: 1",
+  "390 /centros?vista=lista: objetivos táctiles < 24 px: 1",
+  "1280 /: objetivos táctiles < 24 px: 1",
+  "1280 /temas/salud-general: objetivos táctiles < 24 px: 1",
+  "1280 /temas/salud-mental: objetivos táctiles < 24 px: 3",
+  "1280 /temas/salud-sexual-y-esi: objetivos táctiles < 24 px: 1",
+  "1280 /temas/salud-animal: objetivos táctiles < 24 px: 1",
+  "1280 /centros: objetivos táctiles < 24 px: 5",
+  "1280 /primeros-auxilios: objetivos táctiles < 24 px: 1",
+  "1280 /sobre-auxiliar: objetivos táctiles < 24 px: 1",
+  "1280 /login: sin landmark main",
+  "1280 /auxi-modelos: objetivos táctiles < 24 px: 1",
+  "1280 /boceto-chat-personas: objetivos táctiles < 24 px: 1",
+  "1280 /recursos: objetivos táctiles < 24 px: 1",
+  "1280 /mi-salud: objetivos táctiles < 24 px: 1",
+  "1280 /temas: objetivos táctiles < 24 px: 1",
+  "1280 /temas/salud-fisica: objetivos táctiles < 24 px: 1",
+  "1280 /centros?vista=mapa: objetivos táctiles < 24 px: 5",
+  "1280 /centros?vista=lista&filtro=animal-health: objetivos táctiles < 24 px: 3",
+  "1280 /centros?vista=lista&gratuito=1: objetivos táctiles < 24 px: 3",
+  "1280 /centros?lugar=cesac-3&vista=lista: objetivos táctiles < 24 px: 3",
+  "1280 /primeros-auxilios/rcp: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/atragantamiento: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/quemaduras: objetivos táctiles < 24 px: 1",
+  "1280 /temas/esi: objetivos táctiles < 24 px: 1",
+  "1280 /temas/animales: objetivos táctiles < 24 px: 1",
+  "1280 /centros?filtro=medical: objetivos táctiles < 24 px: 5",
+  "1280 /centros?filtro=mental-health: botón sin nombre: <button type=\"button\" class=\"inline-flex min-h-11 w-fit cursor-pointer items-center rounde",
+  "1280 /centros?filtro=mental-health: objetivos táctiles < 24 px: 4",
+  "1280 /centros?seccion=section-2: objetivos táctiles < 24 px: 2",
+  "1280 /temas/salud-mental?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/acv: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/hemorragia-grave: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/convulsiones: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/reacciones-alergicas: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/heridas: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/golpes-y-caidas: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/golpe-en-la-cabeza: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/fracturas: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/accidentes-de-transito: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/electrocucion: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/intoxicaciones: objetivos táctiles < 24 px: 1",
+  "1280 /primeros-auxilios/botiquin: objetivos táctiles < 24 px: 1",
+  "1280 /centros?filtro=sexual-health: objetivos táctiles < 24 px: 4",
+  "1280 /temas/esi?seccion=section-2: objetivos táctiles < 24 px: 1",
+  "1280 /temas/animales?seccion=section-3: objetivos táctiles < 24 px: 1",
+  "1280 /temas/esi?seccion=section-3: objetivos táctiles < 24 px: 1",
+  "1280 /temas/animales?seccion=section-1: objetivos táctiles < 24 px: 1",
+  "1280 /temas/esi?seccion=section-1: objetivos táctiles < 24 px: 1",
+  "1280 /centros?vista=lista: objetivos táctiles < 24 px: 3"
+ ]
+}
