@@ -1,0 +1,155 @@
+FUENTE: argentina.gob.ar/salud/vacunas (Calendario Nacional de Vacunación, Ministerio de Salud de la Nación; contenidos con licencia Creative Commons Atribución 4.0). Consultado el 9/10/2026 con curl; texto extraído de cada página por etapa. Sin fecha de actualización en las páginas; el calendario enlaza el PDF «Calendario de vacunación 2026» (2026-03-10).
+
+=== https://www.argentina.gob.ar/salud/vacunas/embarazadas (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+Embarazo
+Embarazo
+La vacunación durante el embarazo protege a la persona embarazada, ya que se producen cambios en el organismo que pueden aumentar la susceptibilidad y la gravedad de algunas enfermedades, como, por ejemplo, la gripe o COVID-19.
+También protege al futuro recién nacido, gracias al paso por la placenta de los anticuerpos maternos, que lo protegen de enfermedades que pueden ser muy graves en los primeros meses de la vida, como, por ejemplo, coqueluche o la bronquiolitis.
+Las siguientes vacunas se indican durante la gestación:
+Antigripal : una dosis en cualquier trimestre de la gestación.
+Triple bacteriana acelular : una dosis en cada embarazo, a partir de la semana de 20 de gestación.
+Virus Sincicial respiratorio (VSR) : una dosis en cada embarazo, entre las semanas 32 y 36,6 de gestación.
+*Vacunas durante el puerperio: en caso de no haberla recibido en el embarazo, se debe aplicar una dosis de vacuna antigripal dentro de los 10 días posteriores al parto.
+Recordá:
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/recien-nacidos (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+Recién nacidos
+Recién nacidos
+La aplicación de vacunas desde edades tempranas protege a quienes son más susceptibles a contraer enfermedades infecciosas potencialmente graves.
+Tuberculosis (BCG) : Única dosis: personas recién nacidas, antes de egresar de la maternidad.
+Hepatitis B : Una dosis neonatal: personas recién nacidas dentro de las primeras 12 horas de vida.
+Recordá:
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/vacunacion-lactantes (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+Hasta un año
+Hasta un año
+La mayoría de las vacunas se aplican durante el primer año de vida.
+La aplicación de vacunas desde edades tempranas protege a quienes son más susceptibles a contraer enfermedades infecciosas potencialmente graves. En esta etapa se inician varios esquemas de vacunación
+A los 2 meses
+Neumococo conjugada : primera dosis.
+Poliomielitis : primera dosis (IPV o Salk)
+Quíntuple (o pentavalente) : primera dosis.
+Rotavirus : primera dosis.
+A los 3 meses
+Meningococo : primera dosis.
+A los 4 meses
+Neumococo conjugada : segunda dosis.
+Poliomielitis : segunda dosis (IPV o Salk)
+Quíntuple (o pentavalente) : segunda dosis.
+Rotavirus : segunda dosis.
+A los 5 meses
+Meningococo : segunda dosis.
+A los 6 meses
+Poliomielitis : tercera dosis (IPV o Salk)
+Quíntuple (o pentavalente) : tercera dosis.
+Entre los 6 y los 24 meses
+Antigripal: : dos dosis, con un intervalo mínimo de 4 semanas entre la primera y la segunda.
+Las personas menores de 24 meses que hubieran recibido dos dosis de vacuna antigripal anteriormente, deberán recibir una dosis.
+A los 12 meses
+Neumococo conjugada : refuerzo de dosis
+Hepatitis A : única dosis
+Triple viral : primera dosis.
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/vacunacion-niniosyninias (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+Hasta 2 años
+Hasta 2 años
+Las vacunas que deben aplicarse a los niños a partir del año de edad y hasta los dos años son:
+Entre los 6 y 24 meses
+Antigripal: dos dosis, con un intervalo mínimo de 4 semanas entre la primera y la segunda. Las personas menores de 24 meses que hubieran recibido dos dosis de vacuna antigripal anteriormente, deberán recibir sólo una dosis.
+A los 15 meses
+Meningococo : refuerzo.
+Varicela : primera dosis.
+Entre los 15 y los 18 meses
+Triple viral : 2da dosis
+Quíntuple (o pentavalente) : refuerzo de dosis.
+A los 18 meses
+Fiebre amarilla : primera dosis, solo para quienes residan en zonas de riesgo.
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/ingresoescolar (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+5 años
+5 años
+Es importante que vacunes a tu hijo para protegerlo de muchas enfermedades que pueden ser graves. Con las vacunas también preservás la salud de tu familia y de la comunidad.
+En el año que cumplen 5 años deben recibir las siguientes vacunas:
+IPV , para prevenir la poliomielitis.
+Triple viral SRP , para prevenir el sarampión, la rubéola y las paperas.
+Triple bacteriana celular , para prevenir la difteria, el tétanos y coqueluche.
+Varicela , para prevenir la varicela.
+Las vacunas del Calendario Nacional de Vacunación se aplican de forma gratuita en centros de salud y hospitales públicos de todo el país a quienes nacieron en 2021, aunque aún no hayan cumplido los 5 años.
+Control médico
+Es muy importante que lleves a tu hijo a un control de salud al menos una vez por año, aunque no esté enfermo. El control debe incluir una visita al oftalmólogo y otra al odontólogo.
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/vacunacion-adolescentes (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+11 años
+11 años
+En el año que cumplen 11 años deben reforzar la protección de las vacunas de la infancia y comenzar a prevenir enfermedades propias de la edad.
+VPH (Virus del Papiloma Humano) : una única dosis.
+Meningococo : una única dosis.
+Triple bacteriana acelular : una única dosis.
+Fiebre amarilla : refuerzo para quienes residan en zonas de riesgo.
+Las vacunas del Calendario Nacional de Vacunación se aplican de forma gratuita en centros de salud y hospitales públicos de todo el país a quienes nacieron en 2015, aunque aún no hayan cumplido los 11 años.
+Control médico
+Es muy importante que lleves a tu hijo a un control de salud al menos una vez por año, aunque no esté enfermo.
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/vacunacion-adultos (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+15 a 64 años
+15 a 64 años
+La vacunación en esta etapa de la vida es crucial para recibir refuerzos de vacunas ya aplicadas, brindar protección contra otras enfermedades así como completar esquemas.
+Doble bacteriana : iniciar o completar esquema de 3 dosis, luego continuar con una dosis de refuerzo cada 10 años.
+Doble o triple viral : toda persona a partir de los 5 años debe acreditar 2 dosis de vacuna con componente contra sarampión y rubéola aplicadas después del año de vida. Las personas nacidas antes del año 1965 se consideran inmunes por haber estado expuestas a ambos virus.
+Antigripal :dosis anual quienes presenten alguno de los siguientes factores de riesgo: obesidad, diabetes, enfermedades respiratorias crónicas, enfermedades cardíacas crónicas, inmunodeficiencias congénitas o adquiridas, enfermedad oncohematológica, trasplante de órgano sólido o de médula ósea y/o insuficiencia renal crónica en diálisis, entre otros presentando orden médica o cualquier documentación que certifique la existencia de enfermedades preexistentes.
+Fiebre Hemorrágica Argentina : a partir de los 15 años para personas que residan o trabajen en la zona endémica (ciertas jurisdicciones de Buenos Aires, Córdoba, Santa Fe y La Pampa).
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
+=== https://www.argentina.gob.ar/salud/vacunas/vacunacion-adultosmayores (200)
+Ministerio de Salud
+Calendario Nacional de Vacunación
+Vacunas para adultos mayores
++65 años
+Las personas adultas de 65 años o más deben continuar con los refuerzos de vacunas ya aplicadas, completar esquemas y protegerse contra la gripe y el neumococo, principales causas de complicaciones en esta etapa de la vida.
+Antigripal : una dosis anual.
+Neumococo : El esquema de vacunación es de 1 (una) dosis de VCN20.
+Doble bacteriana : iniciar o completar esquema de 3 dosis, luego continuar con una dosis de refuerzo cada 10 años
+Recordá
+Cuando concurras a un vacunatorio o centro de salud, llevá el carnet de vacunas para que puedan chequearlo, Es importante que todos y todas tengamos las dosis de vacunas correspondientes a nuestra edad.
+Nuestro Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida.
+Control de salud: Es muy importante que durante la infancia haya un control de salud al menos una vez por año, aunque la persona no se encuentre enferma. El control debe incluir una visita a oftalmología y odontología.
+
