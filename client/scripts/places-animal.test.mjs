@@ -159,5 +159,5 @@ test("the other quick filters and the human vaccination link keep working as bef
   assert.ok(render("/centros?vista=lista&filtro=mental-health").includes("Tipo: Salud mental"))
   // the generic empty state of any other search is not replaced
   const none = render("/centros?vista=lista&buscar=zzzzqq")
-  assert.ok(none.includes("No encontramos lugares verificados con esta búsqueda") && !none.includes("prestaciones veterinarias"))
+  assert.ok(none.includes("No encontramos prestaciones con gratuidad documentada para esta búsqueda") && !none.includes("prestaciones veterinarias"))
 })

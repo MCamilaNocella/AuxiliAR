@@ -24,6 +24,7 @@ const { CategoryFilter } = await vite.ssrLoadModule("/src/components/places/Cate
 const { ServiceTypeFilter } = await vite.ssrLoadModule("/src/components/places/ServiceTypeFilter/index.ts")
 const { ActiveFilters } = await vite.ssrLoadModule("/src/components/places/ActiveFilters/index.ts")
 const { PlacesExplorer } = await vite.ssrLoadModule("/src/components/places/PlacesExplorer/index.ts")
+const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
 const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxonomy.json"), "utf8"))
 const raw = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
 
@@ -170,10 +171,11 @@ test("active filters: one removable chip each, with a spoken label, and Borrar f
 const render = (url, props = {}) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, ...props })))
 
 test("the explorer with the real places: filters from the URL, active chips, counts and the same results in the list", () => {
-  const html = render("/centros?vista=lista&provincia=AR-C&categoria=salud-mental&prestacion=mental-health-care")
+  // Only prestaciones with documented gratuity are shown: of the primary care of the three CeSAC, the three are
+  const html = render("/centros?vista=lista&provincia=AR-C&categoria=salud-fisica&prestacion=primary-care")
   const content = text(html)
   assert.ok(content.includes("3 lugares encontrados en Ciudad Autónoma de Buenos Aires"))
-  assert.ok(content.includes("Ciudad Autónoma de Buenos Aires Quitar filtro") && content.includes("Salud mental Quitar filtro"))
+  assert.ok(content.includes("Ciudad Autónoma de Buenos Aires Quitar filtro") && content.includes("Salud general Quitar filtro"), content)
   for (const id of ["cesac-3", "cesac-41", "cesac-47"]) assert.ok(html.includes(`data-place-trigger="${id}"`), id)
   assert.ok(content.includes("Borrar filtros"))
   // the panel is folded here (phone), but the button says how many filters are on, and the chips stay in sight
@@ -181,7 +183,7 @@ test("the explorer with the real places: filters from the URL, active chips, cou
   // no filters: no active chips, no count on the button
   const plain = text(render("/centros?vista=lista"))
   assert.ok(!plain.includes("Borrar filtros") && !plain.includes("activos)"))
-  assert.ok(plain.includes("7 lugares encontrados"))
+  assert.ok(plain.includes("6 lugares encontrados"), "the 7th place has no prestación with documented gratuity: it is not shown")
   // the search box does not count: it is always in sight
   const searched = text(render("/centros?vista=lista&buscar=cesac"))
   assert.ok(!searched.includes("activo)") && searched.includes("Búsqueda: «cesac» Quitar filtro"))
@@ -195,7 +197,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
   assert.ok(animals.includes("1 lugar encontrado") && animals.includes("Animales Quitar filtro"))
   assert.ok(/Castración/.test(animals) && !/zoonosis|antirrábica|guardia veterinaria/i.test(animals), "only the castration of the centre is there: no other animal service is made up")
   // an invalid category or service in the URL is ignored
-  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("7 lugares encontrados"))
+  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("6 lugares encontrados"))
 })
 
 test("URL: every filter and the view travel together, and clearing keeps the view and the open place", () => {
@@ -291,7 +293,6 @@ test("the explorer is arranged for phones and desktop: search and view first, th
 
 /* ── Gratuity: only what is verified for that very service ── */
 
-const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
 const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard/index.ts")
 const rawFree = raw.filter((place) => place.services.some((service) => service.cost === "free" && service.source?.note)).map((place) => place.id).sort()
 
@@ -394,7 +395,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   const chosen = render("/centros?vista=lista&gratuito=1")
   assert.ok(chosen.includes("6 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
   const none = render("/centros?vista=lista&gratuito=1&categoria=salud-mental")
-  for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad verificada", "Eso no significa que no sean gratuitas", "con o sin gratuidad verificada", "Consultá el costo de cada una antes de ir", "Quitar el filtro de gratuidad"]) assert.ok(none.includes(piece), piece)
+  for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad documentada para esta búsqueda", "Que no aparezcan no quiere decir que no existan ni que no sean gratuitas", "Borrar filtros"]) assert.ok(none.includes(piece), piece)
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")
   // the cards say which services are free
   assert.ok(chosen.includes("Gratuita"))
@@ -574,7 +575,7 @@ test("the explorer: urgent help first in a crisis, a calm line for a usual searc
   assert.ok(crisis.indexOf("¿Qué necesitás?") < crisis.indexOf('href="tel:911"') && crisis.indexOf('href="tel:911"') < crisis.indexOf("lugares encontrados"))
   const usual = render("/centros?vista=lista&categoria=salud-mental")
   assert.ok(text(usual).includes("Si necesitás ayuda urgente ahora, tocá acá") && !text(usual).includes("pedí ayuda ahora"))
-  assert.ok(text(usual).includes("3 lugares encontrados"), "the results are still there")
+  assert.ok(text(usual).includes("0 lugares encontrados"), "no mental health prestación has documented gratuity yet: none is shown, and the urgent help is still there")
   const other = render("/centros?vista=lista&buscar=odontologia")
   assert.ok(!text(other).includes("ayuda urgente") && !text(other).includes("pedí ayuda ahora"))
 })

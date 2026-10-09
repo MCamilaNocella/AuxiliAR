@@ -147,7 +147,7 @@ test("the explorer reads the territory from the URL and keeps the other params, 
   // with a covered province chosen, there is no such block
   assert.ok(!text(render("/centros?provincia=AR-C&buscar=zzzz")).includes("Qué podés hacer mientras tanto"))
   // an invalid province in the URL is just ignored
-  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("7 lugares encontrados"))
+  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("6 lugares encontrados"))
   // the links that already exist keep working
   const legacy = text(render("/centros?filtro=emergency&buscar=oftalm", { filters: ["emergency"] }))
   assert.ok(legacy.includes("Tipo: Guardias") && legacy.includes("Búsqueda: «oftalm»"))

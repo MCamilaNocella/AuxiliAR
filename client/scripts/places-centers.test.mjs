@@ -51,10 +51,11 @@ test("mapa auxiliar: one emergency line that points to the emergency numbers, no
   assert.ok(content.includes("Si hay riesgo inmediato, no busques un centro"))
   assert.equal([...html.matchAll(/mirá los números de emergencia/g)].length, 1)
   assert.ok(!html.includes("bg-alert-soft"))
-  // the explorer comes with the transparency note and every kind of care as a quick filter
-  assert.ok(content.includes("Centros verificados por AuxiliAR, incorporados de a poco."))
-  // ...with the way to read how it is verified: the section "Sobre los datos" of this same category
-  assert.ok(html.includes('href="/centros?seccion=section-2"') && content.includes("Cómo verificamos los datos"))
+  // no transparency line under the heading any more: the way to read how it is verified is one secondary link, at the end
+  assert.ok(!content.includes("Centros verificados por AuxiliAR, incorporados de a poco."))
+  assert.equal([...html.matchAll(/Cómo verificamos los datos/g)].length, 1)
+  assert.ok(html.includes('href="/centros?seccion=section-2"'))
+  assert.ok(html.indexOf("Cómo verificamos los datos") > html.indexOf("Filtros"), "after the explorer, not in its header")
   // the kinds of care and services come from the data (category chips, service select); the quick chips of before are gone
   // the filters live in a panel (always open on large screens, folded on phones: the server renders the phone's): the search, the view and the button are in sight
   assert.ok(content.includes("¿Qué necesitás?") && /<button[^>]*aria-expanded="false"[^>]*aria-controls=[^>]*>/.test(html) && content.includes("Filtros"))
@@ -76,14 +77,14 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   const headings = [...html.matchAll(/<h3[^>]*>([^<]+)<[/]h3>/g)].map((match) => match[1])
   assert.deepEqual(headings, ["Cómo verificamos", "Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
   // verification: who, against what, when, and what happens when it is doubtful
-  for (const piece of ["una persona de AuxiliAR comprueba sus datos contra una fuente oficial", "quién lo verificó, cuándo y de qué fuente", "salvo que tenga la suya propia", "deja de mostrarse hasta que se vuelva a revisar"]) assert.ok(content.includes(piece), piece)
+  for (const piece of ["una persona de AuxiliAR comprueba sus datos contra una fuente oficial", "quién lo verificó, cuándo y de qué fuente", "La gratuidad, en cambio, siempre necesita la fuente propia de esa prestación", "deja de mostrarse hasta que se vuelva a revisar"]) assert.ok(content.includes(piece), piece)
   // free: per service, only when the source says so, conditions next to the service, and silence is not an answer
-  for (const piece of ["solo cuando la fuente oficial lo dice para esa prestación en particular", "prestación por prestación, nunca por centro entero", "Con DNI argentino", "no escribimos ni «gratuito» ni «arancelado»", "no lo sabemos"]) assert.ok(content.includes(piece), piece)
+  for (const piece of ["solo cuando la fuente oficial lo dice para esa prestación en particular", "prestación por prestación, nunca por centro entero", "Con DNI argentino", "el mapa muestra solo las prestaciones cuya gratuidad una fuente oficial confirma", "no quiere decir que sea paga", "no asegura que haya turnos, vacunas o insumos disponibles"]) assert.ok(content.includes(piece), piece)
   assert.ok(!/todos? (los|sus) (servicios|prestaciones) (son|es) gratuit/i.test(content), "never says that everything in a center is free")
   // the date: the same words the panel of a place uses
   for (const piece of ["Verificada el…", "Se vuelve a revisar antes del…", "no asegura que nada haya cambiado"]) assert.ok(content.includes(piece), piece)
   // no result is not no service
-  for (const piece of ["todavía no esté verificado", "No significa que el servicio no exista"]) assert.ok(content.includes(piece), piece)
+  for (const piece of ["todavía no tenga su gratuidad confirmada por una fuente oficial", "No significa que el servicio no exista"]) assert.ok(content.includes(piece), piece)
   assert.ok(content.includes("Un lugar sin ubicación verificada aparece solo en la lista"))
   // sources and the real scope: the provinces named are the ones that have verified places today (names, never counts)
   const day = (await vite.ssrLoadModule("/src/data/resources/index.ts")).todayInArgentina()

@@ -4,6 +4,7 @@ import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
 import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
+import { MyHealth } from "@/screens/MyHealth";
 import { NotFound } from "@/screens/NotFound";
 import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
@@ -39,9 +40,10 @@ const router = createBrowserRouter([
           // Salud general no longer has Primeros auxilios: its old section address redirects to /primeros-auxilios
           { path: PATHS.topic(HEALTH_GENERAL_SLUG), element: <HealthGeneralRoute/> },
           { path: PATHS.topic(":slug"), element: <Category/> },
-          { path: PATHS.resources, element: <Navigate to={PATHS.home} replace/> },
+          // Más recursos: a "Próximamente" page (it has no published information yet), no longer a redirect
+          { path: PATHS.resources, element: <Category/> },
           { path: PATHS.centers, element: <Category/> },
-          { path: PATHS.myHealth, element: <Navigate to={PATHS.home} replace/> },
+          { path: PATHS.myHealth, element: <MyHealth/> },
           { path: PATHS.firstAid, element: <Category/> },
           {
             path: PATHS.firstAidGuide(":slug"),

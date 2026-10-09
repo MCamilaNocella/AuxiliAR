@@ -1,5 +1,5 @@
 import { BookOpen } from "lucide-react"
-import { PATHS } from "@/router/paths"
+import { PATHS, SECTION_PARAM } from "@/router/paths"
 import type { Category } from "@/types/category"
 import { ResourcesScene } from "./ResourcesScene"
 import { Section1 } from "./sections/Section1"
@@ -16,6 +16,14 @@ export const RESOURCES: Category = {
   to: PATHS.resources,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: ResourcesScene,
+  /** No published information yet: the screen says so and points to what exists (the sections on rights that other categories already have) */
+  preparing: {
+    will: "Acá van a estar las preguntas frecuentes, los derechos, las leyes y los trámites de salud.",
+    meanwhile: [
+      { label: "Conocé tus derechos en salud mental", to: `${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-2` },
+      { label: "Derechos y ESI", to: `${PATHS.topic("esi")}?${SECTION_PARAM}=section-3` },
+    ],
+  },
   /** Sidebar sections, in the order they are listed; each one's content lives in ./sections */
   sections: [
     { id: "section-1", title: "Sección 1", Content: Section1 },

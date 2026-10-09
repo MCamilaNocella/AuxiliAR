@@ -44,6 +44,13 @@
   --color-alert-line: #f3d6d3;
   --color-alert-card-line: #e8c9c6;
   --color-on-alert: #ffffff;
+
+  /* Primeros auxilios highlight on the home: a deep teal, clearly not the red of the emergencies (white on it ≥7:1) */
+  --color-aid: #0b5566;
+  --color-aid-line: #7fd0e0;
+  --color-on-aid: #ffffff;
+  /* Text on the band's white button */
+  --color-aid-ink: #073b4c;
   /* Text on the home background (white passes 4.5:1 on every gradient stop) */
   --color-on-home: #ffffff;
   /* Secondary text on the home background: ≥4.9:1 on every gradient stop, clearly dimmer than the title */
@@ -199,6 +206,11 @@
   --color-alert-card-line: #5c302c;
   --color-on-alert: #ffffff;
 
+  --color-aid: #0d4a59;
+  --color-aid-line: #7fd0e0;
+  --color-on-aid: #ffffff;
+  --color-aid-ink: #073b4c;
+
   --color-auxi-motion: #ffffff;
   --color-shine: #8a817f;
 }
@@ -230,6 +242,11 @@
   --color-alert-line: #ffffff;
   --color-alert-card-line: #ffffff;
   --color-on-alert: #ffffff;
+
+  --color-aid: #000000;
+  --color-aid-line: #ffffff;
+  --color-on-aid: #ffffff;
+  --color-aid-ink: #000000;
 
   --color-auxi-motion: #ffffff;
   --color-shine: #8a8a8a;

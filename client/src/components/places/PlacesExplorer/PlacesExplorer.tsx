@@ -14,7 +14,6 @@ import { NoCoverageHelp } from "../NoCoverageHelp"
 import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
 import { CategoryFilter } from "../CategoryFilter"
 import { FiltersToggle } from "../FiltersToggle"
-import { FreeFilter } from "../FreeFilter"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapView } from "../PlacesMapView"
@@ -47,7 +46,9 @@ type PlacesExplorerProps = {
   map?: boolean
 }
 
-export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXPLORER_INTRO, map = false }: PlacesExplorerProps) => {
+export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, intro = PLACES_EXPLORER_INTRO, map = false }: PlacesExplorerProps) => {
+  // The visible policy: only prestaciones with documented gratuity, wherever the explorer is embedded. The others stay in the data
+  const scope = useMemo<PlacesScope>(() => ({ ...embeddedScope, confirmedOnly: true }), [embeddedScope])
   // One day for the whole visit: what expires is decided against it
   const [day] = useState(() => todayInArgentina())
   const [searchParams, setSearchParams] = useSearchParams()
@@ -223,7 +224,7 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
 
   return (
     <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
-      <p className="m-0 text-muted">{intro}</p>
+      {intro && <p className="m-0 text-muted">{intro}</p>}
 
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
         <div className="lg:flex-1">
@@ -253,7 +254,6 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
             onZoneChange={(zone) => changeQuery({ zone })}
           />
           <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
-          <FreeFilter count={facets.free} checked={freeOn} onChange={setFree} />
           {activeFilters.length > 0 && hasVisibleCounts(facets) && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}
@@ -306,20 +306,10 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         </div>
       )}
 
-      {empty === "no-results" && freeOn && !noAnimalResources && (
-        <div className="flex flex-col items-start gap-3">
-          <p className="m-0">{"No encontramos prestaciones con gratuidad verificada para esta búsqueda" + where + ". Eso no significa que no sean gratuitas: solo mostramos la gratuidad que la fuente oficial confirma."}</p>
-          <p className="m-0">Si quitás este filtro, vas a ver todas las prestaciones de la búsqueda, con o sin gratuidad verificada. Consultá el costo de cada una antes de ir.</p>
-          <button type="button" onClick={() => setFree(false)} className={buttonClass}>
-            Quitar el filtro de gratuidad
-          </button>
-        </div>
-      )}
-
-      {empty === "no-results" && !freeOn && !noAnimalResources && (
+      {empty === "no-results" && !noAnimalResources && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
-            {"No encontramos lugares verificados con esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan: solo mostramos lo que está verificado. Probá con otras palabras o quitá los filtros."}
+            {"No encontramos prestaciones con gratuidad documentada para esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan ni que no sean gratuitas: solo mostramos lo que una fuente oficial confirma. Probá con otras palabras o quitá los filtros."}
           </p>
           <button type="button" onClick={clearSearch} className={buttonClass}>
             Borrar filtros

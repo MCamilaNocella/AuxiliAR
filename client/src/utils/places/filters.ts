@@ -49,6 +49,12 @@ export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceTy
 export type PlacesScope = {
   category?: CategoryId
   serviceTypes?: ServiceType[]
+  /**
+   * Only the services whose gratuity is documented (see isVerifiedFree: free, or free with conditions). The rest stay in the
+   * data for future research but are never in the results, the cards, the pins, the search, the panel or any count; a place
+   * with none is left out. The explorer always sets it (see PlacesExplorer).
+   */
+  confirmedOnly?: boolean
 }
 
 const scopeTypes = ({ category, serviceTypes }: PlacesScope): Set<ServiceType> | null => {
@@ -177,7 +183,7 @@ export const selectPlaces = (places: readonly Resource[], day: string, asked: Pl
   return getCurrentPlaces(day, places)
     .filter((place) => matchesTerritory(place, query))
     .flatMap((place) => {
-      const services = getCurrentServices(place, day).filter((service) => !allowed || allowed.has(service.type))
+      const services = getCurrentServices(place, day).filter((service) => (!allowed || allowed.has(service.type)) && (!scope.confirmedOnly || isVerifiedFree(place, service)))
       if (!services.some((service) => matchesServiceCriteria(place, service, query))) return []
       if (query.free && searchTerms(query.text).length > 0 && !freeServiceAnswersWords({ place, services }, query)) return []
       // Stable sort: inside each group the data's order is kept
