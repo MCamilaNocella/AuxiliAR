@@ -66,13 +66,12 @@ test("the home has the six approved cards, exactly these and in this order, each
   ])
 })
 
-test("only Más recursos says Próximamente (it has no published information); the other five have content", () => {
+test("no home card says Próximamente: the six categories have published content (Más recursos has its first version)", () => {
   const html = render(Categories)
-  const soon = ALL_CATEGORIES.filter(({ preparing }) => preparing).map(({ id }) => id)
-  assert.deepEqual(soon, ["recursos"])
-  assert.equal([...html.matchAll(/Próximamente/g)].length, 1)
-  const card = [...html.matchAll(/<li><a [^>]*href="([^"]+)"[^>]*>(.*?)<\/a><\/li>/g)].find(([, href]) => href === "/recursos")
-  assert.ok(text(card[2]).includes("Próximamente"))
+  assert.deepEqual(ALL_CATEGORIES.filter(({ preparing }) => preparing).map(({ id }) => id), [])
+  assert.equal([...html.matchAll(/Próximamente/g)].length, 0)
+  const resources = ALL_CATEGORIES.find(({ id }) => id === "recursos")
+  assert.deepEqual(resources.sections.map(({ title }) => title), ["Tus derechos en salud", "Trámites", "Preguntas frecuentes", "Glosario"])
 })
 
 test("nothing on the cards or in the headings claims gratuity, availability or confidentiality that is not verified", () => {

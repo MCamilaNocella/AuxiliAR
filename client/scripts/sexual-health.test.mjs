@@ -52,7 +52,7 @@ test("every section has content, no placeholder, and ends with its official sour
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
-    assert.ok(content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 8 de octubre de 2026"), id)
+    assert.ok(content.includes("Fuentes oficiales") && content.includes(id === "section-2" ? "Texto comparado con estas fuentes el 9 de octubre de 2026" : "Texto comparado con estas fuentes el 8 de octubre de 2026"), id)
     // the sources list: only the official pages of the Nación, the laws and the Ciudad
     const list = html.slice(html.indexOf('aria-label="Fuentes"'))
     for (const href of external(list)) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|buenosaires\.gob\.ar)\//, `${id}: ${href}`)
@@ -63,7 +63,7 @@ test("every section has content, no placeholder, and ends with its official sour
 test("each section names the sources of what it says", () => {
   const listed = (id) => external(pages[id].slice(pages[id].indexOf('aria-label="Fuentes"')))
   assert.deepEqual(listed("section-1"), [sources.PREGUNTAS.url, sources.LINEA.url])
-  assert.deepEqual(listed("section-2"), [sources.METODOS.url, sources.PREGUNTAS.url, sources.LEY_25673.url, sources.CABA_TEST.url, sources.CABA_COORDINACION.url])
+  assert.deepEqual(listed("section-2"), [sources.PRESERVATIVO_VAGINAL, sources.PRESERVATIVOS, sources.METODO_PASTILLAS_COMBINADAS, sources.METODO_PASTILLAS_UNA_HORMONA, sources.METODO_INYECTABLES, sources.METODO_IMPLANTE, sources.METODO_DIU, sources.METODO_AHE, sources.METODO_LIGADURA, sources.METODO_VASECTOMIA, sources.PREGUNTAS, sources.CABA_METODOS, sources.CABA_CONSEJERIAS, sources.CABA_TEST, sources.CABA_COORDINACION].map(({ url }) => url))
   assert.deepEqual(listed("section-3"), [sources.LEY_25673.url, sources.LEY_26150.url, sources.LEY_27610.url, sources.PORTAL.url, sources.ESI_MATERIALES.url])
   assert.match(sources.LEY_27610.url, /ley-27610-346231\/texto$/)
 })
@@ -74,10 +74,10 @@ test("dónde buscar atención: the emergency button, the map only explores, and 
   assert.ok(content.includes("Ver números de emergencia") && !html.includes("tel:"))
   assert.ok(content.includes("AuxiliAR no otorga turnos ni realiza consultas médicas, y no te pide datos personales ni de salud"))
   assert.ok(hrefs(html).includes("/centros?filtro=sexual-health"), "map, filtered, through the shared link")
-  assert.ok(content.includes("Explorar centros de salud en el mapa") && content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
+  assert.ok(content.includes("Ver el mapa") && content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
   const access = "La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."
   assert.equal([...content.matchAll(/admisión, turno o derivación/g)].length, 1)
-  assert.ok(content.indexOf(access) < content.indexOf("Explorar centros de salud en el mapa"))
+  assert.ok(content.indexOf(access) < content.indexOf("Ver el mapa"))
   assert.ok(content.indexOf("Estamos") === -1 && content.indexOf("Acá encontrás información") < content.indexOf("Ver números de emergencia"))
   assert.ok(hrefs(html).includes("/centros?seccion=section-2"))
 })
@@ -106,26 +106,28 @@ test("the other pages are pointers: named, with who runs them, and never present
   for (const [id, page] of Object.entries(pages)) assert.ok(!/grupofusa|unlp\.edu/.test(page), id)
 })
 
-test("anticoncepción y prevención: the nine methods of the ministry as names, the condom, and the Ciudad's own words", () => {
+test("anticoncepción y prevención: the nine methods explained with the ministry's words, the vaginal condom, and the Ciudad's own words", () => {
   const html = pages["section-2"]
   const content = text(html)
-  for (const method of ["Preservativos", "Pastillas combinadas", "Pastillas de una sola hormona", "Anticonceptivos inyectables", "Implante subdérmico", "Dispositivo intrauterino (DIU)", "Anticoncepción de emergencia", "Ligadura tubaria", "Vasectomía"]) {
+  // one opening block per method (the condom and the eight others), each with its own page of the ministry as a source
+  for (const method of ["Preservativos", "Pastillas combinadas", "Pastillas de una sola hormona", "Anticonceptivos inyectables", "Implante subdérmico", "Dispositivo intrauterino (DIU)", "Anticoncepción hormonal de emergencia", "Ligadura tubaria", "Vasectomía"]) {
     assert.ok(content.includes(method), method)
   }
-  assert.equal([...html.slice(0, html.indexOf('aria-labelledby="ss-condom"')).matchAll(/<li>/g)].length, 9)
+  assert.equal([...html.matchAll(/<details/g)].length, 9)
   assert.ok(content.includes("único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (ITS), incluido el VIH. No elimina el riesgo por completo"))
-  // the condom never reads as absolute protection
-  assert.ok(!/protege de las ITS|previene las infecciones|evita las ITS|100 ?%|totalmente|sin riesgo/i.test(content), "no absolute protection")
-  // the intro to the methods is general, with no personal indication
+  // the condom never reads as absolute protection, and no efficacy figure is given
+  assert.ok(!/protege de las ITS|previene las infecciones|evita las ITS|100 ?%|totalmente|sin riesgo|%|efectividad|eficacia/i.test(content), "no absolute protection, no figures")
+  // general information, with no personal indication
   assert.ok(content.includes("Esto es información general, no una indicación personal"))
-  assert.ok(content.indexOf("Los métodos anticonceptivos permiten evitar un embarazo") < content.indexOf("El Ministerio de Salud nombra estos métodos"))
-  // the testing is said as the Ciudad's statement, not as AuxiliAR's, and no center, hour, age rule or result time is made up
-  assert.ok(content.includes("el Gobierno de la Ciudad informa que el test de VIH y sífilis es sencillo, confidencial y gratuito en el sistema público"))
-  assert.ok(content.includes("AuxiliAR no verificó cada centro de la lista oficial"))
-  assert.ok(!/minutos|resultado r[aá]pido|de lunes a|\d{1,2} ?(a|hs|h)\b/i.test(content.replace(/Ley 25\.673|26\.150|27\.610/g, "")), "no hours, no result times")
-  // no medical advice: no doses, efficacy figures or side effects
-  assert.ok(!/eficacia|%|dosis|efectos secundarios|contraindica|mg\b|horas después/i.test(content))
   assert.ok(content.includes("No reemplaza la consulta con un profesional de la salud"))
+  // the vaginal condom: the ministry's own explanation; the Hospital Rivadavia (or any center) is NOT named as a place to get it
+  assert.ok(content.includes("¿Qué es el preservativo vaginal?") && content.includes("nitrilo") && content.includes("anillo interno"))
+  assert.ok(!/rivadavia/i.test(content), "no center is named for the vaginal condom")
+  assert.ok(content.includes("AuxiliAR no tiene confirmado en qué centros concretos se entregan"))
+  // the free statement is the Ciudad's and the national law's, said as theirs
+  assert.ok(content.includes("La atención y los métodos son gratuitos en el sistema público"))
+  assert.ok(content.includes("el Gobierno de la Ciudad informa que los test de VIH y sífilis son análisis de sangre sencillos, confidenciales y gratuitos en el sistema público"))
+  assert.ok(!/minutos|resultado r[aá]pido|de lunes a/i.test(content), "no result times, no weekdays")
 })
 
 test("derechos y ESI: each right is one the law states, with its law named, and no procedure or deadline", () => {
@@ -144,7 +146,7 @@ test("no phone line is copied and nothing is promised: no number, no hours, no a
     assert.ok(!html.includes("tel:") && !html.includes("wa.me") && !html.includes("whatsapp"), id)
     assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|148|911)\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b|\b381\b/.test(content), `${id}: no number`)
     // "garantiza" appears only as what Ley 25.673 says (art. 2)
-    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replace("preservativos gratis en bocas de distribución", "").replace("La Ley 25.673 garantiza a toda la población", "")), id)
+    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replace("preservativos gratis en bocas de distribución", "").replace("se retiran preservativos gratis", "").replace("sin costo adicional", "").replace("La Ley 25.673 garantiza a toda la población", "")), id)
     assert.ok(!/turno inmediato|sin turno|siempre hay|stock/i.test(content.replace("no significa que haya un turno inmediato", "")), id)
   }
 })
@@ -158,6 +160,9 @@ test("'gratuit-' only appears where a sentence says whose statement it is, or wh
     "confidencial y gratuito en el sistema público",
     "deben cubrirla de forma integral y gratuita",
     "preservativos gratis en bocas de distribución",
+    "La atención y los métodos son gratuitos en el sistema público y deben ser entregados sin costo adicional en obras sociales y prepagas",
+    "sencillos, confidenciales y gratuitos en el sistema público",
+    "donde también se retiran preservativos gratis",
   ]
   for (const [id, html] of Object.entries(pages)) {
     let content = text(html)

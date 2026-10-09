@@ -50,7 +50,7 @@ export default function Section1Content() {
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
         <div className="mt-3">
           <ActionLink to={centersLink({ filter: "mental-health" })} variant="primary">
-            Explorar centros de salud en el mapa
+            Ver el mapa
           </ActionLink>
         </div>
         <p className="m-0 mt-2 text-ink-soft">

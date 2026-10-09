@@ -18,8 +18,8 @@ export default function Section3Content() {
   return (
     <div className="mt-2 flex max-w-3xl flex-col gap-6">
       <p className="m-0 text-lg text-ink">
-        Hoy solo conocemos campañas y servicios municipales de vacunación antirrábica y castración, y la atención del hospital municipal de Salta, con condiciones. No confirmamos ninguna guardia ni atención de
-        urgencia gratuita para animales.
+        Hoy conocemos campañas y servicios municipales de vacunación antirrábica y castración, el consultorio clínico del Instituto Pasteur (Ciudad de Buenos Aires) y la atención del hospital municipal de Salta, con
+        condiciones. No confirmamos ninguna guardia ni atención de urgencia gratuita para animales.
       </p>
 
       <section aria-labelledby="an-how">

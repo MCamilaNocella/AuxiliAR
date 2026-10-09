@@ -168,7 +168,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Cuidar la boca incluye cepillarte bien y hacerte controles, no solo ir cuando hay dolor.",
     learning: "La salud bucal también se controla: no hace falta esperar a que duela.",
-    action: { label: "Buscar atención odontológica", to: centersLink({ filter: "dentistry" }) },
+    action: { label: "Ver el mapa (odontología)", to: centersLink({ filter: "dentistry" }) },
   },
   {
     id: "golpe-en-el-ojo",
@@ -198,7 +198,7 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Las guardias oftalmológicas existen para las urgencias de los ojos; los turnos, para controles.",
     learning: "Urgencia en los ojos: guardia oftalmológica. Control de la vista: atención de rutina.",
-    action: { label: "Ver guardias oftalmológicas", to: centersLink({ filter: "emergency", query: "oftalm" }) },
+    action: { label: "Ver el mapa (urgencia oftalmológica)", to: centersLink({ filter: "emergency", query: "oftalm" }) },
   },
   {
     id: "informacion-verificada",

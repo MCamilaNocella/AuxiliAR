@@ -138,3 +138,36 @@ export const HUESPED_METODOS: Pointer = {
   by: "Fundación Huésped (organización civil)",
   url: "https://huesped.org.ar/informacion/metodos-anticonceptivos",
 }
+
+/** ── Round 3 (9/10/2026): the pages of the Nación and the Ciudad that the "Anticoncepción y prevención" section explains in its own words ── */
+
+export const CHECKED_AT_METHODS = "2026-10-09"
+
+/** Preguntas frecuentes sobre preservativo vaginal (Ministerio de Salud, CC BY 4.0): what it is, how it works, how it is used, who can use it, where to ask. No date. Text saved in docs/investigacion/evidencia */
+export const PRESERVATIVO_VAGINAL: Source = {
+  label: "Preguntas frecuentes sobre preservativo vaginal · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/vih-sida/preguntas-frecuentes-sobre-preservativo-vaginal",
+}
+
+/** The page of each method of the Ministerio de Salud (SS03 lists them; each one has its own page). No date */
+export const PRESERVATIVOS: Source = { label: "Preservativos · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/preservativos" }
+export const METODO_PASTILLAS_COMBINADAS: Source = { label: "Pastillas combinadas · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/pastillas-combinadas" }
+export const METODO_PASTILLAS_UNA_HORMONA: Source = { label: "Pastillas de una sola hormona · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/pastillas-una-hormona" }
+export const METODO_INYECTABLES: Source = { label: "Anticonceptivos inyectables · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/anticonceptivos-inyectables" }
+export const METODO_IMPLANTE: Source = { label: "Implantes subdérmicos · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/metodos-anticonceptivos/implante-subdermico" }
+export const METODO_DIU: Source = { label: "Dispositivos intrauterinos (DIU) · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/diu" }
+export const METODO_AHE: Source = { label: "Anticoncepción hormonal de emergencia · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/ahe" }
+export const METODO_LIGADURA: Source = { label: "Ligadura tubaria · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/ligadura-tubaria" }
+export const METODO_VASECTOMIA: Source = { label: "Vasectomía · Ministerio de Salud de la Nación", url: "https://www.argentina.gob.ar/salud/sexual/vasectomia" }
+
+/** "La atención y los métodos son gratuitos en el sistema público y deben ser entregados sin costo adicional en obras sociales y prepagas". CC Reconocimiento 2.5 AR. No date */
+export const CABA_METODOS: Source = {
+  label: "Métodos anticonceptivos · Gobierno de la Ciudad de Buenos Aires",
+  url: "https://buenosaires.gob.ar/gcaba_historico/salud-sexual-y-reproductiva/metodos-anticonceptivos",
+}
+
+/** "En los siguientes centros de salud y hospitales se puede acceder a los métodos anticonceptivos y a la interrupción del embarazo" (62 establishments; ligadura and vasectomía marked). No date */
+export const CABA_CONSEJERIAS: Source = {
+  label: "Consejerías en salud sexual · Gobierno de la Ciudad de Buenos Aires",
+  url: "https://buenosaires.gob.ar/gcaba_historico/salud-sexual-y-reproductiva/consejerias-en-salud-sexual",
+}

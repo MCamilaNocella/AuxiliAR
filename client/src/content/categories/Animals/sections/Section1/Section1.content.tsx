@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CABA, CHECKED_AT, CONFIRMED_BY_SOURCE, NOT_CONFIRMED, ZOONOSIS } from "../../Animals.sources"
+import { CABA, CAMPAIGN_NOT_CARE, CHECKED_AT, CONFIRMED_BY_SOURCE, NOT_CONFIRMED, ZOONOSIS } from "../../Animals.sources"
 import { ServiceList } from "../../ServiceList"
 
 /**
@@ -24,8 +24,7 @@ export default function Section1Content() {
           Una campaña gratuita no es atención veterinaria gratuita
         </h3>
         <p className="m-0 mt-1">
-          Que una vacunación o una castración sea gratuita no significa que la consulta, los estudios o los tratamientos también lo sean. Tampoco quiere decir que atiendan urgencias. Cada servicio dice qué incluye:
-          leelo en su página.
+          {CAMPAIGN_NOT_CARE}
         </p>
       </section>
 

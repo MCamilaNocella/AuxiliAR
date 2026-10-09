@@ -1,6 +1,7 @@
 import { ActionLink } from "@/components/health/ActionLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
+import { REFUSED, RIGHTS } from "../../MentalHealth.rights"
 import { CHECKED_AT, LEY_26657, LEY_SIMPLE } from "../../MentalHealth.sources"
 
 /**
@@ -15,14 +16,6 @@ import { CHECKED_AT, LEY_26657, LEY_SIMPLE } from "../../MentalHealth.sources"
  * Left out on purpose until a health professional and the team review them: involuntary hospitalization and its judicial
  * control, and any procedure to file a complaint.
  */
-const RIGHTS = [
-  "Recibir el tratamiento más conveniente, el que menos limite tus derechos y libertades.",
-  "Que te acompañen tus familiares, tus afectos o la persona que designes, antes, durante y después del tratamiento.",
-  "Acceder a tu historia clínica. También pueden hacerlo tu abogado, un familiar o la persona que designes.",
-  "No ser discriminada ni discriminado por tener, o haber tenido, un padecimiento mental.",
-  "Ser atendida o atendido en un hospital general. La atención debe hacerse, preferentemente, fuera de la internación.",
-  "Que la medicación responda a tus necesidades de salud y nunca se use como castigo.",
-]
 
 export default function Section2Content() {
   return (
@@ -43,10 +36,10 @@ export default function Section2Content() {
         <h3 id="mh-refused" className="m-0 text-xl font-extrabold">
           Si te rechazan la atención
         </h3>
-        <p className="m-0 mt-1">Rechazar la atención de una persona por tener un padecimiento mental es una forma de discriminación.</p>
-        <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
+        <p className="m-0 mt-1">{REFUSED.rule}</p>
+        <p className="m-0 mt-2 text-ink-soft">{REFUSED.note}</p>
         <div className="mt-3">
-          <ActionLink to={centersLink({ filter: "mental-health" })}>Explorar centros de salud en el mapa</ActionLink>
+          <ActionLink to={centersLink({ filter: "mental-health" })}>Ver el mapa</ActionLink>
         </div>
       </section>
 

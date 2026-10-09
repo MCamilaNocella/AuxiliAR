@@ -7,7 +7,7 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PATHS, PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyStateOf, planLoad, provinceLabel, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyGuideOf, emptyStateOf, planLoad, provinceLabel, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
@@ -214,6 +214,8 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
   // A link to "Salud animal" while the map has no veterinary service says exactly that, instead of a generic "no results"
   const noAnimalResources = empty === "no-results" && query.filterId === "animal-health" && !quickFilterHasData("animal-health", allEntries)
+  // A quick filter with no place with documented gratuity says so and says what a person can do, inside AuxiliAR
+  const guide = empty === "no-results" && !noAnimalResources ? emptyGuideOf(query, allEntries) : null
   const where = query.zone ? ` en ${query.zone}` : query.province ? ` en ${provinceLabel(query.province)}` : ""
   const count =
     state.status === "loading"
@@ -306,7 +308,28 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         </div>
       )}
 
-      {empty === "no-results" && !noAnimalResources && (
+      {guide && (
+        <div className="flex max-w-prose flex-col items-start gap-3 rounded-2xl border border-line-strong bg-card p-4">
+          <p className="m-0 font-bold">{guide.headline}</p>
+          <ul className="m-0 flex list-disc flex-col gap-1 pl-5">
+            {guide.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-2">
+            {guide.links.map(({ label, to }) => (
+              <Link key={to} to={to} className={buttonClass}>
+                {label}
+              </Link>
+            ))}
+            <button type="button" onClick={clearSearch} className={buttonClass}>
+              Ver todas las prestaciones disponibles
+            </button>
+          </div>
+        </div>
+      )}
+
+      {empty === "no-results" && !noAnimalResources && !guide && (
         <div className="flex flex-col items-start gap-3">
           <p className="m-0">
             {"No encontramos prestaciones con gratuidad documentada para esta búsqueda" + where + ". Que no aparezcan no quiere decir que no existan ni que no sean gratuitas: solo mostramos lo que una fuente oficial confirma. Probá con otras palabras o quitá los filtros."}

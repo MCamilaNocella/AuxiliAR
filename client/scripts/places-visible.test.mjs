@@ -133,7 +133,7 @@ test("the transparency: no header line under the map, one secondary link at the 
   const section = await readFile(join(root, "src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx"), "utf8")
   assert.ok(!section.includes("incorporados de a poco"))
   assert.match(section, /intro=\{null\}/)
-  const about = await readFile(join(root, "src/content/categories/HealthCenters/sections/Section2/Section2.content.tsx"), "utf8")
+  const about = await readFile(join(root, "src/content/categories/HealthCenters/sections/Section2/Section2.points.ts"), "utf8")
   for (const piece of ["solo las prestaciones cuya gratuidad una fuente oficial confirma", "no podemos confirmar que es gratuita", "no asegura que haya turnos"]) assert.ok(about.includes(piece), piece)
   assert.ok(!/no escribimos ni «gratuito» ni «arancelado»/.test(about), "the old text about prestaciones with no cost said is gone: they are not shown")
 })

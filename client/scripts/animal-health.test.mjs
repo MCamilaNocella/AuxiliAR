@@ -35,16 +35,18 @@ const hrefs = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => mat
 const external = (html) => hrefs(html).filter((href) => href.startsWith("https://"))
 const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) => [id, render(component)]))
 
-test("salud animal has three sections that open straight on the first, and it is no longer 'próximamente'", () => {
+test("salud animal has four sections (the last one without a summary yet) that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(ANIMALS.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Vacunación y castración gratuitas"],
     ["section-2", "Cuidado y prevención"],
     ["section-3", "Atención veterinaria gratuita"],
+    ["section-4", "Si muere tu perro o gato"],
   ])
   assert.equal(ANIMALS.defaultSectionId, "section-1")
   assert.equal(ANIMALS.preparing, undefined)
   assert.equal(ANIMALS.to, "/temas/animales")
-  for (const { summary } of ANIMALS.sections) assert.ok(summary && summary.length > 60)
+  // section-4 has no summary on purpose: Auxi's index (server resource) is not regenerated in this round
+  for (const { summary } of ANIMALS.sections.slice(0, 3)) assert.ok(summary && summary.length > 60)
 })
 
 test("every section has content, no placeholder, and ends with its official sources and the day they were compared", () => {
@@ -66,8 +68,8 @@ test("vacunación y castración: only what each municipality's page says, and ea
   const pending = html.slice(html.indexOf('aria-labelledby="an-pending"'), html.indexOf('aria-labelledby="an-other"'))
   assert.deepEqual(external(free), sources.CONFIRMED_BY_SOURCE.map(({ url }) => url))
   assert.deepEqual(external(pending), sources.NOT_CONFIRMED.map(({ url }) => url))
-  assert.deepEqual(sources.CONFIRMED_BY_SOURCE.map(({ id }) => id), ["caba", "rosario", "cordoba", "salta"])
-  assert.deepEqual(sources.NOT_CONFIRMED.map(({ id }) => id), ["pasteur", "neuquen", "protenencia"])
+  assert.deepEqual(sources.CONFIRMED_BY_SOURCE.map(({ id }) => id), ["caba", "rosario", "cordoba", "salta", "pasteur"])
+  assert.deepEqual(sources.NOT_CONFIRMED.map(({ id }) => id), ["neuquen", "protenencia"])
   for (const service of [...sources.CONFIRMED_BY_SOURCE, ...sources.NOT_CONFIRMED]) {
     for (const field of ["place", "by", "offers", "who", "how", "url"]) assert.ok(service[field], `${service.id}.${field}`)
   }
@@ -96,7 +98,7 @@ test("the services not confirmed are apart, and none of them is called free in A
   const html = pages["section-1"]
   const pending = text(html.slice(html.indexOf('aria-labelledby="an-pending"'), html.indexOf('aria-labelledby="an-other"')))
   assert.ok(pending.includes("No los tomes como gratuitos hasta confirmarlo"))
-  assert.ok(pending.includes("La página no informa el costo") && pending.includes("La página no deja claro el costo"))
+  assert.ok(pending.includes("La página no deja claro el costo"))
   assert.ok(pending.includes("No informa fechas, localidades ni si el programa sigue vigente"))
   assert.ok(pending.includes("Un preturno no es una cirugía confirmada"))
 })
@@ -161,10 +163,25 @@ test("the shared map, the emergency area and the other categories are not touche
 test("the index of Auxi's content lists the three sections, up to date with the summaries", () => {
   const index = JSON.parse(readFileSync(resolve(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
   const list = Array.isArray(index) ? index : (index.pages ?? Object.values(index).find(Array.isArray))
-  for (const section of ANIMALS.sections) {
+  for (const section of ANIMALS.sections.filter(({ summary }) => summary)) {
     const entry = list.find((page) => page.path === `/temas/animales?seccion=${section.id}`)
     assert.ok(entry, section.id)
     assert.equal(entry.title, `Salud animal › ${section.title}`)
     assert.equal(entry.summary, section.summary, `${section.id}: run npm run content:index`)
   }
+})
+
+test("si muere tu perro o gato: Pasteur's free service with its conditions, no individual cremation or ashes promised, and no schedule of the vacunatorio", async () => {
+  const Section4 = (await vite.ssrLoadModule(`${sectionDir}/Section4/Section4.content.tsx`)).default
+  const html = render(Section4)
+  const content = text(html)
+  assert.ok(content.includes("sin costo, para su disposición final o cremación"))
+  assert.ok(content.includes("mayor de edad y concurrir con DNI"))
+  assert.ok(content.includes("No informa si la cremación es individual ni si se entregan las cenizas"))
+  assert.ok(content.includes("solo existe riesgo si el animal mordió a una persona dentro de los 10 días previos a su fallecimiento"))
+  assert.ok(content.includes("no tiene guardia de atención médica ni urgencias"))
+  // nothing promises individual cremation or ashes, and the contradictory hours of the vacunatorio are not copied
+  assert.ok(!/cenizas (se )?(entregan|devuelven)|cremación individual (gratuita|incluida)|9 a 12|14 a 17|8 a 18|8:00/i.test(content.replace("ni si se entregan las cenizas", "")))
+  assert.ok(content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"))
+  for (const href of external(html)) assert.match(href, /^https:\/\/buenosaires\.gob\.ar\//)
 })

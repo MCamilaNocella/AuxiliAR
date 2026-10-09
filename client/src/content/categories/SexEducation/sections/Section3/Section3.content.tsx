@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { PointerList } from "../../PointerList"
+import { SEXUAL_RIGHTS } from "../../SexEducation.rights"
 import { CHECKED_AT, ESI_CHACO, ESI_MATERIALES, ESI_PBA, LEY_25673, LEY_26150, LEY_27610, PORTAL } from "../../SexEducation.sources"
 
 /**
@@ -27,12 +28,11 @@ export default function Section3Content() {
           Tus derechos
         </h3>
         <ul className="m-0 mt-2 flex list-disc flex-col gap-2.5 pl-5">
-          <li>
-            <b>Información y atención.</b> La Ley 25.673 garantiza a toda la población el acceso a información, orientación, métodos y prestaciones de salud sexual y reproductiva.
-          </li>
-          <li>
-            <b>Educación sexual integral.</b> La Ley 26.150 establece que todas las personas que estudian tienen derecho a recibir educación sexual integral en escuelas públicas, de gestión estatal y privadas.
-          </li>
+          {SEXUAL_RIGHTS.map(({ lead, text }) => (
+            <li key={lead}>
+              <b>{lead}</b> {text}
+            </li>
+          ))}
           <li>
             <b>Decidir sobre un embarazo.</b> La Ley 27.610 regula el acceso a la interrupción voluntaria del embarazo y a la atención posaborto. Reconoce el derecho a decidir de las mujeres y de otras personas con
             capacidad de gestar, y establece que el sector público de salud y las obras sociales deben cubrirla de forma integral y gratuita.
@@ -61,7 +61,7 @@ export default function Section3Content() {
 
       <section aria-labelledby="ss-material">
         <h3 id="ss-material" className="m-0 text-xl font-extrabold">
-          Materiales de ESI para leer
+          Materiales de ESI para leer (complemento)
         </h3>
         <p className="m-0 mt-1 text-ink-soft">Son materiales de lectura abierta, algunos pensados para docentes y familias. No son una consulta ni un servicio de atención. AuxiliAR no verificó cada descarga.</p>
         <div className="mt-2">

@@ -182,8 +182,8 @@ test("primeros auxilios: the page of the category, whose every card opens a real
 
 test("every internal link of Salud física points somewhere real", () => {
   const topicIds = CONTROL_TOPICS.map(({ id }) => id)
-  // Salud general: section-3 (Primeros auxilios) moved out; the ids of the others are kept
-  const sectionIds = ["section-1", "section-2", "section-4"]
+  // Salud general: section-3 (Primeros auxilios) moved out (its address redirects: never reuse it); the ids of the others are kept, and the vaccination calendar is section-5
+  const sectionIds = ["section-1", "section-2", "section-5", "section-4"]
   const guideSlugs = FIRST_AID_GUIDE_CONTENT.map(({ slug }) => slug)
   const filterIds = FILTER_IDS
 
@@ -230,8 +230,8 @@ test("the category is Cuidar mi salud, at /temas/salud-general (the address keep
   assert.equal(PHYSICAL_HEALTH.defaultSectionId, "section-2")
   assert.equal(PHYSICAL_HEALTH.to, "/temas/salud-general")
   assert.equal(PATHS.topic(HEALTH_GENERAL_SLUG), PHYSICAL_HEALTH.to)
-  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Quiz"])
-  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ id }) => id), ["section-1", "section-2", "section-4"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Calendario de vacunación", "Quiz"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ id }) => id), ["section-1", "section-2", "section-5", "section-4"])
   // internal id kept on purpose: the places taxonomy and the category styles use it
   assert.equal(PHYSICAL_HEALTH.id, "salud-fisica")
   const visible = [PHYSICAL_HEALTH.title, PHYSICAL_HEALTH.description, PHYSICAL_HEALTH.subtitle, ...PHYSICAL_HEALTH.sections.map(({ title }) => title)]
@@ -279,7 +279,8 @@ test("Salud general carries no map and no places explorer, and every link to cen
       assert.ok(!/components\/places|utils\/places|usePlaces|mapTiles|leaflet/i.test(source), `${file} imports the explorer or the map`)
     }
   }
-  const centers = [...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to)), ...QUESTIONS.map(({ action }) => action?.to)].filter(Boolean)
+  // the link to the vaccination calendar stays inside Salud general (it is not a link to the centers)
+  const centers = [...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to)), ...QUESTIONS.map(({ action }) => action?.to)].filter((to) => to && !to.startsWith(PHYSICAL_HEALTH.to))
   assert.ok(centers.length >= 10)
   for (const to of centers) assert.equal(new URL(to, "http://x").pathname, PATHS.centers, to)
   assert.equal(centersLink(), "/centros")
@@ -309,14 +310,16 @@ test("a category with one section shows no section menu; two or three get tabs o
   assert.ok(!single.includes('aria-label="Secciones"'), "no menu button")
   assert.ok(!single.includes("Secciones de"), "no drawer")
   assert.ok(!single.includes("Guías de primeros auxilios"), "no list with its only option")
-  // three sections (Cuidar mi salud): tabs in sight, no drawer to open first
-  const tabs = sidebar(PHYSICAL_HEALTH)
+  // three sections (Salud mental): tabs in sight, no drawer to open first
+  const threeSections = ALL_CATEGORIES.find(({ id }) => id === "salud-mental")
+  assert.equal(threeSections.sections.length, 3)
+  const tabs = sidebar(threeSections)
   assert.ok(!tabs.includes('aria-label="Secciones"') && !tabs.includes("Secciones de"), "no drawer")
-  for (const { title } of PHYSICAL_HEALTH.sections) assert.ok(tabs.includes(title), title)
+  for (const { title } of threeSections.sections) assert.ok(tabs.includes(title), title)
   assert.equal([...tabs.matchAll(/lg:hidden/g)].length >= 1, true, "the tabs are for small screens")
-  // four sections: the drawer
-  const four = { ...PHYSICAL_HEALTH, sections: [...PHYSICAL_HEALTH.sections, { id: "section-5", title: "Extra", Content: () => null }] }
-  const drawer = sidebar(four)
+  // four sections (Cuidar mi salud, with the vaccination calendar): the drawer
+  assert.equal(PHYSICAL_HEALTH.sections.length, 4)
+  const drawer = sidebar(PHYSICAL_HEALTH)
   assert.ok(drawer.includes('aria-label="Secciones"') && drawer.includes("Secciones de"))
 })
 

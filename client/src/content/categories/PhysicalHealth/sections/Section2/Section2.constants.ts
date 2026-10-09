@@ -1,6 +1,7 @@
 import { Compass, Eye, HeartPulse, ScanSearch, Smile, Stethoscope, Syringe } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { centersLink } from "@/router/centersLink"
+import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 
 export type ControlAction = {
   label: string
@@ -48,7 +49,10 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Revisá tu carnet de vacunación para ver si te falta alguna.",
       "Si no lo encontrás, consultá igual en un vacunatorio o en un centro de salud: te pueden orientar.",
     ],
-    actions: [{ label: "Encontrar vacunatorio", to: centersLink({ filter: "vaccination" }) }],
+    actions: [
+      { label: "Ver el Calendario de vacunación", to: `${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-5` },
+      { label: "Encontrar vacunatorio", to: centersLink({ filter: "vaccination" }) },
+    ],
   },
   {
     id: "generales",
@@ -96,7 +100,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
       "Si tenés un dolor muy fuerte, hinchazón o un golpe en la boca y no podés esperar un turno, buscá una guardia odontológica.",
     ],
     actions: [
-      { label: "Buscar atención odontológica", to: centersLink({ filter: "dentistry" }) },
+      { label: "Ver el mapa (odontología)", to: centersLink({ filter: "dentistry" }) },
       { label: "Urgencia odontológica", to: centersLink({ filter: "emergency", query: "odontol" }) },
     ],
   },
@@ -111,7 +115,7 @@ export const CONTROL_TOPICS: ControlTopic[] = [
     ],
     actions: [
       { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
-      { label: "Urgencia oftalmológica", to: centersLink({ filter: "emergency", query: "oftalm" }) },
+      { label: "Ver el mapa (urgencia oftalmológica)", to: centersLink({ filter: "emergency", query: "oftalm" }) },
     ],
   },
 ]

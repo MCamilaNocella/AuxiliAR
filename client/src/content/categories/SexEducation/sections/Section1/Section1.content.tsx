@@ -48,7 +48,7 @@ export default function Section1Content() {
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
         <div className="mt-3">
           <ActionLink to={centersLink({ filter: "sexual-health" })} variant="primary">
-            Explorar centros de salud en el mapa
+            Ver el mapa
           </ActionLink>
         </div>
         <p className="m-0 mt-2 text-ink-soft">
@@ -90,20 +90,25 @@ export default function Section1Content() {
 
       <section aria-labelledby="ss-more">
         <h3 id="ss-more" className="m-0 text-xl font-extrabold">
-          Más recursos para consultar
+          Otras páginas para completar la información
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">
-          Son páginas de organismos oficiales y de una organización civil. AuxiliAR no verificó cada lugar de sus listados ni su gratuidad: confirmá requisitos, costo y horarios con cada uno.
-        </p>
-        <h4 className="m-0 mt-3 text-lg font-extrabold">Buscadores y servicios de una organización civil</h4>
-        <div className="mt-2">
-          <PointerList items={[HUESPED_DONDE, HUESPED_SERVICIOS]} />
-        </div>
-        <h4 className="m-0 mt-4 text-lg font-extrabold">Información oficial de algunas provincias</h4>
-        <p className="m-0 mt-1 text-ink-soft">Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR.</p>
-        <div className="mt-2">
-          <PointerList items={[PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION]} />
-        </div>
+        <details className="mt-2 rounded-2xl border border-line-strong bg-card">
+          <summary className="flex min-h-14 cursor-pointer items-center px-4 py-3 font-extrabold">Ver páginas complementarias (se abren fuera de AuxiliAR)</summary>
+          <div className="px-4 pb-4">
+            <p className="m-0 mt-1 text-ink-soft">
+              Son páginas de organismos oficiales y de una organización civil. AuxiliAR no verificó cada lugar de sus listados ni su gratuidad: confirmá requisitos, costo y horarios con cada uno.
+            </p>
+            <h4 className="m-0 mt-3 text-lg font-extrabold">Buscadores y servicios de una organización civil</h4>
+            <div className="mt-2">
+              <PointerList items={[HUESPED_DONDE, HUESPED_SERVICIOS]} />
+            </div>
+            <h4 className="m-0 mt-4 text-lg font-extrabold">Información oficial de algunas provincias</h4>
+            <p className="m-0 mt-1 text-ink-soft">Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR.</p>
+            <div className="mt-2">
+              <PointerList items={[PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION]} />
+            </div>
+          </div>
+        </details>
       </section>
 
       <p className="m-0">

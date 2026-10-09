@@ -79,21 +79,26 @@ export const SALTA: MunicipalService = {
   url: "https://municipalidadsalta.gob.ar/bienestar-animal-7/",
 }
 
-export const CONFIRMED_BY_SOURCE: MunicipalService[] = [CABA, ROSARIO, CORDOBA, SALTA]
 
-/** ── Services listed but not confirmed as free (SA02, SA06, SA14) ── */
-
-/** SA02: annual rabies vaccine from 3 months, without appointment, in order of arrival. The page does not say the cost */
+/**
+ * Instituto de Zoonosis Luis Pasteur (SA02, updated 2026-10-09 with its "Servicios" page): "brinda a la comunidad, en forma gratuita"
+ * consultorio clínico, denuncias por mordeduras, vacunatorio (vacuna antirrábica) and disposición de cadáveres. No guardia ni urgencias.
+ * The two official pages disagree on the hours of the vacunatorio (9-12 and 14-17 vs 8-18), so no hour is copied.
+ */
 export const PASTEUR: MunicipalService = {
   id: "pasteur",
   place: "Ciudad de Buenos Aires",
   by: "Instituto de Zoonosis Luis Pasteur · Gobierno de la Ciudad",
-  offers: "Vacunación antirrábica anual de perros y gatos desde los 3 meses de edad.",
-  who: "Según la página, se atiende sin turno y por orden de llegada.",
-  how: "La página publica días, horarios y la dirección del instituto.",
-  limit: "La página no informa el costo.",
-  url: "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+  offers: "Consultorio clínico orientado a zoonosis, denuncias por mordeduras, vacuna antirrábica y disposición de perros y gatos fallecidos. La página dice que los brinda a la comunidad en forma gratuita.",
+  who: "Los turnos del consultorio son presenciales y la página publica sus horarios. Para la disposición de cadáveres, quien lo solicita debe ser mayor de edad y concurrir con DNI.",
+  how: "No hay guardia de atención médica ni urgencias.",
+  limit: "Dos páginas oficiales dan horarios distintos para el vacunatorio: confirmalos antes de ir.",
+  url: "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
 }
+
+export const CONFIRMED_BY_SOURCE: MunicipalService[] = [CABA, ROSARIO, CORDOBA, SALTA, PASTEUR]
+
+/** ── Services listed but not confirmed as free (SA06, SA14) ── */
 
 /** SA06: pre-appointment online with Muni Express, then a call to confirm; mayores de 18 con residencia; the page does not state the cost clearly. A preturno is not a confirmed surgery */
 export const NEUQUEN: MunicipalService = {
@@ -119,7 +124,7 @@ export const PROTENENCIA: MunicipalService = {
   url: "https://www.argentina.gob.ar/salud/protenencia/castraciones",
 }
 
-export const NOT_CONFIRMED: MunicipalService[] = [PASTEUR, NEUQUEN, PROTENENCIA]
+export const NOT_CONFIRMED: MunicipalService[] = [NEUQUEN, PROTENENCIA]
 
 /** ── Sources of the general information ── */
 
@@ -146,3 +151,24 @@ export const UNLP_HOSPITAL: Source = {
   label: "Atención clínica primaria de pequeños animales · Facultad de Ciencias Veterinarias, UNLP",
   url: "https://www.fcv.unlp.edu.ar/index.php/hospital/servicio-de-atencion-clinica-primaria-de-pequenos-animales/",
 }
+
+/**
+ * "¿Qué tener en cuenta cuando fallece un perro o un gato?" (Instituto Pasteur, "Información útil", 2026-10-09): the risk only exists
+ * if the animal bit a person in the 10 days before; Pasteur receives dead dogs and cats every day, 24 hours, "sin costo, para su
+ * disposición final o cremación", and "evalúa cada caso según criterios sanitarios". Text in docs/investigacion/evidencia/pasteur-servicios-cadaveres.txt
+ */
+export const PASTEUR_INFO: Source = {
+  label: "Información útil: qué tener en cuenta cuando fallece un perro o un gato · Instituto de Zoonosis Luis Pasteur",
+  url: "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/informacion-util",
+}
+
+/** The "Servicios" page of the Instituto: "Disposición de cadáveres… El solicitante de este servicio será mayor de edad y concurrir con DNI"; the address is on its "institucional" page */
+export const PASTEUR_SERVICIOS: Source = {
+  label: "Servicios · Instituto de Zoonosis Luis Pasteur",
+  url: "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+}
+export const CHECKED_AT_PASTEUR = "2026-10-09"
+
+/** A free campaign is not free veterinary care. One copy: "Vacunación y castración gratuitas" and "Más recursos" both show it */
+export const CAMPAIGN_NOT_CARE =
+  "Que una vacunación o una castración sea gratuita no significa que la consulta, los estudios o los tratamientos también lo sean. Tampoco quiere decir que atiendan urgencias. Cada servicio dice qué incluye: leelo en su página."

@@ -5,6 +5,7 @@ import { AnimalsScene } from "./AnimalsScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
+import { Section4 } from "./sections/Section4"
 
 export const ANIMALS: Category = {
   id: "animales",
@@ -37,6 +38,11 @@ export const ANIMALS: Category = {
       summary:
         "Cómo buscar atención veterinaria gratuita para perros y gatos: consultar a la municipalidad o al centro de zoonosis, qué preguntar y por qué un hospital universitario no es gratuito por ser público. No hay guardias gratuitas confirmadas.",
       Content: Section3,
+    },
+    {
+      id: "section-4",
+      title: "Si muere tu perro o gato",
+      Content: Section4,
     },
   ],
   /** It opens straight on the first section: no banner first */
