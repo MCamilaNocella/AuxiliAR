@@ -72,7 +72,7 @@ export const isVerifiedFree = (place: Resource, service: ResolvedService) => {
 }
 
 export const costLabel = (cost: ResourceCost) => {
-  if (cost === "free") return "Atención gratuita"
+  if (cost === "free") return "Gratuita"
   if (cost === "paid") return "Arancelado"
   if (cost === "mixed") return "Parte gratuito y parte arancelado"
   return undefined
@@ -87,13 +87,14 @@ export const appointmentLabel = ({ mode }: Appointment) => {
 
 /**
  * What stands out about a service: only what its verified data states. Free care that comes with a condition
- * (costNote) is not plain "Atención gratuita": it says "Gratuita con condiciones" and the panel shows the condition.
+ * (costNote) is not plain "Gratuita": it says "Gratuita con condiciones" and the panel shows the condition. The words fit a
+ * human service and a veterinary one alike ("atención" would not fit a castration).
  */
 export const serviceHighlights = (service: ResolvedService, place: Resource) => {
   const highlights: string[] = []
   if (service.hours?.open24h) highlights.push("24 h")
   if (service.appointment.mode === "not-required") highlights.push("Podés ir sin turno")
-  if (isVerifiedFree(place, service)) highlights.push(service.costNote ? "Gratuita con condiciones" : "Atención gratuita")
+  if (isVerifiedFree(place, service)) highlights.push(service.costNote ? "Gratuita con condiciones" : "Gratuita")
   return highlights
 }
 

@@ -1,4 +1,4 @@
-/** Verified highlights of a place or service ("24 h", "Demanda espontánea", "Atención gratuita") */
+/** Verified highlights of a place or service ("24 h", "Demanda espontánea", "Gratuita") */
 export const HighlightBadges = ({ items }: { items: string[] }) =>
   items.length === 0 ? null : (
     <ul role="list" aria-label="Destacados" className="m-0 flex list-none flex-wrap gap-2 p-0">

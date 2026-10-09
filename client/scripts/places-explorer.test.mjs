@@ -94,12 +94,12 @@ test("hours: only what the data says", () => {
 
 test("cost, appointment and highlights are never assumed", () => {
   assert.equal(util.costLabel("unknown"), undefined)
-  assert.equal(util.costLabel("free"), "Atención gratuita")
+  assert.equal(util.costLabel("free"), "Gratuita")
   assert.equal(util.appointmentLabel({ mode: "unknown" }), undefined)
   // Only what the data states is highlighted: primary care (free, no condition) and vaccination (free WITH conditions); the other services of the CeSAC say nothing
-  const highlightsOf = { "atencion-primaria": ["Atención gratuita"], vacunacion: ["Gratuita con condiciones"] }
+  const highlightsOf = { "atencion-primaria": ["Gratuita"], vacunacion: ["Gratuita con condiciones"] }
   for (const resolved of data.getServices(find("cesac-3"))) assert.deepEqual(util.serviceHighlights(resolved, find("cesac-3")), highlightsOf[resolved.id] ?? [], resolved.id)
-  assert.deepEqual(util.serviceHighlights(service("hospital-odontologia-carrillo", "guardia-odontologica"), find("hospital-odontologia-carrillo")), ["24 h", "Atención gratuita"])
+  assert.deepEqual(util.serviceHighlights(service("hospital-odontologia-carrillo", "guardia-odontologica"), find("hospital-odontologia-carrillo")), ["24 h", "Gratuita"])
   assert.deepEqual(util.serviceHighlights(service("hospital-oftalmologico-santa-lucia", "guardia-oftalmologica"), find("hospital-oftalmologico-santa-lucia")), ["24 h", "Podés ir sin turno"])
 })
 
@@ -190,7 +190,7 @@ test("the panel leads with verified highlights and never writes what is unknown"
   // cost is unknown for this guardia: nothing about cost
   assert.ok(!panelText("hospital-oftalmologico-santa-lucia").toLowerCase().includes("gratuit"))
   const carrillo = view("hospital-odontologia-carrillo")
-  assert.deepEqual(carrillo.highlights, ["24 h", "Atención gratuita"])
+  assert.deepEqual(carrillo.highlights, ["24 h", "Gratuita"])
   assert.deepEqual(carrillo.contacts.map(({ display }) => display).sort(), ["4805-5521", "4805-6407"])
 })
 
@@ -225,7 +225,7 @@ test("conditions and common information are written once and only when verified"
   // free with a condition: no plain highlight, the condition is shown
   const conditioned = util.buildPlaceView(entryWith((place) => { place.services[0].cost = "free"; place.services[0].costNote = "Con DNI argentino"; place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "La fuente dice que es gratuita con DNI argentino." } }))
   assert.deepEqual(conditioned.services[0].chips, ["Gratuita con condiciones"])
-  assert.deepEqual(conditioned.services[0].details, [{ kind: "text", text: "Atención gratuita. Con DNI argentino" }])
+  assert.deepEqual(conditioned.services[0].details, [{ kind: "text", text: "Gratuita con condiciones. Con DNI argentino" }])
   // the same requirements for every service: said once, under "Antes de ir"
   const shared = util.buildPlaceView(entryWith((place) => { place.requirements = ["Llevar DNI"] }))
   assert.deepEqual(shared.beforeGoing, ["Llevar DNI"])

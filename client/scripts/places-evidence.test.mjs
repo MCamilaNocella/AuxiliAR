@@ -226,8 +226,8 @@ test("a mixed centre: the card highlights only the services that are confirmed, 
     const pending = html.slice(html.indexOf('aria-label="Prestaciones con gratuidad no confirmada"'), html.indexOf("data-place-trigger"))
     assert.ok(confirmed.length > 0 && pending.length > 0)
     assert.deepEqual([...text(confirmed).matchAll(/Medicina general|Pediatría/g)].map(([name]) => name), ["Medicina general", "Pediatría"], JSON.stringify(query))
-    assert.equal((text(confirmed).match(/Atención gratuita/g) ?? []).length, 2, "one badge for each confirmed service")
-    assert.ok(!/Atención gratuita|Gratuita con/.test(text(pending)), "no badge on the ones not confirmed")
+    assert.equal((text(confirmed).match(/Gratuita/g) ?? []).length, 2, "one badge for each confirmed service")
+    assert.ok(!/Gratuita/.test(text(pending)), "no badge on the ones not confirmed")
     assert.ok(!/Medicina general|Pediatría/.test(text(pending)), "the confirmed ones are not in the pending group")
   }
   // with the filter on, only the services that meet it are the ones the panel leads with
@@ -241,13 +241,13 @@ test("free with conditions shows the condition and the requirements; plain free 
   for (const id of ["cesac-3", "cesac-41"]) {
     const view = buildPlaceView(entryOf(id))
     const vaccination = view.services.find((service) => service.id === "vacunacion")
-    const condition = vaccination.details.find((item) => item.kind === "text" && item.text.startsWith("Atención gratuita."))
+    const condition = vaccination.details.find((item) => item.kind === "text" && item.text.startsWith("Gratuita con condiciones."))
     assert.match(condition.text, /Calendario Nacional de Vacunación/)
     assert.match(condition.text, /No hay información sobre qué vacunas aplica este vacunatorio, sobre su disponibilidad/)
     assert.ok([...vaccination.chips, ...view.highlights].includes("Gratuita con condiciones"))
     const primary = view.services.find((service) => service.id === "atencion-primaria")
     assert.ok(primary.details.some((item) => item.kind === "list" && item.items.some((line) => /empadronar/.test(line))), `${id}: primary care shows its requirement`)
-    assert.ok(!primary.details.some((item) => item.kind === "text" && item.text.startsWith("Atención gratuita.")), "plain free has no condition text")
+    assert.ok(!primary.details.some((item) => item.kind === "text" && item.text.startsWith("Gratuita con condiciones.")), "plain free has no condition text")
   }
   // a free service with a condition AND requirements, made up: both are in the panel
   const copy = structuredClone(real)

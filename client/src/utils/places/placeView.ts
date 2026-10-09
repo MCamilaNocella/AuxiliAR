@@ -140,7 +140,7 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
       if (item) details.push(item)
     }
     if (commonAppointment.length === 0) details.push(...appointmentItems(service.appointment))
-    if (isVerifiedFree(place, service) && service.costNote) details.push({ kind: "text", text: `${costLabel("free")}. ${service.costNote}` })
+    if (isVerifiedFree(place, service) && service.costNote) details.push({ kind: "text", text: `Gratuita con condiciones. ${service.costNote}` })
     else if (service.cost === "paid" || service.cost === "mixed") {
       details.push({ kind: "text", text: [costLabel(service.cost), service.costNote].filter(Boolean).join(". ") })
     }

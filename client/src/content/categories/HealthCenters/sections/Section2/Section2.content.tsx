@@ -24,7 +24,7 @@ const POINTS: Point[] = [
     title: "Qué significa gratuito",
     text: [
       "Decimos que una atención es gratuita solo cuando la fuente oficial lo dice para esa prestación en particular. Que un hospital o un centro sea público no significa que todo lo que ofrece sea gratis, así que la gratuidad se mira prestación por prestación, nunca por centro entero.",
-      "En la ficha de un lugar, «Atención gratuita» aparece arriba solo si todas las prestaciones mostradas están verificadas como gratuitas; si no, aparece junto a cada prestación que lo está. Si la fuente aclara condiciones (por ejemplo, «Con DNI argentino», turno previo o una edad), las mostramos junto a esa prestación.",
+      "En la ficha de un lugar, «Gratuita» aparece arriba solo si todas las prestaciones mostradas están verificadas como gratuitas; si no, aparece junto a cada prestación que lo está. Si la fuente aclara condiciones (por ejemplo, «Con DNI argentino», turno previo o una edad), la prestación dice «Gratuita con condiciones» y mostramos las condiciones junto a esa prestación, sin extenderlas a las demás.",
       "Si la fuente no habla del costo, no escribimos ni «gratuito» ni «arancelado»: no lo sabemos. En ese caso conviene consultarlo antes de ir.",
     ],
   },

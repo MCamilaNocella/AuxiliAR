@@ -120,7 +120,7 @@ test("the gratuity is the castration's, not any veterinary care", () => {
   const view = buildPlaceView(c)
   assert.deepEqual(view.services.map(({ name }) => name), ["Castración de perros y gatos"])
   assert.ok([...view.highlights, ...view.services[0].chips].includes("Gratuita con condiciones"))
-  assert.ok(![...view.highlights, ...view.services[0].chips].includes("Atención gratuita"), "never plain free: it has conditions")
+  assert.ok(![...view.highlights, ...view.services[0].chips].includes("Gratuita"), "never plain free: it has conditions")
 })
 
 test("the card and the panel explain the conditions: turn first, miBA, an adult companion, the preparation", () => {
@@ -172,4 +172,79 @@ test("the server copy has the centre, without the evidence (the server does not 
   assert.equal(copy.services[0].cost, "free")
   assert.equal(copy.services[0].evidence, undefined)
   assert.equal(server.length, 21)
+})
+
+/* ── Search by verb: «castrar» finds the castration, and nothing else is widened ── */
+
+test("search: «castrar», «castrar a mi perro» and the like find the castration, with or without 'gratis'", () => {
+  for (const term of ["castrar", "castrar a mi perro", "castrar a mi gato", "castrarlo", "castrarla", "mi perro castrado", "castrar gratis", "castrar gratuito", "castrar a mi perra gratis", "Castrar"]) {
+    assert.deepEqual(ask({ text: term }), [ID], term)
+  }
+  // the noun already worked and still does
+  for (const term of ["castracion", "castración", "castraciones", "castracion gratis"]) assert.deepEqual(ask({ text: term }), [ID], term)
+  // asked as a verb it is answered exactly as asked as a noun, gratuity condition included (the place's alias names castraciones, so the words name the place)
+  const same = (a, b) => assert.deepEqual(matchingServices(entry(), { ...EMPTY, text: a }).map(({ id }) => id), matchingServices(entry(), { ...EMPTY, text: b }).map(({ id }) => id), `${a} = ${b}`)
+  same("castrar gratis", "castracion gratis")
+  same("castrar", "castracion")
+  assert.deepEqual(matchingServices(entry(), { ...EMPTY, filterId: "animal-health", free: true }).map(({ id }) => id), ["castracion"])
+})
+
+test("search: the equivalence is short and exact - no wrong results", () => {
+  // other animals, other care, other verbs
+  for (const term of ["castrar a mi caballo", "castrar vacuna", "castrar guardia", "castrar consulta veterinaria", "castrar odontologia", "castrar a mi hijo", "vacunar a mi perro", "operar a mi perro", "esterilizar a mi perro", "castrarse"]) {
+    assert.deepEqual(ask({ text: term }), [], term)
+  }
+  // no human place answers it, with or without the animal filter
+  for (const filterId of ["all", "medical", "mental-health", "sexual-health", "vaccination", "dentistry"]) {
+    assert.ok(!ask({ text: "castrar", filterId }).some((id) => id !== ID), filterId)
+  }
+  assert.deepEqual(ask({ text: "castrar", filterId: "medical" }), [])
+  // the widening is only the castration: every equivalent is the same noun
+  const widened = ["castrar", "castrarlo", "castrarla", "castrarle", "castrado", "castrada", "castrados", "castradas"]
+  for (const word of widened) assert.deepEqual(places.alternativesOf(word), [word, "castracion"], word)
+  for (const [word, noun] of [["perra", "perro"], ["perras", "perro"], ["gata", "gato"], ["gatas", "gato"]]) assert.deepEqual(places.alternativesOf(word), [word, noun], word)
+  // "perra" and "gata" do not find what is not about dogs or cats
+  assert.deepEqual(ask({ text: "perra" }), [ID])
+  assert.deepEqual(ask({ text: "mi gata" }), [ID])
+  assert.deepEqual(ask({ text: "vacunas para mi perra" }), [], "no vaccination for animals is offered")
+  for (const word of ["castracion", "vacunar", "perro", "esterilizar", "operar", "odontologia", "salud"]) assert.deepEqual(places.alternativesOf(word), [word], word)
+  // the words of the people's searches that were exact are untouched
+  assert.equal(ask({ text: "odontologia" }).includes(ID), false)
+})
+
+/* ── The words of gratuity: valid for a person's care and for an animal's, conditions kept apart ── */
+
+test("labels: «Gratuita» without conditions, «Gratuita con condiciones» with them, never «Atención gratuita»", () => {
+  const view = (id) => buildPlaceView(selectPlaces(real, DAY, EMPTY).find(({ place }) => place.id === id))
+  const label = (id, serviceId) => {
+    const v = view(id)
+    return [...v.highlights, ...v.services.find(({ id: s }) => s === serviceId).chips]
+  }
+  assert.ok(label("cesac-3", "atencion-primaria").includes("Gratuita"))
+  assert.ok(!label("cesac-3", "atencion-primaria").includes("Gratuita con condiciones"))
+  assert.ok(label("cesac-3", "vacunacion").includes("Gratuita con condiciones"))
+  assert.ok(label(ID, "castracion").includes("Gratuita con condiciones"))
+  for (const place of real) {
+    const v = buildPlaceView(selectPlaces(real, DAY, EMPTY).find((e) => e.place.id === place.id))
+    for (const chip of [...v.highlights, ...v.services.flatMap(({ chips }) => chips)]) assert.ok(!/Atención gratuita/.test(chip), `${place.id}: ${chip}`)
+    for (const service of v.services) for (const item of service.details) if (item.kind === "text") assert.ok(!/^Atención gratuita/.test(item.text), `${place.id}: ${item.text}`)
+  }
+  assert.equal(places.costLabel("free"), "Gratuita")
+})
+
+/* ── CeSAC 3 and 41: the conditions of the vaccination are the vaccination's ── */
+
+test("cards: the conditions of the vaccination are said as the vaccination's, and the other services carry none", () => {
+  for (const id of ["cesac-3", "cesac-41"]) {
+    const html = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(PlaceCard, { entry: selectPlaces(real, DAY, EMPTY).find(({ place }) => place.id === id), onOpen() {} })))
+    const items = html.split("<li").slice(1).map(text)
+    const vaccination = items.filter((item) => /Gratuita con condiciones/.test(item))
+    assert.equal(vaccination.length, 1, `${id}: one service with conditions`)
+    assert.match(vaccination[0], /vacunaci[oó]n|Vacunatorio/i, `${id}: and it is the vaccination`)
+    assert.match(vaccination[0], /Condiciones de esta prestación: La gratuidad alcanza a las vacunas del Calendario Nacional/, id)
+    const others = items.filter((item) => !/Gratuita con condiciones/.test(item))
+    for (const item of others) assert.ok(!/Condiciones de esta prestación|Calendario Nacional/.test(item), `${id}: ${item.slice(0, 60)} carries no condition`)
+    // the card never says that the whole centre is free with conditions
+    assert.ok(!/Gratuita con condiciones/.test(text(html.split("<ul")[0])), `${id}: not as a header of the whole card`)
+  }
 })

@@ -44,7 +44,11 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
               <span className="font-semibold text-ink">{serviceName(service)}</span>
               <HighlightBadges items={serviceHighlights(service, place)} />
               {/* A confirmed service with a condition says it on the card too: "con condiciones" alone would not tell what they are */}
-              {service.costNote && <span className="basis-full font-normal text-ink-soft">{service.costNote}</span>}
+              {service.costNote && (
+                <span className="basis-full font-normal text-ink-soft">
+                  <span className="font-semibold">Condiciones de esta prestación:</span> {service.costNote}
+                </span>
+              )}
             </li>
           ))}
         </ul>

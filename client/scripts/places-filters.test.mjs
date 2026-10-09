@@ -397,7 +397,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad verificada", "Eso no significa que no sean gratuitas", "con o sin gratuidad verificada", "Consultá el costo de cada una antes de ir", "Quitar el filtro de gratuidad"]) assert.ok(none.includes(piece), piece)
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")
   // the cards say which services are free
-  assert.ok(chosen.includes("Atención gratuita"))
+  assert.ok(chosen.includes("Gratuita"))
 })
 
 /* ── Which services are free is said on the cards and in the panel, and the rest is not made up ── */
@@ -419,14 +419,14 @@ test("the panel: unknown costs are told apart from verified ones, and said once 
     place.services[0].source = { organization: "Fuente de prueba", url: place.source.url, note: "Nota de la fuente." }
   })
   assert.equal(some.costNotice, undefined)
-  assert.ok(some.services[0].chips.includes("Atención gratuita"))
+  assert.ok(some.services[0].chips.includes("Gratuita"))
   assert.ok(some.services.slice(1).every((service) => service.chips.includes("Gratuidad no confirmada")))
   // a free that the establishment declares for all is not verified for each: still "not informed"
   const inherited = viewOf((place) => { place.cost = "free" })
-  assert.ok(inherited.costNotice && inherited.services.every((service) => !service.chips.includes("Atención gratuita")))
+  assert.ok(inherited.costNotice && inherited.services.every((service) => !service.chips.includes("Gratuita")))
   // the real hospital with a verified free service: said at the top, nothing about unknown costs
   const carrillo = places.buildPlaceView(places.selectPlaces(real, DAY, EMPTY).find(({ place }) => place.id === "hospital-odontologia-carrillo"))
-  assert.deepEqual(carrillo.highlights, ["24 h", "Atención gratuita"])
+  assert.deepEqual(carrillo.highlights, ["24 h", "Gratuita"])
   assert.equal(carrillo.costNotice, undefined)
 })
 
@@ -434,7 +434,7 @@ test("the cards: gratuity is said service by service - verified ones are marked 
   const render = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true })))
   const list = render("/centros?vista=lista")
   // each card of the hospitals is only the free service: marked
-  assert.ok(text(list).includes("Atención gratuita"))
+  assert.ok(text(list).includes("Gratuita"))
   // a place with a verified-free service and others not confirmed marks each service on its own row; the place is never classified as a whole
   const [base] = bareCesac3()
   const place = structuredClone(base)
@@ -445,8 +445,8 @@ test("the cards: gratuity is said service by service - verified ones are marked 
   const mixedHtml = card(places.selectPlaces([place], DAY, EMPTY)[0])
   const confirmedList = mixedHtml.match(/aria-label="Prestaciones con gratuidad confirmada".*?<\/ul>/s)?.[0] ?? ""
   const pendingList = mixedHtml.match(/aria-label="Prestaciones con gratuidad no confirmada".*?<\/ul>/s)?.[0] ?? ""
-  assert.ok(text(confirmedList).includes("Atención gratuita") && !text(confirmedList).includes("no confirmada"), "the verified service: free, in its own group")
-  assert.ok(pendingList && !text(pendingList).includes("Atención gratuita"), "the others: in the not-confirmed group, never free")
+  assert.ok(text(confirmedList).includes("Gratuita") && !text(confirmedList).includes("no confirmada"), "the verified service: free, in its own group")
+  assert.ok(pendingList && !text(pendingList).includes("Gratuita"), "the others: in the not-confirmed group, never free")
   // the warning is said once for the group, not on every row
   assert.equal([...mixedHtml.matchAll(/>Gratuidad no confirmada</g)].length, 1)
   assert.ok(!mixed.includes("Las demás prestaciones"), "no whole-place sentence")
@@ -458,7 +458,7 @@ test("the cards: gratuity is said service by service - verified ones are marked 
   assert.equal([...plainHtml.matchAll(/<li class="font-semibold/g)].length, Math.min(4, base.services.length), "each service is still listed")
   // a card lists at most 4 services and says the rest are not confirmed
   if (base.services.length > 4) assert.ok(plain.includes(`+${base.services.length - 4} servicios más con gratuidad no confirmada`))
-  assert.ok(!plain.includes("Atención gratuita") && !plain.includes("Gratuita con"))
+  assert.ok(!plain.includes("Gratuita") && !plain.includes("Gratuita con"))
   // a free service with conditions keeps its own, different badge
   const conditional = structuredClone(place)
   conditional.services[0].costNote = "Con DNI argentino"
@@ -471,7 +471,7 @@ test("the free hospitals' panel shows the condition when the source gives one", 
   place.services[0].costNote = "Con DNI argentino"
   const view = places.buildPlaceView(places.selectPlaces([place], DAY, EMPTY)[0])
   assert.ok(view.services[0].chips.includes("Gratuita con condiciones") || view.highlights.includes("Gratuita con condiciones"))
-  assert.ok(view.services[0].details.some((item) => item.kind === "text" && item.text === "Atención gratuita. Con DNI argentino"))
+  assert.ok(view.services[0].details.some((item) => item.kind === "text" && item.text === "Gratuita con condiciones. Con DNI argentino"))
 })
 
 /* ── When to go: what is missing is said, and the phone is the first thing offered ── */

@@ -2,7 +2,7 @@ import taxonomy from "@/data/resources/taxonomy.json"
 import { getCurrentPlaces, getCurrentServices } from "@/data/resources"
 import type { CategoryId, ProvinceCode, ResolvedService, Resource, ServiceType } from "@/data/resources"
 import { isVerifiedFree, serviceName } from "./format"
-import { normalizeText, stemOf } from "./text"
+import { alternativesOf, normalizeText, stemOf } from "./text"
 
 /** A place with the services that can be shown today (the verified, not expired ones) */
 export type PlaceEntry = {
@@ -135,15 +135,21 @@ const joinText = (texts: (string | undefined)[]) => normalizeText(texts.filter(B
 /** Everything a person could type to find the place: names, address, and what each service says about itself */
 const searchableText = (entry: PlaceEntry) => joinText([...placeTexts(entry), ...entry.services.flatMap(serviceTexts)])
 
-/** The words of a search, each reduced to its root (see stemOf) */
-const searchTerms = (text: string) => normalizeText(text).split(/\s+/).filter(Boolean).map(stemOf)
+/**
+ * The words of a search. Each one is a list of the ways the text may have it, each reduced to its root (see stemOf): almost
+ * always just the word, and for a few ("castrar") also what the data says instead (see alternativesOf).
+ */
+const searchTerms = (text: string) =>
+  normalizeText(text).split(/\s+/).filter(Boolean).map((word) => alternativesOf(word).map(stemOf))
+
+const hasTerm = (text: string, term: string[]) => term.some((alternative) => text.includes(alternative))
 
 /** Every word typed has to be somewhere in the place or its services (accents and case don't matter) */
 export const matchesQuery = (entry: PlaceEntry, query: string) => {
   const terms = searchTerms(query)
   if (terms.length === 0) return true
   const text = searchableText(entry)
-  return terms.every((term) => text.includes(term))
+  return terms.every((term) => hasTerm(text, term))
 }
 
 /**
@@ -157,7 +163,7 @@ const freeServiceAnswersWords = (entry: PlaceEntry, query: PlaceQuery) => {
   return entry.services.some((service) => {
     if (!matchesServiceCriteria(entry.place, service, query)) return false
     const own = joinText(serviceTexts(service))
-    return terms.every((term) => own.includes(term) || placeText.includes(term))
+    return terms.every((term) => hasTerm(own, term) || hasTerm(placeText, term))
   })
 }
 
@@ -197,7 +203,7 @@ export const matchingServices = (entry: PlaceEntry, asked: PlaceQuery): Resolved
     if (!matchesServiceCriteria(entry.place, service, query)) return false
     if (terms.length === 0) return true
     const own = joinText(serviceTexts(service))
-    return terms.every((term) => own.includes(term) || placeText.includes(term)) && terms.some((term) => own.includes(term) && !placeText.includes(term))
+    return terms.every((term) => hasTerm(own, term) || hasTerm(placeText, term)) && terms.some((term) => hasTerm(own, term) && !hasTerm(placeText, term))
   })
 }
 

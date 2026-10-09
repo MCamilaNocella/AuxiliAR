@@ -87,7 +87,7 @@ test("educational material, orientation and confirmed free care are told apart",
   assert.ok(content.includes("Información, orientación y atención no son lo mismo"))
   assert.ok(content.includes("Información gratuita: guías, leyes y materiales que podés leer sin pagar. No son una consulta."))
   assert.ok(content.includes("Orientación: una línea o un equipo que responde dudas. No reemplaza la atención médica."))
-  assert.ok(content.includes("Atención gratuita confirmada: una prestación de la que una fuente confiable confirma que no tiene costo"))
+  assert.ok(content.includes("Gratuidad confirmada: una prestación de la que una fuente confiable confirma que no tiene costo"))
   assert.ok(content.includes("si no la marca, no está confirmada"))
 })
 
@@ -153,7 +153,7 @@ test("'gratuit-' only appears where a sentence says whose statement it is, or wh
   const allowed = [
     "Consultá cada ficha para saber qué servicios gratuitos están confirmados.",
     "Información gratuita: guías, leyes y materiales que podés leer sin pagar.",
-    "Atención gratuita confirmada: una prestación de la que una fuente confiable confirma que no tiene costo.",
+    "Gratuidad confirmada: una prestación de la que una fuente confiable confirma que no tiene costo.",
     "AuxiliAR no verificó cada lugar de sus listados ni su gratuidad",
     "confidencial y gratuito en el sistema público",
     "deben cubrirla de forma integral y gratuita",

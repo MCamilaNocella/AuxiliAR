@@ -29,14 +29,14 @@ Un recurso pendiente puede mostrarse solo si se diferencia con claridad y no se 
 
 | Tipo | Qué es | Ejemplo | Cómo se describe |
 |---|---|---|---|
-| **Atención gratuita** | Una prestación sanitaria sin costo para quien la recibe | Una consulta en un centro de salud, si la fuente lo declara | Con alcance, requisitos y forma de pedirla |
+| **Gratuita** (en el mapa; antes «Atención gratuita») | Una prestación sanitaria sin costo para quien la recibe | Una consulta en un centro de salud, si la fuente lo declara | Con alcance, requisitos y forma de pedirla |
 | **Orientación gratuita** | Escucha o asesoramiento, sin ser una consulta clínica | Una línea telefónica de orientación | "Orientación": no reemplaza la atención profesional |
 | **Información de acceso gratuito** | Un texto o material que se lee sin pagar | Una guía, una ley en palabras simples | "Información": una página gratuita no hace gratuitas sus consultas |
 | **Respuesta a emergencias** | Llamar para que lleguen a ayudar | Los números de emergencia | La gestiona el área de Emergencias |
 
 ## Cómo se refleja hoy en el código
 
-- **Mapa:** la etiqueta "Atención gratuita" aparece solo si esa prestación declara `cost: "free"` y trae su fuente (`isVerifiedFree`). Un costo faltante o `unknown` nunca se muestra como gratuito. En la ficha, si ninguna prestación tiene costo conocido, dice "La fuente no informa el costo de estas prestaciones: consultalo antes de ir". Existe el filtro "Gratuidad verificada".
+- **Mapa:** la etiqueta "Gratuita" (o "Gratuita con condiciones" si la fuente aclara condiciones) aparece solo si esa prestación declara `cost: "free"` y trae su fuente (`isVerifiedFree`). Un costo faltante o `unknown` nunca se muestra como gratuito. En la ficha, si ninguna prestación tiene costo conocido, dice "La fuente no informa el costo de estas prestaciones: consultalo antes de ir". Existe el filtro "Gratuidad verificada".
 - **Líneas de ayuda:** la gratuidad se marca por línea, solo si está registrada.
 - **Páginas de contenido:** describen lo que son (información u orientación), no prometen turnos y aclaran cuando algo es solo exploración.
 

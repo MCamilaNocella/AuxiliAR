@@ -134,12 +134,12 @@ test("the real data now has exactly the approved free services of the batch, and
   assert.deepEqual(pendingDrafts.map(({ ficha }) => ficha), ["L1-VET-INDOAMERICANO"])
 })
 
-test("primary care: 'Atención gratuita' with no condition note, and nothing that promises a walk-in", () => {
+test("primary care: 'Gratuita' with no condition note, and nothing that promises a walk-in", () => {
   const file = applied()
   for (const [id, serviceId] of [["cesac-3", "atencion-primaria"], ["cesac-41", "atencion-primaria"], ["cesac-47", "atencion-primaria"], ["cesac-47", "pediatria"]]) {
     const place = file.resources.find((resource) => resource.id === id)
     const view = resolved(file, id, serviceId)
-    assert.deepEqual(serviceHighlights(view, place), ["Atención gratuita"], `${id}/${serviceId}`)
+    assert.deepEqual(serviceHighlights(view, place), ["Gratuita"], `${id}/${serviceId}`)
     assert.equal(view.appointment.mode, "unknown", "whether a turno is needed is not confirmed")
     assert.ok(!view.costNote, "the legal basis goes in the source, not in a condition note")
   }
@@ -204,7 +204,7 @@ test("an approved veterinary centre is free WITH conditions (turno), animal-only
     assert.deepEqual(found.services.map(({ type }) => type), ["spaying-neutering"])
     const view = buildPlaceView(found)
     assert.ok(view.highlights.includes("Gratuita con condiciones"))
-    assert.ok(!view.highlights.includes("Atención gratuita"))
+    assert.ok(!view.highlights.includes("Gratuita"))
     assert.ok(!view.highlights.includes("Podés ir sin turno"))
     assert.match(JSON.stringify(view), /Con turno previo/)
     const animal = entriesOf(file, { filterId: "animal-health", free: true }).map(({ place }) => place.id)

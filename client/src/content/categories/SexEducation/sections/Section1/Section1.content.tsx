@@ -82,7 +82,7 @@ export default function Section1Content() {
             <b>Orientación:</b> una línea o un equipo que responde dudas. No reemplaza la atención médica.
           </li>
           <li>
-            <b>Atención gratuita confirmada:</b> una prestación de la que una fuente confiable confirma que no tiene costo. En AuxiliAR la marca el mapa en la ficha de cada prestación; si no la marca, no está
+            <b>Gratuidad confirmada:</b> una prestación de la que una fuente confiable confirma que no tiene costo. En AuxiliAR la marca el mapa en la ficha de cada prestación; si no la marca, no está
             confirmada.
           </li>
         </ul>
