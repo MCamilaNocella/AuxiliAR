@@ -1,6 +1,7 @@
 import { Link } from "react-router"
 import { Phone } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
+import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
@@ -92,9 +93,8 @@ export default function Section1Content() {
         <h3 id="ss-more" className="m-0 text-xl font-extrabold">
           Otras páginas para completar la información
         </h3>
-        <details className="mt-2 rounded-2xl border border-line-strong bg-card">
-          <summary className="flex min-h-14 cursor-pointer items-center px-4 py-3 font-extrabold">Ver páginas complementarias (se abren fuera de AuxiliAR)</summary>
-          <div className="px-4 pb-4">
+        <div className="mt-2">
+          <Disclosure title="Ver páginas complementarias (se abren fuera de AuxiliAR)">
             <p className="m-0 mt-1 text-ink-soft">
               Son páginas de organismos oficiales y de una organización civil. AuxiliAR no verificó cada lugar de sus listados ni su gratuidad: confirmá requisitos, costo y horarios con cada uno.
             </p>
@@ -107,8 +107,8 @@ export default function Section1Content() {
             <div className="mt-2">
               <PointerList items={[PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION]} />
             </div>
-          </div>
-        </details>
+          </Disclosure>
+        </div>
       </section>
 
       <p className="m-0">

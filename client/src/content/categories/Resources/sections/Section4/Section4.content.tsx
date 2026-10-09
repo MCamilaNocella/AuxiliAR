@@ -47,7 +47,7 @@ const TERMS: Term[] = [
   },
   {
     term: "ESI (Educación Sexual Integral)",
-    definition: "La que articula aspectos biológicos, psicológicos, sociales, afectivos y éticos. Todas las personas que estudian tienen derecho a recibirla en escuelas públicas, de gestión estatal y privadas.",
+    definition: "Educación que articula aspectos biológicos, psicológicos, sociales, afectivos y éticos. Todas las personas que estudian tienen derecho a recibirla en escuelas públicas, de gestión estatal y privadas.",
     source: "Ley 26.150, art. 1",
   },
   {

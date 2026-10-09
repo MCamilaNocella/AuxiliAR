@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
+import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
@@ -25,8 +26,6 @@ import { METHODS, NO_STI_PROTECTION, VAGINAL_CONDOM } from "./Section2.constants
  * It does NOT say where the vaginal condom is delivered: no source names a center (the Hospital Rivadavia is not confirmed).
  * The official pages are listed at the end as sources; the only way out of AuxiliAR for content is "Para leer más" (a complement).
  */
-const detailsClass = "rounded-2xl border border-line-strong bg-card"
-const summaryClass = "flex min-h-14 cursor-pointer items-center px-4 py-3 text-lg font-extrabold"
 
 export default function Section2Content() {
   return (
@@ -56,9 +55,7 @@ export default function Section2Content() {
           personal.
         </p>
         <div className="mt-3 flex flex-col gap-2">
-          <details className={detailsClass}>
-            <summary className={summaryClass}>Preservativos (peneano y vaginal)</summary>
-            <div className="flex flex-col gap-2 px-4 pb-4">
+          <Disclosure title="Preservativos (peneano y vaginal)">
               <p className="m-0">
                 Es el único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (ITS), incluido el VIH. No elimina el riesgo por completo. Se puede combinar con otro método para tener doble protección.
               </p>
@@ -75,21 +72,17 @@ export default function Section2Content() {
                 <li>Retirarlo con el pene todavía erecto, cuidando que no se derrame el semen.</li>
               </ul>
               <p className="m-0 text-ink-soft">Por la Ley 25.673, los preservativos están incluidos en la cobertura de salud obligatoria: se piden en hospitales, centros de salud, obras sociales y prepagas.</p>
-            </div>
-          </details>
+          </Disclosure>
 
           {METHODS.map(({ id, title, about }) => (
-            <details key={id} className={detailsClass}>
-              <summary className={summaryClass}>{title}</summary>
-              <div className="flex flex-col gap-2 px-4 pb-4">
+            <Disclosure key={id} title={title}>
                 {about.map((paragraph) => (
                   <p key={paragraph} className="m-0">
                     {paragraph}
                   </p>
                 ))}
                 <p className="m-0 text-ink-soft">{id === "ahe" ? "La AHE no protege del VIH ni de otras ITS: se recomienda el uso de preservativo." : NO_STI_PROTECTION}</p>
-              </div>
-            </details>
+              </Disclosure>
           ))}
         </div>
       </section>
@@ -192,7 +185,7 @@ export default function Section2Content() {
       <SourceList
         sources={[PRESERVATIVO_VAGINAL, PRESERVATIVOS, ...METHODS.map(({ source }) => source), PREGUNTAS, CABA_METODOS, CABA_CONSEJERIAS, CABA_TEST, CABA_COORDINACION]}
         checkedAt={CHECKED_AT_METHODS}
-        note="Es información general: no es un diagnóstico ni indicaciones de tratamiento."
+        note="Textos del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0) y del Gobierno de la Ciudad (Reconocimiento 2.5 Argentina), resumidos por AuxiliAR. Es información general: no es un diagnóstico ni indicaciones de tratamiento."
       />
     </div>
   )

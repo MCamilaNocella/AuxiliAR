@@ -114,7 +114,7 @@ export default function Section5Content() {
       <SourceList
         sources={[CALENDAR_SOURCE, stage.source]}
         checkedAt={CHECKED_AT}
-        note="Esta información es orientativa y no reemplaza la consulta con un equipo de salud. Si el Ministerio actualiza el calendario, prevalece su versión."
+        note="Contenido del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0), resumido y reorganizado por AuxiliAR. Esta información es orientativa y no reemplaza la consulta con un equipo de salud. Si el Ministerio actualiza el calendario, prevalece su versión."
       />
     </div>
   )

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react"
 import { Link } from "react-router"
+import { Disclosure } from "@/components/health/Disclosure"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { CAMPAIGN_NOT_CARE } from "../../../Animals/Animals.sources"
 import { POINTS } from "../../../HealthCenters/sections/Section2/Section2.points"
@@ -123,18 +124,15 @@ export default function Section3Content() {
       <p className="m-0 text-lg text-ink">Respuestas cortas a dudas frecuentes. Abrí la pregunta para leerla.</p>
       <div className="flex flex-col gap-2">
         {QUESTIONS.map(({ id, question, answer, source }) => (
-          <details key={id} className="rounded-2xl border border-line-strong bg-card">
-            <summary className="flex min-h-14 cursor-pointer items-center px-4 py-3 text-lg font-extrabold">{question}</summary>
-            <div className="px-4 pb-4">
-              {answer}
-              <p className="m-0 mt-3 text-sm text-ink-soft">Fuente: {source}.</p>
-            </div>
-          </details>
+          <Disclosure key={id} title={question}>
+            {answer}
+            <p className="m-0 mt-1 text-sm text-ink-soft">Fuente: {source}.</p>
+          </Disclosure>
         ))}
       </div>
       <p className="m-0 text-sm text-muted">
         Es información general: no reemplaza la consulta con un equipo de salud ni el asesoramiento legal. Para empezar a buscar atención, mirá{" "}
-        <Link to={`${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-1`} className="font-bold">
+        <Link to={`${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
           Dónde atenderme
         </Link>
         .

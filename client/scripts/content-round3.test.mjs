@@ -162,3 +162,32 @@ test("Pasteur is not on the map yet: the new service is only proposed, and the d
   assert.ok(data.length > 0)
   for (const file of data) assert.ok(!/cadaver|disposici[oó]n de cad[aá]veres|animal-disposal/i.test(readFileSync(file, "utf8")), file)
 })
+
+test("every 'vaccine: dose' line of each official stage page is in the stage of the calendar, and every stage 'A los N meses' header too", () => {
+  const blocks = evidence("calendario-vacunacion-2026-por-etapas.txt").split(/^=== /m).slice(1)
+  assert.equal(blocks.length, 8)
+  const squash = (value) => norm(value).replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim()
+  const words = (value, count) => squash(value).replace(/(^| )2da( |$)/, "$1segunda$2").split(" ").slice(0, count).join(" ")
+  let checked = 0
+  for (const block of blocks) {
+    const url = block.split(" ")[0]
+    const stage = calendar.VACCINATION_STAGES.find(({ source }) => source.url === url)
+    assert.ok(stage, url)
+    const ours = squash(JSON.stringify(stage))
+    const lines = block.split("\n").map((line) => line.trim())
+    const body = lines.slice(lines.findIndex((line) => /^Calendario Nacional/.test(line)), lines.findIndex((line) => /^Recordá/.test(line)))
+    for (const line of body) {
+      const match = line.match(/^([A-Za-zÁÉÍÓÚáéíóúñ()/ .,+0-9-]{3,70}?) ?: ?(.{10,})$/)
+      if (match && !/^(Control|Antigripal:$)/.test(line) && !/^Las vacunas|^Es importante|^Control/.test(line)) {
+        assert.ok(ours.includes(squash(match[1]).replace(/ iniciar.*/, "")), `${url}: vaccine «${match[1]}»`)
+        assert.ok(ours.includes(words(match[2], 2)), `${url}: dose «${words(match[2], 2)}» of ${match[1]}`)
+        checked++
+      }
+      if (/^(A los \d+ meses|Entre los \d+ y los? \d+ meses|Entre los \d+ y \d+ meses)$/.test(line)) {
+        assert.ok(ours.includes(squash(line)), `${url}: header «${line}»`)
+        checked++
+      }
+    }
+  }
+  assert.ok(checked >= 45, `checked ${checked}`)
+})
