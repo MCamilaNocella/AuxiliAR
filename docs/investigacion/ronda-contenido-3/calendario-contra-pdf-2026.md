@@ -2,6 +2,8 @@
 
 Fecha: 9/10/2026. Rama `demo/content-round3-final`. **No se cambió ninguna recomendación clínica.** Lo único que se agregó a la página (ver §4) es un aviso general y el enlace al PDF.
 
+> **Actualización (9/10/2026, tarde):** este informe se contrastó después con las fuentes complementarias (Resolución 339/2026, páginas de vacuna, lineamientos de VSR y la versión del afiche del 23/12/2025). **Dos precisiones:** (1) la diferencia #2 (5 años) es una omisión más leve de lo que escribí: la nota (J) y la Resolución 339 describen una transición de cohortes, no una ampliación para 2026; (2) existen **dos versiones del afiche** que difieren en una celda (antigripal en adultos). Ver [propuesta-correcciones-calendario.md](propuesta-correcciones-calendario.md).
+
 ## 1. Qué se comparó y cómo
 
 - **PDF oficial:** «Calendario Nacional de Vacunación 2026», afiche 70 × 50 cm del 10/3/2026 ([enlace](https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf)), el que enlaza la página `argentina.gob.ar/salud/vacunas`. También su infografía por etapas ([enlace](https://www.argentina.gob.ar/sites/default/files/2026-03-10_infografia_calendario_vacunas_50x70_digital.pdf)).
