@@ -3,9 +3,10 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos.",
   "provinces": {
     "AR-C": {
-      "places": 6,
+      "places": 7,
       "currentUntil": "2027-01-05",
       "categories": [
+        "animales",
         "esi",
         "salud-fisica",
         "salud-mental"
@@ -24,6 +25,7 @@
         "pregnancy-care",
         "primary-care",
         "sexual-reproductive-health",
+        "spaying-neutering",
         "sti-testing-care",
         "vaccination"
       ],

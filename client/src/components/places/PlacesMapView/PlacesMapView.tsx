@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { countUnmapped, getMapPins } from "@/utils/places"
+import { countApproximate, countUnmapped, getMapPins } from "@/utils/places"
 import type { PlaceEntry } from "@/utils/places"
 import { PlaceCard } from "../PlaceCard"
 
@@ -24,6 +24,7 @@ export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewPr
   // Stable while the results are the same: the map redraws and re-frames only when the places shown change
   const pins = useMemo(() => getMapPins(entries), [entries])
   const unmapped = countUnmapped(entries)
+  const approximate = countApproximate(entries)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const summaryRef = useRef<HTMLDivElement>(null)
   // A new search or filter that leaves the selected place out simply has nothing selected
@@ -54,6 +55,12 @@ export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewPr
       <Suspense fallback={<p role="status" className="m-0 flex h-80 items-center justify-center rounded-2xl border-2 border-line-strong bg-field text-muted">Cargando mapa…</p>}>
         <PlacesMap pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
       </Suspense>
+
+      {approximate > 0 && (
+        <p className="m-0 text-ink-soft">
+          {approximate === 1 ? "La ubicación de este punto es aproximada: marca la dirección, no necesariamente la entrada." : "Las ubicaciones son aproximadas: marcan la dirección, no necesariamente la entrada."}
+        </p>
+      )}
 
       {unmapped > 0 && (
         <p className="m-0 text-ink-soft">

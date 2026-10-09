@@ -173,13 +173,15 @@ export const buildPlaceView = ({ place, services }: PlaceEntry): PlaceView => {
   const hoursKnown = describeHours(place.hours).kind !== "unknown" || services.every((service) => describeHours(service.hours).kind !== "unknown")
   // How to ask for a turno (channels) is not whether a turno is needed or available: only a known mode counts as knowing about turns
   const appointmentKnown = services.some(({ appointment }) => appointment.mode !== "unknown")
+  // "Llamá" only when there is a phone to call: a place without one says "consultá" (the panel says there is no verified phone)
+  const askFirst = contacts.some(({ type }) => type !== "whatsapp") ? "llamá" : "consultá"
   const availabilityNotice =
     services.length === 0 || (hoursKnown && appointmentKnown)
       ? undefined
       : !hoursKnown && !appointmentKnown
-        ? "Todavía no tenemos horarios ni información de turnos verificados: llamá antes de ir."
+        ? `Todavía no tenemos horarios ni información de turnos verificados: ${askFirst} antes de ir.`
         : !hoursKnown
-          ? "Todavía no tenemos el horario verificado: llamá antes de ir."
+          ? `Todavía no tenemos el horario verificado: ${askFirst} antes de ir.`
           : "Todavía no tenemos información verificada sobre turnos: consultá antes de ir."
   const costNotice = services.length > 0 && !someCostKnown ? "Gratuidad no confirmada: la fuente no informa el costo de estas prestaciones. Consultalo antes de ir." : undefined
   return { facilityType: facilityLabelFor(place.name, place.facilityType), highlights, services: serviceViews, howTo, beforeGoing: commonRequirements, contacts, sources: sourcesOf(services), costNotice, availabilityNotice }

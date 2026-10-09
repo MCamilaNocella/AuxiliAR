@@ -3,6 +3,97 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync.",
   "resources": [
     {
+      "id": "centro-fijo-veterinario-costanera-sur",
+      "name": "Centro Fijo Veterinario Costanera Sur (Animales BA)",
+      "shortName": "Centro Fijo Costanera Sur",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+      },
+      "address": {
+        "street": "Av. Dr. T. Achával Rodríguez",
+        "number": "1550",
+        "neighborhood": "Costanera Sur",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 1",
+        "province": "AR-C",
+        "reference": "Según la página oficial, a 100 metros frente a la fuente de Lola Mora."
+      },
+      "coordinates": {
+        "lat": -34.617546,
+        "lng": -58.356478,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-usig",
+        "verifiedAt": "2026-10-09",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Punto del mapa oficial que enlaza la página de Animales BA (https://mapa.buenosaires.gob.ar/mapas/?lat=-34.617546&lng=-58.356478&zl=15&modo=transporte&dir=Achaval+Rodriguez%2C+T.%2C+Dr.+Av.+1550&map=comunas), consultado el 9/10/2026. El normalizador USIG da el mismo lugar a 5 m. Es una ubicación aproximada de la dirección (Av. Dr. T. Achával Rodríguez 1550), no la entrada exacta del centro."
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Solo con turno previo, que se pide online con cuenta miBA: la página oficial dice que no se atiende a quienes se acercan sin turno. La persona que acompaña al animal tiene que ser mayor de 18 años. La página no aclara si hace falta vivir en la Ciudad.",
+          "requirements": [
+            "Cuenta miBA para pedir el turno online.",
+            "Acompañante mayor de 18 años, que tenga toda la mañana disponible hasta que termine el procedimiento.",
+            "Perro con collar y correa; gato en transportadora o bolso ventilado. Llevar una manta para abrigarlo después de la cirugía.",
+            "El animal debe estar en ayunas (12 h sin alimento y 8 h sin líquidos).",
+            "Avisar al veterinario si toma medicación o tiene alguna enfermedad."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Las agendas de la semana siguiente se habilitan los viernes a las 10 h. Los días y centros con turnos cambian por semana: mirá la agenda en la página oficial.",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+            "retrievedAt": "2026-10-09",
+            "note": "La página dice: «se brinda un servicio de castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito, a través de los Centros Fijos Veterinarios y las Unidades Móviles». Agenda leída el 9/10/2026: este centro figura con «Castración» los días 6, 7, 8, 10, 13 y 15 de octubre de 2026 (la agenda cambia: no es un horario permanente). La página no dice si se exige domicilio en la Ciudad, ni horarios de atención, ni teléfono. No informa atención veterinaria general, guardia ni vacunación antirrábica en el centro fijo."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-09",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-08",
+            "notes": "Verificación documental del 9/10/2026 con las fuentes oficiales; revisión en 30 días porque la información depende de una agenda que cambia. Horario, teléfono y domicilio requerido sin confirmar."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+        "retrievedAt": "2026-10-09",
+        "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: dirección, requisitos y agenda del centro fijo. Ubicación: punto del mapa oficial que enlaza la página (https://mapa.buenosaires.gob.ar/mapas/?lat=-34.617546&lng=-58.356478&zl=15&modo=transporte&dir=Achaval+Rodriguez%2C+T.%2C+Dr.+Av.+1550&map=comunas), consultado el 9/10/2026."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-09",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-08",
+        "notes": "Verificación documental del 9/10/2026 con las fuentes oficiales; revisión en 30 días porque la información depende de una agenda que cambia. Horario, teléfono y domicilio requerido sin confirmar."
+      },
+      "aliases": [
+        "Animales BA Costanera Sur",
+        "Castraciones gratuitas Costanera Sur"
+      ],
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
       "id": "cesac-3",
       "name": "Centro de Salud Nivel 1: Villa Lugano 9 (CeSAC Nº 3)",
       "shortName": "CeSAC Nº 3",

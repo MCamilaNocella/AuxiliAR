@@ -48,10 +48,10 @@ test("the real places: every one has its division, apart from barrio and localit
   const resources = await data.loadPlaces("AR-C")
   const day = data.todayInArgentina()
   const entries = places.selectPlaces(resources, day, places.EMPTY_PLACE_QUERY)
-  assert.equal(entries.length, 6)
+  assert.equal(entries.length, 7)
   const facets = places.getPlaceFacets(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-C" })
-  assert.deepEqual(Object.fromEntries(facets.zones.map(({ value, count }) => [value, count])), { "Comuna 1": 1, "Comuna 2": 1, "Comuna 3": 1, "Comuna 4": 1, "Comuna 5": 1, "Comuna 8": 1 })
-  assert.deepEqual(places.getPlaceFacets(resources, day, places.EMPTY_PLACE_QUERY).provinces, [{ value: "AR-C", count: 6 }])
+  assert.deepEqual(Object.fromEntries(facets.zones.map(({ value, count }) => [value, count])), { "Comuna 1": 2, "Comuna 2": 1, "Comuna 3": 1, "Comuna 4": 1, "Comuna 5": 1, "Comuna 8": 1 })
+  assert.deepEqual(places.getPlaceFacets(resources, day, places.EMPTY_PLACE_QUERY).provinces, [{ value: "AR-C", count: 7 }])
   // choosing a division returns exactly those places, and the map shows the same ones
   const inComuna4 = places.selectPlaces(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-C", zone: "Comuna 4" })
   assert.deepEqual(inComuna4.map(({ place }) => place.id), ["cesac-41"])
@@ -147,7 +147,7 @@ test("the explorer reads the territory from the URL and keeps the other params, 
   // with a covered province chosen, there is no such block
   assert.ok(!text(render("/centros?provincia=AR-C&buscar=zzzz")).includes("Qué podés hacer mientras tanto"))
   // an invalid province in the URL is just ignored
-  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("6 lugares encontrados"))
+  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("7 lugares encontrados"))
   // the links that already exist keep working
   const legacy = text(render("/centros?filtro=emergency&buscar=oftalm", { filters: ["emergency"] }))
   assert.ok(legacy.includes("Tipo: Guardias") && legacy.includes("Búsqueda: «oftalm»"))
@@ -162,7 +162,7 @@ test("the app's coverage index names the same provinces as the places files, and
   const files = readdirSync(join(root, "src/data/resources/places")).filter((name) => name.endsWith(".json")).map((name) => name.replace(".json", "").toUpperCase()).sort()
   assert.deepEqual(Object.keys(data.COVERAGE).sort(), files)
   assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], files)
-  assert.equal(data.COVERAGE["AR-C"].places, 6)
+  assert.equal(data.COVERAGE["AR-C"].places, 7)
 })
 
 test("load plan: opening /centros downloads the covered files only, and a province asked for downloads only its own", () => {

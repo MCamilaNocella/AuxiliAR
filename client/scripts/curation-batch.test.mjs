@@ -354,9 +354,9 @@ test("BATCH VALIDITY: if the clear equivalences were approved, the whole propose
   assert.equal(decisions.length, 45)
   const result = plan({ decisions, candidates })
   assert.deepEqual(result.errors, [])
-  assert.equal(result.data.resources.length, 51)
-  assert.deepEqual(result.data.resources.slice(0, 6), published, "los 6 lugares curados no cambian")
-  const added = result.data.resources.slice(6)
+  assert.equal(result.data.resources.length, 52)
+  assert.deepEqual(result.data.resources.slice(0, 7), published, "los 7 lugares curados (6 del primer lote y el centro veterinario) no cambian")
+  const added = result.data.resources.slice(7)
   assert.equal(new Set(added.map((r) => r.id)).size, 45)
   for (const place of added) {
     for (const forbidden of ["hours", "cost", "costNote", "requirements", "audience", "appointment", "coverage", "description"]) assert.equal(place[forbidden], undefined, `${place.id}: ${forbidden}`)
@@ -424,7 +424,7 @@ test("the hand-curated places keep everything but what the decisions applied; Sa
   assert.equal(santaLucia.services[0].description, "Atención de urgencias de los ojos para adultos y niños, sin necesidad de turno.")
   assert.equal(santaLucia.services[0].appointment.mode, "not-required", "la frase 'sin necesidad de turno' la respalda el dato estructurado de la fuente oficial")
   assert.equal(santaLucia.services[0].hours.open24h, true)
-  assert.equal(published.length, 6, "no se publicó ningún lugar nuevo")
+  assert.equal(published.length, 7, "no se publicó ningún lugar nuevo por el pipeline: el séptimo es el centro veterinario cargado a mano")
   for (const place of published) assert.equal(place.verification.status, "verified")
 })
 

@@ -20,5 +20,14 @@ export const getMapPins = (entries: PlaceEntry[]): MapPin[] =>
     return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng }]
   })
 
+/**
+ * A pin that marks the address, not the entrance: its coordinates are verified but their precision is "approximate"
+ * (a point of an official map or of a geocoder for the address). Only "exact" says the pin is where you go in.
+ */
+export const hasApproximateLocation = (place: PlaceEntry["place"]) => isMappable(place) && place.coordinates?.precision === "approximate"
+
+/** How many of the pins shown are approximate (see hasApproximateLocation) */
+export const countApproximate = (entries: PlaceEntry[]) => entries.filter(({ place }) => hasApproximateLocation(place)).length
+
 /** How many of the places shown can't be on the map (no verified coordinates) */
 export const countUnmapped = (entries: PlaceEntry[]) => entries.length - getMapPins(entries).length

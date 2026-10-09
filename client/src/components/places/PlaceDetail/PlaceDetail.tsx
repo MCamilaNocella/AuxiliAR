@@ -2,7 +2,7 @@ import { useEffect, useId, useRef } from "react"
 import { ExternalLink, MapPin, MessageCircle, Phone, X } from "lucide-react"
 import { contactHref } from "@/data/resources"
 import type { Contact } from "@/data/resources"
-import { buildPlaceView, formatDate, streetLine } from "@/utils/places"
+import { buildPlaceView, formatDate, hasApproximateLocation, streetLine } from "@/utils/places"
 import type { DetailItem, PlaceEntry, ServiceView } from "@/utils/places"
 import { HighlightBadges } from "../HighlightBadges"
 
@@ -206,6 +206,7 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
               <span>
                 {addressLine}
                 {address?.reference && <span className="block text-muted">{address.reference}</span>}
+                {hasApproximateLocation(place) && <span className="block text-muted">Ubicación aproximada en el mapa: marca la dirección, no necesariamente la entrada.</span>}
               </span>
             </p>
           )}

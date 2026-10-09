@@ -478,7 +478,8 @@
           "Animales BA Costanera Sur",
           "Castraciones gratuitas Costanera Sur"
         ]
-      }
+      },
+      "loaded": "Cargado el 2026-10-09 en client/src/data/resources/places/ar-c.json (ver docs/investigacion/costanera-sur/). Este borrador queda como registro; vale lo que está en los datos."
     },
     {
       "ficha": "L1-VET-INDOAMERICANO",

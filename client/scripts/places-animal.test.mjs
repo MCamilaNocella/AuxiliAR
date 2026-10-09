@@ -29,13 +29,15 @@ const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxono
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
 const real = await data.loadPlaces("AR-C")
+// The places for people (everything but the veterinary centre): the wall tests below add a made-up veterinary place to them
+const realHuman = real.filter(({ facilityType }) => facilityType !== "public-veterinary")
 const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces, matchingServices, quickFilterHasData } = places
 
 const animalTypes = taxonomy.serviceTypes.filter(({ categories }) => categories.includes("animales")).map(({ id }) => id)
 const humanTypes = taxonomy.serviceTypes.filter(({ categories }) => !categories.includes("animales")).map(({ id }) => id)
 const FREE_NOTE = { organization: "Fuente de prueba", url: "https://example.org/prueba", note: "Nota de prueba que dice que es gratuita." }
 
-// A veterinary place made up from a copy of a real one: the real data has none
+// A veterinary place made up from a copy of a real human one (the real veterinary centre has its own tests, at the end)
 const vetPlace = () => {
   const copy = structuredClone(real.find(({ id }) => id === "cesac-3"))
   copy.id = "prueba-veterinaria"
@@ -48,7 +50,7 @@ const vetPlace = () => {
   return copy
 }
 const humanVaccination = () => real.find(({ id }) => id === "cesac-41")
-const WITH_VET = [...real, vetPlace()]
+const WITH_VET = [...realHuman, vetPlace()]
 const ids = (entries) => entries.map(({ place }) => place.id).sort()
 const ask = (criteria, list = WITH_VET) => ids(selectPlaces(list, DAY, { ...EMPTY, ...criteria }))
 
@@ -76,7 +78,7 @@ test("a veterinary place never answers the human filters, and a human place neve
   assert.deepEqual(ask({ filterId: "animal-health" }), [vet])
   for (const filterId of ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency"]) assert.ok(!ask({ filterId }).includes(vet), filterId)
   assert.ok(!ask({ filterId: "vaccination" }).includes(vet), "the pets' rabies vaccine is not human vaccination")
-  assert.deepEqual(ask({ filterId: "vaccination" }), ask({ filterId: "vaccination" }, real), "human vaccination is the same with or without the veterinary place")
+  assert.deepEqual(ask({ filterId: "vaccination" }), ask({ filterId: "vaccination" }, real), "human vaccination is the same with or without a veterinary place (the real centre included)")
   // by category too: human health is not animal care, and the veterinary place is in 'Todos'
   assert.ok(!ask({ category: "salud-fisica" }).includes(vet) && !ask({ category: "salud-mental" }).includes(vet) && !ask({ category: "esi" }).includes(vet))
   assert.deepEqual(ask({ category: "animales" }), [vet])
@@ -116,19 +118,24 @@ test("the filter travels in the link: the same as the other quick filters", () =
   assert.equal(places.placeQueryFromParams(new URLSearchParams("filtro=veterinaria")).filterId, "all")
 })
 
-test("the real data has no veterinary service, so the filter promises nothing", () => {
-  const entries = selectPlaces(real, DAY, EMPTY)
-  assert.equal(quickFilterHasData("animal-health", entries), false)
-  assert.equal(quickFilterHasData("vaccination", entries), true)
+test("without any veterinary service the filter promises nothing; with one (the real centre, or a made-up one) it does", () => {
+  const humanOnly = selectPlaces(realHuman, DAY, EMPTY)
+  assert.equal(quickFilterHasData("animal-health", humanOnly), false)
+  assert.equal(quickFilterHasData("vaccination", humanOnly), true)
+  assert.deepEqual(ask({ filterId: "animal-health" }, realHuman), [])
   assert.equal(quickFilterHasData("animal-health", selectPlaces(WITH_VET, DAY, EMPTY)), true)
-  assert.deepEqual(ask({ filterId: "animal-health" }, real), [])
+  assert.equal(quickFilterHasData("animal-health", selectPlaces(real, DAY, EMPTY)), true, "the real data has the Costanera Sur centre")
 })
 
 const render = (url) => text(renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, filters: ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency", "animal-health"] }))))
-const renderHtml = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, filters: ["animal-health"] })))
+
+// With the real data there is a veterinary service. To see the empty state the explorer is embedded with a scope that leaves out the
+// animal services (as a page about human health would): the same state a link to Salud animal found before the first centre was loaded
+const HUMAN_SCOPE = { category: "salud-fisica" }
+const renderScoped = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, scope: HUMAN_SCOPE, filters: ["animal-health"] })))
 
 test("a link to Salud animal with no veterinary service says so, clearly, and offers the way out", () => {
-  const html = renderHtml("/centros?vista=lista&filtro=animal-health")
+  const html = renderScoped("/centros?vista=lista&filtro=animal-health")
   const content = text(html)
   assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Salud animal"))
   assert.ok(content.includes("Tipo: Salud animal"), "the chip says which filter is on")
@@ -141,7 +148,7 @@ test("a link to Salud animal with no veterinary service says so, clearly, and of
 })
 
 test("the same with the free filter on: the message is about the veterinary resources, not about gratuity", () => {
-  const content = render("/centros?vista=lista&filtro=animal-health&buscar=gratuita")
+  const content = text(renderScoped("/centros?vista=lista&filtro=animal-health&buscar=gratuita"))
   assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa"))
   assert.ok(!content.includes("No encontramos prestaciones con gratuidad verificada"))
 })

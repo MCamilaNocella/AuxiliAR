@@ -17,6 +17,8 @@ const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
 const proposal = JSON.parse(await readFile(join(root, "curation/proposals/lote-1.cambios-propuestos.json"), "utf8"))
 const realPlaces = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8"))
+// The drafts of the proposal that are not in the data yet (Costanera Sur was loaded after approval; the Indoamericano is still a draft)
+const pendingDrafts = proposal.newPlaces.filter(({ draft }) => !realPlaces.resources.some(({ id }) => id === draft.id))
 
 const { createServer } = await import("vite")
 const vite = await createServer({ root, logLevel: "error", server: { middlewareMode: true }, appType: "custom" })
@@ -40,13 +42,13 @@ const applied = () => {
     const service = place.services.find(({ id }) => id === change.serviceId)
     Object.assign(service, structuredClone(change.set))
   }
-  for (const { draft } of proposal.newPlaces) copy.resources.push(structuredClone(draft))
+  for (const { draft } of pendingDrafts) copy.resources.push(structuredClone(draft))
   return copy
 }
 // What the app would show if the team approved the drafts: only used to look at how they would be drawn
 const approvedDrafts = (file) => {
   const copy = structuredClone(file)
-  for (const { draft } of proposal.newPlaces) {
+  for (const { draft } of pendingDrafts) {
     const place = copy.resources.find(({ id }) => id === draft.id)
     place.verification = { status: "verified", verifiedAt: "2026-10-08", verifiedBy: "prueba", nextReviewDue: "2099-01-01" }
   }
@@ -108,6 +110,7 @@ test("the real data now has exactly the approved free services of the batch, and
     for (const own of place.services ?? []) if (isVerifiedFree(place, data.resolveService(place, own))) free.push(`${place.id}/${own.id}${own.costNote ? " (con condiciones)" : ""}`)
   }
   assert.deepEqual(free.sort(), [
+    "centro-fijo-veterinario-costanera-sur/castracion (con condiciones)",
     "cesac-3/atencion-primaria",
     "cesac-3/vacunacion (con condiciones)",
     "cesac-41/atencion-primaria",
@@ -127,7 +130,8 @@ test("the real data now has exactly the approved free services of the batch, and
       if (own) assert.equal(isVerifiedFree(place, data.resolveService(place, own)), false, `${place.id}/${id} stays unconfirmed`)
     }
   }
-  assert.equal(realPlaces.resources.some(({ id }) => id.startsWith("centro-fijo-veterinario")), false, "the veterinary centres are not loaded")
+  assert.deepEqual(realPlaces.resources.filter(({ id }) => id.startsWith("centro-fijo-veterinario")).map(({ id }) => id), ["centro-fijo-veterinario-costanera-sur"], "only the Costanera Sur centre is loaded; the Indoamericano is not")
+  assert.deepEqual(pendingDrafts.map(({ ficha }) => ficha), ["L1-VET-INDOAMERICANO"])
 })
 
 test("primary care: 'Atención gratuita' with no condition note, and nothing that promises a walk-in", () => {
@@ -184,7 +188,7 @@ test("the hours of one service no longer silence the notice of the others (it wa
 
 test("the drafts of the veterinary centres do not show, and are not on the map, until the team approves them", () => {
   const file = applied()
-  for (const { draft } of proposal.newPlaces) {
+  for (const { draft } of pendingDrafts) {
     assert.equal(entriesOf(file).some(({ place }) => place.id === draft.id), false, `${draft.id} is waiting for review`)
     assert.equal(draft.verification.status, "needs-review")
     assert.equal(draft.coordinates.status, "unverified")
@@ -194,7 +198,7 @@ test("the drafts of the veterinary centres do not show, and are not on the map, 
 
 test("an approved veterinary centre is free WITH conditions (turno), animal-only, and only castration", () => {
   const file = approvedDrafts(applied())
-  for (const { draft } of proposal.newPlaces) {
+  for (const { draft } of pendingDrafts) {
     const found = entry(file, draft.id)
     assert.ok(found, "it shows once verified")
     assert.deepEqual(found.services.map(({ type }) => type), ["spaying-neutering"])

@@ -406,12 +406,13 @@ test("GOLDEN hospitals: the three hospitals of the first batch are linked and th
   }
 })
 
-test("the 6 places still published are exactly the 6 of the first batch; nothing new was imported", () => {
-  assert.deepEqual(published.map((r) => r.id), ["cesac-3", "cesac-41", "cesac-47", "hospital-oftalmologico-santa-lucia", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
-  for (const place of published) assert.equal(Object.keys(place.externalIds).length, 1)
+test("the places published by the pipeline are exactly the 6 of the first batch (plus the hand-made veterinary centre); nothing new was imported", () => {
+  assert.deepEqual(published.map((r) => r.id), ["cesac-3", "cesac-41", "cesac-47", "hospital-oftalmologico-santa-lucia", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "centro-fijo-veterinario-costanera-sur"])
+  // the veterinary centre is hand-made from the Animales BA page: it is in no official dataset, so it has no externalIds
+  for (const place of published.filter(({ facilityType }) => facilityType !== "public-veterinary")) assert.equal(Object.keys(place.externalIds).length, 1)
   const server = JSON.parse(readFileSync(join(clientRoot, "../server/src/main/resources/data/resources.json"), "utf8"))
   // the server copy also carries the help lines (lines/): what is counted here are the places
-  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 6)
+  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 7)
 })
 
 // ─── Publish: protection of manual curation ───────────────────────────────────────────────────────
@@ -442,7 +443,7 @@ test("publish: an accepted place is built ONLY from the source — no hours, cos
   const overrides = acknowledged.some((code) => code.startsWith("address-")) ? { address: { street: "Vélez Sarsfield" } } : undefined
   const result = plan({ decisions: [acceptDecision("1", { acknowledged, ...(overrides ? { overrides } : {}) })], candidates })
   assert.deepEqual(result.errors, [])
-  assert.equal(result.data.resources.length, 7)
+  assert.equal(result.data.resources.length, 8)
   const place = result.data.resources.at(-1)
   assert.equal(place.id, "cesac-1")
   assert.equal(place.kind, "service")
@@ -463,7 +464,7 @@ test("publish: an accepted place is built ONLY from the source — no hours, cos
   assert.equal(place.source.license, "CC-BY-2.5-AR")
   assert.equal(place.source.retrievedAt, "2026-10-07")
   assert.match(place.source.note, /CC-BY-2.5-AR/)
-  assert.ok(result.data.resources.slice(0, 6).every((resource, index) => JSON.stringify(resource) === JSON.stringify(published[index])), "los 6 anteriores no cambian")
+  assert.ok(result.data.resources.slice(0, 7).every((resource, index) => JSON.stringify(resource) === JSON.stringify(published[index])), "los 7 anteriores no cambian")
 })
 
 test("publish: without an approved service (or facility type) a place stays a candidate and is not published", () => {
@@ -594,7 +595,7 @@ test("serialization: untouched places keep their exact text; a link adds one lin
   const relinked = serializePlacesPreserving(originalWithout, unlinked, published)
   assert.equal(relinked, text.replace(/\r\n/g, "\n"), "volver a enlazar reproduce el archivo línea por línea")
   const added = serializePlacesPreserving(text, published, [...published, { ...structuredClone(published[0]), id: "cesac-999", externalIds: { "caba-cesac": "999" } }])
-  assert.equal(JSON.parse(added).resources.length, 7)
+  assert.equal(JSON.parse(added).resources.length, 8)
   assert.ok(added.startsWith(text.replace(/\r\n/g, "\n").slice(0, text.replace(/\r\n/g, "\n").indexOf('      "aliases": ["CeSAC 47", "Retiro 3"') )))
 })
 
@@ -820,7 +821,7 @@ test("department: the six published divisions are the approved ones", () => {
     "hospital-odontologia-carrillo": "Comuna 2",
     "hospital-odontologia-duenas": "Comuna 5",
   }
-  assert.equal(published.length, 6)
+  assert.equal(published.filter(({ facilityType }) => facilityType !== "public-veterinary").length, 6)
   for (const [id, value] of Object.entries(approved)) {
     const place = published.find((r) => r.id === id)
     assert.equal(place.address.department, value, id)
