@@ -75,7 +75,7 @@ test("the page shows one stage at a time, opens a stage from ?etapa=, and ends w
   assert.ok(content.includes("A los 2 meses") && content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"))
   assert.equal([...html.matchAll(/aria-pressed="true"/g)].length, 1)
   // official sources only, and no phone number or personal advice
-  for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/www\.argentina\.gob\.ar\/salud\/vacunas/)
+  for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/www\.argentina\.gob\.ar\/(salud\/vacunas|sites\/default\/files\/2026-03-10_calendario_nacional_vacunacion_70x50_web\.pdf$)/)
   assert.ok(!/\b0800\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b/.test(content))
   assert.ok(content.includes("no reemplaza la consulta con un equipo de salud"))
   assert.ok(hrefs(html).includes("/centros?filtro=vaccination"))

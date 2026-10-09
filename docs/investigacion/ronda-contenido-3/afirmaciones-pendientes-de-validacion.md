@@ -66,7 +66,7 @@ Fuente de toda la sección: Ministerio de Salud, 8 páginas por etapa (`/salud/v
 | 5.1.6 | Hasta 2 años y hasta un año: «Las personas menores de 24 meses que ya hubieran recibido dos dosis de vacuna antigripal anteriormente deben recibir solo una dosis» (una página dice «una dosis», otra «solo una dosis»). | Redacción levemente distinta en las dos páginas oficiales. | C |
 | 5.1.7 | 15 a 64: «Las personas nacidas antes de 1965 se consideran inmunes por haber estado expuestas a ambos virus.» | Afirmación clínica sobre inmunidad. | B |
 | 5.1.8 | «Las vacunas del Calendario Nacional se aplican de forma gratuita en centros de salud y hospitales públicos.» (en la sección, la frase general) | Es la frase de las etapas de 5 y 11 años extendida a todo el calendario; la página principal dice que las vacunas están disponibles en centros de salud y hospitales públicos y no requieren orden médica. La Ley 27.491 establece la gratuidad. | B |
-| 5.1.9 | Vigencia: el calendario enlaza el PDF «Calendario de vacunación 2026» (10/3/2026). Las páginas por etapa **no traen fecha de actualización**. | Comparar con el PDF antes de la presentación. | **A** |
+| 5.1.9 | Vigencia: el calendario enlaza el PDF «Calendario de vacunación 2026» (10/3/2026). Las páginas por etapa **no traen fecha de actualización**. | **Comparado el 9/10 (ver [calendario-contra-pdf-2026.md](calendario-contra-pdf-2026.md)): hay 15 diferencias u omisiones**; falta la revisión clínica. | **A** |
 
 ### 5.2 Otras afirmaciones sobre vacunas
 

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
-import { CALENDAR_SOURCE, CHECKED_AT, VACCINATION_STAGES } from "./Section5.constants"
+import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT, VACCINATION_STAGES } from "./Section5.constants"
 
 /** Query param with the open stage: /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
 const STAGE_PARAM = "etapa"
@@ -103,6 +103,7 @@ export default function Section5Content() {
           <li>Es importante que todas las personas tengan las dosis de vacunas correspondientes a su edad.</li>
           <li>Durante la infancia conviene un control de salud al menos una vez por año, aunque la persona no esté enferma. Debe incluir una visita a oftalmología y odontología.</li>
           <li>Si no sabés qué vacunas te faltan o no encontrás tu carnet, consultá en un vacunatorio o centro de salud: te orientan.</li>
+          <li>Este resumen no reproduce todas las notas del calendario oficial (por ejemplo, límites de edad de algunas dosis, cohortes de nacimiento, personal de salud y esquemas a completar). El PDF oficial las trae completas.</li>
         </ul>
         <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <ActionLink to={centersLink({ filter: "vaccination" })} variant="primary">
@@ -112,7 +113,7 @@ export default function Section5Content() {
       </section>
 
       <SourceList
-        sources={[CALENDAR_SOURCE, stage.source]}
+        sources={[CALENDAR_SOURCE, CALENDAR_PDF, stage.source]}
         checkedAt={CHECKED_AT}
         note="Contenido del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0), resumido y reorganizado por AuxiliAR. Esta información es orientativa y no reemplaza la consulta con un equipo de salud. Si el Ministerio actualiza el calendario, prevalece su versión."
       />

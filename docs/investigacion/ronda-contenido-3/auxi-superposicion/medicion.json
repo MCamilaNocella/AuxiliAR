@@ -1,0 +1,219 @@
+{
+ "results": [
+  {
+   "w": 390,
+   "name": "calendario",
+   "scrollSteps": 24,
+   "stepsWithCover": 16,
+   "example": [
+    "Embarazo",
+    "Recién nacidos",
+    "Hasta un año"
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 390,
+   "name": "tramites",
+   "scrollSteps": 22,
+   "stepsWithCover": 14,
+   "example": [
+    "Por la web, en el portal de turnos de la Ciudad (necesitás u",
+    "Por Boti, el WhatsApp de la Ciudad.",
+    "Por teléfono, al 147, opción 1."
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 390,
+   "name": "derechos",
+   "scrollSteps": 29,
+   "stepsWithCover": 22,
+   "example": [
+    "La Ley 153, Ley Básica de Salud de la Ciudad, dice que:",
+    "Alcanza a todas las personas sin excepción, sean residentes "
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 390,
+   "name": "pasteur",
+   "scrollSteps": 17,
+   "stepsWithCover": 10,
+   "example": [
+    "Información útil: qué tener en cuenta cuando fallece un perr",
+    "Servicios · Instituto de Zoonosis Luis Pasteur (se abre en u",
+    "Texto comparado con estas fuentes el 9 de octubre de 2026. L"
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 390,
+   "name": "vacio-mental",
+   "scrollSteps": 14,
+   "stepsWithCover": 4,
+   "example": [
+    ""
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 390,
+   "name": "anticoncepcion",
+   "scrollSteps": 47,
+   "stepsWithCover": 41,
+   "example": [
+    "",
+    "",
+    ""
+   ],
+   "bubble": {
+    "l": 176,
+    "t": 632,
+    "r": 338,
+    "b": 695
+   }
+  },
+  {
+   "w": 360,
+   "name": "calendario",
+   "scrollSteps": 26,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 360,
+   "name": "tramites",
+   "scrollSteps": 24,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 360,
+   "name": "derechos",
+   "scrollSteps": 32,
+   "stepsWithCover": 25,
+   "example": [
+    "Atención en el sistema público (Ciudad de Buenos Aires)",
+    "La Ley 153, Ley Básica de Salud de la Ciudad, dice que:"
+   ],
+   "bubble": {
+    "l": 146,
+    "t": 528,
+    "r": 308,
+    "b": 591
+   }
+  },
+  {
+   "w": 360,
+   "name": "pasteur",
+   "scrollSteps": 19,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 360,
+   "name": "vacio-mental",
+   "scrollSteps": 16,
+   "stepsWithCover": 15,
+   "example": [
+    "Mapa AuxiliAR",
+    "Si hay riesgo inmediato, no busques un centro: mirá los núme"
+   ],
+   "bubble": {
+    "l": 146,
+    "t": 528,
+    "r": 308,
+    "b": 591
+   }
+  },
+  {
+   "w": 360,
+   "name": "anticoncepcion",
+   "scrollSteps": 51,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 320,
+   "name": "calendario",
+   "scrollSteps": 27,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 320,
+   "name": "tramites",
+   "scrollSteps": 26,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 320,
+   "name": "derechos",
+   "scrollSteps": 34,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 320,
+   "name": "pasteur",
+   "scrollSteps": 21,
+   "stepsWithCover": 0,
+   "example": []
+  },
+  {
+   "w": 320,
+   "name": "vacio-mental",
+   "scrollSteps": 16,
+   "stepsWithCover": 3,
+   "example": [
+    ""
+   ],
+   "bubble": {
+    "l": 106,
+    "t": 428,
+    "r": 268,
+    "b": 491
+   }
+  },
+  {
+   "w": 320,
+   "name": "anticoncepcion",
+   "scrollSteps": 58,
+   "stepsWithCover": 0,
+   "example": []
+  }
+ ],
+ "state": {
+  "inicial": true,
+  "trasCerrar": false,
+  "trasNavegarEnLaApp": false,
+  "trasRecargar": true
+ }
+}

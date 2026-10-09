@@ -38,6 +38,12 @@ export const CALENDAR_SOURCE: Source = {
   url: "https://www.argentina.gob.ar/salud/vacunas",
 }
 
+/** The poster of the Calendario 2026 (10/3/2026): it has notes the stage pages do not (age limits, birth cohorts, health staff, schemes to complete) */
+export const CALENDAR_PDF: Source = {
+  label: "Calendario Nacional de Vacunación 2026 (PDF, 10/3/2026) · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf",
+}
+
 export const VACCINATION_STAGES: VaccinationStage[] = [
   {
     id: "embarazo",
