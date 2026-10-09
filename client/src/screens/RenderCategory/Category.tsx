@@ -36,7 +36,7 @@ export const Category = () => {
   const activeSectionId = activeSection?.id ?? null
 
   return (
-    <div data-category={category.id} className="flex min-h-(--content-min-h) flex-col lg:flex-row">
+    <div data-category={category.id} className="flex min-h-(--content-min-h) flex-col lg:@container lg:flex-row">
       <CategorySidebar
         category={category}
         sections={sections}
@@ -46,7 +46,7 @@ export const Category = () => {
       />
       <div className="flex min-w-0 flex-1 flex-col">
         {activeSection ? (
-          <div className="px-4 py-6 sm:px-6 lg:px-8">
+          <div className="px-(--page-gutter) py-6 lg:pr-(--page-inset) lg:pl-8">
             <h2 className="m-0 text-2xl font-extrabold sm:text-3xl">{activeSection.title}</h2>
             {activeSection.id === PREPARING_SECTION.id && category.preparing ? <CategoryPreparing preparing={category.preparing} /> : <activeSection.Content />}
           </div>
