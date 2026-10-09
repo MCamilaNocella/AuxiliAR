@@ -32,6 +32,7 @@ const places = await vite.ssrLoadModule("/src/utils/places/index.ts")
 const data = await vite.ssrLoadModule("/src/data/resources/index.ts")
 const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
 const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard/index.ts")
+const explorer = await vite.ssrLoadModule("/src/components/places/PlacesExplorer/index.ts")
 
 const DAY = data.todayInArgentina()
 const real = file.resources
@@ -51,6 +52,16 @@ const check = (changeData) => {
   changeData(copy)
   return validateDataset({ files: [{ name: "places/ar-c.json", data: copy }], schema, taxonomy }).errors
 }
+
+/* ── Layout: the row of the view switch and the filters button wraps ── */
+
+test("the row with the view switch and the filters button can wrap (at 320 px they do not fit in one row and the page grew wider than the screen)", () => {
+  const { PlacesExplorer } = explorer
+  const html = renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: ["/centros?vista=lista"] }, createElement(PlacesExplorer, { map: true })))
+  const row = html.slice(0, html.indexOf("Filtros")).lastIndexOf('<div class="')
+  const classes = html.slice(row).match(/^<div class="([^"]*)"/)[1].split(" ")
+  assert.ok(classes.includes("flex-wrap"), `the row is: ${classes.join(" ")}`)
+})
 
 /* ── Compatibility ── */
 

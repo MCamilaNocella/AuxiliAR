@@ -229,7 +229,8 @@ export const PlacesExplorer = ({ scope, filters = NO_FILTERS, intro = PLACES_EXP
         <div className="lg:flex-1">
           <PlacesToolbar filters={NO_FILTERS} query={draft} onQueryChange={typeText} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
         </div>
-        <div className="flex items-center gap-2">
+        {/* Wraps: at 320 px the view switch and the filters button do not fit in one row, and the page grew wider than the screen */}
+        <div className="flex flex-wrap items-center gap-2">
           {map && <PlacesViewSwitch view={view} onChange={changeView} />}
           {!isDesktop && <FiltersToggle ref={toggleRef} open={filtersOpen} activeCount={panelFilters} controls={panelId} onToggle={() => setFiltersOpen((open) => !open)} />}
         </div>

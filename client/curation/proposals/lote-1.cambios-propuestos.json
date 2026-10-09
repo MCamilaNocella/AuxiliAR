@@ -425,15 +425,16 @@
           "neighborhood": "Costanera Sur",
           "locality": "Ciudad Autónoma de Buenos Aires",
           "province": "AR-C",
-          "reference": "Según la página oficial, a 100 metros frente a la fuente de Lola Mora."
+          "reference": "Según la página oficial, a 100 metros frente a la fuente de Lola Mora.",
+          "department": "Comuna 1"
         },
         "coordinates": {
-          "lat": -34.61758,
-          "lng": -58.356442,
+          "lat": -34.617546,
+          "lng": -58.356478,
           "precision": "approximate",
           "status": "unverified",
           "method": "geocoded-usig",
-          "note": "Normalizador USIG (servicios.usig.buenosaires.gob.ar/normalizar), consultado el 8/10/2026: una sola coincidencia para «Av. Achával Rodríguez 1550». PENDIENTE: la página oficial dice «a 100 metros frente a la fuente de Lola Mora»; hay que comprobar sobre el mapa que el punto coincide con esa referencia antes de pasarlo a verified."
+          "note": "Punto del mapa oficial que enlaza la propia página de Animales BA (mapa.buenosaires.gob.ar, consultada el 9/10/2026); el normalizador USIG da el mismo lugar a 5 m. Coincide con la referencia «a 100 metros frente a la fuente de Lola Mora» (la Fuente de las Nereidas queda a unos 73 m según OpenStreetMap). Pendiente de aprobación del equipo para pasar a verified. Ver docs/investigacion/verificaciones/centros-veterinarios-ubicacion.md."
         },
         "services": [
           {
@@ -498,7 +499,8 @@
           "neighborhood": "Villa Soldati",
           "locality": "Ciudad Autónoma de Buenos Aires",
           "province": "AR-C",
-          "reference": "Dentro del Parque Indoamericano. La página oficial da solo el cruce de calles, sin número."
+          "reference": "Dentro del Parque Indoamericano. La página oficial da solo el cruce de calles, sin número.",
+          "department": "Comuna 8"
         },
         "coordinates": {
           "lat": -34.66457,
@@ -506,7 +508,7 @@
           "precision": "approximate",
           "status": "unverified",
           "method": "geocoded-usig",
-          "note": "Normalizador USIG, consultado el 8/10/2026: una sola coincidencia para el cruce «Av. Escalada y Paseo Islas Malvinas». PENDIENTE: es el punto del cruce, no del centro dentro del parque; hay que ubicar la entrada del centro con el equipo o con el área antes de pasarlo a verified."
+          "note": "Punto del mapa oficial que enlaza la propia página de Animales BA (cruce de Av. Escalada y Paseo Islas Malvinas, consultada el 9/10/2026); USIG da el mismo punto. Es el cruce de calles, no la entrada del centro dentro del parque: se mantiene unverified hasta confirmar la entrada. Ver docs/investigacion/verificaciones/centros-veterinarios-ubicacion.md."
         },
         "services": [
           {
