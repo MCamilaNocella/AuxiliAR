@@ -1,0 +1,63 @@
+FUENTES: Lineamientos técnicos del Ministerio de Salud de la Nación (argentina.gob.ar, Creative Commons Atribución 4.0). Consultados el 9/10/2026 con curl; extractos con pdftotext, sin resumen. Los PDF no muestran su fecha de publicación; el Ministerio informó el 4/3/2026 para los de antigripal.
+=== 1. Lineamientos Técnicos de Vacunación · Vacunación antigripal 2026 — https://www.argentina.gob.ar/sites/default/files/2018/02/lineamientos_vacuna_antigripal_-_2026.pdf (enlazado desde https://www.argentina.gob.ar/salud/inmunoprevenibles/recomendaciones-manuales-y-lineamientos)
+--- Oportunidad y población objetivo (p. 5-6)
+subgrupo de la población objetivo. A partir de la disponibilidad de dosis, se dará inicio a la vacunación en todos los vacunatorios y hospitales públicos del país.
+La vacunación antigripal debe ser efectuada en forma OPORTUNA, idealmente antes del comienzo del invierno (etapa de mayor circulación del virus influenza). No obstante, y de acuerdo al escenario epidemiológico nacional, regional y local, podrá continuarse según la dinámica de circulación viral.
+Población objetivo
+• Personal de salud. • Personas de 65 años o más: como oportunidad, evaluar VACUNA
+CONTRA NEUMOCOCO si corresponde. • Embarazadas: en cada embarazo y en cualquier trimestre.
+Además. debe recibir la VACUNA TRIPLE BACTERIANA ACELULAR (dTpa) a partir de la semana 20 y la VACUNA CONTRA EL VIRUS SINCICIAL RESPIRATORIO entre las semanas 32 y 36.6 de gestación. • Niños de 6 a 24 meses de edad. • Personas entre 24 meses y 64 años inclusive con factores de riesgo*. • Personal estratégico: cuyo desempeño es clave para mantener las funciones esenciales como Fuerzas Armadas y Fuerzas de Seguridad. • Puérperas: la intervención más efectiva es la vacunación durante el embarazo, la cual protege tanto a la gestante como al niño hasta los 6 meses de vida. Es prioritario aumentar las coberturas de vacunación de las embarazadas para todas las vacunas recomendadas. Sin embargo, si por alguna razón, la gestante no pudo vacunarse durante el embarazo, puede administrarse la vacuna antigripal hasta el egreso de la maternidad como máximo hasta 10 días posparto. La vacunación de la población objetivo podrá realizarse de manera sucesiva y/o simultánea dependiendo de la disponibilidad de dosis y la capacidad operativa. * La población objetivo no necesita orden médica ni indicación, a excepción del grupo de 24 meses a 64 años con factores de riesgo, quienes podrán presentar orden médica o documentación que acredite la existencia de dichas enfermedades preexistentes incluidas en los grupos de riesgo enumerados a continuación:
+5
+Enfermedades respiratorias a) Crónica: hernia diafragmática, enfermedad pulmonar obstructiva crónica (EPOC), enfisema congénito, displasia broncopulmonar, traqueostomía crónica, bronquiectasias, fibrosis quística, etc. b) Asma moderada y grave. Enfermedades cardíacas a) Insuficiencia cardíaca, enfermedad coronaria, reemplazo valvular, valvulopatías. b) Cardiopatías congénitas. Inmunodeficiencias congénitas o adquiridas (no oncohematológica) a) Infección por VIH/sida. b) Utilización de medicación inmunosupresora o corticoides en altas dosis (mayor a 2 mg/kg/día de metilprednisona o más de 20 mg/día o su equivalente por más de 14 días). c) Inmunodeficiencia congénita. d) Asplenia funcional o anatómica (incluida anemia drepanocítica). e) Desnutrición grave. Enfermedad oncohematológica y trasplante a) Tumor de órgano sólido en tratamiento. b) Enfermedad oncohematológica, hasta seis meses posteriores a la remisión completa. c) Trasplante de órganos sólidos o precursores hematopoyéticos. Otros a) Obesidad mórbida (con índice de masa corporal mayor a 40 Kg/m2). b) Diabetes. c) Insuficiencia renal crónica en diálisis o expectativas de ingresar a diálisis en los siguientes seis meses. d) Retraso madurativo grave en menores de 18 años. e) Síndromes genéticos, enfermedades neuromusculares con compromiso respiratorio y malformaciones congénitas graves. f) Tratamiento crónico con ácido acetilsalicílico en menores de 18 años. g) Convivientes de personas con enfermedad oncohematológica. h) Convivientes de personas recién nacidas prematuras menores de 1.500g.
+6
+--- Administración de dosis según población objetivo (p. 10-11)
+ADMINISTRACIÓN DE DOSIS SEGÚN POBLACIÓN OBJETIVO Vacunas trivalentes inactivadas: - Entre 6 y 35 meses de edad: 0,25 mL (una dosis de Agrippal® S1 Junior o la mitad de la dosis de Agrippal® S1 o Influvac®). - 36 meses de edad en adelante: 0,5 mL. Vacuna trivalente adyuvantada (Fluad®): - 65 años o más: 0,5 mL.
+10
+Población objetivo
+Personal de salud
+Embarazadas
+Puérperas
+6 a 24 meses inclusive* 25 a 35 meses inclusive con factores de riesgo*
+36 meses a 8 años inclusive, con factores de riesgo*
+9 años a 64 años inclusive con factores de riesgo 65 años o más
+Personal estratégico
+Acciones
+Aplicar una dosis de 0,5 mL de vacuna antigripal.
+En menores de 65 años se utiliza vacuna trivalente inactivada y en ≥ 65 años preferentemente vacuna trivalente adyuvantada.
+Aplicar una dosis de 0,5 mL de vacuna trivalente inactivada en cualquier momento de la gestación.
+Aplicar una dosis de 0,5 mL de vacuna trivalente inactivada hasta el egreso de la maternidad (máximo 10 días), si no recibió la vacuna durante el embarazo.
+Aplicar dos dosis de 0,25 mL de vacuna antigripal separadas por un mes de intervalo.
+Quienes hubieran recibido dos dosis de vacuna antigripal anteriormente deberán recibir solo una dosis.
+Aplicar dos dosis de 0,5 mL de vacuna antigripal separadas por un mes de intervalo.
+Quienes hubieran recibido dos dosis de vacuna antigripal anteriormente deberán recibir solo una dosis.
+Aplicar una dosis de 0,5 mL de vacuna trivalente inactivada.
+Aplicar una dosis de 0,5 mL de vacuna antigripal, preferentemente adyuvantada- Fluad®
+Aplicar una dosis de 0,5 mL de vacuna antigripal.
+En menores de 65 años se utiliza vacuna trivalente inactivada y en ≥ 65 años preferentemente vacuna trivalente adyuvantada.
+El intervalo mínimo entre primera y segunda dosis es de cuatro (4) semanas.
+Se destaca la importancia de iniciar tempranamente la vacunación.
+*A partir de los seis meses de vida y hasta ocho años inclusive, se deben administrar dos dosis con un intervalo mínimo de cuatro semanas si no hubiera recibido anteriormente (temporadas previas) dos dosis de vacuna antigripal. Los menores de nueve años que
+hubieran recibido al menos dos dosis de vacuna antigripal en temporadas previas, deberán recibir solo una dosis.
+--- Contraindicaciones y precauciones (p. 13)
+CONTRAINDICACIONES ABSOLUTAS ✔ Antecedente de reacción anafiláctica a una dosis previa de la vacuna contra la influenza. ✔ Reacción anafiláctica o alérgica grave a alguno de los componentes de la vacuna (excepto el huevo).
+13
+Para mayor información sobre el manejo de la anafilaxia, consultar: https://www.argentina.gob.ar/sites/default/files/bancos/202307/anafilaxia.pdf
+Consideraciones especiales
+PRECAUCIONES ✔ Enfermedad febril o infección aguda moderada a severa: esperar y citar para vacunar a corto plazo. ✔ Los pacientes con alergia grave al huevo pueden ser vacunados en establecimientos de salud con personal capacitado en el reconocimiento y tratamiento de reacciones alérgicas graves. ✔ Antecedentes de Síndrome de Guillain-Barré ocurrido dentro de las seis semanas de haber recibido una dosis de vacuna antigripal en el caso de haberse descartado otras causas: se debe consultar con el médico tratante antes de recibir una nueva dosis.
+=== 2. Lineamientos Técnicos de Vacunación · Vacuna triple viral, adelantamiento de la segunda dosis — https://www.argentina.gob.ar/sites/default/files/2018/02/lineamientos-tv-200125.pdf (enlazado desde https://www.argentina.gob.ar/salud/vacunas/doble-triple-viral)
+La vacuna Triple Viral (SRP) está compuesta por virus vivos atenuados del sarampión, la rubéola y la parotiditis. El componente contra el sarampión corresponde a la cepa Edmonston (generalmente Edmonston-Zagreb o Edmonston-Enders), el de la rubéola a la cepa Wistar RA 27/3, y el de la parotiditis a la cepa Jeryl Lynn o Leningrad-Zagreb. Se administra por vía subcutánea y la dosis es de 0,5 ml. Su aplicación genera inmunidad humoral y celular, con altos niveles de seroconversión tras la primera y segunda dosis. La vacuna Triple Viral ha demostrado ser altamente segura y efectiva, contribuyendo de manera significativa a la reducción de la morbimortalidad y a la eliminación o control de brotes de estas enfermedades a nivel poblacional.
+Estrategia de vacunación
+A partir del 1° de enero del 2026 el esquema de vacunación será el siguiente: Primera dosis: vacuna a los 12 meses de edad. Segunda dosis: vacuna entre los 15 y 18 meses de edad nacidos desde el 1° de julio de 2024.
+A fin de garantizar que todos los niños completen su esquema de vacunación de 2 (dos) dosis se continuará vacunando, en el año en que cumplen 5 años de edad, a las cohortes nacidas en 2021, 2022, 2023 y en los primeros 6 meses de 2024, es decir nacidos desde el 01 de enero de 2021 hasta el 30 de junio de 2024.
+7
+LINEAMIENTOS TÉCNICOS DE VACUNACIÓN VACUNA TRIPLE VIRAL | ADELANTAMIENTO DE LA SEGUNDA DOSIS
+Población objetivo
+Edad de aplicación de la segunda dosis de SRP
+Nacidos entre el 1º de enero de 2021 y 30 de junio de 2024
+Segunda dosis en el año en que cumplen 5 años de edad
+Nacidos a partir del 1º de Segunda dosis entre los 15 y 18
+julio de 2024
+meses
+IMPORTANTE: las dosis cero, adicionales aplicadas en el contexto de control de brote, bloqueo o campaña de seguimiento 2022 NO DEBEN CONSIDERARSE COMO PARTE DEL ESQUEMA REGULAR.
+Seguridad
+Contraindicaciones
