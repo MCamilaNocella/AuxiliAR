@@ -25,14 +25,14 @@ const { PlacesExplorer } = await vite.ssrLoadModule("/src/components/places/Plac
 const { HEALTH_CENTERS } = await vite.ssrLoadModule("/src/content/categories/HealthCenters/HealthCenters.ts")
 const { ALL_CATEGORIES } = await vite.ssrLoadModule("/src/content/categories/index.ts")
 const Map = (await vite.ssrLoadModule("/src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx")).default
-const Data = (await vite.ssrLoadModule("/src/content/categories/HealthCenters/sections/Section2/Section2.content.tsx")).default
+const About = (await vite.ssrLoadModule("/src/content/categories/About/sections/Section1/Section1.content.tsx")).default
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const render = (component, url = "/centros") => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(component)))
 
-test("centros de atención: two sections, the first one is the Mapa AuxiliAR and it opens by default", () => {
+test("centros de atención: one section, the Mapa AuxiliAR, and it opens by default (the explanation of the data is in Sobre AuxiliAR)", () => {
   assert.equal(HEALTH_CENTERS.to, PATHS.centers)
-  assert.deepEqual(HEALTH_CENTERS.sections.map(({ title }) => title), ["Mapa AuxiliAR", "Sobre los datos"])
+  assert.deepEqual(HEALTH_CENTERS.sections.map(({ title }) => title), ["Mapa AuxiliAR"])
   assert.equal(HEALTH_CENTERS.defaultSectionId, "section-1")
   assert.ok(HEALTH_CENTERS.sections.some(({ id }) => id === HEALTH_CENTERS.defaultSectionId))
   // only these open straight on a section: the map, Cuidar mi salud (its controls), Salud mental (where to ask for help), Salud sexual y ESI (where to look for care), Salud animal (campaigns), Primeros auxilios (the guides), Sobre AuxiliAR (one page) and Más recursos (its rights)
@@ -71,9 +71,12 @@ test("mapa auxiliar: the map is on and no category is left out of it", async () 
 })
 
 test("sobre los datos: how it is verified, what free means, what the date means, why no result is not no service, sources and scope", async () => {
-  const html = render(Data)
+  const page = render(About, "/sobre-auxiliar")
+  // the section starts at its heading and ends where the sources begin
+  const html = page.slice(page.indexOf('id="about-datos"'), page.indexOf('aria-labelledby="about-sources"'))
   const content = text(html)
-  const headings = [...html.matchAll(/<h3[^>]*>([^<]+)<[/]h3>/g)].map((match) => match[1])
+  const headings = [...html.matchAll(/<h4[^>]*>([^<]+)<[/]h4>/g)].map((match) => match[1])
+  assert.ok(content.includes("Sobre los datos del mapa"))
   assert.deepEqual(headings, ["Cómo verificamos", "Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
   // verification: who, against what, when, and what happens when it is doubtful
   for (const piece of ["una persona de AuxiliAR comprueba sus datos contra una fuente oficial", "quién lo verificó, cuándo y de qué fuente", "La gratuidad, en cambio, siempre necesita la fuente propia de esa prestación", "deja de mostrarse hasta que se vuelva a revisar"]) assert.ok(content.includes(piece), piece)
@@ -92,9 +95,9 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   assert.ok(covered.length > 0 && content.includes("Hoy solo hay centros verificados en " + covered[0]) === (covered.length === 1))
   assert.ok(content.includes("datos abiertos del Gobierno de la Ciudad de Buenos Aires") && content.includes("En el resto del país todavía no tenemos cobertura"))
   assert.ok(!/[0-9]+ (lugares|centros|establecimientos)/.test(content), "no numbers of the index")
-  // links: back to the map, and the emergency line
-  assert.ok(html.includes('href="/centros"') && content.includes("Mapa AuxiliAR"))
-  assert.ok(content.includes("mirá los números de emergencia"))
+  // moved as it was, with nothing new: no link, no button and no emergency line (the emergency bar is always in sight); the button of Sobre AuxiliAR leads here
+  assert.ok(content.includes("Mapa AuxiliAR") && !html.includes("<a ") && !html.includes("<button") && !content.includes("mirá los números de emergencia"))
+  assert.ok(page.includes('href="#about-datos"') && text(page).includes("Cómo verificamos los datos"))
 })
 
 test("the chat finds Encontrar atención and its sections: they have a summary and the generated index is up to date", async () => {

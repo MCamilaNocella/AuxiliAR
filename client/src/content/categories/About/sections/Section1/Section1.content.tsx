@@ -1,13 +1,13 @@
-import { Link } from "react-router"
 import { ChevronRight } from "lucide-react"
-import { PATHS, SECTION_PARAM } from "@/router/paths"
+import { DataSection } from "../../DataSection"
 import { SourcesSection } from "../../SourcesSection"
 
 /**
  * Sobre AuxiliAR: the institutional page (the footer links here). It says only what the site itself already says elsewhere
- * (what it is, that the information comes from official sources, that it does not replace professional care) and points to
- * the page that explains how the data is verified. It does not repeat that page. At the end, "Fuentes y referencias": every source of the
- * site, by topic, in disclosures (the pages of the topics keep only the links to services, procedures, resources and videos).
+ * (what it is, that the information comes from official sources, that it does not replace professional care) and its button leads to
+ * "Sobre los datos del mapa", below on this same page: how the places are verified, what free means, what the date means and where it
+ * covers (it was the second section of Centros de atención). At the end, "Fuentes y referencias": every source of the site, by topic,
+ * in disclosures (the pages of the topics keep only the links to services, procedures, resources and videos).
  */
 export default function AboutContent() {
   return (
@@ -16,13 +16,15 @@ export default function AboutContent() {
       <p className="m-0 text-ink-soft">
         Cada centro del mapa nombra de dónde sale su información y cuándo se verificó; lo que todavía no verificamos, no lo mostramos. AuxiliAR no reemplaza la atención médica ni psicológica profesional.
       </p>
-      <Link
-        to={`${PATHS.centers}?${SECTION_PARAM}=section-2`}
+      <a
+        href="#about-datos"
         className="flex min-h-14 w-full items-center gap-3 rounded-2xl border-2 border-line-strong bg-card px-4 py-3 font-extrabold text-ink no-underline hover:border-control-line hover:text-ink"
       >
         <span className="flex-1">Cómo verificamos los datos</span>
         <ChevronRight aria-hidden="true" className="size-5 shrink-0 text-brand" />
-      </Link>
+      </a>
+
+      <DataSection />
 
       <SourcesSection />
     </div>

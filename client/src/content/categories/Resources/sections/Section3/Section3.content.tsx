@@ -3,7 +3,7 @@ import { Link } from "react-router"
 import { Disclosure } from "@/components/health/Disclosure"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { CAMPAIGN_NOT_CARE } from "../../../Animals/Animals.sources"
-import { POINTS } from "../../../HealthCenters/sections/Section2/Section2.points"
+import { POINTS } from "../../../About/About.points"
 import { VAGINAL_CONDOM } from "../../../SexEducation/sections/Section2/Section2.constants"
 import { FAQ_REFERENCES } from "./Section3.references"
 

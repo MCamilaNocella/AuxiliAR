@@ -1,3 +1,4 @@
+// Sobre los datos del mapa: shown in "Sobre AuxiliAR" (DataSection) and read by the FAQ of Más recursos. Before: Centros de atención · Sobre los datos.
 export type Point = { title: string, text: string[] }
 
 /*

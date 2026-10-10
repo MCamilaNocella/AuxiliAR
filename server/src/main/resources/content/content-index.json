@@ -2,7 +2,7 @@
   {
     "title": "Encontrar atención",
     "path": "/centros",
-    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires. Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
+    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -10,13 +10,6 @@
     "title": "Encontrar atención › Mapa AuxiliAR",
     "path": "/centros?seccion=section-1",
     "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Encontrar atención › Sobre los datos",
-    "path": "/centros?seccion=section-2",
-    "summary": "Cómo verifica AuxiliAR los centros y sus prestaciones, qué significa gratuito y qué condiciones pueden tener, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, y cuáles son las fuentes y la cobertura.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -128,14 +121,14 @@
   {
     "title": "Sobre AuxiliAR",
     "path": "/sobre-auxiliar",
-    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.",
+    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional, cómo verifica los centros y sus prestaciones, qué significa gratuito, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, cuál es la cobertura y cuáles son las fuentes de cada tema.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Sobre AuxiliAR › Sobre AuxiliAR",
     "path": "/sobre-auxiliar?seccion=section-1",
-    "summary": "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.",
+    "summary": "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional, cómo verifica los centros y sus prestaciones, qué significa gratuito, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, cuál es la cobertura y cuáles son las fuentes de cada tema.",
     "firstAid": false,
     "hasInfo": true
   },

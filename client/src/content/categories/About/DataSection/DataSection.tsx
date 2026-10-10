@@ -1,31 +1,30 @@
 import { useState } from "react"
-import { Link } from "react-router"
 import { todayInArgentina } from "@/data/resources"
-import { PATHS } from "@/router/paths"
 import { planLoad, provinceLabel } from "@/utils/places"
-import { revealEmergencies } from "@/utils/revealEmergencies"
-import { POINTS } from "./Section2.points"
+import { POINTS } from "../About.points"
 
-/** Centros de atención · Sobre los datos: how the places on the map are verified, in plain words, and where it covers today */
-export default function Section2Content() {
+/**
+ * "Sobre AuxiliAR" · Sobre los datos del mapa: how the places on the map are verified, in plain words, and where it covers today.
+ * It is the text that used to be the second section of Centros de atención ("Sobre los datos"), moved here unchanged: the rules are
+ * in About.points.ts (the FAQ of Más recursos reads the same points: one copy). The emergency line and the link back to the map
+ * of that page are not repeated: the emergency bar is always in sight, and this page is not a place to search.
+ */
+export const DataSection = () => {
   // The provinces that have verified places today (names only: the numbers of the index are not for people)
   const [day] = useState(() => todayInArgentina())
   const covered = planLoad({ day, province: null }).covered.map(provinceLabel)
 
   return (
-    <div className="mt-2 flex max-w-3xl flex-col gap-3">
-      <p className="m-0 text-ink-soft">
-        Estas son las reglas con las que mostramos los centros del{" "}
-        <Link to={PATHS.centers} className="font-bold">
-          Mapa AuxiliAR
-        </Link>
-        .
-      </p>
+    <section id="about-datos" aria-labelledby="about-datos-title" className="flex scroll-mt-24 flex-col gap-3 border-t border-line-strong pt-6">
+      <h3 id="about-datos-title" className="m-0 text-xl font-extrabold">
+        Sobre los datos del mapa
+      </h3>
+      <p className="m-0 text-ink-soft">Estas son las reglas con las que mostramos los centros del Mapa AuxiliAR.</p>
 
       <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
         {POINTS.map(({ title, text }) => (
           <li key={title} className="rounded-2xl border border-line-strong bg-card p-4">
-            <h3 className="m-0 text-lg font-extrabold">{title}</h3>
+            <h4 className="m-0 text-lg font-extrabold">{title}</h4>
             <div className="mt-1 flex flex-col gap-2 text-ink-soft">
               {text.map((paragraph) => (
                 <p key={paragraph} className="m-0">
@@ -37,7 +36,7 @@ export default function Section2Content() {
         ))}
 
         <li className="rounded-2xl border border-line-strong bg-card p-4">
-          <h3 className="m-0 text-lg font-extrabold">Fuentes y alcance</h3>
+          <h4 className="m-0 text-lg font-extrabold">Fuentes y alcance</h4>
           <div className="mt-1 flex flex-col gap-2 text-ink-soft">
             <p className="m-0">
               La información viene de fuentes oficiales: por ahora, los datos abiertos del Gobierno de la Ciudad de Buenos Aires y las páginas oficiales de cada centro. Cada ficha nombra su fuente y trae el
@@ -54,14 +53,6 @@ export default function Section2Content() {
           </div>
         </li>
       </ul>
-
-      <p className="m-0 text-ink-soft">
-        Si hay riesgo inmediato, no busques un centro:{" "}
-        <button type="button" onClick={revealEmergencies} className="-my-2.5 inline-block cursor-pointer border-0 bg-transparent py-2.5 font-bold text-brand underline underline-offset-4">
-          mirá los números de emergencia
-        </button>
-        .
-      </p>
-    </div>
+    </section>
   )
 }

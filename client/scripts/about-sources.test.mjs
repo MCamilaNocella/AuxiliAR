@@ -44,12 +44,14 @@ test("Sobre AuxiliAR keeps its own content, in its place, and has no new section
   assert.ok(content.includes("AuxiliAR reúne información y recursos de salud para Argentina, en lenguaje simple y con fuentes oficiales."))
   assert.ok(content.includes("Cada centro del mapa nombra de dónde sale su información y cuándo se verificó; lo que todavía no verificamos, no lo mostramos."))
   assert.ok(content.includes("AuxiliAR no reemplaza la atención médica ni psicológica profesional."))
-  assert.deepEqual(hrefsIn(html).filter((href) => href.startsWith("/")), ["/centros?seccion=section-2"])
+  assert.deepEqual(hrefsIn(html).filter((href) => href.startsWith("/")), [], "no route of its own or of another page")
+  assert.ok(hrefsIn(html).includes("#about-datos"), "the button it had leads to the text about the data, on the same page")
   // the sources come after all of it
   assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Fuentes y referencias"))
   // the category is the same one: one section, same id and title, same summary for Auxi, no new path
   assert.deepEqual(ABOUT.sections.map(({ id, title }) => [id, title]), [["section-1", "Sobre AuxiliAR"]])
-  assert.equal(ABOUT.sections[0].summary, "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.")
+  assert.ok(ABOUT.sections[0].summary.startsWith("Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional"))
+  assert.ok(/cómo verifica los centros/.test(ABOUT.sections[0].summary), "Auxi finds here what the second section of Centros explained")
   assert.equal(ABOUT.to, "/sobre-auxiliar")
 })
 

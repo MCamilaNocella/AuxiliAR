@@ -55,7 +55,7 @@ export const SourcesSection = () => (
       Fuentes y referencias
     </h3>
     <p className="m-0 text-ink-soft">
-      Acá están todas las fuentes de AuxiliAR, por tema, con el día en que comparamos cada texto con ellas. Cada lugar del mapa, además, muestra en su ficha de dónde sale su información.
+      Acá están todas las fuentes de AuxiliAR, por tema, con el día en que comparamos cada texto con ellas.
     </p>
     <div className="flex flex-col gap-2">
       {REFERENCE_GROUPS.map(({ id, title, blocks }) => (

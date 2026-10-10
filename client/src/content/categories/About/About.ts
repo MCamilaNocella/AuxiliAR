@@ -18,7 +18,8 @@ export const ABOUT: Category = {
     {
       id: "section-1",
       title: "Sobre AuxiliAR",
-      summary: "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional y dónde leer cómo se verifican los datos.",
+      summary:
+        "Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional, cómo verifica los centros y sus prestaciones, qué significa gratuito, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, cuál es la cobertura y cuáles son las fuentes de cada tema.",
       Content: Section1,
     },
   ],
