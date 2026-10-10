@@ -1,11 +1,13 @@
 import { Link } from "react-router"
 import { ChevronRight } from "lucide-react"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
+import { SourcesSection } from "../../SourcesSection"
 
 /**
  * Sobre AuxiliAR: the institutional page (the footer links here). It says only what the site itself already says elsewhere
  * (what it is, that the information comes from official sources, that it does not replace professional care) and points to
- * the page that explains how the data is verified. It does not repeat that page.
+ * the page that explains how the data is verified. It does not repeat that page. At the end, "Fuentes y referencias": every source of the
+ * site, by topic, in disclosures (the pages of the topics keep only the links to services, procedures, resources and videos).
  */
 export default function AboutContent() {
   return (
@@ -21,6 +23,8 @@ export default function AboutContent() {
         <span className="flex-1">Cómo verificamos los datos</span>
         <ChevronRight aria-hidden="true" className="size-5 shrink-0 text-brand" />
       </Link>
+
+      <SourcesSection />
     </div>
   )
 }

@@ -22,6 +22,9 @@ const { renderToStaticMarkup } = await import("react-dom/server")
 const { MemoryRouter } = await import("react-router")
 const { SEX_EDUCATION } = await vite.ssrLoadModule("/src/content/categories/SexEducation/SexEducation.ts")
 const sources = await vite.ssrLoadModule("/src/content/categories/SexEducation/SexEducation.sources.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+// The sources of the pages are all in "Sobre AuxiliAR": the references of the group of Salud sexual y ESI, by block
+const referencesOf = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-sexual").blocks.find(({ id }) => id === blockId)
 const sectionDir = "/src/content/categories/SexEducation/sections"
 const CONTENT = {
   "section-1": (await vite.ssrLoadModule(`${sectionDir}/Section1/Section1.content.tsx`)).default,
@@ -49,25 +52,34 @@ test("salud sexual y ESI has four sections (IVE/ILE is its own, visible one) tha
   for (const { id, summary } of SEX_EDUCATION.sections.filter(({ id }) => id !== "section-4")) assert.ok(summary && summary.length > 60, id)
 })
 
-test("every section has content, no placeholder, and ends with its official sources and the day they were compared", () => {
+test("every section has content and no placeholder; its sources and the day they were compared are in Sobre AuxiliAR, not in the page", () => {
   assert.equal(sources.CHECKED_AT, "2026-10-08")
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
-    assert.ok(content.includes("Fuentes oficiales") && content.includes(id === "section-2" ? "Texto comparado con estas fuentes el 9 de octubre de 2026" : "Texto comparado con estas fuentes el 8 de octubre de 2026"), id)
-    // the sources list: only the official pages of the Nación, the laws and the Ciudad
-    const list = html.slice(html.indexOf('aria-label="Fuentes"'))
-    for (const href of external(list)) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|buenosaires\.gob\.ar)\//, `${id}: ${href}`)
-    assert.ok(html.includes('rel="noopener noreferrer"') && content.includes("se abre en una pestaña nueva"), id)
+    assert.ok(!content.includes("Fuentes oficiales") && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
+  }
+  // the day each text was compared, and only official pages of the Nación, the laws and the Ciudad
+  const days = { "sexual-donde": ["2026-10-08"], "sexual-anticoncepcion": ["2026-10-09"], "sexual-derechos": ["2026-10-08"], "sexual-ive": ["2026-10-09"] }
+  for (const [blockId, checkedAt] of Object.entries(days)) {
+    const block = referencesOf(blockId)
+    assert.deepEqual(block.checkedAt, checkedAt, blockId)
+    for (const { url } of block.references) assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|buenosaires\.gob\.ar)\//, `${blockId}: ${url}`)
   }
 })
 
-test("each section names the sources of what it says", () => {
-  const listed = (id) => external(pages[id].slice(pages[id].indexOf('aria-label="Fuentes"')))
-  assert.deepEqual(listed("section-1"), [sources.PREGUNTAS.url, sources.LINEA.url])
-  assert.deepEqual(listed("section-2"), [sources.PRESERVATIVO_VAGINAL, sources.PRESERVATIVOS, sources.METODO_PASTILLAS_COMBINADAS, sources.METODO_PASTILLAS_UNA_HORMONA, sources.METODO_INYECTABLES, sources.METODO_IMPLANTE, sources.METODO_DIU, sources.METODO_AHE, sources.METODO_LIGADURA, sources.METODO_VASECTOMIA, sources.PREGUNTAS, sources.CABA_METODOS, sources.CABA_CONSEJERIAS, sources.CABA_TEST, sources.CABA_COORDINACION].map(({ url }) => url))
-  assert.deepEqual(listed("section-3"), [sources.LEY_25673.url, sources.LEY_26150.url, sources.LEY_27610.url, sources.PORTAL.url, sources.ESI_MATERIALES.url])
+test("each section's sources are kept, in Sobre AuxiliAR, under the section its content comes from", () => {
+  const listed = (blockId) => referencesOf(blockId).references.map(({ url }) => url)
+  assert.deepEqual(listed("sexual-donde"), [sources.PREGUNTAS.url, sources.LINEA.url])
+  assert.deepEqual(listed("sexual-anticoncepcion"), [sources.PRESERVATIVO_VAGINAL, sources.PRESERVATIVOS, sources.METODO_PASTILLAS_COMBINADAS, sources.METODO_PASTILLAS_UNA_HORMONA, sources.METODO_INYECTABLES, sources.METODO_IMPLANTE, sources.METODO_DIU, sources.METODO_AHE, sources.METODO_LIGADURA, sources.METODO_VASECTOMIA, sources.PREGUNTAS, sources.CABA_METODOS, sources.CABA_CONSEJERIAS, sources.CABA_TEST, sources.CABA_COORDINACION].map(({ url }) => url))
+  assert.deepEqual(listed("sexual-derechos"), [sources.LEY_25673.url, sources.LEY_26150.url, sources.LEY_27610.url, sources.PORTAL.url, sources.ESI_MATERIALES.url])
+  assert.deepEqual(listed("sexual-ive"), [sources.LEY_27610.url, sources.IVE_PAGINA.url, sources.CABA_CONSEJERIAS.url, sources.LINEA.url])
   assert.match(sources.LEY_27610.url, /ley-27610-346231\/texto$/)
+  // the notes that said what the pages are not stay on the page; the license notes are with the sources
+  assert.ok(text(pages["section-1"]).includes("Las páginas de «Más recursos» son de otras organizaciones: AuxiliAR no responde por su contenido."))
+  assert.ok(text(pages["section-2"]).includes("Es información general: no es un diagnóstico ni indicaciones de tratamiento."))
+  assert.ok(text(pages["section-3"]).includes("Es información general: no es asesoramiento legal ni médico."))
+  assert.ok(referencesOf("sexual-anticoncepcion").notes.some((note) => note.includes("Creative Commons")))
 })
 
 test("dónde buscar atención: no repeated emergency notice, the map only explores, and the access note sits next to the resource", () => {
@@ -82,7 +94,7 @@ test("dónde buscar atención: no repeated emergency notice, the map only explor
   assert.equal([...content.matchAll(/admisión, turno o derivación/g)].length, 1)
   assert.ok(content.indexOf(access) < content.indexOf("Ver el mapa"))
   assert.ok(content.indexOf("Estamos") === -1 && content.includes("Acá encontrás información"))
-  assert.ok(hrefs(html).includes("/centros?seccion=section-2"))
+  assert.ok(!hrefs(html).includes("/centros?seccion=section-2") && !content.includes("Cómo verificamos"), "no link to a verification page: the sources are in Sobre AuxiliAR")
 })
 
 test("educational material, orientation and confirmed free care are told apart", () => {

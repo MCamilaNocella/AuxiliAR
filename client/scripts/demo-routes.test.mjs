@@ -62,10 +62,10 @@ test("fractures: the page of argentina.gob.ar that cannot be opened is not a sou
   assert.match(sources, /Temporarily out of the guides/)
 })
 
-test("map: the attribution links and the verification link have a target of 24px or more", async () => {
+test("map: the attribution links have a target of 24px or more, and the page has no link to a verification page (the sources are in Sobre AuxiliAR)", async () => {
   const css = await read("src/components/places/PlacesMap/PlacesMap.css")
   assert.match(css, /leaflet-control-attribution a \{[^}]*min-height: 24px/)
-  assert.match(await read("src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx"), /inline-flex min-h-11 items-center font-bold/)
+  assert.ok(!/Cómo verificamos/.test(await read("src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx")))
 })
 
 /* ── Primeros auxilios: ONE highlighted way in, inside the emergency bar (no second band on the home) ── */

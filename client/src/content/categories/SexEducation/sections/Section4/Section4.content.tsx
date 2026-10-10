@@ -2,9 +2,8 @@ import { Link } from "react-router"
 import { Scale } from "lucide-react"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CABA_CONSEJERIAS, CHECKED_AT_IVE, IVE_PAGINA, LEY_27610, LINEA } from "../../SexEducation.sources"
+import { CABA_CONSEJERIAS, IVE_PAGINA, LINEA } from "../../SexEducation.sources"
 
 /**
  * Salud sexual y ESI · Interrupción voluntaria y legal del embarazo (IVE/ILE). What the official sources say about rights, free
@@ -140,6 +139,9 @@ export default function Section4Content() {
         </ul>
         <ul role="list" className="m-0 mt-3 flex list-none flex-col gap-1 p-0">
           <li>
+            <OutLink href={IVE_PAGINA.url}>Cómo acceder a la IVE: la página oficial del Gobierno nacional</OutLink>
+          </li>
+          <li>
             <OutLink href={LINEA.url}>Línea nacional de salud sexual: horarios y contacto</OutLink>
           </li>
           <li>
@@ -165,11 +167,6 @@ export default function Section4Content() {
         </p>
       </section>
 
-      <SourceList
-        sources={[LEY_27610, IVE_PAGINA, CABA_CONSEJERIAS, LINEA]}
-        checkedAt={CHECKED_AT_IVE}
-        note="Contenido de argentina.gob.ar (licencia Creative Commons Atribución 4.0), resumido por AuxiliAR. Pendiente de validación legal y profesional: no es asesoramiento legal ni médico."
-      />
     </div>
   )
 }

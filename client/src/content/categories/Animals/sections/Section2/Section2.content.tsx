@@ -1,9 +1,7 @@
 import { Link } from "react-router"
 import { Phone } from "lucide-react"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { revealEmergencies } from "@/utils/revealEmergencies"
-import { CHECKED_AT, RABIA, ZOONOSIS } from "../../Animals.sources"
 
 /**
  * Salud animal · Cuidado y prevención. General information of the Ministerio de Salud de la Nación and Senasa; it gives no
@@ -57,7 +55,7 @@ export default function Section2Content() {
         </p>
       </section>
 
-      <SourceList sources={[RABIA, ZOONOSIS]} checkedAt={CHECKED_AT} note="Es información general: no es una indicación veterinaria ni médica." />
+      <p className="m-0 text-sm text-ink-soft">Es información general: no es una indicación veterinaria ni médica.</p>
     </div>
   )
 }

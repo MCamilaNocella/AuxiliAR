@@ -17,7 +17,7 @@ export type SubsectionBlock = {
   action?: { label: string, to: string }
 }
 
-/** A source named but not linked: its address has not been checked yet (see the notice of the page) */
+/** A source named but not linked: its address has not been checked yet. Shown in "Sobre AuxiliAR", not in the page */
 export type SubsectionSource = { organization: string, title: string }
 
 export type Subsection = {
@@ -38,7 +38,7 @@ const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
  * pending, a short explanation, blocks that each say one thing, the way to the map and the sources. Stacked in one column at any width.
  * General orientation only, never a diagnosis; it names no place, hour or activity that has not been verified.
  */
-export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic, sources }: Subsection) => (
+export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic }: Subsection) => (
   <div className="mt-2 flex max-w-3xl flex-col gap-6">
     <PendingNotice>{notice}</PendingNotice>
 
@@ -67,17 +67,6 @@ export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic, sou
 
     <MapAccess filter={mapFilter} topic={mapTopic} />
 
-    <section aria-label="Fuentes" className="border-t border-line-strong pt-4 text-ink-soft">
-      <h3 className="m-0 mb-2 text-base font-extrabold text-ink">Fuentes a validar</h3>
-      <ul role="list" className="m-0 flex list-none flex-col gap-1 p-0">
-        {sources.map(({ organization, title }) => (
-          <li key={title}>
-            <b>{organization}:</b> {title}
-          </li>
-        ))}
-      </ul>
-      <p className="m-0 mt-2">Todavía no incluimos enlaces: se agregarán cuando se verifique que son los oficiales y están vigentes.</p>
-    </section>
 
     <p className="m-0 text-sm text-muted">Esta información es orientativa y no reemplaza la consulta con un equipo de salud.</p>
   </div>

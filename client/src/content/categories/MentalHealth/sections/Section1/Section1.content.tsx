@@ -1,9 +1,7 @@
 import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
-import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CHECKED_AT, LEY_26657, LEY_SIMPLE, ORIENTACION } from "../../MentalHealth.sources"
 
 /**
  * Salud mental · Dónde buscar ayuda. This section is information and orientation: it offers no appointments and
@@ -38,13 +36,7 @@ export default function Section1Content() {
             Ver el mapa
           </ActionLink>
         </div>
-        <p className="m-0 mt-2 text-ink-soft">
-          Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.{" "}
-          <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="font-bold">
-            Cómo verificamos los datos y qué cobertura hay
-          </Link>
-          .
-        </p>
+        <p className="m-0 mt-2 text-ink-soft">Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.</p>
       </section>
 
       <section aria-labelledby="mh-team">
@@ -59,7 +51,6 @@ export default function Section1Content() {
         </p>
       </section>
 
-      <SourceList sources={[ORIENTACION, LEY_SIMPLE, LEY_26657]} checkedAt={CHECKED_AT} />
     </div>
   )
 }

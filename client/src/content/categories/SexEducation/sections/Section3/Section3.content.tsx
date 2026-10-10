@@ -1,9 +1,8 @@
 import { Link } from "react-router"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { PointerList } from "../../PointerList"
 import { SEXUAL_RIGHTS } from "../../SexEducation.rights"
-import { CHECKED_AT, ESI_CHACO, ESI_MATERIALES, ESI_PBA, LEY_25673, LEY_26150, LEY_27610, PORTAL } from "../../SexEducation.sources"
+import { ESI_CHACO, ESI_MATERIALES, ESI_PBA } from "../../SexEducation.sources"
 
 /**
  * Salud sexual y ESI · Derechos y ESI. Each right is one the law itself states, with its law named. It describes no procedure,
@@ -69,7 +68,7 @@ export default function Section3Content() {
         </div>
       </section>
 
-      <SourceList sources={[LEY_25673, LEY_26150, LEY_27610, PORTAL, ESI_MATERIALES]} checkedAt={CHECKED_AT} note="Es información general: no es asesoramiento legal ni médico." />
+      <p className="m-0 text-sm text-ink-soft">Es información general: no es asesoramiento legal ni médico.</p>
     </div>
   )
 }

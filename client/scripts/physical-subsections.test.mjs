@@ -29,6 +29,8 @@ const Section6 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHeal
 const Section7 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section7/Section7.content.tsx")).default
 const { PLACE_FILTERS } = await vite.ssrLoadModule("/src/utils/places/filters.ts")
 const { centersLink } = await vite.ssrLoadModule("/src/router/centersLink.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+const aboutBlock = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-general").blocks.find(({ id }) => id === blockId)
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const render = (component, url = "/temas/salud-general") => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(component)))
@@ -72,18 +74,21 @@ test("every page says that it is pending professional and documental validation,
     assert.ok(page.includes("Pendiente de validación profesional y documental"), name)
     assert.match(data.notice, /no fue revisad|no fueron revisad/, `${name}: says that nothing was reviewed`)
     assert.match(data.notice, /no es (asesoramiento médico|una indicación médica)/i, name)
-    assert.ok(page.includes("Fuentes a validar"), name)
+    assert.ok(!page.includes("Fuentes a validar") && !page.includes("Fuentes oficiales"), `${name}: no block of sources in the page`)
     assert.ok(page.includes("Esta información es orientativa y no reemplaza la consulta con un equipo de salud."), name)
     assert.ok(!/validado por|aprobado|revisado por profesionales\b(?! de la salud ni)/i.test(page.replace(data.notice, "")), `${name}: no claim of approval`)
   }
 })
 
-test("no external link is invented: the sources are named, not linked, until they are checked", () => {
-  for (const { name, Section, data } of pages) {
+test("no external link is invented: the sources are named, not linked, in Sobre AuxiliAR until they are checked", () => {
+  for (const [{ name, Section, data }, blockId] of [[pages[0], "alimentacion"], [pages[1], "actividad-fisica"]]) {
     const html = render(Section)
     assert.ok(!/href="https?:/.test(html), `${name}: no external link`)
     assert.ok(data.sources.length >= 1 && data.sources.every(({ organization, title }) => organization && title), name)
-    assert.ok(text(html).includes("Todavía no incluimos enlaces"), name)
+    const block = aboutBlock(blockId)
+    assert.equal(block.references.length, data.sources.length, name)
+    for (const reference of block.references) assert.ok(reference.url === undefined && reference.detail.includes("Fuente a validar"), `${name}: named, not linked`)
+    assert.ok(block.notes.includes("Pendiente de validación profesional y documental."), name)
   }
 })
 

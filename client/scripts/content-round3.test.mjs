@@ -26,6 +26,9 @@ const hrefs = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => mat
 const load = async (path) => vite.ssrLoadModule(`/src/content/categories/${path}`)
 
 const calendar = await load("PhysicalHealth/sections/Section5/Section5.constants.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+// The sources of the pages are all in "Sobre AuxiliAR": a block of references of the group of Salud general
+const calendarReferences = (stageId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-general").blocks.find(({ id }) => id === (stageId ? "calendario-" + stageId : "calendario"))
 const CalendarPage = (await load("PhysicalHealth/sections/Section5/Section5.content.tsx")).default
 const controls = (await load("PhysicalHealth/sections/Section2/Section2.content.tsx")).default
 const { PHYSICAL_HEALTH } = await load("PhysicalHealth/PhysicalHealth.ts")
@@ -102,8 +105,10 @@ test("the page shows one stage at a time, opens a stage from ?etapa=, has the ge
     // at most ONE note per stage that sends to the official source
     assert.ok([...html.matchAll(/role="note"/g)].length <= 1, id)
     assert.equal([...html.matchAll(/aria-pressed="true"/g)].length, 1, id)
-    assert.ok(content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"), id)
-    assert.ok(hrefs(html).includes("https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf"), `${id}: the poster is a source`)
+    // the sources are in Sobre AuxiliAR (with the day they were compared); the page keeps the link to the official poster, a way to read more notes by vaccine
+    assert.ok(!html.includes('aria-label="Fuentes"') && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
+    assert.ok(hrefs(html).includes("https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf"), `${id}: the poster is a link`)
+    assert.deepEqual(calendarReferences(id).checkedAt, ["2026-10-09"], id)
     for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/www\.argentina\.gob\.ar\//, href)
     assert.ok(!/\b0800\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b/.test(content), `${id}: no phone number`)
   }
@@ -184,7 +189,10 @@ test("Más recursos: the Ley 27.610 is left out, CeSAC appointments are explaine
   for (const href of hrefs(pages.join(" ")).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|boletinoficial\.buenosaires\.gob\.ar|buenosaires\.gob\.ar)\//, href)
   // the open sections of the FAQ and the glossary name their source
   assert.equal([...pages[2].matchAll(/<details/g)].length, 8)
-  assert.ok(pages[3].includes("<dl") && (pages[3].match(/Fuente:/g) ?? []).length >= 10)
+  // the glossary and the FAQ keep their definitions and answers; where each one comes from is in Sobre AuxiliAR
+  assert.ok(pages[3].includes("<dl") && !pages[3].includes("Fuente:") && !pages[2].includes("Fuente:"))
+  const refs = about.REFERENCE_GROUPS.find(({ id }) => id === "mas-recursos").blocks
+  assert.ok(refs.find(({ id }) => id === "glosario").references.length >= 10 && refs.find(({ id }) => id === "faq").references.length === 8)
   assert.ok(!/<(form|input|textarea|select)\b/.test(pages.join(" ")))
 })
 
@@ -242,13 +250,15 @@ test("15 a 64 años reads in accessible blocks: the first one open, the rest clo
     "Doble bacteriana", "toda persona a partir de los 5 años debe acreditar 2 dosis", "serología IgG positiva", "nacidas antes de 1965", "Quien no tiene el esquema lo inicia o completa con 3 dosis",
     "Los lineamientos técnicos 2026 indican una dosis para las personas de 9 a 64 años", "Grupos incluidos en esta etapa", "Factores de riesgo, en resumen", "pueden presentar orden médica o documentación",
     "ciertas jurisdicciones de Buenos Aires, Córdoba, Santa Fe y La Pampa", "De 2 a 59 años", "mesa de entradas, limpieza, seguridad", "Quienes cuidan a menores de 12 meses reciben un refuerzo cada 5 años",
-    "Para confirmar en la fuente oficial o en el vacunatorio", "Fuentes oficiales",
+    "Para confirmar en la fuente oficial o en el vacunatorio",
   ]) {
     assert.ok(content.includes(piece), piece)
   }
-  assert.ok(content.split(" ").length > 1000)
-  // the sources of the stage are all there
-  for (const { url } of calendar.VACCINATION_STAGES.find(({ id }) => id === "15-a-64").sources) assert.ok(hrefs(html).includes(url), url)
+  // (the page was above 1000 words with its list of sources, which is now in Sobre AuxiliAR)
+  assert.ok(content.split(" ").length > 850)
+  // the sources of the stage are all in Sobre AuxiliAR, none in the page
+  const kept = calendarReferences("15-a-64").references.map(({ url }) => url)
+  for (const { url } of calendar.VACCINATION_STAGES.find(({ id }) => id === "15-a-64").sources) assert.ok(kept.includes(url) || [calendar.CALENDAR_SOURCE.url, calendar.CALENDAR_PDF.url].includes(url), url)
 })
 
 test("every box «Para confirmar» says WHICH aspect to confirm (topic) and WHAT to confirm, and adds no clinical indication of its own", () => {

@@ -1,6 +1,4 @@
-import { Link } from "react-router"
 import { PlacesExplorer } from "@/components/places/PlacesExplorer"
-import { PATHS, SECTION_PARAM } from "@/router/paths"
 import type { PlaceFilterId } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
@@ -22,13 +20,8 @@ export default function Section1Content() {
         </button>
         .
       </p>
-      {/* No intro line under the heading: the map says what it shows by itself. How it is verified is one secondary link, at the end */}
+      {/* No intro line under the heading: the map says what it shows by itself. Where the data comes from is in "Sobre AuxiliAR" */}
       <PlacesExplorer filters={FILTERS} intro={null} map />
-      <p className="m-0 mt-2 text-ink-soft">
-        <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
-          Cómo verificamos los datos
-        </Link>
-      </p>
     </div>
   )
 }

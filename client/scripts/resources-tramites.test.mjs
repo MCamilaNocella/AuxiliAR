@@ -22,6 +22,10 @@ const Section2 = (await vite.ssrLoadModule("/src/content/categories/Resources/se
 const guides = await vite.ssrLoadModule("/src/content/categories/Resources/sections/Section2/Section2.constants.ts")
 const sources = await vite.ssrLoadModule("/src/content/categories/Resources/Resources.sources.ts")
 const { RESOURCES } = await vite.ssrLoadModule("/src/content/categories/Resources/Resources.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+const AboutPage = (await vite.ssrLoadModule("/src/content/categories/About/sections/Section1/Section1.content.tsx")).default
+const aboutHtml = renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: ["/sobre-auxiliar"] }, createElement(AboutPage)))
+const aboutBlock = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "mas-recursos").blocks.find(({ id }) => id === blockId)
 after(() => vite.close())
 
 const CUD_URL = "https://www.argentina.gob.ar/servicio/como-obtener-el-certificado-unico-de-discapacidad-cud"
@@ -46,17 +50,23 @@ test("both guides are cards of Trámites, between the vaccines and the rights, a
   assert.ok(RESOURCES.sections.every((section) => section.summary === undefined))
 })
 
-test("the official sources are visible, open in a new tab, and say the day they were read", () => {
-  for (const [html, url, label] of [[cud, CUD_URL, sources.CUD_PAGINA.label], [neighborhood, CRONOGRAMA_URL, sources.MAS_SERVICIOS_PAGINA.label]]) {
-    assert.ok(hrefsIn(html).filter((href) => href === url).length >= 2, `${url}: the button and the source list`)
-    assert.ok(text(html).includes(label), label)
-    assert.ok(text(html).includes("Fuentes oficiales") && text(html).includes("10 de octubre de 2026"), "source and day of the reading")
+test("the official sources are in Sobre AuxiliAR with the day they were read; the pages keep only the link to the official page", () => {
+  for (const [html, url, label, blockId] of [[cud, CUD_URL, sources.CUD_PAGINA.label, "tramite-cud"], [neighborhood, CRONOGRAMA_URL, sources.MAS_SERVICIOS_PAGINA.label, "tramite-barrio"]]) {
+    // the page: the button to the official page (a functional link, in a new tab), and no block of sources
+    assert.equal(hrefsIn(html).filter((href) => href === url).length, 1, `${url}: only the button`)
     assert.match(html, /target="_blank" rel="noopener noreferrer"/)
+    assert.ok(!text(html).includes("Fuentes oficiales") && !text(html).includes("Texto comparado con estas fuentes") && !text(html).includes(label), "no block of sources in the page")
+    // Sobre AuxiliAR: the source, the day it was read, and the pending review
+    const block = aboutBlock(blockId)
+    assert.deepEqual(block.references.map((reference) => reference.url), [url])
+    assert.deepEqual(block.checkedAt, ["2026-10-10"])
+    assert.ok(block.notes.includes("Pendiente de revisión legal y administrativa."))
+    assert.ok(text(aboutHtml).includes(label) && text(aboutHtml).includes("Texto comparado con estas fuentes el 10 de octubre de 2026"), "visible in Sobre AuxiliAR")
   }
   assert.equal(sources.CUD_PAGINA.url, CUD_URL)
   assert.equal(sources.MAS_SERVICIOS_PAGINA.url, CRONOGRAMA_URL)
   assert.equal(sources.CHECKED_AT_GUIDES, "2026-10-10")
-  assert.ok(text(neighborhood).includes("La página no muestra fecha de actualización"))
+  assert.ok(aboutBlock("tramite-barrio").notes.includes("La página no muestra fecha de actualización."))
 })
 
 test("each guide says, briefly, that its review is pending", () => {

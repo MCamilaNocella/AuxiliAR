@@ -21,6 +21,9 @@ const { renderToStaticMarkup } = await import("react-dom/server")
 const { MemoryRouter } = await import("react-router")
 const { MENTAL_HEALTH } = await vite.ssrLoadModule("/src/content/categories/MentalHealth/MentalHealth.ts")
 const sources = await vite.ssrLoadModule("/src/content/categories/MentalHealth/MentalHealth.sources.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+// The sources of the pages are all in "Sobre AuxiliAR": the references of the group of Salud mental, by block
+const referencesOf = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-mental").blocks.find(({ id }) => id === blockId)
 const sectionDir = "/src/content/categories/MentalHealth/sections"
 const CONTENT = {
   "section-1": (await vite.ssrLoadModule(`${sectionDir}/Section1/Section1.content.tsx`)).default,
@@ -46,27 +49,30 @@ test("salud mental has three sections that open straight on the first, and it is
   for (const { summary } of MENTAL_HEALTH.sections) assert.ok(summary && summary.length > 60)
 })
 
-test("every section has content, no placeholder, and ends with its official sources and the day they were compared", () => {
+test("every section has content and no placeholder; its sources and the day they were compared are in Sobre AuxiliAR, not in the page", () => {
   assert.equal(sources.CHECKED_AT, "2026-10-08")
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
-    assert.ok(content.includes("Fuentes oficiales"), id)
-    assert.ok(content.includes("Texto comparado con estas fuentes el 8 de octubre de 2026"), id)
-    const external = hrefs(html).filter((href) => href.startsWith("https://"))
-    assert.ok(external.length >= 1, id)
-    for (const href of external) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|www\.who\.int)\//, `${id}: ${href} is an official source`)
-    // they open in a new tab with a note for screen readers
-    assert.ok(html.includes('rel="noopener noreferrer"') && content.includes("se abre en una pestaña nueva"), id)
+    assert.ok(!content.includes("Fuentes oficiales") && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
+    assert.ok(!hrefs(html).some((href) => href.startsWith("https://")), `${id}: no link to a source`)
+  }
+  for (const blockId of ["mental-donde", "mental-derechos", "mental-autocuidado"]) {
+    const block = referencesOf(blockId)
+    assert.deepEqual(block.checkedAt, ["2026-10-08"], blockId)
+    for (const { url } of block.references) assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|www\.who\.int)\//, `${blockId}: ${url} is an official source`)
   }
 })
 
-test("each source is named where its content comes from: the law, the plain-words law, the ministry pages and the OMS", () => {
-  const urls = (id) => hrefs(pages[id]).filter((href) => href.startsWith("https://"))
-  assert.deepEqual(urls("section-1"), [sources.ORIENTACION.url, sources.LEY_SIMPLE.url, sources.LEY_26657.url])
-  assert.deepEqual(urls("section-2"), [sources.LEY_26657.url, sources.LEY_SIMPLE.url])
-  assert.deepEqual(urls("section-3"), [sources.OMS_ESTRES.url])
+test("each source is kept, in Sobre AuxiliAR, under the section its content comes from: the law, the plain-words law, the ministry pages and the OMS", () => {
+  const urls = (blockId) => referencesOf(blockId).references.map(({ url }) => url)
+  assert.deepEqual(urls("mental-donde"), [sources.ORIENTACION.url, sources.LEY_SIMPLE.url, sources.LEY_26657.url])
+  assert.deepEqual(urls("mental-derechos"), [sources.LEY_26657.url, sources.LEY_SIMPLE.url])
+  assert.deepEqual(urls("mental-autocuidado"), [sources.OMS_ESTRES.url])
   assert.match(sources.LEY_26657.url, /ley-26657-175977\/texto$/)
+  // the notes that said what each page is not stay on the page
+  assert.ok(text(pages["section-2"]).includes("Es una explicación simple de la ley: no reemplaza el asesoramiento de un equipo de salud ni el de un abogado."))
+  assert.ok(text(pages["section-3"]).includes("Es una guía general de bienestar: no es un tratamiento ni un diagnóstico."))
 })
 
 test("dónde buscar ayuda: the approved introduction, no repeated emergency notice, and a map that only explores", () => {
@@ -82,7 +88,7 @@ test("dónde buscar ayuda: the approved introduction, no repeated emergency noti
   assert.ok(content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
   assert.ok(!content.includes("Explorar no es recomendar"), "the technical sentence is gone")
   assert.ok(!content.includes("Explorar centros de salud cercanos"), "the old button label is gone")
-  assert.ok(hrefs(html).includes("/centros?seccion=section-2"), "how the data is verified")
+  assert.ok(!hrefs(html).includes("/centros?seccion=section-2") && !content.includes("Cómo verificamos"), "no link to a verification page: the sources are in Sobre AuxiliAR")
   assert.ok(hrefs(html).includes("/temas/salud-mental?seccion=section-2"), "rights")
   assert.ok(content.includes("Conocé tus derechos"))
   // the way to access varies: said next to the resource (before the map button), not as a barrier before any information

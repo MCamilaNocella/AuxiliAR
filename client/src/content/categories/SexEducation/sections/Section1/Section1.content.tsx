@@ -2,11 +2,10 @@ import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { PointerList } from "../../PointerList"
-import { CHECKED_AT, HUESPED_DONDE, HUESPED_SERVICIOS, LINEA, PBA_SSR, PREGUNTAS, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION } from "../../SexEducation.sources"
+import { HUESPED_DONDE, HUESPED_SERVICIOS, LINEA, PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION } from "../../SexEducation.sources"
 
 /**
  * Salud sexual y ESI · Dónde buscar atención. Information and orientation: it offers no appointments, shows no phone number
@@ -37,13 +36,7 @@ export default function Section1Content() {
             Ver el mapa
           </ActionLink>
         </div>
-        <p className="m-0 mt-2 text-ink-soft">
-          Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.{" "}
-          <Link to={`${PATHS.centers}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
-            Cómo verificamos los datos y qué cobertura hay
-          </Link>
-          .
-        </p>
+        <p className="m-0 mt-2 text-ink-soft">Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.</p>
       </section>
 
       <section aria-labelledby="ss-line">
@@ -102,7 +95,7 @@ export default function Section1Content() {
         </Link>
       </p>
 
-      <SourceList sources={[PREGUNTAS, LINEA]} checkedAt={CHECKED_AT} note="Las páginas de «Más recursos» son de otras organizaciones: AuxiliAR no responde por su contenido." />
+      <p className="m-0 text-sm text-ink-soft">Las páginas de «Más recursos» son de otras organizaciones: AuxiliAR no responde por su contenido.</p>
     </div>
   )
 }

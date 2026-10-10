@@ -3,11 +3,10 @@ import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { PendingNotice } from "@/components/health/PendingNotice"
-import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
-import { CHECKED_AT, CHECKED_AT_GUIDES, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC, VACUNAS_PAGINA } from "../../Resources.sources"
+import { CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
 import { CUD_GUIDE, NEIGHBORHOOD_GUIDE, PENDING_NOTICE_TEXT, PENDING_NOTICE_TITLE } from "./Section2.constants"
 
 /**
@@ -59,7 +58,6 @@ export default function Section2Content() {
         <div className="mt-3">
           <OutLink href={TURNOS_CESAC.url}>Ir al trámite oficial para sacar el turno</OutLink>
         </div>
-        <SourceList sources={[TURNOS_CESAC]} checkedAt={CHECKED_AT} />
       </section>
 
       <section aria-labelledby="tr-vaccines" className={cardClass}>
@@ -77,7 +75,6 @@ export default function Section2Content() {
           </ActionLink>
           <ActionLink to={centersLink({ filter: "vaccination" })}>Encontrar vacunatorio</ActionLink>
         </div>
-        <SourceList sources={[VACUNAS_PAGINA]} checkedAt={CHECKED_AT} />
       </section>
 
       <section aria-labelledby="tr-cud" className={cardClass}>
@@ -103,7 +100,6 @@ export default function Section2Content() {
         <div className="mt-3">
           <OutLink href={CUD_PAGINA.url}>Ir al trámite oficial del CUD</OutLink>
         </div>
-        <SourceList sources={[CUD_PAGINA]} checkedAt={CHECKED_AT_GUIDES} />
       </section>
 
       <section aria-labelledby="tr-neighborhood" className={cardClass}>
@@ -134,7 +130,6 @@ export default function Section2Content() {
         <div className="mt-3">
           <OutLink href={MAS_SERVICIOS_PAGINA.url}>Ver el cronograma oficial</OutLink>
         </div>
-        <SourceList sources={[MAS_SERVICIOS_PAGINA]} checkedAt={CHECKED_AT_GUIDES} note="La página no muestra fecha de actualización." />
       </section>
 
       <section aria-labelledby="tr-refused" className={cardClass}>

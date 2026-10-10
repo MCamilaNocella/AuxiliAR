@@ -1,11 +1,7 @@
 import { Link } from "react-router"
-import { SourceList } from "@/components/health/SourceList"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { RIGHTS as MENTAL_RIGHTS } from "../../../MentalHealth/MentalHealth.rights"
-import { CHECKED_AT as MENTAL_CHECKED_AT, LEY_26657, LEY_SIMPLE } from "../../../MentalHealth/MentalHealth.sources"
 import { SEXUAL_RIGHTS } from "../../../SexEducation/SexEducation.rights"
-import { CHECKED_AT as SEXUAL_CHECKED_AT, LEY_25673, LEY_26150 } from "../../../SexEducation/SexEducation.sources"
-import { CHECKED_AT, LEY_153, LEY_27491 } from "../../Resources.sources"
 
 /**
  * Más recursos · Tus derechos en salud. Each card is one topic with its law, in plain words. The rights of mental health and of
@@ -41,7 +37,6 @@ export default function Section1Content() {
           <li>Elegir profesional y establecimiento, en la medida en que exista la posibilidad.</li>
           <li>Que el profesional les pida su consentimiento informado antes de hacer estudios y tratamientos.</li>
         </ul>
-        <SourceList sources={[LEY_153]} checkedAt={CHECKED_AT} note="Es una ley de la Ciudad de Buenos Aires." />
       </section>
 
       <section aria-labelledby="rt-mental" className={cardClass}>
@@ -59,7 +54,6 @@ export default function Section1Content() {
             Ver más en Salud mental
           </Link>
         </p>
-        <SourceList sources={[LEY_26657, LEY_SIMPLE]} checkedAt={MENTAL_CHECKED_AT} />
       </section>
 
       <section aria-labelledby="rt-sexual" className={cardClass}>
@@ -78,7 +72,6 @@ export default function Section1Content() {
             Ver más en Derechos y ESI
           </Link>
         </p>
-        <SourceList sources={[LEY_25673, LEY_26150]} checkedAt={SEXUAL_CHECKED_AT} />
       </section>
 
       <section aria-labelledby="rt-vaccines" className={cardClass}>
@@ -97,7 +90,6 @@ export default function Section1Content() {
             Ver el Calendario de vacunación
           </Link>
         </p>
-        <SourceList sources={[LEY_27491]} checkedAt={CHECKED_AT} />
       </section>
     </div>
   )

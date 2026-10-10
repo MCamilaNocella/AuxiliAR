@@ -1,7 +1,5 @@
 import { ActionLink } from "@/components/health/ActionLink"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CHECKED_AT, OMS_ESTRES } from "../../MentalHealth.sources"
 
 /**
  * Every habit is in the OMS page "Estrés" (30 de marzo de 2026), in its own words and without numbers or doses:
@@ -49,7 +47,7 @@ export default function Section3Content() {
         </div>
       </section>
 
-      <SourceList sources={[OMS_ESTRES]} checkedAt={CHECKED_AT} note="Es una guía general de bienestar: no es un tratamiento ni un diagnóstico." />
+      <p className="m-0 text-sm text-ink-soft">Es una guía general de bienestar: no es un tratamiento ni un diagnóstico.</p>
     </div>
   )
 }

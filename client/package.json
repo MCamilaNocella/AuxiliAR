@@ -18,7 +18,7 @@
     "places:test": "node --test scripts/places-explorer.test.mjs scripts/places-map.test.mjs scripts/places-centers.test.mjs scripts/places-query.test.mjs scripts/places-territory.test.mjs scripts/places-filters.test.mjs scripts/places-animal.test.mjs scripts/places-evidence.test.mjs scripts/places-vet.test.mjs scripts/places-visible.test.mjs scripts/places-wellbeing.test.mjs scripts/places-coverage-index.test.mjs",
     "health:test": "node --test scripts/physical-health.test.mjs scripts/physical-subsections.test.mjs scripts/first-aid-guides.test.mjs",
     "demo:test": "node --test scripts/demo-routes.test.mjs",
-    "structure:test": "node --test scripts/structure.test.mjs",
+    "structure:test": "node --test scripts/structure.test.mjs scripts/about-sources.test.mjs",
     "mental:test": "node --test scripts/mental-health.test.mjs",
     "sexual:test": "node --test scripts/sexual-health.test.mjs",
     "animal:test": "node --test scripts/animal-health.test.mjs",

@@ -1,8 +1,6 @@
 import { ActionLink } from "@/components/health/ActionLink"
-import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { REFUSED, RIGHTS } from "../../MentalHealth.rights"
-import { CHECKED_AT, LEY_26657, LEY_SIMPLE } from "../../MentalHealth.sources"
 
 /**
  * Each right is in the Ley Nacional de Salud Mental 26.657 (texto original) and, in plain words, in "Ley simple: Salud mental":
@@ -43,11 +41,7 @@ export default function Section2Content() {
         </div>
       </section>
 
-      <SourceList
-        sources={[LEY_26657, LEY_SIMPLE]}
-        checkedAt={CHECKED_AT}
-        note="Es una explicación simple de la ley: no reemplaza el asesoramiento de un equipo de salud ni el de un abogado."
-      />
+      <p className="m-0 text-sm text-ink-soft">Es una explicación simple de la ley: no reemplaza el asesoramiento de un equipo de salud ni el de un abogado.</p>
     </div>
   )
 }

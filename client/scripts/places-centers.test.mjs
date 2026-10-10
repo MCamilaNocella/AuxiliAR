@@ -51,11 +51,10 @@ test("mapa auxiliar: one emergency line that points to the emergency numbers, no
   assert.ok(content.includes("Si hay riesgo inmediato, no busques un centro"))
   assert.equal([...html.matchAll(/mirá los números de emergencia/g)].length, 1)
   assert.ok(!html.includes("bg-alert-soft"))
-  // no transparency line under the heading any more: the way to read how it is verified is one secondary link, at the end
+  // no transparency line under the heading and no link to a verification page: the sources of the whole site are in Sobre AuxiliAR
   assert.ok(!content.includes("Centros verificados por AuxiliAR, incorporados de a poco."))
-  assert.equal([...html.matchAll(/Cómo verificamos los datos/g)].length, 1)
-  assert.ok(html.includes('href="/centros?seccion=section-2"'))
-  assert.ok(html.indexOf("Cómo verificamos los datos") > html.indexOf("Filtros"), "after the explorer, not in its header")
+  assert.ok(!content.includes("Cómo verificamos los datos"))
+  assert.ok(!html.includes('href="/centros?seccion=section-2"'))
   // the kinds of care and services come from the data (category chips, service select); the quick chips of before are gone
   // the filters live in a panel (always open on large screens, folded on phones: the server renders the phone's): the search, the view and the button are in sight
   assert.ok(content.includes("¿Qué necesitás?") && /<button[^>]*aria-expanded="false"[^>]*aria-controls=[^>]*>/.test(html) && content.includes("Filtros"))

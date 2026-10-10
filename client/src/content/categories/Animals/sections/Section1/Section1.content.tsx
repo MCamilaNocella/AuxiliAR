@@ -1,7 +1,6 @@
 import { Link } from "react-router"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CABA, CAMPAIGN_NOT_CARE, CHECKED_AT, CONFIRMED_BY_SOURCE, NOT_CONFIRMED, ZOONOSIS } from "../../Animals.sources"
+import { CAMPAIGN_NOT_CARE, CONFIRMED_BY_SOURCE, NOT_CONFIRMED } from "../../Animals.sources"
 import { ServiceList } from "../../ServiceList"
 
 /**
@@ -64,15 +63,7 @@ export default function Section1Content() {
         </p>
       </section>
 
-      <SourceList
-        sources={[
-          { label: `${CABA.by}`, url: CABA.url },
-          ...[...CONFIRMED_BY_SOURCE.slice(1), ...NOT_CONFIRMED].map(({ by, url }) => ({ label: by, url })),
-          ZOONOSIS,
-        ]}
-        checkedAt={CHECKED_AT}
-        note="Cada página es de un organismo oficial: AuxiliAR no responde por cambios posteriores."
-      />
+      <p className="m-0 text-sm text-ink-soft">Cada página es de un organismo oficial: AuxiliAR no responde por cambios posteriores.</p>
     </div>
   )
 }

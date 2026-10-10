@@ -2,20 +2,13 @@ import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import {
-  CABA_COORDINACION,
   CABA_CONSEJERIAS,
-  CABA_METODOS,
   CABA_TEST,
-  CHECKED_AT_METHODS,
   HUESPED_METODOS,
   LINEA,
-  PREGUNTAS,
-  PRESERVATIVO_VAGINAL,
-  PRESERVATIVOS,
 } from "../../SexEducation.sources"
 import { FREE_ACCESS, METHODS, NO_STI_PROTECTION, VAGINAL_CONDOM } from "./Section2.constants"
 
@@ -217,11 +210,7 @@ export default function Section2Content() {
         </Link>
       </p>
 
-      <SourceList
-        sources={[PRESERVATIVO_VAGINAL, PRESERVATIVOS, ...METHODS.map(({ source }) => source), PREGUNTAS, CABA_METODOS, CABA_CONSEJERIAS, CABA_TEST, CABA_COORDINACION]}
-        checkedAt={CHECKED_AT_METHODS}
-        note="Textos del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0) y del Gobierno de la Ciudad (Reconocimiento 2.5 Argentina), resumidos por AuxiliAR. Es información general: no es un diagnóstico ni indicaciones de tratamiento."
-      />
+      <p className="m-0 text-sm text-ink-soft">Es información general: no es un diagnóstico ni indicaciones de tratamiento.</p>
     </div>
   )
 }

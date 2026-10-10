@@ -1,8 +1,7 @@
 import { Link } from "react-router"
 import { OutLink } from "@/components/health/OutLink"
-import { SourceList } from "@/components/health/SourceList"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CHECKED_AT, UBA_HOSPITAL, UNLP_HOSPITAL, ZOONOSIS } from "../../Animals.sources"
+import { UBA_HOSPITAL, UNLP_HOSPITAL } from "../../Animals.sources"
 
 /**
  * Salud animal · Atención veterinaria gratuita. Orientation only: AuxiliAR confirms no free veterinary clinic, guardia or
@@ -64,7 +63,7 @@ export default function Section3Content() {
         </ul>
       </section>
 
-      <SourceList sources={[ZOONOSIS, UBA_HOSPITAL, UNLP_HOSPITAL]} checkedAt={CHECKED_AT} note="Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular." />
+      <p className="m-0 text-sm text-ink-soft">Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular.</p>
     </div>
   )
 }

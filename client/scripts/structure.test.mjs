@@ -158,12 +158,14 @@ test("Cuidar mi salud opens straight on the controls; Primeros auxilios and Sobr
   assert.ok(!hrefs(render(Category, "/sobre-auxiliar")).some((href) => href.startsWith("/temas/") || href === "/mi-salud"))
 })
 
-test("Sobre AuxiliAR says what the site says elsewhere and points to the page about the data, without repeating it", async () => {
+test("Sobre AuxiliAR keeps what it said (what the site is, the official sources, the link to the page about the data) and ends with the sources of the whole site", async () => {
   const Content = (await vite.ssrLoadModule("/src/content/categories/About/sections/Section1/Section1.content.tsx")).default
   const html = render(Content)
   const content = text(html)
   assert.ok(content.includes("fuentes oficiales") && content.includes("no reemplaza la atención médica ni psicológica profesional"))
-  assert.deepEqual(hrefs(html), ["/centros?seccion=section-2"])
+  // its own content is intact: the one internal link is the one it had; the rest of the links are the external sources at the end
+  assert.deepEqual(hrefs(html).filter((href) => href.startsWith("/")), ["/centros?seccion=section-2"])
+  assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Fuentes y referencias"), "the sources come after the existing content, at the end")
   assert.ok(!content.includes("Fuentes y alcance"), "the explanation of the data lives in one place")
   // the footer links here
   const footer = readFileSync(join(src, "components/layout/Footer/Footer.tsx"), "utf8")

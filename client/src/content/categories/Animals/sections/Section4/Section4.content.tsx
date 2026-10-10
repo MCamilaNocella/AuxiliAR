@@ -1,5 +1,6 @@
-import { SourceList } from "@/components/health/SourceList"
-import { CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS } from "../../Animals.sources"
+import { OutLink } from "@/components/health/OutLink"
+import { PASTEUR_SERVICIOS } from "../../Animals.sources"
+
 
 /**
  * Salud animal · Si muere tu perro o gato. Explained from three official pages of the Gobierno de la Ciudad about the Instituto de
@@ -60,7 +61,10 @@ export default function Section4Content() {
         </ul>
       </section>
 
-      <SourceList sources={[PASTEUR_INFO, PASTEUR_SERVICIOS]} checkedAt={CHECKED_AT_PASTEUR} note="Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir." />
+      <div>
+        <OutLink href={PASTEUR_SERVICIOS.url}>Servicios del Instituto de Zoonosis Luis Pasteur: página oficial</OutLink>
+      </div>
+      <p className="m-0 text-sm text-ink-soft">Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir.</p>
     </div>
   )
 }

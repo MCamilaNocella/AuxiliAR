@@ -22,6 +22,9 @@ const { renderToStaticMarkup } = await import("react-dom/server")
 const { MemoryRouter } = await import("react-router")
 const { ANIMALS } = await vite.ssrLoadModule("/src/content/categories/Animals/Animals.ts")
 const sources = await vite.ssrLoadModule("/src/content/categories/Animals/Animals.sources.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
+// The sources of the pages are all in "Sobre AuxiliAR": the references of the group of Salud animal, by block
+const referencesOf = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-animal").blocks.find(({ id }) => id === blockId)
 const sectionDir = "/src/content/categories/Animals/sections"
 const CONTENT = {
   "section-1": (await vite.ssrLoadModule(`${sectionDir}/Section1/Section1.content.tsx`)).default,
@@ -49,16 +52,28 @@ test("salud animal has four sections (the last one without a summary yet) that o
   for (const { summary } of ANIMALS.sections.slice(0, 3)) assert.ok(summary && summary.length > 60)
 })
 
-test("every section has content, no placeholder, and ends with its official sources and the day they were compared", () => {
+test("every section has content and no placeholder; its sources and the day they were compared are in Sobre AuxiliAR, not in the page", () => {
   assert.equal(sources.CHECKED_AT, "2026-10-08")
+  const OFFICIAL = /^https:\/\/(buenosaires\.gob\.ar|www\.rosario\.gob\.ar|cordoba\.gob\.ar|municipalidadsalta\.gob\.ar|www\.neuquencapital\.gov\.ar|www\.argentina\.gob\.ar|www\.fvet\.uba\.ar|www\.fcv\.unlp\.edu\.ar)\//
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
-    assert.ok(content.includes("Fuentes oficiales") && content.includes("Texto comparado con estas fuentes el 8 de octubre de 2026"), id)
-    assert.ok(html.includes('rel="noopener noreferrer"') && content.includes("se abre en una pestaña nueva"), id)
-    // every external link goes to an official site: a municipality, the Nación, Senasa or a public university
-    for (const href of external(html)) assert.match(href, /^https:\/\/(buenosaires\.gob\.ar|www\.rosario\.gob\.ar|cordoba\.gob\.ar|municipalidadsalta\.gob\.ar|www\.neuquencapital\.gov\.ar|www\.argentina\.gob\.ar|www\.fvet\.uba\.ar|www\.fcv\.unlp\.edu\.ar)\//, `${id}: ${href}`)
+    assert.ok(!content.includes("Fuentes oficiales") && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
+    // the links that stay take a person to an official service page (a municipality, the Nación, Senasa or a public university), opening in a new tab
+    const links = external(html)
+    for (const href of links) assert.match(href, OFFICIAL, `${id}: ${href}`)
+    if (links.length > 0) assert.ok(html.includes('rel="noopener noreferrer"') && content.includes("se abre en una pestaña nueva"), id)
   }
+  const days = { "animales-campanas": ["2026-10-08"], "animales-rabia": ["2026-10-08"], "animales-atencion": ["2026-10-08"], "animales-pasteur": ["2026-10-09"] }
+  for (const [blockId, checkedAt] of Object.entries(days)) {
+    const block = referencesOf(blockId)
+    assert.deepEqual(block.checkedAt, checkedAt, blockId)
+    assert.ok(block.references.length >= 2, blockId)
+    for (const { url } of block.references) assert.match(url, OFFICIAL, `${blockId}: ${url}`)
+  }
+  // the notes that said what each page is not stay on the page
+  assert.ok(text(pages["section-1"]).includes("Cada página es de un organismo oficial: AuxiliAR no responde por cambios posteriores."))
+  assert.ok(text(pages["section-2"]).includes("Es información general: no es una indicación veterinaria ni médica."))
 })
 
 test("vacunación y castración: only what each municipality's page says, and each one with its place, who, how and its own page", () => {
@@ -182,6 +197,8 @@ test("si muere tu perro o gato: Pasteur's free service with its conditions, no i
   assert.ok(content.includes("no tiene guardia de atención médica ni urgencias"))
   // nothing promises individual cremation or ashes, and the contradictory hours of the vacunatorio are not copied
   assert.ok(!/cenizas (se )?(entregan|devuelven)|cremación individual (gratuita|incluida)|9 a 12|14 a 17|8 a 18|8:00/i.test(content.replace("ni si se entregan las cenizas", "")))
-  assert.ok(content.includes("Texto comparado con estas fuentes el 9 de octubre de 2026"))
-  for (const href of external(html)) assert.match(href, /^https:\/\/buenosaires\.gob\.ar\//)
+  // the sources are in Sobre AuxiliAR; the page keeps the link to the Instituto's own page and the warning about the date
+  assert.ok(!content.includes("Texto comparado con estas fuentes") && content.includes("Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir."))
+  assert.deepEqual(external(html), [sources.PASTEUR_SERVICIOS.url])
+  assert.deepEqual(referencesOf("animales-pasteur").references.map(({ url }) => url), [sources.PASTEUR_INFO.url, sources.PASTEUR_SERVICIOS.url])
 })

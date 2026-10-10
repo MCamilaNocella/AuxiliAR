@@ -3,18 +3,15 @@ import { useSearchParams } from "react-router"
 import { Construction, Info } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
-import { SourceList } from "@/components/health/SourceList"
-import type { Source } from "@/components/health/SourceList"
+import { OutLink } from "@/components/health/OutLink"
 import { centersLink } from "@/router/centersLink"
-import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT, DEVELOPMENT_NOTICE, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
+import { CALENDAR_PDF, DEVELOPMENT_NOTICE, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
 import type { VaccineGroup, VaccineItem } from "./Section5.constants"
 
 /** Query param with the open stage: /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
 const STAGE_PARAM = "etapa"
 
 /** The calendar's own sources first, then the ones of the open stage, with no repeated address */
-const uniqueSources = (sources: Source[]) => sources.filter((source, index) => sources.findIndex(({ url }) => url === source.url) === index)
-
 const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
 
 const Details = ({ details }: { details?: string[] }) =>
@@ -201,14 +198,10 @@ export default function Section5Content() {
           <ActionLink to={centersLink({ filter: "vaccination" })} variant="primary">
             Encontrar vacunatorio
           </ActionLink>
+          <OutLink href={CALENDAR_PDF.url}>Ver el Calendario oficial (PDF)</OutLink>
         </div>
       </section>
 
-      <SourceList
-        sources={uniqueSources([CALENDAR_SOURCE, CALENDAR_PDF, ...stage.sources])}
-        checkedAt={CHECKED_AT}
-        note="Contenido del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0), resumido y reorganizado por AuxiliAR. Es un resumen informativo: no reemplaza la consulta con un equipo de salud."
-      />
     </div>
   )
 }
