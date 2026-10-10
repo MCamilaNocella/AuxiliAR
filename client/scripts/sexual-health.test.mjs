@@ -35,16 +35,18 @@ const hrefs = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => mat
 const external = (html) => hrefs(html).filter((href) => href.startsWith("https://"))
 const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) => [id, render(component)]))
 
-test("salud sexual y ESI has three sections that open straight on the first, and it is no longer 'próximamente'", () => {
+test("salud sexual y ESI has four sections (IVE/ILE is its own, visible one) that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(SEX_EDUCATION.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Dónde buscar atención"],
     ["section-2", "Anticoncepción y prevención"],
+    ["section-4", "Interrupción voluntaria y legal del embarazo (IVE/ILE)"],
     ["section-3", "Derechos y ESI"],
   ])
   assert.equal(SEX_EDUCATION.defaultSectionId, "section-1")
   assert.equal(SEX_EDUCATION.preparing, undefined)
   assert.equal(SEX_EDUCATION.to, "/temas/esi")
-  for (const { summary } of SEX_EDUCATION.sections) assert.ok(summary && summary.length > 60)
+  // section-4 has no summary on purpose: Auxi's index (a server resource) is not regenerated in this round
+  for (const { id, summary } of SEX_EDUCATION.sections.filter(({ id }) => id !== "section-4")) assert.ok(summary && summary.length > 60, id)
 })
 
 test("every section has content, no placeholder, and ends with its official sources and the day they were compared", () => {
@@ -68,17 +70,18 @@ test("each section names the sources of what it says", () => {
   assert.match(sources.LEY_27610.url, /ley-27610-346231\/texto$/)
 })
 
-test("dónde buscar atención: the emergency button, the map only explores, and the access note sits next to the resource", () => {
+test("dónde buscar atención: no repeated emergency notice, the map only explores, and the access note sits next to the resource", () => {
   const html = pages["section-1"]
   const content = text(html)
-  assert.ok(content.includes("Ver números de emergencia") && !html.includes("tel:"))
+  // the category no longer repeats the permanent access to the emergencies (emergency bar and bottom navigation)
+  assert.ok(!content.includes("Ver números de emergencia") && !content.includes("Si estás en peligro ahora o sufriste una agresión") && !html.includes("tel:"))
   assert.ok(content.includes("AuxiliAR no otorga turnos ni realiza consultas médicas, y no te pide datos personales ni de salud"))
   assert.ok(hrefs(html).includes("/centros?filtro=sexual-health"), "map, filtered, through the shared link")
   assert.ok(content.includes("Ver el mapa") && content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
   const access = "La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación."
   assert.equal([...content.matchAll(/admisión, turno o derivación/g)].length, 1)
   assert.ok(content.indexOf(access) < content.indexOf("Ver el mapa"))
-  assert.ok(content.indexOf("Estamos") === -1 && content.indexOf("Acá encontrás información") < content.indexOf("Ver números de emergencia"))
+  assert.ok(content.indexOf("Estamos") === -1 && content.includes("Acá encontrás información"))
   assert.ok(hrefs(html).includes("/centros?seccion=section-2"))
 })
 
@@ -146,8 +149,8 @@ test("no phone line is copied and nothing is promised: no number, no hours, no a
     assert.ok(!html.includes("tel:") && !html.includes("wa.me") && !html.includes("whatsapp"), id)
     assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|148|911)\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b|\b381\b/.test(content), `${id}: no number`)
     // "garantiza" appears only as what Ley 25.673 says (art. 2)
-    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replace("preservativos gratis en bocas de distribución", "").replace("se retiran preservativos gratis", "").replace("sin costo adicional", "").replace("La Ley 25.673 garantiza a toda la población", "")), id)
-    assert.ok(!/turno inmediato|sin turno|siempre hay|stock/i.test(content.replace("no significa que haya un turno inmediato", "")), id)
+    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replaceAll("preservativos gratis en bocas de distribución", "").replaceAll("se retiran preservativos gratis", "").replaceAll("sin costo adicional", "").replaceAll("La Ley 25.673 garantiza a toda la población", "").replaceAll("La Ley 25.673 garantiza el acceso a información, orientación, métodos y prestaciones de salud sexual y reproductiva", "").replaceAll("Así lo garantiza la ley 26.130", "")), id)
+    assert.ok(!/turno inmediato|sin turno|siempre hay|stock/i.test(content.replaceAll("no significa que haya un turno inmediato", "").replaceAll("no asegura que haya turno, stock o un profesional disponible", "").replaceAll("no tiene confirmados turnos, stock ni centros concretos", "")), id)
   }
 })
 
@@ -163,6 +166,12 @@ test("'gratuit-' only appears where a sentence says whose statement it is, or wh
     "La atención y los métodos son gratuitos en el sistema público y deben ser entregados sin costo adicional en obras sociales y prepagas",
     "sencillos, confidenciales y gratuitos en el sistema público",
     "donde también se retiran preservativos gratis",
+    "se retiran preservativos gratis",
+    "Anticonceptivos gratuitos: cuáles son y cómo conseguirlos",
+    "informa que son gratuitos en el sistema público",
+    "la gratuidad de cada provincia",
+    "Que un método sea gratuito y esté cubierto no asegura",
+    "con la gratuidad documentada para esa prestación",
   ]
   for (const [id, html] of Object.entries(pages)) {
     let content = text(html)
@@ -193,7 +202,7 @@ test("the shared map and the emergency area are not touched by this category", (
 test("the index of Auxi's content lists the three sections, up to date with the summaries", () => {
   const index = JSON.parse(readFileSync(resolve(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
   const pagesList = Array.isArray(index) ? index : (index.pages ?? Object.values(index).find(Array.isArray))
-  for (const section of SEX_EDUCATION.sections) {
+  for (const section of SEX_EDUCATION.sections.filter(({ summary }) => summary)) {
     const entry = pagesList.find((page) => page.path === `/temas/esi?seccion=${section.id}`)
     assert.ok(entry, section.id)
     assert.equal(entry.title, `Salud sexual y ESI › ${section.title}`)

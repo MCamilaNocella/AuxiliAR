@@ -139,3 +139,80 @@ export const VAGINAL_CONDOM = {
     "AuxiliAR no tiene confirmado en qué centros concretos se entregan: preguntalo en tu centro de salud u hospital público antes de ir.",
   ],
 }
+
+/**
+ * «Anticonceptivos gratuitos: cuáles son y cómo conseguirlos». Four things that are usually mixed up, kept apart: gratuity (what the
+ * Ciudad says), legal coverage (the laws and what the Ministerio says), conditions of access (by method) and concrete availability
+ * (what AuxiliAR does NOT know). Every sentence repeats a statement of the Gobierno de la Ciudad ("Métodos anticonceptivos",
+ * "Consejerías"), of the pages of each method of the Ministerio de Salud or of its "Preguntas frecuentes" (texts saved in
+ * docs/investigacion/evidencia). It invents no stock, no appointment and no center. Pending professional validation.
+ */
+export const FREE_ACCESS = {
+  intro:
+    "Los métodos anticonceptivos tienen cobertura legal y, en la Ciudad de Buenos Aires, el Gobierno de la Ciudad informa que son gratuitos en el sistema público. Acá se separan cuatro cosas que suelen mezclarse.",
+  blocks: [
+    {
+      id: "gratuidad",
+      title: "Gratuidad",
+      paragraphs: [
+        "En la Ciudad de Buenos Aires, el Gobierno de la Ciudad informa: «La atención y los métodos son gratuitos en el sistema público y deben ser entregados sin costo adicional en obras sociales y prepagas».",
+        "Para el resto del país, AuxiliAR no tiene confirmada la gratuidad de cada provincia: preguntá en tu centro de salud.",
+      ],
+    },
+    {
+      id: "cobertura",
+      title: "Cobertura legal",
+      paragraphs: [
+        "La Ley 25.673 garantiza el acceso a información, orientación, métodos y prestaciones de salud sexual y reproductiva. El Ministerio de Salud indica que los anticonceptivos están incluidos en la cobertura médica obligatoria: se retiran en centros de salud y hospitales o se piden a la obra social o prepaga.",
+        "Para la ligadura tubaria y la vasectomía, el Ministerio informa que la Ley 26.130 establece el acceso en hospitales públicos, obras sociales y prepagas.",
+      ],
+    },
+    {
+      id: "condiciones",
+      title: "Condiciones de acceso",
+      bullets: [
+        "Un equipo de salud te ayuda a elegir el método más adecuado para vos. Esto es información general, no una indicación personal.",
+        "El DIU y el implante los coloca un profesional, con asesoramiento previo y descartando un embarazo. Las pastillas combinadas no se recomiendan en algunas situaciones de salud, que evalúa un profesional.",
+        "Ligadura tubaria y vasectomía: a partir de la mayoría de edad, dejando constancia por escrito de la decisión después de recibir información completa. No hace falta el consentimiento de la pareja.",
+        "Anticoncepción de emergencia: se toma lo antes posible y hasta cinco días después de la relación sin protección. En farmacias se consigue sin necesidad de receta médica.",
+      ],
+    },
+    {
+      id: "disponibilidad",
+      title: "Disponibilidad concreta",
+      paragraphs: [
+        "Que un método sea gratuito y esté cubierto no asegura que haya turno, stock o un profesional disponible en un centro en particular.",
+        "AuxiliAR no tiene confirmados turnos, stock ni centros concretos que entreguen cada método. El mapa muestra solo las prestaciones con la gratuidad documentada para esa prestación; si no aparece un centro cerca tuyo, no significa que no exista. Consultá antes de ir.",
+      ],
+    },
+  ],
+  methods: [
+    {
+      title: "Preservativos (peneano y vaginal)",
+      text: "Incluidos en la cobertura de salud obligatoria (Ley 25.673): se piden en hospitales, centros de salud, obras sociales y prepagas. En la Ciudad, el Gobierno de la Ciudad informa que en los centros de testeo, que funcionan en CeSAC, hospitales y organizaciones comunitarias, se retiran preservativos gratis. El preservativo vaginal se entrega en espacios de salud como centros de salud, consejerías, hospitales y organizaciones de la sociedad civil (según el Ministerio, dónde conseguirlos se consulta con el referente de cada provincia).",
+    },
+    {
+      title: "Pastillas (combinadas y de una sola hormona) e inyectables",
+      text: "Incluidos en la cobertura médica obligatoria (Ley 25.673): se retiran en centros de salud y hospitales o se piden a la obra social o prepaga.",
+    },
+    {
+      title: "Implante subdérmico y DIU",
+      text: "Incluidos en la cobertura médica obligatoria (Ley 25.673): se piden como los anteriores. Los coloca un profesional de la salud.",
+    },
+    {
+      title: "Anticoncepción hormonal de emergencia (AHE)",
+      text: "Tiene cobertura integral en hospitales, centros de salud, obras sociales y prepagas, y también se consigue en farmacias sin necesidad de receta. En la Ciudad, el Gobierno de la Ciudad informa que se puede solicitar además en guardias generales y en guardias de ginecología y obstetricia.",
+    },
+    {
+      title: "Ligadura tubaria y vasectomía",
+      text: "La Ley 26.130 establece el acceso en hospitales públicos, obras sociales y prepagas, a partir de la mayoría de edad. En la Ciudad, la lista oficial de consejerías marca qué hospitales ofrecen anticoncepción quirúrgica.",
+    },
+  ],
+  steps: [
+    "Consultá en un centro de salud u hospital público. En la Ciudad de Buenos Aires hay consejerías en salud sexual (hay una lista oficial) donde podés pedir asesoramiento y el método que elijas.",
+    "Si tenés obra social o prepaga, pedile el método a ella: tiene que cubrirlo (Ley 25.673).",
+    "Si necesitás anticoncepción de emergencia, buscala lo antes posible: en un hospital, un centro de salud, una guardia o una farmacia (sin receta).",
+    "Si tenés dudas, podés llamar a la línea nacional de salud sexual del Ministerio de Salud (consultas confidenciales; sus horarios están en su página).",
+    "Antes de ir, preguntá por turnos y disponibilidad: AuxiliAR no los conoce.",
+  ],
+}

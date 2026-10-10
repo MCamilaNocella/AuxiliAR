@@ -5,6 +5,7 @@ import { SexEducationScene } from "./SexEducationScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
+import { Section4 } from "./sections/Section4"
 
 export const SEX_EDUCATION: Category = {
   id: "esi",
@@ -30,6 +31,11 @@ export const SEX_EDUCATION: Category = {
       summary:
         "Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos.",
       Content: Section2,
+    },
+    {
+      id: "section-4",
+      title: "Interrupción voluntaria y legal del embarazo (IVE/ILE)",
+      Content: Section4,
     },
     {
       id: "section-3",

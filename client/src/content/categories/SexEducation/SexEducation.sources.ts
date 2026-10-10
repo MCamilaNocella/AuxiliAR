@@ -171,3 +171,17 @@ export const CABA_CONSEJERIAS: Source = {
   label: "Consejerías en salud sexual · Gobierno de la Ciudad de Buenos Aires",
   url: "https://buenosaires.gob.ar/gcaba_historico/salud-sexual-y-reproductiva/consejerias-en-salud-sexual",
 }
+
+/** ── IVE/ILE (9/10/2026) ── */
+
+export const CHECKED_AT_IVE = "2026-10-09"
+
+/**
+ * «Acceso a la Interrupción Voluntaria del Embarazo (IVE)», argentina.gob.ar/generos (Ministerio de Justicia): what the Ley 27.610
+ * recognizes, IVE and ILE, what is needed, the 10-day term, the rights in the attention, and where to ask or to report obstacles.
+ * No date. Text in docs/investigacion/evidencia/ive-ile-ley-27610-y-pagina-oficial.txt
+ */
+export const IVE_PAGINA: Source = {
+  label: "Acceso a la Interrupción Voluntaria del Embarazo (IVE) · argentina.gob.ar",
+  url: "https://www.argentina.gob.ar/generos/acceso-la-interrupcion-voluntaria-del-embarazo-ive",
+}

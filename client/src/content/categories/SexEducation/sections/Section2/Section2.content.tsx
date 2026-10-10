@@ -17,7 +17,7 @@ import {
   PRESERVATIVO_VAGINAL,
   PRESERVATIVOS,
 } from "../../SexEducation.sources"
-import { METHODS, NO_STI_PROTECTION, VAGINAL_CONDOM } from "./Section2.constants"
+import { FREE_ACCESS, METHODS, NO_STI_PROTECTION, VAGINAL_CONDOM } from "./Section2.constants"
 
 /**
  * Salud sexual y ESI · Anticoncepción y prevención. Explains, inside AuxiliAR, what the Ministerio de Salud de la Nación says
@@ -32,23 +32,58 @@ export default function Section2Content() {
     <div className="mt-2 flex max-w-3xl flex-col gap-6">
       <p className="m-0 text-lg text-ink">Información general del Ministerio de Salud de la Nación y del Gobierno de la Ciudad. No reemplaza la consulta con un profesional de la salud.</p>
 
-      <section aria-labelledby="ss-free" className="rounded-2xl border-2 border-control-line bg-field p-4">
-        <h3 id="ss-free" className="m-0 text-xl font-extrabold">
-          Qué dicen las fuentes oficiales sobre el acceso y el costo
-        </h3>
-        <ul className="m-0 mt-2 flex list-disc flex-col gap-2 pl-5">
-          <li>La Ley 25.673 incluye los métodos anticonceptivos en la cobertura médica obligatoria. El Ministerio indica que se retiran en centros de salud y hospitales, o se piden a la obra social o prepaga.</li>
-          <li>
-            En la Ciudad de Buenos Aires, el Gobierno de la Ciudad informa: «La atención y los métodos son gratuitos en el sistema público y deben ser entregados sin costo adicional en obras sociales y prepagas».
-          </li>
-          <li>El mejor método anticonceptivo es el que cada persona elige, con información y asesoramiento.</li>
+      <section aria-labelledby="ss-free" className="flex flex-col gap-4">
+        <div>
+          <h3 id="ss-free" className="m-0 text-xl font-extrabold">
+            Anticonceptivos gratuitos: cuáles son y cómo conseguirlos
+          </h3>
+          <p className="m-0 mt-1">{FREE_ACCESS.intro}</p>
+        </div>
+
+        <ul role="list" className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
+          {FREE_ACCESS.blocks.map((block) => (
+            <li key={block.id} className="rounded-2xl border-2 border-control-line bg-field p-4">
+              <h4 className="m-0 text-lg font-extrabold">{block.title}</h4>
+              {block.paragraphs?.map((paragraph) => (
+                <p key={paragraph} className="m-0 mt-2 first:mt-1">
+                  {paragraph}
+                </p>
+              ))}
+              {block.bullets ? (
+                <ul className="m-0 mt-1 flex list-disc flex-col gap-1.5 pl-5">
+                  {block.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </li>
+          ))}
         </ul>
-        <p className="m-0 mt-2 text-ink-soft">Que haya un método no asegura que haya turno o disponibilidad en un centro en particular: consultalo antes de ir. En el resto del país, preguntá en tu centro de salud.</p>
+
+        <div>
+          <h4 className="m-0 text-lg font-extrabold">Cuáles son y qué dicen las fuentes de cada uno</h4>
+          <ul role="list" className="m-0 mt-2 flex list-none flex-col gap-2 p-0">
+            {FREE_ACCESS.methods.map(({ title, text }) => (
+              <li key={title} className="rounded-2xl border border-line-strong bg-card p-3">
+                <b>{title}.</b> {text}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="m-0 text-lg font-extrabold">Cómo conseguirlos</h4>
+          <ol className="m-0 mt-1 flex list-decimal flex-col gap-1.5 pl-5">
+            {FREE_ACCESS.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       <section aria-labelledby="ss-methods">
         <h3 id="ss-methods" className="m-0 text-xl font-extrabold">
-          Métodos anticonceptivos
+          Cómo funciona cada método
         </h3>
         <p className="m-0 mt-1">
           Hay varios métodos y cuál conviene depende de cada persona: un profesional de la salud te ayuda a elegir. Abrí cada uno para ver qué es y cómo se usa, según el Ministerio. Esto es información general, no una indicación
