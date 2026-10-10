@@ -47,7 +47,14 @@ test("Sobre AuxiliAR keeps its own content, in its place, and has no new section
   assert.deepEqual(hrefsIn(html).filter((href) => href.startsWith("/")), [], "no route of its own or of another page")
   assert.ok(hrefsIn(html).includes("#about-datos"), "the button it had leads to the text about the data, on the same page")
   // the sources come after all of it
-  assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Fuentes y referencias"))
+  assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Sobre los datos del mapa") && content.indexOf("Sobre los datos del mapa") < content.indexOf("Fuentes y referencias"))
+  // the button scrolls to the text by itself (the layout's scroll restoration would undo the browser's jump to an anchor), and the text lands under the
+  // sticky bars: the page's scroll-padding covers the header, scroll-mt-14 the category bar of small screens (a column on large ones, so none there)
+  const target = html.slice(html.indexOf('id="about-datos"'), html.indexOf('aria-labelledby="about-sources"'))
+  assert.ok(target.includes('tabindex="-1"') && target.includes("scroll-mt-14") && target.includes("lg:scroll-mt-0"))
+  assert.ok(!/scroll-mt-(24|20|16)/.test(html), "no margin on top of the page's own scroll-padding")
+  const pageSource = readFileSync(join(root, "src/content/categories/About/sections/Section1/Section1.content.tsx"), "utf8")
+  assert.ok(pageSource.includes("onClick={goToData}") && pageSource.includes("scrollIntoView") && pageSource.includes("event.preventDefault()") && pageSource.includes("prefersReducedMotion"))
   // the category is the same one: one section, same id and title, same summary for Auxi, no new path
   assert.deepEqual(ABOUT.sections.map(({ id, title }) => [id, title]), [["section-1", "Sobre AuxiliAR"]])
   assert.ok(ABOUT.sections[0].summary.startsWith("Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional"))

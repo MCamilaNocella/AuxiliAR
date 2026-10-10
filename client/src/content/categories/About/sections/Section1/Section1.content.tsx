@@ -1,6 +1,22 @@
+import type { MouseEvent } from "react"
 import { ChevronRight } from "lucide-react"
+import { prefersReducedMotion } from "@/utils/scroll"
 import { DataSection } from "../../DataSection"
 import { SourcesSection } from "../../SourcesSection"
+
+/**
+ * The button leads to the text about the data, on this same page. The page's own scroll restoration (<ScrollRestoration /> in the layout)
+ * puts the scroll back where it was after any change of address, a "#about-datos" included, so the browser's jump to the anchor would be
+ * undone: the button scrolls to the text itself (smooth, unless the person asks for less motion) and moves the focus there. The href stays,
+ * for what does not run scripts.
+ */
+const goToData = (event: MouseEvent<HTMLAnchorElement>) => {
+  const target = document.getElementById("about-datos")
+  if (!target) return
+  event.preventDefault()
+  target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" })
+  target.focus({ preventScroll: true })
+}
 
 /**
  * Sobre AuxiliAR: the institutional page (the footer links here). It says only what the site itself already says elsewhere
@@ -18,6 +34,7 @@ export default function AboutContent() {
       </p>
       <a
         href="#about-datos"
+        onClick={goToData}
         className="flex min-h-14 w-full items-center gap-3 rounded-2xl border-2 border-line-strong bg-card px-4 py-3 font-extrabold text-ink no-underline hover:border-control-line hover:text-ink"
       >
         <span className="flex-1">Cómo verificamos los datos</span>

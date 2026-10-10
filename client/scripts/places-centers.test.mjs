@@ -75,7 +75,10 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   // the section starts at its heading and ends where the sources begin
   const html = page.slice(page.indexOf('id="about-datos"'), page.indexOf('aria-labelledby="about-sources"'))
   const content = text(html)
-  const headings = [...html.matchAll(/<h4[^>]*>([^<]+)<[/]h4>/g)].map((match) => match[1])
+  // the six points (the five rules and "Fuentes y alcance", with the coverage) are disclosures that start closed; all their text is in the page
+  const headings = [...html.matchAll(/<summary[^>]*>([^<]+)</g)].map((match) => match[1].trim())
+  assert.equal([...html.matchAll(/<details/g)].length, 6)
+  assert.ok(!/<details[^>]* open/.test(html), "all closed")
   assert.ok(content.includes("Sobre los datos del mapa"))
   assert.deepEqual(headings, ["Cómo verificamos", "Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
   // verification: who, against what, when, and what happens when it is doubtful
