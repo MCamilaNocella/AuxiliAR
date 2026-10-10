@@ -1,18 +1,16 @@
 import { Link } from "react-router"
-import { Phone } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { revealEmergencies } from "@/utils/revealEmergencies"
 import { PointerList } from "../../PointerList"
 import { CHECKED_AT, HUESPED_DONDE, HUESPED_SERVICIOS, LINEA, PBA_SSR, PREGUNTAS, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION } from "../../SexEducation.sources"
 
 /**
  * Salud sexual y ESI · Dónde buscar atención. Information and orientation: it offers no appointments, shows no phone number
- * (the help numbers are the work of the Emergencias team: the red box opens them through the existing button) and
+ * (the help numbers are the work of the Emergencias team and are always one tap away in the emergency bar) and
  * recommends no service as free care, because no service of the map has its gratuity verified for sexual health yet.
  * What it says and where it comes from:
  *  - methods and consejería "en centros de salud y hospitales": Preguntas frecuentes of the Ministerio de Salud (SS04)
@@ -27,19 +25,6 @@ export default function Section1Content() {
         Acá encontrás información para cuidar tu salud sexual y reproductiva y para saber dónde buscar orientación y atención. AuxiliAR no otorga turnos ni realiza consultas médicas, y no te pide datos personales ni
         de salud.
       </p>
-
-      <div className="rounded-2xl border-2 border-alert-card-line bg-alert-soft p-4">
-        <p className="m-0 text-lg font-extrabold text-alert-text">Si estás en peligro ahora o sufriste una agresión</p>
-        <p className="m-0 mt-1 text-ink">Pedí ayuda primero: mirá los números de emergencia.</p>
-        <button
-          type="button"
-          onClick={revealEmergencies}
-          className="mt-3 inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-alert px-4 py-2 font-extrabold text-on-alert hover:bg-alert-dark"
-        >
-          <Phone aria-hidden="true" className="size-5 shrink-0" />
-          Ver números de emergencia
-        </button>
-      </div>
 
       <section aria-labelledby="ss-near">
         <h3 id="ss-near" className="m-0 text-xl font-extrabold">

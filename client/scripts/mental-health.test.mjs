@@ -69,12 +69,12 @@ test("each source is named where its content comes from: the law, the plain-word
   assert.match(sources.LEY_26657.url, /ley-26657-175977\/texto$/)
 })
 
-test("dónde buscar ayuda: the approved introduction, the emergency button, and a map that only explores", () => {
+test("dónde buscar ayuda: the approved introduction, no repeated emergency notice, and a map that only explores", () => {
   const html = pages["section-1"]
   const content = text(html)
   assert.ok(content.includes("Estamos para ayudarte a encontrar orientación y recursos de salud mental. Acá vas a conocer tus derechos y descubrir dónde buscar atención. AuxiliAR no otorga turnos ni realiza consultas médicas directamente."))
-  assert.ok(content.indexOf("Estamos para ayudarte") < content.indexOf("Ver números de emergencia"), "the introduction comes first")
-  assert.ok(content.includes("Ver números de emergencia"), "the existing button to the emergency numbers")
+  // the category no longer repeats the permanent access to the emergencies (emergency bar and bottom navigation)
+  assert.ok(!content.includes("Ver números de emergencia") && !content.includes("Si hay riesgo inmediato, o necesitás hablar con alguien ahora"), "no repeated emergency notice")
   // the map is for exploring, not for recommending: the button says so and the page says what the map's file marks
   assert.ok(content.includes("Ver el mapa"))
   assert.ok(!/Buscar en el mapa|centros verificados con salud mental/.test(content), "the old label is gone")

@@ -1,10 +1,8 @@
 import { Link } from "react-router"
-import { Phone } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { SourceList } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { revealEmergencies } from "@/utils/revealEmergencies"
 import { CHECKED_AT, LEY_26657, LEY_SIMPLE, ORIENTACION } from "../../MentalHealth.sources"
 
 /**
@@ -15,8 +13,8 @@ import { CHECKED_AT, LEY_26657, LEY_SIMPLE, ORIENTACION } from "../../MentalHeal
  *  - "ser atendida en el hospital general": Ley simple (Derecho Fácil)
  *  - "equipo interdisciplinario integrado por profesionales, técnicos…": Ley 26.657, art. 8
  * The map button only explores: the map itself marks gratuity only when it is verified for that very service and says
- * when the source does not inform the cost. It shows no phone line: the help numbers are the work of the Emergencias
- * team, so this page opens them through the existing button (revealEmergencies) instead of copying any number.
+ * when the source does not inform the cost. It shows no phone line and no emergency notice of its own: the help numbers are the work of
+ * the Emergencias team and are always one tap away in the emergency bar and in the bottom navigation.
  */
 export default function Section1Content() {
   return (
@@ -25,19 +23,6 @@ export default function Section1Content() {
         Estamos para ayudarte a encontrar orientación y recursos de salud mental. Acá vas a conocer tus derechos y descubrir dónde buscar atención. AuxiliAR no otorga turnos ni realiza consultas médicas
         directamente.
       </p>
-
-      <div className="rounded-2xl border-2 border-alert-card-line bg-alert-soft p-4">
-        <p className="m-0 text-lg font-extrabold text-alert-text">Si hay riesgo inmediato, o necesitás hablar con alguien ahora</p>
-        <p className="m-0 mt-1 text-ink">Pedí ayuda primero: mirá los números de emergencia.</p>
-        <button
-          type="button"
-          onClick={revealEmergencies}
-          className="mt-3 inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-alert px-4 py-2 font-extrabold text-on-alert hover:bg-alert-dark"
-        >
-          <Phone aria-hidden="true" className="size-5 shrink-0" />
-          Ver números de emergencia
-        </button>
-      </div>
 
       <section aria-labelledby="mh-near">
         <h3 id="mh-near" className="m-0 text-xl font-extrabold">
