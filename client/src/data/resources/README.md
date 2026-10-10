@@ -2,7 +2,12 @@
 
 Una única fuente de verdad para los recursos de ayuda de AuxiliAR: líneas telefónicas hoy y, más adelante, hospitales, centros y otros servicios. De acá van a leer las categorías, el buscador, los mapas, Auxi y los botones de llamada.
 
-> **Estado: infraestructura (fases 0 y 1).** El formato, las validaciones y el código para leerlo ya están —incluido el de **establecimientos con varias prestaciones**—, pero **todavía no hay datos cargados** y **nada de la app los usa** (ni mapa, ni categorías, ni Auxi). Los números que se ven hoy (`client/src/data/emergency.ts`, `server/.../prompts/numeros.md`, el footer, el chat y `SafetyRules.java`) siguen siendo los de siempre, sin cambios.
+> **Estado (verificación del 9/10/2026):** hay datos cargados y la app los usa.
+> - **Mapa (`places/`):** **7 establecimientos con 34 servicios registrados**, todos de la Ciudad de Buenos Aires (`places/ar-c.json`). **9 de esos 34 servicios están visibles** para las personas según la verificación actual: son los que tienen la gratuidad documentada para esa prestación y siguen vigentes. Los otros 25 se conservan en los datos para investigaciones futuras, pero no se muestran. Todo esto cambia con la fecha: la prestación del Centro Fijo Veterinario Costanera Sur vence el 8/11/2026 y las demás el 5/1/2027.
+> - **Líneas de ayuda (`lines/`):** 14 líneas en `lines/nacional.json`, que son la fuente única de los números (barra de emergencias, chat y botones de llamada; ver más abajo).
+> - **Quién lee estos datos:** el mapa de Centros de atención y los botones de llamada. Un inventario fila por fila del mapa y una explicación de sus reglas están en `docs/investigacion/inventario-mapa-servicios.csv` y `docs/investigacion/estructura-del-mapa-y-reglas-de-inclusion.md`.
+>
+> (Hasta octubre de 2026 esta cabecera decía que todavía no había datos cargados: era de la etapa de infraestructura y quedó desactualizada.)
 
 ## Dónde está cada cosa
 
@@ -13,9 +18,9 @@ client/src/data/resources/        ← LO ÚNICO QUE SE EDITA
   taxonomy.json                   valores permitidos (tipos, estados, provincias, áreas, categorías…)
   resources.types.ts              tipos de TypeScript
   index.ts                        cómo lo lee la app (consultas)
-  lines/*.json                    líneas telefónicas (hoy: nacional.json, vacío). Van siempre en el build
+  lines/*.json                    líneas telefónicas (hoy: nacional.json, con 14 líneas). Van siempre en el build
   places/<provincia>.json         establecimientos, un archivo por provincia (ar-c.json, ar-b.json…). Se cargan bajo demanda
-                                  (hoy no hay ninguno)
+                                  (hoy: ar-c.json, con 7 establecimientos y 34 servicios; 9 servicios visibles)
 
 client/scripts/resources-sync.mjs        valida y genera la copia del servidor
 client/scripts/resources-validate.mjs    las reglas de validación
@@ -115,7 +120,7 @@ También se valida que `taxonomy.categories` coincida con las categorías reales
 
 ## Qué viene después
 
-Esto es solo la infraestructura. Las próximas fases, cada una en su propio cambio: cargar los números actuales como `unverified`, verificarlos con fuentes oficiales, y recién ahí hacer que `numeros.md`, `emergency.ts`, el footer, el chat y `SafetyRules.java` lean de acá; y, aparte, los datos de los establecimientos (primero un piloto en CABA) y las pantallas que los usan. **Dónde viven los establecimientos** ya está definido (`places/<provincia>.json`); en esa fase de datos se cargan.
+**Ya hecho:** las líneas de ayuda se cargaron, se verificaron con fuentes oficiales y son la fuente única de los números (barra de emergencias, chat, servidor y tarjeta de ayuda urgente), y se cargó un piloto de establecimientos en la Ciudad de Buenos Aires (7 establecimientos, 34 servicios, 9 visibles). **Lo que sigue**, cada cosa en su propio cambio: sumar establecimientos y servicios a partir de investigaciones con fuente oficial (sin duplicar establecimientos: ver `docs/investigacion/estructura-del-mapa-y-reglas-de-inclusion.md`), documentar la gratuidad de las prestaciones que hoy están registradas sin ella, y sumar otras provincias de a una. Los establecimientos viven en `places/<provincia>.json`.
 
 ## Datos de prueba
 

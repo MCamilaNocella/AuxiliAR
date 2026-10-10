@@ -1,0 +1,22 @@
+320 salud-mental-dondebuscar: overflow=0 smallTargets=["Conocé tus derechos"] headingJump=false words=224 emergencyButtonsInContent=0 errors=0
+320 esi-dondebuscar: overflow=0 smallTargets=[] headingJump=false words=310 emergencyButtonsInContent=0 errors=0
+320 esi-anticonceptivos-gratuitos: overflow=0 smallTargets=[] headingJump=false words=1981 emergencyButtonsInContent=0 errors=0
+320 esi-ive-ile: overflow=0 smallTargets=[] headingJump=false words=902 emergencyButtonsInContent=0 errors=0
+320 esi-derechos: overflow=0 smallTargets=[] headingJump=false words=426 emergencyButtonsInContent=0 errors=0
+320 inicio: overflow=0 smallTargets=[] headingJump=false words=64 emergencyButtonsInContent=0 errors=0
+390 salud-mental-dondebuscar: overflow=0 smallTargets=["Conocé tus derechos"] headingJump=false words=224 emergencyButtonsInContent=0 errors=0
+390 esi-dondebuscar: overflow=0 smallTargets=[] headingJump=false words=310 emergencyButtonsInContent=0 errors=0
+390 esi-anticonceptivos-gratuitos: overflow=0 smallTargets=[] headingJump=false words=1981 emergencyButtonsInContent=0 errors=0
+390 esi-ive-ile: overflow=0 smallTargets=[] headingJump=false words=902 emergencyButtonsInContent=0 errors=0
+390 esi-derechos: overflow=0 smallTargets=[] headingJump=false words=426 emergencyButtonsInContent=0 errors=0
+390 inicio: overflow=0 smallTargets=[] headingJump=false words=64 emergencyButtonsInContent=0 errors=0
+1280 salud-mental-dondebuscar: overflow=0 smallTargets=["Cómo verificamos los dato","Conocé tus derechos"] headingJump=false words=224 emergencyButtonsInContent=0 errors=0
+1280 esi-dondebuscar: overflow=0 smallTargets=[] headingJump=false words=326 emergencyButtonsInContent=0 errors=0
+1280 esi-anticonceptivos-gratuitos: overflow=0 smallTargets=[] headingJump=false words=1997 emergencyButtonsInContent=0 errors=0
+1280 esi-ive-ile: overflow=0 smallTargets=[] headingJump=false words=918 emergencyButtonsInContent=0 errors=0
+1280 esi-derechos: overflow=0 smallTargets=[] headingJump=false words=442 emergencyButtonsInContent=0 errors=0
+1280 inicio: overflow=0 smallTargets=[] headingJump=false words=64 emergencyButtonsInContent=0 errors=0
+menú de secciones en móvil: botón con desplegable
+nav Encontrar atención → /centros (esperado /centros)
+nav Mi salud → /mi-salud (esperado /mi-salud)
+nav Inicio → / (esperado /)
