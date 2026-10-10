@@ -52,9 +52,10 @@ export const EmergencyBar = () => {
         </ul>
       </div>
 
-      <div className="flex flex-col gap-2.5">
-        <h2 className={headingClass}>
-          <Bandage aria-hidden="true" className="size-4.5 flex-none text-alert-text" />
+      {/* Its own color (the teal of the site, never the red of the numbers): a calm panel that gives the guides weight without competing with the calls */}
+      <div className="flex flex-col gap-2.5 rounded-xl border border-aid-line bg-aid p-3 text-on-aid sm:p-4">
+        <h2 className={`${headingClass} text-on-aid sm:text-lg`}>
+          <Bandage aria-hidden="true" className="size-5 flex-none" />
           Primeros auxilios: qué hacer ya
         </h2>
         <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${GUIDES_GRID}`}>
@@ -62,17 +63,17 @@ export const EmergencyBar = () => {
             <li key={slug}>
               <Link
                 to={PATHS.firstAidGuide(slug)}
-                className="flex h-full min-h-11 items-center justify-between gap-2 rounded-lg border border-alert-card-line bg-card px-3 py-1.5 text-sm font-bold text-ink no-underline transition-colors hover:border-alert-text hover:text-ink"
+                className="flex h-full min-h-11 items-center justify-between gap-2 rounded-lg border border-aid-line bg-card px-3 py-1.5 text-sm font-bold text-ink no-underline transition-colors hover:bg-field hover:text-ink focus-visible:outline-on-aid"
               >
                 <span className="min-w-0 wrap-break-word">{title}</span>
-                <ChevronRight aria-hidden="true" className="size-4 flex-none text-alert-text" />
+                <ChevronRight aria-hidden="true" className="size-4 flex-none text-ink" />
               </Link>
             </li>
           ))}
           <li>
             <Link
               to={PATHS.firstAid}
-              className="flex min-h-11 items-center gap-1.5 px-1 py-1.5 text-sm font-extrabold text-brand underline underline-offset-4"
+              className="flex h-full min-h-11 items-center justify-center gap-1.5 rounded-lg border border-aid-line bg-on-aid px-3 py-1.5 text-sm font-extrabold text-aid-ink no-underline transition-colors hover:bg-field hover:text-aid-ink focus-visible:outline-on-aid"
             >
               Ver todas las guías
               <ArrowRight aria-hidden="true" className="size-4 flex-none" />

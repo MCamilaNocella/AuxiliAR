@@ -1,0 +1,13 @@
+320 /: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+320 /centros: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+390 /: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+390 /centros: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+768 /: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+768 /centros: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+1280 /: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+1280 /centros: overflow=0 smallTargets=[] panel bg=rgb(11, 85, 102) text=rgb(255, 255, 255) mainFirstAidHeadings=0 errors=0
+tema actual: ["light",""]
+data-theme=dark: panel bg=rgb(13, 74, 89)
+data-theme=contrast: panel bg=rgb(0, 0, 0)
+data-theme=high-contrast: panel bg=rgb(11, 85, 102)
+data-theme=light: panel bg=rgb(11, 85, 102)

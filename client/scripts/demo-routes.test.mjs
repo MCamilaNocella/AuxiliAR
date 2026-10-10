@@ -68,19 +68,21 @@ test("map: the attribution links and the verification link have a target of 24px
   assert.match(await read("src/content/categories/HealthCenters/sections/Section1/Section1.content.tsx"), /inline-flex min-h-11 items-center font-bold/)
 })
 
-/* ── Home: the highlighted way into Primeros auxilios ── */
+/* ── Primeros auxilios: ONE highlighted way in, inside the emergency bar (no second band on the home) ── */
 
-test("home: a highlighted band leads to the guides, in its own color (not the red), with no number and nothing of the emergencies", async () => {
-  const { FirstAidBand } = await vite.ssrLoadModule("/src/components/home/FirstAidBand/index.ts")
-  const html = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(FirstAidBand)))
-  assert.match(text(html), /Primeros auxilios/)
-  assert.ok(new RegExp('<a[^>]*href="/primeros-auxilios"[^>]*>\s*Ver las guías').test(html), "a clear button to the guides")
-  assert.ok(html.includes("bg-aid") && html.includes("text-on-aid") && !/alert/.test(html), "its own identity, not the emergency red")
-  assert.ok(!/\b(911|107|144|135|102)\b|tel:/.test(html), "no number and nothing to call: the emergency block is untouched")
-  // above the six cards, as the first thing of the home
+test("primeros auxilios: the home has no second band; the only highlighted way in is the panel of the emergency bar, in its own color and with no number of its own", async () => {
   const home = await read("src/screens/Home/Home.tsx")
-  assert.ok(home.indexOf("<FirstAidBand") > 0 && home.indexOf("<FirstAidBand") < home.indexOf("<Categories"))
-  // the three themes define its colors (the contrast theme too), and the emergency components were not edited by this change
+  assert.ok(!home.includes("FirstAidBand"), "the band is gone from the home")
+  const { EmergencyBar } = await vite.ssrLoadModule("/src/components/layout/EmergencyBar/index.ts")
+  const html = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(EmergencyBar)))
+  // the panel: its own identity (the teal tokens), a clear button to all the guides, and the featured guides as before
+  const at = html.indexOf("Primeros auxilios: qué hacer ya")
+  const panel = html.slice(html.lastIndexOf("<div", html.lastIndexOf("<h2", at)))
+  assert.ok(panel.includes("bg-aid") && panel.includes("text-on-aid"), "its own identity, not the emergency red")
+  assert.ok(/<a[^>]*href="\/primeros-auxilios"[^>]*>\s*Ver todas las guías/.test(panel), "a clear button to the guides")
+  for (const slug of ["rcp", "atragantamiento", "quemaduras"]) assert.ok(html.includes(`href="/primeros-auxilios/${slug}"`), slug)
+  assert.equal([...html.matchAll(/Primeros auxilios: qué hacer ya/g)].length, 1, "one single block of first aid")
+  // the three themes define its colors (the contrast theme too)
   const css = await read("src/index.css")
   assert.equal((css.match(/--color-aid:/g) ?? []).length, 3)
   assert.equal((css.match(/--color-on-aid:/g) ?? []).length, 3)

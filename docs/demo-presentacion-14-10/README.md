@@ -26,7 +26,7 @@ npm run preview    # abre http://localhost:4173/
 ## Recorrido sugerido (≈ 10 minutos)
 | # | Ruta | Qué mostrar |
 |---|---|---|
-| 1 | `/` | Las seis categorías, el botón Emergencia y la banda de Primeros auxilios. |
+| 1 | `/` | Las seis categorías y la barra de Emergencia, con el panel de Primeros auxilios al lado de los números. |
 | 2 | `/centros` | Mapa AuxiliAR (solo prestaciones con gratuidad documentada), una ficha, «Cómo verificamos los datos». |
 | 3 | `/centros?vista=lista&filtro=mental-health` | Estado vacío transparente. |
 | 4 | `/temas/salud-general?seccion=section-5` | **Calendario de vacunación**: decir en voz alta que está **en desarrollo y pendiente de validación profesional**; recorrer las ocho etapas; mostrar «15 a 64 años» con sus bloques desplegables y un recuadro «Para confirmar…». |

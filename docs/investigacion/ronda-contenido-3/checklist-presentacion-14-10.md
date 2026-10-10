@@ -11,7 +11,7 @@ Versión: rama `demo/content-round3-final`, **solo demo local** (no publicación
 
 | # | Ruta | Qué mostrar | Estado |
 |---|---|---|---|
-| 1 | `/` | Las seis categorías, el botón Emergencia y la banda de Primeros auxilios. | Mostrar |
+| 1 | `/` | Las seis categorías y la barra de Emergencia, con el panel de Primeros auxilios al lado de los números. | Mostrar |
 | 2 | `/centros` | Mapa AuxiliAR: solo prestaciones con gratuidad documentada; abrir una ficha; «Cómo verificamos los datos». | Mostrar |
 | 3 | `/centros?vista=lista&filtro=mental-health` | Estado vacío transparente: «Todavía no tenemos… Eso no significa que no existan». | Mostrar |
 | 4 | `/temas/salud-general?seccion=section-5` | Calendario por etapas: «Recién nacidos», «Hasta 2 años», «65 años o más». | **Con advertencia** (es un resumen; el PDF trae más notas) |
