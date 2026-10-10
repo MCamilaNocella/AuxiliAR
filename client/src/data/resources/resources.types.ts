@@ -70,6 +70,12 @@ export type FacilityType =
   | "zoonosis-center"
   | "public-veterinary"
   | "counseling-center"
+  | "health-promotion-station"
+  | "sports-center"
+  | "day-center"
+  | "family-action-center"
+  | "social-assistance-office"
+  | "community-organization"
   | "other"
 
 /** What a service is (taxonomy.serviceTypes); each type belongs to categories */
@@ -83,6 +89,10 @@ export type ServiceType =
   | "diagnostic-imaging"
   | "specialty-care"
   | "pharmacy"
+  | "nutrition-care"
+  | "food-assistance"
+  | "food-program-enrollment"
+  | "physical-activity"
   | "mental-health-care"
   | "mental-health-emergency"
   | "sexual-reproductive-health"

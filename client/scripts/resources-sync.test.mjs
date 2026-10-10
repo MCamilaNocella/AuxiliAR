@@ -67,7 +67,16 @@ test("service types: the new ones are there, counseling was renamed, and a type 
   for (const id of ["laboratory", "diagnostic-imaging", "specialty-care", "pharmacy"]) assert.deepEqual(types[id], ["salud-fisica"], id)
   for (const id of ["pregnancy-care", "sti-testing-care", "emergency-contraception", "ive-ile-care", "sexual-health-counseling"]) assert.deepEqual(types[id], ["esi"], id)
   assert.equal(types.counseling, undefined)
-  assert.equal(taxonomy.serviceTypes.length, 23)
+  assert.equal(taxonomy.serviceTypes.length, 27)
+
+  // food, nutrition and physical activity are subsections of Salud general, not categories of their own
+  for (const id of ["nutrition-care", "food-assistance", "food-program-enrollment", "physical-activity"]) assert.deepEqual(types[id], ["salud-fisica"], id)
+  assert.equal(taxonomy.categories.length, 8)
+
+  // facility types are concrete places: programs and procedures are not established as places
+  const facilityIds = taxonomy.facilityTypes.map(({ id }) => id)
+  for (const id of ["health-promotion-station", "sports-center", "day-center", "family-action-center", "social-assistance-office", "community-organization"]) assert.ok(facilityIds.includes(id), id)
+  for (const id of ["program", "public-space-activity"]) assert.ok(!facilityIds.includes(id), id)
 
   // the derivation is a list per type: with two categories the service and its place show up under both
   const multi = structuredClone(taxonomy)

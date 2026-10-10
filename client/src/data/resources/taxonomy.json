@@ -76,6 +76,12 @@
     { "id": "zoonosis-center", "label": "Centro de zoonosis" },
     { "id": "public-veterinary", "label": "Veterinaria pública" },
     { "id": "counseling-center", "label": "Consejería" },
+    { "id": "health-promotion-station", "label": "Estación Saludable" },
+    { "id": "sports-center", "label": "Polideportivo" },
+    { "id": "day-center", "label": "Centro de Día" },
+    { "id": "family-action-center", "label": "Centro de Acción Familiar" },
+    { "id": "social-assistance-office", "label": "Sede de atención social" },
+    { "id": "community-organization", "label": "Organización civil" },
     { "id": "other", "label": "Otro" }
   ],
   "serviceTypes": [
@@ -88,6 +94,10 @@
     { "id": "diagnostic-imaging", "label": "Diagnóstico por imágenes", "categories": ["salud-fisica"] },
     { "id": "specialty-care", "label": "Atención de especialidades", "categories": ["salud-fisica"] },
     { "id": "pharmacy", "label": "Farmacia", "categories": ["salud-fisica"] },
+    { "id": "nutrition-care", "label": "Nutrición", "categories": ["salud-fisica"] },
+    { "id": "food-assistance", "label": "Asistencia alimentaria", "categories": ["salud-fisica"] },
+    { "id": "food-program-enrollment", "label": "Inscripción a programas alimentarios", "categories": ["salud-fisica"] },
+    { "id": "physical-activity", "label": "Actividad física", "categories": ["salud-fisica"] },
     { "id": "mental-health-care", "label": "Atención de salud mental", "categories": ["salud-mental"] },
     { "id": "mental-health-emergency", "label": "Guardia de salud mental", "categories": ["salud-mental"] },
     { "id": "sexual-reproductive-health", "label": "Salud sexual y reproductiva", "categories": ["esi"] },
