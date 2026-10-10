@@ -30,3 +30,18 @@ export const VACUNAS_PAGINA: Source = {
   label: "Calendario Nacional de Vacunación · Ministerio de Salud de la Nación",
   url: "https://www.argentina.gob.ar/salud/vacunas",
 }
+
+/** Day the two guides below were compared with their official pages (read-only; the pages show no date of update) */
+export const CHECKED_AT_GUIDES = "2026-10-10"
+
+/** "Cómo obtener el Certificado Único de Discapacidad (CUD)": what it is, voluntary and free of cost, the steps, the personalized consultation */
+export const CUD_PAGINA: Source = {
+  label: "Cómo obtener el Certificado Único de Discapacidad (CUD) · argentina.gob.ar",
+  url: "https://www.argentina.gob.ar/servicio/como-obtener-el-certificado-unico-de-discapacidad-cud",
+}
+
+/** "Cronograma de Más servicios en tu barrio": the itinerant program of the Ciudad; its services and dates change by week and operation */
+export const MAS_SERVICIOS_PAGINA: Source = {
+  label: "Cronograma de Más servicios en tu barrio · Gobierno de la Ciudad de Buenos Aires",
+  url: "https://buenosaires.gob.ar/gcaba_historico/cronograma-de-mas-servicios-en-tu-barrio",
+}

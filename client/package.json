@@ -24,7 +24,7 @@
     "animal:test": "node --test scripts/animal-health.test.mjs",
     "lote1:test": "node --test scripts/lote1-propuesta.test.mjs",
     "emergency:test": "node --test scripts/emergency-lines.test.mjs scripts/emergency-consumers.test.mjs scripts/emergency-buttons.test.mjs",
-    "round3:test": "node --test scripts/content-round3.test.mjs",
+    "round3:test": "node --test scripts/content-round3.test.mjs scripts/resources-tramites.test.mjs",
     "round4:test": "node --test scripts/content-round4.test.mjs",
     "test:ci": "npm run structure:test && npm run demo:test && npm run mental:test && npm run sexual:test && npm run round3:test && npm run round4:test && npm run animal:test && npm run lote1:test && npm run places:test && npm run health:test && npm run curation:test && npm run emergency:test && npm run help:test && npm run resources:check && npm run curation:check",
     "lines:due": "node scripts/lines-review.mjs",

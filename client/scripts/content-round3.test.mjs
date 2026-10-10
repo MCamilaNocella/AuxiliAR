@@ -167,7 +167,8 @@ test("Más recursos has its four sections, opens on the rights, and is no longer
 test("Más recursos: the Ley 27.610 is left out, CeSAC appointments are explained, and nothing is written twice", async () => {
   const pages = await Promise.all([1, 2, 3, 4].map(async (n) => render((await load(`Resources/sections/Section${n}/Section${n}.content.tsx`)).default, "/recursos")))
   const all = text(pages.join(" "))
-  assert.ok(!/27\.610|27610|interrupci[oó]n voluntaria|aborto|IVE\b|ILE\b/i.test(all), "no Ley 27.610")
+  // the abbreviations as words of their own: without the boundary in front, "vive" or "inclusive" would be taken for an IVE
+  assert.ok(!/27\.610|27610|interrupci[oó]n voluntaria|aborto|\bIVE\b|\bILE\b/i.test(all), "no Ley 27.610")
   assert.ok(all.includes("Cómo pedir turno en un CeSAC") && all.includes("Empadronate en el Sistema de Salud (una sola vez)"))
   assert.ok(all.includes("no requieren una orden médica"))
   assert.ok(all.includes("Ley 153") && all.includes("Ley 27.491") && all.includes("26.657") && all.includes("25.673"))
