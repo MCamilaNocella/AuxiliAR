@@ -1,4 +1,4 @@
-import { Compass, Eye, HeartPulse, ScanSearch, Smile, Stethoscope, Syringe } from "lucide-react"
+import { Apple, Compass, Eye, HeartPulse, PersonStanding, ScanSearch, Smile, Stethoscope, Syringe } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
@@ -26,6 +26,12 @@ export type ControlTopic = {
   /** Próxima acción */
   actions: ControlAction[]
 }
+
+/** The entry cards on top of "Controles de salud": the two subsections of Salud general that have their own section (see PhysicalHealth.ts) */
+export const SUBSECTION_ENTRIES: { sectionId: string, title: string, text: string, icon: LucideIcon }[] = [
+  { sectionId: "section-6", title: "Alimentación y nutrición", text: "Educación, orientación y asistencia alimentaria", icon: Apple },
+  { sectionId: "section-7", title: "Actividad física y bienestar", text: "Cuánto moverte y opciones sin costo", icon: PersonStanding },
+]
 
 /** The first topic is the way in for who doesn't know where to start */
 export const CONTROL_TOPICS: ControlTopic[] = [

@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react"
-import { useSearchParams } from "react-router"
+import { Link, useSearchParams } from "react-router"
+import { ArrowRight } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
+import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { revealEmergencies } from "@/utils/revealEmergencies"
-import { CONTROL_TOPICS } from "./Section2.constants"
+import { CONTROL_TOPICS, SUBSECTION_ENTRIES } from "./Section2.constants"
 
 /** Query param with the open topic: /temas/salud-general?seccion=section-2&tema=vacunacion */
 const TOPIC_PARAM = "tema"
@@ -44,7 +46,27 @@ export default function Section2Content() {
 
   return (
     <div className="mt-2 max-w-4xl">
-      <p className="m-0 text-muted">Elegí un tema y vas a ver qué necesitás saber, una orientación y el próximo paso.</p>
+      <nav aria-label="Más temas de salud general">
+        <ul role="list" className="m-0 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2">
+          {SUBSECTION_ENTRIES.map(({ sectionId, title, text, icon: Icon }) => (
+            <li key={sectionId}>
+              <Link
+                to={`${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=${sectionId}`}
+                className="flex h-full min-h-14 items-center gap-3 rounded-2xl border-2 border-control-line bg-card px-4 py-3 text-ink no-underline hover:bg-field hover:text-ink"
+              >
+                <Icon aria-hidden="true" className="size-7 shrink-0 text-brand" />
+                <span className="flex min-w-0 flex-1 flex-col">
+                  <span className="font-extrabold">{title}</span>
+                  <span className="text-ink-soft">{text}</span>
+                </span>
+                <ArrowRight aria-hidden="true" className="size-4 shrink-0" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <p className="m-0 mt-6 text-muted">Elegí un tema y vas a ver qué necesitás saber, una orientación y el próximo paso.</p>
 
       <div role="group" aria-label="Temas de controles de salud" className="mt-4 flex flex-col gap-3">
         <button type="button" aria-pressed={start.id === topic.id} onClick={() => choose(start.id)} className={buttonClass(start.id)}>

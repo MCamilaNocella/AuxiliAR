@@ -31,12 +31,14 @@ const { FIRST_AID } = await vite.ssrLoadModule("/src/content/categories/FirstAid
 const { CategorySidebar } = await vite.ssrLoadModule("/src/components/category/CategorySidebar/index.ts")
 const { legacyFirstAidTarget } = await vite.ssrLoadModule("/src/router/legacyFirstAid.ts")
 const Section4 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section4/Section4.content.tsx")).default
+const Section6 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section6/Section6.content.tsx")).default
+const Section7 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section7/Section7.content.tsx")).default
 const { FIRST_AID_GUIDE_CONTENT } = await vite.ssrLoadModule("/src/content/firstAid/index.ts")
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const render = (component, url = "/temas/salud-general") => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(component)))
 // The filters of the Centros de atención map that these sections link to (the map lives in its own category/branch)
-const FILTER_IDS = ["medical", "vaccination", "dentistry", "emergency"]
+const FILTER_IDS = ["medical", "vaccination", "dentistry", "emergency", "nutrition-food", "physical-activity"]
 
 /** An internal link or an emergency action, pointing at a filter that exists */
 const assertGoodAction = (action, where) => {
@@ -183,13 +185,13 @@ test("primeros auxilios: the page of the category, whose every card opens a real
 test("every internal link of Salud física points somewhere real", () => {
   const topicIds = CONTROL_TOPICS.map(({ id }) => id)
   // Salud general: section-3 (Primeros auxilios) moved out (its address redirects: never reuse it); the ids of the others are kept, and the vaccination calendar is section-5
-  const sectionIds = ["section-1", "section-2", "section-5", "section-4"]
+  const sectionIds = ["section-1", "section-2", "section-5", "section-6", "section-7", "section-4"]
   const guideSlugs = FIRST_AID_GUIDE_CONTENT.map(({ slug }) => slug)
   const filterIds = FILTER_IDS
 
   // every href of what the four sections and the guides render, plus the actions the quiz and the topics carry
   const hrefsIn = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&"))
-  const rendered = [Section1, Section2, Section4].flatMap((section) => hrefsIn(render(section)))
+  const rendered = [Section1, Section2, Section4, Section6, Section7].flatMap((section) => hrefsIn(render(section)))
   rendered.push(...hrefsIn(render(FirstAidPage, "/primeros-auxilios")))
   for (const topic of CONTROL_TOPICS) rendered.push(...hrefsIn(render(Section2, `/temas/salud-general?seccion=section-2&tema=${topic.id}`)))
   const fromData = [...QUESTIONS.map(({ action }) => action?.to), ...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to))].filter(Boolean)
@@ -230,12 +232,12 @@ test("the category is Cuidar mi salud, at /temas/salud-general (the address keep
   assert.equal(PHYSICAL_HEALTH.defaultSectionId, "section-2")
   assert.equal(PHYSICAL_HEALTH.to, "/temas/salud-general")
   assert.equal(PATHS.topic(HEALTH_GENERAL_SLUG), PHYSICAL_HEALTH.to)
-  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Calendario de vacunación", "Quiz"])
-  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ id }) => id), ["section-1", "section-2", "section-5", "section-4"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ title }) => title), ["Dónde atenderme", "Controles de salud", "Calendario de vacunación", "Alimentación y nutrición", "Actividad física y bienestar", "Quiz"])
+  assert.deepEqual(PHYSICAL_HEALTH.sections.map(({ id }) => id), ["section-1", "section-2", "section-5", "section-6", "section-7", "section-4"])
   // internal id kept on purpose: the places taxonomy and the category styles use it
   assert.equal(PHYSICAL_HEALTH.id, "salud-fisica")
   const visible = [PHYSICAL_HEALTH.title, PHYSICAL_HEALTH.description, PHYSICAL_HEALTH.subtitle, ...PHYSICAL_HEALTH.sections.map(({ title }) => title)]
-  for (const Section of [Section1, Section2, FirstAidPage, Section4]) visible.push(text(render(Section)))
+  for (const Section of [Section1, Section2, FirstAidPage, Section4, Section6, Section7]) visible.push(text(render(Section)))
   for (const guide of FIRST_AID_GUIDE_CONTENT) visible.push(JSON.stringify(guide))
   assert.ok(!/salud f[ií]sica/i.test(visible.join(" ")), "no 'Salud física' left on screen")
 })
@@ -317,8 +319,8 @@ test("a category with one section shows no section menu; two or three get tabs o
   assert.ok(!tabs.includes('aria-label="Secciones"') && !tabs.includes("Secciones de"), "no drawer")
   for (const { title } of threeSections.sections) assert.ok(tabs.includes(title), title)
   assert.equal([...tabs.matchAll(/lg:hidden/g)].length >= 1, true, "the tabs are for small screens")
-  // four sections (Cuidar mi salud, with the vaccination calendar): the drawer
-  assert.equal(PHYSICAL_HEALTH.sections.length, 4)
+  // six sections (Cuidar mi salud, with the vaccination calendar, food and physical activity): the drawer
+  assert.equal(PHYSICAL_HEALTH.sections.length, 6)
   const drawer = sidebar(PHYSICAL_HEALTH)
   assert.ok(drawer.includes('aria-label="Secciones"') && drawer.includes("Secciones de"))
 })

@@ -1,7 +1,7 @@
 import { PATHS, PLACE_FILTER_PARAM, PLACE_QUERY_PARAM } from "./paths"
 
 /** The quick filters of the places explorer that other pages link to (the explorer's own list is utils/places/filters) */
-export type CentersFilter = "medical" | "mental-health" | "sexual-health" | "vaccination" | "dentistry" | "emergency" | "animal-health"
+export type CentersFilter = "medical" | "mental-health" | "sexual-health" | "vaccination" | "dentistry" | "emergency" | "animal-health" | "nutrition-food" | "physical-activity"
 
 /**
  * Address of Centros de atención (/centros, the Mapa AuxiliAR), optionally with a filter and/or a search already
