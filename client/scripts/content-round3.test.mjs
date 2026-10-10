@@ -273,3 +273,15 @@ test("the other stages and the direct links keep working: eight stages, ?etapa= 
     assert.ok(new RegExp(`<h3[^>]*id="vaccination-stage-title"[^>]*>${title}</h3>`).test(html), id)
   }
 })
+
+test("presentation version: every stage says the calendar is in development and pending professional validation, and never presents it as validated", () => {
+  for (const { id } of calendar.VACCINATION_STAGES) {
+    const content = text(render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`))
+    assert.ok(content.includes("En desarrollo · pendiente de validación profesional"), id)
+    assert.ok(content.includes("todavía no fue revisado ni validado por profesionales de la salud") && content.includes("No es una herramienta clínica ni una indicación médica"), id)
+    // the only mention of validation is the negative one; nothing says it was approved or validated
+    assert.ok(!/(fue|est[aá]|ya)\s+(clínicamente\s+)?(validad[oa]|aprobad[oa]|verificad[oa] por profesionales)/i.test(content.replace("todavía no fue revisado ni validado", "")), id)
+    // the earlier warnings are still there
+    assert.ok(content.includes("deben confirmarse con tu equipo de salud o en el vacunatorio") && content.includes("Si el Ministerio de Salud cambia el calendario, vale su versión oficial"), id)
+  }
+})

@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react"
 import { useSearchParams } from "react-router"
-import { Info } from "lucide-react"
+import { Construction, Info } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { SourceList } from "@/components/health/SourceList"
 import type { Source } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
-import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
+import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT, DEVELOPMENT_NOTICE, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
 import type { VaccineGroup, VaccineItem } from "./Section5.constants"
 
 /** Query param with the open stage: /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
@@ -117,6 +117,13 @@ export default function Section5Content() {
 
   return (
     <div className="mt-2 flex max-w-4xl flex-col gap-6">
+      <div className="flex items-start gap-3 rounded-2xl border-2 border-brand bg-brand-soft p-4">
+        <Construction aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand" />
+        <div>
+          <p className="m-0 font-extrabold">{DEVELOPMENT_NOTICE.title}</p>
+          <p className="m-0 mt-1">{DEVELOPMENT_NOTICE.text}</p>
+        </div>
+      </div>
       <div>
         <p className="m-0">
           El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Elegí una etapa para ver qué vacunas indica el Ministerio de Salud de la Nación y en qué condiciones.

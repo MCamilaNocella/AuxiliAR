@@ -1,0 +1,96 @@
+OK   movil / → «Primeros auxilios» 86 palabras, overflow 0, errores 0
+OK   movil /centros → «Encontrar atención» 366 palabras, overflow 0, errores 0
+OK   movil /centros?vista=lista → «Encontrar atención» 366 palabras, overflow 0, errores 0
+OK   movil /centros?lugar=cesac-3 → «Encontrar atención» 793 palabras, overflow 0, errores 0
+OK   movil /centros?vista=lista&filtro=mental-health → «Encontrar atención» 145 palabras, overflow 0, errores 0
+OK   movil /centros?seccion=section-2 → «Encontrar atención» 553 palabras, overflow 0, errores 0
+OK   movil /mi-salud → «Mi salud» 40 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-1 → «Cuidar mi salud» 58 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-2&tema=vacunacion → «Cuidar mi salud» 118 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-4 → «Cuidar mi salud» 69 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5 → «Cuidar mi salud» 717 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=embarazo → «Cuidar mi salud» 717 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=recien-nacidos → «Cuidar mi salud» 437 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=hasta-un-ano → «Cuidar mi salud» 716 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=hasta-2-anios → «Cuidar mi salud» 858 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=5-anios → «Cuidar mi salud» 620 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=11-anios → «Cuidar mi salud» 629 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=15-a-64 → «Cuidar mi salud» 845 palabras, overflow 0, errores 0
+OK   movil /temas/salud-general?seccion=section-5&etapa=65-o-mas → «Cuidar mi salud» 660 palabras, overflow 0, errores 0
+OK   movil /temas/salud-mental?seccion=section-1 → «Salud mental» 246 palabras, overflow 0, errores 0
+OK   movil /temas/salud-mental?seccion=section-2 → «Salud mental» 237 palabras, overflow 0, errores 0
+OK   movil /temas/salud-mental?seccion=section-3 → «Salud mental» 201 palabras, overflow 0, errores 0
+OK   movil /temas/esi?seccion=section-1 → «Salud sexual y ESI» 340 palabras, overflow 0, errores 0
+OK   movil /temas/esi?seccion=section-2 → «Salud sexual y ESI» 1407 palabras, overflow 0, errores 0
+OK   movil /temas/esi?seccion=section-3 → «Salud sexual y ESI» 435 palabras, overflow 0, errores 0
+OK   movil /temas/animales?seccion=section-1 → «Salud animal» 1066 palabras, overflow 0, errores 0
+OK   movil /temas/animales?seccion=section-2 → «Salud animal» 216 palabras, overflow 0, errores 0
+OK   movil /temas/animales?seccion=section-3 → «Salud animal» 294 palabras, overflow 0, errores 0
+OK   movil /temas/animales?seccion=section-4 → «Salud animal» 399 palabras, overflow 0, errores 0
+OK   movil /primeros-auxilios → «Primeros auxilios» 80 palabras, overflow 0, errores 0
+OK   movil /primeros-auxilios/rcp → «RCP: la persona no responde y no respira» 648 palabras, overflow 0, errores 0
+OK   movil /primeros-auxilios/atragantamiento → «Atragantamiento» 504 palabras, overflow 0, errores 0
+OK   movil /primeros-auxilios/quemaduras → «Quemaduras» 221 palabras, overflow 0, errores 0
+OK   movil /recursos → «Más recursos» 646 palabras, overflow 0, errores 0
+OK   movil /recursos?seccion=section-2 → «Más recursos» 457 palabras, overflow 0, errores 0
+OK   movil /recursos?seccion=section-3 → «Más recursos» 105 palabras, overflow 0, errores 0
+OK   movil /recursos?seccion=section-4 → «Más recursos» 558 palabras, overflow 0, errores 0
+OK   movil /sobre-auxiliar → «Sobre AuxiliAR» 55 palabras, overflow 0, errores 0
+OK   movil /login → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   movil /auxi-modelos → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   movil /boceto-chat-personas → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   movil /ruta-que-no-existe → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   movil /temas/salud-fisica?seccion=section-2 → /temas/salud-general
+OK   movil /temas/salud-general?seccion=section-3 → /primeros-auxilios
+NAV movil «Encontrar atención» → /centros
+NAV movil «Mi salud» → /mi-salud
+NAV movil «Inicio» → /
+OK   escritorio / → «Primeros auxilios» 86 palabras, overflow 0, errores 0
+OK   escritorio /centros → «Encontrar atención» 238 palabras, overflow 0, errores 0
+OK   escritorio /centros?vista=lista → «Encontrar atención» 534 palabras, overflow 0, errores 0
+OK   escritorio /centros?lugar=cesac-3 → «Encontrar atención» 665 palabras, overflow 0, errores 0
+OK   escritorio /centros?vista=lista&filtro=mental-health → «Encontrar atención» 280 palabras, overflow 0, errores 0
+OK   escritorio /centros?seccion=section-2 → «Encontrar atención» 553 palabras, overflow 0, errores 0
+OK   escritorio /mi-salud → «Mi salud» 40 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-1 → «Cuidar mi salud» 67 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-2&tema=vacunacion → «Cuidar mi salud» 127 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-4 → «Cuidar mi salud» 78 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5 → «Cuidar mi salud» 726 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=embarazo → «Cuidar mi salud» 726 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=recien-nacidos → «Cuidar mi salud» 446 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=hasta-un-ano → «Cuidar mi salud» 725 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=hasta-2-anios → «Cuidar mi salud» 867 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=5-anios → «Cuidar mi salud» 629 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=11-anios → «Cuidar mi salud» 638 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=15-a-64 → «Cuidar mi salud» 854 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-general?seccion=section-5&etapa=65-o-mas → «Cuidar mi salud» 669 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-mental?seccion=section-1 → «Salud mental» 246 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-mental?seccion=section-2 → «Salud mental» 237 palabras, overflow 0, errores 0
+OK   escritorio /temas/salud-mental?seccion=section-3 → «Salud mental» 201 palabras, overflow 0, errores 0
+OK   escritorio /temas/esi?seccion=section-1 → «Salud sexual y ESI» 340 palabras, overflow 0, errores 0
+OK   escritorio /temas/esi?seccion=section-2 → «Salud sexual y ESI» 1407 palabras, overflow 0, errores 0
+OK   escritorio /temas/esi?seccion=section-3 → «Salud sexual y ESI» 435 palabras, overflow 0, errores 0
+OK   escritorio /temas/animales?seccion=section-1 → «Salud animal» 1082 palabras, overflow 0, errores 0
+OK   escritorio /temas/animales?seccion=section-2 → «Salud animal» 232 palabras, overflow 0, errores 0
+OK   escritorio /temas/animales?seccion=section-3 → «Salud animal» 310 palabras, overflow 0, errores 0
+OK   escritorio /temas/animales?seccion=section-4 → «Salud animal» 415 palabras, overflow 0, errores 0
+OK   escritorio /primeros-auxilios → «Primeros auxilios» 80 palabras, overflow 0, errores 0
+OK   escritorio /primeros-auxilios/rcp → «RCP: la persona no responde y no respira» 648 palabras, overflow 0, errores 0
+OK   escritorio /primeros-auxilios/atragantamiento → «Atragantamiento» 504 palabras, overflow 0, errores 0
+OK   escritorio /primeros-auxilios/quemaduras → «Quemaduras» 221 palabras, overflow 0, errores 0
+OK   escritorio /recursos → «Más recursos» 654 palabras, overflow 0, errores 0
+OK   escritorio /recursos?seccion=section-2 → «Más recursos» 465 palabras, overflow 0, errores 0
+OK   escritorio /recursos?seccion=section-3 → «Más recursos» 113 palabras, overflow 0, errores 0
+OK   escritorio /recursos?seccion=section-4 → «Más recursos» 566 palabras, overflow 0, errores 0
+OK   escritorio /sobre-auxiliar → «Sobre AuxiliAR» 55 palabras, overflow 0, errores 0
+OK   escritorio /login → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   escritorio /auxi-modelos → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   escritorio /boceto-chat-personas → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   escritorio /ruta-que-no-existe → 404 propia (prototipo no expuesto en la versión de presentación)
+OK   escritorio /temas/salud-fisica?seccion=section-2 → /temas/salud-general
+OK   escritorio /temas/salud-general?seccion=section-3 → /primeros-auxilios
+NAV escritorio «Encontrar atención» → /centros
+NAV escritorio «Mi salud» → /mi-salud
+NAV escritorio «Inicio» → /
+
+FALLAS: 0
