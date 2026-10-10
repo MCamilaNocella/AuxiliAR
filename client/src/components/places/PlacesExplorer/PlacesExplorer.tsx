@@ -7,7 +7,7 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PATHS, PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyGuideOf, emptyStateOf, planLoad, provinceLabel, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyGuideOf, emptyStateOf, planLoad, provinceLabel, offeredQuickFilters, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
@@ -61,15 +61,17 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
   // On phones the filters live in a panel that opens on demand; on large screens they are always there
   const [filtersOpen, setFiltersOpen] = useState(false)
 
-  // What is asked, from the URL. A quick filter this context doesn't offer is ignored
+  // What is asked, from the URL
   const asked = useMemo(() => placeQueryFromParams(searchParams), [searchParams])
-  const query: PlaceQuery = useMemo(() => (asked.filterId === "all" || filters.includes(asked.filterId) ? asked : { ...asked, filterId: "all" }), [asked, filters])
 
   // Which files to download is decided from the coverage index: only the chosen province, or every covered one if they are few
-  const plan = useMemo(() => planLoad({ day, province: query.province }), [day, query.province])
+  const plan = useMemo(() => planLoad({ day, province: asked.province }), [day, asked.province])
   const state = usePlacesOf(plan.toLoad)
   const places = state.status === "ready" ? state.places : NO_PLACES
   const allEntries = useMemo(() => selectPlaces(places, day, EMPTY_PLACE_QUERY, scope), [places, day, scope])
+  // A quick filter this context doesn't offer, or that has no place with a service of it, is ignored
+  const offered = useMemo(() => offeredQuickFilters(filters, allEntries), [filters, allEntries])
+  const query: PlaceQuery = useMemo(() => (asked.filterId === "all" || offered.includes(asked.filterId) ? asked : { ...asked, filterId: "all" }), [asked, offered])
   const results = useMemo(() => selectPlaces(places, day, query, scope), [places, day, query, scope])
   const facets = useMemo(() => getPlaceFacets(places, day, query, scope), [places, day, query, scope])
   // Where there are verified places at all, whatever else is chosen: it doesn't move with the search

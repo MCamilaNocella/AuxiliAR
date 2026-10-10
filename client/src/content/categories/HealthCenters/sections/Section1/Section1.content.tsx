@@ -5,7 +5,7 @@ import type { PlaceFilterId } from "@/utils/places"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /** The quick filters of the map: every kind of care there is data for */
-const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency", "animal-health"]
+const FILTERS: PlaceFilterId[] = ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency", "animal-health", "nutrition-food", "physical-activity"]
 
 /**
  * Centros de atención · Mapa AuxiliAR: the one map and list of places. No scope: every category of care shows up, but only

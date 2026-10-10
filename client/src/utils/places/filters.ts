@@ -10,14 +10,26 @@ export type PlaceEntry = {
   services: ResolvedService[]
 }
 
-export type PlaceFilterId = "all" | "medical" | "mental-health" | "sexual-health" | "vaccination" | "dentistry" | "emergency" | "animal-health"
+export type PlaceFilterId =
+  | "all"
+  | "medical"
+  | "mental-health"
+  | "sexual-health"
+  | "vaccination"
+  | "dentistry"
+  | "emergency"
+  | "animal-health"
+  | "nutrition-food"
+  | "physical-activity"
 
 /**
  * The simple filters people see. Each one groups service types (taxonomy.serviceTypes); "all" has none.
  * Human care and animal care never share a group: the types of the category "animales" are only in "animal-health"
  * (and in "Todos"), and no other group has one of them (the tests of places-animal check it).
+ * `onlyWithData`: the filter is offered only while some place has a service of it (see offeredQuickFilters); a link to it
+ * with nothing to show is ignored instead of promising results.
  */
-export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceType[] | null }[] = [
+export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceType[] | null, onlyWithData?: true }[] = [
   { id: "all", label: "Todos", types: null },
   { id: "medical", label: "Atención médica", types: ["primary-care", "specialty-care", "ophthalmology", "diagnostic-imaging", "laboratory", "pharmacy"] },
   { id: "mental-health", label: "Salud mental", types: ["mental-health-care", "mental-health-emergency"] },
@@ -39,6 +51,9 @@ export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceTy
   { id: "dentistry", label: "Odontología", types: ["dentistry"] },
   { id: "emergency", label: "Guardias", types: ["emergency-room", "mental-health-emergency"] },
   { id: "animal-health", label: "Salud animal", types: ["rabies-vaccination", "spaying-neutering", "veterinary-care", "zoonosis"] },
+  // Subsections of Salud general (category salud-fisica); "medical" does not include them
+  { id: "nutrition-food", label: "Alimentación y nutrición", types: ["nutrition-care", "food-assistance", "food-program-enrollment"], onlyWithData: true },
+  { id: "physical-activity", label: "Actividad física y bienestar", types: ["physical-activity"], onlyWithData: true },
 ]
 
 /**
@@ -68,6 +83,10 @@ const scopeTypes = ({ category, serviceTypes }: PlacesScope): Set<ServiceType> |
 
 /** Whether any of the places has a service of that quick filter: a filter with none promises no results (it is not offered, and a link to it says so) */
 export const quickFilterHasData = (filterId: PlaceFilterId, entries: readonly PlaceEntry[]) => entries.some(({ services }) => services.some((service) => matchesFilter(service, filterId)))
+
+/** The quick filters a context offers: those of `candidates` that must have data (onlyWithData) are left out while no place has a service of them */
+export const offeredQuickFilters = (candidates: readonly PlaceFilterId[], entries: readonly PlaceEntry[]): PlaceFilterId[] =>
+  candidates.filter((id) => !PLACE_FILTERS.find((filter) => filter.id === id)?.onlyWithData || quickFilterHasData(id, entries))
 
 const matchesFilter = (service: ResolvedService, filterId: PlaceFilterId) => {
   const types = PLACE_FILTERS.find(({ id }) => id === filterId)?.types

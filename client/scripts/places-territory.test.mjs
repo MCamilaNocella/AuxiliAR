@@ -188,7 +188,8 @@ test("load plan: opening /centros downloads the covered files only, and a provin
 test("the explorer does not download the other provinces: it asks the plan, and never lists the files itself", async () => {
   const { readFile } = await import("node:fs/promises")
   const source = await readFile(join(root, "src/components/places/PlacesExplorer/PlacesExplorer.tsx"), "utf8")
-  assert.match(source, /planLoad\(\{ day, province: query\.province \}\)/)
+  // The province comes from the URL query: the quick filters are decided after the places are loaded (offeredQuickFilters), so they cannot be its source
+  assert.match(source, /planLoad\(\{ day, province: asked\.province \}\)/)
   assert.match(source, /usePlacesOf\(plan\.toLoad\)/)
   assert.ok(!source.includes("PROVINCES_WITH_PLACE_FILES"))
 })
