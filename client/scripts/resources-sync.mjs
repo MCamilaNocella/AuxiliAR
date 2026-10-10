@@ -7,16 +7,19 @@
  *   npm run resources:check   validate and fail if the server copy is out of date (nothing is written)
  *
  * It also generates client/src/data/resources/coverage.json: a small index of what each places/<province>.json has (how many
- * places, which categories, services and divisions, until when something is current). The app reads it to know where there are
- * places WITHOUT downloading the files. Like the server copy, it is generated from the places, never edited by hand.
+ * places, which categories, services and divisions, until when something is current, and until when the map can show something
+ * for each quick filter: see resources-visibility.mjs). The app reads it to know where there are places WITHOUT downloading the
+ * files. Like the server copy, it is generated from the places, never edited by hand. All generated files are written together or
+ * not at all (writeAllOrNothing).
  *
  * The edited source is always client/src/data/resources (lines/ and places/, one Base AuxiliAR). The server copy is never edited by hand.
  */
-import { mkdir, readdir, readFile, writeFile } from "node:fs/promises"
+import { mkdir, readdir, readFile, rename, rm, writeFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath, pathToFileURL } from "node:url"
 import { derivedCategories, resolveResource } from "./resources-resolve.mjs"
 import { validateDataset } from "./resources-validate.mjs"
+import { buildQuickFilterCoverage, loadApp } from "./resources-visibility.mjs"
 
 const clientRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 
@@ -178,7 +181,7 @@ export const reviewWarnings = (resources, today, days = 30) => {
     .map((resource) => `la línea ${resource.id} ${resource.verification.nextReviewDue <= today ? "venció" : "vence"} el ${resource.verification.nextReviewDue}: hay que volver a verificarla (sigue mostrándose)`)
 }
 
-const COVERAGE_NOTICE ="GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy: eso se decide con los datos."
+const COVERAGE_NOTICE ="GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior."
 
 const later = (a, b) => (a === null ? b : b === null ? a : a > b ? a : b)
 
@@ -201,7 +204,7 @@ const currentUntilOf = (place) => {
  * The coverage index: for each province with a places file, what its places have. Counts every place of the file (not only
  * the current ones), so the numbers are for planning what to download, never for showing people. Deterministic and sorted.
  */
-export const buildCoverage = (placeFiles, taxonomy) => {
+export const buildCoverage = (placeFiles, taxonomy, app = null) => {
   const provinces = {}
   for (const { name, data } of [...placeFiles].sort((a, b) => a.name.localeCompare(b.name, "en"))) {
     const code = /places\/(.+)\.json$/.exec(name)?.[1]?.toUpperCase()
@@ -213,6 +216,8 @@ export const buildCoverage = (placeFiles, taxonomy) => {
       categories: [...new Set(places.flatMap((place) => derivedCategories(place, taxonomy)))].sort(),
       serviceTypes: [...new Set(places.flatMap((place) => place.services.map((service) => service.type)))].sort(),
       divisions: [...new Set(places.map((place) => place.address?.department).filter(Boolean))].sort((a, b) => a.localeCompare(b, "es", { numeric: true })),
+      // What the map can show for each quick filter, until when: decided with the app's own rules (see resources-visibility.mjs). Without the app: not generated
+      ...(app ? { quickFilters: buildQuickFilterCoverage(places, app) } : {}),
     }
   }
   return `${JSON.stringify({ schemaVersion: taxonomy.schemaVersion, notice: COVERAGE_NOTICE, provinces }, null, 2)}\n`
@@ -232,6 +237,32 @@ const loadCategoryIds = async () => {
 
 /** Git on Windows may check files out with CRLF: line endings don't count as a difference */
 const normalize = (text) => text.replace(/\r\n/g, "\n")
+
+/**
+ * Writes several generated files so that either all of them are updated or none is touched: each one is first written next to
+ * its place under a temporary name; only when every one is ready are they moved over the real ones. A failure while preparing
+ * (a folder that cannot be created, a full disk) removes the temporary files and leaves every real file as it was.
+ */
+export const writeAllOrNothing = async (files) => {
+  const staged = []
+  try {
+    for (const [file, content] of files) {
+      await mkdir(dirname(file), { recursive: true })
+      const temp = `${file}.${process.pid}.tmp`
+      staged.push([temp, file])
+      await writeFile(temp, content)
+    }
+  } catch (error) {
+    await Promise.all(staged.map(([temp]) => rm(temp, { force: true })))
+    throw error
+  }
+  try {
+    for (const [temp, file] of staged) await rename(temp, file)
+  } finally {
+    // Only what was not moved is still there
+    await Promise.all(staged.map(([temp]) => rm(temp, { force: true })))
+  }
+}
 
 /**
  * mode: "sync" writes the server copy, "check" only compares it.
@@ -255,6 +286,8 @@ export const run = async ({
   safetyRulesFile = null,
   /** Today (AAAA-MM-DD), to warn about lines whose review is near */
   today = new Date().toISOString().slice(0, 10),
+  /** The app's own code, to compute what the map can show per quick filter (see resources-visibility.mjs); null: that part of the index is not generated */
+  app = null,
 } = {}) => {
   const [schema, taxonomy, lines, places] = await Promise.all([
     readJson(schemaFile),
@@ -272,7 +305,7 @@ export const run = async ({
   }
 
   const output = buildServerCopy(resources, taxonomy)
-  const coverage = buildCoverage(places, taxonomy)
+  const coverage = buildCoverage(places, taxonomy, app)
   const numbers = numbersFile && numbersTemplateFile ? buildNumbersDocument(resources, await readFile(numbersTemplateFile, "utf8").then(normalize)) : null
   const warnings = reviewWarnings(resources, today)
 
@@ -307,24 +340,19 @@ export const run = async ({
     return { ok: true, errors: [], output, coverage, numbers, warnings }
   }
 
-  await mkdir(dirname(outFile), { recursive: true })
-  await writeFile(outFile, output)
-  if (coverageFile) {
-    await mkdir(dirname(coverageFile), { recursive: true })
-    await writeFile(coverageFile, coverage)
-  }
-  if (numbers !== null) {
-    await mkdir(dirname(numbersFile), { recursive: true })
-    await writeFile(numbersFile, numbers)
-  }
+  // Everything is computed above; nothing is written unless every file could be prepared (see writeAllOrNothing)
+  await writeAllOrNothing([[outFile, output], ...(coverageFile ? [[coverageFile, coverage]] : []), ...(numbers !== null ? [[numbersFile, numbers]] : [])])
   return { ok: true, errors: [], output, coverage, numbers, warnings }
 }
 
 // Command line (not when imported by the tests)
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const mode = process.argv.includes("--check") ? "check" : "sync"
+  let loaded = null
   try {
-    const result = await run({ mode, categoryIds: await loadCategoryIds(), coverageFile: DEFAULT_PATHS.coverageFile, numbersTemplateFile: DEFAULT_PATHS.numbersTemplateFile, numbersFile: DEFAULT_PATHS.numbersFile, safetyRulesFile: DEFAULT_PATHS.safetyRulesFile })
+    // The app's own rules decide what the index says the map can show: without them nothing is generated
+    loaded = await loadApp()
+    const result = await run({ mode, categoryIds: await loadCategoryIds(), app: loaded.app, coverageFile: DEFAULT_PATHS.coverageFile, numbersTemplateFile: DEFAULT_PATHS.numbersTemplateFile, numbersFile: DEFAULT_PATHS.numbersFile, safetyRulesFile: DEFAULT_PATHS.safetyRulesFile })
     if (!result.ok) {
       console.error(`resources:${mode} — hay problemas:\n${result.errors.map((error) => `  - ${error}`).join("\n")}`)
       process.exitCode = 1
@@ -336,5 +364,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   } catch (error) {
     console.error(`resources:${mode} — ${error.message}`)
     process.exitCode = 1
+  } finally {
+    await loaded?.close()
   }
 }

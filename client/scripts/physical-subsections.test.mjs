@@ -27,7 +27,6 @@ const { SUBSECTION_ENTRIES } = await vite.ssrLoadModule("/src/content/categories
 const Section2 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.content.tsx")).default
 const Section6 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section6/Section6.content.tsx")).default
 const Section7 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section7/Section7.content.tsx")).default
-const { mayHaveServices } = await vite.ssrLoadModule("/src/components/health/MapAccess/mayHaveServices.ts")
 const { PLACE_FILTERS } = await vite.ssrLoadModule("/src/utils/places/filters.ts")
 const { centersLink } = await vite.ssrLoadModule("/src/router/centersLink.ts")
 
@@ -132,22 +131,15 @@ test("the way to the map: with nothing to show it says so and opens the general 
     assert.ok(hrefsIn(html).includes("/centros"), `${name}: the link is the general map`)
     assert.ok(!hrefsIn(html).some((href) => href.includes(`filtro=${filter}`)), `${name}: no filter in the links`)
   }
-  // with a covered province that has a service of the filter, the button opens the map with it
-  const covered = { "AR-X": { places: 3, currentUntil: "2099-01-01", categories: ["salud-fisica"], serviceTypes: ["nutrition-care", "primary-care"], divisions: [] } }
-  assert.equal(mayHaveServices(["nutrition-care", "food-assistance"], "2026-10-10", covered), true)
-  assert.equal(mayHaveServices(["physical-activity"], "2026-10-10", covered), false)
-  // an expired or empty province never counts
-  assert.equal(mayHaveServices(["nutrition-care"], "2100-01-01", covered), false)
-  assert.equal(mayHaveServices(["nutrition-care"], "2026-10-10", { "AR-X": { ...covered["AR-X"], places: 0 } }), false)
-  assert.equal(mayHaveServices(["nutrition-care"], "2026-10-10", { "AR-X": { ...covered["AR-X"], currentUntil: null } }), false)
+  // the three states of the button, against made-up indexes, are in places-coverage-index.test.mjs
   assert.equal(centersLink({ filter: "nutrition-food" }), "/centros?filtro=nutrition-food")
   assert.equal(centersLink({ filter: "physical-activity" }), "/centros?filtro=physical-activity")
 })
 
-test("each page opens the filter of the map that groups its service types", () => {
+test("each page opens a quick filter of the map that is offered only while it has data", () => {
   for (const { name, data, filter } of pages) {
     assert.equal(data.mapFilter, filter, name)
-    assert.deepEqual(data.mapServiceTypes, PLACE_FILTERS.find(({ id }) => id === filter).types, `${name}: same types as the filter`)
+    assert.ok(PLACE_FILTERS.find(({ id }) => id === filter)?.onlyWithData, `${name}: the filter exists and is offered only with data`)
   }
 })
 
@@ -157,6 +149,7 @@ test("Salud general still loads no explorer, map or places in these pages", () =
     "content/categories/PhysicalHealth/sections/Section6/Section6.content.tsx",
     "content/categories/PhysicalHealth/sections/Section7/Section7.content.tsx",
     "components/health/MapAccess/MapAccess.tsx",
+    "components/health/MapAccess/quickFilterAvailability.ts",
   ]
   for (const file of files) assert.ok(!/components\/places|utils\/places|usePlaces|mapTiles|leaflet/i.test(readFileSync(join(root, "src", file), "utf8")), file)
 })

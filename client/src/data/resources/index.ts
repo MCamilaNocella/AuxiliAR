@@ -44,8 +44,16 @@ export const peekPlaces = (province: ProvinceCode): readonly Resource[] | undefi
 /**
  * What each places file has, WITHOUT downloading it: client/src/data/resources/coverage.json, generated from the places
  * by resources:sync (never edited; resources:check fails if it is out of date). It counts every place of the file, the
- * current and the expired, so it is for planning what to download - never for numbers shown to people.
+ * current and the expired, so it is for planning what to download - never for numbers shown to people. The one exception is
+ * `quickFilters`, which is computed with the explorer's own rules (see scripts/resources-visibility.mjs).
  */
+export type QuickFilterCoverage = {
+  /** The first day on which no place is visible in the list any more: visible while today is before it */
+  list: string
+  /** The same for the places with verified coordinates (the pins); absent when none has them. Never later than `list` */
+  map?: string
+}
+
 export type ProvinceCoverage = {
   places: number
   /** The day from which nothing in the file can be current anymore (null: nothing was verified) */
@@ -54,6 +62,8 @@ export type ProvinceCoverage = {
   serviceTypes: ServiceType[]
   /** Divisions (comuna, partido…) the places are in */
   divisions: string[]
+  /** What the map can show for each quick filter (by id of utils/places/filters), until when. A filter with nothing is absent */
+  quickFilters?: Record<string, QuickFilterCoverage>
 }
 
 export const COVERAGE = coverageIndex.provinces as Partial<Record<ProvinceCode, ProvinceCoverage>>

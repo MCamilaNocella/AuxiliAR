@@ -54,6 +54,5 @@ export const PHYSICAL_ACTIVITY: Subsection = {
   ],
   mapFilter: "physical-activity",
   mapTopic: "actividad física y bienestar",
-  mapServiceTypes: ["physical-activity"],
   sources: [{ organization: "Organización Mundial de la Salud", title: "Directrices sobre actividad física y hábitos sedentarios (2020)" }],
 }

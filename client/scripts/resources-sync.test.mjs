@@ -3,14 +3,14 @@
  * They use the real schema and taxonomy, with fixtures only for the data: nothing here is a real help line or place.
  */
 import assert from "node:assert/strict"
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
 import { derivedCategories, resolveResource, resolveService } from "./resources-resolve.mjs"
 import { assertSchemaSupported, dialKey, isCalendarDate, validateDataset, validateTaxonomy } from "./resources-validate.mjs"
-import { DEFAULT_PATHS, buildCoverage, buildServerCopy, run } from "./resources-sync.mjs"
+import { DEFAULT_PATHS, buildCoverage, buildServerCopy, run, writeAllOrNothing } from "./resources-sync.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const fixtureLines = join(here, "__fixtures__/resources/lines")
@@ -407,8 +407,12 @@ test("the TypeScript types list exactly the values of the taxonomy", async () =>
  */
 const { createServer } = await import("vite")
 const vite = await createServer({ root: resolve(here, ".."), logLevel: "error", server: { middlewareMode: true }, appType: "custom" })
-after(() => vite.close())
 const app = await vite.ssrLoadModule("/src/data/resources/index.ts")
+// The same pieces of the app the sync uses to say what the map can show (see resources-visibility.mjs)
+const placesApp = await vite.ssrLoadModule("/src/utils/places/index.ts")
+const visibility = { selectPlaces: placesApp.selectPlaces, PLACE_FILTERS: placesApp.PLACE_FILTERS, EMPTY_PLACE_QUERY: placesApp.EMPTY_PLACE_QUERY, isMappable: app.isMappable }
+// Registered after every module is loaded: while the tests above run, a hook registered earlier could close the server in the middle of a load
+after(() => vite.close())
 
 const json = (value) => JSON.parse(JSON.stringify(value))
 const realPlaces = (await readJson(join(DEFAULT_PATHS.sourceDir, "places/ar-c.json"))).resources
@@ -477,8 +481,114 @@ const realPlaceFiles = async () => {
 test("coverage index: the real file is exactly what the places generate, not a copy typed by hand", async () => {
   const files = await realPlaceFiles()
   const onDisk = (await readFile(join(DEFAULT_PATHS.sourceDir, "coverage.json"), "utf8")).replace(/\r\n/g, "\n")
-  assert.equal(onDisk, buildCoverage(files, taxonomy))
+  // with what the map can show per quick filter, computed with the app's own rules
+  assert.equal(onDisk, buildCoverage(files, taxonomy, visibility))
   assert.match(JSON.parse(onDisk).notice, /No editar a mano/)
+})
+
+test("coverage index: quickFilters are only written when the app's rules are given, and every filter is covered", async () => {
+  const files = await realPlaceFiles()
+  for (const province of Object.values(JSON.parse(buildCoverage(files, taxonomy)).provinces)) assert.equal(province.quickFilters, undefined)
+  const withRules = JSON.parse(buildCoverage(files, taxonomy, visibility)).provinces
+  const filterIds = placesApp.PLACE_FILTERS.map(({ id }) => id)
+  for (const province of Object.values(withRules)) {
+    // an entry only for a filter that has something, in the order of the filters; the map date never goes past the list's
+    const keys = Object.keys(province.quickFilters)
+    assert.deepEqual(keys, filterIds.filter((id) => keys.includes(id)))
+    for (const { list, map } of Object.values(province.quickFilters)) {
+      assert.match(list, /^\d{4}-\d{2}-\d{2}$/)
+      if (map !== undefined) assert.ok(map <= list)
+    }
+  }
+})
+
+test("coverage index: the command line loads the app's own code, and finds the real index up to date", async () => {
+  // In its own process (as npm run resources:check does): two Vite servers do not share one process well
+  const { execFile } = await import("node:child_process")
+  const { promisify } = await import("node:util")
+  const { stdout } = await promisify(execFile)(process.execPath, [join(here, "resources-sync.mjs"), "--check"], { cwd: resolve(here, "..") })
+  assert.match(stdout, /resources:check — ok/)
+})
+
+test("check notices a hand-edited quickFilters date, and sync writes it back", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "resources-"))
+  // The fixtures have no place with a documented gratuity (nothing for the map to show), so the real places of CABA are copied
+  const placesDir = join(dir, "places")
+  await mkdir(placesDir, { recursive: true })
+  await writeFile(join(placesDir, "ar-c.json"), JSON.stringify(await readJson(join(DEFAULT_PATHS.sourceDir, "places/ar-c.json"))))
+  const options = { linesDir: fixtureLines, placesDir, outFile: join(dir, "data/resources.json"), coverageFile: join(dir, "coverage.json"), app: visibility }
+  try {
+    assert.equal((await run({ ...options, mode: "sync" })).ok, true)
+    assert.equal((await run({ ...options, mode: "check" })).ok, true)
+    const text = await readFile(options.coverageFile, "utf8")
+    assert.ok(text.includes('"quickFilters"') && text.includes('"list"'), "the index has the filters")
+    // somebody makes the map promise one more year
+    await writeFile(options.coverageFile, text.replace(/("list": ")(\d{4})/, (_, start, year) => `${start}${Number(year) + 1}`))
+    const stale = await run({ ...options, mode: "check" })
+    assert.equal(stale.ok, false)
+    assert.match(stale.errors[0], /índice de cobertura.*resources:sync/)
+    assert.equal((await run({ ...options, mode: "sync" })).ok, true)
+    assert.equal((await run({ ...options, mode: "check" })).ok, true)
+  } finally {
+    await rm(dir, { recursive: true, force: true })
+  }
+})
+
+/* ── Nothing is left half written ── */
+
+const readOrNull = (file) => readFile(file, "utf8").catch(() => null)
+
+test("if the visibility cannot be computed, no generated file is written or changed", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "resources-"))
+  const options = { linesDir: fixtureLines, placesDir: fixturePlaces, outFile: join(dir, "data/resources.json"), coverageFile: join(dir, "coverage.json") }
+  try {
+    // an old index and server copy are there
+    await mkdir(join(dir, "data"), { recursive: true })
+    await writeFile(options.outFile, "SERVER COPY ANTERIOR")
+    await writeFile(options.coverageFile, "ÍNDICE ANTERIOR")
+    const broken = { ...visibility, selectPlaces: () => { throw new Error("las reglas fallaron") } }
+    await assert.rejects(run({ ...options, mode: "sync", app: broken }), /las reglas fallaron/)
+    assert.equal(await readOrNull(options.outFile), "SERVER COPY ANTERIOR")
+    assert.equal(await readOrNull(options.coverageFile), "ÍNDICE ANTERIOR")
+    // an invalid dataset is not written either (a place with a service type that does not exist)
+    const badPlaces = join(dir, "places")
+    await mkdir(badPlaces, { recursive: true })
+    const bad = structuredClone(fixtureFiles[1].data)
+    bad.resources[CESAC - 3].services[0].type = "tipo-inventado"
+    await writeFile(join(badPlaces, "ar-c.json"), JSON.stringify(bad))
+    const invalid = await run({ ...options, placesDir: badPlaces, mode: "sync", app: visibility })
+    assert.equal(invalid.ok, false)
+    assert.equal(await readOrNull(options.coverageFile), "ÍNDICE ANTERIOR")
+    assert.equal(await readOrNull(options.outFile), "SERVER COPY ANTERIOR")
+  } finally {
+    await rm(dir, { recursive: true, force: true })
+  }
+})
+
+test("writing several generated files is all or nothing: a file that cannot be prepared leaves every real one as it was", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "resources-"))
+  try {
+    const first = join(dir, "a/first.json")
+    const second = join(dir, "b/second.json")
+    await mkdir(join(dir, "a"), { recursive: true })
+    await writeFile(first, "ANTES A")
+    // the third path is inside a FILE, so its folder cannot be created
+    const blocker = join(dir, "bloqueo")
+    await writeFile(blocker, "soy un archivo")
+    await assert.rejects(writeAllOrNothing([[first, "NUEVO A"], [second, "NUEVO B"], [join(blocker, "x/third.json"), "NUEVO C"]]))
+    assert.equal(await readOrNull(first), "ANTES A")
+    assert.equal(await readOrNull(second), null)
+    const { readdir } = await import("node:fs/promises")
+    assert.deepEqual((await readdir(join(dir, "a"))).sort(), ["first.json"], "no temporary file is left")
+    assert.deepEqual(await readdir(join(dir, "b")), [], "no temporary file is left")
+    // when everything can be prepared, everything is written
+    await writeAllOrNothing([[first, "NUEVO A"], [second, "NUEVO B"]])
+    assert.equal(await readOrNull(first), "NUEVO A")
+    assert.equal(await readOrNull(second), "NUEVO B")
+    assert.deepEqual((await readdir(join(dir, "a"))).sort(), ["first.json"])
+  } finally {
+    await rm(dir, { recursive: true, force: true })
+  }
 })
 
 test("coverage index: each province agrees with its places - counts, categories, services, divisions and review dates", async () => {

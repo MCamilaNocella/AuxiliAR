@@ -55,7 +55,6 @@ export const FOOD_NUTRITION: Subsection = {
   ],
   mapFilter: "nutrition-food",
   mapTopic: "alimentación y nutrición",
-  mapServiceTypes: ["nutrition-care", "food-assistance", "food-program-enrollment"],
   sources: [
     { organization: "Ministerio de Salud de la Nación", title: "Guías Alimentarias para la Población Argentina" },
     { organization: "Boletín Oficial de la República Argentina", title: "Ley 27.642 de Promoción de la Alimentación Saludable" },
