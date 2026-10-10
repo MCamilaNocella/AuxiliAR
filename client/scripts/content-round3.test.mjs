@@ -226,3 +226,50 @@ test("every 'vaccine: dose' line of each official stage page is in the stage of 
   }
   assert.ok(checked >= 45, `checked ${checked}`)
 })
+
+test("15 a 64 años reads in accessible blocks: the first one open, the rest closed, and ALL the text is still in the page", () => {
+  const html = render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=15-a-64")
+  const content = text(html)
+  // 5 disclosures: all the people of the age (open), antigripal, fiebre hemorrágica, fiebre amarilla, health workers
+  assert.equal([...html.matchAll(/<details/g)].length, 5)
+  assert.equal([...html.matchAll(/<details open=""/g)].length, 1)
+  for (const title of ["Vacunas para todas las personas de esta edad", "Antigripal", "Fiebre hemorrágica argentina", "Fiebre amarilla", "Si trabajás en el sistema de salud"]) {
+    assert.ok(content.includes(title), title)
+  }
+  // closed or not, nothing was dropped
+  for (const piece of [
+    "Doble bacteriana", "toda persona a partir de los 5 años debe acreditar 2 dosis", "serología IgG positiva", "nacidas antes de 1965", "Quien no tiene el esquema lo inicia o completa con 3 dosis",
+    "Los lineamientos técnicos 2026 indican una dosis para las personas de 9 a 64 años", "Grupos incluidos en esta etapa", "Factores de riesgo, en resumen", "pueden presentar orden médica o documentación",
+    "ciertas jurisdicciones de Buenos Aires, Córdoba, Santa Fe y La Pampa", "De 2 a 59 años", "mesa de entradas, limpieza, seguridad", "Quienes cuidan a menores de 12 meses reciben un refuerzo cada 5 años",
+    "Para confirmar en la fuente oficial o en el vacunatorio", "Fuentes oficiales",
+  ]) {
+    assert.ok(content.includes(piece), piece)
+  }
+  assert.ok(content.split(" ").length > 1000)
+  // the sources of the stage are all there
+  for (const { url } of calendar.VACCINATION_STAGES.find(({ id }) => id === "15-a-64").sources) assert.ok(hrefs(html).includes(url), url)
+})
+
+test("every box «Para confirmar» says WHICH aspect to confirm (topic) and WHAT to confirm, and adds no clinical indication of its own", () => {
+  for (const stage of calendar.VACCINATION_STAGES) {
+    const html = render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${stage.id}`)
+    const notes = [...html.matchAll(/role="note"/g)].length
+    assert.equal(notes, stage.toConfirm?.length ? 1 : 0, stage.id)
+    for (const { topic, what } of stage.toConfirm ?? []) {
+      assert.ok(topic.length > 3 && what.length > 30, `${stage.id}: ${topic}`)
+      assert.ok(text(html).includes(`${topic}: ${what}`), `${stage.id}: the topic goes before what to confirm`)
+      // what to confirm points to a place (the official source, the vacunatorio or the health team) or names the sources that differ
+      assert.ok(/vacunatorio|fuente|p[aá]gina oficial|equipo de salud|fuentes oficiales|afiche oficial/i.test(what), `${stage.id}: ${topic}: no place to confirm`)
+    }
+  }
+  const html = render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=15-a-64")
+  assert.ok(text(html).includes("Estos puntos no se pueden resumir de forma segura"))
+})
+
+test("the other stages and the direct links keep working: eight stages, ?etapa= opens each one, none is empty", () => {
+  for (const { id, title } of calendar.VACCINATION_STAGES) {
+    const html = render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`)
+    assert.ok(text(html).split(" ").length > 200, id)
+    assert.ok(new RegExp(`<h3[^>]*id="vaccination-stage-title"[^>]*>${title}</h3>`).test(html), id)
+  }
+})

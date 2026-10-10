@@ -2,11 +2,12 @@ import { useEffect, useRef } from "react"
 import { useSearchParams } from "react-router"
 import { Info } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
+import { Disclosure } from "@/components/health/Disclosure"
 import { SourceList } from "@/components/health/SourceList"
 import type { Source } from "@/components/health/SourceList"
 import { centersLink } from "@/router/centersLink"
 import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
-import type { VaccineGroup } from "./Section5.constants"
+import type { VaccineGroup, VaccineItem } from "./Section5.constants"
 
 /** Query param with the open stage: /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
 const STAGE_PARAM = "etapa"
@@ -14,32 +15,74 @@ const STAGE_PARAM = "etapa"
 /** The calendar's own sources first, then the ones of the open stage, with no repeated address */
 const uniqueSources = (sources: Source[]) => sources.filter((source, index) => sources.findIndex(({ url }) => url === source.url) === index)
 
-const Group = ({ group }: { group: VaccineGroup }) => (
-  <div className={group.aside ? "rounded-2xl border border-line-strong bg-field p-4" : undefined}>
-    {group.heading ? <h4 className="m-0 text-base font-extrabold">{group.heading}</h4> : null}
-    {group.paragraphs?.map((paragraph) => (
-      <p key={paragraph} className="m-0 mt-1">
-        {paragraph}
-      </p>
-    ))}
-    {group.items?.length ? (
-      <ul className="m-0 mt-1 list-disc pl-5">
-        {group.items.map(({ vaccine, dose, details }) => (
-          <li key={`${vaccine}-${dose}`} className="mt-1 first:mt-0">
-            <strong>{vaccine}:</strong> {dose}
-            {details?.length ? (
-              <ul className="m-0 mt-1 list-[circle] pl-5 text-ink-soft">
-                {details.map((detail) => (
-                  <li key={detail}>{detail}</li>
-                ))}
-              </ul>
-            ) : null}
-          </li>
-        ))}
-      </ul>
-    ) : null}
-  </div>
-)
+const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
+
+const Details = ({ details }: { details?: string[] }) =>
+  details?.length ? (
+    <ul className="m-0 mt-1 list-[circle] pl-5 text-ink-soft">
+      {details.map((detail) => (
+        <li key={detail}>{detail}</li>
+      ))}
+    </ul>
+  ) : null
+
+const Paragraphs = ({ paragraphs }: { paragraphs?: string[] }) =>
+  paragraphs?.map((paragraph) => (
+    <p key={paragraph} className="m-0 mt-1 first:mt-0">
+      {paragraph}
+    </p>
+  )) ?? null
+
+const Items = ({ items }: { items?: VaccineItem[] }) =>
+  items?.length ? (
+    <ul className="m-0 mt-1 list-disc pl-5">
+      {items.map(({ vaccine, dose, details }) => (
+        <li key={`${vaccine}-${dose}`} className="mt-1 first:mt-0">
+          <strong>{vaccine}:</strong> {dose}
+          <Details details={details} />
+        </li>
+      ))}
+    </ul>
+  ) : null
+
+/**
+ * One group of a stage. A long stage is read in blocks on a phone: a group can be a disclosure (open or closed) or have one
+ * disclosure per vaccine. The text is the same in every mode and all of it is in the page, closed or not.
+ */
+const Group = ({ group }: { group: VaccineGroup }) => {
+  const { heading, display, paragraphs, items } = group
+  if ((display === "open" || display === "collapsible") && heading) {
+    return (
+      <Disclosure title={heading} defaultOpen={display === "open"} compact>
+        <Paragraphs paragraphs={paragraphs} />
+        <Items items={items} />
+      </Disclosure>
+    )
+  }
+  if (display === "split" && items?.length) {
+    return (
+      <div>
+        {heading ? <h4 className="m-0 text-base font-extrabold">{heading}</h4> : null}
+        <Paragraphs paragraphs={paragraphs} />
+        <div className="mt-2 flex flex-col gap-2">
+          {items.map(({ vaccine, dose, details }) => (
+            <Disclosure key={`${vaccine}-${dose}`} title={vaccine} compact>
+              <p className="m-0">{capitalize(dose)}</p>
+              <Details details={details} />
+            </Disclosure>
+          ))}
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div>
+      {heading ? <h4 className="m-0 text-base font-extrabold">{heading}</h4> : null}
+      <Paragraphs paragraphs={paragraphs} />
+      <Items items={items} />
+    </div>
+  )
+}
 
 /**
  * Salud general · Calendario de vacunación. The Calendario Nacional de Vacunación 2026 by stage of life, one stage at a
@@ -110,7 +153,7 @@ export default function Section5Content() {
 
         <div className="mt-4 flex flex-col gap-4">
           {stage.groups.map((group) => (
-            <Group key={group.heading ?? group.items?.[0]?.vaccine ?? "group"} group={group} />
+            <Group key={`${stage.id}-${group.heading ?? group.items?.[0]?.vaccine ?? "group"}`} group={group} />
           ))}
         </div>
 
@@ -126,9 +169,11 @@ export default function Section5Content() {
           <div role="note" className="mt-4 rounded-2xl border-2 border-control-line bg-field p-4">
             <h4 className="m-0 text-base font-extrabold">Para confirmar en la fuente oficial o en el vacunatorio</h4>
             <p className="m-0 mt-1">{TO_CONFIRM_INTRO}</p>
-            <ul className="m-0 mt-1 list-disc pl-5">
-              {stage.toConfirm.map((text) => (
-                <li key={text}>{text}</li>
+            <ul className="m-0 mt-2 list-disc pl-5">
+              {stage.toConfirm.map(({ topic, what }) => (
+                <li key={topic} className="mt-1 first:mt-0">
+                  <strong>{topic}:</strong> {what}
+                </li>
               ))}
             </ul>
           </div>

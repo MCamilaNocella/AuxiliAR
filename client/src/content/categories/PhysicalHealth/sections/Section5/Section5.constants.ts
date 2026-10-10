@@ -17,7 +17,10 @@ export const CHECKED_AT = "2026-10-09"
 export const GENERAL_NOTE =
   "AuxiliAR ofrece un resumen informativo del Calendario Nacional de Vacunación oficial. Los esquemas particulares (por ejemplo, si tenés enfermedades previas, estás embarazada o trabajás en el sistema de salud) deben confirmarse con tu equipo de salud o en el vacunatorio. Si el Ministerio de Salud cambia el calendario, vale su versión oficial."
 
-export const TO_CONFIRM_INTRO = "Estas condiciones se expresan de forma distinta en las fuentes oficiales o necesitan una indicación profesional. Confirmalas antes de vacunarte:"
+export const TO_CONFIRM_INTRO = "Estos puntos no se pueden resumir de forma segura: las fuentes oficiales los expresan de forma distinta o necesitan una indicación profesional. Confirmalos antes de vacunarte."
+
+/** One thing to confirm: which aspect it is (the topic) and what the person should confirm, and where */
+export type ConfirmNote = { topic: string, what: string }
 
 export type VaccineItem = {
   vaccine: string
@@ -29,6 +32,14 @@ export type VaccineItem = {
 export type VaccineGroup = {
   /** "A los 2 meses", "Si trabajás en el sistema de salud"… */
   heading?: string
+  /**
+   * How the group is shown on small screens, so a long stage reads in blocks (the text is the same, all of it is in the page):
+   *  - "open": inside a disclosure that starts open
+   *  - "collapsible": inside a disclosure that starts closed
+   *  - "split": the heading stays and each vaccine of the group gets its own disclosure
+   * Without it, the group is shown as plain text.
+   */
+  display?: "open" | "collapsible" | "split"
   paragraphs?: string[]
   items?: VaccineItem[]
   /** Shown in a box of its own (a section inside the stage) */
@@ -43,8 +54,8 @@ export type VaccinationStage = {
   groups: VaccineGroup[]
   /** Short sentences at the end of the stage */
   notes?: string[]
-  /** What the official sources say in different ways, or that needs a professional: ONE list per stage that points to the source */
-  toConfirm?: string[]
+  /** What the official sources say in different ways, or that needs a professional: ONE list per stage, each with the topic and what to confirm */
+  toConfirm?: ConfirmNote[]
   sources: Source[]
 }
 
@@ -120,8 +131,8 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
     ],
     toConfirm: [
-      "Antigripal después del parto: si debe aplicarse antes de que te den el alta de la maternidad (las fuentes oficiales lo expresan de formas distintas).",
-      "Otras vacunas que pueden corresponderte durante el embarazo o después del parto (por ejemplo, hepatitis B o triple viral): el afiche oficial las menciona.",
+      { topic: "Antigripal después del parto", what: "Confirmá si la dosis debe aplicarse antes de que te den el alta de la maternidad: las fuentes oficiales lo expresan de formas distintas." },
+      { topic: "Otras vacunas durante el embarazo o después del parto", what: "El afiche oficial menciona otras vacunas para este período (por ejemplo, hepatitis B o triple viral). Preguntá en el vacunatorio si te corresponden." },
     ],
     sources: [stage("embarazadas", "Embarazo"), GRIPE_LT, DTPA_PAGE, VSR_PAGE, VSR_LT, VIRAL_PAGE, page("varicela", "Varicela")],
   },
@@ -198,7 +209,7 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
     ],
     notes: ["Control de salud: al menos una vez por año, aunque no esté enfermo o enferma. Incluye una visita a oftalmología y a odontología."],
-    toConfirm: ["Neumococo: la vacuna de 20 serotipos (VCN20) está reemplazando a la de 13 (VCN13). Cuál corresponde según el momento se confirma en el vacunatorio."],
+    toConfirm: [{ topic: "Neumococo", what: "Confirmá en el vacunatorio qué vacuna corresponde según el momento: la de 20 serotipos (VCN20) está reemplazando a la de 13 (VCN13)." }],
     sources: [stage("vacunacion-lactantes", "Hasta un año"), ROTA_PAGE, GRIPE_LT, MENINGO_PAGE, NEUMO_PAGE, HEPB_PAGE],
   },
   {
@@ -250,8 +261,11 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       "Las vacunas de virus vivos atenuados (varicela, triple viral y fiebre amarilla) pueden aplicarse el mismo día. Si no se aplican el mismo día, debe haber al menos 28 días entre una y otra.",
     ],
     toConfirm: [
-      "Fiebre amarilla: el calendario programa la primera dosis a los 18 meses, y la página de fiebre amarilla dice «entre los 12 y los 18 meses» para menores de 2 años, con un refuerzo a los 11 años. Confirmá la edad en el vacunatorio.",
-      "Las zonas de riesgo pueden cambiar: la lista vigente está en la página oficial de fiebre amarilla.",
+      {
+        topic: "Fiebre amarilla: edad de la primera dosis",
+        what: "El calendario programa la primera dosis a los 18 meses, y la página de fiebre amarilla dice «entre los 12 y los 18 meses» para menores de 2 años, con un refuerzo a los 11 años. Confirmá la edad en el vacunatorio.",
+      },
+      { topic: "Fiebre amarilla: zonas de riesgo", what: "Las zonas pueden cambiar. La lista vigente está en la página oficial de fiebre amarilla." },
     ],
     sources: [stage("vacunacion-niniosyninias", "Hasta 2 años"), RES_339, VIRAL_LT, VIRAL_PAGE, FA_PAGE, MENINGO_PAGE, GRIPE_LT],
   },
@@ -300,7 +314,7 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
     ],
     notes: ["Control de salud: al menos una vez por año, aunque no esté enfermo o enferma."],
-    toConfirm: ["VPH: si no recibiste la vacuna a los 11 años, puede estar disponible hasta ciertas edades y con otros esquemas. Consultá la página oficial de VPH o el vacunatorio."],
+    toConfirm: [{ topic: "VPH si no lo recibiste a los 11 años", what: "Puede estar disponible hasta ciertas edades y con otros esquemas. Consultá la página oficial de VPH o el vacunatorio." }],
     sources: [stage("vacunacion-adolescentes", "11 años"), MENINGO_PAGE, DTPA_PAGE, VPH_PAGE, HEPB_PAGE, FA_PAGE],
   },
   {
@@ -310,6 +324,7 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
     groups: [
       {
         heading: "Vacunas para todas las personas de esta edad",
+        display: "open",
         items: [
           { vaccine: "Doble bacteriana (difteria y tétanos)", dose: "iniciar o completar el esquema de 3 dosis; después, un refuerzo cada 10 años." },
           {
@@ -329,6 +344,7 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
       {
         heading: "Según tu situación",
+        display: "split",
         items: [
           {
             vaccine: "Antigripal",
@@ -352,7 +368,7 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
       {
         heading: "Si trabajás en el sistema de salud",
-        aside: true,
+        display: "collapsible",
         paragraphs: ["Este apartado es para todas las personas que trabajan en el sistema de salud: mesa de entradas, limpieza, seguridad, laboratorio, planta médica y de enfermería, entre otras."],
         items: [
           { vaccine: "Antigripal", dose: "el personal de salud es uno de los grupos de la campaña. Se aplica en cada campaña estacional; los lineamientos técnicos 2026 indican una dosis." },
@@ -367,10 +383,13 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
       },
     ],
     toConfirm: [
-      "Antigripal con factores de riesgo: la lista completa y sus criterios exactos (por ejemplo, para obesidad o medicamentos inmunosupresores), si hace falta orden médica o solo se puede presentar documentación, y los tramos de edad.",
-      "Fiebre hemorrágica argentina: el afiche oficial agrega condiciones (riesgo ocupacional y no haber recibido antes la vacuna).",
-      "Personal de salud: hay otras indicaciones y obligaciones (por ejemplo, hepatitis B, varicela y normas de la Ley 27.491).",
-      "Neumococo y VPH: hay indicaciones para personas de 5 a 64 años con ciertas condiciones (neumococo) y hasta los 26 años (VPH).",
+      {
+        topic: "Antigripal con factores de riesgo",
+        what: "Confirmá la lista completa y sus criterios exactos (por ejemplo, para obesidad o medicamentos inmunosupresores), si hace falta orden médica o solo se puede presentar documentación, y los tramos de edad, en los lineamientos oficiales de antigripal 2026 (están en «Fuentes oficiales») o en el vacunatorio.",
+      },
+      { topic: "Fiebre hemorrágica argentina", what: "El afiche oficial agrega condiciones (riesgo ocupacional y no haber recibido antes la vacuna). Confirmalas en el vacunatorio." },
+      { topic: "Personal de salud", what: "Hay otras indicaciones y obligaciones (por ejemplo, hepatitis B, varicela y normas de la Ley 27.491). Consultalas en la fuente oficial o en el vacunatorio." },
+      { topic: "Neumococo y VPH", what: "Hay indicaciones para personas de 5 a 64 años con ciertas condiciones (neumococo) y hasta los 26 años (VPH). Consultalas en la página oficial o en el vacunatorio." },
     ],
     sources: [stage("vacunacion-adultos", "15 a 64 años"), GRIPE_LT, GRIPE_PAGE, VIRAL_PAGE, HEPB_PAGE, DTPA_PAGE, FHA_PAGE, FA_PAGE, NEUMO_PAGE, VPH_PAGE],
   },
@@ -393,7 +412,10 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
         paragraphs: ["La hepatitis B es obligatoria y no requiere orden médica a cualquier edad. Si no sabés si tenés el esquema, consultá en el vacunatorio."],
       },
     ],
-    toConfirm: ["Neumococo: si ya recibiste alguna vacuna contra el neumococo, el equipo de salud evalúa si corresponde continuar el esquema.", "Fiebre amarilla: si vivís en una zona de riesgo o vas a viajar a una zona con transmisión, consultá antes con tu equipo de salud."],
+    toConfirm: [
+      { topic: "Neumococo si ya te vacunaste", what: "Si ya recibiste alguna vacuna contra el neumococo, el equipo de salud evalúa si corresponde continuar el esquema. Consultalo en el vacunatorio." },
+      { topic: "Fiebre amarilla", what: "Si vivís en una zona de riesgo o vas a viajar a una zona con transmisión, consultá antes con tu equipo de salud." },
+    ],
     sources: [stage("vacunacion-adultosmayores", "65 años o más"), GRIPE_LT, NEUMO_PAGE, HEPB_PAGE, VIRAL_PAGE, FA_PAGE],
   },
 ]
