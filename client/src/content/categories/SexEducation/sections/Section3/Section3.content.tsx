@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { PointerList } from "../../PointerList"
+import { EsiCard } from "../../CoverageCard"
 import { SEXUAL_RIGHTS } from "../../SexEducation.rights"
-import { ESI_CHACO, ESI_MATERIALES, ESI_PBA } from "../../SexEducation.sources"
+import { ESI_ENTRIES } from "../../SexEducation.coverage"
 
 /**
  * Salud sexual y ESI · Derechos y ESI. Each right is one the law itself states, with its law named. It describes no procedure,
@@ -15,7 +15,7 @@ import { ESI_CHACO, ESI_MATERIALES, ESI_PBA } from "../../SexEducation.sources"
  *    and the obras sociales "deben incorporar la cobertura integral y gratuita"
  *  - the ministry's page: "información clara, basada en evidencia científica, promoviendo la toma de decisiones informadas y autónomas"
  *  - the materials: the 4/10/2022 note of argentina.gob.ar (láminas, desplegables, cuadernillos for inicial, primario y secundario,
- *    audiovisuales); the pages of PBA and Chaco are pointers to their own materials
+ *    audiovisuales) and the pages of PBA and Chaco, said inside AuxiliAR with what each page gives (SexEducation.coverage.ts)
  */
 export default function Section3Content() {
   return (
@@ -62,9 +62,13 @@ export default function Section3Content() {
         <h3 id="ss-material" className="m-0 text-xl font-extrabold">
           Materiales de ESI para leer (complemento)
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">Son materiales de lectura abierta, algunos pensados para docentes y familias. No son una consulta ni un servicio de atención. AuxiliAR no verificó cada descarga.</p>
-        <div className="mt-2">
-          <PointerList items={[{ label: "Nuevos materiales educativos de ESI", by: "Ministerio de Educación de la Nación (4/10/2022)", url: ESI_MATERIALES.url }, ESI_PBA, ESI_CHACO]} />
+        <p className="m-0 mt-1 text-ink-soft">
+          Son materiales y programas de ESI del Estado, algunos pensados para docentes y familias. No son una consulta ni un servicio de atención. Esto dicen las páginas oficiales: AuxiliAR no verificó cada material.
+        </p>
+        <div className="mt-2 flex flex-col gap-2">
+          {ESI_ENTRIES.map((entry) => (
+            <EsiCard key={entry.id} entry={entry} />
+          ))}
         </div>
       </section>
 

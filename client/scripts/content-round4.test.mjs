@@ -41,7 +41,8 @@ test("the categories no longer repeat the permanent access to the emergencies: t
     assert.ok(!content.includes("Ver números de emergencia"))
     assert.ok(!content.includes("Si hay riesgo inmediato, o necesitás hablar con alguien ahora"))
     assert.ok(!content.includes("Si estás en peligro ahora o sufriste una agresión"))
-    assert.ok(!html.includes("tel:"))
+    // the only phone link is the call button of the national sexual-health line, described in «Dónde buscar atención»
+    assert.ok([...html.matchAll(/href="(tel:[^"]+)"/g)].every((m) => m[1] === "tel:08002223444"))
   }
 })
 
@@ -58,7 +59,9 @@ test("what stays on purpose: the specific warnings and the permanent accesses we
 /* ── 2. Free contraception ── */
 
 test("«Anticonceptivos gratuitos: cuáles son y cómo conseguirlos» replaces the old box, and keeps gratuity, legal coverage, access conditions and concrete availability apart", () => {
-  const content = text(render(FreeAccessPage))
+  const full = text(render(FreeAccessPage))
+  // the official lists of the Ciudad (centers with their phones) come after the explanation: the checks below are about the explanation
+  const content = full.slice(0, full.indexOf("Centros de testeo de VIH y sífilis de la Ciudad ("))
   assert.ok(content.includes("Anticonceptivos gratuitos: cuáles son y cómo conseguirlos"))
   assert.ok(!content.includes("Qué dicen las fuentes oficiales sobre el acceso y el costo"), "the old approach is gone")
   for (const title of ["Gratuidad", "Cobertura legal", "Condiciones de acceso", "Disponibilidad concreta", "Cómo conseguirlos", "Cómo funciona cada método"]) assert.ok(content.includes(title), title)

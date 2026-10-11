@@ -1,15 +1,12 @@
 import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
-import { OutLink } from "@/components/health/OutLink"
+import { CounselingCenterList, TestCenterList } from "../../CenterList"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import {
-  CABA_CONSEJERIAS,
-  CABA_TEST,
-  HUESPED_METODOS,
-  LINEA,
 } from "../../SexEducation.sources"
+import { COUNSELING_CENTERS, TEST_CENTERS } from "../../SexEducation.lists"
 import { FREE_ACCESS, METHODS, NO_STI_PROTECTION, VAGINAL_CONDOM } from "./Section2.constants"
 
 /**
@@ -167,9 +164,9 @@ export default function Section2Content() {
           ayunas ni ser mayor de edad. Los centros de testeo funcionan en CeSAC, hospitales y organizaciones comunitarias, donde también se retiran preservativos gratis y material informativo.
         </p>
         <p className="m-0 mt-2 text-ink-soft">Los centros atienden en distintos días y horarios: consultá por teléfono antes de ir. Si vivís en otro lugar, preguntá en tu centro de salud.</p>
-        <p className="m-0 mt-2">
-          <OutLink href={CABA_TEST.url}>Lista oficial de centros de testeo de la Ciudad</OutLink>
-        </p>
+        <div className="mt-3">
+          <TestCenterList centers={TEST_CENTERS} />
+        </div>
       </section>
 
       <section aria-labelledby="ss-where">
@@ -183,24 +180,13 @@ export default function Section2Content() {
             Ver el mapa
           </ActionLink>
         </div>
-        <ul role="list" className="m-0 mt-3 flex list-none flex-col gap-1 p-0">
-          <li>
-            <OutLink href={CABA_CONSEJERIAS.url}>Lista oficial de consejerías de la Ciudad</OutLink>
-          </li>
-          <li>
-            <OutLink href={LINEA.url}>Línea nacional de salud sexual: horarios y contacto</OutLink>
-          </li>
-        </ul>
-        <p className="m-0 mt-1 text-ink-soft">Son páginas oficiales para consultar horarios y contactos que cambian: la explicación de arriba no depende de ellas.</p>
-      </section>
-
-      <section aria-labelledby="ss-read">
-        <h3 id="ss-read" className="m-0 text-xl font-extrabold">
-          Para leer más
-        </h3>
-        <p className="m-0 mt-1 text-ink-soft">Es una guía educativa de una organización civil, un complemento: no es una consulta ni un servicio de atención.</p>
+        <div className="mt-3">
+          <CounselingCenterList centers={COUNSELING_CENTERS} />
+        </div>
         <p className="m-0 mt-2">
-          <OutLink href={HUESPED_METODOS.url}>{`${HUESPED_METODOS.label} · Fundación Huésped`}</OutLink>
+          <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
+            Línea nacional de salud sexual: horarios y contacto
+          </Link>
         </p>
       </section>
 

@@ -1,11 +1,10 @@
 import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
-import { Disclosure } from "@/components/health/Disclosure"
-import { OutLink } from "@/components/health/OutLink"
+import { CoverageCard } from "../../CoverageCard"
+import { NationalLine } from "../../NationalLine"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { PointerList } from "../../PointerList"
-import { HUESPED_DONDE, HUESPED_SERVICIOS, LINEA, PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION } from "../../SexEducation.sources"
+import { HUESPED, HUESPED_SEARCH, PROVINCES } from "../../SexEducation.coverage"
 
 /**
  * Salud sexual y ESI · Dónde buscar atención. Information and orientation: it offers no appointments, shows no phone number
@@ -15,7 +14,10 @@ import { HUESPED_DONDE, HUESPED_SERVICIOS, LINEA, PBA_SSR, SANTA_FE_IVE, TUCUMAN
  *  - methods and consejería "en centros de salud y hospitales": Preguntas frecuentes of the Ministerio de Salud (SS04)
  *  - the national line has confidential consultations and its own hours, which are read on its page (SS01): no number is copied
  *  - the map button only explores: the map marks gratuity only when it is verified for that very service
- * The pages of other provinces and of a civil organization are pointers, not centers verified by AuxiliAR (SS05, SS09, SS12, SS13).
+ * What the official pages of other provinces and of a civil organization offer is said here, inside AuxiliAR (SexEducation.coverage.ts): for
+ * whom, cost and conditions, how to get it and how to reach it, as each page says it (SS05, SS09, SS12, SS13 and the page of Tucumán). They are
+ * not centers verified by AuxiliAR, and what a page does not say is marked "para confirmar". The only links that stay open an action that
+ * cannot be done from here (a map of establishments, a search, a form). The national line is described, with a call button.
  */
 export default function Section1Content() {
   return (
@@ -43,10 +45,10 @@ export default function Section1Content() {
         <h3 id="ss-line" className="m-0 text-xl font-extrabold">
           Orientación por teléfono
         </h3>
-        <p className="m-0 mt-1">Consultá tus dudas sobre salud sexual en la línea nacional del Ministerio de Salud. Su página indica que las consultas son confidenciales. Revisá sus horarios antes de llamar.</p>
-        <p className="m-0 mt-2">
-          <OutLink href={LINEA.url}>Línea nacional de salud sexual: horarios y contacto</OutLink>
-        </p>
+        <p className="m-0 mt-1">Consultá tus dudas sobre salud sexual en la línea nacional del Ministerio de Salud.</p>
+        <div className="mt-3">
+          <NationalLine />
+        </div>
       </section>
 
       <section aria-labelledby="ss-kinds" className="rounded-2xl border-2 border-control-line bg-field p-4">
@@ -67,25 +69,29 @@ export default function Section1Content() {
         </ul>
       </section>
 
-      <section aria-labelledby="ss-more">
-        <h3 id="ss-more" className="m-0 text-xl font-extrabold">
-          Otras páginas para completar la información
+      <section aria-labelledby="ss-provinces">
+        <h3 id="ss-provinces" className="m-0 text-xl font-extrabold">
+          Si vivís en otra provincia
         </h3>
-        <div className="mt-2">
-          <Disclosure title="Ver páginas complementarias (se abren fuera de AuxiliAR)">
-            <p className="m-0 mt-1 text-ink-soft">
-              Son páginas de organismos oficiales y de una organización civil. AuxiliAR no verificó cada lugar de sus listados ni su gratuidad: confirmá requisitos, costo y horarios con cada uno.
-            </p>
-            <h4 className="m-0 mt-3 text-lg font-extrabold">Buscadores y servicios de una organización civil</h4>
-            <div className="mt-2">
-              <PointerList items={[HUESPED_DONDE, HUESPED_SERVICIOS]} />
-            </div>
-            <h4 className="m-0 mt-4 text-lg font-extrabold">Información oficial de algunas provincias</h4>
-            <p className="m-0 mt-1 text-ink-soft">Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR.</p>
-            <div className="mt-2">
-              <PointerList items={[PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION]} />
-            </div>
-          </Disclosure>
+        <p className="m-0 mt-1 text-ink-soft">
+          Esto dicen las páginas oficiales de algunas provincias sobre lo que ofrecen. Cada una vale solo para su provincia y AuxiliAR no verificó estos servicios: abrí la que te corresponda y confirmá los datos con quien lo ofrece.
+        </p>
+        <div className="mt-2 flex flex-col gap-2">
+          {PROVINCES.map((entry) => (
+            <CoverageCard key={entry.id} entry={entry} />
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="ss-civil">
+        <h3 id="ss-civil" className="m-0 text-xl font-extrabold">
+          Servicios de una organización civil
+        </h3>
+        <p className="m-0 mt-1 text-ink-soft">No es un servicio del Estado. Lo que sigue es lo que la propia organización dice de sí misma.</p>
+        <div className="mt-2 flex flex-col gap-2">
+          <CoverageCard entry={HUESPED}>
+            <p className="m-0 mt-3">{HUESPED_SEARCH}</p>
+          </CoverageCard>
         </div>
       </section>
 

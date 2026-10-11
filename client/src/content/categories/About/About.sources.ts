@@ -16,17 +16,24 @@ import {
   CHECKED_AT as SEXUAL_CHECKED_AT,
   CHECKED_AT_IVE,
   CHECKED_AT_METHODS,
+  ESI_CHACO,
   ESI_MATERIALES,
+  ESI_PBA,
+  HUESPED_DONDE,
   IVE_PAGINA,
   LEY_25673,
   LEY_26150,
   LEY_27610,
   LINEA,
+  PBA_SSR,
   PORTAL,
   PREGUNTAS,
   PRESERVATIVO_VAGINAL,
   PRESERVATIVOS,
+  SANTA_FE_IVE,
+  TUCUMAN_ANTICONCEPCION,
 } from "../SexEducation/SexEducation.sources"
+import { READ_ON as COVERAGE_READ_ON } from "../SexEducation/SexEducation.coverage"
 import { METHODS } from "../SexEducation/sections/Section2/Section2.constants"
 
 /**
@@ -143,6 +150,16 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         references: fromSources([PREGUNTAS, LINEA]),
         checkedAt: [SEXUAL_CHECKED_AT],
         notes: ["Las páginas de «Más recursos» son de otras organizaciones: AuxiliAR no responde por su contenido."],
+      },
+      {
+        id: "sexual-cobertura",
+        title: "Otras provincias, organización civil y materiales de ESI",
+        references: [PBA_SSR, SANTA_FE_IVE, TUCUMAN_ANTICONCEPCION, HUESPED_DONDE, ESI_PBA, ESI_CHACO].map(({ label, by, url }) => ({ label, url, detail: by })),
+        checkedAt: [COVERAGE_READ_ON],
+        notes: [
+          "Las fichas de «Dónde buscar atención» y de «Derechos y ESI» se resumieron con estas páginas, leídas con una herramienta de lectura automática: nadie del equipo las comparó todavía con la página. AuxiliAR no verificó estos servicios.",
+          "Los resúmenes sobre interrupción del embarazo están pendientes de validación legal y profesional.",
+        ],
       },
       {
         id: "sexual-anticoncepcion",

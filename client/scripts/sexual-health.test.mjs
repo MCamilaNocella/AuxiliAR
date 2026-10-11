@@ -75,6 +75,9 @@ test("each section's sources are kept, in Sobre AuxiliAR, under the section its 
   assert.deepEqual(listed("sexual-derechos"), [sources.LEY_25673.url, sources.LEY_26150.url, sources.LEY_27610.url, sources.PORTAL.url, sources.ESI_MATERIALES.url])
   assert.deepEqual(listed("sexual-ive"), [sources.LEY_27610.url, sources.IVE_PAGINA.url, sources.CABA_CONSEJERIAS.url, sources.LINEA.url])
   assert.match(sources.LEY_27610.url, /ley-27610-346231\/texto$/)
+  // what the cards of other provinces and of the organization say comes from these pages, with the day they were read
+  assert.deepEqual(listed("sexual-cobertura"), [sources.PBA_SSR.url, sources.SANTA_FE_IVE.url, sources.TUCUMAN_ANTICONCEPCION.url, sources.HUESPED_DONDE.url, sources.ESI_PBA.url, sources.ESI_CHACO.url])
+  assert.deepEqual(referencesOf("sexual-cobertura").checkedAt, ["2026-10-10"])
   // the notes that said what the pages are not stay on the page; the license notes are with the sources
   assert.ok(text(pages["section-1"]).includes("Las páginas de «Más recursos» son de otras organizaciones: AuxiliAR no responde por su contenido."))
   assert.ok(text(pages["section-2"]).includes("Es información general: no es un diagnóstico ni indicaciones de tratamiento."))
@@ -86,7 +89,8 @@ test("dónde buscar atención: no repeated emergency notice, the map only explor
   const html = pages["section-1"]
   const content = text(html)
   // the category no longer repeats the permanent access to the emergencies (emergency bar and bottom navigation)
-  assert.ok(!content.includes("Ver números de emergencia") && !content.includes("Si estás en peligro ahora o sufriste una agresión") && !html.includes("tel:"))
+  assert.ok(!content.includes("Ver números de emergencia") && !content.includes("Si estás en peligro ahora o sufriste una agresión") )
+  assert.deepEqual([...html.matchAll(/href="(tel:[^"]+)"/g)].map((m) => m[1]), ["tel:08002223444"], "the only phone link is the national line's call button")
   assert.ok(content.includes("AuxiliAR no otorga turnos ni realiza consultas médicas, y no te pide datos personales ni de salud"))
   assert.ok(hrefs(html).includes("/centros?filtro=sexual-health"), "map, filtered, through the shared link")
   assert.ok(content.includes("Ver el mapa") && content.includes("Consultá cada ficha para saber qué servicios gratuitos están confirmados."))
@@ -106,19 +110,39 @@ test("educational material, orientation and confirmed free care are told apart",
   assert.ok(content.includes("si no la marca, no está confirmada"))
 })
 
-test("the other pages are pointers: named, with who runs them, and never presented as centers verified by AuxiliAR", () => {
+test("other provinces and the civil organization are told inside AuxiliAR: what, for whom, cost, access, contact; never presented as centers verified by AuxiliAR", () => {
   const html = pages["section-1"]
   const content = text(html)
-  assert.ok(content.includes("AuxiliAR no verificó cada lugar de sus listados ni su gratuidad"))
-  const more = html.slice(html.indexOf('aria-labelledby="ss-more"'), html.indexOf('aria-label="Fuentes"'))
-  const urls = external(more)
-  assert.deepEqual(urls, [sources.HUESPED_DONDE.url, sources.HUESPED_SERVICIOS.url, sources.PBA_SSR.url, sources.SANTA_FE_IVE.url, sources.TUCUMAN_ANTICONCEPCION.url])
-  for (const href of urls) assert.match(href, /^https:\/\/(donde\.huesped\.org\.ar|new\.huesped\.org\.ar|www\.ms\.gba\.gov\.ar|www\.santafe\.gob\.ar|msptucuman\.gov\.ar)\//, href)
-  // each provincial page says that it is only for its province, and that it is not a service verified by AuxiliAR
-  for (const phrase of ["Solo para la provincia de Buenos Aires", "Solo para la provincia de Santa Fe", "Solo para la provincia de Tucumán", "Cada página vale solo para su provincia. No son servicios verificados por AuxiliAR."]) assert.ok(content.includes(phrase), phrase)
+  assert.ok(content.includes("AuxiliAR no verificó estos servicios"))
+  const provinces = html.slice(html.indexOf('aria-labelledby="ss-provinces"'), html.indexOf('aria-labelledby="ss-civil"'))
+  // every card says what it offers, for whom, the cost and conditions, how to get it, the contact, and where its text comes from
+  for (const title of ["Buenos Aires", "Santa Fe", "Tucumán"]) assert.ok(text(provinces).includes(title), title)
+  assert.equal([...provinces.matchAll(/Qué ofrece/g)].length, 3)
+  for (const label of ["Para quién", "Costo y condiciones", "Cómo acceder", "Contacto"]) assert.equal([...provinces.matchAll(new RegExp(label, "g"))].length, 3, label)
+  assert.ok(/leída el 10 de octubre de 2026 con una herramienta de lectura automática/.test(content))
+  // IVE/ILE summaries are pending validation, and the only external links are actions that cannot be done here
+  assert.ok(content.includes("Pendiente de validación legal y profesional"))
+  assert.deepEqual(external(html), [sources.PBA_SSR.url, sources.SANTA_FE_IVE.url, sources.HUESPED_DONDE.url])
+  assert.ok(!content.includes("Otras páginas para completar"), "no 'visit this page' block")
   // nothing paid or commercial: Casa FUSA (SS08) and the university's program for its students (SS14) are not here
   for (const [id, page] of Object.entries(pages)) assert.ok(!/fusa|unlp|arancel|precio|descuento|obra social/i.test(text(page)) || /obras sociales y prepagas|obras sociales deben/.test(text(page)), id)
   for (const [id, page] of Object.entries(pages)) assert.ok(!/grupofusa|unlp\.edu/.test(page), id)
+})
+
+test("the national line is described inside the page, with a call button that is not an emergency number", () => {
+  const html = pages["section-1"]
+  const content = text(html)
+  for (const phrase of ["0800-222-3444", "De lunes a viernes de 9 a 20 hs.", "saludsexual@msal.gov.ar", "No es una línea de emergencia"]) assert.ok(content.includes(phrase), phrase)
+  assert.ok(content.includes("La página no aclara si la llamada es gratuita"), "what the page does not say is pending")
+})
+
+test("the official lists of the Ciudad are inside the page, as published, with their caution", () => {
+  const html = pages["section-2"]
+  const content = text(html)
+  assert.ok(content.includes("Centros de testeo de VIH y sífilis de la Ciudad (69)") && content.includes("Consejerías en salud sexual de la Ciudad (62)"))
+  assert.ok(content.includes("AuxiliAR no verificó estos centros"))
+  assert.ok(content.includes("no es necesariamente el teléfono general del centro"))
+  assert.deepEqual(external(html), [], "no link to the lists: they are here")
 })
 
 test("anticoncepción y prevención: the nine methods explained with the ministry's words, the vaginal condom, and the Ciudad's own words", () => {
@@ -128,7 +152,7 @@ test("anticoncepción y prevención: the nine methods explained with the ministr
   for (const method of ["Preservativos", "Pastillas combinadas", "Pastillas de una sola hormona", "Anticonceptivos inyectables", "Implante subdérmico", "Dispositivo intrauterino (DIU)", "Anticoncepción hormonal de emergencia", "Ligadura tubaria", "Vasectomía"]) {
     assert.ok(content.includes(method), method)
   }
-  assert.equal([...html.matchAll(/<details/g)].length, 9)
+  assert.equal([...html.matchAll(/<details/g)].length, 11, "nine methods and the two lists")
   assert.ok(content.includes("único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (ITS), incluido el VIH. No elimina el riesgo por completo"))
   // the condom never reads as absolute protection, and no efficacy figure is given
   assert.ok(!/protege de las ITS|previene las infecciones|evita las ITS|100 ?%|totalmente|sin riesgo|%|efectividad|eficacia/i.test(content), "no absolute protection, no figures")
@@ -137,7 +161,8 @@ test("anticoncepción y prevención: the nine methods explained with the ministr
   assert.ok(content.includes("No reemplaza la consulta con un profesional de la salud"))
   // the vaginal condom: the ministry's own explanation; the Hospital Rivadavia (or any center) is NOT named as a place to get it
   assert.ok(content.includes("¿Qué es el preservativo vaginal?") && content.includes("nitrilo") && content.includes("anillo interno"))
-  assert.ok(!/rivadavia/i.test(content), "no center is named for the vaginal condom")
+  const condom = content.slice(content.indexOf("¿Qué es el preservativo vaginal?"), content.indexOf("¿Qué es el preservativo vaginal?") + 900)
+  assert.ok(!/rivadavia/i.test(condom), "no center is named for the vaginal condom")
   assert.ok(content.includes("AuxiliAR no tiene confirmado en qué centros concretos se entregan"))
   // the free statement is the Ciudad's and the national law's, said as theirs
   assert.ok(content.includes("La atención y los métodos son gratuitos en el sistema público"))
@@ -151,17 +176,16 @@ test("derechos y ESI: each right is one the law states, with its law named, and 
   assert.ok(content.includes("articula aspectos biológicos, psicológicos, sociales, afectivos y éticos"))
   assert.ok(content.includes("láminas, desplegables y cuadernillos"))
   assert.ok(content.includes("no significa que haya un turno inmediato"))
-  assert.ok(!/semana|d[ií]as corridos|plazo|misoprostol|medicaci[oó]n|procedimiento|pastilla/i.test(content), "no weeks, deadlines, drugs or procedures")
+  assert.ok(!/d[ií]as corridos|misoprostol|medicaci[oó]n|pastilla/i.test(content), "no deadlines, drugs or procedures")
   assert.ok(hrefs(pages["section-3"]).includes("/temas/esi?seccion=section-1"))
 })
 
-test("no phone line is copied and nothing is promised: no number, no hours, no appointments", () => {
+test("contacts are told as each source gives them, with no emergency number, no wa.me button, and nothing promised", () => {
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
-    assert.ok(!html.includes("tel:") && !html.includes("wa.me") && !html.includes("whatsapp"), id)
-    assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|148|911)\b|\b\d{2}[- ]?\d{4}[- ]?\d{4}\b|\b381\b/.test(content), `${id}: no number`)
+    assert.ok(!html.includes("wa.me") && !html.includes("whatsapp"), id)
     // "garantiza" appears only as what Ley 25.673 says (art. 2)
-    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replaceAll("preservativos gratis en bocas de distribución", "").replaceAll("se retiran preservativos gratis", "").replaceAll("sin costo adicional", "").replaceAll("La Ley 25.673 garantiza a toda la población", "").replaceAll("La Ley 25.673 garantiza el acceso a información, orientación, métodos y prestaciones de salud sexual y reproductiva", "").replaceAll("Así lo garantiza la ley 26.130", "")), id)
+    assert.ok(!/24 horas|las 24|garantiz|sin costo|gratis/i.test(content.replaceAll("preservativos gratis en bocas de distribución", "").replaceAll("se retiran preservativos gratis", "").replaceAll("sin costo adicional", "").replaceAll("La Ley 25.673 garantiza a toda la población", "").replaceAll("La Ley 25.673 garantiza el acceso a información, orientación, métodos y prestaciones de salud sexual y reproductiva", "").replaceAll("Así lo garantiza la ley 26.130", "").replaceAll("debe garantizarse en efectores públicos", "").replaceAll("trabaja para garantizar el acceso", "")), id)
     assert.ok(!/turno inmediato|sin turno|siempre hay|stock/i.test(content.replaceAll("no significa que haya un turno inmediato", "").replaceAll("no asegura que haya turno, stock o un profesional disponible", "").replaceAll("no tiene confirmados turnos, stock ni centros concretos", "")), id)
   }
 })
@@ -184,6 +208,14 @@ test("'gratuit-' only appears where a sentence says whose statement it is, or wh
     "la gratuidad de cada provincia",
     "Que un método sea gratuito y esté cubierto no asegura",
     "con la gratuidad documentada para esa prestación",
+    // what the pages of other provinces and of the organization say, as theirs (the card says whose statement it is)
+    "La página no aclara si la llamada es gratuita",
+    "de forma gratuita y confidencial»",
+    "«de manera integral y gratuita», y que los métodos anticonceptivos se entregan de manera gratuita",
+    "trabaja para garantizar el acceso gratuito a métodos anticonceptivos»",
+    "no forman parte de la canasta gratuita del programa",
+    "todos nuestros servicios son gratuitos»",
+    "Línea gratuita 0-800-222-HUESPED",
   ]
   for (const [id, html] of Object.entries(pages)) {
     let content = text(html)

@@ -3,7 +3,7 @@ import { Scale } from "lucide-react"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CABA_CONSEJERIAS, IVE_PAGINA, LINEA } from "../../SexEducation.sources"
+import { IVE_PAGINA } from "../../SexEducation.sources"
 
 /**
  * Salud sexual y ESI · Interrupción voluntaria y legal del embarazo (IVE/ILE). What the official sources say about rights, free
@@ -127,8 +127,7 @@ export default function Section4Content() {
         </h3>
         <ul className="m-0 mt-2 flex list-disc flex-col gap-2 pl-5">
           <li>
-            <b>Para consultar sobre la IVE o la ILE, o para denunciar incumplimientos u obstáculos:</b> la página oficial indica comunicarse con la línea nacional de salud sexual del Ministerio de Salud (sus días y horarios están en su
-            página) o con la línea nacional de violencia de género, que está entre los números de la barra de emergencias de esta página.
+            <b>Para consultar sobre la IVE o la ILE, o para denunciar incumplimientos u obstáculos:</b> la página oficial indica comunicarse con la línea nacional de salud sexual del Ministerio de Salud (sus días y horarios están en «Dónde buscar atención») o con la línea nacional de violencia de género, que está entre los números de la barra de emergencias de esta página.
           </li>
           <li>
             <b>Si te niegan o te demoran la atención:</b> el Gobierno nacional señala que impedir el acceso a la IVE es violencia contra la libertad reproductiva.
@@ -142,10 +141,14 @@ export default function Section4Content() {
             <OutLink href={IVE_PAGINA.url}>Cómo acceder a la IVE: la página oficial del Gobierno nacional</OutLink>
           </li>
           <li>
-            <OutLink href={LINEA.url}>Línea nacional de salud sexual: horarios y contacto</OutLink>
+            <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
+              Línea nacional de salud sexual: horarios y contacto
+            </Link>
           </li>
           <li>
-            <OutLink href={CABA_CONSEJERIAS.url}>Lista oficial de consejerías de la Ciudad (trae un contacto por IVE/ILE de cada centro)</OutLink>
+            <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
+              Consejerías de la Ciudad, con un contacto por IVE/ILE de cada centro
+            </Link>
           </li>
         </ul>
         <p className="m-0 mt-2 text-ink-soft">
