@@ -1,5 +1,4 @@
 import { Activity, Footprints, ShieldCheck } from "lucide-react"
-import { centersLink } from "@/router/centersLink"
 import type { Subsection } from "../../SubsectionPage"
 
 /**
@@ -49,7 +48,6 @@ export const PHYSICAL_ACTIVITY: Subsection = {
         "Empezá despacio, tomá agua y parate si algo te duele.",
         "Dolor de pecho, falta de aire intensa, mareo fuerte o desmayo son una emergencia: usá la barra de emergencias de AuxiliAR.",
       ],
-      action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
     },
   ],
   mapFilter: "physical-activity",

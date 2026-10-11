@@ -109,8 +109,8 @@ test("quiz content: 8 varied situations, each with a reason, no diagnosing and n
     assert.equal(question.options.filter(({ correct }) => correct).length, 1, question.id)
     for (const option of question.options) assert.ok(option.feedback.length > 20, `${question.id}/${option.id}`)
     assert.ok(question.why && question.learning, question.id)
-    assert.ok(question.action, `${question.id} connects to something real in AuxiliAR`)
-    assertGoodAction(question.action, question.id)
+    // an action is optional (the "Encontrar atención primaria" button was removed from the whole web); when there is one, it must be real
+    if (question.action) assertGoodAction(question.action, question.id)
   }
   // the right answer isn't always in the same place
   const positions = new Set(QUESTIONS.map(({ options }) => options.findIndex(({ correct }) => correct)))
@@ -209,7 +209,7 @@ test("every internal link of Salud física points somewhere real", () => {
     if (url.searchParams.has("buscar")) assert.ok(url.searchParams.get("buscar").length > 2, `${href}: search`)
   }
   // no button of the quiz or the topics is left without a destination or an action
-  for (const { action } of QUESTIONS) assert.ok(action.to || action.emergency, "quiz action")
+  for (const { action } of QUESTIONS) if (action) assert.ok(action.to || action.emergency, "quiz action")
   // phone links are real numbers
   for (const html of [render(FirstAidPage, "/primeros-auxilios")]) for (const [, tel] of html.matchAll(/href="tel:([^"]+)"/g)) assert.match(tel, /^\+?\d{3,}$/)
 })
@@ -343,4 +343,10 @@ test("no source points at the section that moved", () => {
     assert.ok(!code.includes("salud-general?seccion=section-3"), file)
     assert.ok(!code.includes("Salud general → Primeros auxilios"), file)
   }
+})
+
+test("the button 'Encontrar atención primaria' is nowhere in the app: not in the quiz, the sections or the guides", () => {
+  const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => (entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)]))
+  for (const file of walk(srcDir).filter((name) => /\.(ts|tsx)$/.test(name))) assert.ok(!readFileSync(file, "utf8").includes("Encontrar atención primaria"), file)
+  assert.ok(!QUESTIONS.some(({ action }) => action?.label === "Encontrar atención primaria"))
 })

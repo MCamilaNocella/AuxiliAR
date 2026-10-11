@@ -34,7 +34,6 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Un control sin urgencia se hace en la atención primaria: en un centro de salud, sin esperar a tener un problema.",
     learning: "Controles y consultas de rutina: centro de salud. No hace falta esperar a tener un problema.",
-    action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
   },
   {
     id: "carnet",
@@ -139,7 +138,6 @@ export const PHYSICAL_HEALTH_QUIZ: QuizQuestion[] = [
     ],
     why: "Los controles preventivos te cuidan antes de que aparezca un problema. Cuáles te corresponden depende de tu edad y tu situación, y tu equipo de salud te orienta.",
     learning: "Sentirte bien no reemplaza los controles. Consultá cuáles te corresponden a vos.",
-    action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
   },
   {
     id: "odontologo",

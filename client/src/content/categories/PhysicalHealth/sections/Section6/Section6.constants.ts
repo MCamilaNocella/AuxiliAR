@@ -1,5 +1,4 @@
 import { GraduationCap, HandHeart, Stethoscope } from "lucide-react"
-import { centersLink } from "@/router/centersLink"
 import type { Subsection } from "../../SubsectionPage"
 
 /**
@@ -37,7 +36,6 @@ export const FOOD_NUTRITION: Subsection = {
         "Podés consultar en tu centro de salud y preguntar si hay atención por nutrición.",
       ],
       note: "Antes de ir, confirmá si hay atención por nutrición, cómo se pide el turno y en qué horarios: todavía no lo tenemos verificado en el mapa.",
-      action: { label: "Encontrar atención primaria", to: centersLink({ filter: "medical" }) },
     },
     {
       id: "assistance",
