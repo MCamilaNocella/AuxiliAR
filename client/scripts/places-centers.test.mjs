@@ -75,12 +75,14 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   // the section starts at its heading and ends where the sources begin
   const html = page.slice(page.indexOf('id="about-datos"'), page.indexOf('aria-labelledby="about-sources"'))
   const content = text(html)
-  // the six points (the five rules and "Fuentes y alcance", with the coverage) are disclosures that start closed; all their text is in the page
+  // "Cómo verificamos" is plain text under the introduction (no disclosure); the other five points (four rules and "Fuentes y alcance", with the coverage) are disclosures that start closed
   const headings = [...html.matchAll(/<summary[^>]*>([^<]+)</g)].map((match) => match[1].trim())
-  assert.equal([...html.matchAll(/<details/g)].length, 6)
+  assert.equal([...html.matchAll(/<details/g)].length, 5)
   assert.ok(!/<details[^>]* open/.test(html), "all closed")
   assert.ok(content.includes("Sobre los datos del mapa"))
-  assert.deepEqual(headings, ["Cómo verificamos", "Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
+  assert.ok(!headings.includes("Cómo verificamos") && !text(page).includes("Cómo verificamos los datos"), "no tab or button called «Cómo verificamos»")
+  assert.ok(content.indexOf("Estas son las reglas") < content.indexOf("una persona de AuxiliAR comprueba") && content.indexOf("una persona de AuxiliAR comprueba") < content.indexOf("Qué significa gratuito"), "its text is right under the introduction")
+  assert.deepEqual(headings, ["Qué significa gratuito", "La fecha de verificación", "Si no aparece, no quiere decir que no exista", "En el mapa y en la lista", "Fuentes y alcance"])
   // verification: who, against what, when, and what happens when it is doubtful
   for (const piece of ["una persona de AuxiliAR comprueba sus datos contra una fuente oficial", "quién lo verificó, cuándo y de qué fuente", "La gratuidad, en cambio, siempre necesita la fuente propia de esa prestación", "deja de mostrarse hasta que se vuelva a revisar"]) assert.ok(content.includes(piece), piece)
   // free: per service, only when the source says so, conditions next to the service, and silence is not an answer
