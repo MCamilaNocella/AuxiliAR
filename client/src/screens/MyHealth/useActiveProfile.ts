@@ -3,8 +3,11 @@ import { useHealthProfiles } from "@/hooks/useHealthProfiles"
 import { healthProfilesStore } from "@/stores/healthProfilesStore"
 import type { HealthProfile } from "@/types/myHealth"
 
-/** Shown when every profile was deleted: the screen stays the same, empty, at 0% */
-const EMPTY_PROFILE: HealthProfile = { id: "empty", name: "", record: {}, ageTopics: [] }
+/**
+ * Shown when there are no profiles: the screen stays the same, empty, at 0%. Filling something in (on the card or
+ * with Auxi) creates it under this id, as your own profile, and it stays on view
+ */
+const EMPTY_PROFILE: HealthProfile = { id: "new-profile", name: "", own: true, record: {}, ageTopics: [] }
 
 /**
  * The profiles (editable for now only in memory) and the one on view, picked with the chips under the greeting.

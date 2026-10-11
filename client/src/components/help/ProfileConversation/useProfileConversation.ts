@@ -14,8 +14,10 @@ const withId = (draft: MessageDraft): Message => ({ ...draft, id: ++lastId })
 
 const profileById = (id: string) => healthProfilesStore.getSnapshot().find((profile) => profile.id === id)
 
-const question = (profile: HealthProfile | undefined, field: ProfileFieldKey) =>
-  QUESTIONS[field]({ own: profile?.own ?? false, name: profile?.name ?? "" })
+// A profile that doesn't exist yet is created as your own (see healthProfilesStore.update)
+const subject = (profile: HealthProfile | undefined) => ({ own: profile?.own ?? true, name: profile?.name ?? "" })
+
+const question = (profile: HealthProfile | undefined, field: ProfileFieldKey) => QUESTIONS[field](subject(profile))
 
 /** Saves what Auxi got out of the answer; false when there was nothing to save */
 const save = (profileId: string, field: ProfileFieldKey, { value, locality, province }: ProfileAnswerReply) => {
@@ -36,7 +38,7 @@ const save = (profileId: string, field: ProfileFieldKey, { value, locality, prov
 export const useProfileConversation = ({ profileId, fields, update }: ProfileTask) => {
   const [messages, setMessages] = useState<Message[]>(() => {
     const profile = profileById(profileId)
-    return [GREETING, intro({ own: profile?.own ?? false, name: profile?.name ?? "" }, update), question(profile, fields[0])].map((text) =>
+    return [GREETING, intro(subject(profile), update), question(profile, fields[0])].map((text) =>
       withId({ from: "auxi", text }),
     )
   })

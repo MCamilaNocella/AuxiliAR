@@ -12,6 +12,6 @@ export type EmergencyPassProps = {
   /** "Guardar" in edit mode: the profile with the new data */
   onSave: (profile: HealthProfile) => void
   ref?: Ref<EmergencyPassHandle>
-  /** There's no profile: "Agregar perfil", highlighted, instead of "Editar" */
-  onAddProfile?: () => void
+  /** There's no profile: "Editar" reads "Agregar perfil", highlighted (it works the same) */
+  noProfile?: boolean
 }

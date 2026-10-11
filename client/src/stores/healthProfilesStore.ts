@@ -1,7 +1,7 @@
-import { HEALTH_PROFILES } from "@/data/myHealth"
 import type { HealthProfile } from "@/types/myHealth"
 
-let profiles = HEALTH_PROFILES
+// Starts with no profiles: Mi Salud shows its empty state until one is added
+let profiles: HealthProfile[] = []
 
 const listeners = new Set<() => void>()
 
@@ -25,9 +25,14 @@ export const healthProfilesStore = {
     profiles = profiles.filter((profile) => profile.id !== id)
     listeners.forEach((listener) => listener())
   },
-  /** Changes one profile from its latest version (two quick answers don't overwrite each other) */
+  /**
+   * Changes one profile from its latest version (two quick answers don't overwrite each other). A profile that
+   * doesn't exist yet (Mi Salud with none, filled in from the card or Auxi) is created blank first: the first one is your own
+   */
   update: (id: string, change: (profile: HealthProfile) => HealthProfile) => {
-    profiles = profiles.map((profile) => (profile.id === id ? change(profile) : profile))
+    profiles = profiles.some((profile) => profile.id === id)
+      ? profiles.map((profile) => (profile.id === id ? change(profile) : profile))
+      : [...profiles, change({ id, name: "", own: profiles.length === 0 || undefined, record: {}, ageTopics: [] })]
     listeners.forEach((listener) => listener())
   },
 }
