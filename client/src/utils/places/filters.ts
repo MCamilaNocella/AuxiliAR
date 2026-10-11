@@ -280,13 +280,3 @@ export const getPlaceFacets = (places: readonly Resource[], day: string, asked: 
     free: byFree.filter((entry) => freeServiceAnswersWords(entry, { ...query, free: true })).length,
   }
 }
-
-/** Places that can be shown today, each with its current services (the ones of the active filter first) */
-export const getPlaceEntries = (places: readonly Resource[], day: string, filterId: PlaceFilterId = "all", scope: PlacesScope = {}): PlaceEntry[] =>
-  selectPlaces(places, day, { ...EMPTY_PLACE_QUERY, filterId }, scope)
-
-export const filterPlaces = (
-  places: readonly Resource[],
-  day: string,
-  { query, filterId, scope }: { query: string, filterId: PlaceFilterId, scope?: PlacesScope },
-) => selectPlaces(places, day, { ...EMPTY_PLACE_QUERY, text: query, filterId }, scope)

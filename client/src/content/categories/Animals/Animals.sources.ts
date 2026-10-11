@@ -4,7 +4,7 @@ import type { Source } from "@/components/health/SourceList"
  * Sources of the general information of Atención veterinaria (fichas SA01 to SA14 of the resources document, 8/10/2026). Compared by hand
  * on CHECKED_AT; when the text or a source changes, compare again and change the day. The pages of each municipality, of the
  * Instituto and of the Nación are in Animals.places.ts, with the day they were read.
- * Not offered as a resource, and why (see curation/proposals/salud-animal.fichas-sa01-sa14.md): SA11 (civil organization: no open
+ * Not offered as a resource, and why: SA11 (civil organization: no open
  * appointment or gratuity for everyone), SA12 (registry of professionals: it is not a free directory) and SA13 (an announced
  * hospital, not open). The university hospitals (SA07, SA08) are shown only as services their own pages say are arancelados.
  */
@@ -29,7 +29,7 @@ export const ZOONOSIS: Source = {
 /**
  * "¿Qué tener en cuenta cuando fallece un perro o un gato?" (Instituto Pasteur, "Información útil", 2026-10-09): the risk only exists
  * if the animal bit a person in the 10 days before; Pasteur receives dead dogs and cats every day, 24 hours, "sin costo, para su
- * disposición final o cremación", and "evalúa cada caso según criterios sanitarios". Text in docs/investigacion/evidencia/pasteur-servicios-cadaveres.txt
+ * disposición final o cremación", and "evalúa cada caso según criterios sanitarios"
  */
 export const PASTEUR_INFO: Source = {
   label: "Información útil: qué tener en cuenta cuando fallece un perro o un gato · Instituto de Zoonosis Luis Pasteur",

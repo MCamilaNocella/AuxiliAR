@@ -23,5 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-# Curation pipeline: official downloads (their sha256 is in curation/sources/*.source.json)
-curation/raw/

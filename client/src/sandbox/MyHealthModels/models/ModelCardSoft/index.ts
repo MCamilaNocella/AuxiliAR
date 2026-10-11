@@ -1,0 +1,1 @@
+export { ModelCardSoft } from "./ModelCardSoft"

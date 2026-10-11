@@ -1,8 +1,7 @@
 /**
  * Atención veterinaria, told inside AuxiliAR: for every place, each prestación apart (castración, vacunación antirrábica, consulta clínica,
  * urgencias), with who can use it, cost and conditions, where, when, how to get it and how to reach it, as the OFFICIAL PAGE of that
- * place says it. Read on READ_ON from the original HTML of each page (full visible text, not a summary): docs/investigacion/
- * salud-animal-lectura-2026-10-11.md has the method, what each page says and what it leaves open.
+ * place says it. Read on READ_ON from the original HTML of each page (full visible text, not a summary).
  *
  * Rules kept here:
  *  - gratuity is told per prestación and always as the page's statement ("gratuita" is never said of a whole institution);

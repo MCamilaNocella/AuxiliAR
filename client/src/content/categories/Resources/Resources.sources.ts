@@ -2,8 +2,7 @@ import type { Source } from "@/components/health/SourceList"
 
 /**
  * Sources of "Más recursos" that are not already those of another category (rights of mental health and sexual health, the
- * vaccination calendar and the vaginal condom are shown from their own modules, one copy each). Texts saved in
- * docs/investigacion/evidencia: caba-ley-153-arts-1-3.txt, nacion-ley-27491-art-2-y-7.txt, caba-turnos-cesac-tramite.txt (all 2026-10-08).
+ * vaccination calendar and the vaginal condom are shown from their own modules, one copy each). Read on 2026-10-08.
  */
 export const CHECKED_AT = "2026-10-08"
 

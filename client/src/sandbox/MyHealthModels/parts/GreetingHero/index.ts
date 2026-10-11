@@ -1,0 +1,1 @@
+export { GreetingHero } from "./GreetingHero"

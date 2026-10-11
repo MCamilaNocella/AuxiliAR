@@ -18,9 +18,8 @@ import org.springframework.core.io.ClassPathResource;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * The fixture (data/resources-fixture.json) is made of invented resources, only for tests. It is the same file
- * client/scripts/resources-sync.test.mjs keeps equal to what the sync generates from the client's fixtures,
- * so the client's format and what this class reads are tested against each other.
+ * The fixture (data/resources-fixture.json) is made of invented resources, only for tests, in the format that
+ * client/scripts/resources-sync.mjs generates.
  */
 class ResourceCatalogTest {
 

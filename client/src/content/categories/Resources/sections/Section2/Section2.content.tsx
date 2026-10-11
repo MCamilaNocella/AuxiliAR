@@ -13,7 +13,7 @@ import { CUD_GUIDE, NEIGHBORHOOD_GUIDE, PENDING_NOTICE_TEXT, PENDING_NOTICE_TITL
 /**
  * Más recursos · Trámites. What each procedure needs, explained here; the official page is a source and, for the appointment, the
  * place where the person does it (an action AuxiliAR cannot do for them). The CeSAC appointment text repeats the Gobierno de la
- * Ciudad's "Solicitud de turnos en CESAC" (read on 2026-10-08, saved in docs/investigacion/evidencia/caba-turnos-cesac-tramite.txt).
+ * Ciudad's "Solicitud de turnos en CESAC" (read on 2026-10-08).
  * Phone numbers are not copied except the 147, the Ciudad's line named by that page for this procedure.
  */
 const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"

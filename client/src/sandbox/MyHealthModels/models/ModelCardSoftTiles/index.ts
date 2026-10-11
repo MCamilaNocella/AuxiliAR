@@ -1,0 +1,1 @@
+export { ModelCardSoftTiles } from "./ModelCardSoftTiles"

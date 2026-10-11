@@ -68,15 +68,6 @@ export type ProvinceCoverage = {
 
 export const COVERAGE = coverageIndex.provinces as Partial<Record<ProvinceCode, ProvinceCoverage>>
 
-/**
- * The provinces that have a places file: where AuxiliAR has places to show, known without downloading any of them.
- * Which of those have a place that is current today is decided with the data (getPlaceFacets).
- */
-export const PROVINCES_WITH_PLACE_FILES: readonly ProvinceCode[] = Object.keys(placeLoaders)
-  .map((path) => /places\/(.+)\.json$/.exec(path)?.[1].toUpperCase() as ProvinceCode | undefined)
-  .filter((code): code is ProvinceCode => code !== undefined)
-  .sort()
-
 /** Emergency or not is the kind, there's no separate flag to keep in step with it */
 export const isEmergency = (resource: Resource) => resource.kind === "emergency"
 
@@ -125,65 +116,18 @@ export const isServiceCurrent = (resource: Resource, service: ResolvedService, d
 export const getCurrentServices = (resource: Resource, day: string = todayInArgentina()) =>
   getServices(resource).filter((service) => isServiceCurrent(resource, service, day))
 
-/** What an establishment shows up under: derived from its services, never written (sorted, without repeats) */
-export const getDerivedCategories = (resource: Resource): CategoryId[] =>
-  [...new Set(getServices(resource).flatMap((service) => service.categories))].sort()
-
-/** Derived from the services for a place; the resource's own `categories` for the rest */
-export const getCategories = (resource: Resource): CategoryId[] =>
-  (resource.services ?? []).length > 0 ? getDerivedCategories(resource) : (resource.categories ?? [])
-
 /** Whether a place can be drawn on the map: its coordinates were verified (an address alone only goes in the list) */
 export const isMappable = (resource: Resource) => resource.coordinates?.status === "verified"
 
 /* ── Queries ── */
 
-export const getResourceById = (id: string) => RESOURCES.find((resource) => resource.id === id)
-
-/** The contacts of the resource and of its services */
-const allContacts = (resource: Resource): Contact[] => [...(resource.contacts ?? []), ...(resource.services ?? []).flatMap((service) => service.contacts ?? [])]
-
-/** Any resource with that number, current or not (compares digits only) */
-export const findResourceByDial = (dial: string) => {
-  const key = dialKey(dial)
-  return RESOURCES.find((resource) => allContacts(resource).some((contact) => dialKey(contact.dial) === key))
-}
-
-/**
- * The current resources that have that number. Several places can share one, so it's a list. A service's own
- * number only counts while that service is current.
- */
-export const findCurrentResourcesByDial = (dial: string, day: string = todayInArgentina()) => {
-  const key = dialKey(dial)
-  return RESOURCES.filter(
-    (resource) =>
-      isCurrent(resource, day) &&
-      [...(resource.contacts ?? []), ...getCurrentServices(resource, day).flatMap((service) => service.contacts)].some((contact) => dialKey(contact.dial) === key),
-  )
-}
-
 /** Resources that can be shown: for a place, only if it has at least one current service */
 export const getCurrentResources = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
   resources.filter((resource) => isCurrent(resource, day) && ((resource.services ?? []).length === 0 || getCurrentServices(resource, day).length > 0))
 
-/** In a category: a place by a current service of that category, any other resource by its own `categories` */
-export const getCurrentResourcesByCategory = (category: CategoryId, day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
-  getCurrentResources(day, resources).filter((resource) =>
-    (resource.services ?? []).length > 0
-      ? getCurrentServices(resource, day).some((service) => service.categories.includes(category))
-      : (resource.categories ?? []).includes(category),
-  )
-
 /** Establishments (resources with services) that can be shown */
 export const getCurrentPlaces = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
   getCurrentResources(day, resources).filter((resource) => (resource.services ?? []).length > 0)
-
-export const getCurrentPlacesByCategory = (category: CategoryId, day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
-  getCurrentResourcesByCategory(category, day, resources).filter((resource) => (resource.services ?? []).length > 0)
-
-/** Places that can be shown and drawn on the map */
-export const getCurrentMappablePlaces = (day: string = todayInArgentina(), resources: readonly Resource[] = RESOURCES) =>
-  getCurrentPlaces(day, resources).filter(isMappable)
 
 /** Link that dials (phone) or opens the chat (WhatsApp) */
 export const contactHref = ({ type, dial }: Contact) => (type === "whatsapp" ? `https://wa.me/${dialKey(dial)}` : `tel:${dial}`)

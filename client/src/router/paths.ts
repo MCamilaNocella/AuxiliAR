@@ -10,7 +10,6 @@ export const PATHS = {
   about: "/sobre-auxiliar",
   login: "/login",
   auxiModels: "/auxi-modelos",
-  auxiBubbleVariants: "/auxi-burbujas",
   peerChatSketch: "/boceto-chat-personas",
 } as const
 

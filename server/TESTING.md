@@ -29,7 +29,7 @@ mvn test -Dspring.ai.openai.api-key=dummy -Dspring.ai.openai.chat.model=dummy \
 
 Con eso pasan las 59 pruebas (la última comprobación: 8-10-2026). `contextLoads` es útil porque arranca de verdad todo lo que se valida al iniciar: la copia de los recursos (`data/resources.json`), el índice de contenido y las instrucciones de Auxi.
 
-**Por qué no está arreglado:** el arreglo correcto es dar esos valores en `src/test/resources/application.properties` (o con un `@TestPropertySource`), y es un cambio de configuración de pruebas separado de los números de ayuda. Tampoco están las pruebas de Java en el CI (`.github/workflows/node.js.yml` no corre Maven): lo que protege la consistencia de los números en el CI es `npm run resources:check` (en `client/`), que verifica que la tabla de números del chat, la copia del servidor y lo que `SafetyRules.java` supone de PAMI están al día con `client/src/data/resources/lines`.
+**Por qué no está arreglado:** el arreglo correcto es dar esos valores en `src/test/resources/application.properties` (o con un `@TestPropertySource`), y es un cambio de configuración de pruebas separado de los números de ayuda. Tampoco están las pruebas de Java en el CI (`.github/workflows/node.js.yml` no corre Maven). Para comprobar a mano que la tabla de números del chat, la copia del servidor y lo que `SafetyRules.java` supone de PAMI están al día con `client/src/data/resources/lines`, está `npm run resources:check` (en `client/`).
 
 ## Lo que cambia cuando se tocan los números de ayuda
 

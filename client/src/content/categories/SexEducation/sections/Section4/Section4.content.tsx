@@ -8,13 +8,12 @@ import { IVE_PAGINA } from "../../SexEducation.sources"
 /**
  * Salud sexual y ESI · Interrupción voluntaria y legal del embarazo (IVE/ILE). What the official sources say about rights, free
  * access, confidentiality and where to ask, in plain words. Sources: the Ley 27.610 (arts. 2, 4, 5, 10, 11 and 12) and the page
- * «Acceso a la Interrupción Voluntaria del Embarazo (IVE)» of argentina.gob.ar (texts in docs/investigacion/evidencia/
- * ive-ile-ley-27610-y-pagina-oficial.txt).
+ * «Acceso a la Interrupción Voluntaria del Embarazo (IVE)» of argentina.gob.ar.
  *
  * It says nothing about procedures, methods or medication, names NO center as a provider (no source of this round says that a
  * specific center offers the service, so none is listed as confirmed) and copies no phone number: the national line and the line
  * against violence are named and their numbers are on their official pages (the second one is in the emergency bar).
- * PENDING professional (clinical and legal) validation before it is published: see docs/investigacion/ronda-contenido-4.
+ * PENDING professional (clinical and legal) validation before it is published.
  */
 const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
 
