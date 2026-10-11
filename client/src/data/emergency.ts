@@ -1,17 +1,18 @@
 import type { EmergencyNumber, FirstAidGuide } from "@/types/emergency"
 
 export const EMERGENCY_NUMBERS: EmergencyNumber[] = [
-  { number: "107", label: "Ambulancia" },
+  { number: "107", label: "SAME" },
   { number: "911", label: "Policía" },
-  { number: "144", label: "Violencia" },
-  { number: "135", label: "Crisis" },
-  { number: "102", label: "Niñez" },
+  { number: "100", label: "Bomberos" },
+  { number: "135", label: "Apoyo emocional/crisis" },
+  { number: "102", label: "Protección al menor" },
+  { number: "144", label: "Violencia de género" },
 ]
 
 /** First aid guides (/primeros-auxilios/:slug) */
 export const FIRST_AID_GUIDES: FirstAidGuide[] = [
-  { slug: "rcp", title: "RCP · no respira" },
-  { slug: "atragantamiento", title: "Atragantamiento" },
+  { slug: "reacciones-alergicas", title: "Reacciones alérgicas" },
+  { slug: "heridas-y-cortes", title: "Heridas y cortes" },
   { slug: "quemaduras", title: "Quemaduras" },
 ]
 
