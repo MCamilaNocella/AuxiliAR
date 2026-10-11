@@ -240,7 +240,7 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
     blocks: [
       {
         id: "animales-campanas",
-        title: "Vacunación y castración gratuitas",
+        title: "Vacunación y castración",
         references: [CABA, PASTEUR, ROSARIO, CORDOBA, SALTA, NEUQUEN, PROTENENCIA].map(({ by, url }) => ({ label: by, url })).concat([
           { label: "Municipalidad de Rosario · Solicitar esterilización de perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-esterilizacion-de-perros-y-gatos" },
           { label: "Instituto de Zoonosis Luis Pasteur · Vacunación antirrábica", url: "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion" },
@@ -261,14 +261,14 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       },
       {
         id: "animales-atencion",
-        title: "Cómo buscar atención veterinaria gratuita",
+        title: "Servicios importantes: consulta y urgencias",
         references: [{ label: ZOONOSIS.label, url: ZOONOSIS.url }, ...UNIVERSITY_HOSPITALS.map(({ by, url }) => ({ label: by, url })), { label: "Municipalidad de Rosario · Solicitar atención veterinaria para perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos" }],
         checkedAt: [ANIMAL_PLACES_READ_ON],
         notes: ["Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular."],
       },
       {
         id: "animales-pasteur",
-        title: "Si muere tu perro o gato",
+        title: "Servicios importantes: cremación gratuita",
         references: fromSources([PASTEUR_INFO, PASTEUR_SERVICIOS]),
         checkedAt: [CHECKED_AT_PASTEUR],
         notes: ["Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir."],

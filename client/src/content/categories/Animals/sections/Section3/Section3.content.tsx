@@ -1,10 +1,11 @@
 import { Link } from "react-router"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { CABA, FREE_STATUSES, NOT_OFFERED_STATUSES, PASTEUR, PAID_STATUSES, ROSARIO, SALTA, UNCONFIRMED_STATUSES, UNIVERSITY_HOSPITALS } from "../../Animals.places"
+import { CremationBlock } from "../../CremationBlock"
 import { PlaceCard } from "../../PlaceCard"
 
 /**
- * Atención veterinaria · Atención veterinaria gratuita (consulta clínica y urgencias). Told inside AuxiliAR from each official page (Animals.places.ts),
+ * Atención veterinaria · Servicios importantes (consulta clínica y urgencias, y la cremación gratuita del Instituto Pasteur). Told inside AuxiliAR from each official page (Animals.places.ts),
  * apart from the castración and the vacunación:
  *  - the consultorio of the Instituto Pasteur (zoonosis only, no guardia), the Hospital Municipal and the puestos of Rosario (free for those
  *    adscriptos, a bono for the rest) and the Hospital Municipal, the Centro de Adopciones and the "Guardia y urgencias" of Salta (no hours of its own)
@@ -32,7 +33,7 @@ export default function Section3Content() {
         </ol>
         <p className="m-0 mt-3">
           <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className="inline-flex min-h-11 items-center font-bold">
-            Castración y vacunación gratuitas
+            Vacunación y castración
           </Link>
         </p>
       </section>
@@ -86,6 +87,8 @@ export default function Section3Content() {
           ))}
         </div>
       </section>
+
+      <CremationBlock />
 
       <section aria-labelledby="an-limits">
         <h3 id="an-limits" className="m-0 text-xl font-extrabold">

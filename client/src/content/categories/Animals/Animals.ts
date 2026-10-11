@@ -5,7 +5,6 @@ import { AnimalsScene } from "./AnimalsScene"
 import { Section1 } from "./sections/Section1"
 import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
-import { Section4 } from "./sections/Section4"
 
 export const ANIMALS: Category = {
   id: "animales",
@@ -20,7 +19,7 @@ export const ANIMALS: Category = {
   sections: [
     {
       id: "section-1",
-      title: "Vacunación y castración gratuitas",
+      title: "Vacunación y castración",
       summary:
         "Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
       Content: Section1,
@@ -34,15 +33,10 @@ export const ANIMALS: Category = {
     },
     {
       id: "section-3",
-      title: "Atención veterinaria gratuita",
+      title: "Servicios importantes",
       summary:
-        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas.",
+        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
       Content: Section3,
-    },
-    {
-      id: "section-4",
-      title: "Si muere tu perro o gato",
-      Content: Section4,
     },
   ],
   /** It opens straight on the first section: no banner first */

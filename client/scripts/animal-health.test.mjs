@@ -33,7 +33,6 @@ const CONTENT = {
   "section-2": (await vite.ssrLoadModule(`${sectionDir}/Section2/Section2.content.tsx`)).default,
   "section-3": (await vite.ssrLoadModule(`${sectionDir}/Section3/Section3.content.tsx`)).default,
 }
-const Section4 = (await vite.ssrLoadModule(`${sectionDir}/Section4/Section4.content.tsx`)).default
 after(() => vite.close())
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
@@ -43,25 +42,23 @@ const external = (html) => hrefs(html).filter((href) => href.startsWith("https:/
 const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) => [id, render(component)]))
 const ALL_PLACES = [places.CABA, places.PASTEUR, places.ROSARIO, places.CORDOBA, places.SALTA, places.NEUQUEN, places.PROTENENCIA, ...places.UNIVERSITY_HOSPITALS]
 
-test("salud animal has four sections (the last one without a summary yet) that open straight on the first, and it is no longer 'próximamente'", () => {
+test("atención veterinaria has three sections (the last one without a summary yet) that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(ANIMALS.sections.map(({ id, title }) => [id, title]), [
-    ["section-1", "Vacunación y castración gratuitas"],
+    ["section-1", "Vacunación y castración"],
     ["section-2", "Cuidado y prevención"],
-    ["section-3", "Atención veterinaria gratuita"],
-    ["section-4", "Si muere tu perro o gato"],
+    ["section-3", "Servicios importantes"],
   ])
   assert.equal(ANIMALS.defaultSectionId, "section-1")
   assert.equal(ANIMALS.preparing, undefined)
   assert.equal(ANIMALS.to, "/temas/animales")
-  // section-4 has no summary on purpose: Auxi's index (server resource) is not regenerated for it
-  for (const { summary } of ANIMALS.sections.slice(0, 3)) assert.ok(summary && summary.length > 60)
+  for (const { summary } of ANIMALS.sections) assert.ok(summary && summary.length > 60)
 })
 
 test("every section has content and no placeholder; its sources and the day they were read are in Sobre AuxiliAR; the only external links complete an action", () => {
   assert.equal(sources.CHECKED_AT, "2026-10-08")
   assert.equal(places.READ_ON, "2026-10-11")
   const OFFICIAL = /^https:\/\/(buenosaires\.gob\.ar|www\.rosario\.gob\.ar|cordoba\.gob\.ar|municipalidadsalta\.gob\.ar|www\.neuquencapital\.gov\.ar|www\.argentina\.gob\.ar|www\.fvet\.uba\.ar|www\.fcv\.unlp\.edu\.ar)\//
-  for (const [id, html] of Object.entries({ ...pages, "section-4": render(Section4) })) {
+  for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
     assert.ok(!content.includes("Fuentes oficiales") && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
@@ -70,8 +67,7 @@ test("every section has content and no placeholder; its sources and the day they
   assert.deepEqual(external(pages["section-1"]), [places.CABA, places.ROSARIO, places.SALTA, places.NEUQUEN, places.PROTENENCIA].map(({ action }) => action.url))
   assert.ok(pages["section-1"].includes('rel="noopener noreferrer"') && text(pages["section-1"]).includes("se abre en una pestaña nueva"))
   assert.deepEqual(external(pages["section-2"]), [])
-  assert.deepEqual(external(pages["section-3"]), [], "no 'visit this page' link: the universities' and the places' data are inside")
-  assert.deepEqual(external(render(Section4)), [])
+  assert.deepEqual(external(pages["section-3"]), [], "no 'visit this page' link: the universities' and the places' data are inside, and so is the cremation")
   const days = { "animales-campanas": ["2026-10-11"], "animales-rabia": ["2026-10-08"], "animales-atencion": ["2026-10-11"], "animales-pasteur": ["2026-10-09"] }
   for (const [blockId, checkedAt] of Object.entries(days)) {
     const block = referencesOf(blockId)
@@ -157,7 +153,7 @@ test("a free campaign is never called free veterinary care, and no guardia or ur
   assert.ok(c3.includes("No existe guardia de atención médica ni urgencias"), "Pasteur, as the page says it")
   assert.ok(c3.includes("no es una guardia confirmada"), "the 'Guardia y urgencias' of Salta has no hours of its own")
   assert.ok(c3.includes("no hacen internaciones") || c3.includes("no se realizan internaciones ni métodos complementarios"))
-  const allowed = ["No confirmamos ninguna guardia ni atención de urgencia gratuita", "La página no dice que sea una guardia las 24 horas", "no es una guardia confirmada", "la página no informa guardia", "no informa consulta clínica, guardia ni urgencias"]
+  const allowed = ["recibe perros y gatos fallecidos todos los días, las 24 horas", "No confirmamos ninguna guardia ni atención de urgencia gratuita", "La página no dice que sea una guardia las 24 horas", "no es una guardia confirmada", "la página no informa guardia", "no informa consulta clínica, guardia ni urgencias"]
   for (const [id, html] of Object.entries(pages)) {
     let body = text(html)
     for (const phrase of allowed) body = body.replaceAll(phrase, "")
@@ -202,7 +198,7 @@ test("atención veterinaria gratuita: orientation, with no promise and no second
 })
 
 test("contacts are told as the pages give them, with no call or message button, no emergency number, and no personal data asked for", () => {
-  for (const [id, html] of Object.entries({ ...pages, "section-4": render(Section4) })) {
+  for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     if (id !== "section-2") assert.ok(!html.includes("tel:") && !html.includes("wa.me"), id)
     assert.ok(!/<(form|input|textarea|select)\b/.test(html), id)
@@ -233,9 +229,11 @@ test("the index of Auxi's content lists the three sections, up to date with the 
   }
 })
 
-test("si muere tu perro o gato: Pasteur's free service with its conditions, no individual cremation or ashes promised, and no schedule of the vacunatorio", () => {
-  const html = render(Section4)
-  const content = text(html)
+test("cremación gratuita: a block of Servicios importantes with Pasteur's free service and its conditions, no individual cremation or ashes promised, and no schedule of the vacunatorio", () => {
+  const html = pages["section-3"]
+  const block = html.slice(html.indexOf('aria-labelledby="an-cremation"'), html.indexOf('aria-labelledby="an-limits"'))
+  const content = text(block)
+  assert.ok(content.includes("Cremación gratuita"), "the title of the block")
   assert.ok(content.includes("sin costo, para su disposición final o cremación"))
   assert.ok(content.includes("mayor de edad y concurrir con DNI"))
   assert.ok(content.includes("No informa si la cremación es individual ni si se entregan las cenizas"))
@@ -243,46 +241,13 @@ test("si muere tu perro o gato: Pasteur's free service with its conditions, no i
   assert.ok(content.includes("no tiene guardia de atención médica ni urgencias"))
   // nothing promises individual cremation or ashes, and the contradictory hours of the vacunatorio are not copied
   assert.ok(!/cenizas (se )?(entregan|devuelven)|cremación individual (gratuita|incluida)|9 a 12|14 a 17|8 a 18|8:00/i.test(content.replace("ni si se entregan las cenizas", "")))
-  // the sources are in Sobre AuxiliAR; the page keeps the warning about the date and no link
   assert.ok(!content.includes("Texto comparado con estas fuentes") && content.includes("No traen fecha de publicación: confirmá con el Instituto antes de ir"))
+  assert.deepEqual(external(block), [])
   assert.deepEqual(referencesOf("animales-pasteur").references.map(({ url }) => url), [sources.PASTEUR_INFO.url, sources.PASTEUR_SERVICIOS.url])
-})
-
-test("free, cost not confirmed and arancelados are kept in separate groups, and the universities never enter the free ones", () => {
-  const slice = (html, from, to) => text(html.slice(html.indexOf(`aria-labelledby="${from}"`), html.indexOf(`aria-labelledby="${to}"`)))
-  // castración y vacunación: free → not confirmed → arancelados (none)
-  const s1 = pages["section-1"]
-  const order1 = ["an-free", "an-unconfirmed", "an-paid"].map((id) => s1.indexOf(`aria-labelledby="${id}"`))
-  assert.ok(order1.every((at) => at > 0) && [...order1].sort((a, b) => a - b).join() === order1.join())
-  const free1 = slice(s1, "an-free", "an-unconfirmed")
-  const unconfirmed1 = slice(s1, "an-unconfirmed", "an-paid")
-  assert.ok(free1.includes("Móvil Quirúrgico") && free1.includes("Gratuita, según la página") && !free1.includes("La página no informa el costo"), "the free group has only what the page says is free")
-  assert.ok(unconfirmed1.includes("La página no informa el costo") && unconfirmed1.includes("No los tomes como gratuitos hasta confirmarlo con el servicio"))
-  assert.ok(unconfirmed1.includes("Vacunación antirrábica de perros y gatos") && !unconfirmed1.includes("Gratuita, según la página"))
-  assert.ok(/UBA|UNLP/.test(slice(s1, "an-paid", "an-other")) && !/UBA|UNLP/.test(free1 + unconfirmed1), "the universities are only named as arancelados")
-  // consulta y urgencias: free → not confirmed → services that do not exist → arancelados (the universities)
-  const s3 = pages["section-3"]
-  const order3 = ["an-free3", "an-unconfirmed3", "an-notoffered", "an-uni"].map((id) => s3.indexOf(`aria-labelledby="${id}"`))
-  assert.ok(order3.every((at) => at > 0) && [...order3].sort((a, b) => a - b).join() === order3.join())
-  const free3 = slice(s3, "an-free3", "an-unconfirmed3")
-  const unconfirmed3 = slice(s3, "an-unconfirmed3", "an-notoffered")
-  const paid3 = slice(s3, "an-uni", "an-limits")
-  assert.ok(!/UBA|UNLP|arancelad/i.test(free3 + unconfirmed3), "no arancelado service in a free or unconfirmed group")
-  assert.ok(free3.includes("Consultorio clínico orientado a zoonosis") && free3.includes("Gratuita, según la página"))
-  assert.ok(unconfirmed3.includes("«Guardia y urgencias» del Hospital Municipal") && unconfirmed3.includes("no es una guardia confirmada") && unconfirmed3.includes("Atención veterinaria en los cinco CIC"))
-  assert.ok(!free3.includes("Guardia y urgencias"), "the urgencias of Salta is not in the free group")
-  assert.ok(text(s3.slice(s3.indexOf('aria-labelledby="an-notoffered"'), s3.indexOf('aria-labelledby="an-uni"'))).includes("No existe guardia de atención médica ni urgencias"))
-  assert.ok(paid3.includes("Arancelada") && paid3.includes("Todos los servicios son arancelados") && paid3.includes("alternativas identificadas, no gratuitas"))
-})
-
-test("a contradiction between official pages is shown where the person reads the resource, with both versions and none chosen", () => {
-  const content = text(pages["section-1"])
-  // Pasteur: the two hours of the vacunatorio, side by side, in «Cuándo»
-  for (const piece of ["La página de servicios dice: de 9 a 12 y de 14 a 17 h, los 365 días del año", "La página de vacunación dice: todos los días, incluidos sábados, domingos y feriados, de 8 a 18 h", "Las dos páginas oficiales no coinciden en el horario: no elegimos una"]) assert.ok(content.includes(piece), piece)
-  const vac = places.PASTEUR.prestaciones.find(({ kind }) => kind === "vacunacion")
-  assert.ok(vac.when.length >= 3 && vac.when.every((line) => !/^(Todos los días|De 9)/.test(line) || /dice|coinciden/.test(line)), "no version is stated as fact")
-  // Salta: the brachycephalic breeds (the hospital says no, another place of the page says with turno)
-  assert.ok(content.includes("razas braquicéfalas"))
-  // Rosario: the address of the Centro de Salud Pasteur
-  assert.ok(content.includes("otra página dice «Ayolas y Ayacucho»"))
+  assert.equal(referencesOf("animales-pasteur").title, "Servicios importantes: cremación gratuita")
+  // the section "Si muere tu perro o gato" is gone: its text lives here, once
+  assert.ok(!ANIMALS.sections.some(({ id }) => id === "section-4"))
+  assert.equal([...text(html).matchAll(/Perder a un perro o a un gato es difícil/g)].length, 1)
+  // the order inside Servicios importantes: the free, the unconfirmed and the paid first, then the cremation, then the limits
+  assert.ok(html.indexOf('aria-labelledby="an-uni"') < html.indexOf('aria-labelledby="an-cremation"') && html.indexOf('aria-labelledby="an-cremation"') < html.indexOf('aria-labelledby="an-limits"'))
 })
