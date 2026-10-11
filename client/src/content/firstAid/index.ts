@@ -6,6 +6,7 @@ import type { FirstAidGuideContent, GuideGroupId } from "./types"
 
 export type * from "./types"
 export { CALL_INFO } from "./call"
+export { isVideoShown } from "./video"
 
 /** Every first aid guide, in the order they are shown. The only copy of the instructions */
 export const FIRST_AID_GUIDE_CONTENT: FirstAidGuideContent[] = [...EMERGENCY_GUIDES, ...INJURY_GUIDES, ...PREPARE_GUIDES]

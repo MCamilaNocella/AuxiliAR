@@ -1,5 +1,5 @@
 import type { Source } from "@/components/health/SourceList"
-import { FIRST_AID_GUIDE_CONTENT } from "../../firstAid"
+import { FIRST_AID_GUIDE_CONTENT, isVideoShown } from "../../firstAid"
 import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_READ_ON, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../Animals/Animals.places"
 import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
 import { CHECKED_AT as MENTAL_CHECKED_AT, LEY_26657, LEY_SIMPLE, OMS_ESTRES, ORIENTACION } from "../MentalHealth/MentalHealth.sources"
@@ -77,6 +77,12 @@ const firstAidBlock = (): ReferenceBlock => {
       const entry = bySource.get(url) ?? { reference: { label, url }, guides: [] }
       entry.guides.push(guide.title)
       bySource.set(url, entry)
+    }
+    // an approved video of the guide is a reference too: who publishes it and where the original is
+    if (isVideoShown(guide.video)) {
+      const entry = bySource.get(guide.video.originalUrl) ?? { reference: { label: `${guide.video.publisher} · ${guide.video.title} (video)`, url: guide.video.originalUrl }, guides: [] }
+      entry.guides.push(guide.title)
+      bySource.set(guide.video.originalUrl, entry)
     }
   }
   return {

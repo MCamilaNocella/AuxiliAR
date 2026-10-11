@@ -36,8 +36,8 @@ const formatDate = (date: string) => {
  * A short video inside the site, from its original source: nothing is downloaded or republished. It is responsive (16:9), loads
  * only when the person asks to play it (a facade, so nothing is sent to the video service before that, and with the
  * no-cookies address), asks the player for subtitles in the language of the page when the original has them, and always offers
- * the original video and the text of it. It is used in no page yet: before putting a health video here, its content, its validity and its
- * permission to be embedded have to be checked (docs/componentes/video-embed.md).
+ * the original video and the text of it. It is used only by the first aid guides, and only for a video with its whole approval record: its content, its validity and its
+ * permission to be embedded have to be checked first (docs/componentes/video-embed.md).
  */
 export const VideoEmbed = ({ videoId, title, originalUrl, publisher, publishedAt, duration, captionsLang = "es", hasCheckedCaptions = false, transcript }: VideoEmbedProps) => {
   const [playing, setPlaying] = useState(false)

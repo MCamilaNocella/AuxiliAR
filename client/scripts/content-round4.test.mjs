@@ -32,6 +32,8 @@ const IvePage = (await load("SexEducation/sections/Section4/Section4.content.tsx
 const MentalPage = (await load("MentalHealth/sections/Section1/Section1.content.tsx")).default
 const SexualWherePage = (await load("SexEducation/sections/Section1/Section1.content.tsx")).default
 const { VideoEmbed } = await vite.ssrLoadModule("/src/components/health/VideoEmbed/index.ts")
+const { FirstAidGuide } = await vite.ssrLoadModule("/src/components/firstAid/FirstAidGuide/FirstAidGuide.tsx")
+const firstAid = await vite.ssrLoadModule("/src/content/firstAid/index.ts")
 
 /* ── 1. Repeated emergency notices ── */
 
@@ -140,9 +142,63 @@ test("VideoEmbed: the transcript is offered closed, the captions are said only w
   assert.ok(!hrefs(render(VideoEmbed, { ...video, originalUrl: "javascript:alert(1)" })).some((link) => link.startsWith("javascript")))
 })
 
-test("VideoEmbed: it is used in no page yet (no health video was added), and the component takes nothing from third parties", () => {
+
+// A fixture guide, never data of the app: the real guides carry no video until each one has its whole approval record
+const fixtureGuide = {
+  slug: "ejemplo", title: "Guía de ejemplo", group: "now", summary: "Resumen.", callFirst: true,
+  stepSets: [{ steps: ["Primer paso escrito."] }], note: "Una nota.", sources: [{ label: "Fuente de ejemplo", url: "https://www.argentina.gob.ar/ejemplo" }], checkedAt: "2026-10-01",
+}
+const approval = {
+  clinicalReview: { by: "Profesional de ejemplo", date: "2026-10-05", version: "2023-08-21" },
+  currentWith: { reference: "Guía de RCP de ejemplo", date: "2026-10-05" },
+  permission: { basis: "Licencia de ejemplo" },
+  transcriptReviewed: true,
+}
+const withVideo = (patch) => ({ ...fixtureGuide, video: { ...video, transcript: ["Texto del video."], hasCheckedCaptions: true, approval, ...patch } })
+const renderGuide = (guide) => render(FirstAidGuide, { guide }, "/primeros-auxilios/ejemplo")
+
+test("a guide shows its video only with the whole approval record, after the written steps and the call block, with the steps never depending on it", () => {
+  const html = renderGuide(withVideo({}))
+  const content = text(html)
+  // it is there, as a facade (no player, nothing sent to the video service), with its transcript and the original
+  assert.ok(content.includes("Video de apoyo") && content.includes("Complementa los pasos escritos, no los reemplaza"))
+  assert.ok(content.includes("Revisado por Profesional de ejemplo el 5 de octubre de 2026"))
+  assert.ok(!html.includes("<iframe") && html.includes("Reproducir el video: Ejemplo de video institucional"))
+  assert.ok(content.includes("Texto del video.") && hrefs(html).includes(video.originalUrl))
+  // order: written steps and the call block come first; the video comes before the note and the sources
+  const at = (piece) => content.indexOf(piece)
+  assert.ok(at("Primer paso escrito.") < at("Video de apoyo") && at("Ver números de emergencia") < at("Video de apoyo") && at("Qué decir cuando llamás") < at("Video de apoyo"))
+  assert.ok(at("Video de apoyo") < at("Una nota.") && at("Video de apoyo") < at("Fuente oficial y revisión"))
+  // without the video the guide is exactly the same text, minus that block
+  assert.equal(text(renderGuide(fixtureGuide)).includes("Video de apoyo"), false)
+})
+
+test("each part of the record is needed: without any of them the video is not shown", () => {
+  const missing = [
+    { approval: undefined },
+    { approval: { ...approval, clinicalReview: { ...approval.clinicalReview, by: " " } } },
+    { approval: { ...approval, clinicalReview: { ...approval.clinicalReview, date: "" } } },
+    { approval: { ...approval, currentWith: { ...approval.currentWith, reference: "" } } },
+    { approval: { ...approval, permission: { basis: "" } } },
+    { approval: { ...approval, transcriptReviewed: false } },
+    { transcript: undefined },
+    { transcript: [] },
+    { originalUrl: "http://example.org/video" },
+  ]
+  for (const patch of missing) assert.ok(!text(renderGuide(withVideo(patch))).includes("Video de apoyo"), JSON.stringify(patch).slice(0, 80))
+  assert.equal(firstAid.isVideoShown(undefined), false)
+  assert.equal(firstAid.isVideoShown(withVideo({}).video), true)
+})
+
+test("no real guide carries a video: the RCP candidates stay pending clinical review, and nothing is presented as approved", () => {
+  for (const guide of firstAid.FIRST_AID_GUIDE_CONTENT) assert.equal(guide.video, undefined, guide.slug)
+  const doc = read("../docs/investigacion/videos-rcp-pendientes-validacion.md")
+  assert.ok(doc.includes("wbp_AdGkWPM") && doc.includes("Ningún video está incorporado a la aplicación ni aprobado"))
+})
+
+test("VideoEmbed is used only by the first aid guide (and only with an approved video), and the component takes nothing from third parties", () => {
   const users = execSync('git grep -l "VideoEmbed" -- src', { cwd: root, encoding: "utf8" }).split("\n").filter(Boolean)
-  assert.deepEqual(users.sort(), ["src/components/health/VideoEmbed/VideoEmbed.tsx", "src/components/health/VideoEmbed/index.ts"])
+  assert.deepEqual(users.sort(), ["src/components/firstAid/FirstAidGuide/FirstAidGuide.tsx", "src/components/health/VideoEmbed/VideoEmbed.tsx", "src/components/health/VideoEmbed/index.ts"])
   const source = read("src/components/health/VideoEmbed/VideoEmbed.tsx")
   assert.ok(source.includes("youtube-nocookie.com/embed/") && !/<video\b|\.mp4|\.webm|\bdownload=/.test(source), "only the embed of the original player; no download and no copy")
 })

@@ -1,5 +1,7 @@
 # Videos de RCP: ficha comparativa pendiente de validación
 
+> **Actualización del 11/10/2026:** el soporte técnico ya existe en la rama local `feature/taxonomy-food-activity`: `FirstAidGuide` tiene un lugar para el video (después de los pasos escritos y del bloque de llamada) y solo lo muestra con el registro de aprobación completo (`GuideVideo.approval`: revisión clínica con nombre y fecha, guía de referencia vigente, permiso de incrustación y transcripción revisada). Lo que dice la tabla de abajo sobre la falta de lugar en `FirstAidGuide` quedó resuelto; **todo lo demás sigue pendiente y ningún video está cargado**. La integración en `main` requiere el OK del grupo.
+
 Registro del **10/10/2026**. **Ningún video está incorporado a la aplicación ni aprobado.** Este documento compara los tres candidatos de RCP ya identificados (Ministerio de Salud y UNAHUR) con las condiciones que ya existían, y deja por escrito qué se pudo comprobar y qué no.
 
 Documentos de base, que no se duplican:

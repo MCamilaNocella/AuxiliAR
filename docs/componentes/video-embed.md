@@ -1,6 +1,6 @@
 # Componente `VideoEmbed` (videos breves dentro del sitio)
 
-**Estado:** listo para usar, **sin ningún video cargado**. No hay video sanitario en ninguna página: antes de usarlo hay que cumplir la lista de abajo. Código: `client/src/components/health/VideoEmbed/`. Prueba: `npm run round4:test`.
+**Estado:** listo para usar, **sin ningún video cargado**. No hay video sanitario en ninguna página: antes de usarlo hay que cumplir la lista de abajo. **Dónde se puede usar:** en las guías de primeros auxilios (`FirstAidGuide`), con el campo opcional `video` de la guía y su registro de aprobación (`approval`): revisión clínica (quién y cuándo), guía de referencia con la que coincide, permiso de incrustación y transcripción revisada. Si falta cualquier parte, **no se muestra** (`isVideoShown`). Se dibuja después de los pasos escritos y del bloque de llamada, con el título «Video de apoyo» y la aclaración de que complementa los pasos. Código: `client/src/content/firstAid/{types,video}.ts`. Código: `client/src/components/health/VideoEmbed/`. Prueba: `npm run round4:test`.
 
 ## Qué hace
 - **Reproduce el video desde su fuente original** (el reproductor de YouTube con la dirección sin cookies, `youtube-nocookie.com`). **No descarga ni republica nada** de terceros.
