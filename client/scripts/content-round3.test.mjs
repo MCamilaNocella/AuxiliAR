@@ -337,3 +337,17 @@ test("calendar: gratuity and availability are told as the sources tell them, the
   const viral = text(render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=5-anios"))
   assert.ok(viral.includes("Nacidos entre el 1.° de enero de 2021 y el 30 de junio de 2024") && viral.includes("Nacidos desde el 1.° de julio de 2024: segunda dosis entre los 15 y los 18 meses"))
 })
+
+test("the development notice, the intro and the general note come after the page of vaccines (below it, before 'Recordá'), on every page", () => {
+  for (const id of calendar.STAGE_PAGE_ORDER) {
+    const content = text(render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`))
+    const stage = content.indexOf("Página ")
+    const notice = content.indexOf("En desarrollo · pendiente de validación profesional")
+    const general = content.indexOf("resumen informativo del Calendario Nacional de Vacunación oficial")
+    const reminder = content.indexOf("Recordá")
+    assert.ok(stage >= 0 && notice > stage && general > notice && reminder > general, id)
+  }
+  // the newborns page: its vaccines first, then the notice
+  const newborns = text(render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=recien-nacidos"))
+  assert.ok(newborns.indexOf("Tuberculosis (BCG)") < newborns.indexOf("En desarrollo · pendiente de validación profesional"))
+})

@@ -92,7 +92,7 @@ const Pager = ({ index, onGo }: { index: number, onGo: (index: number) => void }
 }
 
 /**
- * Salud general · Calendario de vacunación. The Calendario Nacional de Vacunación 2026 as pages by age, from the baby to the older adult: the
+ * Salud general · Calendario de vacunación. (The development notice, what the calendar is and the general note come after the page, before "Recordá".) The Calendario Nacional de Vacunación 2026 as pages by age, from the baby to the older adult: the
  * person turns the page with the arrows (the open page is in the URL, ?etapa=, so a link can open it). Each page lists the ages of its stage and,
  * for each one, the vaccines with when they are applied and how often, in the official words. An informative summary of the official calendar: where the
  * official sources differ or a professional must decide, it says so in ONE short note per page and sends to the official source or the vacunatorio.
@@ -127,26 +127,6 @@ export default function Section5Content() {
 
   return (
     <div className="mt-2 flex max-w-4xl flex-col gap-6">
-      <div className="flex items-start gap-3 rounded-2xl border-2 border-brand bg-brand-soft p-4">
-        <Construction aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand" />
-        <div>
-          <p className="m-0 font-extrabold">{DEVELOPMENT_NOTICE.title}</p>
-          <p className="m-0 mt-1">{DEVELOPMENT_NOTICE.text}</p>
-        </div>
-      </div>
-      <div>
-        <p className="m-0">
-          El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Pasá las páginas con las flechas, de bebés a personas mayores: en cada una ves las vacunas de esa edad, cuándo se aplican y cada cuánto, según el Ministerio de Salud de la Nación.
-        </p>
-        <p className="m-0 mt-2 text-muted">
-          Según el Ministerio de Salud de la Nación, las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país y no requieren orden médica. Las páginas oficiales de 5 y 11 años dicen que se aplican de forma gratuita. Esto no asegura que haya vacunas, turnos o un horario determinado en un vacunatorio en particular: consultalo en el que te quede cerca.
-        </p>
-        <p className="m-0 mt-3 flex items-start gap-2 rounded-2xl border border-line-strong bg-field p-3 text-ink-soft">
-          <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-brand" />
-          <span>{GENERAL_NOTE}</span>
-        </p>
-      </div>
-
       <Pager index={index} onGo={go} />
 
       <section aria-labelledby="vaccination-stage-title" className="flex flex-col gap-4">
@@ -186,6 +166,26 @@ export default function Section5Content() {
       </section>
 
       {!isShortPage(stage) && <Pager index={index} onGo={go} />}
+
+      <div className="flex items-start gap-3 rounded-2xl border-2 border-brand bg-brand-soft p-4">
+        <Construction aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand" />
+        <div>
+          <p className="m-0 font-extrabold">{DEVELOPMENT_NOTICE.title}</p>
+          <p className="m-0 mt-1">{DEVELOPMENT_NOTICE.text}</p>
+        </div>
+      </div>
+      <div>
+        <p className="m-0">
+          El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Pasá las páginas con las flechas, de bebés a personas mayores: en cada una ves las vacunas de esa edad, cuándo se aplican y cada cuánto, según el Ministerio de Salud de la Nación.
+        </p>
+        <p className="m-0 mt-2 text-muted">
+          Según el Ministerio de Salud de la Nación, las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país y no requieren orden médica. Las páginas oficiales de 5 y 11 años dicen que se aplican de forma gratuita. Esto no asegura que haya vacunas, turnos o un horario determinado en un vacunatorio en particular: consultalo en el que te quede cerca.
+        </p>
+        <p className="m-0 mt-3 flex items-start gap-2 rounded-2xl border border-line-strong bg-field p-3 text-ink-soft">
+          <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-brand" />
+          <span>{GENERAL_NOTE}</span>
+        </p>
+      </div>
 
       <section aria-labelledby="vaccination-reminder" className="rounded-2xl border border-line-strong bg-field p-4">
         <h3 id="vaccination-reminder" className="m-0 text-base font-extrabold">
