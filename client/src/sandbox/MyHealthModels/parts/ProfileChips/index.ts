@@ -1,1 +1,0 @@
-export { ProfileChips } from "./ProfileChips"

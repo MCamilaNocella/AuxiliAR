@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+
+# Local design pages (playgrounds), never committed
+src/sandbox/

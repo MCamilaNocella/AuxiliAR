@@ -49,8 +49,6 @@ export type VaccineGroup = {
   display?: "open" | "collapsible" | "split"
   paragraphs?: string[]
   items?: VaccineItem[]
-  /** Shown in a box of its own (a section inside the stage) */
-  aside?: boolean
 }
 
 export type VaccinationStage = {

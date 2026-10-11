@@ -40,7 +40,6 @@ const router = createBrowserRouter([
           // Salud general no longer has Primeros auxilios: its old section address redirects to /primeros-auxilios
           { path: PATHS.topic(HEALTH_GENERAL_SLUG), element: <HealthGeneralRoute/> },
           { path: PATHS.topic(":slug"), element: <Category/> },
-          // Más recursos: a "Próximamente" page (it has no published information yet), no longer a redirect
           { path: PATHS.resources, element: <Category/> },
           { path: PATHS.centers, element: <Category/> },
           { path: PATHS.myHealth, element: <MyHealth/> },
