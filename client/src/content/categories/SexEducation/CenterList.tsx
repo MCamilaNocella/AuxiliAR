@@ -7,8 +7,7 @@ const noteClass = "m-0 text-sm text-ink-soft"
 export const TestCenterList = ({ centers }: { centers: TestCenter[] }) => (
   <Disclosure title={`Centros de testeo de VIH y sífilis de la Ciudad (${centers.length})`} compact>
     <p className={noteClass}>
-      Lista del Gobierno de la Ciudad leída el 10 de octubre de 2026 con una herramienta de lectura automática, tal como la publica (la página no muestra fecha de actualización). La página dice que los centros atienden en distintos
-      días y horarios y pide consultar por teléfono antes de ir; no dice si hace falta turno u orden. Una misma dirección puede figurar distinta en otra lista oficial. AuxiliAR no verificó estos centros.
+      Lista oficial de la Ciudad consultada el 10 de octubre de 2026, tal como la publica. AuxiliAR no verificó estos centros: llamá antes de ir para confirmar días, horarios y si hace falta turno. Una misma dirección puede figurar distinta en otra lista oficial.
     </p>
     <ul role="list" className="m-0 flex list-none flex-col gap-2 p-0">
       {centers.map(({ name, address, phone, syphilis }) => (
@@ -27,9 +26,7 @@ export const TestCenterList = ({ centers }: { centers: TestCenter[] }) => (
 export const CounselingCenterList = ({ centers }: { centers: CounselingCenter[] }) => (
   <Disclosure title={`Consejerías en salud sexual de la Ciudad (${centers.length})`} compact>
     <p className={noteClass}>
-      Lista del Gobierno de la Ciudad leída el 10 de octubre de 2026 con una herramienta de lectura automática, tal como la publica (la página no muestra fecha de actualización): en estos centros se puede acceder a los métodos anticonceptivos y a la interrupción del
-      embarazo. La columna de contacto es la que la página llama «contacto por IVE/ILE»: no es necesariamente el teléfono general del centro. Hay datos que la lista repite entre centros distintos (por ejemplo, un mismo correo en varios CeSAC): confirmalos
-      antes de escribir. AuxiliAR no verificó estos centros.
+      Lista oficial de la Ciudad consultada el 10 de octubre de 2026, tal como la publica. Es una lista de consejerías en salud sexual: no confirma que cada sede realice procedimientos de IVE/ILE ni qué prestaciones tiene disponibles hoy. El contacto es el que la lista llama «contacto por IVE/ILE», no es necesariamente el teléfono general del centro, y algunos datos se repiten entre centros. AuxiliAR no verificó estos centros: confirmá antes de ir o escribir.
     </p>
     <ul role="list" className="m-0 flex list-none flex-col gap-2 p-0">
       {centers.map(({ name, address, tubalLigation, vasectomy, contact }) => (

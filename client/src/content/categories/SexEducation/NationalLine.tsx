@@ -29,7 +29,7 @@ export const NationalLine = () => (
       </a>
     </div>
     <p className="m-0 mt-2 text-sm text-ink-soft">
-      {`Para confirmar: ${NATIONAL_LINE.pending.join(" ")} Según la página del Ministerio, leída el ${formatRead()} con una herramienta de lectura automática. No es una línea de emergencia: ante un riesgo inmediato usá los números de la barra de emergencias.`}
+      {`Para confirmar: ${NATIONAL_LINE.pending.join(" ")} Datos de la página del Ministerio, consultada el ${formatRead()}; AuxiliAR no los verificó. No es una línea de emergencia: ante un riesgo inmediato usá los números de la barra de emergencias.`}
     </p>
   </div>
 )

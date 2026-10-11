@@ -23,7 +23,7 @@ const formatRead = () => {
 /** What every card says about where its text comes from: AuxiliAR checked none of it in person */
 const Footing = ({ sourceDate }: { sourceDate?: string }) => (
   <p className="m-0 mt-3 text-sm text-ink-soft">
-    {`Según la página oficial de ese organismo, leída el ${formatRead()} con una herramienta de lectura automática: nadie del equipo lo comparó todavía con la página. ${sourceDate ? `Fecha de su contenido: ${sourceDate}.` : "La página no muestra fecha de actualización."} AuxiliAR no verificó este servicio: confirmá requisitos, costo y horarios con quien lo ofrece.`}
+    {`Datos de la página oficial de ese organismo, consultada el ${formatRead()}.${sourceDate ? ` Fecha de su contenido: ${sourceDate}.` : ""} AuxiliAR no los verificó: confirmá requisitos, costo y horarios con quien ofrece el servicio.`}
   </p>
 )
 

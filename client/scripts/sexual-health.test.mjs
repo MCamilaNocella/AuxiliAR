@@ -119,7 +119,7 @@ test("other provinces and the civil organization are told inside AuxiliAR: what,
   for (const title of ["Buenos Aires", "Santa Fe", "Tucumán"]) assert.ok(text(provinces).includes(title), title)
   assert.equal([...provinces.matchAll(/Qué ofrece/g)].length, 3)
   for (const label of ["Para quién", "Costo y condiciones", "Cómo acceder", "Contacto"]) assert.equal([...provinces.matchAll(new RegExp(label, "g"))].length, 3, label)
-  assert.ok(/leída el 10 de octubre de 2026 con una herramienta de lectura automática/.test(content))
+  assert.ok(content.includes("consultada el 10 de octubre de 2026") && !/herramienta de lectura/.test(content), "short notice in the page; the reading method is in Sobre AuxiliAR")
   // IVE/ILE summaries are pending validation, and the only external links are actions that cannot be done here
   assert.ok(content.includes("Pendiente de validación legal y profesional"))
   assert.deepEqual(external(html), [sources.PBA_SSR.url, sources.SANTA_FE_IVE.url, sources.HUESPED_DONDE.url])
@@ -141,7 +141,7 @@ test("the official lists of the Ciudad are inside the page, as published, with t
   const content = text(html)
   assert.ok(content.includes("Centros de testeo de VIH y sífilis de la Ciudad (69)") && content.includes("Consejerías en salud sexual de la Ciudad (62)"))
   assert.ok(content.includes("AuxiliAR no verificó estos centros"))
-  assert.ok(content.includes("no es necesariamente el teléfono general del centro"))
+  assert.ok(content.includes("no es necesariamente el teléfono general del centro") && content.includes("no confirma que cada sede realice procedimientos de IVE/ILE"))
   assert.deepEqual(external(html), [], "no link to the lists: they are here")
 })
 

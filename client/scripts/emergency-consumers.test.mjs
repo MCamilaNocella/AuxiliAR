@@ -106,6 +106,12 @@ test("no number is written by hand in the app: every mention of a help number go
     new RegExp(String.raw`(?<![=\w])["'\x60]${NUMBERS}["'\x60]`),
     /0800-?\d{3}-?\d{4}/,
   ]
+  // Contacts of services (not emergency or help lines of the verified dataset) that a page of AuxiliAR tells as its official page publishes them:
+  // the national sexual-health line, the Santa Fe line and the Fundación Huésped line. Each is exempt only in the file that tells it.
+  const SERVICE_LINES = {
+    "src/content/categories/SexEducation/SexEducation.coverage.ts": ["0800-222-3444", "08002223444", "0800-777-0801"],
+    "src/content/categories/SexEducation/SexEducation.lists.ts": ["0800-222-4837"],
+  }
   const offenders = []
   const walk = async (dir) => {
     for (const entry of await readdir(join(root, dir), { withFileTypes: true })) {
@@ -113,9 +119,13 @@ test("no number is written by hand in the app: every mention of a help number go
       if (entry.isDirectory()) {
         if (path.replaceAll("\\", "/") === "src/data/resources") continue
         await walk(path)
-      } else if (/\.(ts|tsx)$/.test(entry.name) && !/Auxi\.constants|\.test\.|SexEducation\.(coverage|lists)\./.test(entry.name)) {
+      } else if (/\.(ts|tsx)$/.test(entry.name) && !/Auxi\.constants|\.test\./.test(entry.name)) {
         const source = await readFile(join(root, path), "utf8")
-        source.split("\n").forEach((line, index) => {
+        // Only these data files may write a number, and only the exact 0800 lines of non-emergency services listed above: every other number
+        // (an emergency or help line, or a new 0800) still fails here, in these files too
+        const exempt = SERVICE_LINES[path.replaceAll("\\", "/")] ?? []
+        source.split("\n").forEach((rawLine, index) => {
+          const line = exempt.reduce((text, number) => text.replaceAll(number, ""), rawLine)
           if (patterns.some((pattern) => pattern.test(line)) && !/^\s*(\/\/|\*|\/\*)/.test(line)) offenders.push(`${path}:${index + 1}: ${line.trim().slice(0, 100)}`)
         })
       }

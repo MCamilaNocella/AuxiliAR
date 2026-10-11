@@ -147,7 +147,7 @@ export default function Section4Content() {
           </li>
           <li>
             <Link to={`${PATHS.topic("esi")}?${SECTION_PARAM}=section-2`} className="inline-flex min-h-11 items-center font-bold">
-              Consejerías de la Ciudad, con un contacto por IVE/ILE de cada centro
+              Consejerías de la Ciudad: lista con un contacto por centro
             </Link>
           </li>
         </ul>
