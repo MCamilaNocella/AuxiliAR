@@ -296,3 +296,11 @@ test("each category has its own drawing inside the pin, centered in its head, an
   const view = await readFile(join(root, "src/components/places/PlacesMapView/PlacesMapView.tsx"), "utf8")
   assert.ok(view.includes("Qué significa el símbolo de cada punto") && view.includes("categoryLabel(category)"))
 })
+
+test("the zoom buttons (+ and -) are on the right of the map, 44px, and the attribution stays at the bottom left", async () => {
+  const code = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.tsx"), "utf8")
+  assert.ok(code.includes("zoomControl: false") && code.includes('L.control.zoom({ position: "topright" })'), "Leaflet's own top-left control is off; ours is top right")
+  assert.ok(code.includes('L.control.attribution({ position: "bottomleft"'), "the attribution does not move")
+  const css = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.css"), "utf8")
+  assert.ok(/\.leaflet-bar a[^{]*\{[^}]*width: 44px;[^}]*height: 44px/.test(css), "still 44px")
+})

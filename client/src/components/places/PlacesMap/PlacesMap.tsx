@@ -51,7 +51,7 @@ const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: r
  * The map: Leaflet inside our own wrapper (no react-leaflet). It only draws what it is given: the pins of the places
  * with verified coordinates. It never looks coordinates up. Imperative on purpose: Leaflet owns its DOM, React only
  * says which pins there are and which one is selected.
- *  - The pins are focusable buttons named after the place, its kind and what it is for; hovering or focusing a pin shows that in a short tooltip; the zoom buttons are 44px.
+ *  - The pins are focusable buttons named after the place, its kind and what it is for; hovering or focusing a pin shows that in a short tooltip; the zoom buttons are 44px and sit on the right.
  *  - The list has the same places and every action, so nothing depends on this map.
  *  - Loaded on demand (this file brings Leaflet and its CSS with it).
  */
@@ -72,6 +72,8 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     const reduced = prefersReducedMotion()
     const map = L.map(container, {
       attributionControl: false,
+      // The zoom buttons (+ and -) go on the right of the map, not on the left (Leaflet puts them top left by default)
+      zoomControl: false,
       // The page scrolls with the wheel and the finger: the map zooms with its buttons, a double tap or a pinch
       scrollWheelZoom: false,
       zoomAnimation: !reduced,
@@ -79,6 +81,7 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
       markerZoomAnimation: !reduced,
     })
     L.tileLayer(MAP_TILES.url, { maxZoom: MAP_TILES.maxZoom, attribution: MAP_TILES.attribution }).addTo(map)
+    L.control.zoom({ position: "topright" }).addTo(map)
     L.control.attribution({ position: "bottomleft", prefix: LEAFLET_PREFIX }).addTo(map)
     mapRef.current = map
     const markers = markersRef.current
