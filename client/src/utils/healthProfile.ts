@@ -1,13 +1,11 @@
-import { CARD_FIELDS, EXTRA_FIELDS } from "@/data/myHealth"
-import type { CardFieldKey, HealthProfile, MissingItem, Place, ProfileFieldKey } from "@/types/myHealth"
-
-/** Whether that piece of data is on the emergency card (the rest only Auxi asks for) */
-export const isCardField = (key: ProfileFieldKey): key is CardFieldKey => CARD_FIELDS.some((field) => field.key === key)
+import { CARD_FIELDS } from "@/data/myHealth"
+import type { CardFieldKey, HealthProfile, MissingItem, Place } from "@/types/myHealth"
 
 /** The field as plain text ("" when empty), as it goes in its input */
 export const fieldText = (profile: HealthProfile, key: CardFieldKey): string => {
   if (key === "name") return profile.name
   if (key === "age") return profile.age === undefined ? "" : String(profile.age)
+  if (key === "location") return profile.place ? [profile.place.locality, profile.place.province].filter(Boolean).join(", ") : ""
   return profile.record[key] ?? ""
 }
 
@@ -17,16 +15,22 @@ export const fieldDisplay = (profile: HealthProfile, key: CardFieldKey): string 
   return fieldText(profile, key) || undefined
 }
 
-/** What's missing in the profile, in order: the card's data first, then the rest (asked by Auxi) */
-export const missingItems = (profile: HealthProfile): MissingItem[] => [
-  ...CARD_FIELDS.filter(({ key }) => !fieldText(profile, key)).map(({ key, addLabel }) => ({ key, addLabel, onCard: true })),
-  ...EXTRA_FIELDS.filter(({ key }) => key === "location" && !profile.place).map(({ key, addLabel }) => ({ key, addLabel, onCard: false })),
-]
+/** What's missing in the profile, in the card's order */
+export const missingItems = (profile: HealthProfile): MissingItem[] =>
+  CARD_FIELDS.filter(({ key }) => !fieldText(profile, key)).map(({ key, addLabel }) => ({ key, addLabel }))
 
 /** 0–100: share of the profile that's filled in */
 export const completion = (profile: HealthProfile) => {
-  const total = CARD_FIELDS.length + EXTRA_FIELDS.length
+  const total = CARD_FIELDS.length
   return Math.round(((total - missingItems(profile).length) / total) * 100)
+}
+
+/** "Balvanera, CABA" → locality and province (split at the first comma; the province is optional) */
+const parsePlace = (text: string | undefined): Place | undefined => {
+  if (!text) return undefined
+  const [locality, ...rest] = text.split(",").map((part) => part.trim())
+  if (!locality) return undefined
+  return { locality, province: rest.filter(Boolean).join(", ") || undefined }
 }
 
 /**
@@ -40,6 +44,7 @@ export const withFields = (profile: HealthProfile, texts: Record<CardFieldKey, s
     ...profile,
     name: clean("name") ?? profile.name,
     age: Number.isInteger(age) && age >= 1 && age <= 130 ? age : undefined,
+    place: parsePlace(clean("location")),
     record: { bloodType: clean("bloodType"), allergies: clean("allergies"), contact: clean("contact"), insurance: clean("insurance") },
   }
 }

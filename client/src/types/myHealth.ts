@@ -26,11 +26,11 @@ export type HealthProfile = {
   ageTopics: string[]
 }
 
-/** Each piece of data on the emergency card: name and age, then the record */
-export type CardFieldKey = "name" | "age" | keyof EmergencyRecord
+/** Each piece of data on the emergency card: name, age and where the person lives, then the record */
+export type CardFieldKey = "name" | "age" | "location" | keyof EmergencyRecord
 
-/** Every piece of data of the profile: the card's, plus the ones only Auxi asks for */
-export type ProfileFieldKey = CardFieldKey | "location"
+/** Every piece of data of the profile: all of them are on the emergency card */
+export type ProfileFieldKey = CardFieldKey
 
 export type CardField = {
   key: CardFieldKey
@@ -48,6 +48,4 @@ export type MissingItem = {
   key: ProfileFieldKey
   /** Button text ("Agregar obra social") */
   addLabel: string
-  /** Completed right on the emergency card; the rest, with Auxi */
-  onCard: boolean
 }

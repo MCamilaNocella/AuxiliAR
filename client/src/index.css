@@ -21,6 +21,8 @@
 
   /* Surfaces and borders */
   --color-surface: #faf8f6;
+  /* "Done" green (Mi Salud: the check of a piece of data just completed) */
+  --color-success: #2b8a3e;
   /* Warm off-white (not pure white): easier on the eyes and in tune with the warm palette */
   --color-card: #f7f2ee;
   --color-surface-alt: #f4f0ee;
@@ -68,6 +70,14 @@
 
   /* Each new chat message (and the buttons under it) fades in, rising a little */
   --animate-message-in: message-in 350ms ease-out both;
+
+  /* Mi Salud, a piece of data just completed: its check draws itself (the path needs pathLength="1"), then the
+     item fades out. Keep step-done's length in sync with DONE_VISIBLE_MS (MissingSteps.constants) */
+  --animate-check-draw: check-draw 800ms ease-in-out both;
+  --animate-step-done: step-done 3.2s ease-in-out both;
+
+  /* Mi Salud, the emergency card switching between showing and editing: the new content fades in calmly */
+  --animate-calm-in: calm-in 500ms ease-out both;
 
   /*
    * "Ver mejor" button in the header: on page load, once the label is out, a metallic glint sweeps
@@ -156,6 +166,36 @@
     }
   }
 
+  @keyframes check-draw {
+    from {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes step-done {
+    0%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes calm-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   @keyframes message-in {
     from {
       opacity: 0;
@@ -193,6 +233,7 @@
   --color-muted: #b8aba8;
 
   --color-surface: #171313;
+  --color-success: #69db7c;
   --color-card: #221c1c;
   --color-surface-alt: #1f1a1a;
   --color-field: #2a2323;
@@ -224,6 +265,7 @@
   --color-muted: #f0f0f0;
 
   --color-surface: #000000;
+  --color-success: #4cff7e;
   --color-card: #000000;
   --color-surface-alt: #000000;
   --color-field: #000000;

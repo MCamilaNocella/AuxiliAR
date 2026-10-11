@@ -32,7 +32,8 @@ export const ProfileRows = ({ profile, empty, onAddField }: ProfileRowsProps) =>
             </p>
           </div>
         </div>
-        <MissingSteps missing={missing} onSelect={onAddField} />
+        {/* Keyed by profile: switching profiles isn't completing anything */}
+        <MissingSteps key={profile.id} missing={missing} onSelect={onAddField} />
       </section>
 
       <section aria-label="Para tu edad" data-category="recursos" className={rowClass}>
