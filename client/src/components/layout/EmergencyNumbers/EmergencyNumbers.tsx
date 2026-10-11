@@ -3,7 +3,7 @@ import type { EmergencyNumbersProps } from "./EmergencyNumbers.types"
 
 /** Emergency phone cards: tapping one calls that number */
 export const EmergencyNumbers = ({ numbers }: EmergencyNumbersProps) => (
-  <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${NUMBERS_GRID}`}>
+  <ul role="list" className={`m-0 grid flex-1 auto-rows-fr list-none gap-2 p-0 ${NUMBERS_GRID}`}>
     {numbers.map(({ number, label }) => (
       <li key={number}>
         <a

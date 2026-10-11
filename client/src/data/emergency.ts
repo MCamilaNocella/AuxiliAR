@@ -11,8 +11,8 @@ export const EMERGENCY_NUMBERS: EmergencyNumber[] = [
 
 /** First aid guides (/primeros-auxilios/:slug) */
 export const FIRST_AID_GUIDES: FirstAidGuide[] = [
-  { slug: "rcp", title: "RCP · no respira" },
-  { slug: "atragantamiento", title: "Atragantamiento" },
+  { slug: "reacciones-alergicas", title: "Reacciones alérgicas" },
+  { slug: "heridas-y-cortes", title: "Heridas y cortes" },
   { slug: "quemaduras", title: "Quemaduras" },
 ]
 
