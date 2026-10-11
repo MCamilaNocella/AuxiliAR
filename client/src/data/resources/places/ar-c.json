@@ -830,6 +830,154 @@
         "Animales BA Costanera Sur",
         "Castraciones gratuitas Costanera Sur"
       ]
+    },
+    {
+      "id": "hospital-de-pediatria-dr-j-garrahan",
+      "name": "Hospital de Pediatría Prof. Dr. Juan P. Garrahan",
+      "shortName": "Hospital Garrahan",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-C",
+        "organization": "Hospital Garrahan (hospital público pediátrico de alta complejidad, financiado por el Estado nacional y el Gobierno de la Ciudad de Buenos Aires)"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541141226002",
+          "display": "4122-6002",
+          "label": "Informes"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5491163979781",
+          "display": "11 6397-9781",
+          "label": "Informes (WhatsApp)"
+        }
+      ],
+      "address": {
+        "street": "Combate de los Pozos",
+        "number": "1881",
+        "neighborhood": "Parque Patricios",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.629944,
+        "lng": -58.3918823,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs). Controlado el 11/10/2026 contra el normalizador USIG de la Ciudad para «Combate de los Pozos 1881»: el punto cae a unos 104 m (el complejo ocupa unos 113 mil m²). Es una ubicación aproximada del hospital, no de una entrada: los pacientes y sus familias ingresan por Pichincha 1890.",
+        "verifiedAt": "2026-10-11",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-pediatrica-alta-complejidad",
+          "type": "specialty-care",
+          "name": "Consulta pediátrica de alta complejidad",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "16:00"
+              }
+            ],
+            "note": "Es el horario de los servicios asistenciales que publica la página de horarios. El día y la hora de cada consulta son los del turno. La página informa además «Emergencias: 24 hs. los 365 días del año», pero para urgencias sugiere ir primero al centro de salud con guardia más cercano, que pide la derivación si hace falta: por eso la guardia no figura acá."
+          },
+          "cost": "free",
+          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura.",
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "requirements": [
+            "Atiende de 0 a 15 años.",
+            "Para una consulta nueva: derivación del pediatra, del centro de salud o del hospital donde se atiende la persona, con el motivo de consulta en un hospital de alta complejidad, y resumen de la historia clínica y de los estudios hechos. Solo un profesional puede pedir la derivación: ningún familiar puede hacerlo.",
+            "Entrada para pacientes y familias: Pichincha 1890. El acceso por Combate de los Pozos es solo del personal del Hospital."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "El Hospital tiene un formulario web para pedir turno de consulta (seguimiento o nueva especialidad) y una oficina de Informes, en la entrada de Pichincha, de lunes a viernes. La página no dice si se atiende sin turno, y esto no confirma que haya turnos disponibles.",
+            "url": "https://www.garrahan.gov.ar/turnos"
+          },
+          "source": {
+            "organization": "Hospital Garrahan",
+            "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/consultas-frecuentes",
+            "retrievedAt": "2026-10-11",
+            "note": "Consultas frecuentes del Hospital: «¿La atención es pública y gratuita? Sí, el Hospital Garrahan es público y no realiza ningún tipo de cobro por la atención. Si contás con obra social te van a solicitar que la presentes para la cobertura de la prestación médica.» La página de convivencia hospitalaria dice: «La atención es y siempre será gratuita para todos los niños y adolescentes.» Es una frase del Hospital sobre su atención en general; este registro solo carga la consulta, que es la prestación cuyo acceso (derivación y turno) y horario publica. Las consultas frecuentes sugieren que para urgencias se asista primero al centro de salud más cercano con guardia, que pedirá la derivación si hace falta; por eso la guardia (Emergencias, 24 h según la página de horarios) no se carga como prestación gratuita. Tampoco se carga el Centro de Vacunación (lunes a viernes de 8 a 15 h, entrada por Av. Brasil 2290): las páginas no dicen a quién atiende. Las páginas dan dos horarios para Informes (de 8 a 16 h en las consultas frecuentes y de 6 a 16 h en la página de Informes). Nada se confirmó por teléfono."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/consultas-frecuentes",
+              "retrievedAt": "2026-10-11",
+              "note": "«…el Hospital Garrahan es público y no realiza ningún tipo de cobro por la atención. Si contás con obra social te van a solicitar que la presentes para la cobertura de la prestación médica.»"
+            },
+            {
+              "kind": "cost",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/convivencia-hospitalaria",
+              "retrievedAt": "2026-10-11",
+              "note": "«La atención es y siempre será gratuita para todos los niños y adolescentes.» Y: los medicamentos y el material descartable los suministra el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura."
+            },
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/turnos",
+              "retrievedAt": "2026-10-11",
+              "note": "Turnos para una consulta (seguimiento o nueva especialidad) en un «centro de atención pediátrica de alta complejidad que atiende a niñas, niños y adolescentes de 0 a 15 años»."
+            },
+            {
+              "kind": "access",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/turnos",
+              "retrievedAt": "2026-10-11",
+              "note": "Para una consulta nueva piden derivación del pediatra, del centro de salud u hospital, con el motivo de consulta, y resumen de la historia clínica y los estudios. La derivación la hace un profesional médico (consultas frecuentes). No dice que haya turnos disponibles ni si se atiende sin turno."
+            },
+            {
+              "kind": "hours",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias/horarios-de-atencion",
+              "retrievedAt": "2026-10-11",
+              "note": "«Servicios asistenciales: de lunes a viernes de 8 a 16 hs.» También: «Emergencias: 24 hs. los 365 días del año.»"
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-11",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-10",
+            "notes": "Verificación documental del 11/10/2026 con las páginas oficiales del Hospital (texto leído de cada página; sin consulta telefónica ni visita). Revisión en 30 días: la página tiene horarios que no coinciden entre secciones y un sistema de turnos que puede cambiar."
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-de-pediatria-dr-j-garrahan" },
+      "source": {
+        "organization": "Hospital Garrahan",
+        "url": "https://www.garrahan.gov.ar/hospital/bienvenida",
+        "note": "Presentación del Hospital («centro pediátrico de referencia en salud pública de alta complejidad»). Cómo llegar y accesos: https://www.garrahan.gov.ar/como-llegar. La dirección (Combate de los Pozos 1881) y el punto en el mapa son del dataset «Hospitales» de Buenos Aires Data."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-11",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-10",
+        "notes": "Verificación documental del 11/10/2026 con las páginas oficiales del Hospital. Los teléfonos de Informes salen de la página de Informes; los de la guardia y del conmutador del dataset de la Ciudad no se cargan porque la página del Hospital no los confirma."
+      },
+      "aliases": ["Garrahan", "Hospital Garrahan", "Hospital de Niños Garrahan"]
     }
   ]
 }

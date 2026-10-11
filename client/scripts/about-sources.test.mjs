@@ -134,7 +134,7 @@ test("the pages of the topics have no block of sources, no note of verification 
 test("the sources of the map's establishments and of the first aid guides are here, with their dates, and the panels only point here", () => {
   const places = about.REFERENCE_GROUPS.find(({ id }) => id === "centros-mapa")
   // the places the map shows (those with a service of documented gratuity): the hidden one is not listed
-  assert.deepEqual(places.blocks.map(({ id }) => id).sort(), ["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas"])
+  assert.deepEqual(places.blocks.map(({ id }) => id).sort(), ["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-de-pediatria-dr-j-garrahan", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas"])
   for (const block of places.blocks) {
     assert.equal(block.checkedKind, "place")
     assert.equal(block.checkedAt.length, 1, block.id)

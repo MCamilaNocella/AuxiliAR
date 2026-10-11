@@ -36,24 +36,24 @@ const idsOf = (entries) => entries.map(({ place }) => place.id)
 const serviceIds = (entries, id) => entries.find(({ place }) => place.id === id)?.services.map(({ id: serviceId }) => serviceId)
 
 test("the data keeps every record: nothing pending was deleted", () => {
-  assert.equal(raw.length, 7)
-  assert.equal(raw.flatMap(({ services }) => services).length, 34, "the 34 prestaciones are still in the dataset")
+  assert.equal(raw.length, 8)
+  assert.equal(raw.flatMap(({ services }) => services).length, 35, "the 35 prestaciones are still in the dataset")
   const withoutGratuity = raw.flatMap((place) => place.services.filter((service) => !(service.cost === "free" && service.source?.note)).map((service) => `${place.id}/${service.id}`))
   assert.equal(withoutGratuity.length, 25, "the 25 with no documented gratuity are kept for research")
 })
 
-test("only documented gratuity is visible: 6 places and 9 prestaciones, the place with none is out", () => {
+test("only documented gratuity is visible: 7 places and 10 prestaciones, the place with none is out", () => {
   const entries = shown()
-  assert.deepEqual(idsOf(entries).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
+  assert.deepEqual(idsOf(entries).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
   assert.ok(!idsOf(entries).includes("hospital-oftalmologico-santa-lucia"), "no prestación of the Santa Lucía hospital has documented gratuity")
   for (const { place, services } of entries) for (const service of services) assert.ok(isVerifiedFree(place, service), `${place.id}/${service.id}`)
-  assert.equal(entries.flatMap(({ services }) => services).length, 9)
+  assert.equal(entries.flatMap(({ services }) => services).length, 10)
   // a place with documented and not documented prestaciones shows only the documented ones
   assert.deepEqual(serviceIds(entries, "cesac-3"), ["atencion-primaria", "vacunacion"])
   assert.deepEqual(serviceIds(entries, "cesac-41"), ["atencion-primaria", "vacunacion"])
   assert.deepEqual(serviceIds(entries, "cesac-47"), ["atencion-primaria", "pediatria"])
   // without the policy the data has more (the explorer is the one that applies it)
-  assert.equal(selectPlaces(real, DAY, EMPTY).length, 7)
+  assert.equal(selectPlaces(real, DAY, EMPTY).length, 8)
 })
 
 test("searches, filters and facets never reveal an unverified prestación", () => {
@@ -71,14 +71,14 @@ test("searches, filters and facets never reveal an unverified prestación", () =
   // the options offered and their counts come from what is visible
   const facets = getPlaceFacets(real, DAY, EMPTY, VISIBLE)
   const types = facets.types.map(({ value }) => value)
-  for (const type of ["mental-health-care", "contraception", "ive-ile-care", "sti-testing-care", "ophthalmology", "pharmacy", "laboratory", "diagnostic-imaging", "specialty-care"]) assert.ok(!types.includes(type), type)
+  for (const type of ["mental-health-care", "contraception", "ive-ile-care", "sti-testing-care", "ophthalmology", "pharmacy", "laboratory", "diagnostic-imaging"]) assert.ok(!types.includes(type), type)
   assert.deepEqual(facets.categories.map(({ value }) => value).sort(), ["animales", "salud-fisica"])
   const count = (list, value) => list.find((facet) => facet.value === value)?.count
   assert.equal(count(facets.types, "primary-care"), 3)
   assert.equal(count(facets.types, "vaccination"), 2)
   assert.equal(count(facets.types, "emergency-room"), 2)
   assert.equal(count(facets.types, "spaying-neutering"), 1)
-  assert.equal(count(facets.provinces, "AR-C"), 6, "the places counted are the visible ones")
+  assert.equal(count(facets.provinces, "AR-C"), 7, "the places counted are the visible ones")
   assert.equal(places.quickFilterHasData("mental-health", shown()), false)
   assert.equal(places.quickFilterHasData("animal-health", shown()), true)
   // every combination of one word and one quick filter shows only documented services

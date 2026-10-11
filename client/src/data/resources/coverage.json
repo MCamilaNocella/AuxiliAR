@@ -3,7 +3,7 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
     "AR-C": {
-      "places": 7,
+      "places": 8,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -26,6 +26,7 @@
         "primary-care",
         "sexual-reproductive-health",
         "spaying-neutering",
+        "specialty-care",
         "sti-testing-care",
         "vaccination"
       ],

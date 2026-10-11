@@ -351,12 +351,12 @@ test("BATCH VALIDITY: if the clear equivalences were approved, the whole propose
   const decisions = candidates
     .filter((c) => c.link.status === "new" && c.proposed.ready)
     .map((c) => ({ ...base, source: c.source, key: c.key, action: "accept", batch: batch.id, rowHash: c.record.rowHash, acknowledged: c.gates.filter((g) => g.level === "warn").map((g) => g.code) }))
-  assert.equal(decisions.length, 45)
+  assert.equal(decisions.length, 45, "the Hospital Garrahan (loaded by hand) is not part of the proposed batch: its facility type is not approved")
   const result = plan({ decisions, candidates })
   assert.deepEqual(result.errors, [])
-  assert.equal(result.data.resources.length, 52)
-  assert.deepEqual(result.data.resources.slice(0, 7), published, "los 7 lugares curados (6 del primer lote y el centro veterinario) no cambian")
-  const added = result.data.resources.slice(7)
+  assert.equal(result.data.resources.length, 53)
+  assert.deepEqual(result.data.resources.slice(0, 8), published, "los 8 lugares curados (6 del primer lote, el centro veterinario y el Hospital Garrahan) no cambian")
+  const added = result.data.resources.slice(8)
   assert.equal(new Set(added.map((r) => r.id)).size, 45)
   for (const place of added) {
     for (const forbidden of ["hours", "cost", "costNote", "requirements", "audience", "appointment", "coverage", "description"]) assert.equal(place[forbidden], undefined, `${place.id}: ${forbidden}`)
@@ -411,7 +411,7 @@ test("coordinates of Santa Lucía, Carrillo and Dueñas: official, reprojected b
   assert.deepEqual(result.errors, [])
   assert.equal(result.changed, false, "todo lo decidido ya está aplicado")
   const decisions = (await readJson(join(PATHS.decisions, "ar-c.decisions.json"))).decisions
-  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply"])
+  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "link"])
   // three coordinates (the hospitals) and six divisions: each one tied to its row, its batch and a reviewer
   const applies = decisions.filter((d) => d.action === "apply")
   assert.ok(applies.every((d) => d.fields.length === 1 && d.batch === "caba-2" && d.rowHash && d.reviewer && d.decidedAt && d.reason))
@@ -424,7 +424,7 @@ test("the hand-curated places keep everything but what the decisions applied; Sa
   assert.equal(santaLucia.services[0].description, "Atención de urgencias de los ojos para adultos y niños, sin necesidad de turno.")
   assert.equal(santaLucia.services[0].appointment.mode, "not-required", "la frase 'sin necesidad de turno' la respalda el dato estructurado de la fuente oficial")
   assert.equal(santaLucia.services[0].hours.open24h, true)
-  assert.equal(published.length, 7, "no se publicó ningún lugar nuevo por el pipeline: el séptimo es el centro veterinario cargado a mano")
+  assert.equal(published.length, 8, "ningún lugar nuevo salió del pipeline: el séptimo es el centro veterinario y el octavo el Hospital Garrahan, cargados a mano")
   for (const place of published) assert.equal(place.verification.status, "verified")
 })
 

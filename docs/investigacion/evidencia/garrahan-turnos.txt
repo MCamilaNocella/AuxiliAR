@@ -1,0 +1,62 @@
+FUENTE: https://www.garrahan.gov.ar/turnos
+CONSULTADA: 2026-10-11
+MÉTODO: descarga directa del HTML original de la página y extracción de su texto visible, sin resumen automático; las direcciones de correo (protegidas por la página) no figuran
+----------------------------------------------------------------------
+ Hospital Garrahan - Turnos
+ Turnos
+ ¡Bienvenido/a!
+ Vamos a ayudarte a obtener tu turno.
+ Recordá que el Hospital es un centro de atención pediátrica de alta complejidad que atiende a niñas, niños y adolescentes de 0 a 15 años.
+ SIGUIENTE
+ ¿Qué turno necesitás?
+ Turno para una consulta *
+ Turno para laboratorio o imágenes
+ Atrás
+ SIGUIENTE
+ * Para los siguientes estudios seleccionar "Turno para una consulta"
+ Eco cardiograma Doppler Color (Eco-cardio)
+ Electroencefalograma del sueño (EEG)
+ Electrocardiograma (ECG)
+ Ergometría
+ Espirometría
+ Holter
+ PEAT (potenciales evocados auditivos)
+ ¿Ya sos paciente del Hospital?
+ Sí
+ No
+ Atrás
+ SIGUIENTE
+ Enviar un mail donde se incluya una foto de la solicitud médica (bono) de ambos lados, con el estudio solicitado, firma y sello del médico, y datos de la o el paciente.
+ Indicar en el mail la fecha del próximo turno.
+ La respuesta demora 5 días hábiles desde el envío del mail.
+ LABORATORIO
+ [email protected]
+ IMÁGENES
+ Ecografía - contrastados
+ [email protected]
+ Tomografía
+ [email protected]
+ RESONANCIA
+ [email protected]
+ Atrás
+ ¿Viniste al Hospital en los últimos cuatro años?
+ Sí
+ No
+ Atrás
+ SIGUIENTE
+ ¿Qué tipo de consulta necesitás?
+ Turno de seguimiento
+ Turno para una nueva especialidad
+ Atrás
+ SIGUIENTE
+ Antes de continuar es muy importante, para agilizar todo el proceso, que cuentes con:
+ Derivación de la o el pediatra, del centro de salud u hospital en el que se atiende el paciente, con el motivo de consulta en un hospital de alta complejidad.
+ Resumen de Historia Clínica y estudios realizados hasta el momento
+ Atrás
+ Siguiente
+ Antes de continuar es muy importante, para agilizar todo el proceso, que cuentes con:
+ Solicitud de la o el profesional que requiere la nueva consulta.
+ Atrás
+ Siguiente
+¿Cómo podemos ayudarte?
+Nuestro horario de atención es de lunes a viernes de 6 a 16.

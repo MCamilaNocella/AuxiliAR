@@ -199,6 +199,15 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-07",
       "reason": "Backfill de la división administrativa (address.department) del lote CABA 2: dataset oficial Hospitales (Buenos Aires Data), Dueñas. Valor tomado de la columna \"comuna\" del dataset oficial, sin deducirlo del barrio; coincide con el barrio publicado. No cambia ningún otro dato del lugar."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-de-pediatria-dr-j-garrahan",
+      "resourceId": "hospital-de-pediatria-dr-j-garrahan",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-11",
+      "reason": "Se carga a mano el Hospital Garrahan (consulta pediátrica con gratuidad y acceso documentados por las páginas del propio Hospital), con las coordenadas y la comuna del dataset oficial de Hospitales (reproyección EPSG:9498 → WGS84) controladas el 11/10/2026 contra USIG (a unos 104 m). El dataset no tiene id: la clave es el slug de su nombre y el id de AuxiliAR es el que ya figuraba en id-map.json. Sin decisiones «apply»: el pipeline pisaría la fecha y la nota de las coordenadas con las del lote CABA 2 (7/10/2026)."
     }
   ]
 }

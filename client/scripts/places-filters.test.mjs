@@ -53,7 +53,7 @@ const oracle = ({ category, type, zone, text: words }) =>
 
 test("the real places: a place is in every category its verified services have", () => {
   const entries = ask({})
-  assert.equal(entries.length, 7)
+  assert.equal(entries.length, 8)
   const byPlace = Object.fromEntries(entries.map(({ place, services }) => [place.id, [...new Set(services.flatMap((service) => service.categories))].sort()]))
   // the CeSAC have general health, mental health and ESI services: one place, several categories
   assert.deepEqual(byPlace["cesac-3"], ["esi", "salud-fisica", "salud-mental"])
@@ -183,7 +183,7 @@ test("the explorer with the real places: filters from the URL, active chips, cou
   // no filters: no active chips, no count on the button
   const plain = text(render("/centros?vista=lista"))
   assert.ok(!plain.includes("Borrar filtros") && !plain.includes("activos)"))
-  assert.ok(plain.includes("6 lugares encontrados"), "the 7th place has no prestación with documented gratuity: it is not shown")
+  assert.ok(plain.includes("7 lugares encontrados"), "the 8th place (Santa Lucía) has no prestación with documented gratuity: it is not shown")
   // the search box does not count: it is always in sight
   const searched = text(render("/centros?vista=lista&buscar=cesac"))
   assert.ok(!searched.includes("activo)") && searched.includes("Búsqueda: «cesac» Quitar filtro"))
@@ -197,7 +197,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
   assert.ok(animals.includes("1 lugar encontrado") && animals.includes("Animales Quitar filtro"))
   assert.ok(/Castración/.test(animals) && !/zoonosis|antirrábica|guardia veterinaria/i.test(animals), "only the castration of the centre is there: no other animal service is made up")
   // an invalid category or service in the URL is ignored
-  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("6 lugares encontrados"))
+  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("7 lugares encontrados"))
 })
 
 test("URL: every filter and the view travel together, and clearing keeps the view and the open place", () => {
@@ -302,7 +302,7 @@ test("the real data: every free service is declared by the service itself, with 
     if (place.services?.length) assert.notEqual(place.cost, "free", place.id + " declares free for all its services")
     for (const service of place.services ?? []) if (service.cost === "free") assert.ok(service.source?.note?.trim(), place.id + "/" + service.id + " is free without the note of its source")
   }
-  assert.deepEqual(rawFree, ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
+  assert.deepEqual(rawFree, ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
 })
 
 test("the free filter finds only services with verified gratuity, and nothing is inferred", () => {
@@ -357,13 +357,13 @@ test("gratis, gratuito/a/s and sin costo in the search are the gratuity filter, 
 })
 
 test("gratuity facet: offered only with results, and counted without itself", () => {
-  assert.equal(places.getPlaceFacets(real, DAY, EMPTY).free, 6)
-  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, free: true }).free, 6, "turning it on does not change the count")
+  assert.equal(places.getPlaceFacets(real, DAY, EMPTY).free, 7)
+  assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, free: true }).free, 7, "turning it on does not change the count")
   assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, text: "odontologia gratuita" }).free, 2, "the words of the text count the same way")
   assert.equal(places.getPlaceFacets(real, DAY, { ...EMPTY, category: "salud-mental" }).free, 0)
   // the other facets follow the filter: the services and kinds of care offered are those with gratuity
   const facets = places.getPlaceFacets(real, DAY, { ...EMPTY, free: true })
-  assert.deepEqual(facets.types.map(({ value }) => value).sort(), ["emergency-room", "primary-care", "spaying-neutering", "vaccination"])
+  assert.deepEqual(facets.types.map(({ value }) => value).sort(), ["emergency-room", "primary-care", "spaying-neutering", "specialty-care", "vaccination"])
   assert.deepEqual(facets.categories.map(({ value }) => value).sort(), ["animales", "salud-fisica"])
 })
 
@@ -393,7 +393,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   assert.ok(typed.includes("2 lugares encontrados") && typed.includes("Gratuidad verificada Quitar filtro") && typed.includes("Búsqueda: «odontologia gratuita»"))
   assert.ok(typed.includes("Filtros 1 (1 activo)"), "the button counts the gratuity, the search does not")
   const chosen = render("/centros?vista=lista&gratuito=1")
-  assert.ok(chosen.includes("6 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
+  assert.ok(chosen.includes("7 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
   const none = render("/centros?vista=lista&gratuito=1&categoria=salud-mental")
   for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad documentada para esta búsqueda", "Que no aparezcan no quiere decir que no existan ni que no sean gratuitas", "Borrar filtros"]) assert.ok(none.includes(piece), piece)
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")

@@ -196,7 +196,7 @@ test("searching a free specialty only finds the places whose THAT specialty is c
   assert.deepEqual(ids({ text: "odontologia gratuita" }), ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"], "the CeSAC dentistry is not confirmed")
   assert.deepEqual(ids({ text: "odontologia gratis" }), ["hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
   assert.deepEqual(ids({ text: "vacunacion gratuita" }), ["cesac-3", "cesac-41"], "CeSAC 47 vaccination is not confirmed")
-  assert.deepEqual(ids({ text: "pediatria gratuita" }), ["cesac-47"], "the pediatrics of CeSAC 3 and 41 is not a service of its own")
+  assert.deepEqual(ids({ text: "pediatria gratuita" }), ["cesac-47", "hospital-de-pediatria-dr-j-garrahan"], "the pediatrics of CeSAC 3 and 41 is not a service of its own; the Garrahan is a pediatric hospital")
   assert.deepEqual(ids({ text: "medicina general gratuita" }), ["cesac-41", "cesac-47"])
   // "clínica médica" is also the name of the type of care (primary care): every confirmed primary-care service answers it
   assert.deepEqual(ids({ text: "clinica medica gratuita" }), ["cesac-3", "cesac-41", "cesac-47"])
