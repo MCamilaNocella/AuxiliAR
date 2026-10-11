@@ -66,6 +66,9 @@ const AgeBand = ({ group, age, tone }: { group: VaccineGroup, age: string, tone:
   )
 }
 
+/** A page with so little on it that the arrows at the top are enough (recién nacidos, 5 años): the bar at the bottom would repeat them within one screen */
+const isShortPage = (stage: VaccinationStage) => (stage.groups.reduce((total, group) => total + (group.items?.length ?? 0), 0) <= 4) && !stage.toConfirm?.length
+
 /** Turn the page: previous and next arrows with the number of the page and its title (nothing to choose, no filter by age) */
 const Pager = ({ index, onGo }: { index: number, onGo: (index: number) => void }) => {
   const previous = PAGES[index - 1]
@@ -182,7 +185,7 @@ export default function Section5Content() {
         ) : null}
       </section>
 
-      <Pager index={index} onGo={go} />
+      {!isShortPage(stage) && <Pager index={index} onGo={go} />}
 
       <section aria-labelledby="vaccination-reminder" className="rounded-2xl border border-line-strong bg-field p-4">
         <h3 id="vaccination-reminder" className="m-0 text-base font-extrabold">

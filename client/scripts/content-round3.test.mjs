@@ -104,9 +104,10 @@ test("the calendar is read by turning pages (no filter by age): it opens on the 
     assert.ok(!/en revisi[oó]n/i.test(content), `${id}: no review marks`)
     // at most ONE note per stage that sends to the official source
     assert.ok([...html.matchAll(/role="note"/g)].length <= 1, id)
-    // no chooser of stages: the arrows turn the page (a bar at the top and one at the bottom)
+    // no chooser of stages: the arrows turn the page (a bar at the top, and another at the bottom unless the page is so short that it would repeat the first)
     assert.equal([...html.matchAll(/aria-pressed/g)].length, 0, id)
-    assert.equal([...html.matchAll(/aria-label="Páginas del calendario de vacunación"/g)].length, 2, id)
+    const shortPages = ["recien-nacidos", "5-anios"]
+    assert.equal([...html.matchAll(/aria-label="Páginas del calendario de vacunación"/g)].length, shortPages.includes(id) ? 1 : 2, id)
     assert.ok(content.includes(`Página ${calendar.STAGE_PAGE_ORDER.indexOf(id) + 1} de 8`), id)
     // the sources are in Sobre AuxiliAR (with the day they were compared); the page keeps the link to the official poster, a way to read more notes by vaccine
     assert.ok(!html.includes('aria-label="Fuentes"') && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
