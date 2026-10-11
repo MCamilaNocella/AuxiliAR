@@ -1,8 +1,14 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { countApproximate, countUnmapped, getMapPins } from "@/utils/places"
+import { Brain, HeartHandshake, HeartPulse, PawPrint } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import type { CategoryId } from "@/data/resources"
+import { categoryLabel, countApproximate, countUnmapped, getMapPins } from "@/utils/places"
 import type { PlaceEntry } from "@/utils/places"
 import { PlaceCard } from "../PlaceCard"
+
+/** The symbol of each category on the pins (the same as in the pins of the map, drawn by PlacesMap.glyphs) */
+const LEGEND_ICONS: Partial<Record<CategoryId, LucideIcon>> = { "salud-fisica": HeartPulse, "salud-mental": Brain, esi: HeartHandshake, animales: PawPrint }
 
 // Leaflet and its styles are downloaded only when the map is opened
 const PlacesMap = lazy(() => import("../PlacesMap/PlacesMap"))
@@ -25,6 +31,8 @@ export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewPr
   const pins = useMemo(() => getMapPins(entries), [entries])
   const unmapped = countUnmapped(entries)
   const approximate = countApproximate(entries)
+  // What the symbols on this map mean: only those of the pins drawn
+  const legend = [...new Set(pins.map(({ category }) => category))]
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const summaryRef = useRef<HTMLDivElement>(null)
   // A new search or filter that leaves the selected place out simply has nothing selected
@@ -55,6 +63,18 @@ export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewPr
       <Suspense fallback={<p role="status" className="m-0 flex h-80 items-center justify-center rounded-2xl border-2 border-line-strong bg-field text-muted">Cargando mapa…</p>}>
         <PlacesMap pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
       </Suspense>
+
+      <ul role="list" aria-label="Qué significa el símbolo de cada punto" className="m-0 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-ink-soft">
+        {legend.map((category) => {
+          const Icon = LEGEND_ICONS[category] ?? HeartPulse
+          return (
+            <li key={category} className="inline-flex items-center gap-1.5">
+              <Icon aria-hidden="true" className="size-5 shrink-0 text-brand" />
+              {categoryLabel(category)}
+            </li>
+          )
+        })}
+      </ul>
 
       {approximate > 0 && (
         <p className="m-0 text-ink-soft">

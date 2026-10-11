@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css"
 import "./PlacesMap.css"
 import { LEAFLET_PREFIX, MAP_TILES } from "@/data/mapTiles"
 import type { MapPin } from "@/utils/places"
+import { glyphOf } from "./PlacesMap.glyphs"
 
 type PlacesMapProps = {
   pins: MapPin[]
@@ -11,14 +12,21 @@ type PlacesMapProps = {
   onSelect: (placeId: string) => void
 }
 
-/** The pin: a 44px hit area with the drawing inside (CSS in PlacesMap.css) */
-const PIN_SVG =
-  '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3" fill="var(--color-on-brand)" stroke="none"/></svg>'
+/** The head of the pin is drawn at (12, 10) with radius 8: the symbol of the category goes inside it, 11 units wide, centered (24 x 24 icons scaled by 0.46) */
+const GLYPH_TRANSFORM = "translate(6.48 4.48) scale(0.46)"
 
-const pinIcon = (selected: boolean) =>
+/** The pin: a 44px hit area with the drawing inside (CSS in PlacesMap.css): the pin and, in its head, the symbol of the category of the place */
+const pinSvg = (category: MapPin["category"]) => {
+  const { paths, circles = [] } = glyphOf(category)
+  const lines = paths.map((d) => `<path d="${d}"/>`).join("")
+  const dots = circles.map(([cx, cy, r]) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--color-on-brand)"/>`).join("")
+  return `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><g class="places-pin-glyph" transform="${GLYPH_TRANSFORM}" fill="none" stroke="var(--color-on-brand)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${lines}${dots}</g></svg>`
+}
+
+const pinIcon = (category: MapPin["category"], selected: boolean) =>
   L.divIcon({
     className: `places-pin${selected ? " is-selected" : ""}`,
-    html: PIN_SVG,
+    html: pinSvg(category),
     iconSize: [44, 44],
     iconAnchor: [22, 44],
   })
@@ -90,7 +98,7 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     markers.clear()
     for (const pin of pins) {
       // No native "title": it would show the name a second time after the tooltip. The pin is named for screen readers below
-      const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon(false), keyboard: true })
+      const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon(pin.category, false), keyboard: true })
       marker.bindTooltip(tooltipOf(pin), { direction: "top", offset: [0, -40], opacity: 1, className: "places-tooltip" })
       // A pin near the edge of the map: the tooltip is moved sideways so it is never cut off
       marker.on("tooltipopen", () => {
@@ -130,7 +138,8 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
 
   // The selected pin stands out
   useEffect(() => {
-    for (const [id, marker] of markersRef.current) marker.setIcon(pinIcon(id === selectedId))
+    const categories = new Map(pins.map(({ id, category }) => [id, category]))
+    for (const [id, marker] of markersRef.current) marker.setIcon(pinIcon(categories.get(id) ?? "salud-fisica", id === selectedId))
   }, [selectedId, pins])
 
   return (

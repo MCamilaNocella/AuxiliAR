@@ -19,7 +19,6 @@ import { PlaceList } from "../PlaceList"
 import { PlacesMapView } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
-import { ServiceTypeFilter } from "../ServiceTypeFilter"
 import type { PlacesView } from "../PlacesViewSwitch"
 import { TerritoryFilters } from "../TerritoryFilters"
 import { UrgentHelp } from "../UrgentHelp"
@@ -257,7 +256,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
             zone={query.zone}
             onZoneChange={(zone) => changeQuery({ zone })}
           />
-          <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type })} />
+          {/* The "Prestación" selector is hidden: the quick filters, the search and, on the map, what each pin says when hovered tell the same thing */}
           {activeFilters.length > 0 && hasVisibleCounts(facets) && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}

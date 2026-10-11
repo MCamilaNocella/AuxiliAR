@@ -1,4 +1,5 @@
 import { isMappable } from "@/data/resources"
+import type { CategoryId } from "@/data/resources"
 import type { PlaceEntry } from "./filters"
 import { facilityTypeLabel, serviceName } from "./format"
 
@@ -10,6 +11,8 @@ export type MapPin = {
   lng: number
   /** What kind of place it is, short: "Centro de salud", "Hospital" (what the pin says when it is hovered or focused) */
   kind: string
+  /** The category of the place, for the symbol of its pin (see pinCategory) */
+  category: CategoryId
   /** What it is for: the services of the place that the map shows (the ones of documented gratuity, as in its card), at most three */
   purpose: string
 }
@@ -18,6 +21,17 @@ const MAX_PURPOSES = 3
 
 /** "Centro de salud (CeSAC, CAPS)" → "Centro de salud": the parenthesis is detail the card already gives */
 const shortKind = (type: string | undefined) => (facilityTypeLabel(type) ?? "Lugar de atención").replace(/\s*\(.*\)\s*$/, "")
+
+/**
+ * The category that gives the pin its symbol: a place whose services are of Salud general (a centro de salud, a hospital) is Salud general, even if it also has
+ * mental health or sexual health care; otherwise the single category it has; and if it has several without Salud general, the first in this order.
+ */
+const PIN_CATEGORY_ORDER: CategoryId[] = ["salud-fisica", "salud-mental", "esi", "animales"]
+
+export const pinCategory = (services: PlaceEntry["services"]): CategoryId => {
+  const present = new Set(services.flatMap(({ categories }) => categories))
+  return PIN_CATEGORY_ORDER.find((category) => present.has(category)) ?? "salud-fisica"
+}
 
 const purposeOf = (services: PlaceEntry["services"]) => {
   const names = [...new Set(services.map(serviceName))]
@@ -33,7 +47,7 @@ export const getMapPins = (entries: PlaceEntry[]): MapPin[] =>
   entries.flatMap(({ place, services }) => {
     const coordinates = place.coordinates
     if (!isMappable(place) || !coordinates || !Number.isFinite(coordinates.lat) || !Number.isFinite(coordinates.lng)) return []
-    return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng, kind: shortKind(place.facilityType), purpose: purposeOf(services) }]
+    return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng, kind: shortKind(place.facilityType), category: pinCategory(services), purpose: purposeOf(services) }]
   })
 
 /**

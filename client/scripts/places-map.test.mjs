@@ -261,3 +261,38 @@ test("the map shows that in a tooltip when a pin is hovered or focused, built wi
   const css = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.css"), "utf8")
   assert.ok(css.includes(".places-tooltip") && css.includes("max-content"))
 })
+
+/* ── The symbol of each pin, by category ── */
+
+test("the pin takes its category from the services of the place: Salud general wins, otherwise the single category, otherwise a fixed order", () => {
+  const svc = (...categories) => ({ categories })
+  assert.equal(util.pinCategory([svc("salud-fisica"), svc("salud-mental"), svc("esi")]), "salud-fisica", "a centro de salud with mental and sexual health care is Salud general")
+  assert.equal(util.pinCategory([svc("salud-mental")]), "salud-mental")
+  assert.equal(util.pinCategory([svc("esi"), svc("salud-mental")]), "salud-mental", "no Salud general: the fixed order")
+  assert.equal(util.pinCategory([svc("esi")]), "esi")
+  assert.equal(util.pinCategory([svc("animales")]), "animales")
+  assert.equal(util.pinCategory([]), "salud-fisica", "a pin never has an empty head")
+  // the real pins: the three CeSAC and the guardias are Salud general, the veterinary centre is Animales
+  const byId = Object.fromEntries(util.getMapPins(shown()).map((pin) => [pin.id, pin.category]))
+  for (const id of ["cesac-3", "cesac-41", "cesac-47"]) assert.equal(byId[id], "salud-fisica", id)
+  if (byId["centro-fijo-veterinario-costanera-sur"]) assert.equal(byId["centro-fijo-veterinario-costanera-sur"], "animales")
+})
+
+test("each category has its own drawing inside the pin, centered in its head, and the 'Prestación' selector is no longer shown", async () => {
+  const glyphs = await vite.ssrLoadModule("/src/components/places/PlacesMap/PlacesMap.glyphs.ts")
+  const drawn = ["salud-fisica", "salud-mental", "esi", "animales"].map((category) => JSON.stringify(glyphs.glyphOf(category)))
+  assert.equal(new Set(drawn).size, 4, "four different symbols")
+  assert.ok(glyphs.glyphOf("animales").circles.length === 3 && glyphs.glyphOf("animales").paths.length === 1, "the paw: a pad and three toes")
+  assert.deepEqual(glyphs.glyphOf("recursos"), glyphs.glyphOf("salud-fisica"), "any other category falls back to the general symbol")
+  const code = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.tsx"), "utf8")
+  // the head of the pin is the circle of radius 8 at (12, 10): the symbol is scaled to 11 units and centered there
+  assert.ok(code.includes("a8 8 0 0 1 16 0") && code.includes('translate(6.48 4.48) scale(0.46)'))
+  assert.ok(code.includes("glyphOf(category)") && code.includes("pin.category") && code.includes("pinIcon(pin.category, false)"))
+  // the selector of "Prestación" is hidden from the explorer, and the map explains its symbols
+  const explorerSource = await readFile(join(root, "src/components/places/PlacesExplorer/PlacesExplorer.tsx"), "utf8")
+  assert.ok(!/<ServiceTypeFilter/.test(explorerSource) && !explorerSource.includes('from "../ServiceTypeFilter"'))
+  const html = renderAt("/centros", explorer({ map: true }))
+  assert.ok(!text(html).includes("Prestación"), "no 'Prestación' selector")
+  const view = await readFile(join(root, "src/components/places/PlacesMapView/PlacesMapView.tsx"), "utf8")
+  assert.ok(view.includes("Qué significa el símbolo de cada punto") && view.includes("categoryLabel(category)"))
+})
