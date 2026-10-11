@@ -4,6 +4,8 @@ import type { ProfileFieldKey } from "@/types/myHealth"
 export type ProfileTask = {
   profileId: string
   fields: ProfileFieldKey[]
+  /** The profile was already complete: Auxi goes over the data to update it ("si sigue igual, pasamos") */
+  update?: boolean
 }
 
 type HelpChatState = {

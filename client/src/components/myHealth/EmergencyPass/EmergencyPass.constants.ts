@@ -3,6 +3,10 @@ export const BAND_BUTTON =
   "flex min-h-10 cursor-pointer items-center gap-1.5 rounded-lg bg-on-alert/15 px-3.5 py-1.5 text-sm font-bold text-on-alert transition-colors hover:bg-on-alert/25 in-data-[theme=contrast]:ring-1 in-data-[theme=contrast]:ring-on-alert"
 
 /** Buttons under the tiles (Mostrar en pantalla completa / Imprimir) */
+/** "Agregar perfil" on the band when there's no profile: brand colored like Auxi's button, to stand out */
+export const ADD_PROFILE_BUTTON =
+  "flex min-h-10 cursor-pointer items-center gap-1.5 rounded-lg bg-brand px-3.5 py-1.5 text-sm font-bold text-on-brand transition-colors hover:bg-brand-dark in-data-[theme=contrast]:ring-1 in-data-[theme=contrast]:ring-on-alert"
+
 export const ACTION_BUTTON =
   "flex min-h-10 cursor-pointer items-center gap-2 rounded-lg bg-brand-soft px-4 py-1.5 text-sm font-bold text-brand transition-colors hover:bg-field in-data-[theme=contrast]:ring-1 in-data-[theme=contrast]:ring-control-line"
 

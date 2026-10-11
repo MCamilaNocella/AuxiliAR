@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type KeyboardEvent } from "react"
+import { ConfirmBody } from "../ConfirmBody"
 import type { CardConfirmProps } from "./CardConfirm.types"
 
 /**
@@ -35,29 +36,18 @@ export const CardConfirm = ({ title, message, confirmLabel, onConfirm, onBack }:
         aria-modal="true"
         aria-labelledby={titleId}
         onKeyDown={handleKeyDown}
-        className="w-full max-w-xs rounded-2xl bg-card p-5 text-ink shadow-[0_12px_32px_rgba(0,0,0,.25)] in-data-[theme=contrast]:ring-2 in-data-[theme=contrast]:ring-control-line"
+        className="w-full max-w-xs rounded-2xl bg-card text-ink shadow-[0_12px_32px_rgba(0,0,0,.25)] in-data-[theme=contrast]:ring-2 in-data-[theme=contrast]:ring-control-line"
       >
-        <h3 id={titleId} className="m-0 text-lg/tight font-extrabold">
-          {title}
-        </h3>
-        <p className="m-0 mt-1 text-sm text-muted">{message}</p>
-        <div className="mt-4 flex flex-wrap justify-end gap-2">
-          <button
-            type="button"
-            onClick={onBack}
-            className="min-h-10 cursor-pointer rounded-lg bg-field px-3.5 py-1.5 text-sm font-bold text-ink transition-colors hover:bg-brand-soft in-data-[theme=contrast]:ring-1 in-data-[theme=contrast]:ring-control-line"
-          >
-            Seguir editando
-          </button>
-          <button
-            ref={confirmButton}
-            type="button"
-            onClick={onConfirm}
-            className="min-h-10 cursor-pointer rounded-lg bg-brand px-3.5 py-1.5 text-sm font-bold text-on-brand transition-colors hover:bg-brand-dark"
-          >
-            {confirmLabel}
-          </button>
-        </div>
+        <ConfirmBody
+          titleId={titleId}
+          title={title}
+          message={message}
+          backLabel="Seguir editando"
+          confirmLabel={confirmLabel}
+          onBack={onBack}
+          onConfirm={onConfirm}
+          confirmRef={confirmButton}
+        />
       </div>
     </div>
   )

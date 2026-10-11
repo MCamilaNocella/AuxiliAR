@@ -1,5 +1,6 @@
 import { useId, useState, type FormEvent } from "react"
 import { X } from "lucide-react"
+import { BACK_BUTTON, MAIN_BUTTON } from "../ConfirmBody"
 import { Modal } from "../Modal"
 import { ERRORS, INPUT, MAX_NAME_LENGTH } from "./AddRelativeDialog.constants"
 import type { AddRelativeDialogProps } from "./AddRelativeDialog.types"
@@ -8,7 +9,7 @@ import type { AddRelativeDialogProps } from "./AddRelativeDialog.types"
  * Small modal to add a relative: just the name and the age (the rest is completed later, on the card or with Auxi).
  * Errors show under each field once "Agregar" is pressed.
  */
-export const AddRelativeDialog = ({ open, onClose, onAdd }: AddRelativeDialogProps) => {
+export const AddRelativeDialog = ({ open, title, onClose, onAdd }: AddRelativeDialogProps) => {
   const id = useId()
   const [name, setName] = useState("")
   const [age, setAge] = useState("")
@@ -45,7 +46,7 @@ export const AddRelativeDialog = ({ open, onClose, onAdd }: AddRelativeDialogPro
       <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4 p-5">
         <div className="flex items-start justify-between gap-3">
           <h2 id={`${id}-title`} className="m-0 text-lg/tight font-extrabold">
-            Agregar familiar
+            {title}
           </h2>
           <button
             type="button"
@@ -106,13 +107,13 @@ export const AddRelativeDialog = ({ open, onClose, onAdd }: AddRelativeDialogPro
           <button
             type="button"
             onClick={onClose}
-            className="min-h-10 cursor-pointer rounded-lg bg-field px-3.5 py-1.5 text-sm font-bold text-ink transition-colors hover:bg-brand-soft in-data-[theme=contrast]:ring-1 in-data-[theme=contrast]:ring-control-line"
+            className={BACK_BUTTON}
           >
             Cancelar
           </button>
           <button
             type="submit"
-            className="min-h-10 cursor-pointer rounded-lg bg-brand px-3.5 py-1.5 text-sm font-bold text-on-brand transition-colors hover:bg-brand-dark"
+            className={MAIN_BUTTON}
           >
             Agregar
           </button>

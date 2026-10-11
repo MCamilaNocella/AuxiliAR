@@ -15,7 +15,7 @@ const rowClass = "flex flex-col gap-3 py-5 first:pt-0 last:pb-0"
  *  1. How complete the profile is, and what's missing.
  *  2. Recommendations for the age (the first two; the rest scroll).
  */
-export const ProfileRows = ({ profile, onAddField }: ProfileRowsProps) => {
+export const ProfileRows = ({ profile, empty, onAddField }: ProfileRowsProps) => {
   const missing = missingItems(profile)
   const percent = completion(profile)
   const { age, ageTopics } = profile
@@ -45,7 +45,8 @@ export const ProfileRows = ({ profile, onAddField }: ProfileRowsProps) => {
           </span>
           <div className="min-w-0">
             <h2 className="m-0 text-base/tight font-extrabold">Para tu edad</h2>
-            <p className="m-0 text-sm text-muted">{age ? `Recomendado para tus ${age} años.` : "Completá tu edad para ver recomendaciones."}</p>
+            {/* No profile, no age to talk about: hidden until one is added */}
+            {!empty && <p className="m-0 text-sm text-muted">{age ? `Recomendado para tus ${age} años.` : "Completá tu edad para ver recomendaciones."}</p>}
           </div>
         </div>
         <ScrollList visible={VISIBLE_TOPICS}>

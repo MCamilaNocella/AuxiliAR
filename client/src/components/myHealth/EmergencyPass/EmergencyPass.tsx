@@ -1,11 +1,11 @@
 import { useEffect, useId, useImperativeHandle, useRef, useState, type FormEvent, type KeyboardEvent } from "react"
-import { Check, Maximize2, Pencil, Printer, ShieldPlus } from "lucide-react"
+import { Check, Maximize2, Pencil, Printer, ShieldPlus, UserPlus } from "lucide-react"
 import { CARD_FIELDS } from "@/data/myHealth"
 import type { CardFieldKey } from "@/types/myHealth"
 import { fieldDisplay, fieldText } from "@/utils/healthProfile"
 import { isFullyVisible, prefersReducedMotion } from "@/utils/scroll"
 import { CardConfirm } from "../CardConfirm"
-import { ACTION_BUTTON, BAND_BUTTON, CONFIRM_TEXTS, EDIT_GRID, INPUT, TILES_GRID } from "./EmergencyPass.constants"
+import { ACTION_BUTTON, ADD_PROFILE_BUTTON, BAND_BUTTON, CONFIRM_TEXTS, EDIT_GRID, INPUT, TILES_GRID } from "./EmergencyPass.constants"
 import type { EmergencyPassProps } from "./EmergencyPass.types"
 import { useCardEditing } from "./useCardEditing"
 
@@ -16,7 +16,7 @@ import { useCardEditing } from "./useCardEditing"
  * of what's missing) does the same with the focus on that field. Saving, cancelling or
  * leaving the card (tapping or tabbing out) asks first, over the card, when something changed.
  */
-export const EmergencyPass = ({ profile, onSave, ref }: EmergencyPassProps) => {
+export const EmergencyPass = ({ profile, onSave, onAddProfile, ref }: EmergencyPassProps) => {
   const formId = useId()
   const { drafts, editing, dirty, pending, start, setDraft, requestSave, requestCancel, confirm, keepEditing, close } = useCardEditing(profile, onSave)
   const card = useRef<HTMLElement>(null)
@@ -137,6 +137,11 @@ export const EmergencyPass = ({ profile, onSave, ref }: EmergencyPassProps) => {
               Guardar
             </button>
           </div>
+        ) : onAddProfile ? (
+          <button type="button" onClick={onAddProfile} aria-haspopup="dialog" className={ADD_PROFILE_BUTTON}>
+            <UserPlus aria-hidden="true" className="size-4 flex-none" />
+            Agregar perfil
+          </button>
         ) : (
           <button ref={editButton} type="button" onClick={() => editAt()} className={BAND_BUTTON}>
             <Pencil aria-hidden="true" className="size-4 flex-none" />

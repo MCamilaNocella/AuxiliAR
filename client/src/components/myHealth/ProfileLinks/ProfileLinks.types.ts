@@ -1,4 +1,4 @@
 export type ProfileLinksProps = {
-  /** "Borrar este perfil"; without it (your own profile) the option doesn't show */
+  /** "Borrar perfil"; without it (your own profile) nothing shows */
   onDelete?: () => void
 }

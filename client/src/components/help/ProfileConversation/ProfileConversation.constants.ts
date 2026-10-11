@@ -3,7 +3,12 @@ import type { ProfileSubject } from "./ProfileConversation.types"
 
 export const GREETING = "¡Hola, soy Auxi!"
 
-export const intro = ({ own, name }: ProfileSubject) => (own ? "Completemos tu perfil." : `Completemos el perfil de ${name}.`)
+export const intro = ({ own, name }: ProfileSubject, update = false) =>
+  update
+    ? `Actualicemos ${own ? "tu perfil" : `el perfil de ${name}`}. Si algo sigue igual, decímelo y pasamos a lo siguiente.`
+    : own
+      ? "Completemos tu perfil."
+      : `Completemos el perfil de ${name}.`
 
 /** Auxi's question for each piece of data; the model then reads the answer (server prompts/perfil.md) */
 export const QUESTIONS: Record<ProfileFieldKey, (subject: ProfileSubject) => string> = {
@@ -31,6 +36,8 @@ export const DEFAULT_PLACEHOLDER = "Escribí tu respuesta…"
 export const CLOSING = {
   saved: "Eso es todo, ¡gracias! Ya quedó guardado en el perfil.",
   nothing: "No hay problema. Cuando quieras, lo completamos.",
+  /** Updating and nothing changed */
+  unchanged: "Perfecto, queda todo como estaba.",
 }
 
 export const BACK_LABEL = "Volver a Mi Salud"

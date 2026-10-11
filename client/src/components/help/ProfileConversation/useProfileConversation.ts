@@ -33,10 +33,10 @@ const save = (profileId: string, field: ProfileFieldKey, { value, locality, prov
  * Completing a Mi Salud profile with Auxi: it greets, then asks for each piece of data in turn. The model reads
  * every answer (the data, "I'd rather not say", or something to ask again); what it gets is saved right away.
  */
-export const useProfileConversation = ({ profileId, fields }: ProfileTask) => {
+export const useProfileConversation = ({ profileId, fields, update }: ProfileTask) => {
   const [messages, setMessages] = useState<Message[]>(() => {
     const profile = profileById(profileId)
-    return [GREETING, intro({ own: profile?.own ?? false, name: profile?.name ?? "" }), question(profile, fields[0])].map((text) =>
+    return [GREETING, intro({ own: profile?.own ?? false, name: profile?.name ?? "" }, update), question(profile, fields[0])].map((text) =>
       withId({ from: "auxi", text }),
     )
   })
@@ -60,7 +60,7 @@ export const useProfileConversation = ({ profileId, fields }: ProfileTask) => {
       setStep(step + 1)
       return
     }
-    add(saved || savedAny ? CLOSING.saved : CLOSING.nothing)
+    add(saved || savedAny ? CLOSING.saved : update ? CLOSING.unchanged : CLOSING.nothing)
     setDone(true)
   }
 

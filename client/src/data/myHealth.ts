@@ -33,3 +33,6 @@ export const CARD_FIELDS: CardField[] = [
 export const EXTRA_FIELDS: { key: Exclude<ProfileFieldKey, CardField["key"]>; addLabel: string }[] = [
   { key: "location", addLabel: "Agregar localidad" },
 ]
+
+/** Every piece of profile data, in the order Auxi asks for it */
+export const PROFILE_FIELD_KEYS: ProfileFieldKey[] = [...CARD_FIELDS.map(({ key }) => key), ...EXTRA_FIELDS.map(({ key }) => key)]

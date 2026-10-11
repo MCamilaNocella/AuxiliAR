@@ -15,7 +15,15 @@ export const GreetingHero = ({ profiles, profile, activeId, onSelect, onAddRelat
         <div className="flex min-w-0 items-center gap-4">
           <Avatar name={profile.name} className="size-14 text-2xl sm:size-16 sm:text-3xl" />
           <h1 id="greeting-title" className="m-0 min-w-0 text-2xl/tight font-extrabold wrap-break-word sm:text-3xl/tight">
-            Hola, {profile.name}
+            {profile.name ? (
+              `Hola, ${profile.name}`
+            ) : (
+              <>
+                {/* The @ would be read as "arroba": screen readers get an inclusive phrasing instead */}
+                <span aria-hidden="true">¡Bienvenid@ a Mi Salud!</span>
+                <span className="sr-only">¡Te damos la bienvenida a Mi Salud!</span>
+              </>
+            )}
           </h1>
         </div>
         <ProfileChips profiles={profiles} activeId={activeId} onSelect={onSelect} onAddRelative={onAddRelative} />
