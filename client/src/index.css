@@ -457,3 +457,9 @@
     @apply outline-3 outline-offset-2 outline-brand;
   }
 }
+
+/* Sin bordes: toda la web se separa por color y espacio. El contorno de foco (outline) no se toca: es lo que muestra dónde está el teclado. */
+*, ::before, ::after {
+  border-width: 0 !important;
+  border-color: transparent !important;
+}
