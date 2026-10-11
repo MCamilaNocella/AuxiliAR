@@ -100,7 +100,7 @@ test("sobre los datos: how it is verified, what free means, what the date means,
   assert.ok(!/[0-9]+ (lugares|centros|establecimientos)/.test(content), "no numbers of the index")
   // moved as it was, with nothing new: no link, no button and no emergency line (the emergency bar is always in sight); the button of Sobre AuxiliAR leads here
   assert.ok(content.includes("Mapa AuxiliAR") && !html.includes("<a ") && !html.includes("<button") && !content.includes("mirá los números de emergencia"))
-  assert.ok(page.includes('href="#about-datos"') && text(page).includes("Cómo verificamos los datos"))
+  assert.ok(!page.includes('href="#about-datos"') && text(page).includes("Sobre los datos del mapa"), "the text is on the page; the button that led to it was removed")
 })
 
 test("the chat finds Encontrar atención and its sections: they have a summary and the generated index is up to date", async () => {

@@ -166,8 +166,8 @@ test("Sobre AuxiliAR keeps what it said (what the site is, the official sources,
   // its own content is intact: the one internal link is the one it had; the rest of the links are the external sources at the end
   // the button that used to go to the second section of Centros leads to its text, moved to this same page: no internal route is left
   assert.deepEqual(hrefs(html).filter((href) => href.startsWith("/")), [])
-  assert.ok(html.includes('href="#about-datos"') && html.includes('id="about-datos"'))
-  assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Fuentes y referencias"), "the sources come after the existing content, at the end")
+  assert.ok(!html.includes('href="#about-datos"') && html.includes('id="about-datos"'), "no button to the text about the data: the text itself is right below")
+  assert.ok(content.indexOf("Sobre los datos del mapa") < content.indexOf("Fuentes y referencias"), "the sources come after the existing content, at the end")
   assert.equal([...content.matchAll(/Fuentes y alcance/g)].length, 1, "the explanation of the data lives in one place: here")
   // the footer links here
   const footer = readFileSync(join(src, "components/layout/Footer/Footer.tsx"), "utf8")

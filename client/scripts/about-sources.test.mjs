@@ -46,16 +46,16 @@ test("Sobre AuxiliAR keeps its own content, in its place, and has no new section
   assert.ok(content.includes("Cada centro del mapa nombra de dónde sale su información y cuándo se verificó; lo que todavía no verificamos, no lo mostramos."))
   assert.ok(content.includes("AuxiliAR no reemplaza la atención médica ni psicológica profesional."))
   assert.deepEqual(hrefsIn(html).filter((href) => href.startsWith("/")), [], "no route of its own or of another page")
-  assert.ok(hrefsIn(html).includes("#about-datos"), "the button it had leads to the text about the data, on the same page")
+  // the button «Cómo verificamos los datos» was removed: it repeated the first point of the text that follows and led to nothing new
+  assert.ok(!hrefsIn(html).includes("#about-datos") && !text(html).includes("Cómo verificamos los datos") && !/<a [^>]*href="#/.test(html))
   // the sources come after all of it
-  assert.ok(content.indexOf("Cómo verificamos los datos") < content.indexOf("Sobre los datos del mapa") && content.indexOf("Sobre los datos del mapa") < content.indexOf("Fuentes y referencias"))
-  // the button scrolls to the text by itself (the layout's scroll restoration would undo the browser's jump to an anchor), and the text lands under the
-  // sticky bars: the page's scroll-padding covers the header, scroll-mt-14 the category bar of small screens (a column on large ones, so none there)
+  assert.ok(content.indexOf("Sobre los datos del mapa") < content.indexOf("Fuentes y referencias"))
+  // the text about the data keeps its place and its margins under the sticky bars (the page's scroll-padding covers the header, scroll-mt-14 the category bar of small screens)
   const target = html.slice(html.indexOf('id="about-datos"'), html.indexOf('aria-labelledby="about-sources"'))
   assert.ok(target.includes('tabindex="-1"') && target.includes("scroll-mt-14") && target.includes("lg:scroll-mt-0"))
   assert.ok(!/scroll-mt-(24|20|16)/.test(html), "no margin on top of the page's own scroll-padding")
   const pageSource = readFileSync(join(root, "src/content/categories/About/sections/Section1/Section1.content.tsx"), "utf8")
-  assert.ok(pageSource.includes("onClick={goToData}") && pageSource.includes("scrollIntoView") && pageSource.includes("event.preventDefault()") && pageSource.includes("prefersReducedMotion"))
+  assert.ok(!pageSource.includes("goToData") && !pageSource.includes("Cómo verificamos los datos"), "no button and no handler left")
   // the category is the same one: one section, same id and title, same summary for Auxi, no new path
   assert.deepEqual(ABOUT.sections.map(({ id, title }) => [id, title]), [["section-1", "Sobre AuxiliAR"]])
   assert.ok(ABOUT.sections[0].summary.startsWith("Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional"))
