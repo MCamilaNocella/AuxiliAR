@@ -13,8 +13,14 @@ export const READ_ON = "2026-10-11"
 
 export type Kind = "castracion" | "vacunacion" | "consulta" | "urgencias"
 
-/** How the page tells the cost of a prestación */
-export type CostStatus = "gratuita" | "condicionada" | "no-informada" | "arancelada"
+/** How the page tells the cost of a prestación; "no-aplica" is a service the page says does not exist (it has no cost to tell) */
+export type CostStatus = "gratuita" | "condicionada" | "no-informada" | "arancelada" | "no-aplica"
+
+/** The three groups a person is shown, apart: free according to the page (with the condition said where it applies), cost not confirmed, and arancelados */
+export const FREE_STATUSES: CostStatus[] = ["gratuita", "condicionada"]
+export const UNCONFIRMED_STATUSES: CostStatus[] = ["no-informada"]
+export const PAID_STATUSES: CostStatus[] = ["arancelada"]
+export const NOT_OFFERED_STATUSES: CostStatus[] = ["no-aplica"]
 
 export type Prestacion = {
   kind: Kind
@@ -102,11 +108,15 @@ export const PASTEUR: AnimalPlace = {
       cost: { status: "gratuita", text: "La página de servicios incluye el vacunatorio entre los servicios que el Instituto brinda «a la comunidad, en forma gratuita»." },
       who: "Perros y gatos desde los 3 meses de edad; la vacuna es anual y obligatoria.",
       where: ["Av. Díaz Vélez 4821, Ciudad de Buenos Aires."],
-      when: ["Todos los días, incluidos sábados, domingos y feriados. Sin turno, por orden de llegada."],
-      how: ["Acercate al Instituto sin turno."],
+      when: [
+        "La página de servicios dice: de 9 a 12 y de 14 a 17 h, los 365 días del año.",
+        "La página de vacunación dice: todos los días, incluidos sábados, domingos y feriados, de 8 a 18 h.",
+        "Las dos páginas oficiales no coinciden en el horario: no elegimos una. Confirmalo por teléfono antes de ir.",
+      ],
+      how: ["Acercate al Instituto sin turno, por orden de llegada."],
       conditions: ["Perro con collar, correa y bozal; gato en bolso o transportadora."],
       contact: ["Conmutador 4958-9900, de lunes a viernes de 10 a 17 h."],
-      pending: ["Dos páginas oficiales dan horarios distintos para el vacunatorio (de 9 a 12 y de 14 a 17 h, o de 8 a 18 h): confirmalos por teléfono antes de ir."],
+      pending: ["El horario del vacunatorio es contradictorio entre dos páginas oficiales (ver «Cuándo»)."],
     },
     {
       kind: "consulta",
@@ -122,7 +132,7 @@ export const PASTEUR: AnimalPlace = {
     {
       kind: "urgencias",
       title: "Guardia y urgencias",
-      cost: { status: "no-informada", text: "No corresponde: la página dice que no hay este servicio." },
+      cost: { status: "no-aplica", text: "No tiene costo que informar: la página dice que este servicio no existe." },
       who: "La página dice textualmente: «No existe guardia de atención médica ni urgencias».",
       how: ["Para una urgencia, buscá otro lugar. El Instituto sí recibe denuncias por mordeduras de perros y gatos para la observación antirrábica; la página no explica cómo hacerlas: consultá por el conmutador."],
       contact: ["Conmutador 4958-9900, de lunes a viernes de 10 a 17 h."],
@@ -302,12 +312,23 @@ export const SALTA: AnimalPlace = {
     },
     {
       kind: "consulta",
-      title: "Atención veterinaria en el Centro de Adopciones «Nicolás Mancilla» y en los CIC",
-      cost: { status: "gratuita", text: "El Centro de Adopciones figura como «Atención veterinaria gratuita». En los CIC la página no dice el costo." },
+      title: "Atención veterinaria en el Centro de Adopciones «Nicolás Mancilla»",
+      cost: { status: "gratuita", text: "La página lo titula «Atención veterinaria gratuita»." },
       who: "Mayores de 18 años con fotocopia del DNI con domicilio en la ciudad de Salta. Controles posteriores: certificado de carente de recursos.",
       where: ["Centro de Adopciones «Nicolás Mancilla»: la página no da su dirección."],
       when: ["De lunes a viernes de 8 a 18 h."],
       how: ["La página no explica cómo pedir la consulta: confirmalo antes de ir."],
+    },
+    {
+      kind: "consulta",
+      title: "Atención veterinaria en los cinco CIC",
+      cost: { status: "no-informada", text: "La página dice que los CIC ofrecen «atención veterinaria y vacunación antirrábica», pero no dice si tienen costo." },
+      who: "Mayores de 18 años con DNI con domicilio en la ciudad de Salta.",
+      where: ["CIC Constitución, Solidaridad, Unión, Asunción y Limache. La página no da sus direcciones."],
+      when: ["Los horarios de cada CIC son los de «Vacunación antirrábica» (en «Castración y vacunación gratuitas»)."],
+      how: ["Acercate al CIC en el horario indicado."],
+      contact: ["CIC Constitución 387 226-6146 · CIC Solidaridad 387 226-6210 · CIC Unión 387 226-6246 · CIC Asunción 387 226-6133 · CIC Limache 387 226-6199."],
+      pending: ["En CIC Unión la página pide además un «certificado de carente de recursos»: no explica para qué prestación."],
     },
     {
       kind: "urgencias",

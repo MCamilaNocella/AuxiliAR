@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { CAMPAIGN_NOT_CARE } from "../../Animals.sources"
-import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, ROSARIO, SALTA } from "../../Animals.places"
+import { CABA, CORDOBA, FREE_STATUSES, NEUQUEN, PASTEUR, PROTENENCIA, ROSARIO, SALTA, UNCONFIRMED_STATUSES } from "../../Animals.places"
 import { CabaAgenda } from "../../CabaAgenda"
 import { PlaceCard } from "../../PlaceCard"
 
@@ -28,30 +28,43 @@ export default function Section1Content() {
         <p className="m-0 mt-1">{CAMPAIGN_NOT_CARE}</p>
       </section>
 
-      <section aria-labelledby="an-caba">
-        <h3 id="an-caba" className="m-0 text-xl font-extrabold">
-          Ciudad de Buenos Aires
+      <section aria-labelledby="an-free">
+        <h3 id="an-free" className="m-0 text-xl font-extrabold">
+          Gratuitos, según la página oficial
         </h3>
+        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice si la página la describe como gratuita siempre o solo en algunos casos. Cada servicio vale solo para su lugar.</p>
+        <h4 className="m-0 mt-3 text-lg font-extrabold">Ciudad de Buenos Aires</h4>
         <div className="mt-2 flex flex-col gap-2">
-          <PlaceCard place={CABA} kinds={kinds} title="Castración y vacunación con Animales BA">
+          <PlaceCard place={CABA} kinds={kinds} statuses={FREE_STATUSES} title="Castración y vacunación con Animales BA">
             <CabaAgenda />
           </PlaceCard>
-          <PlaceCard place={PASTEUR} kinds={["vacunacion"]} title="Vacunación antirrábica en el Instituto Pasteur" />
+          <PlaceCard place={PASTEUR} kinds={["vacunacion"]} statuses={FREE_STATUSES} title="Vacunación antirrábica en el Instituto Pasteur" />
+        </div>
+        <h4 className="m-0 mt-4 text-lg font-extrabold">Otras provincias</h4>
+        <div className="mt-2 flex flex-col gap-2">
+          <PlaceCard place={ROSARIO} kinds={kinds} statuses={FREE_STATUSES} title="Rosario (Santa Fe)" />
+          <PlaceCard place={CORDOBA} kinds={kinds} statuses={FREE_STATUSES} title="Ciudad de Córdoba" />
+          <PlaceCard place={SALTA} kinds={kinds} statuses={FREE_STATUSES} title="Ciudad de Salta: Móvil Quirúrgico" />
+          <PlaceCard place={NEUQUEN} kinds={kinds} statuses={FREE_STATUSES} title="Ciudad de Neuquén" />
+          <PlaceCard place={PROTENENCIA} kinds={kinds} statuses={FREE_STATUSES} title="Operativos de todo el país (Protenencia)" />
         </div>
       </section>
 
-      <section aria-labelledby="an-others">
-        <h3 id="an-others" className="m-0 text-xl font-extrabold">
-          Otras provincias
+      <section aria-labelledby="an-unconfirmed">
+        <h3 id="an-unconfirmed" className="m-0 text-xl font-extrabold">
+          Costo no confirmado
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">Cada servicio vale solo para su lugar. Abrí el de tu ciudad: ahí está para quién es, cuánto cuesta, dónde y cómo pedirlo.</p>
+        <p className="m-0 mt-1 text-ink-soft">En estos casos la página no dice si el servicio tiene costo. No los tomes como gratuitos hasta confirmarlo con el servicio.</p>
         <div className="mt-2 flex flex-col gap-2">
-          <PlaceCard place={ROSARIO} kinds={kinds} title="Rosario (Santa Fe)" />
-          <PlaceCard place={CORDOBA} kinds={kinds} title="Ciudad de Córdoba" />
-          <PlaceCard place={SALTA} kinds={kinds} title="Ciudad de Salta" />
-          <PlaceCard place={NEUQUEN} kinds={kinds} title="Ciudad de Neuquén" />
-          <PlaceCard place={PROTENENCIA} kinds={kinds} title="Operativos de todo el país (Protenencia)" />
+          <PlaceCard place={SALTA} kinds={kinds} statuses={UNCONFIRMED_STATUSES} title="Ciudad de Salta: hospital y CIC" showAction={false} />
         </div>
+      </section>
+
+      <section aria-labelledby="an-paid">
+        <h3 id="an-paid" className="m-0 text-xl font-extrabold">
+          Arancelados
+        </h3>
+        <p className="m-0 mt-1">Ninguna castración ni vacunación de esta página figura como arancelada. Los hospitales escuela de la UBA y de la UNLP, que sí lo son, están en «Atención veterinaria gratuita» como alternativas pagas: no son gratuitos.</p>
       </section>
 
       <section aria-labelledby="an-other">

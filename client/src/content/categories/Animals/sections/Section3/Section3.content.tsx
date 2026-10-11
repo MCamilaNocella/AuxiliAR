@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { CABA, PASTEUR, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../../Animals.places"
+import { CABA, FREE_STATUSES, NOT_OFFERED_STATUSES, PASTEUR, PAID_STATUSES, ROSARIO, SALTA, UNCONFIRMED_STATUSES, UNIVERSITY_HOSPITALS } from "../../Animals.places"
 import { PlaceCard } from "../../PlaceCard"
 
 /**
@@ -37,36 +37,52 @@ export default function Section3Content() {
         </p>
       </section>
 
-      <section aria-labelledby="an-caba3">
-        <h3 id="an-caba3" className="m-0 text-xl font-extrabold">
-          Ciudad de Buenos Aires
+      <section aria-labelledby="an-free3">
+        <h3 id="an-free3" className="m-0 text-xl font-extrabold">
+          Gratuitos, según la página oficial
         </h3>
+        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice si es gratuita siempre o solo con una condición (por ejemplo, estar adscripto al sistema de salud municipal).</p>
+        <h4 className="m-0 mt-3 text-lg font-extrabold">Ciudad de Buenos Aires</h4>
         <div className="mt-2 flex flex-col gap-2">
-          <PlaceCard place={PASTEUR} kinds={kinds} title="Instituto de Zoonosis Luis Pasteur: consultorio y urgencias" showAction={false} />
+          <PlaceCard place={PASTEUR} kinds={kinds} statuses={FREE_STATUSES} title="Instituto de Zoonosis Luis Pasteur: consultorio" showAction={false} />
         </div>
         <p className="m-0 mt-2 text-ink-soft">La página de {CABA.by} habla de castración y vacunación antirrábica: no informa consulta clínica, guardia ni urgencias.</p>
+        <h4 className="m-0 mt-4 text-lg font-extrabold">Otras provincias</h4>
+        <div className="mt-2 flex flex-col gap-2">
+          <PlaceCard place={ROSARIO} kinds={kinds} statuses={FREE_STATUSES} title="Rosario (Santa Fe): hospital y puestos" showAction={false} />
+          <PlaceCard place={SALTA} kinds={kinds} statuses={FREE_STATUSES} title="Ciudad de Salta: hospital y Centro de Adopciones" showAction={false} />
+        </div>
       </section>
 
-      <section aria-labelledby="an-others3">
-        <h3 id="an-others3" className="m-0 text-xl font-extrabold">
-          Otras provincias
+      <section aria-labelledby="an-unconfirmed3">
+        <h3 id="an-unconfirmed3" className="m-0 text-xl font-extrabold">
+          Costo no confirmado
+        </h3>
+        <p className="m-0 mt-1 text-ink-soft">La página no dice si tienen costo. No los tomes como gratuitos hasta confirmarlo.</p>
+        <div className="mt-2 flex flex-col gap-2">
+          <PlaceCard place={SALTA} kinds={kinds} statuses={UNCONFIRMED_STATUSES} title="Ciudad de Salta: CIC y «Guardia y urgencias»" showAction={false} />
+        </div>
+      </section>
+
+      <section aria-labelledby="an-notoffered">
+        <h3 id="an-notoffered" className="m-0 text-xl font-extrabold">
+          Servicios que la página dice que no existen
         </h3>
         <div className="mt-2 flex flex-col gap-2">
-          <PlaceCard place={ROSARIO} kinds={kinds} title="Rosario (Santa Fe): hospital y puestos" showAction={false} />
-          <PlaceCard place={SALTA} kinds={kinds} title="Ciudad de Salta: hospital, Centro de Adopciones y urgencias" showAction={false} />
+          <PlaceCard place={PASTEUR} kinds={kinds} statuses={NOT_OFFERED_STATUSES} title="Instituto Pasteur: guardia y urgencias" showAction={false} />
         </div>
       </section>
 
       <section aria-labelledby="an-uni" className="rounded-2xl border-2 border-control-line bg-field p-4">
         <h3 id="an-uni" className="m-0 text-xl font-extrabold">
-          Ser de una universidad pública no hace gratuito un servicio
+          Arancelados: alternativas identificadas, no gratuitas
         </h3>
         <p className="m-0 mt-1">
-          Los hospitales escuela de veterinaria de la UBA y de la UNLP publican en sus páginas que sus servicios son arancelados. No los incluimos como atención gratuita: están acá para que sepas cómo son.
+          Los hospitales escuela de veterinaria de la UBA y de la UNLP publican en sus páginas que sus servicios son arancelados. Ser de una universidad pública no los hace gratuitos. No los incluimos como atención gratuita: están acá para que sepas que existen y cómo son.
         </p>
         <div className="mt-2 flex flex-col gap-2">
           {UNIVERSITY_HOSPITALS.map((place) => (
-            <PlaceCard key={place.id} place={place} kinds={kinds} title={place.by} showAction={false} />
+            <PlaceCard key={place.id} place={place} kinds={kinds} statuses={PAID_STATUSES} title={place.by} showAction={false} />
           ))}
         </div>
       </section>

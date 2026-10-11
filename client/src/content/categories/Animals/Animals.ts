@@ -22,7 +22,7 @@ export const ANIMALS: Category = {
       id: "section-1",
       title: "Vacunación y castración gratuitas",
       summary:
-        "Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
+        "Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
       Content: Section1,
     },
     {
@@ -36,7 +36,7 @@ export const ANIMALS: Category = {
       id: "section-3",
       title: "Atención veterinaria gratuita",
       summary:
-        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Cómo buscar atención en tu municipio. No hay guardias gratuitas confirmadas.",
+        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas.",
       Content: Section3,
     },
     {

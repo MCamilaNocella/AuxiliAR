@@ -97,7 +97,7 @@ test("every prestación says who, cost, how; gratuity is the page's statement, n
       for (const field of ["title", "who"]) assert.ok(item[field], `${place.id}.${item.title}.${field}`)
       assert.ok(item.cost?.status && item.cost.text, `${place.id}.${item.title}.cost`)
       assert.ok(item.how.length > 0, `${place.id}.${item.title}.how`)
-      assert.ok(["gratuita", "condicionada", "no-informada", "arancelada"].includes(item.cost.status), item.title)
+      assert.ok(["gratuita", "condicionada", "no-informada", "arancelada", "no-aplica"].includes(item.cost.status), item.title)
       // "gratuita" is only said as what the page says (a quote or "la página")
       if (item.cost.status === "gratuita") assert.ok(/página|«/.test(item.cost.text), `${place.id}.${item.title}: gratuity attributed`)
       // nothing says a whole institution is free
@@ -171,7 +171,7 @@ test("consulta y urgencias: apart from the castración, with the cost conditions
   assert.ok(!content.includes("Esterilización de perros") && !content.includes("Castración de perros"))
   for (const piece of ["Francia 1940", "Sin costo para personas adscritas al sistema de salud pública municipal", "bono de 10 gavets", "1 gavet = $1.720", "Av. Díaz Vélez 4821", "4958-9900", "387 566-8872", "certificado de carente de recursos", "No es una clínica veterinaria general"]) assert.ok(content.includes(piece), piece)
   for (const piece of ["Todos los servicios son arancelados", "Los servicios son arancelados", "admision@fvet.uba.ar", "221 599-0158", "no atiende urgencias sin previa coordinación"]) assert.ok(content.includes(piece), piece)
-  assert.ok(content.includes("publican en sus páginas que sus servicios son arancelados. No los incluimos como atención gratuita"))
+  assert.ok(content.includes("publican en sus páginas que sus servicios son arancelados") && content.includes("No los incluimos como atención gratuita"))
   assert.ok(content.includes("No listamos clínicas veterinarias pagas"))
   // nothing announced or from an organization without a confirmed free access is offered as a resource
   const all = Object.values(pages).join(" ")
@@ -246,4 +246,43 @@ test("si muere tu perro o gato: Pasteur's free service with its conditions, no i
   // the sources are in Sobre AuxiliAR; the page keeps the warning about the date and no link
   assert.ok(!content.includes("Texto comparado con estas fuentes") && content.includes("No traen fecha de publicación: confirmá con el Instituto antes de ir"))
   assert.deepEqual(referencesOf("animales-pasteur").references.map(({ url }) => url), [sources.PASTEUR_INFO.url, sources.PASTEUR_SERVICIOS.url])
+})
+
+test("free, cost not confirmed and arancelados are kept in separate groups, and the universities never enter the free ones", () => {
+  const slice = (html, from, to) => text(html.slice(html.indexOf(`aria-labelledby="${from}"`), html.indexOf(`aria-labelledby="${to}"`)))
+  // castración y vacunación: free → not confirmed → arancelados (none)
+  const s1 = pages["section-1"]
+  const order1 = ["an-free", "an-unconfirmed", "an-paid"].map((id) => s1.indexOf(`aria-labelledby="${id}"`))
+  assert.ok(order1.every((at) => at > 0) && [...order1].sort((a, b) => a - b).join() === order1.join())
+  const free1 = slice(s1, "an-free", "an-unconfirmed")
+  const unconfirmed1 = slice(s1, "an-unconfirmed", "an-paid")
+  assert.ok(free1.includes("Móvil Quirúrgico") && free1.includes("Gratuita, según la página") && !free1.includes("La página no informa el costo"), "the free group has only what the page says is free")
+  assert.ok(unconfirmed1.includes("La página no informa el costo") && unconfirmed1.includes("No los tomes como gratuitos hasta confirmarlo con el servicio"))
+  assert.ok(unconfirmed1.includes("Vacunación antirrábica de perros y gatos") && !unconfirmed1.includes("Gratuita, según la página"))
+  assert.ok(/UBA|UNLP/.test(slice(s1, "an-paid", "an-other")) && !/UBA|UNLP/.test(free1 + unconfirmed1), "the universities are only named as arancelados")
+  // consulta y urgencias: free → not confirmed → services that do not exist → arancelados (the universities)
+  const s3 = pages["section-3"]
+  const order3 = ["an-free3", "an-unconfirmed3", "an-notoffered", "an-uni"].map((id) => s3.indexOf(`aria-labelledby="${id}"`))
+  assert.ok(order3.every((at) => at > 0) && [...order3].sort((a, b) => a - b).join() === order3.join())
+  const free3 = slice(s3, "an-free3", "an-unconfirmed3")
+  const unconfirmed3 = slice(s3, "an-unconfirmed3", "an-notoffered")
+  const paid3 = slice(s3, "an-uni", "an-limits")
+  assert.ok(!/UBA|UNLP|arancelad/i.test(free3 + unconfirmed3), "no arancelado service in a free or unconfirmed group")
+  assert.ok(free3.includes("Consultorio clínico orientado a zoonosis") && free3.includes("Gratuita, según la página"))
+  assert.ok(unconfirmed3.includes("«Guardia y urgencias» del Hospital Municipal") && unconfirmed3.includes("no es una guardia confirmada") && unconfirmed3.includes("Atención veterinaria en los cinco CIC"))
+  assert.ok(!free3.includes("Guardia y urgencias"), "the urgencias of Salta is not in the free group")
+  assert.ok(text(s3.slice(s3.indexOf('aria-labelledby="an-notoffered"'), s3.indexOf('aria-labelledby="an-uni"'))).includes("No existe guardia de atención médica ni urgencias"))
+  assert.ok(paid3.includes("Arancelada") && paid3.includes("Todos los servicios son arancelados") && paid3.includes("alternativas identificadas, no gratuitas"))
+})
+
+test("a contradiction between official pages is shown where the person reads the resource, with both versions and none chosen", () => {
+  const content = text(pages["section-1"])
+  // Pasteur: the two hours of the vacunatorio, side by side, in «Cuándo»
+  for (const piece of ["La página de servicios dice: de 9 a 12 y de 14 a 17 h, los 365 días del año", "La página de vacunación dice: todos los días, incluidos sábados, domingos y feriados, de 8 a 18 h", "Las dos páginas oficiales no coinciden en el horario: no elegimos una"]) assert.ok(content.includes(piece), piece)
+  const vac = places.PASTEUR.prestaciones.find(({ kind }) => kind === "vacunacion")
+  assert.ok(vac.when.length >= 3 && vac.when.every((line) => !/^(Todos los días|De 9)/.test(line) || /dice|coinciden/.test(line)), "no version is stated as fact")
+  // Salta: the brachycephalic breeds (the hospital says no, another place of the page says with turno)
+  assert.ok(content.includes("razas braquicéfalas"))
+  // Rosario: the address of the Centro de Salud Pasteur
+  assert.ok(content.includes("otra página dice «Ayolas y Ayacucho»"))
 })

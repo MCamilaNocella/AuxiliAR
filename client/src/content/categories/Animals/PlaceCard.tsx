@@ -11,6 +11,7 @@ const COST_LABEL: Record<CostStatus, string> = {
   condicionada: "Gratuita solo en algunos casos",
   "no-informada": "La página no informa el costo",
   arancelada: "Arancelada",
+  "no-aplica": "El servicio no existe, según la página",
 }
 
 const formatDate = (iso: string) => {
@@ -55,13 +56,13 @@ const PrestacionBlock = ({ item }: { item: Prestacion }) => (
 )
 
 /**
- * A place and its prestaciones of the given kinds (a page shows the castración and vacunación of a place, another one its consulta and
+ * A place and its prestaciones of the given kinds and cost statuses (the pages show them in separate groups: free, cost not confirmed, arancelados) (a page shows the castración and vacunación of a place, another one its consulta and
  * urgencias). The text is what the official page says; AuxiliAR did not verify it in person. `children` is for what changes often
  * (the agenda of the Ciudad), shown before the single link that completes the action or shows the updated schedule. A page that only
  * tells consulta and urgencias passes `showAction={false}`: the link lives once, in the card of castración and vacunación.
  */
-export const PlaceCard = ({ place, kinds, title, showAction = true, children }: { place: AnimalPlace, kinds: Kind[], title?: string, showAction?: boolean, children?: ReactNode }) => {
-  const shown = place.prestaciones.filter(({ kind }) => kinds.includes(kind))
+export const PlaceCard = ({ place, kinds, statuses, title, showAction = true, children }: { place: AnimalPlace, kinds: Kind[], statuses?: CostStatus[], title?: string, showAction?: boolean, children?: ReactNode }) => {
+  const shown = place.prestaciones.filter(({ kind, cost }) => kinds.includes(kind) && (!statuses || statuses.includes(cost.status)))
   if (shown.length === 0) return null
   return (
     <Disclosure title={title ?? `${place.place} · ${place.by}`} compact>
