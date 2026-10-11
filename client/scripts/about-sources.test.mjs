@@ -23,6 +23,7 @@ const AboutPage = (await load("categories/About/sections/Section1/Section1.conte
 const { ABOUT } = await load("categories/About/About.ts")
 const modules = {
   animals: await load("categories/Animals/Animals.sources.ts"),
+  animalPlaces: await load("categories/Animals/Animals.places.ts"),
   mental: await load("categories/MentalHealth/MentalHealth.sources.ts"),
   sexual: await load("categories/SexEducation/SexEducation.sources.ts"),
   resources: await load("categories/Resources/Resources.sources.ts"),
@@ -96,7 +97,7 @@ test("nothing is lost: every source defined in the code is in Sobre AuxiliAR", (
   assert.deepEqual(unexpected, [], `sources of the code that are not in Sobre AuxiliAR: ${unexpected.join(", ")}`)
   // the municipal services of Salud animal and the guides of Primeros auxilios
   for (const guide of FIRST_AID_GUIDE_CONTENT) for (const { url } of guide.sources) assert.ok(urlsInAbout.has(url), `${guide.slug}: ${url}`)
-  for (const service of [modules.animals.CABA, ...modules.animals.CONFIRMED_BY_SOURCE.slice(1), ...modules.animals.NOT_CONFIRMED]) assert.ok(urlsInAbout.has(service.url), service.by)
+  for (const service of [modules.animalPlaces.CABA, modules.animalPlaces.PASTEUR, modules.animalPlaces.ROSARIO, modules.animalPlaces.CORDOBA, modules.animalPlaces.SALTA, modules.animalPlaces.NEUQUEN, modules.animalPlaces.PROTENENCIA, ...modules.animalPlaces.UNIVERSITY_HOSPITALS]) assert.ok(urlsInAbout.has(service.url), service.by)
   // the calendar: every source of every stage
   for (const stage of modules.calendar.VACCINATION_STAGES) for (const { url } of stage.sources) assert.ok(urlsInAbout.has(url), `${stage.id}: ${url}`)
   // the FAQ and the glossary: every answer and term keeps its source

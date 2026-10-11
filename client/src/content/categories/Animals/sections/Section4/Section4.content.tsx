@@ -1,7 +1,3 @@
-import { OutLink } from "@/components/health/OutLink"
-import { PASTEUR_SERVICIOS } from "../../Animals.sources"
-
-
 /**
  * Salud animal · Si muere tu perro o gato. Explained from three official pages of the Gobierno de la Ciudad about the Instituto de
  * Zoonosis Luis Pasteur (texts in docs/investigacion/evidencia/pasteur-servicios-cadaveres.txt). What it says:
@@ -61,10 +57,7 @@ export default function Section4Content() {
         </ul>
       </section>
 
-      <div>
-        <OutLink href={PASTEUR_SERVICIOS.url}>Servicios del Instituto de Zoonosis Luis Pasteur: página oficial</OutLink>
-      </div>
-      <p className="m-0 text-sm text-ink-soft">Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir.</p>
+      <p className="m-0 text-sm text-ink-soft">Datos de las páginas oficiales del Instituto, consultadas el 9 de octubre de 2026. No traen fecha de publicación: confirmá con el Instituto antes de ir. AuxiliAR no los verificó en el lugar.</p>
     </div>
   )
 }

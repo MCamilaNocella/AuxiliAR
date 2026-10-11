@@ -1,6 +1,7 @@
 import type { Source } from "@/components/health/SourceList"
 import { FIRST_AID_GUIDE_CONTENT } from "../../firstAid"
-import { CABA, CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, CONFIRMED_BY_SOURCE, NOT_CONFIRMED, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, UBA_HOSPITAL, UNLP_HOSPITAL, ZOONOSIS } from "../Animals/Animals.sources"
+import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_READ_ON, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../Animals/Animals.places"
+import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
 import { CHECKED_AT as MENTAL_CHECKED_AT, LEY_26657, LEY_SIMPLE, OMS_ESTRES, ORIENTACION } from "../MentalHealth/MentalHealth.sources"
 import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, VACCINATION_STAGES } from "../PhysicalHealth/sections/Section5/Section5.constants"
 import { FOOD_NUTRITION } from "../PhysicalHealth/sections/Section6/Section6.constants"
@@ -191,9 +192,16 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "animales-campanas",
         title: "Vacunación y castración gratuitas",
-        references: [{ label: CABA.by, url: CABA.url }, ...[...CONFIRMED_BY_SOURCE.slice(1), ...NOT_CONFIRMED].map(({ by, url }) => ({ label: by, url })), { label: ZOONOSIS.label, url: ZOONOSIS.url }],
-        checkedAt: [ANIMALS_CHECKED_AT],
-        notes: ["Cada página es de un organismo oficial: AuxiliAR no responde por cambios posteriores."],
+        references: [CABA, PASTEUR, ROSARIO, CORDOBA, SALTA, NEUQUEN, PROTENENCIA].map(({ by, url }) => ({ label: by, url })).concat([
+          { label: "Municipalidad de Rosario · Solicitar esterilización de perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-esterilizacion-de-perros-y-gatos" },
+          { label: "Instituto de Zoonosis Luis Pasteur · Vacunación antirrábica", url: "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion" },
+          { label: ZOONOSIS.label, url: ZOONOSIS.url },
+        ]),
+        checkedAt: [ANIMAL_PLACES_READ_ON],
+        notes: [
+          "Cada página es de un organismo oficial: AuxiliAR no responde por cambios posteriores. Los datos de cada lugar se tomaron del texto de su página, descargado el 11 de octubre de 2026 (sin resumen automático), y no se verificaron en persona.",
+          "Las páginas no muestran fecha de actualización, salvo la de Neuquén (modificada el 27/5/2026).",
+        ],
       },
       {
         id: "animales-rabia",
@@ -205,8 +213,8 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "animales-atencion",
         title: "Cómo buscar atención veterinaria gratuita",
-        references: fromSources([ZOONOSIS, UBA_HOSPITAL, UNLP_HOSPITAL]),
-        checkedAt: [ANIMALS_CHECKED_AT],
+        references: [{ label: ZOONOSIS.label, url: ZOONOSIS.url }, ...UNIVERSITY_HOSPITALS.map(({ by, url }) => ({ label: by, url })), { label: "Municipalidad de Rosario · Solicitar atención veterinaria para perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos" }],
+        checkedAt: [ANIMAL_PLACES_READ_ON],
         notes: ["Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular."],
       },
       {

@@ -79,14 +79,14 @@
   {
     "title": "Salud animal",
     "path": "/temas/animales",
-    "summary": "Cuidados preventivos y orientación veterinaria. Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales Campañas y servicios municipales de vacunación antirrábica y castración de perros y gatos que la página oficial de cada municipio informa como gratuitos (Ciudad de Buenos Aires, Rosario, Córdoba, Salta), y los que todavía no están confirmados. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Cómo buscar atención veterinaria gratuita para perros y gatos: consultar a la municipalidad o al centro de zoonosis, qué preguntar y por qué un hospital universitario no es gratuito por ser público. No hay guardias gratuitas confirmadas.",
+    "summary": "Cuidados preventivos y orientación veterinaria. Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Cómo buscar atención en tu municipio. No hay guardias gratuitas confirmadas.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud animal › Vacunación y castración gratuitas",
     "path": "/temas/animales?seccion=section-1",
-    "summary": "Campañas y servicios municipales de vacunación antirrábica y castración de perros y gatos que la página oficial de cada municipio informa como gratuitos (Ciudad de Buenos Aires, Rosario, Córdoba, Salta), y los que todavía no están confirmados. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
+    "summary": "Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -100,7 +100,7 @@
   {
     "title": "Salud animal › Atención veterinaria gratuita",
     "path": "/temas/animales?seccion=section-3",
-    "summary": "Cómo buscar atención veterinaria gratuita para perros y gatos: consultar a la municipalidad o al centro de zoonosis, qué preguntar y por qué un hospital universitario no es gratuito por ser público. No hay guardias gratuitas confirmadas.",
+    "summary": "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Cómo buscar atención en tu municipio. No hay guardias gratuitas confirmadas.",
     "firstAid": false,
     "hasInfo": true
   },
