@@ -186,7 +186,7 @@ test("Más recursos: the Ley 27.610 is left out, CeSAC appointments are explaine
     assert.ok(!sources.includes(copy), `copied text: ${copy}`)
   }
   // every external link of the four pages is an official source or the place where the appointment is made
-  for (const href of hrefs(pages.join(" ")).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|boletinoficial\.buenosaires\.gob\.ar|buenosaires\.gob\.ar)\//, href)
+  for (const href of hrefs(pages.join(" ")).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|boletinoficial\.buenosaires\.gob\.ar|buenosaires\.gob\.ar|serviciosba\.buenosaires\.gob\.ar|www\.instagram\.com\/masserviciosentubarrio)\/?/, href)
   // the open sections of the FAQ and the glossary name their source
   assert.equal([...pages[2].matchAll(/<details/g)].length, 8)
   // the glossary and the FAQ keep their definitions and answers; where each one comes from is in Sobre AuxiliAR

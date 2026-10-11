@@ -21,6 +21,7 @@ const { MemoryRouter } = await import("react-router")
 const Section2 = (await vite.ssrLoadModule("/src/content/categories/Resources/sections/Section2/Section2.content.tsx")).default
 const guides = await vite.ssrLoadModule("/src/content/categories/Resources/sections/Section2/Section2.constants.ts")
 const sources = await vite.ssrLoadModule("/src/content/categories/Resources/Resources.sources.ts")
+const { NeighborhoodAgenda } = await vite.ssrLoadModule("/src/content/categories/Resources/sections/Section2/NeighborhoodAgenda.tsx")
 const { RESOURCES } = await vite.ssrLoadModule("/src/content/categories/Resources/Resources.ts")
 const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
 const AboutPage = (await vite.ssrLoadModule("/src/content/categories/About/sections/Section1/Section1.content.tsx")).default
@@ -51,17 +52,19 @@ test("both guides are cards of Trámites, between the vaccines and the rights, a
 })
 
 test("the official sources are in Sobre AuxiliAR with the day they were read; the pages keep only the link to the official page", () => {
-  for (const [html, url, label, blockId] of [[cud, CUD_URL, sources.CUD_PAGINA.label, "tramite-cud"], [neighborhood, CRONOGRAMA_URL, sources.MAS_SERVICIOS_PAGINA.label, "tramite-barrio"]]) {
+  const barrioUrls = [CRONOGRAMA_URL, sources.BARRIO_TURNO_ODONTOLOGIA.url, sources.BARRIO_TURNO_OFTALMOLOGIA.url, sources.BARRIO_REDES.url]
+  for (const [html, url, label, blockId, urls, days] of [[cud, CUD_URL, sources.CUD_PAGINA.label, "tramite-cud", [CUD_URL], ["2026-10-10"]], [neighborhood, CRONOGRAMA_URL, sources.MAS_SERVICIOS_PAGINA.label, "tramite-barrio", barrioUrls, ["2026-10-10", "2026-10-11"]]]) {
     // the page: the button to the official page (a functional link, in a new tab), and no block of sources
     assert.equal(hrefsIn(html).filter((href) => href === url).length, 1, `${url}: only the button`)
     assert.match(html, /target="_blank" rel="noopener noreferrer"/)
     assert.ok(!text(html).includes("Fuentes oficiales") && !text(html).includes("Texto comparado con estas fuentes") && !text(html).includes(label), "no block of sources in the page")
     // Sobre AuxiliAR: the source, the day it was read, and the pending review
     const block = aboutBlock(blockId)
-    assert.deepEqual(block.references.map((reference) => reference.url), [url])
-    assert.deepEqual(block.checkedAt, ["2026-10-10"])
+    assert.deepEqual(block.references.map((reference) => reference.url), urls)
+    assert.deepEqual(block.checkedAt, days)
     assert.ok(block.notes.includes("Pendiente de revisión legal y administrativa."))
     assert.ok(text(aboutHtml).includes(label) && text(aboutHtml).includes("Texto comparado con estas fuentes el 10 de octubre de 2026"), "visible in Sobre AuxiliAR")
+    for (const extra of urls.slice(1)) assert.ok(aboutHtml.includes(extra), extra)
   }
   assert.equal(sources.CUD_PAGINA.url, CUD_URL)
   assert.equal(sources.MAS_SERVICIOS_PAGINA.url, CRONOGRAMA_URL)
@@ -95,8 +98,11 @@ test("CUD: the official steps, in order, with the documentation left to the cons
   assert.ok(body.includes("22.431") && body.includes("24.901"))
 })
 
-test("operativos: services and dates vary, and gratuity, suspension, dates, places and requirements are not stated", () => {
-  const body = text(neighborhood)
+test("operativos: services and dates vary, and gratuity, suspension, dates, places and requirements are not stated in the guide text (the dated agenda is its own block)", () => {
+  const agendaAt = neighborhood.indexOf("Próximos operativos del cronograma")
+  const agendaEnd = neighborhood.indexOf("Lo que no se puede hacer desde acá")
+  assert.ok(agendaAt > 0 && agendaEnd > agendaAt)
+  const body = text(neighborhood.slice(0, agendaAt) + neighborhood.slice(agendaEnd))
   assert.match(body, /cambian según la semana y el operativo/)
   assert.ok(body.includes("no quiere decir que esté en el operativo de tu barrio"))
   // turns, limited places and the weather are warnings, as the schedule gives them
@@ -128,10 +134,26 @@ test("the operations are not on the map and Auxi does not know them: no data, no
 })
 
 test("the page keeps its rules: only official links, no forms, and the regex of the Ley 27.610 does not take 'vive' for an IVE", () => {
-  for (const href of hrefsIn(page).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|boletinoficial\.buenosaires\.gob\.ar|buenosaires\.gob\.ar)\//, href)
+  for (const href of hrefsIn(page).filter((link) => link.startsWith("https://"))) assert.match(href, /^https:\/\/(www\.argentina\.gob\.ar|boletinoficial\.buenosaires\.gob\.ar|buenosaires\.gob\.ar|serviciosba\.buenosaires\.gob\.ar|www\.instagram\.com\/masserviciosentubarrio)\/?/, href)
   assert.ok(!/<(form|input|textarea|select)\b/.test(page))
   const leyRegex = /27\.610|27610|interrupci[oó]n voluntaria|aborto|\bIVE\b|\bILE\b/i
   assert.ok(!leyRegex.test("Quien vive en un barrio, una actividad inclusive, un servicio móvil, difícil, útil"))
   for (const real of ["el IVE", "la ILE", "Ley 27.610", "interrupción voluntaria del embarazo", "aborto"]) assert.ok(leyRegex.test(real), real)
   assert.ok(!leyRegex.test(text(page)), "the page has nothing of the Ley 27.610")
+})
+
+test("the cronograma of the operativos is shown from today on, with the day it was read, and says when it expired", () => {
+  const show = (from) => text(renderToStaticMarkup(createElement(NeighborhoodAgenda, { from })))
+  const during = show("2026-10-14")
+  assert.ok(during.includes("Leído el 11 de octubre de 2026") && during.includes("hasta el 31 de octubre de 2026"))
+  assert.ok(during.includes("Parque Chacabuco") && during.includes("La Rural") && during.includes("de 16 a 20 h: Parque José Martí"))
+  // what passed is not shown
+  assert.ok(!during.includes("Parque Lezama") && !during.includes("Plaza Manuel Belgrano") && !during.includes("Barrio Castex"))
+  // the weather and the page: warnings, not promises
+  assert.ok(during.includes("Los operativos pueden suspenderse") && during.includes("Odontología y oftalmología son con turno y cupos limitados"))
+  assert.ok(!/gratuit|gratis|sin costo/i.test(during))
+  assert.ok(show("2026-11-01").includes("ya venció") && !show("2026-11-01").includes("La Rural"))
+  // the guide shows it between its text and the official pages, which stay as actions (turnos, cronograma, redes)
+  assert.ok(neighborhood.indexOf("Próximos operativos") > neighborhood.indexOf("Antes de ir") && neighborhood.indexOf("Próximos operativos") < neighborhood.indexOf("Pedir turno de odontología"))
+  assert.deepEqual(hrefsIn(neighborhood).filter((href) => href.startsWith("https://")), [CRONOGRAMA_URL, sources.BARRIO_TURNO_ODONTOLOGIA.url, sources.BARRIO_TURNO_OFTALMOLOGIA.url, sources.BARRIO_REDES.url])
 })

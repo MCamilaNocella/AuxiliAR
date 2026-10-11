@@ -8,7 +8,7 @@ import { FOOD_NUTRITION } from "../PhysicalHealth/sections/Section6/Section6.con
 import { PHYSICAL_ACTIVITY } from "../PhysicalHealth/sections/Section7/Section7.constants"
 import { FAQ_REFERENCES } from "../Resources/sections/Section3/Section3.references"
 import { GLOSSARY_REFERENCES } from "../Resources/sections/Section4/Section4.references"
-import { CHECKED_AT as RESOURCES_CHECKED_AT, CHECKED_AT_GUIDES, CUD_PAGINA, LEY_153, LEY_27491, MAS_SERVICIOS_PAGINA, TURNOS_CESAC, VACUNAS_PAGINA } from "../Resources/Resources.sources"
+import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CHECKED_AT as RESOURCES_CHECKED_AT, CHECKED_AT_AGENDA, CHECKED_AT_GUIDES, CUD_PAGINA, LEY_153, LEY_27491, MAS_SERVICIOS_PAGINA, TURNOS_CESAC, VACUNAS_PAGINA } from "../Resources/Resources.sources"
 import {
   CABA_CONSEJERIAS,
   CABA_COORDINACION,
@@ -257,9 +257,9 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "tramite-barrio",
         title: "Trámites · Servicios y trámites en tu barrio",
-        references: fromSources([MAS_SERVICIOS_PAGINA]),
-        checkedAt: [CHECKED_AT_GUIDES],
-        notes: ["La página no muestra fecha de actualización.", "Pendiente de revisión legal y administrativa."],
+        references: fromSources([MAS_SERVICIOS_PAGINA, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, BARRIO_REDES]),
+        checkedAt: [CHECKED_AT_GUIDES, CHECKED_AT_AGENDA],
+        notes: ["La página no muestra fecha de actualización.", "El cronograma de operativos (septiembre y octubre de 2026) se leyó el 11 de octubre de 2026 y se muestra solo desde la fecha de hoy.", "Pendiente de revisión legal y administrativa."],
       },
       {
         id: "faq",

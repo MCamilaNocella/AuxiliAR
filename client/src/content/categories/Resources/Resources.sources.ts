@@ -45,3 +45,9 @@ export const MAS_SERVICIOS_PAGINA: Source = {
   label: "Cronograma de Más servicios en tu barrio · Gobierno de la Ciudad de Buenos Aires",
   url: "https://buenosaires.gob.ar/gcaba_historico/cronograma-de-mas-servicios-en-tu-barrio",
 }
+
+/** The pages the cronograma of «Más servicios en tu barrio» points to for what AuxiliAR cannot do: the turnos of odontología and oftalmología, and the social networks where the state of each operativo is told (read on 2026-10-11) */
+export const BARRIO_TURNO_ODONTOLOGIA: Source = { label: "Turno de odontología en Más servicios en tu barrio · Gobierno de la Ciudad de Buenos Aires", url: "https://serviciosba.buenosaires.gob.ar/servicio/15" }
+export const BARRIO_TURNO_OFTALMOLOGIA: Source = { label: "Turno de oftalmología en Más servicios en tu barrio · Gobierno de la Ciudad de Buenos Aires", url: "https://serviciosba.buenosaires.gob.ar/servicio/16" }
+export const BARRIO_REDES: Source = { label: "Redes de Más servicios en tu barrio (Instagram)", url: "https://www.instagram.com/masserviciosentubarrio/" }
+export const CHECKED_AT_AGENDA = "2026-10-11"

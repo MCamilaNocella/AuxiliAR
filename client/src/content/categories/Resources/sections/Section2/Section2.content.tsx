@@ -6,7 +6,8 @@ import { PendingNotice } from "@/components/health/PendingNotice"
 import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
-import { CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
+import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
+import { NeighborhoodAgenda } from "./NeighborhoodAgenda"
 import { CUD_GUIDE, NEIGHBORHOOD_GUIDE, PENDING_NOTICE_TEXT, PENDING_NOTICE_TITLE } from "./Section2.constants"
 
 /**
@@ -128,8 +129,23 @@ export default function Section2Content() {
           ))}
         </ul>
         <div className="mt-3">
-          <OutLink href={MAS_SERVICIOS_PAGINA.url}>Ver el cronograma oficial</OutLink>
+          <NeighborhoodAgenda />
         </div>
+        <p className="m-0 mt-3 text-ink-soft">Lo que no se puede hacer desde acá se hace en las páginas oficiales del programa:</p>
+        <ul role="list" className="m-0 mt-1 flex list-none flex-col gap-1 p-0">
+          <li>
+            <OutLink href={MAS_SERVICIOS_PAGINA.url}>Ver el cronograma completo y actualizado, con los servicios de cada semana</OutLink>
+          </li>
+          <li>
+            <OutLink href={BARRIO_TURNO_ODONTOLOGIA.url}>Pedir turno de odontología</OutLink>
+          </li>
+          <li>
+            <OutLink href={BARRIO_TURNO_OFTALMOLOGIA.url}>Pedir turno de oftalmología</OutLink>
+          </li>
+          <li>
+            <OutLink href={BARRIO_REDES.url}>Ver si el operativo se suspendió (redes del programa)</OutLink>
+          </li>
+        </ul>
       </section>
 
       <section aria-labelledby="tr-refused" className={cardClass}>
