@@ -225,3 +225,39 @@ test("Leaflet 1.9.4 in our own wrapper, no react-leaflet, no other map or locati
     assert.ok(!/geocod|nominatim/i.test(source.replace(/\/\*[\s\S]*?\*\/|\/\/.*$/gm, "")), `${file}: nothing is geocoded in the browser`)
   }
 })
+
+/* ── The pin says what it is and what it is for ── */
+
+// what the explorer shows: only the services of documented gratuity (confirmedOnly), as in its cards
+const shown = () => util.filterPlaces(places, DAY, { query: "", filterId: "all", scope: { ...SCOPE, confirmedOnly: true } })
+
+test("each pin carries its short kind and what it is for (at most three services), and says nothing the card does not say", () => {
+  const pins = util.getMapPins(shown())
+  assert.ok(pins.length >= 3)
+  for (const pin of pins) {
+    assert.ok(pin.kind && pin.kind.length < 40 && !pin.kind.includes("("), `${pin.id}: short kind`)
+    assert.ok(pin.purpose.length > 0, `${pin.id}: has a purpose`)
+    assert.ok(pin.purpose.split(", ").length <= 3 + 1, `${pin.id}: at most three, then "y N más"`)
+  }
+  const cesac3 = pins.find(({ id }) => id === "cesac-3")
+  assert.equal(cesac3.kind, "Centro de salud")
+  // the purpose is made of the services of the card (the ones with documented gratuity), nothing else
+  const entry = shown().find(({ place }) => place.id === "cesac-3")
+  for (const service of entry.services) assert.ok(cesac3.purpose.includes(util.serviceName(service)) || /y \d+ más/.test(cesac3.purpose), service.id)
+  assert.ok(!/Odontolog|Psicolog|Farmacia|IVE/i.test(cesac3.purpose), "services without documented gratuity are not announced")
+  // more than three: "y N más"
+  const many = util.getMapPins([{ place: entry.place, services: [1, 2, 3, 4, 5].map((n) => ({ ...entry.services[0], name: `Servicio ${n}` })) }])
+  assert.equal(many[0].purpose, "Servicio 1, Servicio 2, Servicio 3 y 2 más")
+})
+
+test("the map shows that in a tooltip when a pin is hovered or focused, built with text (not HTML), kept inside the map, and no native title repeats the name", async () => {
+  const code = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.tsx"), "utf8")
+  assert.ok(code.includes("bindTooltip") && code.includes('className: "places-tooltip"'))
+  assert.ok(code.includes("textContent") && !/innerHTML/.test(code.replace(/^\s*(\/\/|\*|\/\*).*$/gm, "")), "text nodes, never HTML")
+  assert.ok(code.includes('addEventListener("focus"') && code.includes("openTooltip") && code.includes('addEventListener("blur"'), "the keyboard sees it too")
+  assert.ok(code.includes('"tooltipopen"'), "moved sideways at the edges")
+  assert.ok(!/title:\s*pin\.name/.test(code), "no native title next to the tooltip")
+  assert.ok(code.includes("aria-label") && code.includes("pin.kind") && code.includes("pin.purpose"), "screen readers get the same words")
+  const css = await readFile(join(root, "src/components/places/PlacesMap/PlacesMap.css"), "utf8")
+  assert.ok(css.includes(".places-tooltip") && css.includes("max-content"))
+})

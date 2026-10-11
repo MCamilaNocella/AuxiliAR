@@ -23,13 +23,27 @@ const pinIcon = (selected: boolean) =>
     iconAnchor: [22, 44],
   })
 
+/** What the pin tells when the pointer is over it or it has the keyboard focus: the kind of place and what it is for, in two short lines (built with text nodes, never HTML) */
+const tooltipOf = ({ kind, purpose }: MapPin) => {
+  const box = document.createElement("div")
+  const type = document.createElement("strong")
+  type.textContent = kind
+  box.append(type)
+  if (purpose) {
+    const para = document.createElement("span")
+    para.textContent = `Para: ${purpose}`
+    box.append(para)
+  }
+  return box
+}
+
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
 /**
  * The map: Leaflet inside our own wrapper (no react-leaflet). It only draws what it is given: the pins of the places
  * with verified coordinates. It never looks coordinates up. Imperative on purpose: Leaflet owns its DOM, React only
  * says which pins there are and which one is selected.
- *  - The pins are focusable buttons named after the place; the zoom buttons are 44px.
+ *  - The pins are focusable buttons named after the place, its kind and what it is for; hovering or focusing a pin shows that in a short tooltip; the zoom buttons are 44px.
  *  - The list has the same places and every action, so nothing depends on this map.
  *  - Loaded on demand (this file brings Leaflet and its CSS with it).
  */
@@ -75,7 +89,21 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     for (const marker of markers.values()) marker.remove()
     markers.clear()
     for (const pin of pins) {
-      const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon(false), title: pin.name, alt: pin.name, keyboard: true })
+      // No native "title": it would show the name a second time after the tooltip. The pin is named for screen readers below
+      const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon(false), keyboard: true })
+      marker.bindTooltip(tooltipOf(pin), { direction: "top", offset: [0, -40], opacity: 1, className: "places-tooltip" })
+      // A pin near the edge of the map: the tooltip is moved sideways so it is never cut off
+      marker.on("tooltipopen", () => {
+        const tip = marker.getTooltip()?.getElement()
+        const box = containerRef.current
+        if (!tip || !box) return
+        tip.style.marginLeft = "0px"
+        const tipRect = tip.getBoundingClientRect()
+        const mapRect = box.getBoundingClientRect()
+        const margin = 6
+        if (tipRect.left < mapRect.left + margin) tip.style.marginLeft = `${Math.round(mapRect.left + margin - tipRect.left)}px`
+        else if (tipRect.right > mapRect.right - margin) tip.style.marginLeft = `${Math.round(mapRect.right - margin - tipRect.right)}px`
+      })
       marker.on("click", () => onSelectRef.current(pin.id))
       // A focused pin is a button: Enter or Space selects it
       marker.on("keypress", (event: L.LeafletKeyboardEvent) => {
@@ -85,6 +113,14 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
         onSelectRef.current(pin.id)
       })
       marker.addTo(map)
+      const element = marker.getElement()
+      if (element) {
+        element.setAttribute("role", "button")
+        element.setAttribute("aria-label", `${pin.name}. ${pin.kind}${pin.purpose ? `. Para: ${pin.purpose}` : ""}`)
+        // The keyboard sees what the pointer sees
+        element.addEventListener("focus", () => marker.openTooltip())
+        element.addEventListener("blur", () => marker.closeTooltip())
+      }
       markers.set(pin.id, marker)
     }
     if (pins.length > 0) {

@@ -1,5 +1,6 @@
 import { isMappable } from "@/data/resources"
 import type { PlaceEntry } from "./filters"
+import { facilityTypeLabel, serviceName } from "./format"
 
 /** A place that can be drawn on the map: its coordinates were verified. Nothing is ever geocoded in the browser */
 export type MapPin = {
@@ -7,6 +8,21 @@ export type MapPin = {
   name: string
   lat: number
   lng: number
+  /** What kind of place it is, short: "Centro de salud", "Hospital" (what the pin says when it is hovered or focused) */
+  kind: string
+  /** What it is for: the services of the place that the map shows (the ones of documented gratuity, as in its card), at most three */
+  purpose: string
+}
+
+const MAX_PURPOSES = 3
+
+/** "Centro de salud (CeSAC, CAPS)" → "Centro de salud": the parenthesis is detail the card already gives */
+const shortKind = (type: string | undefined) => (facilityTypeLabel(type) ?? "Lugar de atención").replace(/\s*\(.*\)\s*$/, "")
+
+const purposeOf = (services: PlaceEntry["services"]) => {
+  const names = [...new Set(services.map(serviceName))]
+  const shown = names.slice(0, MAX_PURPOSES).join(", ")
+  return names.length > MAX_PURPOSES ? `${shown} y ${names.length - MAX_PURPOSES} más` : shown
 }
 
 /**
@@ -14,10 +30,10 @@ export type MapPin = {
  * Only verified coordinates produce a pin; a place without them stays in the list only, and is never given a guessed point.
  */
 export const getMapPins = (entries: PlaceEntry[]): MapPin[] =>
-  entries.flatMap(({ place }) => {
+  entries.flatMap(({ place, services }) => {
     const coordinates = place.coordinates
     if (!isMappable(place) || !coordinates || !Number.isFinite(coordinates.lat) || !Number.isFinite(coordinates.lng)) return []
-    return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng }]
+    return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng, kind: shortKind(place.facilityType), purpose: purposeOf(services) }]
   })
 
 /**
