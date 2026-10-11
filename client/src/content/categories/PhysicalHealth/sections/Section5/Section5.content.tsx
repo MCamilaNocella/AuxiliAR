@@ -135,7 +135,9 @@ export default function Section5Content() {
         <p className="m-0">
           El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Pasá las páginas con las flechas, de bebés a personas mayores: en cada una ves las vacunas de esa edad, cuándo se aplican y cada cuánto, según el Ministerio de Salud de la Nación.
         </p>
-        <p className="m-0 mt-2 text-muted">Las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país, son gratuitas y no requieren orden médica.</p>
+        <p className="m-0 mt-2 text-muted">
+          Según el Ministerio de Salud de la Nación, las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país y no requieren orden médica. Las páginas oficiales de 5 y 11 años dicen que se aplican de forma gratuita. Esto no asegura que haya vacunas, turnos o un horario determinado en un vacunatorio en particular: consultalo en el que te quede cerca.
+        </p>
         <p className="m-0 mt-3 flex items-start gap-2 rounded-2xl border border-line-strong bg-field p-3 text-ink-soft">
           <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-brand" />
           <span>{GENERAL_NOTE}</span>

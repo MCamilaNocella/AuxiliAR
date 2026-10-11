@@ -319,3 +319,20 @@ test("the pages go from the baby to the older adult, the arrows are disabled at 
   // 15 a 64 and 65+: how often
   assert.ok(text(html("15-a-64")).includes("un refuerzo cada 10 años") && text(html("65-o-mas")).includes("un refuerzo cada 10 años"))
 })
+
+test("calendar: gratuity and availability are told as the sources tell them, the technical repository and the triple viral contrast are in Sobre AuxiliAR", () => {
+  const content = text(render(CalendarPage, "/temas/salud-general?seccion=section-5"))
+  // S1 says "disponibles… no requieren orden médica"; "gratuita" is only what the pages of 5 and 11 years say, and none of it proves stock, turns or hours
+  assert.ok(content.includes("Según el Ministerio de Salud de la Nación, las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país y no requieren orden médica"))
+  assert.ok(content.includes("Las páginas oficiales de 5 y 11 años dicen que se aplican de forma gratuita") && content.includes("no asegura que haya vacunas, turnos o un horario determinado"))
+  assert.ok(!content.includes("son gratuitas y no requieren orden médica"))
+  // Sobre AuxiliAR: the repository of lineamientos (S3), the day the triple viral was compared again, and the notes of traceability
+  const block = about.REFERENCE_GROUPS.find(({ id }) => id === "salud-general").blocks.find(({ id }) => id === "calendario")
+  assert.ok(block.references.some(({ url }) => url === "https://www.argentina.gob.ar/salud/inmunoprevenibles/recomendaciones-manuales-y-lineamientos"))
+  assert.deepEqual(block.checkedAt, ["2026-10-09", "2026-10-11"])
+  const notes = block.notes.join(" ")
+  for (const piece of ["triple viral", "11 de octubre de 2026", "no una fecha de publicación confirmada", "carpeta 2018/02", "Próxima revisión documental sugerida: 11 de noviembre de 2026", "Pendiente de validación profesional"]) assert.ok(notes.includes(piece), piece)
+  // the triple viral scheme by cohort stays as the sources say it
+  const viral = text(render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=5-anios"))
+  assert.ok(viral.includes("Nacidos entre el 1.° de enero de 2021 y el 30 de junio de 2024") && viral.includes("Nacidos desde el 1.° de julio de 2024: segunda dosis entre los 15 y los 18 meses"))
+})

@@ -76,6 +76,15 @@ export const CALENDAR_SOURCE: Source = {
   url: "https://www.argentina.gob.ar/salud/vacunas",
 }
 
+/** The technical repository of the Ministerio: every vaccine has its own document, with its own date; the current one of each is the one to follow (no old manual as the only source) */
+export const LINEAMIENTOS_REPOSITORIO: Source = {
+  label: "Recomendaciones, manuales y lineamientos · Dirección de Control de Enfermedades Inmunoprevenibles, Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/inmunoprevenibles/recomendaciones-manuales-y-lineamientos",
+}
+
+/** The day the triple viral scheme (first dose, second dose by birth cohort) was compared again with its page and the technical guideline of January 2026 */
+export const CHECKED_AT_TRIPLE_VIRAL = "2026-10-11"
+
 /** The poster of the Calendario 2026 (10/3/2026), with notes by vaccine */
 export const CALENDAR_PDF: Source = {
   label: "Calendario Nacional de Vacunación 2026 (PDF, 10/3/2026) · Ministerio de Salud de la Nación",

@@ -6,7 +6,7 @@ import { FIRST_AID_GUIDE_CONTENT, isVideoShown } from "../../firstAid"
 import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_READ_ON, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../Animals/Animals.places"
 import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
 import { CHECKED_AT as MENTAL_CHECKED_AT, LEY_26657, LEY_SIMPLE, OMS_ESTRES, ORIENTACION } from "../MentalHealth/MentalHealth.sources"
-import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, VACCINATION_STAGES } from "../PhysicalHealth/sections/Section5/Section5.constants"
+import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, CHECKED_AT_TRIPLE_VIRAL, LINEAMIENTOS_REPOSITORIO, VACCINATION_STAGES } from "../PhysicalHealth/sections/Section5/Section5.constants"
 import { FOOD_NUTRITION } from "../PhysicalHealth/sections/Section6/Section6.constants"
 import { PHYSICAL_ACTIVITY } from "../PhysicalHealth/sections/Section7/Section7.constants"
 import { FAQ_REFERENCES } from "../Resources/sections/Section3/Section3.references"
@@ -139,9 +139,15 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "calendario",
         title: "Calendario de vacunación",
-        references: fromSources([CALENDAR_SOURCE, CALENDAR_PDF]),
-        checkedAt: [CALENDAR_CHECKED_AT],
-        notes: ["Contenido del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0), resumido y reorganizado por AuxiliAR. Es un resumen informativo: no reemplaza la consulta con un equipo de salud."],
+        references: fromSources([CALENDAR_SOURCE, CALENDAR_PDF, LINEAMIENTOS_REPOSITORIO]),
+        checkedAt: [CALENDAR_CHECKED_AT, CHECKED_AT_TRIPLE_VIRAL],
+        notes: [
+          "Contenido del Ministerio de Salud de la Nación (licencia Creative Commons Atribución 4.0), resumido y reorganizado por AuxiliAR. Es un resumen informativo: no reemplaza la consulta con un equipo de salud.",
+          "El esquema de la triple viral (primera dosis a los 12 meses; segunda dosis entre los 15 y 18 meses para nacidos desde el 1/7/2024, y en el año en que cumplen 5 años para nacidos entre el 1/1/2021 y el 30/6/2024) se volvió a comparar el 11 de octubre de 2026 con la página oficial y con los lineamientos técnicos de enero de 2026. El resto de las vacunas, el 9 de octubre.",
+          "Las páginas no muestran fecha de actualización. El nombre del PDF del calendario (2026-03-10) es una referencia de versión, no una fecha de publicación confirmada. En el repositorio de lineamientos cada documento tiene su propia fecha: hay que seguir el vigente de cada vacuna. La carpeta 2018/02 de la dirección de algunos lineamientos no corresponde a la fecha de su contenido.",
+          "Los enlaces estaban accesibles el 11 de octubre de 2026. No se hizo una auditoría de accesibilidad del PDF oficial: cada página por edad de AuxiliAR es la alternativa en texto. Próxima revisión documental sugerida: 11 de noviembre de 2026, o antes si la Nación cambia el calendario (es una propuesta de mantenimiento, no una fecha oficial).",
+          "Pendiente de validación profesional: la fuente está verificada, la revisión clínica del contenido de AuxiliAR no se realizó.",
+        ],
       },
       ...VACCINATION_STAGES.map(({ id, title, sources }) => ({
         id: `calendario-${id}`,
