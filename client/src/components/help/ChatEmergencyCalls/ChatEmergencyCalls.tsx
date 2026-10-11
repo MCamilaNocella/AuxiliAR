@@ -3,7 +3,7 @@ import type { ChatEmergencyCallsProps } from "./ChatEmergencyCalls.types"
 
 /** Numbers to call straight from the chat (chosen for the situation), lined up with Auxi's bubble */
 export const ChatEmergencyCalls = ({ numbers }: ChatEmergencyCallsProps) => (
-  <li className="pl-11">
+  <li className="pl-11 motion-safe:animate-message-in">
     <ul aria-label="Números para llamar" className="m-0 flex list-none flex-wrap gap-2 p-0">
       {numbers.map(({ number, label }) => (
         <li key={number}>

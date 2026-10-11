@@ -1,16 +1,20 @@
 import { useEffect, useId, useRef, useState, type MouseEvent } from "react"
 import { SquarePen, X } from "lucide-react"
+import { useHelpChat } from "@/hooks/useHelpChat"
+import { helpChatStore } from "@/stores/helpChatStore"
 import { ChatConversation } from "../ChatConversation"
-import type { HelpChatProps } from "./HelpChat.types"
+import { ProfileConversation } from "../ProfileConversation"
 
 /**
  * Chat with Auxi (sketch). Native modal <dialog>: traps focus, closes with Esc and returns focus to Auxi.
- * Full screen on phones; a floating window over Auxi from sm up.
+ * Full screen on phones; a floating window over Auxi from sm up. Opened from anywhere through helpChatStore:
+ * the usual conversation, or completing a Mi Salud profile (`task`).
  */
-export const HelpChat = ({ open, onClose }: HelpChatProps) => {
+export const HelpChat = () => {
+  const { open, task, conversation } = useHelpChat()
+  const onClose = helpChatStore.close
   const dialogRef = useRef<HTMLDialogElement>(null)
   const titleId = useId()
-  const [conversation, setConversation] = useState(0)
   const [started, setStarted] = useState(false)
   // "Nuevo chat" asks first when there's a conversation to lose
   const [confirming, setConfirming] = useState(false)
@@ -19,7 +23,7 @@ export const HelpChat = ({ open, onClose }: HelpChatProps) => {
   const startOver = () => {
     setConfirming(false)
     setStarted(false)
-    setConversation((current) => current + 1)
+    helpChatStore.startOver()
   }
 
   const handleNewChat = () => (started ? setConfirming(true) : startOver())
@@ -100,7 +104,11 @@ export const HelpChat = ({ open, onClose }: HelpChatProps) => {
         )}
 
         {/* A new key = a brand new conversation (messages, history, emergency state) */}
-        <ChatConversation key={conversation} onNavigate={onClose} onStartedChange={setStarted} />
+        {task ? (
+          <ProfileConversation key={conversation} active={open} task={task} onClose={onClose} onStartedChange={setStarted} />
+        ) : (
+          <ChatConversation key={conversation} active={open} onNavigate={onClose} onStartedChange={setStarted} />
+        )}
       </div>
     </dialog>
   )

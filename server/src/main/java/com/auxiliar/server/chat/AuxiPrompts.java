@@ -28,10 +28,12 @@ public class AuxiPrompts {
     private final String emergency;
     private final String pages;
     private final String numbers;
+    private final String profile;
 
     public AuxiPrompts(@Value("classpath:prompts/auxi.md") Resource base,
                        @Value("classpath:prompts/emergencia.md") Resource emergency,
                        @Value("classpath:prompts/paginas.md") Resource pages,
+                       @Value("classpath:prompts/perfil.md") Resource profile,
                        ContentCatalog catalog, HelpNumbers helpNumbers) throws IOException {
         this.base = read(base);
         this.emergency = read(emergency);
@@ -45,6 +47,12 @@ public class AuxiPrompts {
         }
         this.pages = read(pages).replace(PAGES_PLACEHOLDER, pageList);
         this.numbers = "## Números de ayuda de Argentina\n\n" + helpNumbers.document();
+        this.profile = read(profile);
+    }
+
+    /** Instructions to read one answer while completing the Mi Salud profile */
+    public String profile(ProfileField field, String answerFormat) {
+        return String.join("\n\n", profile, "## Dato que estás pidiendo ahora\n\n" + field.name(), answerFormat).strip();
     }
 
     /** Everything the model gets as system instructions for one turn */

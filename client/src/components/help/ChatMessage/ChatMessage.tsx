@@ -4,7 +4,7 @@ import type { ChatMessageProps } from "./ChatMessage.types"
 /** One chat message: Auxi's on the left with its avatar, the person's on the right in the brand color */
 export const ChatMessage = ({ from, children }: ChatMessageProps) =>
   from === "auxi" ? (
-    <li className="flex items-start gap-2">
+    <li className="flex items-start gap-2 motion-safe:animate-message-in">
       <span aria-hidden="true" className="flex size-9 flex-none items-center justify-center rounded-full bg-brand-soft">
         <Auxi className="size-8" />
       </span>
@@ -15,7 +15,7 @@ export const ChatMessage = ({ from, children }: ChatMessageProps) =>
       </div>
     </li>
   ) : (
-    <li className="flex justify-end">
+    <li className="flex justify-end motion-safe:animate-message-in">
       <div className="max-w-[85%] rounded-2xl rounded-tr-sm bg-brand px-3.5 py-2.5 text-base/snug wrap-break-word text-on-brand">
         <span className="sr-only">Vos: </span>
         {children}
