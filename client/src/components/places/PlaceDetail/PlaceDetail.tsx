@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from "react"
+import { Link, useInRouterContext } from "react-router"
 import { ExternalLink, MapPin, MessageCircle, Phone, X } from "lucide-react"
 import { contactHref } from "@/data/resources"
 import type { Contact } from "@/data/resources"
@@ -7,6 +8,13 @@ import type { DetailItem, PlaceEntry, ServiceView } from "@/utils/places"
 import { HighlightBadges } from "../HighlightBadges"
 
 const FOCUSABLE = "a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex='-1'])"
+
+/** The sources of every place are in Sobre AuxiliAR (an ordinary link where the panel is shown outside the router, as in tests) */
+const SourcesLink = () => {
+  const inRouter = useInRouterContext()
+  const label = "Sobre AuxiliAR, en «Centros de atención (mapa)»"
+  return inRouter ? <Link to="/sobre-auxiliar" className="font-bold">{label}</Link> : <a href="/sobre-auxiliar" className="font-bold">{label}</a>
+}
 
 type PlaceDetailProps = {
   entry: PlaceEntry
@@ -282,33 +290,13 @@ export const PlaceDetail = ({ entry, matchingIds = NO_IDS, onClose }: PlaceDetai
             </Section>
           )}
 
-          {view.sources.length > 0 && (
-            <Section title="Fuentes oficiales">
-              <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
-                {view.sources.map((source) => (
-                  <li key={source.url}>
-                    <ExternalLinkText url={source.url}>{source.organization}</ExternalLinkText>
-                    <ul role="list" className="m-0 mt-1 flex list-none flex-col gap-0.5 p-0 text-ink-soft">
-                      {source.backs.map((text) => (
-                        <li key={text}>{text}</li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-            </Section>
-          )}
-
           <section className="mt-8 rounded-xl border border-line-strong bg-surface-alt p-4">
             <h3 className="m-0 mb-1 text-lg font-extrabold">Información verificada por AuxiliAR</h3>
             {place.verification.verifiedAt && <p className="m-0">{`Verificada el ${formatDate(place.verification.verifiedAt)}.`}</p>}
             {place.verification.nextReviewDue && <p className="m-0">{`Se vuelve a revisar antes del ${formatDate(place.verification.nextReviewDue)}.`}</p>}
-            {place.source && !view.sources.some(({ url }) => url === place.source?.url) && (
-              <p className="m-0 mt-1">
-                Fuente oficial:{" "}
-                {place.source.url ? <ExternalLinkText url={place.source.url}>{place.source.organization}</ExternalLinkText> : <span className="font-bold">{place.source.organization}</span>}
-              </p>
-            )}
+            <p className="m-0 mt-1">
+              Las fuentes oficiales de este lugar, y qué respalda cada una, están en <SourcesLink />.
+            </p>
           </section>
         </div>
       </section>

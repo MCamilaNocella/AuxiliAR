@@ -64,7 +64,7 @@ test("Sobre AuxiliAR keeps its own content, in its place, and has no new section
 })
 
 test("the sources are by topic, each topic in a disclosure that starts closed", () => {
-  assert.deepEqual(about.REFERENCE_GROUPS.map(({ title }) => title), ["Salud general", "Salud mental", "Salud sexual y ESI", "Salud animal", "Primeros auxilios", "Más recursos"])
+  assert.deepEqual(about.REFERENCE_GROUPS.map(({ title }) => title), ["Salud general", "Salud mental", "Salud sexual y ESI", "Salud animal", "Centros de atención (mapa)", "Primeros auxilios", "Más recursos"])
   const section = html.slice(html.indexOf('aria-labelledby="about-sources"'))
   assert.equal([...section.matchAll(/<details/g)].length, about.REFERENCE_GROUPS.length)
   assert.ok(!/<details[^>]* open/.test(section), "all closed")
@@ -129,4 +129,21 @@ test("the pages of the topics have no block of sources, no note of verification 
     assert.ok(!source.includes("Texto comparado con estas fuentes") && !source.includes("Cómo verificamos los datos"), `${file}: no verification note or link`)
     if (/sections\/Section[34]\/Section[34]\.content\.tsx$/.test(file) && file.includes("Resources")) assert.ok(!source.includes("Fuente: {"), `${file}: sources of FAQ and glossary live in their references`)
   }
+})
+
+test("the sources of the map's establishments and of the first aid guides are here, with their dates, and the panels only point here", () => {
+  const places = about.REFERENCE_GROUPS.find(({ id }) => id === "centros-mapa")
+  // the places the map shows (those with a service of documented gratuity): the hidden one is not listed
+  assert.deepEqual(places.blocks.map(({ id }) => id).sort(), ["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas"])
+  for (const block of places.blocks) {
+    assert.equal(block.checkedKind, "place")
+    assert.equal(block.checkedAt.length, 1, block.id)
+    assert.ok(block.references.length > 0 && block.references.every(({ url }) => url.startsWith("https://")), block.id)
+    assert.ok(block.notes.some((note) => note.startsWith("Se vuelve a revisar antes del")), block.id)
+  }
+  assert.ok(text(html).includes("Información verificada por AuxiliAR el"), "the day of verification is visible")
+  assert.ok(text(html).includes("Respalda la gratuidad de:") && text(html).includes("No confirma que haya turnos disponibles"), "what each source backs is kept")
+  // the first aid block keeps every source of every guide, with the guides it backs
+  const guides = about.REFERENCE_GROUPS.find(({ id }) => id === "primeros-auxilios").blocks[0]
+  for (const guide of FIRST_AID_GUIDE_CONTENT) for (const { url } of guide.sources) assert.ok(guides.references.some((reference) => reference.url === url), `${guide.slug}: ${url}`)
 })

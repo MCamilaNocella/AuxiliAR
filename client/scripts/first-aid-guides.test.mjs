@@ -141,7 +141,7 @@ test("each guide renders its sections in the same order, in everyday language", 
     assert.ok(page.includes(guide.title), guide.slug)
     assert.ok(page.includes(stepsTitle), guide.slug)
     assert.ok(page.includes("Fuente oficial y revisión") && page.includes("7 de octubre de 2026"), guide.slug)
-    assert.ok(html.includes('target="_blank"'), guide.slug)
+    assert.ok(html.includes('href="/sobre-auxiliar"') && !html.includes('target="_blank"') && page.includes("están en Sobre AuxiliAR"), `${guide.slug}: its sources are in Sobre AuxiliAR, no external link in the guide`)
     for (const empty of ["undefined", "null", "NaN"]) assert.ok(!page.includes(empty), `${guide.slug}: ${empty}`)
     // order: what it is → signs → steps → what NOT to do → when to ask for help
     const order = [stepsTitle, "Qué NO hacer", "Cuándo pedir ayuda", "Mientras llega la ayuda"].filter((title) => page.includes(title)).map((title) => page.indexOf(title))
@@ -238,7 +238,7 @@ test("reacciones alérgicas: official sources, a date, and the pending clinical 
   const content = text(renderGuide(guide))
   assert.ok(content.includes("todavía falta que la revise un equipo de salud"))
   assert.ok(content.includes("no indica medicamentos ni dosis"))
-  assert.ok(content.includes("Contenido comparado con estas fuentes el 7 de octubre de 2026"))
+  assert.ok(content.includes("Contenido comparado con las fuentes oficiales el 7 de octubre de 2026"))
   // only this guide is waiting for a review; the others come straight from the national Manual
   assert.deepEqual(GUIDES.filter(({ clinicalReview }) => clinicalReview?.status === "pending").map(({ slug }) => slug), ["reacciones-alergicas"])
 })

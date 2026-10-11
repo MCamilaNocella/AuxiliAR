@@ -9,6 +9,8 @@ const formatDate = (date: string) => {
   return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
 }
 
+const placeCheckedText = (days: string[]) => `Información verificada por AuxiliAR el ${formatDate(days[days.length - 1])}.`
+
 const checkedText = (days: string[]) => `Texto comparado con estas fuentes ${days.length === 1 ? `el ${formatDate(days[0])}` : `entre el ${formatDate(days[0])} y el ${formatDate(days[days.length - 1])}`}.`
 
 const ReferenceItem = ({ label, url, detail }: Reference) => (
@@ -26,7 +28,7 @@ const ReferenceItem = ({ label, url, detail }: Reference) => (
   </li>
 )
 
-const Block = ({ id, title, references, checkedAt, notes }: ReferenceBlock) => (
+const Block = ({ id, title, references, checkedAt, checkedKind, notes }: ReferenceBlock) => (
   <section aria-labelledby={`about-ref-${id}`} className="border-t border-line-strong pt-3 first:border-t-0 first:pt-0">
     <h4 id={`about-ref-${id}`} className="m-0 mb-1 text-base font-extrabold">
       {title}
@@ -36,7 +38,7 @@ const Block = ({ id, title, references, checkedAt, notes }: ReferenceBlock) => (
         <ReferenceItem key={`${reference.url ?? reference.label}-${reference.detail ?? ""}`} {...reference} />
       ))}
     </ul>
-    {checkedAt && checkedAt.length > 0 && <p className="m-0 mt-2 text-ink-soft">{checkedText(checkedAt)}</p>}
+    {checkedAt && checkedAt.length > 0 && <p className="m-0 mt-2 text-ink-soft">{checkedKind === "place" ? placeCheckedText(checkedAt) : checkedText(checkedAt)}</p>}
     {notes?.map((note) => (
       <p key={note} className="m-0 mt-1 text-ink-soft">
         {note}

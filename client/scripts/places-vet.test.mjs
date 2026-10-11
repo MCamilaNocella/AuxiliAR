@@ -25,6 +25,7 @@ const { MemoryRouter } = await import("react-router")
 const places = await vite.ssrLoadModule("/src/utils/places/index.ts")
 const data = await vite.ssrLoadModule("/src/data/resources/index.ts")
 const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
 const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard/index.ts")
 const { PlacesMapView } = await vite.ssrLoadModule("/src/components/places/PlacesMapView/index.ts")
 
@@ -141,10 +142,13 @@ test("the card and the panel explain the conditions: turn first, miBA, an adult 
   assert.ok(!/tel:/.test(renderToStaticMarkup(createElement(PlaceDetail, { entry: entry(), onClose() {} }))))
 })
 
-test("official links: the page once under 'Fuentes oficiales', with what it backs", () => {
+test("official links: the page once in Sobre AuxiliAR with what it backs; the panel keeps only the functional 'Pedir turno' link", () => {
   const html = renderToStaticMarkup(createElement(PlaceDetail, { entry: entry(), onClose() {} }))
-  assert.ok(text(html).includes("Fuentes oficiales"))
-  assert.equal(html.split(`href="${PAGE}"`).length - 1, 2, "once in the sources and once in 'Pedir turno' (a different purpose)")
+  assert.ok(!text(html).includes("Fuentes oficiales") && text(html).includes("están en Sobre AuxiliAR"))
+  assert.equal(html.split(`href="${PAGE}"`).length - 1, 1, "only 'Pedir turno' (a functional link); the source is in Sobre AuxiliAR")
+  const block = about.REFERENCE_GROUPS.find(({ id }) => id === "centros-mapa").blocks.find(({ id }) => id === "centro-centro-fijo-veterinario-costanera-sur")
+  assert.equal(block.references.filter(({ url }) => url === PAGE).length, 1)
+  assert.equal(block.references.find(({ url }) => url === PAGE).detail.includes("No confirma que haya turnos disponibles"), true)
   const view = buildPlaceView(entry())
   assert.equal(view.sources.length, 1)
   assert.deepEqual(view.sources[0].backs, [

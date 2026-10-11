@@ -33,6 +33,7 @@ const data = await vite.ssrLoadModule("/src/data/resources/index.ts")
 const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
 const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard/index.ts")
 const explorer = await vite.ssrLoadModule("/src/components/places/PlacesExplorer/index.ts")
+const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
 
 const DAY = data.todayInArgentina()
 const real = file.resources
@@ -41,6 +42,8 @@ const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const find = (id) => real.find((place) => place.id === id)
 const entryOf = (id, list = real) => selectPlaces(list, DAY, EMPTY).find(({ place }) => place.id === id)
 const ids = (query, list = real) => selectPlaces(list, DAY, { ...EMPTY, ...query }).map(({ place }) => place.id).sort()
+// The sources of every place are in Sobre AuxiliAR (group «Centros de atención (mapa)»), not in the panel: it keeps the dates and a link there
+const aboutPlace = (id) => about.REFERENCE_GROUPS.find((group) => group.id === "centros-mapa").blocks.find((block) => block.id === `centro-${id}`)
 const panel = (id, list = real) => renderToStaticMarkup(createElement(PlaceDetail, { entry: entryOf(id, list), onClose() {} }))
 const batch = [
   ["cesac-3", "atencion-primaria"], ["cesac-41", "atencion-primaria"], ["cesac-47", "atencion-primaria"], ["cesac-47", "pediatria"],
@@ -72,8 +75,9 @@ test("evidence is optional: a service without it resolves to none, shows no 'Fue
   const view = buildPlaceView(entryOf("hospital-odontologia-carrillo"))
   assert.deepEqual(view.sources, [])
   assert.ok(!text(panel("hospital-odontologia-carrillo")).includes("Fuentes oficiales"))
-  // its own source is still said where it was: the establishment's, in the verification box
-  assert.ok(panel("hospital-odontologia-carrillo").includes(carrillo.source.url))
+  // its own source is kept, now in Sobre AuxiliAR (if the place shows there) and never as a link in the panel
+  assert.ok(!panel("hospital-odontologia-carrillo").includes(carrillo.source.url))
+  assert.ok(panel("hospital-odontologia-carrillo").includes("href=\"/sobre-auxiliar\""))
   assert.deepEqual(check(() => {}), [], "the real dataset validates")
 })
 
@@ -114,9 +118,13 @@ test("'Fuentes oficiales': each link once, saying what it backs for which servic
   for (const id of ["cesac-3", "cesac-41", "cesac-47"]) {
     const html = panel(id)
     const view = buildPlaceView(entryOf(id))
-    assert.ok(text(html).includes("Fuentes oficiales"), id)
+    // the panel has no list of sources: it points to Sobre AuxiliAR, where each link is once, with what it backs
+    assert.ok(!text(html).includes("Fuentes oficiales") && text(html).includes("están en Sobre AuxiliAR"), id)
     assert.equal(new Set(view.sources.map(({ url }) => url)).size, view.sources.length, "no repeated link in the list")
-    for (const { url } of view.sources) assert.equal(urlCount(html, url), 1, `${id}: ${url} appears once in the panel`)
+    const block = aboutPlace(id)
+    assert.deepEqual(block.references.filter(({ detail }) => detail).map(({ url }) => url), view.sources.map(({ url }) => url), `${id}: the same sources, once each`)
+    for (const { url } of view.sources) assert.equal(urlCount(html, url), 0, `${id}: ${url} is not in the panel`)
+    assert.ok(block.checkedAt?.length === 1 && block.checkedKind === "place", `${id}: the day it was verified`)
   }
   // CeSAC 47 has two services with the same norm: one link that names both
   const view = buildPlaceView(entryOf("cesac-47"))
@@ -144,15 +152,15 @@ test("gratuity source and existence source are told apart; the vaccination scope
   // one page that confirms the vaccination site AND publishes its hours: one link, two lines
   const lines = view.sources.find(({ url }) => url.includes("lugares-y-horarios-de-vacunatorios")).backs
   assert.deepEqual(lines, ["Confirma que la sede ofrece: Vacunatorio", "Publica el horario de: Vacunatorio"])
-  // the establishment's own page is in the list, so the verification box does not repeat it
-  const html = panel("cesac-41")
-  assert.equal(urlCount(html, find("cesac-41").source.url), 1)
+  // the establishment's own page is in its block of Sobre AuxiliAR, once
+  assert.equal(aboutPlace("cesac-41").references.filter(({ url }) => url === find("cesac-41").source.url).length, 1)
 })
 
 test("the service that has evidence does not repeat its source link inside its own block", () => {
   const html = panel("cesac-3")
-  assert.equal(urlCount(html, ownService("cesac-3", "vacunacion").source.url), 1)
-  assert.ok(!/Fuente:/.test(text(html)), "no inline 'Fuente' links: they are under Fuentes oficiales")
+  assert.equal(urlCount(html, ownService("cesac-3", "vacunacion").source.url), 0, "its source is in Sobre AuxiliAR")
+  assert.equal(aboutPlace("cesac-3").references.filter(({ url }) => url === ownService("cesac-3", "vacunacion").source.url).length, 1)
+  assert.ok(!/Fuente:/.test(text(html)), "no inline 'Fuente' links")
 })
 
 /* ── Hours: a service's hours are its own ── */

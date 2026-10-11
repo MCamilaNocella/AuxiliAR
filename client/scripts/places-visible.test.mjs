@@ -104,11 +104,11 @@ test("cards and panel show only documented prestaciones, with their conditions, 
   const cesac3 = panel("cesac-3")
   assert.ok(!/Odontolog|Salud mental|Anticonce|Ecograf|Farmacia|bVIHb|bIVEb/i.test(cesac3), cesac3.match(/Odontolog|Salud mental|Anticonce|Ecograf|Farmacia|bVIHb|bIVEb/i)?.[0])
   assert.ok(cesac3.includes("Gratuita con condiciones") && cesac3.includes("La gratuidad alcanza a las vacunas del Calendario Nacional"), "the condition stays")
-  assert.ok(cesac3.includes("Fuentes oficiales"), "the sources stay")
+  assert.ok(!cesac3.includes("Fuentes oficiales") && cesac3.includes("están en Sobre AuxiliAR"), "the sources are in Sobre AuxiliAR")
   const vet = panel("centro-fijo-veterinario-costanera-sur")
-  assert.ok(vet.includes("Ubicación aproximada en el mapa") && vet.includes("cuenta miBA") && vet.includes("Fuentes oficiales"))
+  assert.ok(vet.includes("Ubicación aproximada en el mapa") && vet.includes("cuenta miBA") && vet.includes("están en Sobre AuxiliAR"))
   // gratuity is not a promise of turns, stock or availability
-  assert.ok(vet.includes("No confirma que haya turnos disponibles"))
+  assert.ok(!/siempre hay turno|turnos garantizados/i.test(vet), "gratuity does not promise turns (the page that explains the turn, saying it does not confirm availability, is in Sobre AuxiliAR)")
   assert.ok(/Todavía no tenemos|consultá antes de ir|llamá antes de ir/.test(cesac3), "hours and availability are not promised")
 })
 
@@ -126,7 +126,7 @@ test("the explorer applies the policy in one place, and nothing else reads the p
     }
   }
   await walk(join(root, "src"))
-  assert.deepEqual(callers.sort(), ["components/places/PlacesExplorer/PlacesExplorer.tsx", "data/resources/index.ts", "utils/places/filters.ts"])
+  assert.deepEqual(callers.sort(), ["components/places/PlacesExplorer/PlacesExplorer.tsx", "content/categories/About/About.sources.ts", "data/resources/index.ts", "utils/places/filters.ts"])
 })
 
 test("the transparency: no header line under the map, one secondary link at the end, and the texts say the new policy", async () => {

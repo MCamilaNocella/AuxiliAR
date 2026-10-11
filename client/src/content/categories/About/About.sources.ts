@@ -1,4 +1,7 @@
 import type { Source } from "@/components/health/SourceList"
+import { getCurrentPlaces, getCurrentServices, isMappable } from "@/data/resources"
+import type { Resource } from "@/data/resources"
+import { buildPlaceView, isVerifiedFree } from "@/utils/places"
 import { FIRST_AID_GUIDE_CONTENT, isVideoShown } from "../../firstAid"
 import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_READ_ON, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../Animals/Animals.places"
 import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
@@ -57,6 +60,8 @@ export type ReferenceBlock = {
   references: Reference[]
   /** Day(s) the text was compared with these sources, YYYY-MM-DD */
   checkedAt?: string[]
+  /** What the day is: the text compared with its sources (default), or an establishment verified by AuxiliAR */
+  checkedKind?: "text" | "place"
   /** What the sources are, or what the page is not: said once, here */
   notes?: string[]
 }
@@ -68,6 +73,30 @@ export type ReferenceGroup = {
 }
 
 const fromSources = (sources: Source[]): Reference[] => sources.filter((source, index) => sources.findIndex(({ url }) => url === source.url) === index).map(({ label, url }) => ({ label, url }))
+
+/** The places of every province, read from their files (the map loads them on demand; here they are needed at once, in the page that lists the sources) */
+const placeFiles = import.meta.glob<{ resources: Resource[] }>("../../../data/resources/places/*.json", { eager: true, import: "default" })
+const MAP_PLACES: Resource[] = Object.values(placeFiles).flatMap((file) => file.resources)
+
+/**
+ * The establishments of the map: for each one the official sources of its services (each once, with what it backs), the day AuxiliAR verified it
+ * and when it is reviewed again. It is what the place panel used to list under "Fuentes oficiales"; the panel now keeps the dates and a link here.
+ * Built from the same data and the same view as the panel, so nothing is copied twice.
+ */
+const placeBlocks = (): ReferenceBlock[] =>
+  getCurrentPlaces(undefined, MAP_PLACES)
+    .filter(isMappable)
+    // only the places the map shows: those with at least one service of documented gratuity
+    .filter((place) => getCurrentServices(place).some((service) => isVerifiedFree(place, service)))
+    .map((place) => {
+      const services = getCurrentServices(place).filter((service) => isVerifiedFree(place, service))
+      const view = buildPlaceView({ place, services })
+      const references: Reference[] = view.sources.map(({ url, organization, backs }) => ({ label: organization, url, detail: backs.join(". ") }))
+      if (place.source && !references.some(({ url }) => url === place.source?.url)) references.push({ label: place.source.organization, url: place.source.url })
+      const notes = [place.verification.nextReviewDue ? `Se vuelve a revisar antes del ${place.verification.nextReviewDue.split("-").reverse().join("/")}.` : null].filter((note): note is string => note !== null)
+      return { id: `centro-${place.id}`, title: place.name, references, checkedAt: place.verification.verifiedAt ? [place.verification.verifiedAt] : undefined, checkedKind: "place" as const, notes }
+    })
+    .filter(({ references }) => references.length > 0)
 
 /** The guides of Primeros auxilios share their sources: each one is listed once with the guides it backs, and every day of comparison */
 const firstAidBlock = (): ReferenceBlock => {
@@ -231,6 +260,11 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         notes: ["Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir."],
       },
     ],
+  },
+  {
+    id: "centros-mapa",
+    title: "Centros de atención (mapa)",
+    blocks: placeBlocks(),
   },
   {
     id: "primeros-auxilios",

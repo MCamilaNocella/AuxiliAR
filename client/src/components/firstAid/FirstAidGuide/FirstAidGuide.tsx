@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router"
-import { ArrowLeft, ExternalLink, OctagonX, Phone, Siren } from "lucide-react"
+import { ArrowLeft, OctagonX, Phone, Siren } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { VideoEmbed } from "@/components/health/VideoEmbed"
 import { CALL_INFO, FIRST_AID_HUB_PATH, getFirstAidGuide, isVideoShown } from "@/content/firstAid"
@@ -257,18 +257,10 @@ export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
         <h2 id="guide-source" className="m-0 mb-2 text-base font-extrabold text-ink">
           Fuente oficial y revisión
         </h2>
-        <ul role="list" className="m-0 flex list-none flex-col gap-1 p-0">
-          {guide.sources.map(({ label, url }) => (
-            <li key={url}>
-              <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1 font-bold">
-                {label}
-                <ExternalLink aria-hidden="true" className="mt-1 size-4 shrink-0" />
-                <span className="sr-only"> (se abre en una pestaña nueva)</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-        <p className="m-0 mt-2">{`Contenido comparado con estas fuentes el ${formatDate(guide.checkedAt)}. Esta guía es una ayuda inicial: no reemplaza la atención de un equipo de salud ni la capacitación en primeros auxilios.`}</p>
+        <p className="m-0">{`Contenido comparado con las fuentes oficiales el ${formatDate(guide.checkedAt)}. Esta guía es una ayuda inicial: no reemplaza la atención de un equipo de salud ni la capacitación en primeros auxilios.`}</p>
+        <p className="m-0 mt-2">
+          Las fuentes oficiales de esta guía están en <Link to={PATHS.about} className="font-bold">Sobre AuxiliAR, en «Guías de primeros auxilios»</Link>.
+        </p>
       </section>
     </article>
   )
