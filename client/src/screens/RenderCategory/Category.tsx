@@ -34,9 +34,11 @@ export const Category = () => {
   const defaultSectionId = category.preparing ? PREPARING_SECTION.id : category.defaultSectionId
   const activeSection = sections.find(({ id }) => id === searchParams.get(SECTION_PARAM)) ?? sections.find(({ id }) => id === defaultSectionId)
   const activeSectionId = activeSection?.id ?? null
+  // A single section has no menu to put in a column: on large screens the name heads the page and the content takes the width
+  const hasMenu = sections.length > 1
 
   return (
-    <div data-category={category.id} className="flex min-h-(--content-min-h) flex-col lg:@container lg:flex-row">
+    <div data-category={category.id} className={`flex min-h-(--content-min-h) flex-col lg:@container ${hasMenu ? "lg:flex-row" : ""}`}>
       <CategorySidebar
         category={category}
         sections={sections}
@@ -46,7 +48,7 @@ export const Category = () => {
       />
       <div className="flex min-w-0 flex-1 flex-col">
         {activeSection ? (
-          <div className="px-(--page-gutter) py-6 lg:pr-(--page-inset) lg:pl-8">
+          <div className={`px-(--page-gutter) py-6 lg:pr-(--page-inset) ${hasMenu ? "lg:pl-8" : "lg:pl-(--page-inset)"}`}>
             <h2 className="m-0 text-2xl font-extrabold sm:text-3xl">{activeSection.title}</h2>
             {activeSection.id === PREPARING_SECTION.id && category.preparing ? <CategoryPreparing preparing={category.preparing} /> : <activeSection.Content />}
           </div>

@@ -15,7 +15,8 @@ let sectionsHintShown = false
 
 /**
  * Category menu.
- *  - Large screens: column pinned to the left with icon + name and the sections below.
+ *  - Large screens: column pinned to the left with icon + name and the sections below. A category with a single section has nothing to
+ *    list: on large screens it reserves no column, and the name is the heading of the page, over the full width.
  *  - Small screens: bar stuck under the header, menu button on one end and icon + name
  *    on the other; the button opens the sections in a drawer below the bar. The first
  *    time in the visit it also opens by itself, once the entry scroll has settled.
@@ -54,13 +55,21 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
     // Large: the column stretches to the full content height; the menu inside stays in view while scrolling.
     <div
       ref={barRef}
-      className="sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
+      className={
+        hasMenu
+          ? "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
+          : "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:border-line-strong lg:px-(--page-inset)"
+      }
     >
       <nav
         aria-labelledby={headingId}
-        className="@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
+        className={
+          hasMenu
+            ? "@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
+            : "@container px-(--page-gutter) py-2 lg:px-0 lg:py-4"
+        }
       >
-        <div className="flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3">
+        <div className={hasMenu ? "flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3" : "flex items-center gap-3"}>
           {drawer && (
           <button
             type="button"

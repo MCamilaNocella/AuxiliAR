@@ -323,6 +323,11 @@ test("a category with one section shows no section menu; two or three get tabs o
   assert.equal(PHYSICAL_HEALTH.sections.length, 6)
   const drawer = sidebar(PHYSICAL_HEALTH)
   assert.ok(drawer.includes('aria-label="Secciones"') && drawer.includes("Secciones de"))
+  // large screens: a single section reserves no left column (the name heads the page); a category with a menu keeps its column
+  assert.ok(!single.includes("lg:w-64") && !single.includes("lg:border-r") && single.includes("lg:px-(--page-inset)"), "no empty column for a single section")
+  for (const html of [tabs, drawer]) assert.ok(html.includes("lg:w-64") && html.includes("lg:border-r"), "the column stays where there is a menu")
+  const category = readFileSync(join(srcDir, "screens/RenderCategory/Category.tsx"), "utf8")
+  assert.ok(category.includes('hasMenu ? "lg:flex-row" : ""') && category.includes("sections.length > 1"), "the page is a column of one, a row with a menu")
 })
 
 test("the old address of the section (?seccion=section-3) goes to /primeros-auxilios; the other sections stay", () => {
