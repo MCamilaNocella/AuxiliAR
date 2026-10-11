@@ -429,3 +429,10 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
     sources: [stage("vacunacion-adultosmayores", "65 años o más"), GRIPE_LT, NEUMO_PAGE, HEPB_PAGE, VIRAL_PAGE, FA_PAGE],
   },
 ]
+
+/**
+ * The order the pages of the calendar are read in, from the youngest to the oldest (the person turns the page, there is no filter by age):
+ * recién nacidos → hasta un año → hasta 2 años → 5 años → 11 años → 15 a 64 años → embarazo → 65 años o más. VACCINATION_STAGES keeps its own order
+ * (the sources and the direct links of ?etapa= do not depend on it).
+ */
+export const STAGE_PAGE_ORDER = ["recien-nacidos", "hasta-un-ano", "hasta-2-anios", "5-anios", "11-anios", "15-a-64", "embarazo", "65-o-mas"]

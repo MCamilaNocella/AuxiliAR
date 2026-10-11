@@ -1,18 +1,21 @@
 import { useEffect, useRef } from "react"
 import { useSearchParams } from "react-router"
-import { Construction, Info } from "lucide-react"
+import { ChevronLeft, ChevronRight, Construction, Info } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { centersLink } from "@/router/centersLink"
-import { CALENDAR_PDF, DEVELOPMENT_NOTICE, GENERAL_NOTE, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
-import type { VaccineGroup, VaccineItem } from "./Section5.constants"
+import { CALENDAR_PDF, DEVELOPMENT_NOTICE, GENERAL_NOTE, STAGE_PAGE_ORDER, TO_CONFIRM_INTRO, VACCINATION_STAGES } from "./Section5.constants"
+import type { VaccinationStage, VaccineGroup } from "./Section5.constants"
 
-/** Query param with the open stage: /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
+/** Query param with the open page (the id of its stage): /temas/salud-general?seccion=section-5&etapa=hasta-un-ano */
 const STAGE_PARAM = "etapa"
 
-/** The calendar's own sources first, then the ones of the open stage, with no repeated address */
+const PAGES: VaccinationStage[] = STAGE_PAGE_ORDER.map((id) => VACCINATION_STAGES.find((stage) => stage.id === id)).filter((stage): stage is VaccinationStage => stage !== undefined)
+
 const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1)
+
+/** The bands of colour of each age, one after the other (like a table by age): the colour only separates them, the text says everything */
+const TONES = ["bg-brand-soft", "bg-field", "bg-surface-alt"]
 
 const Details = ({ details }: { details?: string[] }) =>
   details?.length ? (
@@ -23,73 +26,80 @@ const Details = ({ details }: { details?: string[] }) =>
     </ul>
   ) : null
 
-const Paragraphs = ({ paragraphs }: { paragraphs?: string[] }) =>
-  paragraphs?.map((paragraph) => (
-    <p key={paragraph} className="m-0 mt-1 first:mt-0">
-      {paragraph}
-    </p>
-  )) ?? null
-
-const Items = ({ items }: { items?: VaccineItem[] }) =>
-  items?.length ? (
-    <ul className="m-0 mt-1 list-disc pl-5">
-      {items.map(({ vaccine, dose, details }) => (
-        <li key={`${vaccine}-${dose}`} className="mt-1 first:mt-0">
-          <strong>{vaccine}:</strong> {dose}
-          <Details details={details} />
-        </li>
-      ))}
-    </ul>
-  ) : null
-
 /**
- * One group of a stage. A long stage is read in blocks on a phone: a group can be a disclosure (open or closed) or have one
- * disclosure per vaccine. The text is the same in every mode and all of it is in the page, closed or not.
+ * One age of the page: on the left the age, on the right each vaccine with when it is applied and how often (a refuerzo, every 10 years, in each
+ * campaign…), as the official calendar says it. A group that is only text (how the triple viral works in 2026, hepatitis B) is a note.
  */
-const Group = ({ group }: { group: VaccineGroup }) => {
-  const { heading, display, paragraphs, items } = group
-  if ((display === "open" || display === "collapsible") && heading) {
+const AgeBand = ({ group, age, tone }: { group: VaccineGroup, age: string, tone: string }) => {
+  if (!group.items?.length) {
     return (
-      <Disclosure title={heading} defaultOpen={display === "open"} compact>
-        <Paragraphs paragraphs={paragraphs} />
-        <Items items={items} />
-      </Disclosure>
-    )
-  }
-  if (display === "split" && items?.length) {
-    return (
-      <div>
-        {heading ? <h4 className="m-0 text-base font-extrabold">{heading}</h4> : null}
-        <Paragraphs paragraphs={paragraphs} />
-        <div className="mt-2 flex flex-col gap-2">
-          {items.map(({ vaccine, dose, details }) => (
-            <Disclosure key={`${vaccine}-${dose}`} title={vaccine} compact>
-              <p className="m-0">{capitalize(dose)}</p>
-              <Details details={details} />
-            </Disclosure>
-          ))}
-        </div>
+      <div className="rounded-2xl border border-line-strong bg-card p-4">
+        {group.heading ? <h4 className="m-0 text-base font-extrabold">{group.heading}</h4> : null}
+        {group.paragraphs?.map((paragraph) => (
+          <p key={paragraph} className="m-0 mt-1 first:mt-0">
+            {paragraph}
+          </p>
+        ))}
       </div>
     )
   }
   return (
-    <div>
-      {heading ? <h4 className="m-0 text-base font-extrabold">{heading}</h4> : null}
-      <Paragraphs paragraphs={paragraphs} />
-      <Items items={items} />
-    </div>
+    <section className={`${tone} rounded-2xl p-4 sm:grid sm:grid-cols-[9rem_1fr] sm:gap-4`}>
+      <h4 className="m-0 text-base font-extrabold sm:text-lg">{age}</h4>
+      <div className="mt-2 sm:mt-0">
+        {group.paragraphs?.map((paragraph) => (
+          <p key={paragraph} className="m-0 mb-2 text-ink-soft">
+            {paragraph}
+          </p>
+        ))}
+        <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
+          {group.items.map(({ vaccine, dose, details }) => (
+            <li key={`${vaccine}-${dose}`}>
+              <p className="m-0 font-extrabold">{vaccine}</p>
+              <p className="m-0">{capitalize(dose)}</p>
+              <Details details={details} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+/** Turn the page: previous and next arrows with the number of the page and its title (nothing to choose, no filter by age) */
+const Pager = ({ index, onGo }: { index: number, onGo: (index: number) => void }) => {
+  const previous = PAGES[index - 1]
+  const next = PAGES[index + 1]
+  const arrow = "inline-flex min-h-11 cursor-pointer items-center justify-center gap-1 rounded-xl bg-brand px-4 py-2 font-extrabold text-on-brand hover:bg-brand-dark disabled:cursor-default disabled:opacity-40"
+  return (
+    <nav aria-label="Páginas del calendario de vacunación" className="flex items-center justify-between gap-3">
+      <button type="button" onClick={() => onGo(index - 1)} disabled={!previous} aria-label={previous ? `Página anterior: ${previous.title}` : "Página anterior"} className={arrow}>
+        <ChevronLeft aria-hidden="true" className="size-5" />
+        <span className="max-sm:sr-only">Anterior</span>
+      </button>
+      <p className="m-0 min-w-0 text-center text-sm text-ink-soft" aria-live="polite">
+        {`Página ${index + 1} de ${PAGES.length}`}
+      </p>
+      <button type="button" onClick={() => onGo(index + 1)} disabled={!next} aria-label={next ? `Página siguiente: ${next.title}` : "Página siguiente"} className={arrow}>
+        <span className="max-sm:sr-only">Siguiente</span>
+        <ChevronRight aria-hidden="true" className="size-5" />
+      </button>
+    </nav>
   )
 }
 
 /**
- * Salud general · Calendario de vacunación. The Calendario Nacional de Vacunación 2026 by stage of life, one stage at a
- * time (the open one is in the URL). An informative summary of the official calendar: it repeats what the Ministerio de
- * Salud documents explicitly and, where the official sources differ or a professional must decide, it says so in ONE short
- * note per stage and sends to the official source or the vacunatorio. It is not a clinical approval.
+ * Salud general · Calendario de vacunación. The Calendario Nacional de Vacunación 2026 as pages by age, from the baby to the older adult: the
+ * person turns the page with the arrows (the open page is in the URL, ?etapa=, so a link can open it). Each page lists the ages of its stage and,
+ * for each one, the vaccines with when they are applied and how often, in the official words. An informative summary of the official calendar: where the
+ * official sources differ or a professional must decide, it says so in ONE short note per page and sends to the official source or the vacunatorio.
+ * Doses in ml and routes of administration are not here: they are clinical indications for the vaccinating team. It is not a clinical approval.
  */
 export default function Section5Content() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const stage = VACCINATION_STAGES.find(({ id }) => id === searchParams.get(STAGE_PARAM)) ?? VACCINATION_STAGES[0]
+  const found = PAGES.findIndex(({ id }) => id === searchParams.get(STAGE_PARAM))
+  const index = found >= 0 ? found : 0
+  const stage = PAGES[index]
   const headingRef = useRef<HTMLHeadingElement>(null)
   const isFirstRender = useRef(true)
 
@@ -102,11 +112,11 @@ export default function Section5Content() {
     headingRef.current?.focus()
   }, [stage.id])
 
-  const choose = (id: string) =>
+  const go = (target: number) =>
     setSearchParams(
       (previous) => {
         const next = new URLSearchParams(previous)
-        next.set(STAGE_PARAM, id)
+        next.set(STAGE_PARAM, PAGES[Math.min(Math.max(target, 0), PAGES.length - 1)].id)
         return next
       },
       { replace: true, preventScrollReset: true },
@@ -123,7 +133,7 @@ export default function Section5Content() {
       </div>
       <div>
         <p className="m-0">
-          El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Elegí una etapa para ver qué vacunas indica el Ministerio de Salud de la Nación y en qué condiciones.
+          El Calendario Nacional de Vacunación incluye vacunas para todas las etapas de la vida. Pasá las páginas con las flechas, de bebés a personas mayores: en cada una ves las vacunas de esa edad, cuándo se aplican y cada cuánto, según el Ministerio de Salud de la Nación.
         </p>
         <p className="m-0 mt-2 text-muted">Las vacunas del Calendario están disponibles en centros de salud y hospitales públicos de todo el país, son gratuitas y no requieren orden médica.</p>
         <p className="m-0 mt-3 flex items-start gap-2 rounded-2xl border border-line-strong bg-field p-3 text-ink-soft">
@@ -132,37 +142,23 @@ export default function Section5Content() {
         </p>
       </div>
 
-      <ul role="list" aria-label="Etapas de la vida" className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-4">
-        {VACCINATION_STAGES.map(({ id, title }) => (
-          <li key={id}>
-            <button
-              type="button"
-              aria-pressed={id === stage.id}
-              onClick={() => choose(id)}
-              className={`flex min-h-14 w-full cursor-pointer items-center justify-center rounded-2xl border-2 px-3 py-3 text-center font-bold text-ink ${
-                id === stage.id ? "border-brand bg-brand-soft" : "border-control-line bg-card hover:bg-field"
-              }`}
-            >
-              {title}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <Pager index={index} onGo={go} />
 
-      <section aria-labelledby="vaccination-stage-title" className="rounded-2xl border border-line-strong bg-card p-4 sm:p-6">
-        <h3 id="vaccination-stage-title" ref={headingRef} tabIndex={-1} className="m-0 text-xl font-extrabold outline-none">
-          {stage.title}
-        </h3>
-        {stage.intro ? <p className="m-0 mt-2">{stage.intro}</p> : null}
-
-        <div className="mt-4 flex flex-col gap-4">
-          {stage.groups.map((group) => (
-            <Group key={`${stage.id}-${group.heading ?? group.items?.[0]?.vaccine ?? "group"}`} group={group} />
-          ))}
+      <section aria-labelledby="vaccination-stage-title" className="flex flex-col gap-4">
+        <div>
+          <p className="m-0 text-sm font-bold text-ink-soft">{`Página ${index + 1} de ${PAGES.length}`}</p>
+          <h3 id="vaccination-stage-title" ref={headingRef} tabIndex={-1} className="m-0 text-2xl font-extrabold outline-none">
+            {stage.title}
+          </h3>
+          {stage.intro ? <p className="m-0 mt-2">{stage.intro}</p> : null}
         </div>
 
+        {stage.groups.map((group, position) => (
+          <AgeBand key={`${stage.id}-${group.heading ?? group.items?.[0]?.vaccine ?? position}`} group={group} age={group.heading ?? stage.title} tone={TONES[position % TONES.length]} />
+        ))}
+
         {stage.notes?.length ? (
-          <ul className="m-0 mt-4 list-disc pl-5 text-ink-soft">
+          <ul className="m-0 list-disc pl-5 text-ink-soft">
             {stage.notes.map((note) => (
               <li key={note}>{note}</li>
             ))}
@@ -170,7 +166,7 @@ export default function Section5Content() {
         ) : null}
 
         {stage.toConfirm?.length ? (
-          <div role="note" className="mt-4 rounded-2xl border-2 border-control-line bg-field p-4">
+          <div role="note" className="rounded-2xl border-2 border-control-line bg-field p-4">
             <h4 className="m-0 text-base font-extrabold">Para confirmar en la fuente oficial o en el vacunatorio</h4>
             <p className="m-0 mt-1">{TO_CONFIRM_INTRO}</p>
             <ul className="m-0 mt-2 list-disc pl-5">
@@ -183,6 +179,8 @@ export default function Section5Content() {
           </div>
         ) : null}
       </section>
+
+      <Pager index={index} onGo={go} />
 
       <section aria-labelledby="vaccination-reminder" className="rounded-2xl border border-line-strong bg-field p-4">
         <h3 id="vaccination-reminder" className="m-0 text-base font-extrabold">

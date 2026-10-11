@@ -93,9 +93,9 @@ test("the 16 pending phrases (P1-P16) are NOT published as clinical recommendati
   assert.ok(everything.includes("dos dosis, con un mes de intervalo"))
 })
 
-test("the page shows one stage at a time, opens a stage from ?etapa=, has the general note, and ends with its sources and the day they were compared", () => {
+test("the calendar is read by turning pages (no filter by age): it opens on the newborns, ?etapa= opens a page, and every page has the general note and the day it was compared", () => {
   const first = render(CalendarPage, "/temas/salud-general?seccion=section-5")
-  assert.ok(text(first).includes("Antigripal") && text(first).includes("Triple bacteriana acelular"))
+  assert.ok(text(first).includes("Página 1 de 8") && text(first).includes("Tuberculosis (BCG)") && text(first).includes("Hepatitis B"), "page 1: recién nacidos")
   for (const { id } of calendar.VACCINATION_STAGES) {
     const html = render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`)
     const content = text(html)
@@ -104,7 +104,10 @@ test("the page shows one stage at a time, opens a stage from ?etapa=, has the ge
     assert.ok(!/en revisi[oó]n/i.test(content), `${id}: no review marks`)
     // at most ONE note per stage that sends to the official source
     assert.ok([...html.matchAll(/role="note"/g)].length <= 1, id)
-    assert.equal([...html.matchAll(/aria-pressed="true"/g)].length, 1, id)
+    // no chooser of stages: the arrows turn the page (a bar at the top and one at the bottom)
+    assert.equal([...html.matchAll(/aria-pressed/g)].length, 0, id)
+    assert.equal([...html.matchAll(/aria-label="Páginas del calendario de vacunación"/g)].length, 2, id)
+    assert.ok(content.includes(`Página ${calendar.STAGE_PAGE_ORDER.indexOf(id) + 1} de 8`), id)
     // the sources are in Sobre AuxiliAR (with the day they were compared); the page keeps the link to the official poster, a way to read more notes by vaccine
     assert.ok(!html.includes('aria-label="Fuentes"') && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
     assert.ok(hrefs(html).includes("https://www.argentina.gob.ar/sites/default/files/2026-03-10_calendario_nacional_vacunacion_70x50_web.pdf"), `${id}: the poster is a link`)
@@ -237,18 +240,17 @@ test("every 'vaccine: dose' line of each official stage page is in the stage of 
   assert.ok(checked >= 45, `checked ${checked}`)
 })
 
-test("15 a 64 años reads in accessible blocks: the first one open, the rest closed, and ALL the text is still in the page", () => {
+test("15 a 64 años: every age and vaccine is in its page, in bands, and ALL the text is in the page", () => {
   const html = render(CalendarPage, "/temas/salud-general?seccion=section-5&etapa=15-a-64")
   const content = text(html)
-  // 5 disclosures: all the people of the age (open), antigripal, fiebre hemorrágica, fiebre amarilla, health workers
-  assert.equal([...html.matchAll(/<details/g)].length, 5)
-  assert.equal([...html.matchAll(/<details open=""/g)].length, 1)
+  // the ages are bands on the page, no disclosure to open
+  assert.equal([...html.matchAll(/<details/g)].length, 0)
   for (const title of ["Vacunas para todas las personas de esta edad", "Antigripal", "Fiebre hemorrágica argentina", "Fiebre amarilla", "Si trabajás en el sistema de salud"]) {
     assert.ok(content.includes(title), title)
   }
   // closed or not, nothing was dropped
   for (const piece of [
-    "Doble bacteriana", "toda persona a partir de los 5 años debe acreditar 2 dosis", "serología IgG positiva", "nacidas antes de 1965", "Quien no tiene el esquema lo inicia o completa con 3 dosis",
+    "Doble bacteriana", "oda persona a partir de los 5 años debe acreditar 2 dosis", "serología IgG positiva", "nacidas antes de 1965", "Quien no tiene el esquema lo inicia o completa con 3 dosis",
     "Los lineamientos técnicos 2026 indican una dosis para las personas de 9 a 64 años", "Grupos incluidos en esta etapa", "Factores de riesgo, en resumen", "pueden presentar orden médica o documentación",
     "ciertas jurisdicciones de Buenos Aires, Córdoba, Santa Fe y La Pampa", "De 2 a 59 años", "mesa de entradas, limpieza, seguridad", "Quienes cuidan a menores de 12 meses reciben un refuerzo cada 5 años",
     "Para confirmar en la fuente oficial o en el vacunatorio",
@@ -296,4 +298,24 @@ test("presentation version: every stage says the calendar is in development and 
     // the earlier warnings are still there
     assert.ok(content.includes("deben confirmarse con tu equipo de salud o en el vacunatorio") && content.includes("Si el Ministerio de Salud cambia el calendario, vale su versión oficial"), id)
   }
+})
+
+test("the pages go from the baby to the older adult, the arrows are disabled at the ends and say where they lead, and nothing is filtered by age", () => {
+  assert.deepEqual(calendar.STAGE_PAGE_ORDER, ["recien-nacidos", "hasta-un-ano", "hasta-2-anios", "5-anios", "11-anios", "15-a-64", "embarazo", "65-o-mas"])
+  assert.deepEqual([...calendar.STAGE_PAGE_ORDER].sort(), calendar.VACCINATION_STAGES.map(({ id }) => id).sort(), "every stage is a page")
+  const html = (id) => render(CalendarPage, `/temas/salud-general?seccion=section-5&etapa=${id}`)
+  const firstPage = html("recien-nacidos")
+  assert.ok(/<button[^>]*disabled=""[^>]*aria-label="Página anterior"/.test(firstPage), "no previous page before the first")
+  assert.ok(firstPage.includes('aria-label="Página siguiente: Hasta un año"'))
+  const middle = html("5-anios")
+  assert.ok(middle.includes('aria-label="Página anterior: Hasta 2 años"') && middle.includes('aria-label="Página siguiente: 11 años"'))
+  const lastPage = html("65-o-mas")
+  assert.ok(/<button[^>]*disabled=""[^>]*aria-label="Página siguiente"/.test(lastPage), "no next page after the last")
+  assert.ok(lastPage.includes('aria-label="Página anterior: Embarazo"'))
+  // each age is a band with its vaccines and how they are applied; the doses in ml and the routes are not in AuxiliAR
+  const year = text(html("hasta-un-ano"))
+  for (const piece of ["A los 2 meses", "A los 12 meses", "Rotavirus", "Primera dosis", "Refuerzo", "Se aplica en cada campaña estacional"]) assert.ok(year.includes(piece), piece)
+  for (const id of calendar.STAGE_PAGE_ORDER) assert.ok(!/\b\d+([.,]\d+)? ?ml\b|intramuscular|subcut[aá]nea|v[ií]a oral/i.test(text(html(id))), `${id}: no doses or routes`)
+  // 15 a 64 and 65+: how often
+  assert.ok(text(html("15-a-64")).includes("un refuerzo cada 10 años") && text(html("65-o-mas")).includes("un refuerzo cada 10 años"))
 })
