@@ -4,7 +4,7 @@ import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /**
- * Salud animal · Cuidado y prevención. General information of the Ministerio de Salud de la Nación and Senasa; it gives no
+ * Atención veterinaria · Cuidado y prevención. General information of the Ministerio de Salud de la Nación and Senasa; it gives no
  * veterinary instruction (no doses, no treatment, no schedule beyond what the ministry says) and no first-aid steps for a bite
  * (the wash and the rest are left to a clinical review, as the ficha SA09 asks): it only says to go quickly to a health center.
  * What it says:

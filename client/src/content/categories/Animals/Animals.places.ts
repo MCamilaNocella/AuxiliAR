@@ -1,5 +1,5 @@
 /**
- * Salud animal, told inside AuxiliAR: for every place, each prestación apart (castración, vacunación antirrábica, consulta clínica,
+ * Atención veterinaria, told inside AuxiliAR: for every place, each prestación apart (castración, vacunación antirrábica, consulta clínica,
  * urgencias), with who can use it, cost and conditions, where, when, how to get it and how to reach it, as the OFFICIAL PAGE of that
  * place says it. Read on READ_ON from the original HTML of each page (full visible text, not a summary): docs/investigacion/
  * salud-animal-lectura-2026-10-11.md has the method, what each page says and what it leaves open.

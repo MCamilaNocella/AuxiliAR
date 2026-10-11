@@ -1,5 +1,5 @@
 /*
- * Tests of the quick filter "Salud animal" of the Mapa AuxiliAR and of the wall between human and animal care:
+ * Tests of the quick filter "Atención veterinaria" of the Mapa AuxiliAR and of the wall between human and animal care:
  * no veterinary service type is in a filter meant for people, the animal filter has only veterinary types, the gratuity
  * stays verified service by service, and with no veterinary service loaded a link to the filter says so. The veterinary place
  * of these tests is made up from a copy of a real one (the real data has no veterinary service and none is added here).
@@ -61,7 +61,7 @@ test("the veterinary service types are exactly the ones of the category 'animale
 test("the wall: a veterinary service type is only in the animal filter, and never in one meant for people", () => {
   const animal = PLACE_FILTERS.find(({ id }) => id === "animal-health")
   assert.ok(animal, "the filter exists")
-  assert.equal(animal.label, "Salud animal")
+  assert.equal(animal.label, "Atención veterinaria")
   assert.deepEqual([...animal.types].sort(), [...animalTypes].sort(), "the animal filter has every veterinary type and only those")
   for (const filter of PLACE_FILTERS.filter(({ id }) => id !== "animal-health" && id !== "all")) {
     for (const type of filter.types) {
@@ -130,17 +130,17 @@ test("without any veterinary service the filter promises nothing; with one (the 
 const render = (url) => text(renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, filters: ["medical", "mental-health", "sexual-health", "vaccination", "dentistry", "emergency", "animal-health"] }))))
 
 // With the real data there is a veterinary service. To see the empty state the explorer is embedded with a scope that leaves out the
-// animal services (as a page about human health would): the same state a link to Salud animal found before the first centre was loaded
+// animal services (as a page about human health would): the same state a link to Atención veterinaria found before the first centre was loaded
 const HUMAN_SCOPE = { category: "salud-fisica" }
 const renderScoped = (url) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, scope: HUMAN_SCOPE, filters: ["animal-health"] })))
 
-test("a link to Salud animal with no veterinary service says so, clearly, and offers the way out", () => {
+test("a link to Atención veterinaria with no veterinary service says so, clearly, and offers the way out", () => {
   const html = renderScoped("/centros?vista=lista&filtro=animal-health")
   const content = text(html)
-  assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Salud animal"))
-  assert.ok(content.includes("Tipo: Salud animal"), "the chip says which filter is on")
+  assert.ok(content.includes("Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Atención veterinaria"))
+  assert.ok(content.includes("Tipo: Atención veterinaria"), "the chip says which filter is on")
   assert.ok(content.includes("0 lugares encontrados"))
-  assert.ok(html.includes('href="/temas/animales"') && content.includes("Ver Salud animal"), "the way to the campaigns that official pages inform")
+  assert.ok(html.includes('href="/temas/animales"') && content.includes("Ver Atención veterinaria"), "the way to the campaigns that official pages inform")
   assert.ok(content.includes("Borrar filtros"))
   // not the generic message, and no card, no phone, nothing made up
   assert.ok(!content.includes("No encontramos lugares verificados con esta búsqueda"))

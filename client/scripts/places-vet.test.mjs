@@ -1,6 +1,6 @@
 /*
  * The first veterinary place of the map: the Centro Fijo Veterinario Costanera Sur (Animales BA), only for castration. What the data
- * says, where it shows (the Salud animal filter and never the filters for people), that its gratuity is the castration's and not
+ * says, where it shows (the Atención veterinaria filter and never the filters for people), that its gratuity is the castration's and not
  * "any veterinary care", that card and panel explain the conditions, that the point is said to be approximate, and that nothing
  * is made up (hours, phone, residence, other services). The Indoamericano centre is NOT in the data.
  *   npm run places:test
@@ -94,7 +94,7 @@ test("it is current (verified, review date ahead) and the review is soon, becaus
   assert.ok(centre.verification.nextReviewDue <= "2026-11-08")
 })
 
-test("filters: in Salud animal and in the free filter, never in the filters for people", () => {
+test("filters: in Atención veterinaria and in the free filter, never in the filters for people", () => {
   assert.deepEqual(ask({ filterId: "animal-health" }), [ID])
   assert.deepEqual(ask({ filterId: "animal-health", free: true }), [ID])
   assert.deepEqual(ask({ category: "animales" }), [ID])

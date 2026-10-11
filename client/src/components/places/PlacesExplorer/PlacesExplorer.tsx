@@ -213,7 +213,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
   const exploreCovered = () => changeQuery({ province: coverage.length === 1 ? coverage[0] : null, zone: null })
 
   const empty = emptyStateOf({ ready: state.status === "ready", total: allEntries.length, shown: results.length, province: query.province, coverage, needsProvince: plan.needsProvince })
-  // A link to "Salud animal" while the map has no veterinary service says exactly that, instead of a generic "no results"
+  // A link to "Atención veterinaria" while the map has no veterinary service says exactly that, instead of a generic "no results"
   const noAnimalResources = empty === "no-results" && query.filterId === "animal-health" && !quickFilterHasData("animal-health", allEntries)
   // A quick filter with no place with documented gratuity says so and says what a person can do, inside AuxiliAR
   const guide = empty === "no-results" && !noAnimalResources ? emptyGuideOf(query, allEntries) : null
@@ -299,9 +299,9 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
 
       {noAnimalResources && (
         <div className="flex flex-col items-start gap-3">
-          <p className="m-0">Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Salud animal</p>
+          <p className="m-0">Todavía no tenemos prestaciones veterinarias gratuitas confirmadas para mostrar en el mapa. Podés consultar las campañas y recursos municipales disponibles en Atención veterinaria</p>
           <Link to={PATHS.topic("animales")} className="inline-flex min-h-11 items-center font-bold">
-            Ver Salud animal
+            Ver Atención veterinaria
           </Link>
           <button type="button" onClick={clearSearch} className={buttonClass}>
             Borrar filtros

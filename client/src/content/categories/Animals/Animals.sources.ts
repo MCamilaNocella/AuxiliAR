@@ -1,7 +1,7 @@
 import type { Source } from "@/components/health/SourceList"
 
 /**
- * Sources of the general information of Salud animal (fichas SA01 to SA14 of the resources document, 8/10/2026). Compared by hand
+ * Sources of the general information of Atención veterinaria (fichas SA01 to SA14 of the resources document, 8/10/2026). Compared by hand
  * on CHECKED_AT; when the text or a source changes, compare again and change the day. The pages of each municipality, of the
  * Instituto and of the Nación are in Animals.places.ts, with the day they were read.
  * Not offered as a resource, and why (see curation/proposals/salud-animal.fichas-sa01-sa14.md): SA11 (civil organization: no open

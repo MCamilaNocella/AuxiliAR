@@ -6,7 +6,7 @@ import { CabaAgenda } from "../../CabaAgenda"
 import { PlaceCard } from "../../PlaceCard"
 
 /**
- * Salud animal · Vacunación y castración gratuitas. Told inside AuxiliAR, place by place and prestación by prestación (Animals.places.ts):
+ * Atención veterinaria · Vacunación y castración gratuitas. Told inside AuxiliAR, place by place and prestación by prestación (Animals.places.ts):
  * for each one, who can use it, the cost and its conditions, where, when, how to ask for it and how to reach it, as the official page says it.
  * The castración and the vacunación antirrábica are told apart from the consulta and the urgencias (the next-but-one section), and the
  * gratuity is the page's statement for that prestación, never for a whole institution. What changes every week (the cronograma of the

@@ -95,7 +95,7 @@ const ANSWERS: Answer[] = [
       <p className="m-0">
         No necesariamente. {CAMPAIGN_NOT_CARE}{" "}
         <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-1`} className={linkClass}>
-          Ver los servicios de Salud animal
+          Ver los servicios de Atención veterinaria
         </Link>
       </p>
     ),

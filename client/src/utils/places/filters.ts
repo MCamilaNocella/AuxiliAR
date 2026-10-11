@@ -50,7 +50,7 @@ export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceTy
   { id: "vaccination", label: "Vacunación", types: ["vaccination"] },
   { id: "dentistry", label: "Odontología", types: ["dentistry"] },
   { id: "emergency", label: "Guardias", types: ["emergency-room", "mental-health-emergency"] },
-  { id: "animal-health", label: "Salud animal", types: ["rabies-vaccination", "spaying-neutering", "veterinary-care", "zoonosis"] },
+  { id: "animal-health", label: "Atención veterinaria", types: ["rabies-vaccination", "spaying-neutering", "veterinary-care", "zoonosis"] },
   // Subsections of Salud general (category salud-fisica); "medical" does not include them
   { id: "nutrition-food", label: "Alimentación y nutrición", types: ["nutrition-care", "food-assistance", "food-program-enrollment"], onlyWithData: true },
   { id: "physical-activity", label: "Actividad física y bienestar", types: ["physical-activity"], onlyWithData: true },

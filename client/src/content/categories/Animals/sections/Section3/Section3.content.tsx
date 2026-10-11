@@ -4,7 +4,7 @@ import { CABA, FREE_STATUSES, NOT_OFFERED_STATUSES, PASTEUR, PAID_STATUSES, ROSA
 import { PlaceCard } from "../../PlaceCard"
 
 /**
- * Salud animal · Atención veterinaria gratuita (consulta clínica y urgencias). Told inside AuxiliAR from each official page (Animals.places.ts),
+ * Atención veterinaria · Atención veterinaria gratuita (consulta clínica y urgencias). Told inside AuxiliAR from each official page (Animals.places.ts),
  * apart from the castración and the vacunación:
  *  - the consultorio of the Instituto Pasteur (zoonosis only, no guardia), the Hospital Municipal and the puestos of Rosario (free for those
  *    adscriptos, a bono for the rest) and the Hospital Municipal, the Centro de Adopciones and the "Guardia y urgencias" of Salta (no hours of its own)

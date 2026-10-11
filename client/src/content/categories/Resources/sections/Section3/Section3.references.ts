@@ -12,5 +12,5 @@ export const FAQ_REFERENCES: FaqReference[] = [
   { id: "preservativo-vaginal", question: "¿Qué es el preservativo vaginal?", source: "Ministerio de Salud de la Nación · Preguntas frecuentes sobre preservativo vaginal" },
   { id: "gratuita", question: "¿Qué significa «Gratuita» y «Gratuita con condiciones» en el mapa?", source: "AuxiliAR · cómo verificamos los datos" },
   { id: "no-aparece", question: "Un lugar no aparece en el mapa, ¿quiere decir que no existe?", source: "AuxiliAR · cómo verificamos los datos" },
-  { id: "campana-veterinaria", question: "¿Una campaña gratuita es atención veterinaria gratuita?", source: "AuxiliAR · Salud animal, con las páginas oficiales de cada municipio" },
+  { id: "campana-veterinaria", question: "¿Una campaña gratuita es atención veterinaria gratuita?", source: "AuxiliAR · Atención veterinaria, con las páginas oficiales de cada municipio" },
 ]

@@ -61,7 +61,7 @@ test("the home has the six approved cards, exactly these and in this order, each
     ["Cuidar mi salud", "/temas/salud-general"],
     ["Salud mental", "/temas/salud-mental"],
     ["Salud sexual y ESI", "/temas/esi"],
-    ["Salud animal", "/temas/animales"],
+    ["Atención veterinaria", "/temas/animales"],
     ["Primeros auxilios", "/primeros-auxilios"],
   ])
 })

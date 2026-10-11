@@ -236,7 +236,7 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
   },
   {
     id: "salud-animal",
-    title: "Salud animal",
+    title: "Atención veterinaria",
     blocks: [
       {
         id: "animales-campanas",

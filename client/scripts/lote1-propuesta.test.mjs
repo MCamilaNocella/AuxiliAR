@@ -208,7 +208,7 @@ test("an approved veterinary centre is free WITH conditions (turno), animal-only
     assert.ok(!view.highlights.includes("Podés ir sin turno"))
     assert.match(JSON.stringify(view), /Con turno previo/)
     const animal = entriesOf(file, { filterId: "animal-health", free: true }).map(({ place }) => place.id)
-    assert.ok(animal.includes(draft.id), "it is in the Salud animal filter")
+    assert.ok(animal.includes(draft.id), "it is in the Atención veterinaria filter")
     const human = entriesOf(file, { filterId: "vaccination" }).map(({ place }) => place.id)
     assert.ok(!human.includes(draft.id), "and not in the filters meant for people")
   }

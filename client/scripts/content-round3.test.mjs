@@ -201,7 +201,7 @@ test("Más recursos: the Ley 27.610 is left out, CeSAC appointments are explaine
   assert.ok(!/<(form|input|textarea|select)\b/.test(pages.join(" ")))
 })
 
-/* ── Salud animal and Salud sexual ── */
+/* ── Atención veterinaria and Salud sexual ── */
 
 test("Pasteur is not on the map yet: the new service is only proposed, and the datasets did not change", () => {
   const walk = (dir) => readdirSync(dir).flatMap((name) => (statSync(join(dir, name)).isDirectory() ? walk(join(dir, name)) : [join(dir, name)]))

@@ -9,7 +9,7 @@ import { Section4 } from "./sections/Section4"
 
 export const ANIMALS: Category = {
   id: "animales",
-  title: "Salud animal",
+  title: "Atención veterinaria",
   description: "Cuidados preventivos y orientación veterinaria",
   subtitle: "Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales",
   icon: PawPrint,

@@ -1,5 +1,5 @@
 /*
- * Tests of Salud animal: real content told inside AuxiliAR, place by place and prestación by prestación (castración, vacunación,
+ * Tests of Atención veterinaria: real content told inside AuxiliAR, place by place and prestación by prestación (castración, vacunación,
  * consulta, urgencias), each with who, cost, where, when, how and contact as the official page says it; gratuity is told per
  * prestación and always as the page's statement; what a page does not say is marked pending; a free campaign is never called free
  * veterinary care; no guardia or urgencias is promised; the cronograma that changes is shown from today on; the only external links
@@ -25,7 +25,7 @@ const sources = await vite.ssrLoadModule("/src/content/categories/Animals/Animal
 const places = await vite.ssrLoadModule("/src/content/categories/Animals/Animals.places.ts")
 const { CabaAgenda } = await vite.ssrLoadModule("/src/content/categories/Animals/CabaAgenda.tsx")
 const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
-// The sources of the pages are all in "Sobre AuxiliAR": the references of the group of Salud animal, by block
+// The sources of the pages are all in "Sobre AuxiliAR": the references of the group of Atención veterinaria, by block
 const referencesOf = (blockId) => about.REFERENCE_GROUPS.find(({ id }) => id === "salud-animal").blocks.find(({ id }) => id === blockId)
 const sectionDir = "/src/content/categories/Animals/sections"
 const CONTENT = {
@@ -228,7 +228,7 @@ test("the index of Auxi's content lists the three sections, up to date with the 
   for (const section of ANIMALS.sections.filter(({ summary }) => summary)) {
     const entry = list.find((page) => page.path === `/temas/animales?seccion=${section.id}`)
     assert.ok(entry, section.id)
-    assert.equal(entry.title, `Salud animal › ${section.title}`)
+    assert.equal(entry.title, `Atención veterinaria › ${section.title}`)
     assert.equal(entry.summary, section.summary, `${section.id}: run npm run content:index`)
   }
 })

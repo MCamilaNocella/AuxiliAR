@@ -35,7 +35,7 @@ test("centros de atención: one section, the Mapa AuxiliAR, and it opens by defa
   assert.deepEqual(HEALTH_CENTERS.sections.map(({ title }) => title), ["Mapa AuxiliAR"])
   assert.equal(HEALTH_CENTERS.defaultSectionId, "section-1")
   assert.ok(HEALTH_CENTERS.sections.some(({ id }) => id === HEALTH_CENTERS.defaultSectionId))
-  // only these open straight on a section: the map, Cuidar mi salud (its controls), Salud mental (where to ask for help), Salud sexual y ESI (where to look for care), Salud animal (campaigns), Primeros auxilios (the guides), Sobre AuxiliAR (one page) and Más recursos (its rights)
+  // only these open straight on a section: the map, Cuidar mi salud (its controls), Salud mental (where to ask for help), Salud sexual y ESI (where to look for care), Atención veterinaria (campaigns), Primeros auxilios (the guides), Sobre AuxiliAR (one page) and Más recursos (its rights)
   assert.deepEqual(ALL_CATEGORIES.filter((category) => category.defaultSectionId).map(({ id }) => id), ["centros", "salud-fisica", "salud-mental", "esi", "animales", "primeros-auxilios", "sobre-auxiliar", "recursos"])
 })
 

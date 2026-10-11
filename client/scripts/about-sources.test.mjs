@@ -64,7 +64,7 @@ test("Sobre AuxiliAR keeps its own content, in its place, and has no new section
 })
 
 test("the sources are by topic, each topic in a disclosure that starts closed", () => {
-  assert.deepEqual(about.REFERENCE_GROUPS.map(({ title }) => title), ["Salud general", "Salud mental", "Salud sexual y ESI", "Salud animal", "Centros de atención (mapa)", "Primeros auxilios", "Más recursos"])
+  assert.deepEqual(about.REFERENCE_GROUPS.map(({ title }) => title), ["Salud general", "Salud mental", "Salud sexual y ESI", "Atención veterinaria", "Centros de atención (mapa)", "Primeros auxilios", "Más recursos"])
   const section = html.slice(html.indexOf('aria-labelledby="about-sources"'))
   assert.equal([...section.matchAll(/<details/g)].length, about.REFERENCE_GROUPS.length)
   assert.ok(!/<details[^>]* open/.test(section), "all closed")
@@ -95,7 +95,7 @@ test("nothing is lost: every source defined in the code is in Sobre AuxiliAR", (
   const knownUnused = ["firstAid.FRACTURAS", "sexual.METODOS"]
   const unexpected = missing.filter((name) => !knownUnused.includes(name))
   assert.deepEqual(unexpected, [], `sources of the code that are not in Sobre AuxiliAR: ${unexpected.join(", ")}`)
-  // the municipal services of Salud animal and the guides of Primeros auxilios
+  // the municipal services of Atención veterinaria and the guides of Primeros auxilios
   for (const guide of FIRST_AID_GUIDE_CONTENT) for (const { url } of guide.sources) assert.ok(urlsInAbout.has(url), `${guide.slug}: ${url}`)
   for (const service of [modules.animalPlaces.CABA, modules.animalPlaces.PASTEUR, modules.animalPlaces.ROSARIO, modules.animalPlaces.CORDOBA, modules.animalPlaces.SALTA, modules.animalPlaces.NEUQUEN, modules.animalPlaces.PROTENENCIA, ...modules.animalPlaces.UNIVERSITY_HOSPITALS]) assert.ok(urlsInAbout.has(service.url), service.by)
   // the calendar: every source of every stage
