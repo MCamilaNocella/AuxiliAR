@@ -39,6 +39,7 @@ import {
 } from "../SexEducation/SexEducation.sources"
 import { READ_ON as COVERAGE_READ_ON } from "../SexEducation/SexEducation.coverage"
 import { METHODS } from "../SexEducation/sections/Section2/Section2.constants"
+import { CONTROLS_READ_ON, CONTROLS_SOURCES } from "../PhysicalHealth/sections/Section2/Section2.constants"
 
 /**
  * "Sobre AuxiliAR" · Fuentes y referencias. EVERY source and documentary reference of AuxiliAR is listed here, by topic, and nowhere
@@ -128,6 +129,13 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
     id: "salud-general",
     title: "Salud general",
     blocks: [
+      {
+        id: "controles",
+        title: "Controles de salud: cada cuánto",
+        references: CONTROLS_SOURCES.map(({ label, url, backs }) => ({ label, url, detail: backs })),
+        checkedAt: [CONTROLS_READ_ON],
+        notes: ["Las frecuencias son las que dice cada página oficial, en sus propios términos: AuxiliAR no agregó ninguna. Es información general, no una indicación para cada persona.", "Pendiente de revisión profesional."],
+      },
       {
         id: "calendario",
         title: "Calendario de vacunación",

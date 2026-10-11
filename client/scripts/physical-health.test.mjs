@@ -20,7 +20,7 @@ const { MemoryRouter } = await import("react-router")
 const { centersLink } = await vite.ssrLoadModule("/src/router/centersLink.ts")
 const quiz = await vite.ssrLoadModule("/src/utils/quiz/quiz.ts")
 const { PHYSICAL_HEALTH_QUIZ: QUESTIONS } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section4/Section4.constants.ts")
-const { CONTROL_TOPICS } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.constants.ts")
+const { FREQUENCY_BLOCKS, CONTROLS_SOURCES } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.constants.ts")
 const Section1 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section1/Section1.content.tsx")).default
 const { PHYSICAL_HEALTH } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/PhysicalHealth.ts")
 const { ALL_CATEGORIES } = await vite.ssrLoadModule("/src/content/categories/index.ts")
@@ -131,33 +131,34 @@ test("the quiz screen starts on the first situation with a progress bar", () => 
 
 /* ── Controles de salud ── */
 
-test("controles de salud: the seven topics, each with what to know, orientation and a next step", () => {
-  assert.deepEqual(
-    CONTROL_TOPICS.map(({ title }) => title),
-    ["No sé qué controles me corresponden", "Vacunación", "Controles generales", "Corazón y salud metabólica", "Prevención y detección temprana", "Salud bucal", "Salud visual"],
-  )
-  for (const topic of CONTROL_TOPICS) {
-    assert.ok(topic.know && topic.guidance.length > 0 && topic.actions.length > 0, topic.id)
-    topic.actions.forEach((action) => assertGoodAction(action, topic.id))
-  }
-  // the next steps the section prepares
-  const links = CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to)).filter(Boolean)
-  assert.ok(links.includes(centersLink({ filter: "vaccination" })))
-  assert.ok(links.includes(centersLink({ filter: "medical" })))
-  assert.ok(links.includes(centersLink({ filter: "dentistry" })))
-  assert.ok(links.includes(centersLink({ filter: "emergency", query: "odontol" })))
-  assert.ok(links.includes(centersLink({ filter: "emergency", query: "oftalm" })))
-})
-
-test("controles de salud: the open topic comes from the URL and shows the three blocks", () => {
-  const first = text(render(Section2))
-  assert.ok(first.includes("Qué necesitás saber") && first.includes("Orientación") && first.includes("Tu próximo paso"))
-  assert.ok(first.includes(CONTROL_TOPICS[0].know))
-  const bucal = text(render(Section2, "/temas/salud-general?seccion=section-2&tema=bucal"))
-  assert.ok(bucal.includes(CONTROL_TOPICS.find(({ id }) => id === "bucal").know))
-  assert.ok(!bucal.includes(CONTROL_TOPICS[0].know))
-  assert.ok(bucal.includes("Urgencia odontológica"))
-  assert.ok(first.includes("no reemplaza la consulta"))
+test("controles de salud: information only - no button, no link - with how often to do each control, from official pages", () => {
+  const html = render(Section2)
+  const content = text(html)
+  // the five controls the person asked for, in this order
+  assert.deepEqual(FREQUENCY_BLOCKS.map(({ title }) => title), ["Salud bucal", "Salud visual", "Corazón: presión arterial y azúcar en sangre", "Vacunas", "Chequeos generales"])
+  const order = FREQUENCY_BLOCKS.map(({ title }) => content.indexOf(title))
+  assert.ok(order.every((at) => at > 0) && [...order].sort((a, b) => a - b).join() === order.join())
+  // nothing to press and nowhere to go: no button, no link, no topic chooser
+  assert.ok(!/<button/.test(html) && !/<a/.test(html), "no button and no link in the section")
+  assert.ok(!content.includes("Tu próximo paso") && !content.includes("Elegí un tema") && !content.includes("Ver números de emergencia"))
+  // the frequencies, as the official pages say them
+  for (const piece of [
+    "cada 6 meses", "al menos 2 veces por año", "desde los 3 años, al menos una vez por año", "cada 3 meses durante toda la gestación",
+    "a los 3 años, antes de empezar la escuela primaria y a los 13 años", "Después de los 40 años: una revisión por año",
+    "al menos cada 3 a 5 años", "al menos una vez por año", "a todas las personas desde los 45 años", "repetirla cada 3 años o más seguido según criterio médico",
+    "un refuerzo cada 10 años", "en cada campaña estacional",
+    "Papanicolaou a partir de los 25 años", "una mamografía cada uno o dos años", "«de forma bianual»",
+  ]) assert.ok(content.includes(piece), piece)
+  // what no official page says is said, not filled in; and the review is pending
+  assert.ok(content.includes("No encontramos una frecuencia oficial de la Nación para el colesterol ni para un electrocardiograma"))
+  assert.ok(content.includes("No encontramos una página oficial de la Nación con un «chequeo anual» general"))
+  assert.ok(content.includes("Pendiente de revisión profesional") && content.includes("no una indicación para tu caso"))
+  assert.ok(content.includes("no reemplaza la consulta con un equipo de salud") && content.includes("Las fuentes están en Sobre AuxiliAR"))
+  // a numerical frequency is only written if it comes from a listed source: every block of the page has its sources in Sobre AuxiliAR
+  assert.equal(CONTROLS_SOURCES.length, 8)
+  assert.ok(CONTROLS_SOURCES.every(({ url }) => url.startsWith("https://")))
+  // no personal indication: nothing says "you must" or names a medicine or dose
+  assert.ok(!/(tenés que hacerte|debés hacerte|dosis|mg|antibi[oó]tico)/i.test(content.replace("repetirla cada 3 años", "")))
 })
 
 /* ── Primeros auxilios ── */
@@ -183,7 +184,6 @@ test("primeros auxilios: the page of the category, whose every card opens a real
 /* ── Links audit: no dead buttons in the four sections, the guides and the quiz ── */
 
 test("every internal link of Salud física points somewhere real", () => {
-  const topicIds = CONTROL_TOPICS.map(({ id }) => id)
   // Salud general: section-3 (Primeros auxilios) moved out (its address redirects: never reuse it); the ids of the others are kept, and the vaccination calendar is section-5
   const sectionIds = ["section-1", "section-2", "section-5", "section-6", "section-7", "section-4"]
   const guideSlugs = FIRST_AID_GUIDE_CONTENT.map(({ slug }) => slug)
@@ -193,8 +193,7 @@ test("every internal link of Salud física points somewhere real", () => {
   const hrefsIn = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&"))
   const rendered = [Section1, Section2, Section4, Section6, Section7].flatMap((section) => hrefsIn(render(section)))
   rendered.push(...hrefsIn(render(FirstAidPage, "/primeros-auxilios")))
-  for (const topic of CONTROL_TOPICS) rendered.push(...hrefsIn(render(Section2, `/temas/salud-general?seccion=section-2&tema=${topic.id}`)))
-  const fromData = [...QUESTIONS.map(({ action }) => action?.to), ...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to))].filter(Boolean)
+  const fromData = QUESTIONS.map(({ action }) => action?.to).filter(Boolean)
   const links = [...new Set([...rendered, ...fromData])].filter((href) => href.startsWith("/"))
   assert.ok(links.length >= 15, "the audit found the links")
 
@@ -208,12 +207,9 @@ test("every internal link of Salud física points somewhere real", () => {
     const filter = url.searchParams.get("filtro")
     if (filter) assert.ok(filterIds.includes(filter), `${href}: filter`)
     if (url.searchParams.has("buscar")) assert.ok(url.searchParams.get("buscar").length > 2, `${href}: search`)
-    const topic = url.searchParams.get("tema")
-    if (topic) assert.ok(topicIds.includes(topic), `${href}: topic`)
   }
   // no button of the quiz or the topics is left without a destination or an action
   for (const { action } of QUESTIONS) assert.ok(action.to || action.emergency, "quiz action")
-  for (const { actions } of CONTROL_TOPICS) for (const action of actions) assert.ok(action.to || action.emergency, action.label)
   // phone links are real numbers
   for (const html of [render(FirstAidPage, "/primeros-auxilios")]) for (const [, tel] of html.matchAll(/href="tel:([^"]+)"/g)) assert.match(tel, /^\+?\d{3,}$/)
 })
@@ -282,8 +278,8 @@ test("Salud general carries no map and no places explorer, and every link to cen
     }
   }
   // the link to the vaccination calendar stays inside Salud general (it is not a link to the centers)
-  const centers = [...CONTROL_TOPICS.flatMap(({ actions }) => actions.map(({ to }) => to)), ...QUESTIONS.map(({ action }) => action?.to)].filter((to) => to && !to.startsWith(PHYSICAL_HEALTH.to))
-  assert.ok(centers.length >= 10)
+  const centers = QUESTIONS.map(({ action }) => action?.to).filter((to) => to && !to.startsWith(PHYSICAL_HEALTH.to))
+  assert.ok(centers.length >= 1)
   for (const to of centers) assert.equal(new URL(to, "http://x").pathname, PATHS.centers, to)
   assert.equal(centersLink(), "/centros")
   assert.equal(centersLink({ filter: "emergency", query: "oftalm" }), "/centros?filtro=emergency&buscar=oftalm")

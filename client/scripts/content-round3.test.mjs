@@ -119,9 +119,10 @@ test("the page shows one stage at a time, opens a stage from ?etapa=, has the ge
   assert.ok(hrefs(render(CalendarPage, "/temas/salud-general?seccion=section-5")).includes("/centros?filtro=vaccination"))
 })
 
-test("the vaccination topic of Controles leads to the calendar", () => {
-  const html = render(controls, "/temas/salud-general?seccion=section-2&tema=vacunacion")
-  assert.ok(hrefs(html).includes("/temas/salud-general?seccion=section-5"))
+test("the vaccines of Controles are told as information (the calendar section is named, with no button)", () => {
+  const html = render(controls, "/temas/salud-general?seccion=section-2")
+  assert.deepEqual(hrefs(html), [])
+  assert.ok(html.includes("sección «Calendario de vacunación»"))
 })
 
 /* ── The eight buttons to empty maps ── */

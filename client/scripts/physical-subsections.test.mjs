@@ -23,7 +23,6 @@ const { MemoryRouter } = await import("react-router")
 const { PHYSICAL_HEALTH } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/PhysicalHealth.ts")
 const { FOOD_NUTRITION } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section6/Section6.constants.ts")
 const { PHYSICAL_ACTIVITY } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section7/Section7.constants.ts")
-const { SUBSECTION_ENTRIES } = await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.constants.ts")
 const Section2 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section2/Section2.content.tsx")).default
 const Section6 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section6/Section6.content.tsx")).default
 const Section7 = (await vite.ssrLoadModule("/src/content/categories/PhysicalHealth/sections/Section7/Section7.content.tsx")).default
@@ -52,20 +51,13 @@ test("the sections are in Salud general, with their own ids and no summary (Auxi
   assert.ok(!PHYSICAL_HEALTH.sections.some(({ id }) => id === "section-3"))
 })
 
-test("the entry cards are on top of Controles de salud, one per section, stacked on phones", () => {
+test("Controles de salud has no entry cards or buttons: Alimentación and Actividad are reached from the section menu", () => {
   const html = render(Section2)
-  assert.equal(SUBSECTION_ENTRIES.length, 2)
-  for (const { sectionId, title, text: summary } of SUBSECTION_ENTRIES) {
-    assert.ok(html.includes(`href="/temas/salud-general?seccion=${sectionId}"`), sectionId)
-    assert.ok(text(html).includes(title) && text(html).includes(summary), title)
-  }
-  // before the topics of the controls
-  assert.ok(html.indexOf("Más temas de salud general") < html.indexOf("Elegí un tema"))
-  assert.ok(html.indexOf("Más temas de salud general") < html.indexOf("No sé qué controles me corresponden"))
-  // one column up to the small breakpoint (a 320 px phone), two from there
-  assert.match(html, /grid-cols-1[^"]*sm:grid-cols-2/)
-  // the cards of the sections that exist
-  for (const { sectionId } of SUBSECTION_ENTRIES) assert.ok(PHYSICAL_HEALTH.sections.some(({ id }) => id === sectionId), sectionId)
+  assert.ok(!html.includes("Más temas de salud general") && !html.includes("seccion=section-6") && !html.includes("seccion=section-7"))
+  assert.ok(!/<button/.test(html) && !/<a/.test(html))
+  // the two sections exist in the menu of Salud general, in this order, after the calendar
+  const ids = PHYSICAL_HEALTH.sections.map(({ id }) => id)
+  assert.ok(ids.indexOf("section-5") < ids.indexOf("section-6") && ids.indexOf("section-6") < ids.indexOf("section-7"))
 })
 
 test("every page says that it is pending professional and documental validation, and is not an approval", () => {
