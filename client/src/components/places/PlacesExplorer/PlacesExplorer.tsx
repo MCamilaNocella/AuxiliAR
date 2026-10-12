@@ -239,11 +239,6 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
           {map && <PlacesViewSwitch view={view} onChange={changeView} />}
           {!isDesktop && <FiltersToggle ref={toggleRef} open={filtersOpen} activeCount={panelFilters} controls={panelId} onToggle={() => setFiltersOpen((open) => !open)} />}
         </div>
-        {map && view === "map" && results.length > 0 && (
-          <div className="lg:pb-3">
-            <PlacesMapLegend entries={results} />
-          </div>
-        )}
       </div>
 
       {mentalHealth === "crisis" && <UrgentHelp context="crisis" />}
@@ -274,6 +269,8 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
       <p ref={countRef} role="status" aria-live="polite" tabIndex={-1} className="m-0 font-bold outline-none">
         {count}
       </p>
+
+      {map && view === "map" && results.length > 0 && <PlacesMapLegend entries={results} />}
 
       {state.status === "error" && (
         <div className="flex flex-col items-start gap-3">

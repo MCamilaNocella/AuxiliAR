@@ -294,7 +294,7 @@ test("each category has its own drawing inside the pin, centered in its head, an
   const html = renderAt("/centros", explorer({ map: true }))
   assert.ok(!text(html).includes("Prestación"), "no 'Prestación' selector")
   const view = await readFile(join(root, "src/components/places/PlacesMapLegend/PlacesMapLegend.tsx"), "utf8")
-  // the legend sits above the map (next to the search box and the Lista/Mapa switch), not under it
+  // the legend sits above the map (under the count of places), not under the map
   assert.ok(explorerSource.includes("<PlacesMapLegend") && !(await readFile(join(root, "src/components/places/PlacesMapView/PlacesMapView.tsx"), "utf8")).includes("Qué significa el símbolo"))
   assert.ok(view.includes("Qué significa el símbolo de cada punto") && view.includes("categoryLabel(category)"))
 })
