@@ -22,7 +22,7 @@ export const PlacesToolbar = ({ filters, query, onQueryChange, filterId, onFilte
         <label htmlFor={inputId} className="mb-1 block font-bold">
           ¿Qué necesitás?
         </label>
-        <div className="relative">
+        <div className="relative max-w-xl">
           <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 size-5 -translate-y-1/2 text-muted" />
           <input
             id={inputId}
