@@ -165,10 +165,12 @@ test("the numbers: the national lines come from the lines dataset, nothing is ca
   const with135 = directory.LINEAS_OTRAS.filter(({ phone }) => phone === "135").map(({ id }) => id)
   assert.deepEqual(with135, ["entre-rios-135", "tucuman-135"])
   // cost: said once, as what it is (a general norm), and the yoga page that does not say it is not called free
-  assert.ok(text(pages["section-6"]).includes("Ley 153 (arts. 2 y 3.g). Es una norma general, no una frase de cada centro."))
+  // the cost is not stressed on the pages (AuxiliAR is a list of free resources): the basis of the Ciudad's services, the Ley 153, is kept in Sobre AuxiliAR
+  for (const id of ["section-4", "section-6"]) assert.ok(!text(pages[id]).includes("Ley 153"), id)
+  assert.ok(referencesOf("mental-ciudad").notes.some((note) => note.includes("Ley 153")))
   const s3 = text(pages["section-3"])
-  assert.ok(s3.includes("La página oficial no informa si tienen costo: no las damos por gratuitas."))
-  assert.ok(!/yoga[^.]*gratuit/i.test(s3.replace("no las damos por gratuitas", "")))
+  assert.ok(s3.includes("La página oficial no informa el costo."))
+  assert.ok(!/yoga[^.]*gratuit/i.test(s3), "the yoga is never called free")
   assert.ok(directory.YOGA_CABA.every(({ note }) => note === "La página no informa el costo."))
 })
 

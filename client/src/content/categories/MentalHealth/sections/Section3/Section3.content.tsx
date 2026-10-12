@@ -69,9 +69,9 @@ export default function Section3Content() {
 
       <section aria-labelledby="mh-oms">
         <h3 id="mh-oms" className="m-0 text-xl font-extrabold">
-          Materiales gratuitos de la OMS
+          Materiales de la OMS
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">Se leen o se descargan sin pagar ni registrarse; necesitás conexión para abrirlos.</p>
+        <p className="m-0 mt-1 text-ink-soft">Necesitás conexión para abrirlos.</p>
         <ul role="list" className="m-0 mt-2 flex list-none flex-col gap-1 p-0">
           <li>
             <OutLink href={OMS_GUIA.url}>{OMS_GUIA.label}</OutLink>
@@ -87,7 +87,7 @@ export default function Section3Content() {
 
       <Disclosure title="Clases de yoga en la Ciudad (Plazas Activas)">
         <p className="m-0">Clases al aire libre del Gobierno de la Ciudad, para mayores de 18 años y con inscripción previa. Es una actividad de bienestar, no un tratamiento. Confirmá la grilla antes de ir.</p>
-        <p className="m-0 text-ink-soft">La página oficial no informa si tienen costo: no las damos por gratuitas.</p>
+        <p className="m-0 text-ink-soft">La página oficial no informa el costo.</p>
         <DirectoryList items={YOGA_CABA} />
       </Disclosure>
 

@@ -195,6 +195,7 @@ export const PROVINCIAS: { name: string, items: DirectoryItem[] }[] = [
   {
     name: "Tucumán",
     items: [
+    { id: "tucuman-hospital-nino-jesus", title: "Hospital del Niño Jesús", what: "Hospital pediátrico de 3º nivel, el único exclusivo de pediatría de la provincia. Entre sus servicios figuran Salud Mental y Psicología, y tiene guardia de emergencia las 24 horas.", address: "Sabín 750, San Miguel de Tucumán", who: "Niñas, niños y adolescentes menores de 14 años.", how: "La página no explica cómo se pide un turno propio.", note: "La página no informa el costo y no publica teléfono ni horarios de consultorio.", url: "https://msptucuman.gov.ar/hospitales/hospital-del-nino-jesus/" },
     { id: "unt-adolescentes", title: "Universidad Nacional de Tucumán - Servicio de Atención a Adolescentes", what: "Atención psicológica gratuita por duplas supervisadas por docentes y profesionales.", phone: "Cuenta oficial @adolescencia.psico.unt y canales de la Facultad", who: "Adolescentes entre 12 y 18 años.", how: "Solicitar turno por los canales que la Facultad vincula; no se inventó WhatsApp.", url: "https://www.psicologia.unt.edu.ar/un-servicio-gratuito-de-la-facultad-de-psicologia-acompana-a-adolescentes-en-el-cuidado-de-su-salud-mental/" },
     ],
   },

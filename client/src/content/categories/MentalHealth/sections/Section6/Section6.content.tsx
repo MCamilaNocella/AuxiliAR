@@ -12,8 +12,8 @@ const formatDate = (date: string) => {
 
 /**
  * Salud mental · Atención en la Ciudad: where to ask for programmed care (CeSAC, Centro de Salud Mental Nº 1, Hospital Bonaparte). Data of MentalHealth.directory.ts (the team's research of
- * 12 October 2026, from the official pages, not by phone). The notice about how it was read and about the cost is said once, here; the cost is the Ley 153, a general norm, not a phrase of each
- * center. No appointment, place or schedule is promised.
+ * 12 October 2026, from the official pages, not by phone). The notice about how it was read is said once, here. The cost is not repeated on the page (AuxiliAR is a list of free resources): its basis, the
+ * Ley 153, a general norm and not a phrase of each center, is kept in Sobre AuxiliAR. No appointment, place or schedule is promised.
  */
 export default function Section6Content() {
   return (
@@ -24,7 +24,6 @@ export default function Section6Content() {
       </p>
 
       <p className="m-0 text-ink-soft">
-        En los servicios estatales de la Ciudad no se paga de forma directa: lo dice la Ley 153 (arts. 2 y 3.g). Es una norma general, no una frase de cada centro.{" "}
         <Link to={`${PATHS.resources}?${SECTION_PARAM}=section-2`} className="font-bold">
           Más recursos
         </Link>{" "}
