@@ -1,0 +1,983 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "cesac-3",
+      "name": "Centro de Salud Nivel 1: Villa Lugano 9 (CeSAC Nº 3)",
+      "shortName": "CeSAC Nº 3",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541128213603", "display": "2821-3603", "label": "Principal" },
+        { "type": "phone", "dial": "+541150481097", "display": "11 5048-1097", "label": "Alternativo" }
+      ],
+      "address": {
+        "street": "Soldado de la Frontera",
+        "number": "5144",
+        "neighborhood": "Villa Lugano",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 8",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.68463871592785,
+        "lng": -58.464336857206874,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Clínica médica",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (clínica médica, pediatría, medicina general o de familia) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+              "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 3",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+              "retrievedAt": "2026-10-08",
+              "note": "Especialidades: «clínica médica, pediatría, medicina general o de familia»."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+              "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+              "retrievedAt": "2026-10-08",
+              "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+            }
+          ]
+        },
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Programas de vacunación",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio, sobre su disponibilidad ni sobre otras vacunas.",
+          "source": {
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+              "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación»; art. 7: son obligatorias las vacunas del Calendario, las de grupos en riesgo y las de emergencia. Norma general: no dice qué vacunas aplica cada vacunatorio ni si hay disponibilidad."
+            },
+            {
+              "kind": "scope",
+              "organization": "Nación: Resolución 339/2026 del Ministerio de Salud (Calendario Nacional de Vacunación)",
+              "url": "https://www.argentina.gob.ar/normativa/nacional/norma-423397/texto",
+              "retrievedAt": "2026-10-08",
+              "note": "Modificación vigente del Calendario Nacional (publicada el 26/2/2026): define cuáles son las vacunas del Calendario."
+            },
+            {
+              "kind": "scope",
+              "organization": "Nación: Calendario Nacional de Vacunación (Ministerio de Salud)",
+              "url": "https://www.argentina.gob.ar/salud/vacunas",
+              "retrievedAt": "2026-10-08",
+              "note": "Lista las vacunas por etapa de la vida; informa que están en centros de salud y hospitales públicos y que no requieren orden médica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 3",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+              "retrievedAt": "2026-10-08",
+              "note": "Programas: «vacunación»."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+              "retrievedAt": "2026-10-08",
+              "note": "Lista el vacunatorio del CeSAC Nº 3 con su dirección. No dice qué vacunas se aplican ni si son gratuitas."
+            }
+          ]
+        },
+        { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
+        { "id": "salud-mental", "type": "mental-health-care", "name": "Psicología (adultos e infanto-juvenil)", "hours": null },
+        { "id": "anticonceptivos", "type": "contraception", "name": "Anticonceptivos", "hours": null },
+        { "id": "ive-ile", "type": "ive-ile-care", "name": "IVE/ILE", "hours": null },
+        { "id": "vih", "type": "sti-testing-care", "name": "Pruebas de VIH", "hours": null },
+        { "id": "ecografia", "type": "diagnostic-imaging", "name": "Ecografía", "hours": null },
+        { "id": "farmacia", "type": "pharmacy", "name": "Farmacia", "hours": null }
+      ],
+      "externalIds": { "caba-cesac": "3" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
+        "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["CeSAC 3", "Villa Lugano 9"]
+    },
+    {
+      "id": "cesac-41",
+      "name": "Centro de Salud Nivel 1: La Boca 2 (CeSAC Nº 41)",
+      "shortName": "CeSAC Nº 41",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541128213641", "display": "2821-3641", "label": "Principal" },
+        { "type": "phone", "dial": "+541143618736", "display": "4361-8736", "label": "Alternativo" }
+      ],
+      "address": {
+        "street": "Ministro Brin",
+        "number": "843",
+        "neighborhood": "La Boca",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "postalCode": "C1158AAH",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.63132509345374,
+        "lng": -58.35792934227024,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR."
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno. La página del área programática del Hospital Argerich dice que en este CeSAC «los turnos se solicitan personalmente»."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://www.buenosaires.gob.ar/salud/cesac-41, consultada el 8/10/2026). Horario «lunes a viernes de 8 a 18 h» y turnos «personalmente»: página del área programática del Hospital Argerich, consultada el 8/10/2026, sin fecha de actualización; sin confirmar con el centro."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+              "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 41",
+              "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+              "retrievedAt": "2026-10-08",
+              "note": "Especialidades: «Medicina General, Pediatría…»."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+              "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+              "retrievedAt": "2026-10-08",
+              "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Área Programática del Hospital Argerich",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica",
+              "retrievedAt": "2026-10-08",
+              "note": "Para el CeSAC 41: «Turnos: se solicitan personalmente» y horario de atención del centro, lunes a viernes de 8 a 18 h (horario general, no de cada prestación). Sin fecha de actualización publicada."
+            }
+          ]
+        },
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Vacunatorio",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              },
+              {
+                "days": [
+                  1,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              },
+              {
+                "days": [
+                  2
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              },
+              {
+                "days": [
+                  2
+                ],
+                "from": "14:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "source": {
+            "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+            "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 27.491, art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación, con equidad social para todas las etapas de la vida»; art. 7: son obligatorias las vacunas del Calendario Nacional, las recomendadas para grupos en riesgo y las de emergencia. Calendario vigente: Resolución 339/2026 del Ministerio de Salud (publicada el 26/2/2026). El Ministerio informa que las vacunas están en centros de salud y hospitales públicos y no requieren orden médica (https://www.argentina.gob.ar/salud/vacunas). La existencia del vacunatorio figura en la ficha oficial (https://www.buenosaires.gob.ar/salud/cesac-41) y en https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios, consultadas el 8/10/2026. Qué vacunas se aplican, documentación a llevar y si hay turno: sin confirmar."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Nación: Ley 27.491 de control de enfermedades prevenibles por vacunación",
+              "url": "https://www.argentina.gob.ar/normativa/nacional/ley-27491-318455/texto",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 2 inc. a: «Gratuidad de las vacunas y del acceso a los servicios de vacunación»; art. 7: son obligatorias las vacunas del Calendario, las de grupos en riesgo y las de emergencia. Norma general: no dice qué vacunas aplica cada vacunatorio ni si hay disponibilidad."
+            },
+            {
+              "kind": "scope",
+              "organization": "Nación: Resolución 339/2026 del Ministerio de Salud (Calendario Nacional de Vacunación)",
+              "url": "https://www.argentina.gob.ar/normativa/nacional/norma-423397/texto",
+              "retrievedAt": "2026-10-08",
+              "note": "Modificación vigente del Calendario Nacional (publicada el 26/2/2026): define cuáles son las vacunas del Calendario."
+            },
+            {
+              "kind": "scope",
+              "organization": "Nación: Calendario Nacional de Vacunación (Ministerio de Salud)",
+              "url": "https://www.argentina.gob.ar/salud/vacunas",
+              "retrievedAt": "2026-10-08",
+              "note": "Lista las vacunas por etapa de la vida; informa que están en centros de salud y hospitales públicos y que no requieren orden médica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 41",
+              "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+              "retrievedAt": "2026-10-08",
+              "note": "Actividades: «Vacunatorio»."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+              "retrievedAt": "2026-10-08",
+              "note": "Lista el vacunatorio del CeSAC Nº 41 con su dirección. No dice qué vacunas se aplican ni si son gratuitas."
+            },
+            {
+              "kind": "hours",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: lugares y horarios de vacunatorios",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-vacunatorios",
+              "retrievedAt": "2026-10-08",
+              "note": "Horario del vacunatorio del CeSAC Nº 41. Sin fecha de actualización publicada; sin confirmar con el centro."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          },
+          "cost": "free",
+          "costNote": "La gratuidad alcanza a las vacunas del Calendario Nacional de Vacunación, a las recomendadas para grupos de riesgo y a las de emergencia sanitaria. No hay información sobre qué vacunas aplica este vacunatorio, sobre su disponibilidad ni sobre otras vacunas."
+        },
+        { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
+        { "id": "salud-mental", "type": "mental-health-care", "name": "Salud mental (niños y adultos)", "hours": null },
+        { "id": "ecografia", "type": "diagnostic-imaging", "name": "Ecografía", "hours": null },
+        { "id": "laboratorio", "type": "laboratory", "name": "Laboratorio", "hours": null },
+        { "id": "farmacia", "type": "pharmacy", "name": "Farmacia", "hours": null }
+      ],
+      "hours": {
+        "open24h": false,
+        "schedule": [{ "days": [1, 2, 3, 4, 5], "from": "08:00", "to": "18:00" }],
+        "note": "Horario general del establecimiento: no es el de cada servicio. Los turnos se solicitan personalmente."
+      },
+      "externalIds": { "caba-cesac": "41" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://www.buenosaires.gob.ar/salud/cesac-41",
+        "note": "Ficha del establecimiento (dirección, teléfonos y servicios). Horario general y turnos: https://buenosaires.gob.ar/gcaba_historico/servicios-hospital-argerich/departamento-de-area-programatica"
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["CeSAC 41", "La Boca 2"]
+    },
+    {
+      "id": "cesac-47",
+      "name": "Centro de Salud Nivel 1: Retiro 3 (CeSAC Nº 47)",
+      "shortName": "CeSAC Nº 47",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541128213647", "display": "2821-3647" }
+      ],
+      "address": {
+        "street": "Alpaca",
+        "number": "620",
+        "neighborhood": "Barrio Mugica",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 1",
+        "reference": "Al fondo del Paseo Comercial",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.584255999999996,
+        "lng": -58.37930900000001,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR. Corresponde a la sede de Alpaca 620."
+      },
+      "services": [
+        {
+          "id": "vacunacion",
+          "type": "vaccination",
+          "name": "Vacunación (programa ampliado de inmunizaciones)",
+          "hours": null,
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/desarrollohumanoyhabitat/integracion/salud/centro-de-salud-nivel-1-retiro-3-cesac-ndeg-47",
+            "note": "Ficha de la sede: sala de vacunación."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          }
+        },
+        {
+          "id": "atencion-primaria",
+          "type": "primary-care",
+          "name": "Medicina general",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (medicina general, pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Horarios, turno o demanda espontánea: sin confirmar."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+              "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 47",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+              "retrievedAt": "2026-10-08",
+              "note": "Especialidades: «Medicina General, Pediatría…»."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+              "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+              "retrievedAt": "2026-10-08",
+              "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+            }
+          ]
+        },
+        {
+          "id": "pediatria",
+          "type": "primary-care",
+          "name": "Pediatría",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Para sacar turno en un centro de salud de la Ciudad hay que empadronarse una sola vez en el Sistema de Salud, por el 147 o en cualquier centro, con un documento que acredite identidad (DNI, cédula o pasaporte extranjero, constancia de residencia precaria, entre otros)."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Canales para pedir turno según el trámite oficial de la Ciudad: web de turnos, Boti (WhatsApp de la Ciudad), 147 opción 1 o en el propio centro. Esto no confirma que haya turnos disponibles ni que siempre haga falta turno: no sabemos si se atiende sin turno."
+          },
+          "source": {
+            "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+            "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+            "retrievedAt": "2026-10-08",
+            "note": "Gratuidad respaldada por una norma general, no por una frase de este CeSAC. Ley 153, art. 3 inc. g: «La gratuidad de las acciones de salud, entendida como la exención de cualquier forma de pago directo en el área estatal»; art. 2: se aplica a «todas las personas sin excepción, sean residentes o no residentes». La existencia de la prestación (pediatría) figura en la ficha oficial del CeSAC (https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47, consultada el 8/10/2026). Edades atendidas, horarios, turno o demanda espontánea: sin confirmar."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Ciudad de Buenos Aires: Ley 153 (Ley Básica de Salud)",
+              "url": "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+              "retrievedAt": "2026-10-08",
+              "note": "Art. 3 inc. g: gratuidad de las acciones de salud, «exención de cualquier forma de pago directo en el área estatal»; art. 2: rige para «todas las personas sin excepción, sean residentes o no residentes». Norma general: no habla de turnos ni de horarios."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: ficha del CeSAC Nº 47",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+              "retrievedAt": "2026-10-08",
+              "note": "Especialidades: «Medicina General, Pediatría…»."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: trámite «Solicitud de turnos en CESAC»",
+              "url": "https://buenosaires.gob.ar/tramites/solicitud-de-turnos-en-centros-de-salud-y-accion-comunitaria-cesac",
+              "retrievedAt": "2026-10-08",
+              "note": "Empadronamiento una sola vez y canales para pedir turno (web, Boti, 147 opción 1, presencial). No confirma que haya turnos disponibles ni que siempre haga falta turno."
+            }
+          ]
+        },
+        { "id": "psiquiatria", "type": "mental-health-care", "name": "Psiquiatría", "hours": null },
+        { "id": "psicologia", "type": "mental-health-care", "name": "Psicología", "hours": null },
+        { "id": "obstetricia", "type": "pregnancy-care", "name": "Obstetricia", "hours": null },
+        { "id": "salud-sexual", "type": "sexual-reproductive-health", "name": "Salud sexual", "hours": null },
+        { "id": "anticonceptivos", "type": "contraception", "name": "Métodos anticonceptivos", "hours": null },
+        { "id": "ive-ile", "type": "ive-ile-care", "name": "IVE/ILE", "hours": null },
+        { "id": "preservativos", "type": "condoms", "name": "Preservativos", "hours": null },
+        { "id": "anticoncepcion-emergencia", "type": "emergency-contraception", "name": "Anticoncepción de emergencia", "hours": null },
+        { "id": "test-vih-sifilis", "type": "sti-testing-care", "name": "Test rápido de VIH y sífilis", "hours": null },
+        { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
+        { "id": "farmacia", "type": "pharmacy", "name": "Farmacia", "hours": null }
+      ],
+      "externalIds": { "caba-cesac": "46" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-47",
+        "note": "Ficha del establecimiento: prestaciones (sede Alpaca 620). Teléfono y coordenadas confirmados por Buenos Aires Data, dataset «Centros de Salud y Acción Comunitaria (CESAC)». No se carga la ubicación ni el horario del playón."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["CeSAC 47", "Retiro 3", "Barrio Mugica"]
+    },
+    {
+      "id": "hospital-oftalmologico-santa-lucia",
+      "name": "Hospital Oftalmológico Santa Lucía",
+      "shortName": "Hospital Santa Lucía",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541141273100", "display": "4127-3100", "label": "Hospital" }
+      ],
+      "address": {
+        "street": "San Juan",
+        "number": "2021",
+        "neighborhood": "San Cristóbal",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 3",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6227807,
+        "lng": -58.3944603,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-oftalmologica",
+          "type": "emergency-room",
+          "name": "Guardia oftalmológica",
+          "description": "Atención de urgencias de los ojos para adultos y niños, sin necesidad de turno.",
+          "hours": { "open24h": true, "note": "Funciona las 24 hs, los 365 días del año." },
+          "audience": ["adults", "children"],
+          "appointment": { "mode": "not-required" },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/hospitalsantalucia/guardia-del-hospital-oftalmologico-santa-lucia",
+            "note": "Página de la guardia. Los teléfonos y el email que publica son solo para derivaciones: no se cargan como contacto público. No informa costo."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-especializado-de-oftalmologia-santa-lucia" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/hospitalsantalucia/contacto",
+        "note": "Página de contacto del hospital (dirección y teléfono general)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["Santa Lucía", "Oftalmológico Santa Lucía"]
+    },
+    {
+      "id": "hospital-odontologia-carrillo",
+      "name": "Hospital de Odontología Dr. Ramón Carrillo",
+      "shortName": "Hospital Carrillo",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541148055521", "display": "4805-5521", "label": "Hospital" }
+      ],
+      "address": {
+        "street": "Sánchez de Bustamante",
+        "number": "2529",
+        "neighborhood": "Recoleta",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 2",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.5844599,
+        "lng": -58.4026497,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-odontologica",
+          "type": "emergency-room",
+          "name": "Guardia odontológica",
+          "hours": { "open24h": true, "note": "Atiende las 24 horas, los 365 días del año." },
+          "cost": "free",
+          "audience": ["adults", "children", "adolescents"],
+          "contacts": [
+            { "type": "phone", "dial": "+541148056407", "display": "4805-6407", "label": "Guardia" }
+          ],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/gerencia-operativa-de-odontologia/guardias-odontologicas",
+            "note": "Guardias odontológicas de los hospitales de odontología: 24 horas, 365 días, gratuitas. No informa si hace falta turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-especializado-odontologico-dr-r-carrillo-ex-nacional" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
+        "note": "Listado de hospitales de odontología (dirección y teléfono)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["Hospital Carrillo", "Odontología Carrillo"]
+    },
+    {
+      "id": "hospital-odontologia-duenas",
+      "name": "Hospital de Odontología Dr. José Dueñas",
+      "shortName": "Hospital Dueñas",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        { "type": "phone", "dial": "+541149838983", "display": "4983-8983" },
+        { "type": "phone", "dial": "+541149830392", "display": "4983-0392" }
+      ],
+      "address": {
+        "street": "Muñiz",
+        "number": "15",
+        "neighborhood": "Almagro",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 5",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.614634,
+        "lng": -58.4276615,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "guardia-odontologica",
+          "type": "emergency-room",
+          "name": "Guardia odontológica",
+          "hours": { "open24h": true, "note": "Atiende las 24 horas, los 365 días del año." },
+          "cost": "free",
+          "audience": ["adults", "children", "adolescents"],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/gerencia-operativa-de-odontologia/guardias-odontologicas",
+            "note": "Guardias odontológicas de los hospitales de odontología: 24 horas, 365 días, gratuitas. No informa si hace falta turno."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-07",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2027-01-05"
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-especializado-de-odontologia-j-duenas" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gerencia-operativa-de-odontologia/hospitales-de-odontologia",
+        "note": "Listado de hospitales de odontología (dirección y teléfonos)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-07",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2027-01-05"
+      },
+      "aliases": ["Hospital Dueñas", "Odontología Dueñas"]
+    },
+    {
+      "id": "centro-fijo-veterinario-costanera-sur",
+      "name": "Centro Fijo Veterinario Costanera Sur (Animales BA)",
+      "shortName": "Centro Fijo Costanera Sur",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+      },
+      "address": {
+        "street": "Av. Dr. T. Achával Rodríguez",
+        "number": "1550",
+        "neighborhood": "Costanera Sur",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 1",
+        "province": "AR-C",
+        "reference": "Según la página oficial, a 100 metros frente a la fuente de Lola Mora."
+      },
+      "coordinates": {
+        "lat": -34.617546,
+        "lng": -58.356478,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-usig",
+        "verifiedAt": "2026-10-09",
+        "verifiedBy": "equipo-auxiliar",
+        "note": "Punto del mapa oficial que enlaza la página de Animales BA (https://mapa.buenosaires.gob.ar/mapas/?lat=-34.617546&lng=-58.356478&zl=15&modo=transporte&dir=Achaval+Rodriguez%2C+T.%2C+Dr.+Av.+1550&map=comunas), consultado el 9/10/2026. El normalizador USIG da el mismo lugar a 5 m. Es una ubicación aproximada de la dirección (Av. Dr. T. Achával Rodríguez 1550), no la entrada exacta del centro."
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Solo con turno previo, que se pide online con cuenta miBA: la página oficial dice que no se atiende a quienes se acercan sin turno. La persona que acompaña al animal tiene que ser mayor de 18 años. La página no aclara si hace falta vivir en la Ciudad.",
+          "requirements": [
+            "Cuenta miBA para pedir el turno online.",
+            "Acompañante mayor de 18 años, que tenga toda la mañana disponible hasta que termine el procedimiento.",
+            "Perro con collar y correa; gato en transportadora o bolso ventilado. Llevar una manta para abrigarlo después de la cirugía.",
+            "El animal debe estar en ayunas (12 h sin alimento y 8 h sin líquidos).",
+            "Avisar al veterinario si toma medicación o tiene alguna enfermedad."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Las agendas de la semana siguiente se habilitan los viernes a las 10 h. Los días y centros con turnos cambian por semana: mirá la agenda en la página oficial.",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+            "retrievedAt": "2026-10-09",
+            "note": "La página dice: «se brinda un servicio de castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito, a través de los Centros Fijos Veterinarios y las Unidades Móviles». Agenda leída el 9/10/2026: este centro figura con «Castración» los días 6, 7, 8, 10, 13 y 15 de octubre de 2026 (la agenda cambia: no es un horario permanente). La página no dice si se exige domicilio en la Ciudad, ni horarios de atención, ni teléfono. No informa atención veterinaria general, guardia ni vacunación antirrábica en el centro fijo."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-09",
+              "note": "«…castraciones y vacunación antirrábica para caninos y felinos totalmente gratuito, a través de los Centros Fijos Veterinarios y las Unidades Móviles». La frase nombra a los Centros Fijos y a la castración."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-09",
+              "note": "Nombra el «Centro Fijo Costanera Sur - Av. Achával Rodríguez 1550» y lo lista en la agenda de octubre de 2026 solo con «Castración»."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-09",
+              "note": "Turno online con cuenta miBA; las agendas de la semana siguiente se habilitan los viernes a las 10 h; no se atiende sin turno previo. No confirma que haya turnos disponibles."
+            }
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+        "retrievedAt": "2026-10-09",
+        "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: dirección, requisitos y agenda del centro fijo. Ubicación: punto del mapa oficial que enlaza la página (https://mapa.buenosaires.gob.ar/mapas/?lat=-34.617546&lng=-58.356478&zl=15&modo=transporte&dir=Achaval+Rodriguez%2C+T.%2C+Dr.+Av.+1550&map=comunas), consultado el 9/10/2026."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-09",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-08",
+        "notes": "Verificación documental del 9/10/2026 con las fuentes oficiales; revisión en 30 días porque la información depende de una agenda que cambia. Horario, teléfono y domicilio requerido sin confirmar."
+      },
+      "aliases": [
+        "Animales BA Costanera Sur",
+        "Castraciones gratuitas Costanera Sur"
+      ]
+    },
+    {
+      "id": "hospital-de-pediatria-dr-j-garrahan",
+      "name": "Hospital de Pediatría Prof. Dr. Juan P. Garrahan",
+      "shortName": "Hospital Garrahan",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-C",
+        "organization": "Hospital Garrahan (hospital público pediátrico de alta complejidad, financiado por el Estado nacional y el Gobierno de la Ciudad de Buenos Aires)"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541141226002",
+          "display": "4122-6002",
+          "label": "Informes"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5491163979781",
+          "display": "11 6397-9781",
+          "label": "Informes (WhatsApp)"
+        }
+      ],
+      "address": {
+        "street": "Combate de los Pozos",
+        "number": "1881",
+        "neighborhood": "Parque Patricios",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.629944,
+        "lng": -58.3918823,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0. Controlado el 11/10/2026 contra el normalizador USIG de la Ciudad para «Combate de los Pozos 1881»: el punto cae a unos 104 m (el complejo ocupa unos 113 mil m²). Es una ubicación aproximada del hospital, no de una entrada: los pacientes y sus familias ingresan por Pichincha 1890.",
+        "verifiedAt": "2026-10-11",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-pediatrica-alta-complejidad",
+          "type": "specialty-care",
+          "name": "Consulta pediátrica de alta complejidad",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "16:00"
+              }
+            ],
+            "note": "Es el horario de los servicios asistenciales que publica la página de horarios. El día y la hora de cada consulta son los del turno. La página informa además «Emergencias: 24 hs. los 365 días del año», pero para urgencias sugiere ir primero al centro de salud con guardia más cercano, que pide la derivación si hace falta: por eso la guardia no figura acá."
+          },
+          "cost": "free",
+          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura.",
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "requirements": [
+            "Atiende de 0 a 15 años.",
+            "Para una consulta nueva: derivación del pediatra, del centro de salud o del hospital donde se atiende la persona, con el motivo de consulta en un hospital de alta complejidad, y resumen de la historia clínica y de los estudios hechos. Solo un profesional puede pedir la derivación: ningún familiar puede hacerlo.",
+            "Entrada para pacientes y familias: Pichincha 1890. El acceso por Combate de los Pozos es solo del personal del Hospital."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "El Hospital tiene un formulario web para pedir turno de consulta (seguimiento o nueva especialidad) y una oficina de Informes, en la entrada de Pichincha, de lunes a viernes. La página no dice si se atiende sin turno, y esto no confirma que haya turnos disponibles.",
+            "url": "https://www.garrahan.gov.ar/turnos"
+          },
+          "source": {
+            "organization": "Hospital Garrahan",
+            "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/consultas-frecuentes",
+            "retrievedAt": "2026-10-11",
+            "note": "Consultas frecuentes del Hospital: «¿La atención es pública y gratuita? Sí, el Hospital Garrahan es público y no realiza ningún tipo de cobro por la atención. Si contás con obra social te van a solicitar que la presentes para la cobertura de la prestación médica.» La página de convivencia hospitalaria dice: «La atención es y siempre será gratuita para todos los niños y adolescentes.» Es una frase del Hospital sobre su atención en general; este registro solo carga la consulta, que es la prestación cuyo acceso (derivación y turno) y horario publica. Las consultas frecuentes sugieren que para urgencias se asista primero al centro de salud más cercano con guardia, que pedirá la derivación si hace falta; por eso la guardia (Emergencias, 24 h según la página de horarios) no se carga como prestación gratuita. Tampoco se carga el Centro de Vacunación (lunes a viernes de 8 a 15 h, entrada por Av. Brasil 2290): las páginas no dicen a quién atiende. Las páginas dan dos horarios para Informes (de 8 a 16 h en las consultas frecuentes y de 6 a 16 h en la página de Informes). Nada se confirmó por teléfono."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/consultas-frecuentes",
+              "retrievedAt": "2026-10-11",
+              "note": "«…el Hospital Garrahan es público y no realiza ningún tipo de cobro por la atención. Si contás con obra social te van a solicitar que la presentes para la cobertura de la prestación médica.»"
+            },
+            {
+              "kind": "cost",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias-hola/convivencia-hospitalaria",
+              "retrievedAt": "2026-10-11",
+              "note": "«La atención es y siempre será gratuita para todos los niños y adolescentes.» Y: los medicamentos y el material descartable los suministra el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura."
+            },
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/turnos",
+              "retrievedAt": "2026-10-11",
+              "note": "Turnos para una consulta (seguimiento o nueva especialidad) en un «centro de atención pediátrica de alta complejidad que atiende a niñas, niños y adolescentes de 0 a 15 años»."
+            },
+            {
+              "kind": "access",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/turnos",
+              "retrievedAt": "2026-10-11",
+              "note": "Para una consulta nueva piden derivación del pediatra, del centro de salud u hospital, con el motivo de consulta, y resumen de la historia clínica y los estudios. La derivación la hace un profesional médico (consultas frecuentes). No dice que haya turnos disponibles ni si se atiende sin turno."
+            },
+            {
+              "kind": "hours",
+              "organization": "Hospital Garrahan",
+              "url": "https://www.garrahan.gov.ar/pacientes-y-familias/horarios-de-atencion",
+              "retrievedAt": "2026-10-11",
+              "note": "«Servicios asistenciales: de lunes a viernes de 8 a 16 hs.» También: «Emergencias: 24 hs. los 365 días del año.»"
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-11",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-10",
+            "notes": "Verificación documental del 11/10/2026 con las páginas oficiales del Hospital (texto leído de cada página; sin consulta telefónica ni visita). Revisión en 30 días: la página tiene horarios que no coinciden entre secciones y un sistema de turnos que puede cambiar."
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-de-pediatria-dr-j-garrahan" },
+      "source": {
+        "organization": "Hospital Garrahan",
+        "url": "https://www.garrahan.gov.ar/hospital/bienvenida",
+        "note": "Presentación del Hospital («centro pediátrico de referencia en salud pública de alta complejidad»). Cómo llegar y accesos: https://www.garrahan.gov.ar/como-llegar. La dirección (Combate de los Pozos 1881) y el punto en el mapa son del dataset «Hospitales» de Buenos Aires Data."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-11",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-10",
+        "notes": "Verificación documental del 11/10/2026 con las páginas oficiales del Hospital. Los teléfonos de Informes salen de la página de Informes; los de la guardia y del conmutador del dataset de la Ciudad no se cargan porque la página del Hospital no los confirma."
+      },
+      "aliases": ["Garrahan", "Hospital Garrahan", "Hospital de Niños Garrahan"]
+    }
+  ]
+}

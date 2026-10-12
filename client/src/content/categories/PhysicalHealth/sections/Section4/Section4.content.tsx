@@ -1,0 +1,21 @@
+import { Quiz } from "@/components/quiz/Quiz"
+import { HEALTH_GENERAL_SLUG, PATHS } from "@/router/paths"
+import { centersLink } from "@/router/centersLink"
+import { PHYSICAL_HEALTH_QUIZ } from "./Section4.constants"
+
+const EXITS = [
+  { label: "Centros de atención", to: centersLink() },
+  { label: "Volver a Salud general", to: PATHS.topic(HEALTH_GENERAL_SLUG) },
+]
+
+/** Salud general · Quiz — learn where to go and how to take care, one everyday situation at a time */
+export default function Section4Content() {
+  return (
+    <div className="mt-2">
+      <p className="m-0 max-w-2xl text-muted">
+        {`${PHYSICAL_HEALTH_QUIZ.length} situaciones de todos los días para aprender dónde ir y cómo cuidarte. No hay respuestas “malas”: en cada una te explicamos por qué.`}
+      </p>
+      <Quiz questions={PHYSICAL_HEALTH_QUIZ} exits={EXITS} />
+    </div>
+  )
+}

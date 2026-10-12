@@ -8,12 +8,16 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "content:index": "node scripts/content-index.mjs"
+    "content:index": "node scripts/content-index.mjs",
+    "resources:sync": "node scripts/resources-sync.mjs",
+    "resources:check": "node scripts/resources-sync.mjs --check",
+    "lines:due": "node scripts/lines-review.mjs"
   },
   "dependencies": {
     "@fontsource-variable/nunito": "^5.3.0",
     "@fontsource/dm-serif-display": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
+    "leaflet": "1.9.4",
     "lucide-react": "^1.48.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -24,6 +28,7 @@
     "@babel/core": "^7.29.7",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/babel__core": "^7.20.5",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

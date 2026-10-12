@@ -30,6 +30,37 @@ class SafetyRulesTest {
     }
 
     @Test
+    void theRulesFindTheirRowsInTheGeneratedTable() {
+        SafetyRules.requireNumbers(helpNumbers);
+        assertThat(SafetyRules.pamiEmergenciesNote(helpNumbers)).contains("139").contains("emergencias de PAMI");
+    }
+
+    private static HelpNumbers table(String... rows) throws IOException {
+        String header = "| Número | Nombre | Zona | Para qué | Horario |" + System.lineSeparator() + "|---|---|---|---|---|" + System.lineSeparator();
+        String body = String.join(System.lineSeparator(), rows) + System.lineSeparator();
+        return new HelpNumbers(new org.springframework.core.io.ByteArrayResource((header + body).getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+    }
+
+    @Test
+    void theRowsProblemIsReportedWithoutStoppingAnything() throws IOException {
+        assertThat(SafetyRules.rowsProblem(helpNumbers)).isNull();
+        assertThat(SafetyRules.rowsProblem(table("| 911 | Emergencias | Todo el país | x | |"))).contains("138");
+        assertThat(SafetyRules.rowsProblem(table("| 138 | PAMI | Todo el país | x | |"))).contains("139");
+        // without the PAMI rows the rules only skip PAMI: they do not fail
+        HelpNumbers withoutPami = table("| 911 | Emergencias | Todo el país | x | |");
+        assertThat(numbers(SafetyRules.withPami(lines("911"), withoutPami, 4))).containsExactly("911");
+        assertThat(SafetyRules.pamiEmergenciesNote(withoutPami)).contains("139");
+    }
+
+    @Test
+    void theServerDoesNotStartIfTheTableLosesOrChangesThePamiRows() throws IOException {
+        HelpNumbers withoutPami = table("| 911 | Emergencias | Todo el país | x | |");
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SafetyRules.requireNumbers(withoutPami)).isInstanceOf(IllegalStateException.class).hasMessageContaining("138");
+        HelpNumbers elsewhere = table("| 138 | PAMI | Todo el país | x | |", "| 139 | PAMI emergencias | Todo el país | x | |");
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> SafetyRules.requireNumbers(elsewhere)).isInstanceOf(IllegalStateException.class).hasMessageContaining("AMBA");
+    }
+
+    @Test
     void addsPamiAfterTheModelsNumbers() {
         assertThat(numbers(SafetyRules.withPami(lines("107", "911"), helpNumbers, 4))).containsExactly("107", "911", "138");
     }

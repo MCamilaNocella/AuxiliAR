@@ -65,6 +65,9 @@
   /* Metallic glint that sweeps over the "Ver mejor" gear and label on load: light on the dark (light theme) gear, a darker sheen on the white one */
   --color-shine: #f5f5f5;
 
+  /* Dimmed backdrop behind a side panel (e.g. a place's information) */
+  --color-scrim: rgb(0 0 0 / 0.5);
+
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 

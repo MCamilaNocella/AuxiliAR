@@ -1,8 +1,13 @@
 import { BadgeCheck, Clock, EllipsisVertical, Flag, Frown, HandHeart, Lock, LogOut, MapPin, Meh, Phone as PhoneIcon, ShieldCheck, Smile, Sparkles, X } from "lucide-react"
 import { Auxi } from "@/components/help/Auxi"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
+import { describeHelpLine } from "@/utils/helpLines"
 import { AuxiBubble, Bubble, Chip, FakeButton, FakeInput, Phone, PhoneTitle, SystemNote } from "./PeerChatSketch.parts"
 
 // ---------- Person who needs help ----------
+
+/** The national mental health line, as the verified help lines say it */
+const MENTAL_HEALTH_LINE = describeHelpLine("urgencias-salud-mental-0800")
 
 /** Auxi offers to bring in a person, without dropping the bot */
 export const AuxiOffers = () => (
@@ -17,7 +22,7 @@ export const AuxiOffers = () => (
       <FakeButton variant="outline">Seguir con Auxi</FakeButton>
     </div>
     <p className="m-0 mt-auto rounded-xl border border-alert-card-line bg-alert-soft p-2 text-xs font-bold text-alert-text">
-      Si estás en peligro ahora, llamá al 911 o a la línea 135.
+      Si estás en peligro ahora, llamá al {GENERAL_EMERGENCY_NUMBER} o al {MENTAL_HEALTH_LINE.display}.
     </p>
   </Phone>
 )
@@ -28,7 +33,7 @@ export const BeforeConnecting = () => (
     <p className="m-0 font-extrabold">¿De qué querés hablar?</p>
     <div className="flex flex-wrap gap-2">
       <Chip selected>Salud mental</Chip>
-      <Chip>Salud física</Chip>
+      <Chip>Salud general</Chip>
       <Chip>ESI</Chip>
       <Chip>Otra cosa</Chip>
     </div>
@@ -142,7 +147,7 @@ export const VolunteerSignUp = () => (
     <div className="flex flex-wrap gap-2">
       <Chip selected>Salud mental</Chip>
       <Chip selected>ESI</Chip>
-      <Chip>Salud física</Chip>
+      <Chip>Salud general</Chip>
       <Chip>Animales</Chip>
     </div>
     <p className="m-0 font-extrabold">Pasos</p>

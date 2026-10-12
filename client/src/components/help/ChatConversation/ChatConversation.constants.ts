@@ -1,3 +1,4 @@
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import type { MessageDraft } from "./ChatConversation.types"
 
 /** What Auxi says when the chat opens */
@@ -21,7 +22,7 @@ export const NO_EMERGENCY_REPLIES = [
 ]
 
 /** Answer to "Sí": the numbers to call show right under it */
-export const EMERGENCY_REPLY = "Llamá ahora: es gratis y atienden las 24 horas. Si hay riesgo para la vida, el 107 manda una ambulancia."
+export const EMERGENCY_REPLY = `Llamá ahora: es gratis y atienden las 24 horas. Si hay riesgo para la vida, llamá al ${GENERAL_EMERGENCY_NUMBER}.`
 
 /** Then Auxi asks what's going on, to find the right first aid guide */
 export const EMERGENCY_QUESTION = "¿Qué está pasando? Contame en pocas palabras y te digo qué hacer mientras llega la ayuda."
@@ -38,7 +39,7 @@ export const WORKING_MESSAGES = [
 export const LOCAL_REPLY_DELAY_MS = 600
 
 /** Shown when the backend can't be reached or the model fails */
-export const CONNECTION_ERROR_REPLY = "Perdón, no me pude conectar en este momento. Probá de nuevo en un rato. Si es una emergencia, llamá al 107."
+export const CONNECTION_ERROR_REPLY = `Perdón, no me pude conectar en este momento. Probá de nuevo en un rato. Si es una emergencia, llamá al ${GENERAL_EMERGENCY_NUMBER}.`
 
 export const INPUT_PLACEHOLDER = "Escribí tu mensaje…"
 

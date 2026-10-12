@@ -30,7 +30,7 @@ export const ChatLog = ({ children }: ChatLogProps) => {
       <li className="flex flex-col items-center gap-2 pb-2 text-center">
         {/* Nudged left: the waving hand fills the left side of the drawing, this centers Auxi's body */}
         <Auxi className="size-24 -translate-x-[10%]" />
-        <span className="text-sm text-muted">No reemplazo una consulta médica. En una emergencia, llamá al 107.</span>
+        <span className="text-sm text-muted">No reemplazo una consulta médica. <span className="whitespace-nowrap">En una emergencia, llamá al 911.</span></span>
       </li>
       {children}
     </ol>
