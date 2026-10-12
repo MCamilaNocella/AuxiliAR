@@ -246,11 +246,11 @@ test("reacciones alérgicas: official sources, a date, and the pending clinical 
 test("the first aid quiz covers every guide, sends back to it and adds no number", async () => {
   const { FIRST_AID_QUIZ } = await vite.ssrLoadModule("/src/content/firstAid/quiz.ts")
   const { startQuiz } = await vite.ssrLoadModule("/src/utils/quiz/quiz.ts")
-  assert.ok(FIRST_AID_QUIZ.length >= 48)
+  assert.ok(FIRST_AID_QUIZ.length >= 30 && FIRST_AID_QUIZ.length <= 40, "one sitting: between 30 and 40 situations")
   assert.equal(new Set(FIRST_AID_QUIZ.map(({ id }) => id)).size, FIRST_AID_QUIZ.length)
   for (const guide of GUIDES) {
     const own = FIRST_AID_QUIZ.filter(({ action }) => action?.to === `/primeros-auxilios/${guide.slug}`)
-    assert.ok(own.length >= 3, `${guide.slug} has at least three questions`)
+    assert.ok(own.length >= (guide.slug === "rcp" ? 5 : 1), `${guide.slug} is covered`)
   }
   for (const question of FIRST_AID_QUIZ) {
     assert.equal(question.options.filter(({ correct }) => correct).length, 1, `${question.id} has one right answer`)

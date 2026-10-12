@@ -3,11 +3,12 @@ import type { QuizAction, QuizQuestion } from "@/utils/quiz/quiz"
 import { getFirstAidGuide } from "./index"
 
 /**
- * Quiz de primeros auxilios: 51 situations, three for each of the 16 guides, and six for the RCP (it tells the infarto apart from the paro) of src/content/firstAid, in the order of the guides (the ones for acting now, the
- * everyday injuries, and preparing). Every right answer is something the guide of that situation says, in its own terms, and every feedback sends back to that
- * guide: the quiz adds no instruction of its own, no number of emergencies is written (the guides point to the emergency numbers of the app) and no medicine or dose
- * is named. It is educational: it does not replace a first aid course nor the care of a health team. PENDING review by a health professional, like the guides.
- * The id of each question starts with the slug of its guide: that is how the tests check that every guide is covered.
+ * Quiz de primeros auxilios: 34 situations that cover the 16 guides of src/content/firstAid (one or two for each guide, and five for the RCP, which tells the infarto from the paro),
+ * in the order of the guides. It was 51: the ones that repeated what another question already asked (the torniquete, the wound that bleeds, the person who must not be moved) or
+ * that did not decide anything in an emergency (where the botiquín goes, whether the vaccine is free) were cut, so a person finishes it in one sitting. Every right answer is something
+ * the guide of that situation says, in its own terms, and every feedback sends back to that guide: the quiz adds no instruction of its own, no number of emergencias is written
+ * (the guides point to the emergency numbers of the app) and no medicine or dose is named. It is educational: it does not replace a first aid course nor the care of a health team.
+ * PENDING review by a health professional, like the guides. The id of each question starts with a word of its guide: the tests check that every guide is covered through its action.
  */
 const toGuide = (slug: string): QuizAction => ({ label: `Ver la guía: ${getFirstAidGuide(slug)?.title ?? slug}`, to: PATHS.firstAidGuide(slug) })
 
@@ -41,19 +42,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Un ritmo parejo mantiene la sangre circulando hasta que llega la atención médica.",
     learning: "Compresiones rápidas y con ritmo: entre 100 y 120 por minuto.",
-    action: toGuide("rcp"),
-  },
-  {
-    id: "rcp-brazos",
-    format: "Verdadero o falso",
-    topic: "RCP",
-    prompt: "Para hacer más fuerza al presionar el pecho, conviene doblar los codos.",
-    options: [
-      option("a", "Falso", true, "Correcto: hay que mantener los brazos estirados, con una mano apoyada en el centro del pecho y la otra encima, con los dedos entrelazados."),
-      option("b", "Verdadero", false, "No: la guía dice «no dobles los codos al presionar: mantené los brazos estirados»."),
-    ],
-    why: "Con los brazos estirados presionás con el peso de tu cuerpo y te cansás menos.",
-    learning: "En la RCP, brazos estirados: no se doblan los codos.",
     action: toGuide("rcp"),
   },
   {
@@ -127,20 +115,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Un niño que tose o habla: dejalo toser; ni golpes ni agua.",
     action: toGuide("atragantamiento"),
   },
-  {
-    id: "atragantamiento-solo",
-    format: "¿Qué hacés?",
-    topic: "Atragantamiento",
-    prompt: "Estás solo o sola en tu casa y te atragantás. ¿Qué podés hacer?",
-    options: [
-      option("a", "Apoyar la boca del estómago sobre el borde de una silla y presionar con decisión.", true, "Es lo que indica la guía: la boca del estómago (encima del ombligo y debajo del hueso del pecho) sobre el borde de una silla, y presionar con fuerza suficiente para que el objeto salga."),
-      option("b", "Tomar agua en grandes tragos.", false, "La guía no indica agua: hay que sacar el objeto."),
-      option("c", "Acostarme y esperar.", false, "Acostarse no ayuda a sacar el objeto: la guía indica apoyar el estómago sobre el borde de una silla y presionar."),
-    ],
-    why: "El borde de la silla hace de apoyo para generar la presión que usaría otra persona.",
-    learning: "Si estás solo o sola: borde de una silla y presión en la boca del estómago.",
-    action: toGuide("atragantamiento"),
-  },
   /* ── ACV ── */
   {
     id: "acv-senales",
@@ -170,20 +144,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Si sospechás un ACV, llamá siempre, aunque la persona diga que está bien.",
     action: toGuide("acv"),
   },
-  {
-    id: "acv-espera",
-    format: "¿Qué hacés?",
-    topic: "ACV",
-    prompt: "Ya llamaste a emergencias por un posible ACV y la persona responde. Mientras llega la ayuda, ¿qué hacés?",
-    options: [
-      option("a", "La dejo descansar sola en otra habitación.", false, "No: la guía pide no dejar sola a la persona."),
-      option("b", "Me quedo con ella, la tranquilizo y la abrigo; si responde, la acuesto de costado.", true, "Así es: quedate con la persona, tranquilizala y abrigala. Si responde, acostala de costado (posición de seguridad)."),
-      option("c", "La hago caminar para que se despeje.", false, "La guía no indica que camine: indica tranquilizarla, abrigarla y acostarla de costado."),
-    ],
-    why: "Acompañarla permite ver si cambia su estado, y la posición de costado cuida su respiración.",
-    learning: "En un ACV: acompañar, tranquilizar, abrigar y, si responde, de costado.",
-    action: toGuide("acv"),
-  },
   /* ── Hemorragia grave ── */
   {
     id: "hemorragia-presion",
@@ -197,19 +157,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "La presión directa y sostenida es lo que frena el sangrado mientras llega la ayuda.",
     learning: "Hemorragia: presión firme, sin soltar, con una tela limpia.",
-    action: toGuide("hemorragia-grave"),
-  },
-  {
-    id: "hemorragia-torniquete",
-    format: "Verdadero o falso",
-    topic: "Hemorragia grave",
-    prompt: "Ante una hemorragia grave en un brazo, lo mejor es hacer un torniquete.",
-    options: [
-      option("a", "Verdadero", false, "No: la guía de hemorragia grave dice «no uses torniquete». Hay que presionar la zona que sangra."),
-      option("b", "Falso", true, "Correcto: no se usa torniquete. Se presiona firme y sin soltar, y si es un brazo o una pierna se lo levanta por encima del nivel del corazón."),
-    ],
-    why: "Las fuentes oficiales de la guía indican presión directa, no torniquete.",
-    learning: "No uses torniquete: presioná la zona que sangra.",
     action: toGuide("hemorragia-grave"),
   },
   {
@@ -239,20 +186,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Durante una convulsión no se puede detener: lo que se hace es mantener segura a la persona hasta que termine.",
     learning: "En una convulsión: alejar peligros, no sujetar y no poner nada en la boca.",
-    action: toGuide("convulsiones"),
-  },
-  {
-    id: "convulsiones-despues",
-    format: "¿Qué hacés?",
-    topic: "Convulsiones",
-    prompt: "La convulsión terminó. ¿Qué es lo correcto?",
-    options: [
-      option("a", "La giro suavemente de costado y no me voy hasta que se recupere.", true, "Así es: posición de seguridad, y quedate hasta que se recupere. No le des agua ni comida hasta que esté bien despierta."),
-      option("b", "Le doy agua para que se reanime.", false, "No: no le des agua ni comida hasta que esté bien despierta."),
-      option("c", "Le hago respiración boca a boca.", false, "No, salvo que esté inconsciente y deje de respirar cuando pase la convulsión: ahí corresponde la RCP."),
-    ],
-    why: "De costado se cuida su respiración mientras vuelve en sí.",
-    learning: "Al terminar la convulsión: de costado, sin agua ni comida, y acompañarla.",
     action: toGuide("convulsiones"),
   },
   {
@@ -298,19 +231,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "En una quemadura: no abras las ampollas.",
     action: toGuide("quemaduras"),
   },
-  {
-    id: "quemaduras-grupos",
-    format: "Verdadero o falso",
-    topic: "Quemaduras",
-    prompt: "Una quemadura del mismo tamaño y profundidad es igual de grave en un adulto joven que en un niño o en una persona mayor.",
-    options: [
-      option("a", "Verdadero", false, "No: la guía avisa que en niños y adultos mayores las quemaduras pueden ser más graves aunque sean del mismo tamaño y profundidad."),
-      option("b", "Falso", true, "Correcto: en niños y adultos mayores pueden ser más graves, así que conviene consultar."),
-    ],
-    why: "Los niños y las personas mayores tienen más riesgo ante una misma quemadura.",
-    learning: "En niños y personas mayores, una quemadura puede ser más grave.",
-    action: toGuide("quemaduras"),
-  },
   /* ── Reacciones alérgicas ── */
   {
     id: "alergias-grave",
@@ -324,20 +244,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "La anafilaxia puede ser fatal si no se atiende de inmediato.",
     learning: "Señales graves de alergia: llamar a emergencias sin esperar.",
-    action: toGuide("reacciones-alergicas"),
-  },
-  {
-    id: "alergias-aguijon",
-    format: "¿Qué hacés?",
-    topic: "Reacciones alérgicas",
-    prompt: "Una persona con una reacción grave tiene un aguijón de abeja clavado. ¿Cómo lo sacás?",
-    options: [
-      option("a", "Con una pinza, apretándolo bien.", false, "No: al apretarlo libera más veneno."),
-      option("b", "Raspándolo con algo firme, como una uña o una tarjeta de plástico.", true, "Correcto: raspá el aguijón de la piel; no uses pinzas."),
-      option("c", "Dejándolo hasta que llegue la ayuda, sin tocarlo.", false, "La guía indica raspar el aguijón de la piel con algo firme."),
-    ],
-    why: "Raspar saca el aguijón sin apretar la bolsita de veneno.",
-    learning: "Aguijón: se raspa; no se usan pinzas.",
     action: toGuide("reacciones-alergicas"),
   },
   {
@@ -383,20 +289,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Una herida que puede necesitar puntos: que la vea un profesional antes de las 6 horas.",
     action: toGuide("heridas"),
   },
-  {
-    id: "heridas-sangra",
-    format: "¿Qué hacés?",
-    topic: "Heridas y cortes",
-    prompt: "La herida de tu brazo sangra. ¿Qué hacés?",
-    options: [
-      option("a", "Aprieto con una tela limpia y levanto el brazo por encima del corazón.", true, "Así es: presioná con una tela limpia; si no para, poné más telas y vendá. Si el sangrado es abundante, seguí la guía de hemorragia grave."),
-      option("b", "Hago un torniquete.", false, "No: la guía dice «no uses torniquete»."),
-      option("c", "Dejo la herida al aire para que se seque.", false, "Si sangra hay que presionar con una tela limpia; después se cubre con gasa o compresa."),
-    ],
-    why: "Elevar el brazo ayuda a que sangre menos mientras presionás.",
-    learning: "Si la herida sangra: presión con tela limpia y, en un brazo, elevarlo.",
-    action: toGuide("heridas"),
-  },
   /* ── Golpes y caídas ── */
   {
     id: "golpes-primero",
@@ -424,20 +316,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Esas lesiones pueden ser graves aunque al principio parezcan leves.",
     learning: "Llamá si no puede caminar sin ayuda o el golpe fue en la cabeza, el cuello o la espalda.",
-    action: toGuide("golpes-y-caidas"),
-  },
-  {
-    id: "golpes-duda",
-    format: "¿Qué hacés?",
-    topic: "Golpes y caídas",
-    prompt: "No sabés si hay que mover a la persona que se cayó. ¿Qué hacés?",
-    options: [
-      option("a", "No la muevo hasta que el personal de salud me confirme, incluso por teléfono, que hay que hacerlo.", true, "Así es: ante la duda, no la muevas hasta que el personal de salud te lo confirme (también puede ser por teléfono)."),
-      option("b", "La muevo despacio, por las dudas.", false, "No: moverla puede empeorar una lesión de la columna."),
-      option("c", "La dejo sola un rato y vuelvo.", false, "No: no la dejes sola; quedate con ella y tranquilizala."),
-    ],
-    why: "Mover mal a una persona lesionada puede agravar su estado.",
-    learning: "Ante la duda, no la muevas y quedate con ella.",
     action: toGuide("golpes-y-caidas"),
   },
   /* ── Golpe en la cabeza ── */
@@ -468,35 +346,7 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Si no responde y no respira bien, RCP.",
     action: toGuide("golpe-en-la-cabeza"),
   },
-  {
-    id: "cabeza-acompanar",
-    format: "¿Qué NO hacés?",
-    topic: "Golpe en la cabeza",
-    prompt: "Marcá lo que NO hay que hacer con una persona que se golpeó la cabeza:",
-    options: [
-      option("a", "Quedarte con ella y hablarle con calma hasta que llegue la ayuda.", false, "Eso sí corresponde: es el último paso de la guía."),
-      option("b", "Dejarla sola mientras buscás ayuda.", true, "Es lo que NO hay que hacer: la guía dice «no la dejes sola»."),
-      option("c", "Presionar con una tela limpia si sangra.", false, "Eso sí corresponde: si sangra, presioná con una tela lo más limpia posible."),
-    ],
-    why: "Acompañarla permite ver cómo evoluciona y tranquilizarla.",
-    learning: "No la dejes sola: quedate con ella hasta que llegue la ayuda.",
-    action: toGuide("golpe-en-la-cabeza"),
-  },
   /* ── Posibles fracturas ── */
-  {
-    id: "fracturas-anillos",
-    format: "¿Qué hacés primero?",
-    topic: "Posibles fracturas",
-    prompt: "Alguien se golpeó el antebrazo y se ve deformado. Si la lesión es en el brazo o la mano, ¿qué hacés primero?",
-    options: [
-      option("a", "Le saco el reloj, los anillos y las pulseras.", true, "Sí: la hinchazón puede impedir sacarlos después y cortar la circulación."),
-      option("b", "Le estiro el brazo para enderezarlo.", false, "No: la guía dice que no muevas la parte lastimada si no hace falta, porque puede agravar la lesión."),
-      option("c", "Le hago masajes para bajar la hinchazón.", false, "La guía no indica masajes: indica sacar reloj, anillos y pulseras, y después inmovilizar."),
-    ],
-    why: "Con la hinchazón, un anillo puede cortar la circulación.",
-    learning: "Fractura en un brazo o una mano: sacar reloj, anillos y pulseras.",
-    action: toGuide("fracturas"),
-  },
   {
     id: "fracturas-inmovilizar",
     format: "Elegí una",
@@ -541,20 +391,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     action: toGuide("accidentes-de-transito"),
   },
   {
-    id: "transito-varias",
-    format: "Elegí una",
-    topic: "Accidentes de tránsito",
-    prompt: "Hay varias víctimas y vos sola o solo. ¿A quién atendés primero?",
-    options: [
-      option("a", "A quien grita más fuerte.", false, "No es el criterio de la guía."),
-      option("b", "A quien tiene dificultad para respirar, está inconsciente, sangra mucho, tiene quemaduras o fracturas graves.", true, "Sí: esas son las prioridades que indica la guía."),
-      option("c", "A la más cercana a mí, sin importar su estado.", false, "La guía pide ocuparse primero de quien tiene dificultad para respirar, está inconsciente, sangra mucho o tiene quemaduras o fracturas graves."),
-    ],
-    why: "Las lesiones que ponen en riesgo la vida van primero.",
-    learning: "Con varias víctimas, primero quien más riesgo corre.",
-    action: toGuide("accidentes-de-transito"),
-  },
-  {
     id: "transito-columna",
     format: "Verdadero o falso",
     topic: "Accidentes de tránsito",
@@ -580,20 +416,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Mientras haya corriente, tocar a la persona es peligroso para quien ayuda.",
     learning: "Electrocución: cortá la electricidad general antes de tocar a la persona.",
-    action: toGuide("electrocucion"),
-  },
-  {
-    id: "electrocucion-apartar",
-    format: "¿Qué usás?",
-    topic: "Electrocución",
-    prompt: "No podés cortar la corriente. ¿Con qué podés empujar a la persona lejos de la fuente?",
-    options: [
-      option("a", "Con una barra de metal.", false, "No: no uses un objeto húmedo ni metálico."),
-      option("b", "Con algo que no conduzca la electricidad: un palo, una escoba o una silla de madera.", true, "Correcto. Si es posible, parate sobre algo que tampoco conduzca (goma, papeles)."),
-      option("c", "Con un trapo mojado.", false, "No: lo húmedo conduce la electricidad."),
-    ],
-    why: "Un objeto que no conduce evita que la corriente pase a quien ayuda.",
-    learning: "Para apartar a la persona: un palo, una escoba o una silla de madera, nunca algo húmedo o metálico.",
     action: toGuide("electrocucion"),
   },
   {
@@ -638,20 +460,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Contacto con la piel: sacar la ropa y lavar con agua 15 o 20 minutos.",
     action: toGuide("intoxicaciones"),
   },
-  {
-    id: "intoxicaciones-monoxido",
-    format: "¿Qué hacés?",
-    topic: "Intoxicaciones",
-    prompt: "Sospechás que alguien respiró monóxido de carbono. ¿Qué hacés?",
-    options: [
-      option("a", "Lo saco del lugar, apago la fuente de combustión y ventilo. Igual consulto a un médico.", true, "Correcto: aunque los síntomas sean leves, hay que consultar siempre a un médico porque los daños pueden aparecer más tarde."),
-      option("b", "Lo dejo en el lugar, abrigado, hasta que se le pase.", false, "No: hay que sacarlo del lugar, apagar la fuente de combustión y ventilar."),
-      option("c", "Si no tiene síntomas fuertes, no hace falta ir al médico.", false, "La guía avisa que los daños pueden aparecer más tarde: consultá siempre a un médico."),
-    ],
-    why: "El monóxido de carbono puede dañar sin dar señales fuertes al principio.",
-    learning: "Monóxido de carbono: salir del lugar, apagar la fuente, ventilar y consultar siempre.",
-    action: toGuide("intoxicaciones"),
-  },
   /* ── Botiquín ── */
   {
     id: "botiquin-basico",
@@ -665,33 +473,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "El botiquín básico tiene lo necesario para limpiar y cubrir heridas, cortar y fijar.",
     learning: "Botiquín básico: guantes, gasas y vendas, antiséptico, tijera, cinta adhesiva y jabón neutro.",
-    action: toGuide("botiquin"),
-  },
-  {
-    id: "botiquin-donde",
-    format: "Verdadero o falso",
-    topic: "Botiquín",
-    prompt: "Alcanza con tener un botiquín en la casa: en el auto o en el trabajo no hace falta.",
-    options: [
-      option("a", "Verdadero", false, "No: la guía dice que conviene tener uno en la casa, en el trabajo, en los vehículos y cuando hacés deporte."),
-      option("b", "Falso", true, "Correcto: conviene tener un botiquín en la casa, en el trabajo, en los vehículos y cuando hacés deporte."),
-    ],
-    why: "Las lesiones pasan en cualquier lugar: el botiquín tiene que estar cerca.",
-    learning: "Un botiquín en la casa, el trabajo, los vehículos y para el deporte.",
-    action: toGuide("botiquin"),
-  },
-  {
-    id: "botiquin-cuidado",
-    format: "¿Qué hacés?",
-    topic: "Botiquín",
-    prompt: "Ya armaste tu botiquín. ¿Qué más indica la guía?",
-    options: [
-      option("a", "Dejarlo guardado en el lugar más escondido.", false, "No: hay que ubicarlo en un lugar al que se pueda llegar fácil."),
-      option("b", "Ubicarlo en un lugar de fácil acceso y revisar cada tanto que los elementos estén en buen estado.", true, "Así es. Podés sumar los medicamentos que usás habitualmente y que te recetó tu médico o médica."),
-      option("c", "No tocarlo hasta que haga falta.", false, "La guía pide revisarlo cada tanto para que los elementos estén en buen estado."),
-    ],
-    why: "Un botiquín inaccesible o con elementos vencidos no ayuda cuando hace falta.",
-    learning: "El botiquín, a mano y revisado cada tanto.",
     action: toGuide("botiquin"),
   },
   /* ── Vacuna antitetánica ── */
@@ -721,19 +502,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Qué corresponde después de una herida depende de las dosis recibidas y del tiempo desde la última.",
     learning: "Después de una herida: consultá y llevá tu carnet de vacunas.",
-    action: toGuide("vacuna-antitetanica"),
-  },
-  {
-    id: "tetanos-donde",
-    format: "Verdadero o falso",
-    topic: "Vacuna antitetánica",
-    prompt: "Según el Ministerio de Salud, las vacunas del Calendario Nacional, como la doble bacteriana, se dan de forma gratuita en vacunatorios, centros de salud y hospitales públicos.",
-    options: [
-      option("a", "Verdadero", true, "Correcto: es lo que indica el Ministerio. Llevá el carnet de vacunas para que lo revisen."),
-      option("b", "Falso", false, "El Ministerio indica que las vacunas del Calendario Nacional están disponibles de forma gratuita en vacunatorios, centros de salud y hospitales públicos."),
-    ],
-    why: "Que sea gratuita no es un obstáculo para tenerla al día.",
-    learning: "La doble bacteriana es parte del Calendario Nacional.",
     action: toGuide("vacuna-antitetanica"),
   },
 ]
