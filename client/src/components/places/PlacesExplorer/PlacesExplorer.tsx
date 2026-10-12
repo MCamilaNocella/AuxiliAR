@@ -16,6 +16,7 @@ import { CategoryFilter } from "../CategoryFilter"
 import { FiltersToggle } from "../FiltersToggle"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
+import { PlacesMapLegend } from "../PlacesMapLegend"
 import { PlacesMapView } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
@@ -238,6 +239,11 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
           {map && <PlacesViewSwitch view={view} onChange={changeView} />}
           {!isDesktop && <FiltersToggle ref={toggleRef} open={filtersOpen} activeCount={panelFilters} controls={panelId} onToggle={() => setFiltersOpen((open) => !open)} />}
         </div>
+        {map && view === "map" && results.length > 0 && (
+          <div className="lg:pb-3">
+            <PlacesMapLegend entries={results} />
+          </div>
+        )}
       </div>
 
       {mentalHealth === "crisis" && <UrgentHelp context="crisis" />}
