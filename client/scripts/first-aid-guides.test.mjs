@@ -78,7 +78,7 @@ test("no emergency number is presented as universal: guides send people to the n
   }
   for (const guide of GUIDES.filter(({ callFirst }) => callFirst)) {
     const html = renderGuide(guide)
-    assert.ok(text(html).includes("número de emergencias de tu localidad"), guide.slug)
+    assert.ok(!text(html).includes("Si es una emergencia, llamá o pedí que llamen"), `${guide.slug}: the numbers are always in the top menu`)
     assert.ok(text(html).includes("Ver números de emergencia"), guide.slug)
     assert.ok(text(html).includes("Qué decir cuando llamás"), guide.slug)
     assert.ok(!html.includes("tel:107"), guide.slug)
