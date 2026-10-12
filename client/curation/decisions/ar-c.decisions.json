@@ -208,6 +208,15 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-11",
       "reason": "Se carga a mano el Hospital Garrahan (consulta pediátrica con gratuidad y acceso documentados por las páginas del propio Hospital), con las coordenadas y la comuna del dataset oficial de Hospitales (reproyección EPSG:9498 → WGS84) controladas el 11/10/2026 contra USIG (a unos 104 m). El dataset no tiene id: la clave es el slug de su nombre y el id de AuxiliAR es el que ya figuraba en id-map.json. Sin decisiones «apply»: el pipeline pisaría la fecha y la nota de las coordenadas con las del lote CABA 2 (7/10/2026)."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-ninos-p-de-elizalde",
+      "resourceId": "hospital-general-de-ninos-pedro-de-elizalde",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el Hospital General de Niños Pedro de Elizalde (atención de diabetes pediátrica, con gratuidad documentada por el directorio del Programa de Diabetes), con las coordenadas y la comuna del dataset oficial de Hospitales (reproyección EPSG:9498 → WGS84) controladas contra USIG. El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»: el pipeline pisaría la fecha y la nota de las coordenadas."
     }
   ]
 }

@@ -47,9 +47,9 @@ const explorer = (props) => createElement(PlacesExplorer, { scope: SCOPE, filter
 
 test("only places with verified coordinates get a pin; the rest stay in the list", () => {
   const all = entries()
-  assert.equal(all.length, 7)
-  // the three CeSACs and the Garrahan have verified coordinates from the official dataset; the three hospitals of this fixture have none yet
-  assert.deepEqual(pinIds(all), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan"])
+  assert.equal(all.length, 8)
+  // the three CeSACs, the Garrahan and the Elizalde have verified coordinates from the official dataset; the three hospitals of this fixture have none yet
+  assert.deepEqual(pinIds(all), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde"])
   assert.equal(util.countUnmapped(all), 3)
   for (const pin of util.getMapPins(all)) {
     const place = places.find(({ id }) => id === pin.id)
@@ -79,10 +79,10 @@ test("a candidate (unverified) point is never drawn, and a place without one nev
 test("the map and the list share the search and the filters", () => {
   // the same results feed both: what is on the map is a subset of what the list shows
   for (const [filterId, query, expectedPins, expectedList] of [
-    ["all", "", 4, 7],
+    ["all", "", 5, 8],
     ["vaccination", "", 3, 3],
     ["dentistry", "", 3, 3],
-    ["medical", "", 4, 4],
+    ["medical", "", 5, 5],
     ["emergency", "", 0, 3],
     ["all", "la boca", 1, 1],
     ["all", "santa lucia", 0, 1],
@@ -99,8 +99,8 @@ test("the map and the list share the search and the filters", () => {
 
 test("with the real data: every current place has a verified point; the hospitals' are reprojected from the official dataset", () => {
   const all = util.filterPlaces(realPlaces, DAY, { query: "", filterId: "all", scope: SCOPE })
-  assert.equal(all.length, 7)
-  assert.deepEqual(pinIds(all), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
+  assert.equal(all.length, 8)
+  assert.deepEqual(pinIds(all), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
   assert.equal(util.countUnmapped(all), 0)
   for (const pin of util.getMapPins(all)) {
     const place = realPlaces.find(({ id }) => id === pin.id)

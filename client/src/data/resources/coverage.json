@@ -2,8 +2,32 @@
   "schemaVersion": 2,
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
+    "AR-B": {
+      "places": 2,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care"
+      ],
+      "divisions": [
+        "Florencio Varela",
+        "La Matanza"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
     "AR-C": {
-      "places": 8,
+      "places": 9,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -58,6 +82,75 @@
         "animal-health": {
           "list": "2026-11-08",
           "map": "2026-11-08"
+        }
+      }
+    },
+    "AR-F": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-T": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-X": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
         }
       }
     }

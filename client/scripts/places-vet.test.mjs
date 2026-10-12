@@ -33,6 +33,8 @@ const DAY = data.todayInArgentina()
 const ID = "centro-fijo-veterinario-costanera-sur"
 const PAGE = "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
 const real = await data.loadPlaces("AR-C")
+// the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
+for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, isVerifiedFree, buildPlaceView } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const centre = raw.find(({ id }) => id === ID)
@@ -160,8 +162,8 @@ test("official links: the page once in Sobre AuxiliAR with what it backs; the pa
 
 test("the Indoamericano centre is not in the data, and the other places did not change", () => {
   assert.equal(raw.some(({ id }) => id === "centro-fijo-veterinario-indoamericano"), false)
-  assert.equal(raw.length, 8)
-  assert.deepEqual(raw.map(({ id }) => id).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
+  assert.equal(raw.length, 9)
+  assert.deepEqual(raw.map(({ id }) => id).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
   // vaccination and mental health of CeSAC 47, mental health of the others and dentistry: still not confirmed free
   const notFree = [["cesac-47", "vacunacion"], ["cesac-47", "psiquiatria"], ["cesac-47", "psicologia"], ["cesac-3", "salud-mental"], ["cesac-41", "salud-mental"], ["cesac-3", "odontologia"], ["cesac-41", "odontologia"], ["cesac-47", "odontologia"]]
   for (const [placeId, serviceId] of notFree) {
@@ -175,7 +177,7 @@ test("the server copy has the centre, without the evidence (the server does not 
   assert.ok(copy)
   assert.equal(copy.services[0].cost, "free")
   assert.equal(copy.services[0].evidence, undefined)
-  assert.equal(server.length, 22)
+  assert.equal(server.length, 28)
 })
 
 /* ── Search by verb: «castrar» finds the castration, and nothing else is widened ── */

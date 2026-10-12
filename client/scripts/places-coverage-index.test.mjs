@@ -31,6 +31,8 @@ const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
 const real = await data.loadPlaces("AR-C")
+// the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
+for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const visibility = { selectPlaces, PLACE_FILTERS, EMPTY_PLACE_QUERY: EMPTY, isMappable: data.isMappable }
 
 const dayBefore = (day) => new Date(Date.parse(`${day}T00:00:00Z`) - 86400000).toISOString().slice(0, 10)

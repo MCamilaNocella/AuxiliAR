@@ -118,6 +118,7 @@ test("the real data now has exactly the approved free services of the batch, and
     "cesac-47/atencion-primaria",
     "cesac-47/pediatria",
     "hospital-de-pediatria-dr-j-garrahan/consulta-pediatrica-alta-complejidad (con condiciones)",
+    "hospital-general-de-ninos-pedro-de-elizalde/diabetes-pediatrica (con condiciones)",
     "hospital-odontologia-carrillo/guardia-odontologica",
     "hospital-odontologia-duenas/guardia-odontologica",
   ])

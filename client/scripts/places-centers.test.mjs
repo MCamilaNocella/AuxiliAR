@@ -120,7 +120,7 @@ test("the chat finds Encontrar atención and its sections: they have a summary a
   assert.equal(category.hasInfo, true)
   for (const section of HEALTH_CENTERS.sections) assert.ok(category.summary.includes(section.summary))
   // the summary of the map says where there is coverage today: when another province is added, it has to change
-  assert.deepEqual(Object.keys((await vite.ssrLoadModule("/src/data/resources/index.ts")).COVERAGE), ["AR-C"], "the summary of the map says 'Ciudad de Buenos Aires' only: update it")
+  assert.deepEqual(Object.keys((await vite.ssrLoadModule("/src/data/resources/index.ts")).COVERAGE), ["AR-B", "AR-C", "AR-F", "AR-T", "AR-X"], "the summary of the map names these provinces: update it when another is added")
 })
 
 test("the sections drawer of a category: closed it is invisible (out of the tab order and the reading order), open it is the menu", async () => {

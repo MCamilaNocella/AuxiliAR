@@ -29,6 +29,8 @@ const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxono
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
 const real = await data.loadPlaces("AR-C")
+// the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
+for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 // The places for people (everything but the veterinary centre): the wall tests below add a made-up veterinary place to them
 const realHuman = real.filter(({ facilityType }) => facilityType !== "public-veterinary")
 const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces, matchingServices, quickFilterHasData } = places

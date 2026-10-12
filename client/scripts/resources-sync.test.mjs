@@ -431,7 +431,7 @@ test("the app: places are loaded by province, on demand", async () => {
   const first = app.loadPlaces("AR-C")
   assert.deepEqual((await first).map(({ id }) => id), realPlaces.map(({ id }) => id))
   assert.equal(app.loadPlaces("AR-C"), first)
-  assert.deepEqual(await app.loadPlaces("AR-B"), [])
+  assert.deepEqual(await app.loadPlaces("AR-S"), [])
   // Nothing of places/ is in the bundled resources (emergency numbers don't wait for a request)
   assert.equal(app.RESOURCES.some((resource) => (resource.services ?? []).length > 0), false)
 

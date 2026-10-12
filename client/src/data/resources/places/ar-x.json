@@ -1,0 +1,112 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-infantil-municipal-sixto-gerardo-gonzalez",
+      "name": "Hospital Infantil Municipal Sixto Gerardo González",
+      "shortName": "Hospital Infantil Municipal (Córdoba)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Secretaría de Salud de la Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543514708800",
+          "display": "470-8800",
+          "label": "Central"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5493516100406",
+          "display": "351 6100406",
+          "label": "WhatsApp de la ficha institucional"
+        }
+      ],
+      "address": {
+        "street": "Juan Antonio Lavalleja",
+        "number": "3050",
+        "neighborhood": "Alta Córdoba",
+        "locality": "Ciudad de Córdoba",
+        "department": "Capital",
+        "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.3799181,
+        "lng": -64.1817872,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital Infantil Municipal, Juan Lavalleja 3050, Córdoba»: el nombre del hospital, la calle Juan Lavalleja y el número 3050 coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-pediatrica",
+          "type": "specialty-care",
+          "name": "Atención pediátrica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La Municipalidad de Córdoba informó en febrero de 2026 que el Hospital Infantil integra su red de instituciones públicas y gratuitas.",
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "requirements": [
+            "Para población pediátrica; la ficha no publica un límite de edad.",
+            "La ficha publica los internos 5029 y 5083 (de 7:30 a 13:30) y un call center de turnos: consultá por la especialidad que necesitás."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La ficha del hospital publica un call center de turnos y los internos 5029 y 5083. No confirma que haya turnos disponibles."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba",
+            "url": "https://cordoba.gob.ar/2025-salud-gratuita-14-millones-de-atenciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "Nota del 03/02/2026 sobre la atención gratuita en la red municipal: incluye al Hospital Infantil. La ficha del hospital (salud.cordoba.gob.ar) publica especialidades y contactos. Una noticia de donación usa otra dirección (Luis Góngora 550): no se carga como ingreso."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba",
+              "url": "https://cordoba.gob.ar/2025-salud-gratuita-14-millones-de-atenciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La atención gratuita de la red municipal «en hospitales de Pronta Atención, Infantil, Príncipe de Asturias, Urgencia…» (nota del 03/02/2026)."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba",
+              "url": "https://salud.cordoba.gob.ar/hospital-infantil/",
+              "retrievedAt": "2026-10-12",
+              "note": "Ficha del Hospital Infantil: especialidades, domicilio y contactos."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Los teléfonos de contactos específicos de la ficha no son líneas de emergencia."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba",
+        "url": "https://salud.cordoba.gob.ar/hospital-infantil/",
+        "note": "Ficha del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Dirección de la ficha coincidente con el directorio de la Red Federal Garrahan."
+      }
+    }
+  ]
+}

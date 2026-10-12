@@ -897,7 +897,7 @@
             "note": "Es el horario de los servicios asistenciales que publica la página de horarios. El día y la hora de cada consulta son los del turno. La página informa además «Emergencias: 24 hs. los 365 días del año», pero para urgencias sugiere ir primero al centro de salud con guardia más cercano, que pide la derivación si hace falta: por eso la guardia no figura acá."
           },
           "cost": "free",
-          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura.",
+          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura. La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales: la gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
           "audience": [
             "children",
             "adolescents"
@@ -978,6 +978,107 @@
         "notes": "Verificación documental del 11/10/2026 con las páginas oficiales del Hospital. Los teléfonos de Informes salen de la página de Informes; los de la guardia y del conmutador del dataset de la Ciudad no se cargan porque la página del Hospital no los confirma."
       },
       "aliases": ["Garrahan", "Hospital Garrahan", "Hospital de Niños Garrahan"]
+    },
+    {
+      "id": "hospital-general-de-ninos-pedro-de-elizalde",
+      "name": "Hospital General de Niños Pedro de Elizalde",
+      "shortName": "Hospital Elizalde",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541143632100",
+          "display": "4363-2100",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Montes de Oca",
+        "number": "40",
+        "neighborhood": "Barracas",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6288459,
+        "lng": -58.3775546,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad, dataset «Hospitales» (licencia CC-BY-2.5-AR), reproyectado de EPSG:9498 a WGS84 (curation/crs). Controlado el 12/10/2026 contra el normalizador USIG para «Montes de Oca 40»: a unos 10 m. Aproximado.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "diabetes-pediatrica",
+          "type": "specialty-care",
+          "name": "Prevención y asistencia de diabetes pediátrica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio oficial del Programa de Prevención y Asistencia de la Diabetes de la Ciudad lo enumera entre los establecimientos de atención gratuita con servicio de diabetes. Alcanza a este servicio, no a todas las prestaciones del hospital.",
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "requirements": [
+            "Es para población pediátrica con diabetes."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Solicitá orientación o turno por los canales del hospital: la página no explica el circuito ni confirma que haya cupos."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Programa de Prevención y Asistencia de la Diabetes",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/diabetes/programa-de-prevencion-y-asistencia-la-diabetes",
+            "retrievedAt": "2026-10-12",
+            "note": "Directorio «Establecimientos de atención gratuita con Servicios de Diabetes en la Ciudad de Buenos Aires»: lista al Hospital Pedro de Elizalde (Montes de Oca 40, Hospital General de Niños). No dice horarios, turnos ni cupos. No se extiende a insumos ni a medicamentos."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/diabetes/programa-de-prevencion-y-asistencia-la-diabetes",
+              "retrievedAt": "2026-10-12",
+              "note": "«Establecimientos de atención gratuita con Servicios de Diabetes en la Ciudad de Buenos Aires»: «Hospital Pedro de Elizalde · Montes de Oca 40 · Hospital General de Niños»."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/hospital-pedro-de-elizalde",
+              "retrievedAt": "2026-10-12",
+              "note": "Ficha del hospital: domicilio y central."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado: la página no certifica el resto de las prestaciones del hospital ni la atención habitual de turistas extranjeros."
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "hospital-general-de-ninos-p-de-elizalde" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/hospital-pedro-de-elizalde",
+        "note": "Ficha del hospital: domicilio y central. El teléfono de guardia del dataset de la Ciudad no se carga: la ficha no lo confirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado (diabetes pediátrica)."
+      }
     }
   ]
 }

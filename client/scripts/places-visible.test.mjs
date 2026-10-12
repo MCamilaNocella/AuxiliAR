@@ -28,6 +28,8 @@ const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDe
 
 const DAY = data.todayInArgentina()
 const real = await data.loadPlaces("AR-C")
+// the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
+for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, getPlaceFacets, isVerifiedFree } = places
 const VISIBLE = { confirmedOnly: true }
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
@@ -36,24 +38,24 @@ const idsOf = (entries) => entries.map(({ place }) => place.id)
 const serviceIds = (entries, id) => entries.find(({ place }) => place.id === id)?.services.map(({ id: serviceId }) => serviceId)
 
 test("the data keeps every record: nothing pending was deleted", () => {
-  assert.equal(raw.length, 8)
-  assert.equal(raw.flatMap(({ services }) => services).length, 35, "the 35 prestaciones are still in the dataset")
+  assert.equal(raw.length, 9)
+  assert.equal(raw.flatMap(({ services }) => services).length, 36, "the 36 prestaciones are still in the dataset")
   const withoutGratuity = raw.flatMap((place) => place.services.filter((service) => !(service.cost === "free" && service.source?.note)).map((service) => `${place.id}/${service.id}`))
   assert.equal(withoutGratuity.length, 25, "the 25 with no documented gratuity are kept for research")
 })
 
-test("only documented gratuity is visible: 7 places and 10 prestaciones, the place with none is out", () => {
+test("only documented gratuity is visible: 8 places and 11 prestaciones, the place with none is out", () => {
   const entries = shown()
-  assert.deepEqual(idsOf(entries).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
+  assert.deepEqual(idsOf(entries).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-odontologia-carrillo", "hospital-odontologia-duenas"])
   assert.ok(!idsOf(entries).includes("hospital-oftalmologico-santa-lucia"), "no prestación of the Santa Lucía hospital has documented gratuity")
   for (const { place, services } of entries) for (const service of services) assert.ok(isVerifiedFree(place, service), `${place.id}/${service.id}`)
-  assert.equal(entries.flatMap(({ services }) => services).length, 10)
+  assert.equal(entries.flatMap(({ services }) => services).length, 11)
   // a place with documented and not documented prestaciones shows only the documented ones
   assert.deepEqual(serviceIds(entries, "cesac-3"), ["atencion-primaria", "vacunacion"])
   assert.deepEqual(serviceIds(entries, "cesac-41"), ["atencion-primaria", "vacunacion"])
   assert.deepEqual(serviceIds(entries, "cesac-47"), ["atencion-primaria", "pediatria"])
   // without the policy the data has more (the explorer is the one that applies it)
-  assert.equal(selectPlaces(real, DAY, EMPTY).length, 8)
+  assert.equal(selectPlaces(real, DAY, EMPTY).length, 9)
 })
 
 test("searches, filters and facets never reveal an unverified prestación", () => {
@@ -78,7 +80,7 @@ test("searches, filters and facets never reveal an unverified prestación", () =
   assert.equal(count(facets.types, "vaccination"), 2)
   assert.equal(count(facets.types, "emergency-room"), 2)
   assert.equal(count(facets.types, "spaying-neutering"), 1)
-  assert.equal(count(facets.provinces, "AR-C"), 7, "the places counted are the visible ones")
+  assert.equal(count(facets.provinces, "AR-C"), 8, "the places counted are the visible ones")
   assert.equal(places.quickFilterHasData("mental-health", shown()), false)
   assert.equal(places.quickFilterHasData("animal-health", shown()), true)
   // every combination of one word and one quick filter shows only documented services

@@ -1336,6 +1336,279 @@
       }
     },
     {
+      "id": "hospital-de-alta-complejidad-el-cruce",
+      "name": "Hospital de Alta Complejidad en Red El Cruce - Dr. Néstor Carlos Kirchner",
+      "shortName": "Hospital El Cruce",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-B",
+        "organization": "Hospital público SAMIC listado por el Ministerio de Salud de la Nación"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541142109000",
+          "display": "4210-9000",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Calchaquí",
+        "number": "5401",
+        "locality": "Florencio Varela",
+        "department": "Florencio Varela",
+        "province": "AR-B"
+      },
+      "coordinates": {
+        "lat": -34.7713178,
+        "lng": -58.2693668,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital El Cruce, Florencio Varela»: el nombre del hospital y la Avenida Calchaquí coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-alta-complejidad-por-derivacion",
+          "type": "specialty-care",
+          "name": "Atención especializada de alta complejidad, por derivación de la red",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La historia institucional del hospital habla de acercar «una atención en salud especializada, de calidad y gratuita». La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales. La gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
+          "requirements": [
+            "Pacientes que necesitan mayor complejidad y son derivados desde hospitales de la red regional. No es un consultorio de acceso directo sin derivación.",
+            "Alcance verificado: personas argentinas y extranjeras con residencia permanente."
+          ],
+          "audience": [
+            "all"
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La página indica la derivación desde hospitales de la red regional; no explica el pedido de turno ni confirma cupos."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital El Cruce",
+            "url": "https://www.hospitalelcruce.org/index.php/historialateral",
+            "retrievedAt": "2026-10-12",
+            "note": "Historia institucional: atención especializada «de calidad y gratuita». Publica el domicilio (Av. Calchaquí 5401) y la central. No publica horarios de guardia."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No se asignan horarios de guardia a partir del nombre."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Hospital El Cruce",
+        "url": "https://www.hospitalelcruce.org/",
+        "note": "Sitio institucional. Hospital SAMIC listado por el Ministerio de Salud de la Nación."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). La página se leyó por descarga directa del HTML: el lector web devolvió 403."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-de-clinicas-nicolas-avellaneda",
+      "name": "Hospital de Clínicas Presidente Dr. Nicolás Avellaneda",
+      "shortName": "Hospital de Clínicas (Tucumán)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-T",
+        "organization": "Ministerio de Salud Pública de Tucumán / SIPROSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543814533700",
+          "display": "453-3700",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Catamarca",
+        "number": "2000",
+        "locality": "San Miguel de Tucumán",
+        "department": "Capital",
+        "province": "AR-T"
+      },
+      "coordinates": {
+        "lat": -26.8011683,
+        "lng": -65.2049075,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Catamarca 2000, San Miguel de Tucumán»: el punto de OpenStreetMap es el hospital con ese nombre y esa calle y número. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-salud-adolescente",
+          "type": "specialty-care",
+          "name": "Consulta de salud adolescente",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El Programa Provincial de Salud Integral del Adolescente del Ministerio de Salud lo incluye, con su domicilio, en su listado de lugares gratuitos para consultar sobre salud adolescente. Alcanza a esta consulta, no a toda la cartera del hospital.",
+          "requirements": [
+            "Para adolescentes; el listado no fija un rango de edad.",
+            "La ficha del hospital publica ginecología infantojuvenil y de la adolescencia."
+          ],
+          "audience": [
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá en la central por el circuito de adolescencia y sus turnos: las páginas no los explican ni confirman cupos."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud Pública de Tucumán",
+            "url": "https://msptucuman.gov.ar/programas-nacionales/dpto-maternidad-e-infancia/programa-provincial-de-salud-integral-del-adolescente/lugares-gratuitos-para-consultar-sobre-salud-adolescente/",
+            "retrievedAt": "2026-10-12",
+            "note": "Listado «Lugares gratuitos para consultar sobre salud adolescente»: incluye al Hospital de Clínicas Nicolás Avellaneda (Catamarca 2000). El listado trae un teléfono distinto del de la ficha del hospital; se carga el de la ficha, que es la fuente primaria del contacto."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No se certifica la gratuidad del resto de las prestaciones del hospital."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Ministerio de Salud Pública de Tucumán",
+        "url": "https://msptucuman.gov.ar/hospitales/hospital-de-clinicas-presidente-dr-nicolas-avellaneda/",
+        "note": "Ficha del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado (salud adolescente)."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-de-la-madre-y-el-nino",
+      "name": "Hospital de la Madre y el Niño",
+      "shortName": "Hospital de la Madre y el Niño (La Rioja)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-F",
+        "organization": "Hospital público provincial de La Rioja"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543804456900",
+          "display": "445-6900",
+          "label": "Central para consultas generales"
+        }
+      ],
+      "address": {
+        "street": "Av. 1° de Marzo",
+        "number": "s/n",
+        "reference": "Entre las calles Chile y José Atencio",
+        "locality": "Ciudad de La Rioja",
+        "department": "Capital",
+        "province": "AR-F"
+      },
+      "coordinates": {
+        "lat": -29.4308454,
+        "lng": -66.8422401,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital de la Madre y el Niño, La Rioja»: el nombre del hospital y la calle 1 de Marzo coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-pediatrica-alta-complejidad",
+          "type": "specialty-care",
+          "name": "Atención pediátrica de alta complejidad",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La guía del paciente del hospital dice que es un centro de salud pública y gratuita para niñas, niños y adolescentes de 0 a 14 años.",
+          "requirements": [
+            "De 0 a 14 años, según la guía institucional; se priorizan los pacientes referidos o derivados.",
+            "DNI, pedido de interconsulta, formulario de referencia y contrarreferencia y, si tiene, carnet de obra social.",
+            "La oficina de coordinación trabaja por solicitud de profesionales y no admite consultas particulares."
+          ],
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La guía del paciente publica el circuito de interconsulta y una sección de turnos. No confirma que haya turnos disponibles."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital de la Madre y el Niño",
+            "url": "https://www.hospitalmyn.gob.ar/site2019/?page_id=1402",
+            "retrievedAt": "2026-10-12",
+            "note": "Guía del paciente: «un centro de salud pública y gratuita destinado a la atención de niños, niñas y adolescentes, de 0 a 14 años». Conserva un apartado de visitas del tiempo del COVID-19: esos horarios no se cargan."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Los internos de la oficina de coordinación son para el circuito entre equipos, no un canal para familias."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Hospital de la Madre y el Niño",
+        "url": "https://www.hospitalmyn.gob.ar/site2019/",
+        "note": "Sitio del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Domicilio sin número: se publica así («s/n»)."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
       "id": "hospital-de-pediatria-dr-j-garrahan",
       "name": "Hospital de Pediatría Prof. Dr. Juan P. Garrahan",
       "shortName": "Hospital Garrahan",
@@ -1401,7 +1674,7 @@
             "note": "Es el horario de los servicios asistenciales que publica la página de horarios. El día y la hora de cada consulta son los del turno. La página informa además «Emergencias: 24 hs. los 365 días del año», pero para urgencias sugiere ir primero al centro de salud con guardia más cercano, que pide la derivación si hace falta: por eso la guardia no figura acá."
           },
           "cost": "free",
-          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura.",
+          "costNote": "La página oficial dice que el Hospital es público y no realiza ningún tipo de cobro por la atención. Si la persona tiene obra social u otra cobertura, el Hospital pide presentarla para la cobertura de la prestación. Los remedios y el material descartable los entrega el Hospital, salvo un pedido expreso a la familia para gestionarlos por su cobertura. La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales: la gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
           "requirements": [
             "Atiende de 0 a 15 años.",
             "Para una consulta nueva: derivación del pediatra, del centro de salud o del hospital donde se atiende la persona, con el motivo de consulta en un hospital de alta complejidad, y resumen de la historia clínica y de los estudios hechos. Solo un profesional puede pedir la derivación: ningún familiar puede hacerlo.",
@@ -1455,6 +1728,198 @@
         "Hospital Garrahan",
         "Hospital de Niños Garrahan"
       ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-general-de-ninos-pedro-de-elizalde",
+      "name": "Hospital General de Niños Pedro de Elizalde",
+      "shortName": "Hospital Elizalde",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541143632100",
+          "display": "4363-2100",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Montes de Oca",
+        "number": "40",
+        "neighborhood": "Barracas",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 4",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6288459,
+        "lng": -58.3775546,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad, dataset «Hospitales» (licencia CC-BY-2.5-AR), reproyectado de EPSG:9498 a WGS84 (curation/crs). Controlado el 12/10/2026 contra el normalizador USIG para «Montes de Oca 40»: a unos 10 m. Aproximado.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "diabetes-pediatrica",
+          "type": "specialty-care",
+          "name": "Prevención y asistencia de diabetes pediátrica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio oficial del Programa de Prevención y Asistencia de la Diabetes de la Ciudad lo enumera entre los establecimientos de atención gratuita con servicio de diabetes. Alcanza a este servicio, no a todas las prestaciones del hospital.",
+          "requirements": [
+            "Es para población pediátrica con diabetes."
+          ],
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Solicitá orientación o turno por los canales del hospital: la página no explica el circuito ni confirma que haya cupos."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Programa de Prevención y Asistencia de la Diabetes",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/diabetes/programa-de-prevencion-y-asistencia-la-diabetes",
+            "retrievedAt": "2026-10-12",
+            "note": "Directorio «Establecimientos de atención gratuita con Servicios de Diabetes en la Ciudad de Buenos Aires»: lista al Hospital Pedro de Elizalde (Montes de Oca 40, Hospital General de Niños). No dice horarios, turnos ni cupos. No se extiende a insumos ni a medicamentos."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado: la página no certifica el resto de las prestaciones del hospital ni la atención habitual de turistas extranjeros."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-hospitales": "hospital-general-de-ninos-p-de-elizalde"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/hospital-pedro-de-elizalde",
+        "note": "Ficha del hospital: domicilio y central. El teléfono de guardia del dataset de la Ciudad no se carga: la ficha no lo confirma."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado (diabetes pediátrica)."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-infantil-municipal-sixto-gerardo-gonzalez",
+      "name": "Hospital Infantil Municipal Sixto Gerardo González",
+      "shortName": "Hospital Infantil Municipal (Córdoba)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Secretaría de Salud de la Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543514708800",
+          "display": "470-8800",
+          "label": "Central"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5493516100406",
+          "display": "351 6100406",
+          "label": "WhatsApp de la ficha institucional"
+        }
+      ],
+      "address": {
+        "street": "Juan Antonio Lavalleja",
+        "number": "3050",
+        "neighborhood": "Alta Córdoba",
+        "locality": "Ciudad de Córdoba",
+        "department": "Capital",
+        "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.3799181,
+        "lng": -64.1817872,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital Infantil Municipal, Juan Lavalleja 3050, Córdoba»: el nombre del hospital, la calle Juan Lavalleja y el número 3050 coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-pediatrica",
+          "type": "specialty-care",
+          "name": "Atención pediátrica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La Municipalidad de Córdoba informó en febrero de 2026 que el Hospital Infantil integra su red de instituciones públicas y gratuitas.",
+          "requirements": [
+            "Para población pediátrica; la ficha no publica un límite de edad.",
+            "La ficha publica los internos 5029 y 5083 (de 7:30 a 13:30) y un call center de turnos: consultá por la especialidad que necesitás."
+          ],
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La ficha del hospital publica un call center de turnos y los internos 5029 y 5083. No confirma que haya turnos disponibles."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Córdoba",
+            "url": "https://cordoba.gob.ar/2025-salud-gratuita-14-millones-de-atenciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "Nota del 03/02/2026 sobre la atención gratuita en la red municipal: incluye al Hospital Infantil. La ficha del hospital (salud.cordoba.gob.ar) publica especialidades y contactos. Una noticia de donación usa otra dirección (Luis Góngora 550): no se carga como ingreso."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Los teléfonos de contactos específicos de la ficha no son líneas de emergencia."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba",
+        "url": "https://salud.cordoba.gob.ar/hospital-infantil/",
+        "note": "Ficha del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Dirección de la ficha coincidente con el directorio de la Red Federal Garrahan."
+      },
       "derivedCategories": [
         "salud-fisica"
       ]
@@ -1751,6 +2216,96 @@
         "Santa Lucía",
         "Oftalmológico Santa Lucía"
       ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-samic-rene-favaloro",
+      "name": "Hospital General de Agudos SAMIC Dr. René Favaloro",
+      "shortName": "Hospital Favaloro (La Matanza)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-B",
+        "organization": "Hospital público SAMIC listado por el Ministerio de Salud de la Nación"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541160762700",
+          "display": "6076-2700",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Eva Perón",
+        "number": "5200",
+        "locality": "Rafael Castillo",
+        "department": "La Matanza",
+        "province": "AR-B"
+      },
+      "coordinates": {
+        "lat": -34.704399,
+        "lng": -58.6393522,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital Favaloro La Matanza»: el nombre del hospital y la localidad de Rafael Castillo coinciden con el domicilio oficial; la calle del punto en OpenStreetMap no es la Av. Eva Perón. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-medica-hospitalaria",
+          "type": "specialty-care",
+          "name": "Atención médica y servicios hospitalarios",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La Municipalidad de La Matanza identifica al hospital y habla de una salud pública, gratuita y de calidad. La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales. La gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
+          "requirements": [
+            "Turnos en el hall del hospital: lunes a viernes de 8 a 18 y sábados de 8 a 13. Turnos por WhatsApp: 11 2271-5449, lunes a viernes de 8 a 16.",
+            "Alcance verificado: personas argentinas y extranjeras con residencia permanente."
+          ],
+          "audience": [
+            "all"
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turnos en el hall (lunes a viernes de 8 a 18, sábados de 8 a 13) o por WhatsApp (lunes a viernes de 8 a 16), según la web del hospital. No confirma que haya turnos disponibles."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de La Matanza",
+            "url": "https://www.lamatanza.gov.ar/noticias/944/details",
+            "retrievedAt": "2026-10-12",
+            "note": "Nota del Municipio sobre el Hospital SAMIC René Favaloro de Rafael Castillo: «una salud pública, gratuita y de calidad». El sitio del hospital confirma ubicación, central y turnos, y publica guardia de adultos y pediátrica las 24 horas: la guardia no se carga como prestación aparte."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No confundir con la Fundación Favaloro ni con su hospital universitario privado. La gratuidad sale de una nota del Municipio: revisar si el hospital la publica en su propio sitio."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Hospital Favaloro",
+        "url": "https://hospitalfavaloro.org/",
+        "note": "Sitio del hospital. Establecimiento SAMIC publicado por el Ministerio de Salud de la Nación."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). El punto del mapa es el que OpenStreetMap da para el hospital; el domicilio oficial dice Av. Eva Perón 5200."
+      },
       "derivedCategories": [
         "salud-fisica"
       ]

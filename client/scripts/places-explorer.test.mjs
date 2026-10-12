@@ -43,17 +43,17 @@ test("search ignores case and accents, in names, services and useful data", () =
   // every word has to match, and a word that is nowhere finds nothing
   assert.deepEqual(search("guardia oftalmologica"), ["hospital-oftalmologico-santa-lucia"])
   assert.deepEqual(search("guardia xyz"), [])
-  assert.equal(search("").length, 7)
+  assert.equal(search("").length, 8)
 })
 
 test("simple filters group service types", () => {
   const withFilter = (filterId) => ids(util.filterPlaces(places, DAY, { query: "", filterId }))
-  assert.equal(withFilter("all").length, 7)
+  assert.equal(withFilter("all").length, 8)
   assert.deepEqual(withFilter("vaccination"), ["cesac-3", "cesac-41", "cesac-47"])
   assert.deepEqual(withFilter("emergency"), ["hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
   assert.deepEqual(withFilter("sexual-health"), ["cesac-3", "cesac-47"])
   assert.deepEqual(withFilter("mental-health"), ["cesac-3", "cesac-41", "cesac-47"])
-  assert.deepEqual(withFilter("medical"), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan"])
+  assert.deepEqual(withFilter("medical"), ["cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde"])
   assert.deepEqual(withFilter("dentistry"), ["cesac-3", "cesac-41", "cesac-47"])
   // the services of the active filter come first in the card
   const [entry] = util.getPlaceEntries([find("cesac-41")], DAY, "vaccination")
@@ -118,7 +118,7 @@ const serviceIds = (entries, placeId) => entries.find(({ place }) => place.id ==
 
 test("scope by category: places keep only the services that derive to it", () => {
   const physical = inScope({ category: "salud-fisica" })
-  assert.equal(physical.length, 7)
+  assert.equal(physical.length, 8)
   // CeSAC 3 offers mental health, contraception, IVE/ILE and HIV tests too: none of them shows up in physical health
   assert.deepEqual(serviceIds(physical, "cesac-3"), ["atencion-primaria", "vacunacion", "odontologia", "ecografia", "farmacia"])
   for (const { services } of physical) for (const { categories } of services) assert.ok(categories.includes("salud-fisica"))
@@ -131,8 +131,8 @@ test("scope by category: places keep only the services that derive to it", () =>
   assert.deepEqual(ids(inScope({ category: "esi" })), ["cesac-3", "cesac-47"])
   assert.deepEqual(inScope({ category: "animales" }), [])
   // no scope: everything, as before
-  assert.equal(ids(inScope(undefined)).length, 7)
-  assert.equal(ids(inScope({})).length, 7)
+  assert.equal(ids(inScope(undefined)).length, 8)
+  assert.equal(ids(inScope({})).length, 8)
 })
 
 test("scope by service types, and both together", () => {

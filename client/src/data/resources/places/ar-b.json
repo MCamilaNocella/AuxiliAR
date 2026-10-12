@@ -1,0 +1,203 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-de-alta-complejidad-el-cruce",
+      "name": "Hospital de Alta Complejidad en Red El Cruce - Dr. Néstor Carlos Kirchner",
+      "shortName": "Hospital El Cruce",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-B",
+        "organization": "Hospital público SAMIC listado por el Ministerio de Salud de la Nación"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541142109000",
+          "display": "4210-9000",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Calchaquí",
+        "number": "5401",
+        "locality": "Florencio Varela",
+        "department": "Florencio Varela",
+        "province": "AR-B"
+      },
+      "coordinates": {
+        "lat": -34.7713178,
+        "lng": -58.2693668,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital El Cruce, Florencio Varela»: el nombre del hospital y la Avenida Calchaquí coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-alta-complejidad-por-derivacion",
+          "type": "specialty-care",
+          "name": "Atención especializada de alta complejidad, por derivación de la red",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La historia institucional del hospital habla de acercar «una atención en salud especializada, de calidad y gratuita». La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales. La gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
+          "audience": [
+            "all"
+          ],
+          "requirements": [
+            "Pacientes que necesitan mayor complejidad y son derivados desde hospitales de la red regional. No es un consultorio de acceso directo sin derivación.",
+            "Alcance verificado: personas argentinas y extranjeras con residencia permanente."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La página indica la derivación desde hospitales de la red regional; no explica el pedido de turno ni confirma cupos."
+          },
+          "source": {
+            "organization": "Hospital El Cruce",
+            "url": "https://www.hospitalelcruce.org/index.php/historialateral",
+            "retrievedAt": "2026-10-12",
+            "note": "Historia institucional: atención especializada «de calidad y gratuita». Publica el domicilio (Av. Calchaquí 5401) y la central. No publica horarios de guardia."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Hospital El Cruce",
+              "url": "https://www.hospitalelcruce.org/index.php/historialateral",
+              "retrievedAt": "2026-10-12",
+              "note": "«…acercar a los habitantes de la región una atención en salud especializada, de calidad y gratuita.»"
+            },
+            {
+              "kind": "existence",
+              "organization": "Hospital El Cruce",
+              "url": "https://www.hospitalelcruce.org/",
+              "retrievedAt": "2026-10-12",
+              "note": "Sitio institucional: domicilio y central."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No se asignan horarios de guardia a partir del nombre."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Hospital El Cruce",
+        "url": "https://www.hospitalelcruce.org/",
+        "note": "Sitio institucional. Hospital SAMIC listado por el Ministerio de Salud de la Nación."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). La página se leyó por descarga directa del HTML: el lector web devolvió 403."
+      }
+    },
+    {
+      "id": "hospital-samic-rene-favaloro",
+      "name": "Hospital General de Agudos SAMIC Dr. René Favaloro",
+      "shortName": "Hospital Favaloro (La Matanza)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "national",
+        "province": "AR-B",
+        "organization": "Hospital público SAMIC listado por el Ministerio de Salud de la Nación"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541160762700",
+          "display": "6076-2700",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Av. Eva Perón",
+        "number": "5200",
+        "locality": "Rafael Castillo",
+        "department": "La Matanza",
+        "province": "AR-B"
+      },
+      "coordinates": {
+        "lat": -34.704399,
+        "lng": -58.6393522,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital Favaloro La Matanza»: el nombre del hospital y la localidad de Rafael Castillo coinciden con el domicilio oficial; la calle del punto en OpenStreetMap no es la Av. Eva Perón. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-medica-hospitalaria",
+          "type": "specialty-care",
+          "name": "Atención médica y servicios hospitalarios",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La Municipalidad de La Matanza identifica al hospital y habla de una salud pública, gratuita y de calidad. La Resolución 1066/2026 del Ministerio de Salud (Boletín Oficial, 11/08/2026) regula el cobro de la atención habitual a personas extranjeras sin residencia permanente en establecimientos nacionales. La gratuidad que se carga acá es para personas argentinas y extranjeras con residencia permanente; no se asegura para otros casos. La atención de emergencia no puede negarse por la situación migratoria.",
+          "audience": [
+            "all"
+          ],
+          "requirements": [
+            "Turnos en el hall del hospital: lunes a viernes de 8 a 18 y sábados de 8 a 13. Turnos por WhatsApp: 11 2271-5449, lunes a viernes de 8 a 16.",
+            "Alcance verificado: personas argentinas y extranjeras con residencia permanente."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turnos en el hall (lunes a viernes de 8 a 18, sábados de 8 a 13) o por WhatsApp (lunes a viernes de 8 a 16), según la web del hospital. No confirma que haya turnos disponibles."
+          },
+          "source": {
+            "organization": "Municipalidad de La Matanza",
+            "url": "https://www.lamatanza.gov.ar/noticias/944/details",
+            "retrievedAt": "2026-10-12",
+            "note": "Nota del Municipio sobre el Hospital SAMIC René Favaloro de Rafael Castillo: «una salud pública, gratuita y de calidad». El sitio del hospital confirma ubicación, central y turnos, y publica guardia de adultos y pediátrica las 24 horas: la guardia no se carga como prestación aparte."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de La Matanza",
+              "url": "https://www.lamatanza.gov.ar/noticias/944/details",
+              "retrievedAt": "2026-10-12",
+              "note": "El Hospital SAMIC Dr. René Favaloro, de Rafael Castillo: «…acceder a una salud pública, gratuita y de calidad, con servicios destacados como el de cirugía general, parto respetado, y diagnóstico y tratamiento, de primer nivel». Es una frase del Municipio, no de una página de servicios."
+            },
+            {
+              "kind": "access",
+              "organization": "Hospital Favaloro",
+              "url": "https://hospitalfavaloro.org/",
+              "retrievedAt": "2026-10-12",
+              "note": "Sitio del hospital: turnos en el hall y por WhatsApp, central, ubicación y guardia."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No confundir con la Fundación Favaloro ni con su hospital universitario privado. La gratuidad sale de una nota del Municipio: revisar si el hospital la publica en su propio sitio."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Hospital Favaloro",
+        "url": "https://hospitalfavaloro.org/",
+        "note": "Sitio del hospital. Establecimiento SAMIC publicado por el Ministerio de Salud de la Nación."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). El punto del mapa es el que OpenStreetMap da para el hospital; el domicilio oficial dice Av. Eva Perón 5200."
+      }
+    }
+  ]
+}
