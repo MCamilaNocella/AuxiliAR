@@ -166,11 +166,11 @@ test("controles de salud: information only - no button, no link - with how often
 test("primeros auxilios: the page of the category, whose every card opens a real guide", () => {
   const html = render(FirstAidPage, "/primeros-auxilios")
   const content = text(html)
-  assert.ok(content.includes("¿Necesitás actuar ahora?"))
+  assert.ok(!content.includes("¿Necesitás actuar ahora?") && !content.includes("Si hay riesgo inmediato para la vida"), "the emergency numbers are in the bar at the top")
   for (const group of ["Necesito actuar ahora", "Accidentes y lesiones frecuentes", "Prepararte también ayuda"]) assert.ok(content.includes(group), group)
   assert.ok(!content.includes("en preparación"))
   assert.ok(!html.includes("tel:107"), "no emergency number is presented as universal")
-  assert.ok(content.includes("Ver números de emergencia"))
+  assert.ok(!content.includes("Ver números de emergencia"))
   for (const guide of FIRST_AID_GUIDE_CONTENT) {
     assert.ok(html.includes(`href="/primeros-auxilios/${guide.slug}"`), guide.slug)
     assert.ok(content.includes(guide.title), guide.title)

@@ -49,8 +49,8 @@ test("the categories no longer repeat the permanent access to the emergencies: t
 })
 
 test("what stays on purpose: the specific warnings and the permanent accesses were not touched", () => {
-  // the warning about an animal bite (a specific one), the map line, the first aid page and the empty-map help keep their button
-  for (const file of ["content/categories/Animals/sections/Section2/Section2.content.tsx", "content/categories/HealthCenters/sections/Section1/Section1.content.tsx", "content/categories/FirstAid/sections/Section1/Section1.content.tsx", "components/places/NoCoverageHelp/NoCoverageHelp.tsx"]) {
+  // the warning about an animal bite (a specific one), the map line and the empty-map help keep their button (the first aid page lost its on purpose: the numbers are in the bar at the top)
+  for (const file of ["content/categories/Animals/sections/Section2/Section2.content.tsx", "content/categories/HealthCenters/sections/Section1/Section1.content.tsx", "components/places/NoCoverageHelp/NoCoverageHelp.tsx"]) {
     assert.ok(read(`src/${file}`).includes("revealEmergencies"), file)
   }
   // the numbers of the emergency bar are still the ones of the data
