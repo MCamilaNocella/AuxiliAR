@@ -120,7 +120,7 @@ export default function Section3Content() {
         </ul>
       </section>
 
-      <p className="m-0 text-sm text-ink-soft">Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular.</p>
+      <p className="m-0 text-sm text-ink-soft">Los datos salen de la página oficial de cada organismo, consultada el 11 de octubre de 2026; AuxiliAR no los verificó. Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular.</p>
     </div>
   )
 }

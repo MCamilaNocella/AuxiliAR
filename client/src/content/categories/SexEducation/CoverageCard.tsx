@@ -3,7 +3,6 @@ import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { PendingNotice } from "@/components/health/PendingNotice"
 import type { CoverageEntry, EsiEntry } from "./SexEducation.coverage"
-import { READ_ON } from "./SexEducation.coverage"
 
 const labelClass = "m-0 mt-3 text-base font-extrabold"
 
@@ -15,17 +14,8 @@ const Lines = ({ items }: { items: string[] }) => (
   </ul>
 )
 
-const formatRead = () => {
-  const [year, month, day] = READ_ON.split("-").map(Number)
-  return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
-}
-
-/** What every card says about where its text comes from: AuxiliAR checked none of it in person */
-const Footing = ({ sourceDate }: { sourceDate?: string }) => (
-  <p className="m-0 mt-3 text-sm text-ink-soft">
-    {`Datos de la página oficial de ese organismo, consultada el ${formatRead()}.${sourceDate ? ` Fecha de su contenido: ${sourceDate}.` : ""} AuxiliAR no los verificó: confirmá requisitos, costo y horarios con quien ofrece el servicio.`}
-  </p>
-)
+/** What a card says about where its text comes from: only the date of the page's own content, when it has one (the day AuxiliAR read it and that nobody checked it in person are said once, on the page) */
+const Footing = ({ sourceDate }: { sourceDate?: string }) => (sourceDate ? <p className="m-0 mt-3 text-sm text-ink-soft">{`Fecha de su contenido: ${sourceDate}.`}</p> : null)
 
 /** What a service of another province or organization offers, for whom, at what cost, how to get it and how to reach it: all inside AuxiliAR */
 export const CoverageCard = ({ entry, children }: { entry: CoverageEntry, children?: ReactNode }) => (

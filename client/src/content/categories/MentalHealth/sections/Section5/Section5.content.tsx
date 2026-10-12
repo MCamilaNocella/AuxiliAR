@@ -53,8 +53,9 @@ export default function Section5Content() {
         <h3 id="mh-prov-places" className="m-0 text-xl font-extrabold">
           Lugares de atención y actividades, por provincia
         </h3>
-        {PROVINCIAS.map(({ name, items }) => (
+        {PROVINCIAS.map(({ name, intro, items }) => (
           <Disclosure key={name} title={`${name} (${items.length})`}>
+            {intro && <p className="m-0 text-ink-soft">{intro}</p>}
             <DirectoryList items={items} />
           </Disclosure>
         ))}

@@ -103,8 +103,8 @@ export const METHODS: Method[] = [
   },
 ]
 
-/** The Ministerio's own sentence, repeated on the page of every method except the condom and the AHE (which has its own) */
-export const NO_STI_PROTECTION = "Este método no protege del VIH ni de otras infecciones de transmisión sexual: por eso se recomienda la doble protección con preservativo."
+/** The Ministerio's own sentence about the methods that do not protect from the STIs: said once, above the list of methods (the AHE has its own) */
+export const NO_STI_PROTECTION = "Ningún método de esta lista, salvo el preservativo, protege del VIH ni de otras infecciones de transmisión sexual: por eso se recomienda la doble protección con preservativo."
 
 /** The Ministerio's own text on the vaginal condom, by question. Repeats its page; nothing is added */
 export const VAGINAL_CONDOM = {

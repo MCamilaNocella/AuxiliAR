@@ -41,7 +41,7 @@ export default function Section4Content() {
           <h3 id="mh-cons-caba" className="m-0 text-xl font-extrabold">
             Atención en la Ciudad de Buenos Aires
           </h3>
-          <p className="m-0 mt-1 text-ink-soft">Cada página indica cómo es la admisión; no asegura internación ni cupos.</p>
+          <p className="m-0 mt-1 text-ink-soft">Consultá en cada centro cómo es la admisión y los turnos: las páginas no aseguran internación ni cupos.</p>
         </div>
         <Disclosure title="Centros y hospitales de la Red de adicciones">
           <DirectoryList items={[...CSM_3, ...CONSUMOS_CABA]} />

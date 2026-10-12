@@ -1,9 +1,14 @@
 import { Link } from "react-router"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 import { CAMPAIGN_NOT_CARE } from "../../Animals.sources"
-import { CABA, CORDOBA, FREE_STATUSES, NEUQUEN, PASTEUR, PROTENENCIA, ROSARIO, SALTA, UNCONFIRMED_STATUSES } from "../../Animals.places"
+import { CABA, CORDOBA, FREE_STATUSES, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON, ROSARIO, SALTA, UNCONFIRMED_STATUSES } from "../../Animals.places"
 import { CabaAgenda } from "../../CabaAgenda"
 import { PlaceCard } from "../../PlaceCard"
+
+const formatDate = (iso: string) => {
+  const [year, month, day] = iso.split("-").map(Number)
+  return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
+}
 
 /**
  * Atención veterinaria · Vacunación y castración. Told inside AuxiliAR, place by place and prestación by prestación (Animals.places.ts):
@@ -80,7 +85,7 @@ export default function Section1Content() {
         </p>
       </section>
 
-      <p className="m-0 text-sm text-ink-soft">Cada dato es de la página de un organismo oficial: AuxiliAR no responde por cambios posteriores.</p>
+      <p className="m-0 text-sm text-ink-soft">{`Los datos salen de la página oficial de cada organismo, consultada el ${formatDate(READ_ON)}. AuxiliAR no los verificó: confirmá requisitos, costo y horarios con el servicio antes de ir.`}</p>
     </div>
   )
 }

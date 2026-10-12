@@ -87,7 +87,7 @@ export default function Section3Content() {
 
       <Disclosure title="Clases de yoga en la Ciudad (Plazas Activas)">
         <p className="m-0">Clases al aire libre del Gobierno de la Ciudad, para mayores de 18 años y con inscripción previa. Es una actividad de bienestar, no un tratamiento. Confirmá la grilla antes de ir.</p>
-        <p className="m-0 text-ink-soft">La página oficial no informa el costo.</p>
+        <p className="m-0 text-ink-soft">La página oficial no informa el costo. Se pide lugar por mail a inscripciones.dsydd@buenosaires.gob.ar, aceptando los términos para actividades en espacios públicos.</p>
         <DirectoryList items={YOGA_CABA} />
       </Disclosure>
 

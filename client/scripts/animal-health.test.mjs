@@ -79,7 +79,7 @@ test("every section has content and no placeholder; its sources and the day they
   const referenced = new Set([...referencesOf("animales-campanas").references, ...referencesOf("animales-atencion").references].map(({ url }) => url))
   for (const place of ALL_PLACES) assert.ok(referenced.has(place.url), `${place.id}: its page is in Sobre AuxiliAR`)
   assert.ok(referencesOf("animales-campanas").notes.join(" ").includes("11 de octubre de 2026"))
-  assert.ok(text(pages["section-1"]).includes("Cada dato es de la página de un organismo oficial: AuxiliAR no responde por cambios posteriores."))
+  assert.ok(text(pages["section-1"]).includes("Los datos salen de la página oficial de cada organismo, consultada el 11 de octubre de 2026. AuxiliAR no los verificó: confirmá requisitos, costo y horarios con el servicio antes de ir."))
   assert.ok(text(pages["section-2"]).includes("Es información general: no es una indicación veterinaria ni médica."))
 })
 
