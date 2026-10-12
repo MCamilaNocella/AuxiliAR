@@ -268,12 +268,12 @@ test("the hub offers the quiz in 'Prepararte también ayuda', next to the botiqu
   assert.ok(prepare.includes('href="/primeros-auxilios/quiz"'))
 })
 
-test("vacuna antitetánica: official sources, no doses, honest about the 1997 norm, and it sits in 'Prepararte también ayuda'", () => {
+test("vacuna antitetánica: official sources, no doses, with the 2008 national norm for wounds, and it sits in 'Prepararte también ayuda'", () => {
   const guide = bySlug["vacuna-antitetanica"]
   const content = text(renderGuide(guide))
   assert.equal(guide.group, "prepare")
   assert.ok(content.includes("cada 10 años") && content.includes("carnet de vacunas") && content.includes("3 dosis"))
-  assert.ok(content.includes("Resolución 141/97") && content.includes("no pudimos confirmar si sigue vigente"))
+  assert.ok(content.includes("Resolución 498/2008") && content.includes("más de 5 años") && content.includes("más de 10 años") && !content.includes("141/97"))
   assert.ok(!/\b\d+\s?(UI|mg|ml)\b/i.test(content), "no doses of medicines")
   assert.deepEqual(guide.sources.map(({ url }) => new URL(url).hostname), ["www.argentina.gob.ar", "www.argentina.gob.ar", "www.argentina.gob.ar", "www.argentina.gob.ar"])
   assert.ok(content.includes("No pongas alcohol") || content.includes("no pongas alcohol"), "bites: no alcohol")

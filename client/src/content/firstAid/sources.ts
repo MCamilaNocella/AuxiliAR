@@ -75,10 +75,10 @@ export const RABIA_MORDEDURAS: GuideSource = {
   url: "https://www.argentina.gob.ar/node/29491",
 }
 
-/** The only national text found with the detail by type of wound; from 1997, its current status could not be confirmed (the guide says so) */
-export const NORMAS_VACUNACION_1997: GuideSource = {
-  label: "Normas Nacionales de Vacunación, Resolución 141/1997 (vacuna antitetánica) · Ministerio de Salud",
-  url: "https://www.argentina.gob.ar/normativa/nacional/48711/texto",
+/** Tabla 1 of the dT section ("Esquema recomendado según tipo de herida y antecedente de vacunación"): it is an image in the official text, read on 2026-10-12. Replaces the 1997 table (different years) */
+export const NORMAS_VACUNACION_2008: GuideSource = {
+  label: "Normas Nacionales de Vacunación, Resolución 498/2008 (doble bacteriana: manejo de heridas) · Ministerio de Salud",
+  url: "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-498-2008-141074/texto",
 }
 
 /** Centro Nacional de Intoxicaciones (Hospital Posadas): free line given by the Manual and by the app's help numbers */

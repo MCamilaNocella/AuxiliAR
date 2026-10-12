@@ -1,4 +1,4 @@
-import { CHECKED_AT, DOBLE_BACTERIANA, MANUAL, NORMAS_VACUNACION_1997, RABIA_MORDEDURAS, VACUNACION_ADULTOS } from "../sources"
+import { CHECKED_AT, DOBLE_BACTERIANA, MANUAL, NORMAS_VACUNACION_2008, RABIA_MORDEDURAS, VACUNACION_ADULTOS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Prepararte también ayuda" */
@@ -69,10 +69,10 @@ export const PREPARE_GUIDES: FirstAidGuideContent[] = [
       "Si no tenés el carnet o no sabés qué dosis recibiste, decilo en la consulta: es un dato que cambia lo que te indiquen.",
       "Si te mordió o te arañó un animal: lavá la herida con abundante agua y jabón, no pongas alcohol ni otro desinfectante y andá rápido al centro de salud más cercano, para que un profesional evalúe si hace falta una profilaxis antibiótica, antitetánica y/o antirrábica.",
     ],
-    note: "Qué hacer después de una herida lo define un equipo de salud. La única norma nacional que encontramos con el detalle por tipo de herida es de 1997 (Resolución 141/97) y no pudimos confirmar si sigue vigente: según ese texto, con menos de 3 dosis o esquema desconocido hace falta vacunarse; con 3 o más dosis puede hacer falta un refuerzo si la última fue hace más de 10 años (herida limpia) o más de 5 años (otras heridas), y en algunos casos se agrega una inmunoglobulina. AuxiliAR no indica dosis ni tratamientos. Pendiente de revisión clínica.",
+    note: "Qué hacer después de una herida lo define un equipo de salud, que revisa tu carnet y el tipo de herida. La norma nacional (Resolución 498/2008, tabla de manejo de heridas) indica, para una herida menor y limpia: vacuna si tenés menos de 3 dosis, si no sabés cuántas recibiste o si pasaron más de 10 años desde la última. Para cualquier otra herida: con menos de 3 dosis o esquema desconocido, la vacuna más una inmunoglobulina; con 3 o más dosis, la vacuna si pasaron más de 5 años desde la última, y nada si pasaron 5 años o menos. Las más riesgosas son las contaminadas con suciedad, tierra, heces o saliva, las que tienen tejido muerto y las de punción, aplastamiento, quemadura o congelamiento. AuxiliAR no indica dosis de ningún medicamento. Es la norma más reciente que encontramos, de 2008: confirmá con el equipo de salud. Pendiente de revisión clínica.",
     related: ["heridas", "botiquin"],
-    sources: [DOBLE_BACTERIANA, VACUNACION_ADULTOS, RABIA_MORDEDURAS, NORMAS_VACUNACION_1997],
+    sources: [DOBLE_BACTERIANA, VACUNACION_ADULTOS, RABIA_MORDEDURAS, NORMAS_VACUNACION_2008],
     checkedAt: "2026-10-12",
-    clinicalReview: { status: "pending", note: "Pendiente de revisión clínica: armada con páginas oficiales del Ministerio de Salud; el detalle por tipo de herida viene de una norma de 1997 cuya vigencia no se pudo confirmar." },
+    clinicalReview: { status: "pending", note: "Pendiente de revisión clínica: armada con páginas oficiales del Ministerio de Salud; el detalle por tipo de herida viene de la norma nacional de 2008 (Resolución 498/2008), la más reciente encontrada; no se encontró una actualización posterior." },
   },
 ]
