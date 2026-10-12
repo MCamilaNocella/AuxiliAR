@@ -40,8 +40,6 @@ const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
  */
 export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic }: Subsection) => (
   <div className="mt-2 flex max-w-3xl flex-col gap-6">
-    <PendingNotice>{notice}</PendingNotice>
-
     <p className="m-0 text-lg text-ink">{intro}</p>
 
     {blocks.map(({ id, icon: Icon, title, lead, points, note, action }) => (
@@ -67,6 +65,7 @@ export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic }: S
 
     <MapAccess filter={mapFilter} topic={mapTopic} />
 
+    <PendingNotice>{notice}</PendingNotice>
 
     <p className="m-0 text-sm text-muted">Esta información es orientativa y no reemplaza la consulta con un equipo de salud.</p>
   </div>

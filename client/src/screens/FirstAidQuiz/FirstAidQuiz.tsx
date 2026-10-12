@@ -13,10 +13,10 @@ export const FirstAidQuizScreen = () => (
       <p className="m-0 text-lg text-ink">
         {`${FIRST_AID_QUIZ.length} situaciones para repasar lo que dicen las guías, una por pantalla. No hay respuestas “malas”: en cada una te explicamos por qué y te mostramos la guía.`}
       </p>
+      <Quiz questions={FIRST_AID_QUIZ} exits={EXITS} />
       <PendingNotice>
         Este quiz repasa el contenido de las guías y todavía no fue revisado por un profesional de la salud. No reemplaza un curso de primeros auxilios ni la atención de un equipo de salud. En una emergencia, llamá a emergencias.
       </PendingNotice>
-      <Quiz questions={FIRST_AID_QUIZ} exits={EXITS} />
     </div>
   </Page>
 )

@@ -30,11 +30,6 @@ const Footing = ({ sourceDate }: { sourceDate?: string }) => (
 /** What a service of another province or organization offers, for whom, at what cost, how to get it and how to reach it: all inside AuxiliAR */
 export const CoverageCard = ({ entry, children }: { entry: CoverageEntry, children?: ReactNode }) => (
   <Disclosure title={entry.title} compact>
-    {entry.ive && (
-      <PendingNotice title="Pendiente de validación legal y profesional">
-        Este resumen sobre la interrupción del embarazo se hizo con la página oficial y todavía no fue revisado. No es asesoramiento legal ni médico.
-      </PendingNotice>
-    )}
     <p className="m-0 text-ink-soft">{entry.by}</p>
     <h5 className={labelClass}>Qué ofrece</h5>
     <Lines items={entry.offers} />
@@ -57,6 +52,13 @@ export const CoverageCard = ({ entry, children }: { entry: CoverageEntry, childr
     {entry.action && (
       <div className="mt-3">
         <OutLink href={entry.action.url}>{entry.action.label}</OutLink>
+      </div>
+    )}
+    {entry.ive && (
+      <div className="mt-3">
+        <PendingNotice title="Pendiente de validación legal y profesional">
+          Este resumen sobre la interrupción del embarazo se hizo con la página oficial y todavía no fue revisado. No es asesoramiento legal ni médico.
+        </PendingNotice>
       </div>
     )}
     <Footing sourceDate={entry.sourceDate} />

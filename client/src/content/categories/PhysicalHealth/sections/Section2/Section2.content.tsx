@@ -18,8 +18,6 @@ export default function Section2Content() {
         Cada cuánto conviene hacerte estos controles, según las recomendaciones generales de organismos oficiales. Es solo información: lo que te corresponde a vos lo define tu equipo de salud, según tu edad, tus antecedentes y tu situación.
       </p>
 
-      <PendingNotice title={CONTROLS_NOTICE_TITLE}>{CONTROLS_NOTICE_TEXT}</PendingNotice>
-
       {FREQUENCY_BLOCKS.map(({ id, title, icon: Icon, items, pending }) => (
         <section key={id} aria-labelledby={`control-${id}`} className="rounded-2xl border border-line-strong bg-card p-4 sm:p-6">
           <h3 id={`control-${id}`} className="m-0 flex items-center gap-2 text-xl font-extrabold">
@@ -43,6 +41,8 @@ export default function Section2Content() {
           )}
         </section>
       ))}
+
+      <PendingNotice title={CONTROLS_NOTICE_TITLE}>{CONTROLS_NOTICE_TEXT}</PendingNotice>
 
       <p className="m-0 text-sm text-ink-soft">
         {`Datos de páginas oficiales del Ministerio de Salud de la Nación y del Gobierno de la Ciudad de Buenos Aires, consultadas el ${formatDate(CONTROLS_READ_ON)}. Las fuentes están en Sobre AuxiliAR. Esta información es orientativa y no reemplaza la consulta con un equipo de salud.`}

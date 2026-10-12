@@ -82,9 +82,6 @@ export default function Section2Content() {
         <h3 id="tr-cud" className="m-0 text-xl font-extrabold">
           {CUD_GUIDE.title}
         </h3>
-        <div className="mt-3">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
-        </div>
         <p className="m-0 mt-3">{CUD_GUIDE.intro}</p>
         <p className="m-0 mt-2">{CUD_GUIDE.uses}</p>
         <h4 className="m-0 mt-4 text-base font-extrabold">Pasos</h4>
@@ -101,15 +98,15 @@ export default function Section2Content() {
         <div className="mt-3">
           <OutLink href={CUD_PAGINA.url}>Ir al trámite oficial del CUD</OutLink>
         </div>
+        <div className="mt-4">
+          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
+        </div>
       </section>
 
       <section aria-labelledby="tr-neighborhood" className={cardClass}>
         <h3 id="tr-neighborhood" className="m-0 text-xl font-extrabold">
           {NEIGHBORHOOD_GUIDE.title}
         </h3>
-        <div className="mt-3">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
-        </div>
         <p className="m-0 mt-3">{NEIGHBORHOOD_GUIDE.intro}</p>
         <p className="m-0 mt-2">{NEIGHBORHOOD_GUIDE.variable}</p>
         <div className="mt-3">
@@ -146,6 +143,9 @@ export default function Section2Content() {
             <OutLink href={BARRIO_REDES.url}>Ver si el operativo se suspendió (redes del programa)</OutLink>
           </li>
         </ul>
+        <div className="mt-4">
+          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
+        </div>
       </section>
 
       <section aria-labelledby="tr-refused" className={cardClass}>
