@@ -79,7 +79,7 @@ test("no emergency number is presented as universal: guides send people to the n
   for (const guide of GUIDES.filter(({ callFirst }) => callFirst)) {
     const html = renderGuide(guide)
     assert.ok(!text(html).includes("Si es una emergencia, llamá o pedí que llamen"), `${guide.slug}: the numbers are always in the top menu`)
-    assert.ok(text(html).includes("Ver números de emergencia"), guide.slug)
+    assert.ok(!text(html).includes("Ver números de emergencia"), `${guide.slug}: no button, the numbers are in the top menu`)
     assert.ok(text(html).includes("Qué decir cuando llamás"), guide.slug)
     assert.ok(!html.includes("tel:107"), guide.slug)
   }
@@ -200,7 +200,7 @@ test("reacciones alérgicas: mild signs, anaphylaxis signs, safe steps, what to 
     assert.ok(content.includes(piece), piece)
   }
   // it asks for help first, without writing a number (they depend on the place)
-  assert.ok(guide.callFirst && content.includes("número de emergencias de tu localidad") && content.includes("Ver números de emergencia"))
+  assert.ok(guide.callFirst && content.includes("número de emergencias de tu localidad") && !content.includes("Ver números de emergencia"))
   assert.equal(guide.group, "now")
   assert.ok(guide.extraSigns[0].items.some((item) => item.includes("Dificultad para respirar")))
   assert.ok(guide.extraSigns[0].items.some((item) => item.includes("Hinchazón de la cara")))

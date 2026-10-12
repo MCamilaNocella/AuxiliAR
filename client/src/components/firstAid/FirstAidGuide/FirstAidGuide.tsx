@@ -5,7 +5,6 @@ import { VideoEmbed } from "@/components/health/VideoEmbed"
 import { CALL_INFO, FIRST_AID_HUB_PATH, getFirstAidGuide, isVideoShown } from "@/content/firstAid"
 import type { FirstAidGuideContent } from "@/content/firstAid"
 import { PATHS } from "@/router/paths"
-import { revealEmergencies } from "@/utils/revealEmergencies"
 import { GuideIcon } from "../guideIcons"
 
 const formatDate = (date: string) => {
@@ -14,20 +13,6 @@ const formatDate = (date: string) => {
 }
 
 const Heading = ({ children }: { children: React.ReactNode }) => <h2 className="m-0 mb-3 text-xl font-extrabold">{children}</h2>
-
-/** The call-for-help block: it only has the button (the sentence that sent people to the numbers was removed: they are always in the top menu); it doesn't name a number (they depend on where you are) and opens the app's emergency numbers */
-const CallForHelp = () => (
-  <div className="mt-5 rounded-2xl border-2 border-alert-card-line bg-alert-soft p-4">
-    <button
-      type="button"
-      onClick={revealEmergencies}
-      className="inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-alert px-4 py-2 font-extrabold text-on-alert hover:bg-alert-dark"
-    >
-      <Phone aria-hidden="true" className="size-5 shrink-0" />
-      Ver números de emergencia
-    </button>
-  </div>
-)
 
 const BackLink = () => {
   const navigate = useNavigate()
@@ -66,8 +51,6 @@ export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
         {guide.title}
       </h1>
       <p className="m-0 mt-3 text-lg text-ink-soft">{guide.summary}</p>
-
-      {guide.callFirst && <CallForHelp />}
 
       {guide.signs && (
         <section aria-labelledby="guide-signs" className="mt-8">
