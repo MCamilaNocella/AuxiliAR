@@ -230,7 +230,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
       {intro && <p className="m-0 text-muted">{intro}</p>}
 
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
-        <div className="lg:flex-1">
+        <div className="lg:max-w-xl lg:flex-1">
           <PlacesToolbar filters={NO_FILTERS} query={draft} onQueryChange={typeText} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
         </div>
         {/* Wraps: at 320 px the view switch and the filters button do not fit in one row, and the page grew wider than the screen */}
