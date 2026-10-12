@@ -33,7 +33,7 @@ const allText = (guide) => JSON.stringify(guide)
 const WANTED = {
   now: ["rcp", "atragantamiento", "acv", "hemorragia-grave", "convulsiones", "quemaduras", "reacciones-alergicas"],
   injuries: ["heridas", "golpes-y-caidas", "golpe-en-la-cabeza", "fracturas", "accidentes-de-transito", "electrocucion", "intoxicaciones"],
-  prepare: ["botiquin"],
+  prepare: ["botiquin", "vacuna-antitetanica"],
 }
 
 test("the three groups cover emergencies, everyday injuries and getting ready", () => {
@@ -42,8 +42,8 @@ test("the three groups cover emergencies, everyday injuries and getting ready", 
     ["Necesito actuar ahora", "Accidentes y lesiones frecuentes", "Prepararte también ayuda"],
   )
   for (const [group, slugs] of Object.entries(WANTED)) assert.deepEqual(content.getGuidesOfGroup(group).map(({ slug }) => slug), slugs, group)
-  assert.equal(GUIDES.length, 15)
-  assert.equal(new Set(GUIDES.map(({ slug }) => slug)).size, 15)
+  assert.equal(GUIDES.length, 16)
+  assert.equal(new Set(GUIDES.map(({ slug }) => slug)).size, 16)
 })
 
 test("one copy of the content: whoever links a guide finds it", () => {
@@ -239,14 +239,14 @@ test("reacciones alérgicas: official sources, a date, and the pending clinical 
   assert.ok(content.includes("todavía falta que la revise un equipo de salud"))
   assert.ok(content.includes("no indica medicamentos ni dosis"))
   assert.ok(content.includes("Contenido comparado con las fuentes oficiales el 7 de octubre de 2026"))
-  // only this guide is waiting for a review; the others come straight from the national Manual
-  assert.deepEqual(GUIDES.filter(({ clinicalReview }) => clinicalReview?.status === "pending").map(({ slug }) => slug), ["reacciones-alergicas"])
+  // only these two guides are waiting for a review; the others come straight from the national Manual
+  assert.deepEqual(GUIDES.filter(({ clinicalReview }) => clinicalReview?.status === "pending").map(({ slug }) => slug), ["reacciones-alergicas", "vacuna-antitetanica"])
 })
 
 test("the first aid quiz covers every guide, sends back to it and adds no number", async () => {
   const { FIRST_AID_QUIZ } = await vite.ssrLoadModule("/src/content/firstAid/quiz.ts")
   const { startQuiz } = await vite.ssrLoadModule("/src/utils/quiz/quiz.ts")
-  assert.ok(FIRST_AID_QUIZ.length >= 45)
+  assert.ok(FIRST_AID_QUIZ.length >= 48)
   assert.equal(new Set(FIRST_AID_QUIZ.map(({ id }) => id)).size, FIRST_AID_QUIZ.length)
   for (const guide of GUIDES) {
     const own = FIRST_AID_QUIZ.filter(({ action }) => action?.to === `/primeros-auxilios/${guide.slug}`)
@@ -266,4 +266,16 @@ test("the hub offers the quiz in 'Prepararte también ayuda', next to the botiqu
   const prepare = html.slice(html.indexOf('id="guides-prepare"'))
   assert.ok(prepare.indexOf("Botiquín de primeros auxilios") < prepare.indexOf("Quiz de primeros auxilios"))
   assert.ok(prepare.includes('href="/primeros-auxilios/quiz"'))
+})
+
+test("vacuna antitetánica: official sources, no doses, honest about the 1997 norm, and it sits in 'Prepararte también ayuda'", () => {
+  const guide = bySlug["vacuna-antitetanica"]
+  const content = text(renderGuide(guide))
+  assert.equal(guide.group, "prepare")
+  assert.ok(content.includes("cada 10 años") && content.includes("carnet de vacunas") && content.includes("3 dosis"))
+  assert.ok(content.includes("Resolución 141/97") && content.includes("no pudimos confirmar si sigue vigente"))
+  assert.ok(!/\b\d+\s?(UI|mg|ml)\b/i.test(content), "no doses of medicines")
+  assert.deepEqual(guide.sources.map(({ url }) => new URL(url).hostname), ["www.argentina.gob.ar", "www.argentina.gob.ar", "www.argentina.gob.ar"])
+  assert.equal(guide.clinicalReview.status, "pending")
+  assert.ok(bySlug["heridas"].related.includes("vacuna-antitetanica"))
 })

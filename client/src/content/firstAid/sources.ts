@@ -60,6 +60,22 @@ export const CABA_ALERGIAS: GuideSource = {
   url: "https://buenosaires.gob.ar/gcaba_historico/noticias/donde-acudir-ante-un-ataque-de-alergia",
 }
 
+export const DOBLE_BACTERIANA: GuideSource = {
+  label: "Doble bacteriana · Calendario Nacional de Vacunación, Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/vacunas/doblebacteriana",
+}
+
+export const VACUNACION_ADULTOS: GuideSource = {
+  label: "Calendario Nacional de Vacunación · 15 a 64 años · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/vacunas/vacunacion-adultos",
+}
+
+/** The only national text found with the detail by type of wound; from 1997, its current status could not be confirmed (the guide says so) */
+export const NORMAS_VACUNACION_1997: GuideSource = {
+  label: "Normas Nacionales de Vacunación, Resolución 141/1997 (vacuna antitetánica) · Ministerio de Salud",
+  url: "https://www.argentina.gob.ar/normativa/nacional/48711/texto",
+}
+
 /** Centro Nacional de Intoxicaciones (Hospital Posadas): free line given by the Manual and by the app's help numbers */
 export const POISON_CENTER = { number: lineContact(getHelpLine("intoxicaciones-cni-posadas")).display, tel: lineContact(getHelpLine("intoxicaciones-cni-posadas")).dial }
 

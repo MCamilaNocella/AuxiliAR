@@ -3,7 +3,7 @@ import type { QuizAction, QuizQuestion } from "@/utils/quiz/quiz"
 import { getFirstAidGuide } from "./index"
 
 /**
- * Quiz de primeros auxilios: 45 situations, three for each of the 15 guides of src/content/firstAid, in the order of the guides (the ones for acting now, the
+ * Quiz de primeros auxilios: 48 situations, three for each of the 16 guides of src/content/firstAid, in the order of the guides (the ones for acting now, the
  * everyday injuries, and preparing). Every right answer is something the guide of that situation says, in its own terms, and every feedback sends back to that
  * guide: the quiz adds no instruction of its own, no number of emergencies is written (the guides point to the emergency numbers of the app) and no medicine or dose
  * is named. It is educational: it does not replace a first aid course nor the care of a health team. PENDING review by a health professional, like the guides.
@@ -651,5 +651,47 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     why: "Un botiquín inaccesible o con elementos vencidos no ayuda cuando hace falta.",
     learning: "El botiquín, a mano y revisado cada tanto.",
     action: toGuide("botiquin"),
+  },
+  /* ── Vacuna antitetánica ── */
+  {
+    id: "tetanos-refuerzo",
+    format: "Elegí una",
+    topic: "Vacuna antitetánica",
+    prompt: "En una persona adulta con el esquema completo, ¿cada cuánto indica el Calendario Nacional un refuerzo contra el tétanos?",
+    options: [
+      option("a", "Una sola vez en la vida alcanza.", false, "No: el Calendario indica un refuerzo después del esquema de 3 dosis."),
+      option("b", "Cada 10 años.", true, "Así es: iniciar o completar el esquema de 3 dosis y, después, un refuerzo cada 10 años. La vacuna doble bacteriana protege contra la difteria y el tétanos."),
+      option("c", "Solo cuando una persona se lastima.", false, "El refuerzo es parte del calendario; además, después de una herida un equipo de salud puede indicarte una dosis según tu carnet."),
+    ],
+    why: "Mantener las dosis al día es la forma de prevenir el tétanos.",
+    learning: "Doble bacteriana: esquema de 3 dosis y refuerzo cada 10 años.",
+    action: toGuide("vacuna-antitetanica"),
+  },
+  {
+    id: "tetanos-carnet",
+    format: "¿Qué hacés?",
+    topic: "Vacuna antitetánica",
+    prompt: "Te hiciste un corte con un objeto sucio y no recordás cuándo te vacunaste por última vez. ¿Qué hacés?",
+    options: [
+      option("a", "Consulto a un médico o una médica y le muestro mi carnet; si no lo tengo, lo aclaro.", true, "Correcto: según tus dosis y cuánto pasó desde la última, el equipo de salud te dice si hace falta vacunarte. Es un dato que cambia lo que te indiquen."),
+      option("b", "Me quedo tranquilo o tranquila: si no sangra, no hace falta nada.", false, "No: el tétanos puede entrar por una herida aunque sea chica. Conviene consultar y revisar el carnet."),
+      option("c", "Me vacuno por mi cuenta con lo que tenga en casa.", false, "La vacuna la indica y la aplica un equipo de salud, después de revisar tu carnet."),
+    ],
+    why: "Qué corresponde después de una herida depende de las dosis recibidas y del tiempo desde la última.",
+    learning: "Después de una herida: consultá y llevá tu carnet de vacunas.",
+    action: toGuide("vacuna-antitetanica"),
+  },
+  {
+    id: "tetanos-donde",
+    format: "Verdadero o falso",
+    topic: "Vacuna antitetánica",
+    prompt: "Según el Ministerio de Salud, las vacunas del Calendario Nacional, como la doble bacteriana, se dan de forma gratuita en vacunatorios, centros de salud y hospitales públicos.",
+    options: [
+      option("a", "Verdadero", true, "Correcto: es lo que indica el Ministerio. Llevá el carnet de vacunas para que lo revisen."),
+      option("b", "Falso", false, "El Ministerio indica que las vacunas del Calendario Nacional están disponibles de forma gratuita en vacunatorios, centros de salud y hospitales públicos."),
+    ],
+    why: "Que sea gratuita no es un obstáculo para tenerla al día.",
+    learning: "La doble bacteriana es parte del Calendario Nacional.",
+    action: toGuide("vacuna-antitetanica"),
   },
 ]

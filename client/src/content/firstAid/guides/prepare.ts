@@ -1,4 +1,4 @@
-import { CHECKED_AT, MANUAL } from "../sources"
+import { CHECKED_AT, DOBLE_BACTERIANA, MANUAL, NORMAS_VACUNACION_1997, VACUNACION_ADULTOS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Prepararte también ayuda" */
@@ -47,5 +47,31 @@ export const PREPARE_GUIDES: FirstAidGuideContent[] = [
     related: ["heridas", "hemorragia-grave", "fracturas"],
     sources: [MANUAL],
     checkedAt: CHECKED_AT,
+  },
+  {
+    slug: "vacuna-antitetanica",
+    title: "Vacuna antitetánica (tétanos)",
+    group: "prepare",
+    summary: "La vacuna doble bacteriana protege contra el tétanos y la difteria. Tenerla al día es parte de estar preparado ante cortes y lesiones.",
+    stepsTitle: "Cómo tenerla al día",
+    stepSets: [
+      {
+        steps: [
+          "La vacuna doble bacteriana protege contra la difteria y el tétanos. Según el Ministerio de Salud, es de indicación universal: para todas las edades.",
+          "En las personas adultas, el Calendario Nacional indica iniciar o completar el esquema de 3 dosis y, después, un refuerzo cada 10 años.",
+          "Llevá tu carnet de vacunas al vacunatorio o al centro de salud para que lo revisen y te digan qué dosis te faltan.",
+          "Según el Ministerio, las vacunas del Calendario Nacional están disponibles de forma gratuita en los vacunatorios, centros de salud y hospitales públicos del país.",
+        ],
+      },
+    ],
+    whenToCall: [
+      "Si te lastimás con una herida, un corte o una quemadura, consultá a un médico o una médica y mostrale tu carnet: según tus dosis y cuánto pasó desde la última, puede indicarte vacunarte o un refuerzo.",
+      "Si no tenés el carnet o no sabés qué dosis recibiste, decilo en la consulta: es un dato que cambia lo que te indiquen.",
+    ],
+    note: "Qué hacer después de una herida lo define un equipo de salud. La única norma nacional que encontramos con el detalle por tipo de herida es de 1997 (Resolución 141/97) y no pudimos confirmar si sigue vigente: según ese texto, con menos de 3 dosis o esquema desconocido hace falta vacunarse; con 3 o más dosis puede hacer falta un refuerzo si la última fue hace más de 10 años (herida limpia) o más de 5 años (otras heridas), y en algunos casos se agrega una inmunoglobulina. AuxiliAR no indica dosis ni tratamientos. Pendiente de revisión clínica.",
+    related: ["heridas", "botiquin"],
+    sources: [DOBLE_BACTERIANA, VACUNACION_ADULTOS, NORMAS_VACUNACION_1997],
+    checkedAt: "2026-10-12",
+    clinicalReview: { status: "pending", note: "Pendiente de revisión clínica: armada con páginas oficiales del Ministerio de Salud; el detalle por tipo de herida viene de una norma de 1997 cuya vigencia no se pudo confirmar." },
   },
 ]

@@ -22,7 +22,7 @@ export const INJURY_GUIDES: FirstAidGuideContent[] = [
     ],
     dont: ["No pongas algodón sobre la herida: se pega al tejido.", "No uses torniquete."],
     whenToCall: ["Si el sangrado es abundante o no se detiene, seguí la guía de hemorragia grave."],
-    related: ["hemorragia-grave"],
+    related: ["hemorragia-grave", "vacuna-antitetanica"],
     sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },
