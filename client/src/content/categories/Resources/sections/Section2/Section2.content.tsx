@@ -54,7 +54,7 @@ export default function Section2Content() {
           El primer nivel de atención lo forman los CeSAC y los Centros Médicos Barriales. Por teléfono se puede pedir turno de clínica médica o medicina general, pediatría y odontología. Para algunas especialidades piden
           estudios previos o una derivación.
         </p>
-        <p className="m-0 mt-2 text-ink-soft">Que el trámite sea gratuito no asegura que haya turnos disponibles: consultalo en el centro.</p>
+        <p className="m-0 mt-2 text-ink-soft">Los turnos disponibles dependen de cada centro: consultalo allí.</p>
 
         <div className="mt-3">
           <OutLink href={TURNOS_CESAC.url}>Ir al trámite oficial para sacar el turno</OutLink>

@@ -123,7 +123,7 @@ test("castración y vacunación: each place with its places, who, cost, how and 
   for (const piece of ["Vecinal Parque Sur: Bolonia 5350", "WhatsApp 341 383-5121", "Francisco Muñiz 60", "Concepción del Bermejo 3129", "Maloca 8321", "351 860-6269", "CIC Constitución 387 226-6146", "Domingo Savio 3215", "dos animales por persona"]) assert.ok(content.includes(piece), piece)
   // conditions and doubts of each page, said plainly
   for (const piece of ["hay mucha demanda y pocos turnos", "razas braquicéfalas", "La página no informa el costo", "no explica para qué prestación", "no es una cirugía confirmada", "ni si hay operativos en este momento"]) assert.ok(content.includes(piece), piece)
-  assert.ok(content.includes("Gratuita solo en algunos casos") && content.includes("Gratuita, según la página"))
+  assert.ok(content.includes("Gratuita solo en algunos casos") && !content.includes("Gratuita, según la página"), "the plain gratuity gets no label of its own on every card")
   // each card closes with the short notice (the day, the page, not verified), not with the reading method
   assert.ok(content.includes("consultada el 11 de octubre de 2026") && content.includes("AuxiliAR no los verificó") && !/herramienta de lectura|resumen autom/.test(content))
 })
@@ -167,7 +167,7 @@ test("consulta y urgencias: apart from the castración, with the cost conditions
   assert.ok(!content.includes("Esterilización de perros") && !content.includes("Castración de perros"))
   for (const piece of ["Francia 1940", "Sin costo para personas adscritas al sistema de salud pública municipal", "bono de 10 gavets", "1 gavet = $1.720", "Av. Díaz Vélez 4821", "4958-9900", "387 566-8872", "certificado de carente de recursos", "No es una clínica veterinaria general"]) assert.ok(content.includes(piece), piece)
   for (const piece of ["Todos los servicios son arancelados", "Los servicios son arancelados", "admision@fvet.uba.ar", "221 599-0158", "no atiende urgencias sin previa coordinación"]) assert.ok(content.includes(piece), piece)
-  assert.ok(content.includes("publican en sus páginas que sus servicios son arancelados") && content.includes("No los incluimos como atención gratuita"))
+  assert.ok(content.includes("publican en sus páginas que sus servicios son arancelados") && content.includes("Ser de una universidad pública no cambia eso"))
   assert.ok(content.includes("No listamos clínicas veterinarias pagas"))
   // nothing announced or from an organization without a confirmed free access is offered as a resource
   const all = Object.values(pages).join(" ")

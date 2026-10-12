@@ -37,11 +37,11 @@ const Block = ({ label, items }: { label: string, items?: string[] }) =>
     </>
   ) : null
 
-/** One prestación of a place: who, cost and conditions, where, when, how and contact, apart from the others */
+/** One prestación of a place: who, cost and conditions, where, when, how and contact, apart from the others. The plain "gratuita" gets no label of its own (the Costo block says it, with its source): the others do */
 const PrestacionBlock = ({ item }: { item: Prestacion }) => (
   <div className="rounded-xl border border-line-strong bg-card p-3">
     <h5 className="m-0 text-lg font-extrabold">{item.title}</h5>
-    <p className="m-0 mt-1 text-sm font-bold text-ink-soft">{COST_LABEL[item.cost.status]}</p>
+    {item.cost.status !== "gratuita" && <p className="m-0 mt-1 text-sm font-bold text-ink-soft">{COST_LABEL[item.cost.status]}</p>}
     <h6 className={labelClass}>Para quién</h6>
     <p className="m-0 mt-1">{item.who}</p>
     <h6 className={labelClass}>Costo</h6>

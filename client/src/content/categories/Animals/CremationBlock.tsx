@@ -15,7 +15,7 @@ export const CremationBlock = () => (
       <h3 id="an-cremation" className="m-0 text-xl font-extrabold">
         Cremación gratuita
       </h3>
-      <p className="m-0 mt-1">Perder a un perro o a un gato es difícil. Acá te contamos qué dice el Gobierno de la Ciudad sobre qué hacer, y qué servicio gratuito existe en la Ciudad de Buenos Aires.</p>
+      <p className="m-0 mt-1">Perder a un perro o a un gato es difícil. Acá te contamos qué dice el Gobierno de la Ciudad sobre qué hacer, y qué servicio existe en la Ciudad de Buenos Aires.</p>
     </div>
 
     <div className="rounded-2xl border-2 border-control-line bg-field p-4">
@@ -28,7 +28,7 @@ export const CremationBlock = () => (
     </div>
 
     <div>
-      <h4 className="m-0 text-lg font-extrabold">Un servicio gratuito en la Ciudad de Buenos Aires</h4>
+      <h4 className="m-0 text-lg font-extrabold">Un servicio en la Ciudad de Buenos Aires</h4>
       <p className="m-0 mt-1">
         El Instituto de Zoonosis Luis Pasteur recibe perros y gatos fallecidos todos los días, las 24 horas, sin costo, para su disposición final o cremación, y evalúa cada caso según criterios sanitarios. Su página de
         servicios lo incluye entre los servicios que brinda a la comunidad en forma gratuita.
