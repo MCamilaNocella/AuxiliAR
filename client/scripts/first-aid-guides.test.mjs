@@ -140,7 +140,7 @@ test("each guide renders its sections in the same order, in everyday language", 
     const stepsTitle = guide.stepsTitle ?? "¿Qué hago ahora?"
     assert.ok(page.includes(guide.title), guide.slug)
     assert.ok(page.includes(stepsTitle), guide.slug)
-    assert.ok(page.includes("Fuente oficial y revisión") && page.includes("7 de octubre de 2026"), guide.slug)
+    assert.ok(page.includes("Fuente oficial y revisión") && page.includes(guide.slug === "vacuna-antitetanica" ? "12 de octubre de 2026" : "7 de octubre de 2026"), guide.slug)
     assert.ok(html.includes('href="/sobre-auxiliar"') && !html.includes('target="_blank"') && page.includes("están en Sobre AuxiliAR"), `${guide.slug}: its sources are in Sobre AuxiliAR, no external link in the guide`)
     for (const empty of ["undefined", "null", "NaN"]) assert.ok(!page.includes(empty), `${guide.slug}: ${empty}`)
     // order: what it is → signs → steps → what NOT to do → when to ask for help
