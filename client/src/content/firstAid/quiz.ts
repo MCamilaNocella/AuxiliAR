@@ -3,7 +3,7 @@ import type { QuizAction, QuizQuestion } from "@/utils/quiz/quiz"
 import { getFirstAidGuide } from "./index"
 
 /**
- * Quiz de primeros auxilios: 48 situations, three for each of the 16 guides of src/content/firstAid, in the order of the guides (the ones for acting now, the
+ * Quiz de primeros auxilios: 51 situations, three for each of the 16 guides, and six for the RCP (it tells the infarto apart from the paro) of src/content/firstAid, in the order of the guides (the ones for acting now, the
  * everyday injuries, and preparing). Every right answer is something the guide of that situation says, in its own terms, and every feedback sends back to that
  * guide: the quiz adds no instruction of its own, no number of emergencies is written (the guides point to the emergency numbers of the app) and no medicine or dose
  * is named. It is educational: it does not replace a first aid course nor the care of a health team. PENDING review by a health professional, like the guides.
@@ -54,6 +54,48 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     ],
     why: "Con los brazos estirados presionás con el peso de tu cuerpo y te cansás menos.",
     learning: "En la RCP, brazos estirados: no se doblan los codos.",
+    action: toGuide("rcp"),
+  },
+  {
+    id: "rcp-infarto",
+    format: "¿Qué hacés?",
+    topic: "Infarto o paro cardíaco",
+    prompt: "Una persona de tu familia tiene presión y dolor fuerte en el centro del pecho, transpira y está mareada, pero te responde y respira. ¿Qué hacés?",
+    options: [
+      option("a", "Le pido que se siente o se acueste y llamo al número de emergencias de mi localidad, o pido que lo hagan.", true, "Correcto: son señales de un infarto. No es un paro: la persona responde y respira, así que no se hace RCP. En un infarto el tiempo lo es todo."),
+      option("b", "Empiezo a hacerle RCP.", false, "No: la RCP es para cuando no responde y no respira, o jadea. Acá la persona responde y respira."),
+      option("c", "Espero un rato a ver si se le pasa.", false, "No: el Ministerio dice que en un infarto el tiempo lo es todo y que hay que pedir ayuda."),
+    ],
+    why: "Un infarto y un paro cardíaco no son lo mismo: cambia lo que hay que hacer.",
+    learning: "Responde y respira, con dolor en el pecho: infarto, pedí ayuda. No responde y no respira: paro, RCP.",
+    action: toGuide("rcp"),
+  },
+  {
+    id: "rcp-infarto-a-paro",
+    format: "¿Qué hacés?",
+    topic: "Infarto o paro cardíaco",
+    prompt: "Esa persona con señales de infarto, de golpe, deja de responder y no respira o jadea. ¿Qué es ahora?",
+    options: [
+      option("a", "Un paro cardíaco: empiezo con la RCP.", true, "Así es: si no responde y no respira, o jadea, hay que hacer RCP. Llamá a emergencias o pedí que lo hagan, y seguí hasta que llegue la ayuda."),
+      option("b", "Sigue siendo un infarto: sigo esperando.", false, "Si dejó de responder y no respira, o jadea, es un paro cardíaco y hay que hacer RCP."),
+      option("c", "Le doy agua para que reaccione.", false, "No: no es lo que indica la guía. Si no responde y no respira, se hace RCP."),
+    ],
+    why: "La RCP mantiene la sangre circulando hasta que llega la atención médica.",
+    learning: "Si deja de responder y de respirar, o jadea, es un paro: RCP.",
+    action: toGuide("rcp"),
+  },
+  {
+    id: "rcp-dea",
+    format: "Elegí una",
+    topic: "Infarto o paro cardíaco",
+    prompt: "Hacés RCP y alguien trae un DEA (desfibrilador externo automático). ¿Qué hacés?",
+    options: [
+      option("a", "Lo enciendo, sigo las instrucciones de su voz y me fijo que nadie toque a la persona antes de la descarga.", true, "Correcto. El uso inmediato del DEA es vital, dentro de los 5 minutos."),
+      option("b", "No lo uso: solo sirve para personal de salud.", false, "No: el Ministerio explica que el DEA puede usarse siguiendo las instrucciones de su voz; capacitarse lo hace más efectivo."),
+      option("c", "Dejo de hacer compresiones y espero a que llegue la ambulancia.", false, "No: se sigue con las compresiones hasta que llegue la ayuda, y se usa el DEA."),
+    ],
+    why: "El DEA y las compresiones se complementan.",
+    learning: "DEA: encenderlo, seguir su voz y que nadie toque a la persona antes de la descarga.",
     action: toGuide("rcp"),
   },
   /* ── Atragantamiento ── */

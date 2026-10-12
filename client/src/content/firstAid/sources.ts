@@ -18,6 +18,24 @@ export const RCP_ADULTOS: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/primerosauxilios/rcp/adultos",
 }
 
+/** "Reanimación cardiopulmonar (RCP)" · Primeros auxilios: the four steps, the DEA, the course; read 2026-10-12. The page has no date */
+export const RCP_PAGINA: GuideSource = {
+  label: "Reanimación cardiopulmonar (RCP) · Primeros auxilios, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/primerosauxilios/RCP",
+}
+
+/** Its "Preguntas frecuentes": when to do RCP, what a heart attack is and what to do, why compressions, the breaths, the DEA and where to find it; read 2026-10-12 */
+export const RCP_PREGUNTAS: GuideSource = {
+  label: "Preguntas frecuentes sobre RCP · Primeros auxilios, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/primerosauxilios/RCP/preguntas",
+}
+
+/** "Enfermedades cardiovasculares" (glosario): the signs of a heart attack and "el tiempo lo es todo"; read 2026-10-12 */
+export const CARDIOVASCULAR: GuideSource = {
+  label: "Enfermedades cardiovasculares · Glosario, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/glosario/enfermedadcardiovascular",
+}
+
 /**
  * Temporarily out of the guides (9/10/2026): the whole /salud/primerosauxilios/situaciones/ section of argentina.gob.ar answers
  * an error page ("500 - Error", sent as 403) to every request we made, so the link could not be verified. The guides that cited it

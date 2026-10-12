@@ -140,7 +140,7 @@ test("each guide renders its sections in the same order, in everyday language", 
     const stepsTitle = guide.stepsTitle ?? "¿Qué hago ahora?"
     assert.ok(page.includes(guide.title), guide.slug)
     assert.ok(page.includes(stepsTitle), guide.slug)
-    assert.ok(page.includes("Fuente oficial y revisión") && page.includes(guide.slug === "vacuna-antitetanica" ? "12 de octubre de 2026" : "7 de octubre de 2026"), guide.slug)
+    assert.ok(page.includes("Fuente oficial y revisión") && page.includes(new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(guide.checkedAt))), guide.slug)
     assert.ok(html.includes('href="/sobre-auxiliar"') && !html.includes('target="_blank"') && page.includes("están en Sobre AuxiliAR"), `${guide.slug}: its sources are in Sobre AuxiliAR, no external link in the guide`)
     for (const empty of ["undefined", "null", "NaN"]) assert.ok(!page.includes(empty), `${guide.slug}: ${empty}`)
     // order: what it is → signs → steps → what NOT to do → when to ask for help
@@ -279,4 +279,27 @@ test("vacuna antitetánica: official sources, no doses, with the 2008 national n
   assert.ok(content.includes("No pongas alcohol") || content.includes("no pongas alcohol"), "bites: no alcohol")
   assert.equal(guide.clinicalReview.status, "pending")
   assert.ok(bySlug["heridas"].related.includes("vacuna-antitetanica"))
+})
+
+test("rcp: infarto y paro cardíaco se diferencian, con lo que dice la página oficial del Ministerio y sin medicamentos", () => {
+  const guide = bySlug["rcp"]
+  const page = text(renderGuide(guide))
+  assert.equal(guide.title, "Infarto y paro cardíaco (RCP)")
+  assert.equal(guide.checkedAt, "2026-10-12")
+  // two situations, told apart: the signs, and the steps of each
+  for (const piece of ["Paro cardíaco: cuándo hacer RCP", "Infarto (ataque cardíaco): señales", "Si tiene señales de infarto y responde", "Adultos y niños: no responde y no respira", "Bebés (hasta el año de vida)", "Si hay un DEA"]) assert.ok(page.includes(piece), piece)
+  assert.ok(page.includes("Pedile que se siente o se acueste.") && page.includes("el tiempo lo es todo"))
+  assert.ok(page.includes("jadea") && page.includes("es un paro cardíaco: empezá con la RCP"), "the infarto steps lead to RCP when it becomes a paro")
+  assert.ok(page.includes("No hagas RCP a una persona que responde y respira con normalidad"))
+  // what the page says about the breaths, the DEA and the course
+  assert.ok(page.includes("Las compresiones son lo más importante") && page.includes("dentro de los 5 minutos") && page.includes("nadie esté tocando a la persona"))
+  assert.ok(page.includes("40%") && page.includes("curso de RCP básico"))
+  assert.deepEqual(guide.sources.slice(0, 3).map(({ url }) => url), [
+    "https://www.argentina.gob.ar/salud/primerosauxilios/RCP",
+    "https://www.argentina.gob.ar/salud/primerosauxilios/RCP/preguntas",
+    "https://www.argentina.gob.ar/salud/glosario/enfermedadcardiovascular",
+  ])
+  assert.ok(!/\b\d+\s?(mg|ml)\b/i.test(page) && !/aspirina|nitroglicerina/i.test(page), "no medicine: the page does not give one")
+  // the emergency number is never written
+  assert.ok(!/\b(107|911|106|112)\b/.test(JSON.stringify(guide)))
 })

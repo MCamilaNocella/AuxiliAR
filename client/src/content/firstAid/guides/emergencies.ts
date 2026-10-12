@@ -1,23 +1,42 @@
 import { PATHS } from "@/router/paths"
-import { ANMAT_ALERGIAS, CABA_ALERGIAS, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, RCP_ADULTOS } from "../sources"
+import { ANMAT_ALERGIAS, CABA_ALERGIAS, CARDIOVASCULAR, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, RCP_ADULTOS, RCP_PAGINA, RCP_PREGUNTAS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Necesito actuar ahora": situations where a life can be at risk */
 export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
   {
     slug: "rcp",
-    title: "RCP: la persona no responde y no respira",
+    title: "Infarto y paro cardíaco (RCP)",
     group: "now",
     summary:
-      "La RCP (reanimación cardiopulmonar) son presiones rítmicas sobre el pecho de una persona que sufre un paro cardíaco. Mantiene la sangre circulando hasta que llega la atención médica.",
+      "Un infarto y un paro cardíaco no son lo mismo y no se actúa igual. Si la persona no responde y no respira, o jadea, hay que hacer RCP (reanimación cardiopulmonar): presiones rítmicas sobre el pecho que mantienen la sangre circulando hasta que llega la atención médica. Si tiene señales de infarto pero responde, no es para RCP: se pide ayuda de inmediato.",
     callFirst: true,
     signs: {
-      title: "Señales importantes",
-      items: ["No responde cuando le hablás ni cuando la sacudís suavemente de los hombros.", "No respira, jadea o respira con mucha dificultad."],
+      title: "Paro cardíaco: cuándo hacer RCP",
+      items: ["No responde cuando le hablás ni cuando la sacudís suavemente de los hombros.", "No respira, jadea o respira de forma anormal."],
     },
+    extraSigns: [
+      {
+        title: "Infarto (ataque cardíaco): señales",
+        items: [
+          "Presión o dolor fuerte en el centro del pecho, que no se va y puede irradiarse a los hombros, el cuello, la mandíbula o los brazos.",
+          "Molestia en el pecho con mareos, desmayo, sudor, náuseas o falta de aire.",
+          "No siempre aparecen todas las señales.",
+        ],
+      },
+    ],
     stepSets: [
       {
-        label: "Adultos y niños",
+        label: "Si tiene señales de infarto y responde",
+        steps: [
+          "Pedile que se siente o se acueste.",
+          "Llamá al número de emergencias de tu localidad o pedí que lo hagan: en un infarto el tiempo lo es todo. Si no es posible llamar, llevala al hospital más cercano.",
+          "Quedate con la persona y fijate si responde y si respira.",
+          "Si deja de responder y no respira, o jadea, es un paro cardíaco: empezá con la RCP.",
+        ],
+      },
+      {
+        label: "Adultos y niños: no responde y no respira",
         steps: [
           "Fijate que el lugar sea seguro. Si hay gases tóxicos, riesgo de electrocución, incendio o explosión, no te acerques y esperá a que llegue el servicio de emergencias.",
           "Sacudila suavemente de los hombros y preguntale en voz alta: “¿Me escuchás?”.",
@@ -26,7 +45,7 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
           "Apoyá el talón de una mano en el centro del pecho y poné la otra mano encima, con los dedos entrelazados.",
           "Con los brazos estirados, presioná hacia abajo hasta hundir el pecho de 5 a 6 cm y soltá. Hacelo rápido y con ritmo: entre 100 y 120 veces por minuto.",
           "Seguí sin interrumpir las compresiones. Cada 2 minutos, fijate si la persona reacciona.",
-          "Si hay un desfibrilador (DEA) cerca, pedí que lo traigan y usalo: encendelo y seguí las instrucciones de su voz.",
+          "Las compresiones son lo más importante. Si sabés dar respiraciones, podés darlas con la cabeza inclinada hacia atrás y el mentón levantado; si no sabés o no podés, seguí solo con compresiones.",
           "Seguí hasta que llegue el equipo de emergencias. Si la persona recupera la conciencia, acostala de costado (posición de seguridad) hasta que llegue la ayuda.",
         ],
       },
@@ -41,12 +60,26 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
           "Si empieza a respirar solo, ponelo de costado (posición de recuperación) hasta que llegue la ayuda.",
         ],
       },
+      {
+        label: "Si hay un DEA (desfibrilador externo automático)",
+        steps: [
+          "Pedí que lo traigan mientras seguís con las compresiones. Los DEA suelen estar en oficinas públicas, hipermercados, estadios, clínicas, aeropuertos y terminales, en gabinetes señalizados cerca de los matafuegos.",
+          "Encendelo y seguí las instrucciones de su voz: el uso inmediato es vital, dentro de los 5 minutos.",
+          "Antes de la descarga, fijate que nadie esté tocando a la persona.",
+        ],
+      },
     ],
-    dont: ["No te acerques si el lugar no es seguro.", "No dobles los codos al presionar: mantené los brazos estirados.", "No cortes la llamada hasta que la persona que te atiende te lo indique."],
+    dont: [
+      "No hagas RCP a una persona que responde y respira con normalidad: la RCP es para cuando no responde y no respira, o jadea.",
+      "No te acerques si el lugar no es seguro.",
+      "No dobles los codos al presionar: mantené los brazos estirados.",
+      "No cortes la llamada hasta que la persona que te atiende te lo indique.",
+    ],
     whileWaiting: ["Seguí con las compresiones hasta que llegue el equipo de emergencias."],
+    note: "Según el Ministerio de Salud, empezar la RCP de inmediato, aunque no seas profesional, puede aumentar en un 40% las posibilidades de supervivencia. Esta guía no reemplaza un curso de RCP básico: el Ministerio recomienda hacerlo y repetir el entrenamiento.",
     related: ["atragantamiento", "electrocucion"],
-    sources: [MINI_GUIA_RCP, RCP_ADULTOS, MANUAL],
-    checkedAt: CHECKED_AT,
+    sources: [RCP_PAGINA, RCP_PREGUNTAS, CARDIOVASCULAR, MINI_GUIA_RCP, RCP_ADULTOS, MANUAL],
+    checkedAt: "2026-10-12",
   },
   {
     slug: "atragantamiento",
