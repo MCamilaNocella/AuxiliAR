@@ -9,8 +9,7 @@ import { Section3 } from "./sections/Section3"
 export const MENTAL_HEALTH: Category = {
   id: "salud-mental",
   title: "Salud mental",
-  description: "Orientación, acompañamiento y recursos",
-  subtitle: "Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales",
+  description: "Herramientas de autocuidado, y orientación: cómo pedir ayuda",
   icon: Brain,
   to: PATHS.topic("salud-mental"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */

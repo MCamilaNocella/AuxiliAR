@@ -1,57 +1,29 @@
 [
   {
-    "title": "Encontrar atención",
+    "title": "Centros de atención",
     "path": "/centros",
-    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
+    "summary": "Mapa de hospitales y centros de salud. Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Encontrar atención › Mapa AuxiliAR",
+    "title": "Centros de atención › Mapa AuxiliAR",
     "path": "/centros?seccion=section-1",
     "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Cuidar mi salud",
+    "title": "Salud general",
     "path": "/temas/salud-general",
-    "summary": "Controles, vacunas y prevención, con un quiz para empezar. Qué controles y vacunas te corresponden, en lenguaje simple",
+    "summary": "Controles, cuidados y calendario de vacunación.",
     "firstAid": false,
     "hasInfo": false
   },
   {
-    "title": "Salud mental",
-    "path": "/temas/salud-mental",
-    "summary": "Orientación, acompañamiento y recursos. Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Salud mental › Dónde buscar ayuda",
-    "path": "/temas/salud-mental?seccion=section-1",
-    "summary": "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Salud mental › Conocé tus derechos",
-    "path": "/temas/salud-mental?seccion=section-2",
-    "summary": "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Salud mental › Herramientas para cuidarte",
-    "path": "/temas/salud-mental?seccion=section-3",
-    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
     "title": "Salud sexual y ESI",
     "path": "/temas/esi",
-    "summary": "Anticoncepción, derechos y acceso a atención. Dónde pedir orientación, métodos y pruebas, y tus derechos, con fuentes oficiales Dónde pedir orientación y atención en salud sexual y reproductiva: consultar en un centro de salud u hospital, la línea nacional de salud sexual del Ministerio de Salud, cómo explorar centros en el mapa, y la diferencia entre información gratuita, orientación y atención gratuita confirmada. AuxiliAR no otorga turnos ni realiza consultas médicas. Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos. Derechos sexuales y reproductivos según las leyes nacionales 25.673, 26.150 y 27.610, qué es la Educación Sexual Integral (ESI) y dónde leer materiales oficiales de ESI.",
+    "summary": "Anticonceptivos, prevención y derechos sexuales. Dónde pedir orientación y atención en salud sexual y reproductiva: consultar en un centro de salud u hospital, la línea nacional de salud sexual del Ministerio de Salud, cómo explorar centros en el mapa, y la diferencia entre información gratuita, orientación y atención gratuita confirmada. AuxiliAR no otorga turnos ni realiza consultas médicas. Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos. Derechos sexuales y reproductivos según las leyes nacionales 25.673, 26.150 y 27.610, qué es la Educación Sexual Integral (ESI) y dónde leer materiales oficiales de ESI.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -79,7 +51,7 @@
   {
     "title": "Atención veterinaria",
     "path": "/temas/animales",
-    "summary": "Cuidados preventivos y orientación veterinaria. Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
+    "summary": "Prevención, chequeos, castración gratuita y más. Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -105,23 +77,44 @@
     "hasInfo": true
   },
   {
-    "title": "Primeros auxilios",
-    "path": "/primeros-auxilios",
-    "summary": "Qué hacer ya ante una emergencia. Guías paso a paso para actuar en emergencias Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
-    "firstAid": true,
+    "title": "Salud mental",
+    "path": "/temas/salud-mental",
+    "summary": "Herramientas de autocuidado, y orientación: cómo pedir ayuda. Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Primeros auxilios › Guías de primeros auxilios",
-    "path": "/primeros-auxilios?seccion=section-1",
-    "summary": "Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
-    "firstAid": true,
+    "title": "Salud mental › Dónde buscar ayuda",
+    "path": "/temas/salud-mental?seccion=section-1",
+    "summary": "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "firstAid": false,
     "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Conocé tus derechos",
+    "path": "/temas/salud-mental?seccion=section-2",
+    "summary": "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Herramientas para cuidarte",
+    "path": "/temas/salud-mental?seccion=section-3",
+    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos",
+    "path": "/recursos",
+    "summary": "Derechos, leyes, FAQ, y trámites.",
+    "firstAid": false,
+    "hasInfo": false
   },
   {
     "title": "Sobre AuxiliAR",
     "path": "/sobre-auxiliar",
-    "summary": "Quiénes somos y de dónde sale la información. Información de salud verificada, gratuita y para todas las personas Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional, cómo verifica los centros y sus prestaciones, qué significa gratuito, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, cuál es la cobertura y cuáles son las fuentes de cada tema.",
+    "summary": "Quiénes somos y de dónde sale la información. Qué es AuxiliAR, de dónde sale la información, que no reemplaza la atención profesional, cómo verifica los centros y sus prestaciones, qué significa gratuito, qué dice la fecha de verificación, por qué que algo no aparezca no significa que no exista, cuál es la cobertura y cuáles son las fuentes de cada tema.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -133,11 +126,18 @@
     "hasInfo": true
   },
   {
-    "title": "Más recursos",
-    "path": "/recursos",
-    "summary": "Preguntas frecuentes, derechos, leyes y trámites. Preguntas frecuentes, derechos, leyes y trámites",
-    "firstAid": false,
-    "hasInfo": false
+    "title": "Primeros auxilios",
+    "path": "/primeros-auxilios",
+    "summary": "Guías paso a paso para actuar en emergencias. Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Guías de primeros auxilios",
+    "path": "/primeros-auxilios?seccion=section-1",
+    "summary": "Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "firstAid": true,
+    "hasInfo": true
   },
   {
     "title": "Primeros auxilios › Reacciones alérgicas",

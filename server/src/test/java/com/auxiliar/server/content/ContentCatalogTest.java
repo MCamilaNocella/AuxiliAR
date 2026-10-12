@@ -29,7 +29,7 @@ class ContentCatalogTest {
 
     @Test
     void knowsWhichPagesHaveContent() {
-        // Encontrar atención (its map), Salud mental, Salud sexual y ESI and Atención veterinaria (their three sections each),
+        // Centros de atención (its map), Salud mental, Salud sexual y ESI and Atención veterinaria (their three sections each),
         // Primeros auxilios and Sobre AuxiliAR have a summary. Update this list when another section gets one
         assertThat(catalog.pages()).filteredOn(ContentPage::hasInfo).extracting(ContentPage::path)
                 .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1",
@@ -43,9 +43,9 @@ class ContentCatalogTest {
 
     @Test
     void findsTheCentersCategoryAndItsMap() {
-        assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Encontrar atención");
+        assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Centros de atención");
         assertThat(catalog.findByPath("/centros?seccion=section-1")).hasValueSatisfying(page -> {
-            assertThat(page.title()).isEqualTo("Encontrar atención › Mapa AuxiliAR");
+            assertThat(page.title()).isEqualTo("Centros de atención › Mapa AuxiliAR");
             assertThat(page.hasInfo()).isTrue();
         });
     }

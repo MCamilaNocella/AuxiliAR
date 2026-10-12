@@ -4,7 +4,7 @@ import { centersLink } from "@/router/centersLink"
 import { PHYSICAL_HEALTH_QUIZ } from "./Section4.constants"
 
 const EXITS = [
-  { label: "Encontrar atención", to: centersLink() },
+  { label: "Centros de atención", to: centersLink() },
   { label: "Volver a Salud general", to: PATHS.topic(HEALTH_GENERAL_SLUG) },
 ]
 

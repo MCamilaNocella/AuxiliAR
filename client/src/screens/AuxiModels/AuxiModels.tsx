@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Auxi } from "@/components/help/Auxi"
 import { Page } from "@/components/layout/Page"
-import { CATEGORIES } from "@/content/categories"
+import { ALL_CATEGORIES } from "@/content/categories"
 import { setAuxiPreview } from "@/hooks/useAuxiPreview"
 import { CATEGORY_MODELS, FIRST_MODELS } from "./AuxiModels.constants"
 import type { AuxiModel, AuxiVariant } from "./AuxiModels.types"
@@ -86,7 +86,7 @@ export const AuxiModels = () => {
       <h2 className="m-0 mt-8 text-2xl font-extrabold">Por categoría</h2>
       <p className="m-0 mt-1 text-muted">Todos con la cruz blanca.</p>
       {CATEGORY_MODELS.map(({ categoryId, models }) => {
-        const category = CATEGORIES.find(({ id }) => id === categoryId)
+        const category = ALL_CATEGORIES.find(({ id }) => id === categoryId)
         if (!category) return null
         const Icon = category.icon
         return (

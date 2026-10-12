@@ -6,9 +6,8 @@ import { Section1 } from "./sections/Section1"
 
 export const HEALTH_CENTERS: Category = {
   id: "centros",
-  title: "Encontrar atención",
-  description: "Centros de salud y hospitales verificados, en mapa o lista",
-  subtitle: "Buscá centros de salud, hospitales y guardias con información verificada",
+  title: "Centros de atención",
+  description: "Mapa de hospitales y centros de salud",
   icon: Hospital,
   to: PATHS.centers,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */

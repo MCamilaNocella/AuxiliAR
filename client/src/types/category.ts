@@ -4,9 +4,8 @@ import type { LucideIcon } from "lucide-react"
 export type Category = {
   id: string
   title: string
+  /** One line: under the title on the home card and in the category banner */
   description: string
-  /** One line under the title in the category banner */
-  subtitle: string
   icon: LucideIcon
   to: string
   /** Decorative illustration (3:2) for the banner and the wallpaper */

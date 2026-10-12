@@ -10,8 +10,7 @@ import { Section4 } from "./sections/Section4"
 export const RESOURCES: Category = {
   id: "recursos",
   title: "Más recursos",
-  description: "Preguntas frecuentes, derechos, leyes y trámites",
-  subtitle: "Preguntas frecuentes, derechos, leyes y trámites",
+  description: "Derechos, leyes, FAQ, y trámites",
   icon: BookOpen,
   to: PATHS.resources,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */

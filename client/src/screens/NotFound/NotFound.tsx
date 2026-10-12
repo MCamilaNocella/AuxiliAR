@@ -13,7 +13,7 @@ export const NotFound = () => (
       </li>
       <li>
         <Link to={PATHS.centers} className="inline-flex min-h-11 items-center">
-          Encontrar atención
+          Centros de atención
         </Link>
       </li>
       <li>

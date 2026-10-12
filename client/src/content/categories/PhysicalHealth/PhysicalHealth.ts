@@ -12,9 +12,8 @@ import { Section7 } from "./sections/Section7"
 export const PHYSICAL_HEALTH: Category = {
   /** Internal id, kept as it was ("salud-fisica"): the places taxonomy, the category colors and the illustrations use it. The title and the address are "Salud general" */
   id: "salud-fisica",
-  title: "Cuidar mi salud",
-  description: "Controles, vacunas y prevención, con un quiz para empezar",
-  subtitle: "Qué controles y vacunas te corresponden, en lenguaje simple",
+  title: "Salud general",
+  description: "Controles, cuidados y calendario de vacunación",
   icon: HeartPulse,
   to: PATHS.topic(HEALTH_GENERAL_SLUG),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
