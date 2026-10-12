@@ -7,6 +7,7 @@ import { Section2 } from "./sections/Section2"
 import { Section3 } from "./sections/Section3"
 import { Section4 } from "./sections/Section4"
 import { Section5 } from "./sections/Section5"
+import { Section6 } from "./sections/Section6"
 
 export const MENTAL_HEALTH: Category = {
   id: "salud-mental",
@@ -23,8 +24,15 @@ export const MENTAL_HEALTH: Category = {
       id: "section-1",
       title: "Dónde buscar ayuda",
       summary:
-        "Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, CeSAC, Centro de Salud Mental Nº 1 y Hospital Bonaparte, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+        "Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas.",
       Content: Section1,
+    },
+    {
+      id: "section-6",
+      title: "Atención en la Ciudad",
+      summary:
+        "Dónde pedir atención programada de salud mental en la Ciudad de Buenos Aires: 33 CeSAC con psicología o psiquiatría (por comuna), el Centro de Salud Mental Nº 1 y el Hospital Nacional Laura Bonaparte. Datos de páginas oficiales; no se asegura turno ni horario.",
+      Content: Section6,
     },
     {
       id: "section-2",

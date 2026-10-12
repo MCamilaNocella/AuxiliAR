@@ -32,6 +32,7 @@ const CONTENT = {
   "section-3": (await vite.ssrLoadModule(`${sectionDir}/Section3/Section3.content.tsx`)).default,
   "section-4": (await vite.ssrLoadModule(`${sectionDir}/Section4/Section4.content.tsx`)).default,
   "section-5": (await vite.ssrLoadModule(`${sectionDir}/Section5/Section5.content.tsx`)).default,
+  "section-6": (await vite.ssrLoadModule(`${sectionDir}/Section6/Section6.content.tsx`)).default,
 }
 const directory = await vite.ssrLoadModule("/src/content/categories/MentalHealth/MentalHealth.directory.ts")
 const places = JSON.parse(readFileSync(resolve(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
@@ -42,9 +43,10 @@ const render = (component) => renderToStaticMarkup(createElement(MemoryRouter, {
 const hrefs = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&"))
 const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) => [id, render(component)]))
 
-test("salud mental has five sections that open straight on the first, and it is no longer 'próximamente'", () => {
+test("salud mental has six sections that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(MENTAL_HEALTH.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Dónde buscar ayuda"],
+    ["section-6", "Atención en la Ciudad"],
     ["section-2", "Conocé tus derechos"],
     ["section-3", "Herramientas para cuidarte"],
     ["section-4", "Consumos y acompañamiento"],
@@ -163,7 +165,7 @@ test("the numbers: the national lines come from the lines dataset, nothing is ca
   const with135 = directory.LINEAS_OTRAS.filter(({ phone }) => phone === "135").map(({ id }) => id)
   assert.deepEqual(with135, ["entre-rios-135", "tucuman-135"])
   // cost: said once, as what it is (a general norm), and the yoga page that does not say it is not called free
-  assert.ok(s1.includes("Ley 153 (arts. 2 y 3.g). Es una norma general, no una frase de cada centro."))
+  assert.ok(text(pages["section-6"]).includes("Ley 153 (arts. 2 y 3.g). Es una norma general, no una frase de cada centro."))
   const s3 = text(pages["section-3"])
   assert.ok(s3.includes("La página oficial no informa si tienen costo: no las damos por gratuitas."))
   assert.ok(!/yoga[^.]*gratuit/i.test(s3.replace("no las damos por gratuitas", "")))
@@ -197,11 +199,15 @@ test("the directory: no repeated place, nothing with a disputed address, and wha
 test("dónde buscar ayuda, consumos y otras provincias say what they are and what they are not", () => {
   const s1 = text(pages["section-1"])
   assert.ok(s1.includes("Estos hospitales de la Ciudad tienen guardia de salud mental las 24 horas, todos los días del año."))
-  assert.ok(s1.includes("nadie llamó ni fue a los lugares"))
+  const s6 = text(pages["section-6"])
+  assert.ok(s6.includes("nadie llamó ni fue a los lugares"))
   assert.ok(s1.includes("Los demás hospitales no se presentan como atención para niñas y niños."))
   assert.ok(s1.includes("Son líneas de escucha y orientación: no reemplazan una guardia ni la atención presencial."))
-  assert.ok(s1.includes("También está en el mapa de Centros de atención."))
-  assert.ok(s1.includes("La Resolución 1066/2026"), "Bonaparte: the condition for people without permanent residence")
+  assert.ok(s6.includes("También está en el mapa"))
+  assert.ok(s6.includes("La Resolución 1066/2026"), "Bonaparte: the condition for people without permanent residence")
+  assert.ok(s6.includes("Las páginas no publican los horarios de estos servicios"))
+  assert.ok(s6.includes("Comuna 4") && s6.includes("CeSAC Nº 1 · Barracas 1"), "CeSAC by comuna")
+  assert.ok(s1.length < 9000, "section 1 stays short: lines, guardias and the way to the rest")
   const s4 = text(pages["section-4"])
   assert.ok(s4.includes("No son atención profesional.") && s4.includes("no equivale a una cama ni a un tratamiento garantizado"))
   const s5 = text(pages["section-5"])
@@ -222,7 +228,7 @@ test("none of the mockup data of the old draft (fictitious people, numbers, What
   }
 })
 
-test("the chat's index lists the five sections with their summary, up to date", async () => {
+test("the chat's index lists the six sections with their summary, up to date", async () => {
   const index = JSON.parse(readFileSync(resolve(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
   for (const section of MENTAL_HEALTH.sections) {
     const page = index.find((entry) => entry.path === `/temas/salud-mental?seccion=${section.id}`)

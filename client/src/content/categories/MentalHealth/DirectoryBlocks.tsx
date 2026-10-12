@@ -54,20 +54,32 @@ export const HospitalList = ({ items, url }: { items: Hospital[], url: string })
   </>
 )
 
-/** The CeSAC with mental health care: one line each, with its own official page */
-export const CesacList = ({ items }: { items: CesacItem[] }) => (
-  <ul role="list" className="m-0 flex list-none flex-col gap-3 p-0">
-    {items.map((cesac) => (
-      <li key={cesac.n} className="rounded-xl border border-line-strong bg-field p-3">
-        <p className="m-0 font-extrabold">{`${cesac.title} · ${cesac.barrio}`}</p>
-        <p className="m-0 mt-0.5">{cesac.what}</p>
-        <p className="m-0 text-ink-soft">{`${cesac.address} · ${cesac.comuna} · Tel. ${cesac.phone}`}</p>
-        {cesac.onMap && <p className="m-0 text-ink-soft">También está en el mapa de Centros de atención.</p>}
-        <PageLink href={cesac.url} />
-      </li>
-    ))}
-  </ul>
-)
+/** The CeSAC with mental health care, by comuna: one compact entry each, its title is the link to its own official page */
+export const CesacList = ({ items }: { items: CesacItem[] }) => {
+  const comunas = [...new Set(items.map(({ comuna }) => comuna))].sort((x, y) => Number(x.replace(/D/g, "")) - Number(y.replace(/D/g, "")))
+  return (
+    <div className="flex flex-col gap-4">
+      {comunas.map((comuna) => (
+        <section key={comuna} aria-label={comuna}>
+          <h5 className="m-0 text-base font-extrabold">{comuna}</h5>
+          <ul role="list" className="m-0 mt-1 flex list-none flex-col gap-2 p-0">
+            {items
+              .filter((cesac) => cesac.comuna === comuna)
+              .map((cesac) => (
+                <li key={cesac.n}>
+                  <a href={cesac.url} target="_blank" rel="noopener noreferrer" className="font-bold">
+                    {`${cesac.title} · ${cesac.barrio}`}
+                    <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                  </a>
+                  <span className="block text-ink-soft">{`${cesac.what} · ${cesac.address} · Tel. ${cesac.phone}${cesac.onMap ? " · También está en el mapa" : ""}`}</span>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  )
+}
 
 /** A line of the national dataset (data/resources/lines): the numbers, who they are for and the hours come from there, never from here; its source stays with that dataset */
 export const NationalLine = ({ id }: { id: string }) => {
