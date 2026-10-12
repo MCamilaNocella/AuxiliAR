@@ -70,6 +70,11 @@ export const VACUNACION_ADULTOS: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/vacunas/vacunacion-adultos",
 }
 
+export const RABIA_MORDEDURAS: GuideSource = {
+  label: "Rabia (qué hacer ante una mordedura) · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/node/29491",
+}
+
 /** The only national text found with the detail by type of wound; from 1997, its current status could not be confirmed (the guide says so) */
 export const NORMAS_VACUNACION_1997: GuideSource = {
   label: "Normas Nacionales de Vacunación, Resolución 141/1997 (vacuna antitetánica) · Ministerio de Salud",

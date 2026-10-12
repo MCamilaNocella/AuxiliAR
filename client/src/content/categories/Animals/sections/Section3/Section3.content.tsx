@@ -94,9 +94,13 @@ export default function Section3Content() {
         <h3 id="an-tetanus" className="m-0 text-xl font-extrabold">
           Vacuna antitetánica
         </h3>
-        <p className="m-0 mt-1">
-          Si un animal te mordió o te arañó, el Ministerio de Salud indica acudir rápido a un centro de salud para que te evalúe un profesional. Llevá tu carnet de vacunas: según tus dosis y cuánto pasó desde la última, te dirán si hace falta vacunarte contra el tétanos o un refuerzo.
-        </p>
+        <p className="m-0 mt-1">Si un animal te mordió o te arañó, el Ministerio de Salud de la Nación indica:</p>
+        <ul className="m-0 mt-2 flex list-disc flex-col gap-1.5 pl-5">
+          <li>Lavar la herida con abundante agua y jabón.</li>
+          <li>No colocar alcohol ni otro desinfectante.</li>
+          <li>Concurrir rápidamente al centro de salud más cercano, para que un profesional de la salud evalúe si hace falta una profilaxis antibiótica, antitetánica y/o antirrábica, de acuerdo a las características del accidente.</li>
+        </ul>
+        <p className="m-0 mt-2">Llevá tu carnet de vacunas: es lo que permite saber si te falta alguna dosis. Qué corresponde en cada caso lo define el profesional que te atienda.</p>
         <p className="m-0 mt-2 text-ink-soft">La vacuna doble bacteriana protege contra el tétanos y la difteria: esquema de 3 dosis y refuerzo cada 10 años, según el Calendario Nacional.</p>
         <p className="m-0 mt-3">
           <Link to={PATHS.firstAidGuide("vacuna-antitetanica")} className="inline-flex min-h-11 items-center font-bold">

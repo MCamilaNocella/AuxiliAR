@@ -262,7 +262,7 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "animales-atencion",
         title: "Recursos importantes: consulta y urgencias",
-        references: [{ label: ZOONOSIS.label, url: ZOONOSIS.url }, ...UNIVERSITY_HOSPITALS.map(({ by, url }) => ({ label: by, url })), { label: "Municipalidad de Rosario · Solicitar atención veterinaria para perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos" }],
+        references: [{ label: ZOONOSIS.label, url: ZOONOSIS.url }, { label: RABIA.label, url: RABIA.url }, ...UNIVERSITY_HOSPITALS.map(({ by, url }) => ({ label: by, url })), { label: "Municipalidad de Rosario · Solicitar atención veterinaria para perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos" }],
         checkedAt: [ANIMAL_PLACES_READ_ON],
         notes: ["Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular."],
       },
