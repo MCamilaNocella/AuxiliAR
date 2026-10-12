@@ -175,7 +175,8 @@ test("primeros auxilios: the page of the category, whose every card opens a real
     assert.ok(html.includes(`href="/primeros-auxilios/${guide.slug}"`), guide.slug)
     assert.ok(content.includes(guide.title), guide.title)
   }
-  assert.equal([...html.matchAll(/href="\/primeros-auxilios\/[a-z-]+"/g)].length, FIRST_AID_GUIDE_CONTENT.length)
+  assert.equal([...html.matchAll(/href="\/primeros-auxilios\/[a-z-]+"/g)].length, FIRST_AID_GUIDE_CONTENT.length + 1, "one card more than guides: the quiz, next to the botiquín")
+  assert.ok(html.includes('href="/primeros-auxilios/quiz"'))
   // it is the category itself: no link back to it
   assert.ok(!html.includes('href="/primeros-auxilios"'))
   assert.ok(!content.includes("Ver todas las guías"))
@@ -200,7 +201,7 @@ test("every internal link of Salud física points somewhere real", () => {
   for (const href of links) {
     const url = new URL(href, "http://x")
     // "/centros" is the Centros de atención category: it has its own route
-    const known = ["/temas/salud-general", PATHS.centers, ...guideSlugs.map((slug) => `/primeros-auxilios/${slug}`)]
+    const known = ["/temas/salud-general", PATHS.centers, ...guideSlugs.map((slug) => `/primeros-auxilios/${slug}`), PATHS.firstAidQuiz]
     assert.ok(known.includes(url.pathname), `${href}: no route`)
     const section = url.searchParams.get("seccion")
     if (section) assert.ok(sectionIds.includes(section), `${href}: section`)

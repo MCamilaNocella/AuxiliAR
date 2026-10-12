@@ -6,6 +6,7 @@ export const PATHS = {
   centers: "/centros",
   myHealth: "/mi-salud",
   firstAid: "/primeros-auxilios",
+  firstAidQuiz: "/primeros-auxilios/quiz",
   firstAidGuide: (slug: string) => `/primeros-auxilios/${slug}`,
   about: "/sobre-auxiliar",
   login: "/login",

@@ -1,0 +1,1 @@
+export { FirstAidQuizScreen } from "./FirstAidQuiz"

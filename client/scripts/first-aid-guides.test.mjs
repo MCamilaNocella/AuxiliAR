@@ -242,3 +242,28 @@ test("reacciones alérgicas: official sources, a date, and the pending clinical 
   // only this guide is waiting for a review; the others come straight from the national Manual
   assert.deepEqual(GUIDES.filter(({ clinicalReview }) => clinicalReview?.status === "pending").map(({ slug }) => slug), ["reacciones-alergicas"])
 })
+
+test("the first aid quiz covers every guide, sends back to it and adds no number", async () => {
+  const { FIRST_AID_QUIZ } = await vite.ssrLoadModule("/src/content/firstAid/quiz.ts")
+  const { startQuiz } = await vite.ssrLoadModule("/src/utils/quiz/quiz.ts")
+  assert.ok(FIRST_AID_QUIZ.length >= 45)
+  assert.equal(new Set(FIRST_AID_QUIZ.map(({ id }) => id)).size, FIRST_AID_QUIZ.length)
+  for (const guide of GUIDES) {
+    const own = FIRST_AID_QUIZ.filter(({ action }) => action?.to === `/primeros-auxilios/${guide.slug}`)
+    assert.ok(own.length >= 3, `${guide.slug} has at least three questions`)
+  }
+  for (const question of FIRST_AID_QUIZ) {
+    assert.equal(question.options.filter(({ correct }) => correct).length, 1, `${question.id} has one right answer`)
+    assert.ok(question.options.every(({ feedback }) => feedback.length > 10), `${question.id}: every option explains`)
+    assert.ok(question.why && question.learning, `${question.id} has why and learning`)
+    assert.ok(!/\b(10[2-7]|11[0-9]|13[0-9]|14[0-5]|911)\b/.test(JSON.stringify(question.options) + question.prompt), `${question.id} writes no emergency number`)
+  }
+  assert.ok(startQuiz(FIRST_AID_QUIZ))
+})
+
+test("the hub offers the quiz in 'Prepararte también ayuda', next to the botiquín", () => {
+  const html = renderToStaticMarkup(createElement(MemoryRouter, null, createElement(GuideCards)))
+  const prepare = html.slice(html.indexOf('id="guides-prepare"'))
+  assert.ok(prepare.indexOf("Botiquín de primeros auxilios") < prepare.indexOf("Quiz de primeros auxilios"))
+  assert.ok(prepare.includes('href="/primeros-auxilios/quiz"'))
+})
