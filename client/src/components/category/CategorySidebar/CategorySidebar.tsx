@@ -15,19 +15,16 @@ let sectionsHintShown = false
 
 /**
  * Category menu.
- *  - Large screens: column pinned to the left with icon + name and the sections below. A category with a single section has nothing to
- *    list: on large screens it reserves no column, and the name is the heading of the page, over the full width.
+ *  - Large screens: column pinned to the left with icon + name and the sections below.
  *  - Small screens: bar stuck under the header, menu button on one end and icon + name
  *    on the other; the button opens the sections in a drawer below the bar. The first
  *    time in the visit it also opens by itself, once the entry scroll has settled.
  */
 export const CategorySidebar = ({ category, sections, activeSectionId, onSelectSection, onShowIntro }: CategorySidebarProps) => {
   const { id, title, icon: Icon } = category
-  // A category with a single section has nothing to choose: no menu button, no list, no drawer
-  const hasMenu = sections.length > 1
-  // Two or three sections: tabs always in sight on small screens (one tap). More than that: the drawer
-  const tabs = hasMenu && sections.length <= MAX_TABS
-  const drawer = hasMenu && !tabs
+  // Up to three sections: tabs always in sight on small screens (one tap). More than that: the drawer
+  const tabs = sections.length <= MAX_TABS
+  const drawer = !tabs
   const barRef = useRef<HTMLDivElement>(null)
   const headingId = useId()
   const drawerId = useId()
@@ -39,37 +36,27 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
 
   // Layout effect: it must subscribe before the entry scroll (a parent layout effect) settles,
   // which with reduced motion or a restored position happens right away
-  // A category that opens straight on a section (Centros de atención: its map) doesn't cover it with the hint
-  const opensOnSection = Boolean(category.defaultSectionId) || !drawer
   useLayoutEffect(() => {
-    if (sectionsHintShown || opensOnSection) return
+    if (sectionsHintShown || !drawer) return
     return onEntryScrollSettled(() => {
       if (sectionsHintShown || window.matchMedia(DESKTOP_QUERY).matches) return
       sectionsHintShown = true
       setDrawerState("auto")
     })
-  }, [opensOnSection])
+  }, [drawer])
 
   return (
     // Small screens: the whole block is the sticky bar.
     // Large: the column stretches to the full content height; the menu inside stays in view while scrolling.
     <div
       ref={barRef}
-      className={
-        hasMenu
-          ? "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
-          : "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:border-line-strong lg:px-(--page-inset)"
-      }
+      className="sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
     >
       <nav
         aria-labelledby={headingId}
-        className={
-          hasMenu
-            ? "@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
-            : "@container px-(--page-gutter) py-2 lg:px-0 lg:py-4"
-        }
+        className="@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
       >
-        <div className={hasMenu ? "flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3" : "flex items-center gap-3"}>
+        <div className="flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3">
           {drawer && (
           <button
             type="button"
@@ -111,11 +98,9 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
 
         {tabs && <CategorySectionTabs sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />}
 
-        {hasMenu && (
-          <div className="hidden lg:block">
-            <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
-          </div>
-        )}
+        <div className="hidden lg:block">
+          <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
+        </div>
       </nav>
 
       {drawer && (

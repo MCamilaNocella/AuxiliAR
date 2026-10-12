@@ -28,6 +28,4 @@ export const PHYSICAL_HEALTH: Category = {
     { id: "section-7", title: "Actividad física y bienestar", Content: Section7 },
     { id: "section-4", title: "Quiz", Content: Section4 },
   ],
-  /** It opens straight on the controls (the main content), not on a banner */
-  defaultSectionId: "section-2",
 }

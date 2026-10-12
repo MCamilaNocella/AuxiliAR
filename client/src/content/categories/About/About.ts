@@ -23,6 +23,4 @@ export const ABOUT: Category = {
       Content: Section1,
     },
   ],
-  /** It opens straight on the page: no banner first */
-  defaultSectionId: "section-1",
 }

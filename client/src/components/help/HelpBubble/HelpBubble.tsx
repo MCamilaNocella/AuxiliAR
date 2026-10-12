@@ -1,11 +1,8 @@
-import { Fragment } from "react"
 import { X } from "lucide-react"
-import { bubbleLines } from "@/utils/auxiAvoidance"
 import type { HelpBubbleProps } from "./HelpBubble.types"
 
 /**
  * Speech bubble over Auxi's head, like a chat icon. Pops out with an animation (static when reduced motion is on).
- * Compact: the greeting breaks after its comma, so the bubble is as wide as its longest line and covers as little as it can.
  * Border in control-line (≥3:1 on every theme) plus a dark shadow, so it stands out from the page;
  * high contrast gets a 2px border. The close badge is inverted (ink background) to be easy to spot.
  */
@@ -19,12 +16,7 @@ export const HelpBubble = ({ message, onOpen, onClose }: HelpBubbleProps) => (
       aria-hidden="true"
       className="cursor-pointer text-left text-base/snug font-bold wrap-break-word"
     >
-      {bubbleLines(message).map((line, index) => (
-        <Fragment key={line}>
-          {index > 0 && <br />}
-          {line}
-        </Fragment>
-      ))}
+      {message}
     </button>
     {/* Close button as a corner badge, so the message gets the full bubble width */}
     <button

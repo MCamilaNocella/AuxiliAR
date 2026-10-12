@@ -26,6 +26,4 @@ export const RESOURCES: Category = {
     { id: "section-3", title: "Preguntas frecuentes", Content: Section3 },
     { id: "section-4", title: "Glosario", Content: Section4 },
   ],
-  /** It opens straight on the first section: no banner first */
-  defaultSectionId: "section-1",
 }

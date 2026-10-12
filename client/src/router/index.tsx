@@ -25,6 +25,12 @@ const prototypeRoutes: RouteObject[] = PROTOTYPES_ENABLED
 
 const loginRoutes: RouteObject[] = PROTOTYPES_ENABLED ? [{ path: PATHS.login, lazy: async () => ({ Component: (await import("@/screens/Login")).Login }) }] : []
 
+// Local design pages in src/sandbox (git-ignored): each folder's route.tsx exports `sandboxRoute`.
+// In a clone without that folder the glob is empty and nothing changes.
+const sandboxRoutes = Object.values(
+  import.meta.glob<{ sandboxRoute: RouteObject }>("../sandbox/*/route.tsx", { eager: true }),
+).map(({ sandboxRoute }) => sandboxRoute);
+
 const router = createBrowserRouter([
   {
     element: <RootLayout/>,
@@ -51,6 +57,7 @@ const router = createBrowserRouter([
           },
           { path: PATHS.about, element: <Category/> },
           ...prototypeRoutes,
+          ...sandboxRoutes,
           // Last: any other address
           { path: "*", element: <NotFound/> },
         ],

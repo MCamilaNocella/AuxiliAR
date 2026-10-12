@@ -13,8 +13,6 @@ export type Category = {
   scene: ComponentType
   /** Sections listed in the category sidebar */
   sections: CategorySection[]
-  /** The section that opens when none is chosen, instead of the banner (e.g. Centros de atención opens on its map) */
-  defaultSectionId?: string
 }
 
 export type CategorySection = {

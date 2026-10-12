@@ -140,16 +140,16 @@
     "hasInfo": false
   },
   {
-    "title": "Primeros auxilios › RCP · no respira",
-    "path": "/primeros-auxilios/rcp",
-    "summary": "Guía paso a paso: RCP · no respira",
+    "title": "Primeros auxilios › Reacciones alérgicas",
+    "path": "/primeros-auxilios/reacciones-alergicas",
+    "summary": "Guía paso a paso: Reacciones alérgicas",
     "firstAid": true,
     "hasInfo": false
   },
   {
-    "title": "Primeros auxilios › Atragantamiento",
-    "path": "/primeros-auxilios/atragantamiento",
-    "summary": "Guía paso a paso: Atragantamiento",
+    "title": "Primeros auxilios › Heridas y cortes",
+    "path": "/primeros-auxilios/heridas",
+    "summary": "Guía paso a paso: Heridas y cortes",
     "firstAid": true,
     "hasInfo": false
   },

@@ -23,6 +23,4 @@ export const HEALTH_CENTERS: Category = {
       Content: Section1,
     },
   ],
-  /** It opens straight on the map: no banner first */
-  defaultSectionId: "section-1",
 }

@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { PATHS } from "@/router/paths"
 
 export const Footer = () => (
@@ -16,7 +15,7 @@ export const Footer = () => (
         AuxiliAR no reemplaza la atención médica ni psicológica profesional.{" "}
         {/* Phones: the emergency sentence on its own line, so the numbers stay with "llamá al" */}
         <span className="block sm:inline">
-          Ante una emergencia, llamá al <b className="text-ink">{GENERAL_EMERGENCY_NUMBER}</b>.
+          Ante una emergencia, llamá al <b className="text-ink">911</b> o al <b className="text-ink">107</b>.
         </span>
       </p>
       {/* Same on phones: the link on its own line instead of splitting "Sobre / AuxiliAR" */}

@@ -24,17 +24,22 @@ import com.auxiliar.server.resources.ResourceCatalog;
 public class AuxiPrompts {
 
     private static final String PAGES_PLACEHOLDER = "{{paginas}}";
+    private static final String NUMBERS_PLACEHOLDER = "{{numeros}}";
     private static final String NO_PAGES = "(Por ahora ninguna página tiene información: no recomiendes ninguna ni menciones páginas de AuxiliAR.)";
 
     private final String base;
     private final String emergency;
     private final String pages;
     private final String numbers;
+    private final String profile;
+    private final String unchecked;
     private final ResourceCatalog resources;
 
     public AuxiPrompts(@Value("classpath:prompts/auxi.md") Resource base,
                        @Value("classpath:prompts/emergencia.md") Resource emergency,
                        @Value("classpath:prompts/paginas.md") Resource pages,
+                       @Value("classpath:prompts/perfil.md") Resource profile,
+                       @Value("classpath:prompts/numeros-sin-comprobar.md") Resource unchecked,
                        ContentCatalog catalog, HelpNumbers helpNumbers, ResourceCatalog resources) throws IOException {
         this.resources = resources;
         this.base = read(base);
@@ -49,6 +54,13 @@ public class AuxiPrompts {
         }
         this.pages = read(pages).replace(PAGES_PLACEHOLDER, pageList);
         this.numbers = "## Números de ayuda de Argentina\n\n" + helpNumbers.document();
+        this.profile = read(profile);
+        this.unchecked = read(unchecked);
+    }
+
+    /** Instructions to read one answer while completing the Mi Salud profile */
+    public String profile(ProfileField field, String answerFormat) {
+        return String.join("\n\n", profile, "## Dato que estás pidiendo ahora\n\n" + field.name(), answerFormat).strip();
     }
 
     /** Everything the model gets as system instructions for one turn */
@@ -68,8 +80,7 @@ public class AuxiPrompts {
         if (numbers.isEmpty()) {
             return "";
         }
-        return "## Números sin nueva comprobación\n\nEstos números de la lista pasaron su fecha de revisión y todavía no se volvieron a comprobar: "
-                + String.join(", ", numbers) + ". Si das alguno, decile a la persona que si no responde llame al número de Emergencias de la lista.";
+        return unchecked.replace(NUMBERS_PLACEHOLDER, String.join(", ", numbers));
     }
 
     /** What's already known about the person, so the model uses it and doesn't ask again */

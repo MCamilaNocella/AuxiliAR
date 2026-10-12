@@ -29,10 +29,10 @@ class ContentCatalogTest {
 
     @Test
     void knowsWhichPagesHaveContent() {
-        // Encontrar atención (its map and "Sobre los datos"), Salud mental, Salud sexual y ESI and Atención veterinaria (their three sections each),
+        // Encontrar atención (its map), Salud mental, Salud sexual y ESI and Atención veterinaria (their three sections each),
         // Primeros auxilios and Sobre AuxiliAR have a summary. Update this list when another section gets one
         assertThat(catalog.pages()).filteredOn(ContentPage::hasInfo).extracting(ContentPage::path)
-                .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1", "/centros?seccion=section-2",
+                .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1",
                         "/temas/salud-mental", "/temas/salud-mental?seccion=section-1", "/temas/salud-mental?seccion=section-2",
                         "/temas/salud-mental?seccion=section-3",
                         "/temas/esi", "/temas/esi?seccion=section-1", "/temas/esi?seccion=section-2", "/temas/esi?seccion=section-3",
@@ -42,12 +42,11 @@ class ContentCatalogTest {
     }
 
     @Test
-    void findsTheCentersCategoryAndItsDataSection() {
+    void findsTheCentersCategoryAndItsMap() {
         assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Encontrar atención");
-        assertThat(catalog.findByPath("/centros?seccion=section-2")).hasValueSatisfying(page -> {
-            assertThat(page.title()).isEqualTo("Encontrar atención › Sobre los datos");
+        assertThat(catalog.findByPath("/centros?seccion=section-1")).hasValueSatisfying(page -> {
+            assertThat(page.title()).isEqualTo("Encontrar atención › Mapa AuxiliAR");
             assertThat(page.hasInfo()).isTrue();
-            assertThat(page.summary()).contains("verifica").contains("gratuito").contains("fecha de verificación");
         });
     }
 

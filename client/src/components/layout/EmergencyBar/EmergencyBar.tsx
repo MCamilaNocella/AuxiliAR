@@ -1,87 +1,66 @@
-import { Link } from "react-router"
+import { createElement } from "react"
+import { Link, useMatches } from "react-router"
 import { ArrowRight, Bandage, ChevronRight, Phone } from "lucide-react"
-import { EMERGENCY_NUMBERS, FEATURED_FIRST_AID, GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
-import { callButton, callButtonDetail, callButtonLabel, uncheckedNotice } from "@/utils/helpLines"
+import { EmergencyNumbers } from "@/components/layout/EmergencyNumbers"
+import { EMERGENCY_NUMBERS, FEATURED_FIRST_AID } from "@/data/emergency"
 import { PATHS } from "@/router/paths"
-import { EMERGENCY_HEADING_ID, EMERGENCY_SECTION_ID, GUIDES_GRID, NUMBERS_GRID } from "./EmergencyBar.constants"
+import { EMERGENCY_HEADING_ID, EMERGENCY_SECTION_ID, GUIDES_GRID } from "./EmergencyBar.constants"
+import type { EmergencyBarHandle } from "./EmergencyBar.types"
 
 const headingClass = "m-0 flex items-center gap-2 text-base font-extrabold"
 
-/** The numbers as buttons that say where each one works and when it answers, and which ones have not been checked again since their review date */
-const buttons = () => EMERGENCY_NUMBERS.map(({ number, label }) => callButton(number, label))
-
 export const EmergencyBar = () => {
-  const calls = buttons()
-  // Said once, above the buttons (and marked with * on each one), not repeated on every button
-  const notice = uncheckedNotice(calls, GENERAL_EMERGENCY_NUMBER)
-  return (
-  <section
-    id={EMERGENCY_SECTION_ID}
-    aria-labelledby={EMERGENCY_HEADING_ID}
-    className="border-b border-alert-line bg-alert-soft"
-  >
-    <div className="page-container grid grid-cols-[repeat(auto-fit,minmax(min(100%,25rem),1fr))] gap-x-8 gap-y-4 py-4">
-      <div className="flex flex-col gap-2.5">
-        <h2 id={EMERGENCY_HEADING_ID} tabIndex={-1} className={`${headingClass} text-alert-text`}>
-          <Phone aria-hidden="true" className="size-4.5 flex-none" />
-          ¿Es una emergencia? Pedí ayuda ahora
-        </h2>
-        {notice && (
-          <p className="m-0 text-sm text-alert-text">
-            <span aria-hidden="true">* </span>
-            {notice}
-          </p>
-        )}
-        <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${NUMBERS_GRID}`}>
-          {calls.map((button) => (
-            <li key={button.number}>
-              <a
-                href={`tel:${button.dial}`}
-                aria-label={callButtonLabel(button)}
-                className="flex h-full min-h-11 flex-col justify-center rounded-lg bg-alert px-3 py-1.5 text-on-alert no-underline transition-colors hover:bg-alert-dark hover:text-on-alert sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-2"
-              >
-                <b className="text-lg/tight font-extrabold">
-                  {button.number}
-                  {button.stale && <span aria-hidden="true">*</span>}
-                </b>
-                <span className="text-xs font-semibold sm:text-sm">{button.label}</span>
-                {callButtonDetail(button) && <span className="text-xs/tight font-semibold opacity-95 sm:basis-full">{callButtonDetail(button)}</span>}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+  // The deepest route that asks for other number cards wins; otherwise, the usual ones
+  const Numbers =
+    useMatches()
+      .map(({ handle }) => (handle as EmergencyBarHandle | undefined)?.emergencyNumbers)
+      .findLast(Boolean) ?? EmergencyNumbers
 
-      {/* Its own color (the teal of the site, never the red of the numbers): a calm panel that gives the guides weight without competing with the calls */}
-      <div className="flex flex-col gap-2.5 rounded-xl border border-aid-line bg-aid p-3 text-on-aid sm:p-4">
-        <h2 className={`${headingClass} text-on-aid sm:text-lg`}>
-          <Bandage aria-hidden="true" className="size-5 flex-none" />
-          Primeros auxilios: qué hacer ya
-        </h2>
-        <ul role="list" className={`m-0 grid list-none gap-2 p-0 ${GUIDES_GRID}`}>
-          {FEATURED_FIRST_AID.map(({ slug, title }) => (
-            <li key={slug}>
+  return (
+    <section
+      id={EMERGENCY_SECTION_ID}
+      aria-labelledby={EMERGENCY_HEADING_ID}
+      className="border-b border-alert-line bg-alert-soft"
+    >
+      <div className="page-container grid grid-cols-[repeat(auto-fit,minmax(min(100%,25rem),1fr))] gap-x-8 gap-y-4 py-4">
+        <div className="flex flex-col gap-2.5">
+          <h2 id={EMERGENCY_HEADING_ID} tabIndex={-1} className={`${headingClass} text-alert-text`}>
+            <Phone aria-hidden="true" className="size-4.5 flex-none" />
+            ¿Es una emergencia? Llamá gratis
+          </h2>
+          {createElement(Numbers, { numbers: EMERGENCY_NUMBERS })}
+        </div>
+
+        <div className="flex flex-col gap-2.5">
+          <h2 className={`${headingClass} text-alert-text`}>
+            <Bandage aria-hidden="true" className="size-4.5 flex-none" />
+            Primeros auxilios: qué hacer ya
+          </h2>
+          {/* 1px lower: the light cards' border made them look higher than the solid number cards */}
+          <ul role="list" className={`m-0 mt-[0.0625rem] grid list-none gap-2 p-0 ${GUIDES_GRID}`}>
+            {FEATURED_FIRST_AID.map(({ slug, title }) => (
+              <li key={slug}>
+                <Link
+                  to={PATHS.firstAidGuide(slug)}
+                  className="flex h-full min-h-11 items-center justify-between gap-2 rounded-lg border border-l-4 border-alert-card-line border-l-alert bg-card px-3 py-1.5 text-sm font-bold text-ink no-underline transition-colors hover:border-alert-text hover:text-ink"
+                >
+                  <span className="min-w-0 wrap-break-word">{title}</span>
+                  <ChevronRight aria-hidden="true" className="size-4 flex-none text-alert-text" />
+                </Link>
+              </li>
+            ))}
+            <li>
               <Link
-                to={PATHS.firstAidGuide(slug)}
-                className="flex h-full min-h-11 items-center justify-between gap-2 rounded-lg border border-aid-line bg-card px-3 py-1.5 text-sm font-bold text-ink no-underline transition-colors hover:bg-field hover:text-ink focus-visible:outline-on-aid"
+                to={PATHS.firstAid}
+                className="flex h-full min-h-11 items-center gap-1.5 px-1 py-1.5 text-sm font-extrabold text-alert-text underline underline-offset-4 hover:text-alert-dark"
               >
-                <span className="min-w-0 wrap-break-word">{title}</span>
-                <ChevronRight aria-hidden="true" className="size-4 flex-none text-ink" />
+                Ver todas las guías
+                <ArrowRight aria-hidden="true" className="size-4 flex-none" />
               </Link>
             </li>
-          ))}
-          <li>
-            <Link
-              to={PATHS.firstAid}
-              className="flex h-full min-h-11 items-center justify-center gap-1.5 rounded-lg border border-aid-line bg-on-aid px-3 py-1.5 text-sm font-extrabold text-aid-ink no-underline transition-colors hover:bg-field hover:text-aid-ink focus-visible:outline-on-aid"
-            >
-              Ver todas las guías
-              <ArrowRight aria-hidden="true" className="size-4 flex-none" />
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   )
 }

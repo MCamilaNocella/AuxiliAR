@@ -22,6 +22,4 @@ export const FIRST_AID: Category = {
       Content: Section1,
     },
   ],
-  /** It opens straight on the guides: no banner first */
-  defaultSectionId: "section-1",
 }

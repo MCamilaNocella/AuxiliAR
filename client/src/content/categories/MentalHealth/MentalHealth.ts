@@ -39,6 +39,4 @@ export const MENTAL_HEALTH: Category = {
       Content: Section3,
     },
   ],
-  /** It opens straight on the first section: no banner first */
-  defaultSectionId: "section-1",
 }
