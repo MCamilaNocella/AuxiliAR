@@ -5,7 +5,8 @@ import { buildPlaceView, isVerifiedFree } from "@/utils/places"
 import { FIRST_AID_GUIDE_CONTENT, isVideoShown } from "../../firstAid"
 import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_READ_ON, ROSARIO, SALTA, UNIVERSITY_HOSPITALS } from "../Animals/Animals.places"
 import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
-import { CHECKED_AT as MENTAL_CHECKED_AT, LEY_26657, LEY_SIMPLE, OMS_ESTRES, ORIENTACION } from "../MentalHealth/MentalHealth.sources"
+import { APOYO_MUTUO, BONAPARTE, CESAC_MENTAL, CONSUMOS_CABA, CSM_1, CSM_3, GUARDIAS_CABA, LINEAS_CABA, LINEAS_OTRAS, PROVINCIAS, YOGA_CABA } from "../MentalHealth/MentalHealth.directory"
+import { CHECKED_AT as MENTAL_CHECKED_AT, DIRECTORY_CHECKED_AT as MENTAL_DIRECTORY_CHECKED_AT, GUARDIAS_PAGINA, LEY_153_MENTAL, LEY_26657, LEY_SIMPLE, OMS_ANSIEDAD, OMS_ESTRES, OMS_GUIA, ORIENTACION, RED_ADICCIONES } from "../MentalHealth/MentalHealth.sources"
 import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, CHECKED_AT_TRIPLE_VIRAL, LINEAMIENTOS_REPOSITORIO, VACCINATION_STAGES } from "../PhysicalHealth/sections/Section5/Section5.constants"
 import { FOOD_NUTRITION } from "../PhysicalHealth/sections/Section6/Section6.constants"
 import { PHYSICAL_ACTIVITY } from "../PhysicalHealth/sections/Section7/Section7.constants"
@@ -72,6 +73,10 @@ export type ReferenceGroup = {
   title: string
   blocks: ReferenceBlock[]
 }
+
+/** The pages of the entries of the Salud mental directory, one reference per page (several entries can share one) */
+const fromDirectory = (items: { title: string, url: string }[]): Reference[] => items.filter((item, index) => items.findIndex(({ url }) => url === item.url) === index).map(({ title, url }) => ({ label: title, url }))
+const MENTAL_DIRECTORY_NOTE = "Confirmación documental: se leyeron las páginas oficiales el 12 de octubre de 2026; nadie llamó, fue a los lugares ni pidió turno. Cada servicio puede haber cambiado. Una página activa puede conservar información antigua."
 
 const fromSources = (sources: Source[]): Reference[] => sources.filter((source, index) => sources.findIndex(({ url }) => url === source.url) === index).map(({ label, url }) => ({ label, url }))
 
@@ -175,6 +180,17 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
     blocks: [
       { id: "mental-donde", title: "Dónde buscar ayuda", references: fromSources([ORIENTACION, LEY_SIMPLE, LEY_26657]), checkedAt: [MENTAL_CHECKED_AT] },
       {
+        id: "mental-ciudad",
+        title: "Dónde buscar ayuda · Ciudad de Buenos Aires (guardias, CeSAC, Centro de Salud Mental Nº 1, Hospital Bonaparte y líneas)",
+        references: [
+          ...fromSources([LEY_153_MENTAL]),
+          { label: "Guardias hospitalarias · Gobierno de la Ciudad de Buenos Aires", url: GUARDIAS_PAGINA, detail: GUARDIAS_CABA.map(({ title }) => title).join(", ") },
+          ...fromDirectory([...CESAC_MENTAL.map(({ title, barrio, url }) => ({ title: `${title} · ${barrio}`, url })), ...CSM_1, ...BONAPARTE, ...LINEAS_CABA]),
+        ],
+        checkedAt: [MENTAL_DIRECTORY_CHECKED_AT],
+        notes: [MENTAL_DIRECTORY_NOTE, "La gratuidad de los servicios de la Ciudad se apoya en la Ley 153 (arts. 2 y 3.g), una norma general; no en una frase de cada centro. Los CeSAC con la dirección en discusión y los hospitales Piñero y Tornú (para la guardia) quedaron afuera hasta aclararse."],
+      },
+      {
         id: "mental-derechos",
         title: "Conocé tus derechos",
         references: fromSources([LEY_26657, LEY_SIMPLE]),
@@ -184,9 +200,30 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "mental-autocuidado",
         title: "Herramientas de autocuidado",
-        references: fromSources([OMS_ESTRES]),
+        references: fromSources([OMS_ESTRES, OMS_GUIA, OMS_ANSIEDAD]),
         checkedAt: [MENTAL_CHECKED_AT],
-        notes: ["Es una guía general de bienestar: no es un tratamiento ni un diagnóstico."],
+        notes: ["Es una guía general de bienestar: no es un tratamiento ni un diagnóstico.", "Las cinco ideas de pausa son borradores del equipo basados en la guía de la OMS, pendientes de revisión de un profesional de la salud."],
+      },
+      {
+        id: "mental-yoga",
+        title: "Herramientas para cuidarte · Clases de yoga de la Ciudad",
+        references: fromDirectory(YOGA_CABA),
+        checkedAt: [MENTAL_DIRECTORY_CHECKED_AT],
+        notes: ["La página no informa el costo: no se las presenta como gratuitas."],
+      },
+      {
+        id: "mental-consumos",
+        title: "Consumos y acompañamiento",
+        references: [{ label: "Red de adicciones · Gobierno de la Ciudad de Buenos Aires", url: RED_ADICCIONES }, ...fromDirectory([...CSM_3, ...CONSUMOS_CABA, ...LINEAS_CABA.filter(({ id }) => id === "linea-caba-108-3"), ...APOYO_MUTUO])],
+        checkedAt: [MENTAL_DIRECTORY_CHECKED_AT],
+        notes: [MENTAL_DIRECTORY_NOTE, "Los grupos de apoyo mutuo no son atención profesional. Las líneas nacionales de ayuda están en las líneas de ayuda de AuxiliAR, no acá."],
+      },
+      {
+        id: "mental-provincias",
+        title: "Otras provincias",
+        references: fromDirectory([...LINEAS_OTRAS, ...PROVINCIAS.flatMap(({ items }) => items)]),
+        checkedAt: [MENTAL_DIRECTORY_CHECKED_AT],
+        notes: [MENTAL_DIRECTORY_NOTE, "No es un relevamiento de todo el país: lo que no figura está sin revisar."],
       },
     ],
   },

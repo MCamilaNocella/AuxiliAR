@@ -309,13 +309,14 @@ test("a category with one section shows no section menu; two or three get tabs o
   assert.ok(!single.includes('aria-label="Secciones"'), "no menu button")
   assert.ok(!single.includes("Secciones de"), "no drawer")
   assert.ok(!single.includes("Guías de primeros auxilios"), "no list with its only option")
-  // three sections (Salud mental): tabs in sight, no drawer to open first
-  const threeSections = ALL_CATEGORIES.find(({ id }) => id === "salud-mental")
+  // three sections (Atención veterinaria): tabs in sight, no drawer to open first. Salud mental has five now, so it keeps the drawer
+  const threeSections = ALL_CATEGORIES.find(({ id }) => id === "animales")
   assert.equal(threeSections.sections.length, 3)
   const tabs = sidebar(threeSections)
   assert.ok(!tabs.includes('aria-label="Secciones"') && !tabs.includes("Secciones de"), "no drawer")
   for (const { title } of threeSections.sections) assert.ok(tabs.includes(title), title)
   assert.equal([...tabs.matchAll(/lg:hidden/g)].length >= 1, true, "the tabs are for small screens")
+  assert.equal(ALL_CATEGORIES.find(({ id }) => id === "salud-mental").sections.length, 5)
   // six sections (Cuidar mi salud, with the vaccination calendar, food and physical activity): the drawer
   assert.equal(PHYSICAL_HEALTH.sections.length, 6)
   const drawer = sidebar(PHYSICAL_HEALTH)

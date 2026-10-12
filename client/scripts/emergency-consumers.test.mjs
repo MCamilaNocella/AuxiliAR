@@ -111,6 +111,9 @@ test("no number is written by hand in the app: every mention of a help number go
   const SERVICE_LINES = {
     "src/content/categories/SexEducation/SexEducation.coverage.ts": ["0800-222-3444", "08002223444", "0800-777-0801"],
     "src/content/categories/SexEducation/SexEducation.lists.ts": ["0800-222-4837"],
+    // Salud mental: the lines of a province or of the Ciudad, as each official page publishes them (the national lines come from data/resources/lines). The 135 is exempt only
+    // here, for the provincial lines of Entre Ríos and Tucumán, which are not the CAS 135 (mental-health.test.mjs checks that it appears only in those two entries)
+    "src/content/categories/MentalHealth/MentalHealth.directory.ts": ["0800-333-1665", "0800-222-5462", "0800-888-5555", "0800-888-4767", "0800-888-3364", "135"],
   }
   const offenders = []
   const walk = async (dir) => {

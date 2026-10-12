@@ -1,6 +1,7 @@
 /*
- * Tests of Salud mental: three sections with real content, each one with its official sources, no phone number copied
- * (the help numbers belong to the Emergencias work), no promise about gratuity or hours, and none of the mockup data.
+ * Tests of Salud mental: five sections with real content, each one with its official sources in Sobre AuxiliAR, the national lines read from the
+ * lines dataset (the Emergencias work) and never copied, the directory of the research of 12 October 2026 with no repeated place, no disputed address, no cost
+ * the pages do not state, and none of the mockup data.
  * Loaded through Vite like the app does.
  *   npm run mental:test
  */
@@ -29,18 +30,25 @@ const CONTENT = {
   "section-1": (await vite.ssrLoadModule(`${sectionDir}/Section1/Section1.content.tsx`)).default,
   "section-2": (await vite.ssrLoadModule(`${sectionDir}/Section2/Section2.content.tsx`)).default,
   "section-3": (await vite.ssrLoadModule(`${sectionDir}/Section3/Section3.content.tsx`)).default,
+  "section-4": (await vite.ssrLoadModule(`${sectionDir}/Section4/Section4.content.tsx`)).default,
+  "section-5": (await vite.ssrLoadModule(`${sectionDir}/Section5/Section5.content.tsx`)).default,
 }
+const directory = await vite.ssrLoadModule("/src/content/categories/MentalHealth/MentalHealth.directory.ts")
+const places = JSON.parse(readFileSync(resolve(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
+const lines = JSON.parse(readFileSync(resolve(root, "src/data/resources/lines/nacional.json"), "utf8")).resources
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const render = (component) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: ["/temas/salud-mental"] }, createElement(component)))
 const hrefs = (html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1].replace(/&amp;/g, "&"))
 const pages = Object.fromEntries(Object.entries(CONTENT).map(([id, component]) => [id, render(component)]))
 
-test("salud mental has three sections that open straight on the first, and it is no longer 'próximamente'", () => {
+test("salud mental has five sections that open straight on the first, and it is no longer 'próximamente'", () => {
   assert.deepEqual(MENTAL_HEALTH.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Dónde buscar ayuda"],
     ["section-2", "Conocé tus derechos"],
     ["section-3", "Herramientas para cuidarte"],
+    ["section-4", "Consumos y acompañamiento"],
+    ["section-5", "Otras provincias"],
   ])
   assert.equal(MENTAL_HEALTH.defaultSectionId, "section-1")
   assert.equal(MENTAL_HEALTH.preparing, undefined)
@@ -55,12 +63,20 @@ test("every section has content and no placeholder; its sources and the day they
     const content = text(html)
     assert.ok(!/en construcci[oó]n|Sección \d/i.test(content), id)
     assert.ok(!content.includes("Fuentes oficiales") && !content.includes("Texto comparado con estas fuentes"), `${id}: no block of sources`)
-    assert.ok(!hrefs(html).some((href) => href.startsWith("https://")), `${id}: no link to a source`)
+    // the only external links are those that take a person to the page of a place or line of the directory, or to an OMS material: all of them are in Sobre AuxiliAR
+    const known = new Set(about.REFERENCE_GROUPS.flatMap(({ blocks }) => blocks).flatMap(({ references }) => references.map(({ url }) => url)))
+    for (const href of hrefs(html).filter((link) => link.startsWith("https://"))) assert.ok(known.has(href), `${id}: ${href} is listed in Sobre AuxiliAR`)
   }
+  assert.equal(sources.DIRECTORY_CHECKED_AT, "2026-10-12")
   for (const blockId of ["mental-donde", "mental-derechos", "mental-autocuidado"]) {
     const block = referencesOf(blockId)
     assert.deepEqual(block.checkedAt, ["2026-10-08"], blockId)
-    for (const { url } of block.references) assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|www\.who\.int)\//, `${blockId}: ${url} is an official source`)
+    for (const { url } of block.references) assert.match(url, /^https:\/\/(www\.argentina\.gob\.ar|www\.who\.int|cdn\.who\.int)\//, `${blockId}: ${url} is an official source`)
+  }
+  for (const blockId of ["mental-ciudad", "mental-yoga", "mental-consumos", "mental-provincias"]) {
+    const block = referencesOf(blockId)
+    assert.deepEqual(block.checkedAt, ["2026-10-12"], blockId)
+    assert.ok(block.references.length > 0 && block.references.every(({ url }) => /^https:\/\//.test(url)), blockId)
   }
 })
 
@@ -68,7 +84,7 @@ test("each source is kept, in Sobre AuxiliAR, under the section its content come
   const urls = (blockId) => referencesOf(blockId).references.map(({ url }) => url)
   assert.deepEqual(urls("mental-donde"), [sources.ORIENTACION.url, sources.LEY_SIMPLE.url, sources.LEY_26657.url])
   assert.deepEqual(urls("mental-derechos"), [sources.LEY_26657.url, sources.LEY_SIMPLE.url])
-  assert.deepEqual(urls("mental-autocuidado"), [sources.OMS_ESTRES.url])
+  assert.deepEqual(urls("mental-autocuidado"), [sources.OMS_ESTRES.url, sources.OMS_GUIA.url, sources.OMS_ANSIEDAD.url])
   assert.match(sources.LEY_26657.url, /ley-26657-175977\/texto$/)
   // the notes that said what each page is not stay on the page
   assert.ok(text(pages["section-2"]).includes("Es una explicación simple de la ley: no reemplaza el asesoramiento de un equipo de salud ni el de un abogado."))
@@ -118,8 +134,8 @@ test("herramientas para cuidarte: habits from the OMS without numbers or doses, 
   const html = pages["section-3"]
   const content = text(html)
   const body = html.slice(0, html.indexOf('aria-label="Fuentes"'))
-  assert.equal([...body.matchAll(/<li>/g)].length, 7)
-  const habits = content.slice(content.indexOf("Una rutina"), content.indexOf("Cuándo pedir ayuda profesional"))
+  assert.equal([...body.slice(0, body.indexOf("Cinco ideas para una pausa")).matchAll(/<li>/g)].length, 7)
+  const habits = content.slice(content.indexOf("Una rutina"), content.indexOf("Cinco ideas para una pausa"))
   assert.ok(!/\d/.test(habits), "no hours, minutes or quantities written as numbers")
   assert.ok(content.includes("No reemplazan la atención profesional"))
   assert.ok(content.includes("Cuando te resulta difícil controlar el estrés, conviene acudir a un profesional de la salud"))
@@ -127,16 +143,72 @@ test("herramientas para cuidarte: habits from the OMS without numbers or doses, 
   assert.ok(!/tratamiento|diagn[oó]stic(o|ar)|cura|terapia/i.test(habits), "no clinical claim in the habits")
 })
 
-test("no phone line is copied, and no promise of gratuity, hours or confidentiality is made", () => {
+test("the numbers: the national lines come from the lines dataset, nothing is called free that its page does not say, and no promise of a place or of confidentiality", () => {
+  const dialsOf = (id) => lines.find((line) => line.id === id).contacts.map(({ display }) => display)
   for (const [id, html] of Object.entries(pages)) {
     const content = text(html)
     assert.ok(!html.includes("tel:"), id)
-    assert.ok(!/0800|\b(100|102|107|135|137|141|144|145|911)\b/.test(content), `${id}: no number`)
-    // "gratuidad" appears only to say that the map marks it when confirmed; nothing is called free, and nothing is promised
-    // (the only sentence allowed to name it sends the reader to each center's file to see what is confirmed)
-    const withoutAllowed = content.replace("Consultá cada ficha para saber qué servicios gratuitos están confirmados.", "")
-    assert.ok(!/gratuit[oa]s?|gratis|24 horas|las 24|confidencial|garantiz|sin costo/i.test(withoutAllowed), id)
+    assert.ok(!/confidencial|garantiz|sin costo|hay lugar|cupo asegurado/i.test(content.replace(/no asegura internación ni cupos|garantizan aliviar|no garantiza que queden cupos|no equivale a una cama ni a un tratamiento garantizado/gi, "")), id)
+    // an emergency number that is not a line of the dataset or of the directory is never written
+    for (const emergency of ["100", "102", "107", "137", "144", "145", "911"]) assert.ok(!new RegExp("(^|[^\\d-])" + emergency + "([^\\d-]|$)").test(content), id + ": " + emergency)
   }
+  // section 1: the two national lines, read from data/resources/lines (not typed in the page)
+  const s1 = text(pages["section-1"])
+  for (const display of [...dialsOf("urgencias-salud-mental-0800"), ...dialsOf("prevencion-suicidio-cas")]) assert.ok(s1.includes(display), display)
+  assert.ok(text(pages["section-4"]).includes(dialsOf("consumos-problematicos-141")[0]))
+  // the national lines are not repeated in the directory
+  const dirText = JSON.stringify(directory)
+  for (const dial of ["0800-999-0091", "0800-345-1435", "08009990091"]) assert.ok(!dirText.includes(dial), "directory: " + dial + " is already in the lines")
+  // the 135 is the CAS line for CABA and GBA; here it is written only for the two provincial lines that use the same digits, and says whose they are
+  const with135 = directory.LINEAS_OTRAS.filter(({ phone }) => phone === "135").map(({ id }) => id)
+  assert.deepEqual(with135, ["entre-rios-135", "tucuman-135"])
+  // cost: said once, as what it is (a general norm), and the yoga page that does not say it is not called free
+  assert.ok(s1.includes("Ley 153 (arts. 2 y 3.g). Es una norma general, no una frase de cada centro."))
+  const s3 = text(pages["section-3"])
+  assert.ok(s3.includes("La página oficial no informa si tienen costo: no las damos por gratuitas."))
+  assert.ok(!/yoga[^.]*gratuit/i.test(s3.replace("no las damos por gratuitas", "")))
+  assert.ok(directory.YOGA_CABA.every(({ note }) => note === "La página no informa el costo."))
+})
+
+test("the directory: no repeated place, nothing with a disputed address, and what is already on the map is marked, not copied with other data", () => {
+  const ids = [...directory.GUARDIAS_CABA, ...directory.GUARDIAS_CABA_INFANTIL, ...directory.CSM_1, ...directory.BONAPARTE, ...directory.LINEAS_CABA, ...directory.LINEAS_OTRAS, ...directory.CONSUMOS_CABA, ...directory.CSM_3, ...directory.APOYO_MUTUO, ...directory.YOGA_CABA, ...directory.PROVINCIAS.flatMap(({ items }) => items)].map(({ id }) => id)
+  assert.equal(new Set(ids).size, ids.length, "no entry twice")
+  assert.equal(new Set(directory.CESAC_MENTAL.map(({ n }) => n)).size, directory.CESAC_MENTAL.length)
+  // the research left these out until their address or identity is settled
+  for (const n of [2, 8, 21, 24, 27, 29, 31, 47, 48]) assert.ok(!directory.CESAC_MENTAL.some((cesac) => cesac.n === n), "CeSAC " + n + " has a disputed address")
+  for (const id of ["hospital-pinero", "hospital-tornu"]) assert.ok(![...directory.GUARDIAS_CABA, ...directory.GUARDIAS_CABA_INFANTIL].some((hospital) => hospital.id === id), id)
+  assert.ok(!ids.some((id) => /^cemar-1|^cas-otras|^tucuman-guardia|^na-pendiente|evento|vencido|covid/.test(id)), "pending, historic or one-day entries stay out")
+  // the places of the map (ar-c.json) are marked here and the other way round: CeSAC 3 and 41 are on both, never with different data
+  const onMap = new Set(places.map(({ id }) => id))
+  for (const cesac of directory.CESAC_MENTAL) assert.equal(Boolean(cesac.onMap), onMap.has("cesac-" + cesac.n), "CeSAC " + cesac.n)
+  assert.equal(directory.BONAPARTE.length, 3)
+  assert.equal(directory.CSM_3.length, 1)
+  // the CeSAC 10 appears once in the list of care and once as the Biedak center of consumos (two services), never with the same text
+  assert.ok(directory.CESAC_MENTAL.some(({ n }) => n === 10) && directory.CONSUMOS_CABA.some(({ id }) => id.startsWith("cesac-10")))
+  for (const item of [...directory.CSM_1, ...directory.BONAPARTE, ...directory.LINEAS_CABA, ...directory.LINEAS_OTRAS, ...directory.CONSUMOS_CABA, ...directory.APOYO_MUTUO, ...directory.PROVINCIAS.flatMap(({ items }) => items)]) assert.match(item.url, /^https:\/\//, item.id)
+  for (const cesac of directory.CESAC_MENTAL) {
+    assert.match(cesac.url, /^https:\/\/buenosaires\.gob\.ar\/gcaba_historico\/salud\/cesac-\d+$/, cesac.title)
+    assert.match(cesac.phone, /^(11 )?\d{4}-\d{4}/, cesac.title)
+  }
+  assert.equal(directory.GUARDIAS_CABA.length, 16)
+  assert.equal(directory.GUARDIAS_CABA_INFANTIL.length, 3)
+})
+
+test("dónde buscar ayuda, consumos y otras provincias say what they are and what they are not", () => {
+  const s1 = text(pages["section-1"])
+  assert.ok(s1.includes("Estos hospitales de la Ciudad tienen guardia de salud mental las 24 horas, todos los días del año."))
+  assert.ok(s1.includes("nadie llamó ni fue a los lugares"))
+  assert.ok(s1.includes("Los demás hospitales no se presentan como atención para niñas y niños."))
+  assert.ok(s1.includes("Son líneas de escucha y orientación: no reemplazan una guardia ni la atención presencial."))
+  assert.ok(s1.includes("También está en el mapa de Centros de atención."))
+  assert.ok(s1.includes("La Resolución 1066/2026"), "Bonaparte: the condition for people without permanent residence")
+  const s4 = text(pages["section-4"])
+  assert.ok(s4.includes("No son atención profesional.") && s4.includes("no equivale a una cama ni a un tratamiento garantizado"))
+  const s5 = text(pages["section-5"])
+  assert.ok(s5.includes("Que una provincia no aparezca no quiere decir que no tenga servicios."))
+  for (const province of ["Córdoba", "Entre Ríos", "Jujuy", "La Rioja"]) assert.ok(s5.includes(province), province)
+  assert.ok(s5.includes("el número es un celular y puede tener condiciones de comunicación"), "Neuquén")
+  assert.ok(s5.includes("La página no publica el horario."), "Formosa")
 })
 
 test("none of the mockup data of the old draft (fictitious people, numbers, WhatsApp) is in the category", () => {
@@ -146,11 +218,11 @@ test("none of the mockup data of the old draft (fictitious people, numbers, What
   walk(dir)
   for (const file of files.filter((name) => /\.(ts|tsx)$/.test(name))) {
     const code = readFileSync(file, "utf8")
-    assert.ok(!/5555|wa\.me|WhatsApp|PROFESSIONALS|MOCKUP/.test(code), file)
+    assert.ok(!/wa\.me|PROFESSIONALS|MOCKUP/.test(code), file)
   }
 })
 
-test("the chat's index lists the three sections with their summary, up to date", async () => {
+test("the chat's index lists the five sections with their summary, up to date", async () => {
   const index = JSON.parse(readFileSync(resolve(root, "../server/src/main/resources/content/content-index.json"), "utf8"))
   for (const section of MENTAL_HEALTH.sections) {
     const page = index.find((entry) => entry.path === `/temas/salud-mental?seccion=${section.id}`)

@@ -23,14 +23,14 @@
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Orientación, acompañamiento y recursos. Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "summary": "Orientación, acompañamiento y recursos. Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, CeSAC, Centro de Salud Mental Nº 1 y Hospital Bonaparte, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo). Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional. Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud mental › Dónde buscar ayuda",
     "path": "/temas/salud-mental?seccion=section-1",
-    "summary": "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "summary": "Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, CeSAC, Centro de Salud Mental Nº 1 y Hospital Bonaparte, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -44,7 +44,21 @@
   {
     "title": "Salud mental › Herramientas para cuidarte",
     "path": "/temas/salud-mental?seccion=section-3",
-    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo).",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Consumos y acompañamiento",
+    "path": "/temas/salud-mental?seccion=section-4",
+    "summary": "Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Otras provincias",
+    "path": "/temas/salud-mental?seccion=section-5",
+    "summary": "Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
     "firstAid": false,
     "hasInfo": true
   },

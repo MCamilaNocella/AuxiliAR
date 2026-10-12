@@ -1,4 +1,10 @@
 import { ActionLink } from "@/components/health/ActionLink"
+import { Disclosure } from "@/components/health/Disclosure"
+import { OutLink } from "@/components/health/OutLink"
+import { PendingNotice } from "@/components/health/PendingNotice"
+import { DirectoryList } from "../../DirectoryBlocks"
+import { YOGA_CABA } from "../../MentalHealth.directory"
+import { OMS_ANSIEDAD, OMS_ESTRES, OMS_GUIA } from "../../MentalHealth.sources"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
 
 /**
@@ -22,6 +28,15 @@ const HABITS = [
   { title: "Técnicas de autoayuda", text: "Aprendelas y practicalas unos minutos por día." },
 ]
 
+/** Five short ideas of pause from the skills of the OMS guide "En tiempos de estrés, haz lo que importa": drafts of the team, not yet reviewed by a health professional (the notice says so) */
+const PAUSES = [
+  { title: "Poner los pies en la tierra", text: "Apoyá los pies y registrá lo que ves y escuchás, sin exigirte eliminar la emoción." },
+  { title: "Respiración pausada", text: "Probá una respiración suave, sin forzar la profundidad ni retener el aire. Si te incomoda, detené la práctica." },
+  { title: "Desengancharse de los pensamientos", text: "Podés notar un pensamiento y volver a lo que estás haciendo, sin discutir con él." },
+  { title: "Una acción pequeña", text: "Elegí una acción pequeña que te acerque a algo que valorás." },
+  { title: "Amabilidad con vos", text: "Podés tratarte con amabilidad mientras una emoción difícil está presente." },
+]
+
 export default function Section3Content() {
   return (
     <div className="mt-2 flex max-w-3xl flex-col gap-6">
@@ -34,6 +49,47 @@ export default function Section3Content() {
           </li>
         ))}
       </ul>
+
+      <section aria-labelledby="mh-pause" className="flex flex-col gap-3">
+        <div>
+          <h3 id="mh-pause" className="m-0 text-xl font-extrabold">
+            Cinco ideas para una pausa
+          </h3>
+          <p className="m-0 mt-1">Están tomadas de las habilidades de la guía ilustrada de la OMS. Probá la que te sirva; si una te incomoda, dejala.</p>
+        </div>
+        <ul className="m-0 flex list-disc flex-col gap-2.5 pl-5">
+          {PAUSES.map(({ title, text }) => (
+            <li key={title}>
+              <b>{title}.</b> {text}
+            </li>
+          ))}
+        </ul>
+        <PendingNotice>Estas frases las redactó el equipo de AuxiliAR a partir de la guía de la OMS y todavía no las revisó un profesional de la salud. No son un tratamiento ni garantizan aliviar lo que sentís.</PendingNotice>
+      </section>
+
+      <section aria-labelledby="mh-oms">
+        <h3 id="mh-oms" className="m-0 text-xl font-extrabold">
+          Materiales gratuitos de la OMS
+        </h3>
+        <p className="m-0 mt-1 text-ink-soft">Se leen o se descargan sin pagar ni registrarse; necesitás conexión para abrirlos.</p>
+        <ul role="list" className="m-0 mt-2 flex list-none flex-col gap-1 p-0">
+          <li>
+            <OutLink href={OMS_GUIA.url}>{OMS_GUIA.label}</OutLink>
+          </li>
+          <li>
+            <OutLink href={OMS_ESTRES.url}>Preguntas y respuestas sobre el estrés</OutLink>
+          </li>
+          <li>
+            <OutLink href={OMS_ANSIEDAD.url}>Información sobre los trastornos de ansiedad</OutLink>
+          </li>
+        </ul>
+      </section>
+
+      <Disclosure title="Clases de yoga en la Ciudad (Plazas Activas)">
+        <p className="m-0">Clases al aire libre del Gobierno de la Ciudad, para mayores de 18 años y con inscripción previa. Es una actividad de bienestar, no un tratamiento. Confirmá la grilla antes de ir.</p>
+        <p className="m-0 text-ink-soft">La página oficial no informa si tienen costo: no las damos por gratuitas.</p>
+        <DirectoryList items={YOGA_CABA} />
+      </Disclosure>
 
       <section aria-labelledby="mh-help" className="rounded-2xl border-2 border-control-line bg-field p-4">
         <h3 id="mh-help" className="m-0 text-xl font-extrabold">
