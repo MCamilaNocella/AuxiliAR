@@ -1,8 +1,33 @@
 import { CHECKED_AT, MANUAL, POISON_CENTER, VIA_PUBLICA } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
-/** "Accidentes y lesiones frecuentes": everyday injuries. Each says only what the official sources say. In order of urgency: the ones with a danger that goes on (a road, a live current, a poison) and the head first, the lesions that can wait for care last */
+/** "Accidentes y lesiones frecuentes": everyday injuries. Each says only what the official sources say. In order of urgency: the head injury first, then the ones with a danger that goes on (a road, a live current, a poison), the lesions that can wait for care last */
 export const INJURY_GUIDES: FirstAidGuideContent[] = [
+  {
+    slug: "golpe-en-la-cabeza",
+    title: "Golpe en la cabeza",
+    group: "injuries",
+    summary: "Ante la sospecha de una lesión en la cabeza, el cuello o la espalda, la persona no debe moverse hasta que llegue ayuda especializada.",
+    callFirst: true,
+    stepSets: [
+      {
+        steps: [
+          "Fijate que no haya peligro para vos.",
+          "No muevas a la persona.",
+          "Hablale en voz alta y fijate si responde. Mirá si el pecho se mueve y escuchá si respira.",
+          "Llamá al número de emergencias de tu localidad o pedí que lo hagan.",
+          "Si sangra, presioná con una tela lo más limpia posible.",
+          "Si no responde y no respira o respira mal, empezá con RCP (mirá la guía de RCP).",
+          "Quedate con la persona y hablale con calma hasta que llegue la ayuda.",
+        ],
+      },
+    ],
+    dont: ["No muevas ni levantes a la persona.", "No la dejes sola.", "Ante la duda, no la muevas hasta que el personal de salud te confirme, aunque sea por teléfono, que hay que hacerlo."],
+    note: "Las fuentes oficiales no detallan otras señales de alarma ni cuidados para golpes leves en la cabeza. Si tenés dudas, consultá a un servicio de salud.",
+    related: ["golpes-y-caidas", "rcp"],
+    sources: [MANUAL],
+    checkedAt: CHECKED_AT,
+  },
   {
     slug: "accidentes-de-transito",
     title: "Accidentes de tránsito",
@@ -101,31 +126,6 @@ export const INJURY_GUIDES: FirstAidGuideContent[] = [
     ],
     actions: [{ label: `Llamar al Centro Nacional de Intoxicaciones · ${POISON_CENTER.number}`, tel: POISON_CENTER.tel }],
     related: ["quemaduras"],
-    sources: [MANUAL],
-    checkedAt: CHECKED_AT,
-  },
-  {
-    slug: "golpe-en-la-cabeza",
-    title: "Golpe en la cabeza",
-    group: "injuries",
-    summary: "Ante la sospecha de una lesión en la cabeza, el cuello o la espalda, la persona no debe moverse hasta que llegue ayuda especializada.",
-    callFirst: true,
-    stepSets: [
-      {
-        steps: [
-          "Fijate que no haya peligro para vos.",
-          "No muevas a la persona.",
-          "Hablale en voz alta y fijate si responde. Mirá si el pecho se mueve y escuchá si respira.",
-          "Llamá al número de emergencias de tu localidad o pedí que lo hagan.",
-          "Si sangra, presioná con una tela lo más limpia posible.",
-          "Si no responde y no respira o respira mal, empezá con RCP (mirá la guía de RCP).",
-          "Quedate con la persona y hablale con calma hasta que llegue la ayuda.",
-        ],
-      },
-    ],
-    dont: ["No muevas ni levantes a la persona.", "No la dejes sola.", "Ante la duda, no la muevas hasta que el personal de salud te confirme, aunque sea por teléfono, que hay que hacerlo."],
-    note: "Las fuentes oficiales no detallan otras señales de alarma ni cuidados para golpes leves en la cabeza. Si tenés dudas, consultá a un servicio de salud.",
-    related: ["golpes-y-caidas", "rcp"],
     sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },

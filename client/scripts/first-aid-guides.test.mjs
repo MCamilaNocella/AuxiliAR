@@ -32,7 +32,7 @@ const allText = (guide) => JSON.stringify(guide)
 
 const WANTED = {
   now: ["rcp", "atragantamiento", "hemorragia-grave", "reacciones-alergicas", "acv", "convulsiones", "quemaduras"],
-  injuries: ["accidentes-de-transito", "electrocucion", "intoxicaciones", "golpe-en-la-cabeza", "golpes-y-caidas", "fracturas", "heridas"],
+  injuries: ["golpe-en-la-cabeza", "accidentes-de-transito", "electrocucion", "intoxicaciones", "golpes-y-caidas", "fracturas", "heridas"],
   prepare: ["botiquin", "vacuna-antitetanica"],
 }
 
