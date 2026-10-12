@@ -1,5 +1,5 @@
 import { PATHS } from "@/router/paths"
-import { ANMAT_ALERGIAS, CABA_ALERGIAS, CARDIOVASCULAR, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, RCP_ADULTOS, RCP_PAGINA, RCP_PREGUNTAS } from "../sources"
+import { ANMAT_ALERGIAS, CABA_ALERGIAS, CARDIOVASCULAR, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, LEY_26835, RCP_ADULTOS, RCP_PAGINA, RCP_PREGUNTAS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
 /** "Necesito actuar ahora": situations where a life can be at risk */
@@ -76,9 +76,9 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
       "No cortes la llamada hasta que la persona que te atiende te lo indique.",
     ],
     whileWaiting: ["Seguí con las compresiones hasta que llegue el equipo de emergencias."],
-    note: "Según el Ministerio de Salud, empezar la RCP de inmediato, aunque no seas profesional, puede aumentar en un 40% las posibilidades de supervivencia. Esta guía no reemplaza un curso de RCP básico: el Ministerio recomienda hacerlo y repetir el entrenamiento.",
+    note: "Según el Ministerio de Salud, empezar la RCP de inmediato, aunque no seas profesional, puede aumentar en un 40% las posibilidades de supervivencia. Esta guía no reemplaza un curso de RCP básico: el Ministerio recomienda hacerlo y repetir el entrenamiento. La Ley 26.835 promueve que se aprenda la RCP básica, de forma voluntaria y solidaria, y busca capacitar a las y los estudiantes del nivel medio y del superior.",
     related: ["atragantamiento", "electrocucion"],
-    sources: [RCP_PAGINA, RCP_PREGUNTAS, CARDIOVASCULAR, MINI_GUIA_RCP, RCP_ADULTOS, MANUAL],
+    sources: [RCP_PAGINA, RCP_PREGUNTAS, CARDIOVASCULAR, MINI_GUIA_RCP, RCP_ADULTOS, MANUAL, LEY_26835],
     checkedAt: "2026-10-12",
   },
   {

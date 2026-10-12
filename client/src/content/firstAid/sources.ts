@@ -30,6 +30,12 @@ export const RCP_PREGUNTAS: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/primerosauxilios/RCP/preguntas",
 }
 
+/** Ley 26.835 (2013), "Ley de promoción y capacitación en las técnicas de reanimación cardiopulmonar básicas": art. 1 (promover aprender la RCP básica, de forma voluntaria, altruista, desinteresada y solidaria) and art. 2 (capacitar a estudiantes del nivel medio y superior). Read 2026-10-12 */
+export const LEY_26835: GuideSource = {
+  label: "Ley 26.835 · Promoción y capacitación en las técnicas de reanimación cardiopulmonar básicas, argentina.gob.ar/normativa",
+  url: "https://www.argentina.gob.ar/normativa/nacional/ley-26835-207654",
+}
+
 /** "Enfermedades cardiovasculares" (glosario): the signs of a heart attack and "el tiempo lo es todo"; read 2026-10-12 */
 export const CARDIOVASCULAR: GuideSource = {
   label: "Enfermedades cardiovasculares · Glosario, argentina.gob.ar/salud",

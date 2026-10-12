@@ -294,6 +294,7 @@ test("rcp: infarto y paro cardíaco se diferencian, con lo que dice la página o
   // what the page says about the breaths, the DEA and the course
   assert.ok(page.includes("Las compresiones son lo más importante") && page.includes("dentro de los 5 minutos") && page.includes("nadie esté tocando a la persona"))
   assert.ok(page.includes("40%") && page.includes("curso de RCP básico"))
+  assert.ok(page.includes("La Ley 26.835 promueve que se aprenda la RCP básica") && guide.sources.some(({ url }) => url.endsWith("/ley-26835-207654")))
   assert.deepEqual(guide.sources.slice(0, 3).map(({ url }) => url), [
     "https://www.argentina.gob.ar/salud/primerosauxilios/RCP",
     "https://www.argentina.gob.ar/salud/primerosauxilios/RCP/preguntas",
