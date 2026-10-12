@@ -4,7 +4,7 @@ import { getFirstAidGuide } from "./index"
 
 /**
  * Quiz de primeros auxilios: 34 situations that cover the 16 guides of src/content/firstAid (one or two for each guide, and five for the RCP, which tells the infarto from the paro),
- * in the order of the guides. It was 51: the ones that repeated what another question already asked (the torniquete, the wound that bleeds, the person who must not be moved) or
+ * in the order of the guides of the hub (from the most urgent). It was 51: the ones that repeated what another question already asked (the torniquete, the wound that bleeds, the person who must not be moved) or
  * that did not decide anything in an emergency (where the botiquín goes, whether the vaccine is free) were cut, so a person finishes it in one sitting. Every right answer is something
  * the guide of that situation says, in its own terms, and every feedback sends back to that guide: the quiz adds no instruction of its own, no number of emergencias is written
  * (the guides point to the emergency numbers of the app) and no medicine or dose is named. It is educational: it does not replace a first aid course nor the care of a health team.
@@ -15,7 +15,6 @@ const toGuide = (slug: string): QuizAction => ({ label: `Ver la guía: ${getFirs
 const option = (id: string, text: string, correct: boolean, feedback: string) => ({ id, text, correct, feedback })
 
 export const FIRST_AID_QUIZ: QuizQuestion[] = [
-  /* ── RCP ── */
   {
     id: "rcp-seguridad",
     format: "¿Qué hacés primero?",
@@ -86,7 +85,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "DEA: encenderlo, seguir su voz y que nadie toque a la persona antes de la descarga.",
     action: toGuide("rcp"),
   },
-  /* ── Atragantamiento ── */
   {
     id: "atragantamiento-adulto",
     format: "¿Qué hacés?",
@@ -115,36 +113,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Un niño que tose o habla: dejalo toser; ni golpes ni agua.",
     action: toGuide("atragantamiento"),
   },
-  /* ── ACV ── */
-  {
-    id: "acv-senales",
-    format: "Elegí una",
-    topic: "ACV",
-    prompt: "¿Cuál de estas es una señal de alarma de un ACV (accidente cerebrovascular)?",
-    options: [
-      option("a", "Estornudar varias veces seguidas.", false, "No es una señal que nombre la guía."),
-      option("b", "Sentir mucha sed después de hacer ejercicio.", false, "No es una de las señales de ACV de la guía."),
-      option("c", "Debilidad repentina o adormecimiento de la cara, el brazo o la pierna, sobre todo de un solo lado.", true, "Sí: es la primera señal de la guía. También: confusión de golpe, problemas para hablar o ver, para caminar, o un dolor de cabeza muy fuerte sin causa conocida."),
-    ],
-    why: "Reconocer las señales a tiempo permite pedir ayuda cuando todavía se puede actuar.",
-    learning: "ACV: debilidad repentina de un lado del cuerpo, confusión, problemas para hablar o ver.",
-    action: toGuide("acv"),
-  },
-  {
-    id: "acv-niega",
-    format: "¿Qué hacés?",
-    topic: "ACV",
-    prompt: "Sospechás que alguien tiene un ACV, pero dice que está bien y que no es nada. ¿Qué hacés?",
-    options: [
-      option("a", "Le creo y espero a ver si se le pasa.", false, "La guía avisa que el comienzo puede ser sutil y que la persona puede negar lo que le pasa o no darse cuenta."),
-      option("b", "Llamo de inmediato al número de emergencias de mi localidad, o pido que lo hagan.", true, "Correcto: ante la sospecha hay que llamar siempre. Los síntomas pueden empeorar, quedarse igual o disminuir."),
-      option("c", "Le doy algo para el dolor de cabeza.", false, "La guía no indica medicamentos: ante la sospecha, lo importante es pedir ayuda de inmediato."),
-    ],
-    why: "En un ACV actuar rápido es clave, aunque la persona no se dé cuenta de lo que le pasa.",
-    learning: "Si sospechás un ACV, llamá siempre, aunque la persona diga que está bien.",
-    action: toGuide("acv"),
-  },
-  /* ── Hemorragia grave ── */
   {
     id: "hemorragia-presion",
     format: "¿Qué hacés?",
@@ -173,65 +141,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Si sigue sangrando: más telas encima, vendaje y pedir ayuda.",
     action: toGuide("hemorragia-grave"),
   },
-  /* ── Convulsiones ── */
-  {
-    id: "convulsiones-durante",
-    format: "¿Qué hacés?",
-    topic: "Convulsiones",
-    prompt: "Una persona tiene una convulsión: pierde el conocimiento y sacude todo el cuerpo. ¿Qué hacés?",
-    options: [
-      option("a", "Trato de sujetarla para que deje de moverse.", false, "No: la guía dice que no intentes sujetarla ni evitar que se mueva."),
-      option("b", "Le pongo algo en la boca para que no se muerda la lengua.", false, "No: la lengua no se puede tragar y no hay que ponerle nada en la boca."),
-      option("c", "Saco objetos duros o filosos que tenga cerca, pongo algo blando y controlo cuánto dura.", true, "Correcto: evitá que se lastime y fijate cuánto dura la convulsión."),
-    ],
-    why: "Durante una convulsión no se puede detener: lo que se hace es mantener segura a la persona hasta que termine.",
-    learning: "En una convulsión: alejar peligros, no sujetar y no poner nada en la boca.",
-    action: toGuide("convulsiones"),
-  },
-  {
-    id: "convulsiones-llamar",
-    format: "¿Cuándo llamás?",
-    topic: "Convulsiones",
-    prompt: "¿En cuál de estos casos hay que llamar a emergencias por una convulsión?",
-    options: [
-      option("a", "Cuando se orina encima.", false, "Eso puede pasar durante una convulsión y no es, por sí solo, una señal para llamar."),
-      option("b", "Cuando dura más de 5 minutos.", true, "Sí. También si respira mal al terminar, si se repiten, si no se despierta, si se lastimó o está dentro del agua, o si tiene otra enfermedad (diabetes, enfermedad cardíaca) o está embarazada."),
-      option("c", "Nunca: siempre se pasan solas.", false, "La guía enumera varios casos en los que hay que llamar."),
-    ],
-    why: "Una convulsión que se prolonga o se repite puede ser grave.",
-    learning: "Llamá si la convulsión dura más de 5 minutos o se repite.",
-    action: toGuide("convulsiones"),
-  },
-  /* ── Quemaduras ── */
-  {
-    id: "quemaduras-agua",
-    format: "¿Qué hacés?",
-    topic: "Quemaduras",
-    prompt: "Alguien se quemó con agua caliente en la cocina y la quemadura es leve. Después de sacarle la ropa y los anillos que no estén pegados, ¿qué hacés?",
-    options: [
-      option("a", "Pongo agua a temperatura de la canilla sobre la lesión.", true, "Correcto: calma el dolor y evita que la lesión avance."),
-      option("b", "Pongo hielo directo.", false, "No: la guía dice que no se usa agua muy fría ni hielo."),
-      option("c", "Le pongo crema o dentífrico.", false, "No: pueden empeorar la lesión y causar una infección."),
-    ],
-    why: "El agua de la canilla enfría la zona sin dañarla más.",
-    learning: "Quemadura leve: agua a temperatura de la canilla.",
-    action: toGuide("quemaduras"),
-  },
-  {
-    id: "quemaduras-no",
-    format: "¿Qué NO hacés?",
-    topic: "Quemaduras",
-    prompt: "Marcá lo que NO hay que hacer ante una quemadura:",
-    options: [
-      option("a", "Tranquilizar a la persona.", false, "Eso sí corresponde: es el primer paso de la guía."),
-      option("b", "Abrir las ampollas.", true, "Es lo que NO hay que hacer: la guía dice «no abras las ampollas»."),
-      option("c", "Llamar a emergencias o ir al centro de salud más cercano.", false, "Eso sí corresponde: es el último paso de la guía."),
-    ],
-    why: "Abrir las ampollas deja la piel expuesta a una infección.",
-    learning: "En una quemadura: no abras las ampollas.",
-    action: toGuide("quemaduras"),
-  },
-  /* ── Reacciones alérgicas ── */
   {
     id: "alergias-grave",
     format: "¿Qué hacés?",
@@ -260,122 +169,90 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Con dificultad para respirar: nada por la boca y sin almohada bajo la cabeza.",
     action: toGuide("reacciones-alergicas"),
   },
-  /* ── Heridas y cortes ── */
   {
-    id: "heridas-lavado",
-    format: "¿Qué hacés?",
-    topic: "Heridas y cortes",
-    prompt: "Te cortaste y la herida casi no sangra. ¿Cómo la limpiás?",
-    options: [
-      option("a", "Con abundante agua y jabón blanco, bajo la canilla, y después un antiséptico líquido.", true, "Correcto: lavate antes las manos con agua y jabón, lavá la herida y la piel de alrededor, y si no sangra ponele un antiséptico líquido (por ejemplo, iodopovidona)."),
-      option("b", "Solo con un pañuelo seco.", false, "Hay que lavar la herida con abundante agua y jabón blanco para evitar que se contamine y se infecte."),
-      option("c", "Poniéndole algodón encima.", false, "No: el algodón se pega al tejido."),
-    ],
-    why: "Lavar bien evita que la herida se contamine y se infecte.",
-    learning: "Herida: manos limpias, agua y jabón blanco, antiséptico y cubrir con gasa.",
-    action: toGuide("heridas"),
-  },
-  {
-    id: "heridas-medico",
+    id: "acv-senales",
     format: "Elegí una",
-    topic: "Heridas y cortes",
-    prompt: "Un corte puede necesitar puntos. ¿Cuándo conviene que lo vea un médico o una médica?",
+    topic: "ACV",
+    prompt: "¿Cuál de estas es una señal de alarma de un ACV (accidente cerebrovascular)?",
     options: [
-      option("a", "Cuanto antes: antes de las 6 horas.", true, "Sí: la guía indica que lo vea un profesional antes de las 6 horas porque puede necesitar puntos."),
-      option("b", "A los tres o cuatro días, si se infecta.", false, "La guía indica verla lo antes posible, antes de las 6 horas, porque puede necesitar puntos."),
-      option("c", "Nunca: los cortes se curan solos.", false, "Algunos cortes necesitan puntos: por eso la guía pide que los vea un profesional antes de las 6 horas."),
+      option("a", "Estornudar varias veces seguidas.", false, "No es una señal que nombre la guía."),
+      option("b", "Sentir mucha sed después de hacer ejercicio.", false, "No es una de las señales de ACV de la guía."),
+      option("c", "Debilidad repentina o adormecimiento de la cara, el brazo o la pierna, sobre todo de un solo lado.", true, "Sí: es la primera señal de la guía. También: confusión de golpe, problemas para hablar o ver, para caminar, o un dolor de cabeza muy fuerte sin causa conocida."),
     ],
-    why: "Una herida que necesita puntos se trata mejor si se la ve pronto.",
-    learning: "Una herida que puede necesitar puntos: que la vea un profesional antes de las 6 horas.",
-    action: toGuide("heridas"),
+    why: "Reconocer las señales a tiempo permite pedir ayuda cuando todavía se puede actuar.",
+    learning: "ACV: debilidad repentina de un lado del cuerpo, confusión, problemas para hablar o ver.",
+    action: toGuide("acv"),
   },
-  /* ── Golpes y caídas ── */
   {
-    id: "golpes-primero",
+    id: "acv-niega",
     format: "¿Qué hacés?",
-    topic: "Golpes y caídas",
-    prompt: "Una persona se cayó y está en el piso, quejándose. Quiere levantarse. ¿Qué hacés?",
+    topic: "ACV",
+    prompt: "Sospechás que alguien tiene un ACV, pero dice que está bien y que no es nada. ¿Qué hacés?",
     options: [
-      option("a", "La ayudo a levantarse rápido para que no se enfríe.", false, "No: no dejes que se levante ni la muevas bruscamente, porque cualquier movimiento puede empeorar una lesión de la columna."),
-      option("b", "La dejo quieta, le hablo en voz alta y miro si responde y si respira.", true, "Correcto: fijate que no haya peligro, dejala quieta y comprobá si responde y si respira."),
-      option("c", "Le hago masajes en el cuello.", false, "No: la guía dice que no se la mueva, porque pueden empeorar lesiones que no se ven."),
+      option("a", "Le creo y espero a ver si se le pasa.", false, "La guía avisa que el comienzo puede ser sutil y que la persona puede negar lo que le pasa o no darse cuenta."),
+      option("b", "Llamo de inmediato al número de emergencias de mi localidad, o pido que lo hagan.", true, "Correcto: ante la sospecha hay que llamar siempre. Los síntomas pueden empeorar, quedarse igual o disminuir."),
+      option("c", "Le doy algo para el dolor de cabeza.", false, "La guía no indica medicamentos: ante la sospecha, lo importante es pedir ayuda de inmediato."),
     ],
-    why: "Después de un golpe puede haber lesiones que no se ven, sobre todo en la cabeza, el cuello y la espalda.",
-    learning: "Después de una caída: dejala quieta y fijate si responde y respira.",
-    action: toGuide("golpes-y-caidas"),
+    why: "En un ACV actuar rápido es clave, aunque la persona no se dé cuenta de lo que le pasa.",
+    learning: "Si sospechás un ACV, llamá siempre, aunque la persona diga que está bien.",
+    action: toGuide("acv"),
   },
   {
-    id: "golpes-llamar",
+    id: "convulsiones-durante",
+    format: "¿Qué hacés?",
+    topic: "Convulsiones",
+    prompt: "Una persona tiene una convulsión: pierde el conocimiento y sacude todo el cuerpo. ¿Qué hacés?",
+    options: [
+      option("a", "Trato de sujetarla para que deje de moverse.", false, "No: la guía dice que no intentes sujetarla ni evitar que se mueva."),
+      option("b", "Le pongo algo en la boca para que no se muerda la lengua.", false, "No: la lengua no se puede tragar y no hay que ponerle nada en la boca."),
+      option("c", "Saco objetos duros o filosos que tenga cerca, pongo algo blando y controlo cuánto dura.", true, "Correcto: evitá que se lastime y fijate cuánto dura la convulsión."),
+    ],
+    why: "Durante una convulsión no se puede detener: lo que se hace es mantener segura a la persona hasta que termine.",
+    learning: "En una convulsión: alejar peligros, no sujetar y no poner nada en la boca.",
+    action: toGuide("convulsiones"),
+  },
+  {
+    id: "convulsiones-llamar",
     format: "¿Cuándo llamás?",
-    topic: "Golpes y caídas",
-    prompt: "¿En cuál de estos casos llamás al número de emergencias después de un golpe o una caída?",
+    topic: "Convulsiones",
+    prompt: "¿En cuál de estos casos hay que llamar a emergencias por una convulsión?",
     options: [
-      option("a", "Si no puede caminar sin ayuda, o si el golpe fue en la cabeza, el cuello o la espalda.", true, "Sí: son los casos que indica la guía."),
-      option("b", "Solo si hay sangre.", false, "Si sangra mucho se presiona la zona, pero también hay que llamar si no puede caminar sin ayuda o si el golpe fue en la cabeza, el cuello o la espalda."),
-      option("c", "Nunca: se pasa con reposo.", false, "La guía pide llamar cuando no puede caminar sin ayuda o el golpe fue en la cabeza, el cuello o la espalda."),
+      option("a", "Cuando se orina encima.", false, "Eso puede pasar durante una convulsión y no es, por sí solo, una señal para llamar."),
+      option("b", "Cuando dura más de 5 minutos.", true, "Sí. También si respira mal al terminar, si se repiten, si no se despierta, si se lastimó o está dentro del agua, o si tiene otra enfermedad (diabetes, enfermedad cardíaca) o está embarazada."),
+      option("c", "Nunca: siempre se pasan solas.", false, "La guía enumera varios casos en los que hay que llamar."),
     ],
-    why: "Esas lesiones pueden ser graves aunque al principio parezcan leves.",
-    learning: "Llamá si no puede caminar sin ayuda o el golpe fue en la cabeza, el cuello o la espalda.",
-    action: toGuide("golpes-y-caidas"),
-  },
-  /* ── Golpe en la cabeza ── */
-  {
-    id: "cabeza-mover",
-    format: "Verdadero o falso",
-    topic: "Golpe en la cabeza",
-    prompt: "Si una persona se golpeó fuerte la cabeza, conviene sentarla y llevarla enseguida a un lugar más cómodo.",
-    options: [
-      option("a", "Verdadero", false, "No: la guía dice que no muevas ni levantes a la persona."),
-      option("b", "Falso", true, "Correcto: no se la mueve ni se la levanta. Se llama a emergencias y se la acompaña hasta que llegue la ayuda."),
-    ],
-    why: "Ante la sospecha de una lesión en la cabeza, el cuello o la espalda, la persona no debe moverse hasta que llegue ayuda especializada.",
-    learning: "Golpe fuerte en la cabeza: no mover a la persona.",
-    action: toGuide("golpe-en-la-cabeza"),
+    why: "Una convulsión que se prolonga o se repite puede ser grave.",
+    learning: "Llamá si la convulsión dura más de 5 minutos o se repite.",
+    action: toGuide("convulsiones"),
   },
   {
-    id: "cabeza-no-responde",
+    id: "quemaduras-agua",
     format: "¿Qué hacés?",
-    topic: "Golpe en la cabeza",
-    prompt: "Después de un golpe en la cabeza la persona no responde y no respira, o respira mal. ¿Qué hacés?",
+    topic: "Quemaduras",
+    prompt: "Alguien se quemó con agua caliente en la cocina y la quemadura es leve. Después de sacarle la ropa y los anillos que no estén pegados, ¿qué hacés?",
     options: [
-      option("a", "Empiezo con RCP.", true, "Sí: la guía indica empezar con RCP si no responde y no respira o respira mal (y llamar a emergencias o pedir que lo hagan)."),
-      option("b", "La sacudo fuerte para despertarla.", false, "No: no hay que moverla; si no responde ni respira bien, se empieza con RCP."),
-      option("c", "Espero a que se recupere sola.", false, "Si no respira o respira mal, hay que empezar con RCP sin esperar."),
+      option("a", "Pongo agua a temperatura de la canilla sobre la lesión.", true, "Correcto: calma el dolor y evita que la lesión avance."),
+      option("b", "Pongo hielo directo.", false, "No: la guía dice que no se usa agua muy fría ni hielo."),
+      option("c", "Le pongo crema o dentífrico.", false, "No: pueden empeorar la lesión y causar una infección."),
     ],
-    why: "Sin respiración, cada minuto cuenta.",
-    learning: "Si no responde y no respira bien, RCP.",
-    action: toGuide("golpe-en-la-cabeza"),
-  },
-  /* ── Posibles fracturas ── */
-  {
-    id: "fracturas-inmovilizar",
-    format: "Elegí una",
-    topic: "Posibles fracturas",
-    prompt: "Para inmovilizar un antebrazo, ¿qué objeto rígido usás?",
-    options: [
-      option("a", "Uno más corto que el antebrazo, para no molestar.", false, "No: tiene que ser más largo que el brazo o la pierna."),
-      option("b", "Uno rígido, limpio y más largo que el antebrazo, para inmovilizar también el codo y la muñeca.", true, "Así es: una madera, un palo o un cartón grueso, sujetado con una venda, un pañuelo o una tela limpia a lo largo de todo el brazo."),
-      option("c", "Ninguno: alcanza con apretar el brazo con la mano.", false, "La guía indica un objeto rígido y limpio, sujetado a lo largo de todo el brazo o la pierna."),
-    ],
-    why: "Inmovilizar la articulación de arriba y la de abajo evita que la lesión empeore con el movimiento.",
-    learning: "Inmovilizar con un objeto rígido más largo que el hueso lesionado.",
-    action: toGuide("fracturas"),
+    why: "El agua de la canilla enfría la zona sin dañarla más.",
+    learning: "Quemadura leve: agua a temperatura de la canilla.",
+    action: toGuide("quemaduras"),
   },
   {
-    id: "fracturas-hueso",
-    format: "¿Qué hacés?",
-    topic: "Posibles fracturas",
-    prompt: "En una fractura se ve el hueso. ¿Qué hacés?",
+    id: "quemaduras-no",
+    format: "¿Qué NO hacés?",
+    topic: "Quemaduras",
+    prompt: "Marcá lo que NO hay que hacer ante una quemadura:",
     options: [
-      option("a", "Intento volver a meterlo.", false, "No: si se ve el hueso, no intentes volver a meterlo."),
-      option("b", "Lo cubro con gasas o telas limpias e inmovilizo.", true, "Correcto: solo cubrilo con gasas o telas limpias e inmovilizá. Y si la persona no puede caminar sin ayuda, llamá al número de emergencias."),
-      option("c", "Le pongo un vendaje bien ajustado sin cubrir.", false, "La guía indica cubrir el hueso con gasas o telas limpias e inmovilizar."),
+      option("a", "Tranquilizar a la persona.", false, "Eso sí corresponde: es el primer paso de la guía."),
+      option("b", "Abrir las ampollas.", true, "Es lo que NO hay que hacer: la guía dice «no abras las ampollas»."),
+      option("c", "Llamar a emergencias o ir al centro de salud más cercano.", false, "Eso sí corresponde: es el último paso de la guía."),
     ],
-    why: "Volver a meter el hueso puede lastimar más y contaminar la herida.",
-    learning: "Si se ve el hueso: cubrir con gasas limpias e inmovilizar, sin intentar acomodarlo.",
-    action: toGuide("fracturas"),
+    why: "Abrir las ampollas deja la piel expuesta a una infección.",
+    learning: "En una quemadura: no abras las ampollas.",
+    action: toGuide("quemaduras"),
   },
-  /* ── Accidentes de tránsito ── */
   {
     id: "transito-seguridad",
     format: "¿Qué hacés primero?",
@@ -403,7 +280,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "No muevas a las víctimas de un accidente si no sabés cómo hacerlo.",
     action: toGuide("accidentes-de-transito"),
   },
-  /* ── Electrocución ── */
   {
     id: "electrocucion-cortar",
     format: "¿Qué hacés?",
@@ -431,7 +307,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Cables caídos: no los toques nunca.",
     action: toGuide("electrocucion"),
   },
-  /* ── Intoxicaciones ── */
   {
     id: "intoxicaciones-duda",
     format: "¿Qué hacés?",
@@ -460,7 +335,117 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Contacto con la piel: sacar la ropa y lavar con agua 15 o 20 minutos.",
     action: toGuide("intoxicaciones"),
   },
-  /* ── Botiquín ── */
+  {
+    id: "cabeza-mover",
+    format: "Verdadero o falso",
+    topic: "Golpe en la cabeza",
+    prompt: "Si una persona se golpeó fuerte la cabeza, conviene sentarla y llevarla enseguida a un lugar más cómodo.",
+    options: [
+      option("a", "Verdadero", false, "No: la guía dice que no muevas ni levantes a la persona."),
+      option("b", "Falso", true, "Correcto: no se la mueve ni se la levanta. Se llama a emergencias y se la acompaña hasta que llegue la ayuda."),
+    ],
+    why: "Ante la sospecha de una lesión en la cabeza, el cuello o la espalda, la persona no debe moverse hasta que llegue ayuda especializada.",
+    learning: "Golpe fuerte en la cabeza: no mover a la persona.",
+    action: toGuide("golpe-en-la-cabeza"),
+  },
+  {
+    id: "cabeza-no-responde",
+    format: "¿Qué hacés?",
+    topic: "Golpe en la cabeza",
+    prompt: "Después de un golpe en la cabeza la persona no responde y no respira, o respira mal. ¿Qué hacés?",
+    options: [
+      option("a", "Empiezo con RCP.", true, "Sí: la guía indica empezar con RCP si no responde y no respira o respira mal (y llamar a emergencias o pedir que lo hagan)."),
+      option("b", "La sacudo fuerte para despertarla.", false, "No: no hay que moverla; si no responde ni respira bien, se empieza con RCP."),
+      option("c", "Espero a que se recupere sola.", false, "Si no respira o respira mal, hay que empezar con RCP sin esperar."),
+    ],
+    why: "Sin respiración, cada minuto cuenta.",
+    learning: "Si no responde y no respira bien, RCP.",
+    action: toGuide("golpe-en-la-cabeza"),
+  },
+  {
+    id: "golpes-primero",
+    format: "¿Qué hacés?",
+    topic: "Golpes y caídas",
+    prompt: "Una persona se cayó y está en el piso, quejándose. Quiere levantarse. ¿Qué hacés?",
+    options: [
+      option("a", "La ayudo a levantarse rápido para que no se enfríe.", false, "No: no dejes que se levante ni la muevas bruscamente, porque cualquier movimiento puede empeorar una lesión de la columna."),
+      option("b", "La dejo quieta, le hablo en voz alta y miro si responde y si respira.", true, "Correcto: fijate que no haya peligro, dejala quieta y comprobá si responde y si respira."),
+      option("c", "Le hago masajes en el cuello.", false, "No: la guía dice que no se la mueva, porque pueden empeorar lesiones que no se ven."),
+    ],
+    why: "Después de un golpe puede haber lesiones que no se ven, sobre todo en la cabeza, el cuello y la espalda.",
+    learning: "Después de una caída: dejala quieta y fijate si responde y respira.",
+    action: toGuide("golpes-y-caidas"),
+  },
+  {
+    id: "golpes-llamar",
+    format: "¿Cuándo llamás?",
+    topic: "Golpes y caídas",
+    prompt: "¿En cuál de estos casos llamás al número de emergencias después de un golpe o una caída?",
+    options: [
+      option("a", "Si no puede caminar sin ayuda, o si el golpe fue en la cabeza, el cuello o la espalda.", true, "Sí: son los casos que indica la guía."),
+      option("b", "Solo si hay sangre.", false, "Si sangra mucho se presiona la zona, pero también hay que llamar si no puede caminar sin ayuda o si el golpe fue en la cabeza, el cuello o la espalda."),
+      option("c", "Nunca: se pasa con reposo.", false, "La guía pide llamar cuando no puede caminar sin ayuda o el golpe fue en la cabeza, el cuello o la espalda."),
+    ],
+    why: "Esas lesiones pueden ser graves aunque al principio parezcan leves.",
+    learning: "Llamá si no puede caminar sin ayuda o el golpe fue en la cabeza, el cuello o la espalda.",
+    action: toGuide("golpes-y-caidas"),
+  },
+  {
+    id: "fracturas-inmovilizar",
+    format: "Elegí una",
+    topic: "Posibles fracturas",
+    prompt: "Para inmovilizar un antebrazo, ¿qué objeto rígido usás?",
+    options: [
+      option("a", "Uno más corto que el antebrazo, para no molestar.", false, "No: tiene que ser más largo que el brazo o la pierna."),
+      option("b", "Uno rígido, limpio y más largo que el antebrazo, para inmovilizar también el codo y la muñeca.", true, "Así es: una madera, un palo o un cartón grueso, sujetado con una venda, un pañuelo o una tela limpia a lo largo de todo el brazo."),
+      option("c", "Ninguno: alcanza con apretar el brazo con la mano.", false, "La guía indica un objeto rígido y limpio, sujetado a lo largo de todo el brazo o la pierna."),
+    ],
+    why: "Inmovilizar la articulación de arriba y la de abajo evita que la lesión empeore con el movimiento.",
+    learning: "Inmovilizar con un objeto rígido más largo que el hueso lesionado.",
+    action: toGuide("fracturas"),
+  },
+  {
+    id: "fracturas-hueso",
+    format: "¿Qué hacés?",
+    topic: "Posibles fracturas",
+    prompt: "En una fractura se ve el hueso. ¿Qué hacés?",
+    options: [
+      option("a", "Intento volver a meterlo.", false, "No: si se ve el hueso, no intentes volver a meterlo."),
+      option("b", "Lo cubro con gasas o telas limpias e inmovilizo.", true, "Correcto: solo cubrilo con gasas o telas limpias e inmovilizá. Y si la persona no puede caminar sin ayuda, llamá al número de emergencias."),
+      option("c", "Le pongo un vendaje bien ajustado sin cubrir.", false, "La guía indica cubrir el hueso con gasas o telas limpias e inmovilizar."),
+    ],
+    why: "Volver a meter el hueso puede lastimar más y contaminar la herida.",
+    learning: "Si se ve el hueso: cubrir con gasas limpias e inmovilizar, sin intentar acomodarlo.",
+    action: toGuide("fracturas"),
+  },
+  {
+    id: "heridas-lavado",
+    format: "¿Qué hacés?",
+    topic: "Heridas y cortes",
+    prompt: "Te cortaste y la herida casi no sangra. ¿Cómo la limpiás?",
+    options: [
+      option("a", "Con abundante agua y jabón blanco, bajo la canilla, y después un antiséptico líquido.", true, "Correcto: lavate antes las manos con agua y jabón, lavá la herida y la piel de alrededor, y si no sangra ponele un antiséptico líquido (por ejemplo, iodopovidona)."),
+      option("b", "Solo con un pañuelo seco.", false, "Hay que lavar la herida con abundante agua y jabón blanco para evitar que se contamine y se infecte."),
+      option("c", "Poniéndole algodón encima.", false, "No: el algodón se pega al tejido."),
+    ],
+    why: "Lavar bien evita que la herida se contamine y se infecte.",
+    learning: "Herida: manos limpias, agua y jabón blanco, antiséptico y cubrir con gasa.",
+    action: toGuide("heridas"),
+  },
+  {
+    id: "heridas-medico",
+    format: "Elegí una",
+    topic: "Heridas y cortes",
+    prompt: "Un corte puede necesitar puntos. ¿Cuándo conviene que lo vea un médico o una médica?",
+    options: [
+      option("a", "Cuanto antes: antes de las 6 horas.", true, "Sí: la guía indica que lo vea un profesional antes de las 6 horas porque puede necesitar puntos."),
+      option("b", "A los tres o cuatro días, si se infecta.", false, "La guía indica verla lo antes posible, antes de las 6 horas, porque puede necesitar puntos."),
+      option("c", "Nunca: los cortes se curan solos.", false, "Algunos cortes necesitan puntos: por eso la guía pide que los vea un profesional antes de las 6 horas."),
+    ],
+    why: "Una herida que necesita puntos se trata mejor si se la ve pronto.",
+    learning: "Una herida que puede necesitar puntos: que la vea un profesional antes de las 6 horas.",
+    action: toGuide("heridas"),
+  },
   {
     id: "botiquin-basico",
     format: "Elegí una",
@@ -475,7 +460,6 @@ export const FIRST_AID_QUIZ: QuizQuestion[] = [
     learning: "Botiquín básico: guantes, gasas y vendas, antiséptico, tijera, cinta adhesiva y jabón neutro.",
     action: toGuide("botiquin"),
   },
-  /* ── Vacuna antitetánica ── */
   {
     id: "tetanos-refuerzo",
     format: "Elegí una",

@@ -31,8 +31,8 @@ const renderGuide = (guide) => renderToStaticMarkup(createElement(MemoryRouter, 
 const allText = (guide) => JSON.stringify(guide)
 
 const WANTED = {
-  now: ["rcp", "atragantamiento", "acv", "hemorragia-grave", "convulsiones", "quemaduras", "reacciones-alergicas"],
-  injuries: ["heridas", "golpes-y-caidas", "golpe-en-la-cabeza", "fracturas", "accidentes-de-transito", "electrocucion", "intoxicaciones"],
+  now: ["rcp", "atragantamiento", "hemorragia-grave", "reacciones-alergicas", "acv", "convulsiones", "quemaduras"],
+  injuries: ["accidentes-de-transito", "electrocucion", "intoxicaciones", "golpe-en-la-cabeza", "golpes-y-caidas", "fracturas", "heridas"],
   prepare: ["botiquin", "vacuna-antitetanica"],
 }
 
