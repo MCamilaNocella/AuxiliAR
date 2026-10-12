@@ -261,14 +261,14 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       },
       {
         id: "animales-atencion",
-        title: "Servicios importantes: consulta y urgencias",
+        title: "Recursos importantes: consulta y urgencias",
         references: [{ label: ZOONOSIS.label, url: ZOONOSIS.url }, ...UNIVERSITY_HOSPITALS.map(({ by, url }) => ({ label: by, url })), { label: "Municipalidad de Rosario · Solicitar atención veterinaria para perros y gatos", url: "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos" }],
         checkedAt: [ANIMAL_PLACES_READ_ON],
         notes: ["Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular."],
       },
       {
         id: "animales-pasteur",
-        title: "Servicios importantes: cremación gratuita",
+        title: "Recursos importantes: cremación gratuita",
         references: fromSources([PASTEUR_INFO, PASTEUR_SERVICIOS]),
         checkedAt: [CHECKED_AT_PASTEUR],
         notes: ["Las páginas no traen fecha de publicación: confirmá con el Instituto antes de ir."],

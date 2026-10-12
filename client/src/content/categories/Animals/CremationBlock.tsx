@@ -1,6 +1,6 @@
 /**
- * Atención veterinaria · Servicios importantes · Cremación gratuita. (It was the section "Si muere tu perro o gato"; it is now a block of the section
- * "Servicios importantes".) Explained from three official pages of the Gobierno de la Ciudad about the Instituto de Zoonosis Luis Pasteur (texts in
+ * Atención veterinaria · Recursos importantes · Cremación gratuita. (It was the section "Si muere tu perro o gato"; it is now a block of the section
+ * "Recursos importantes".) Explained from three official pages of the Gobierno de la Ciudad about the Instituto de Zoonosis Luis Pasteur (texts in
  * docs/investigacion/evidencia/pasteur-servicios-cadaveres.txt). What it says:
  *  - the sanitary risk only exists if the animal bit a person within the 10 days before it died (the page says it that way)
  *  - the Instituto receives dead dogs and cats every day, 24 hours, "sin costo, para su disposición final o cremación"

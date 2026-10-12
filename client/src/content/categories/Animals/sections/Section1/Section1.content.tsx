@@ -64,7 +64,7 @@ export default function Section1Content() {
         <h3 id="an-paid" className="m-0 text-xl font-extrabold">
           Arancelados
         </h3>
-        <p className="m-0 mt-1">Ninguna castración ni vacunación de esta página figura como arancelada. Los hospitales escuela de la UBA y de la UNLP, que sí lo son, están en «Servicios importantes» como alternativas pagas: no son gratuitos.</p>
+        <p className="m-0 mt-1">Ninguna castración ni vacunación de esta página figura como arancelada. Los hospitales escuela de la UBA y de la UNLP, que sí lo son, están en «Recursos importantes» como alternativas pagas: no son gratuitos.</p>
       </section>
 
       <section aria-labelledby="an-other">

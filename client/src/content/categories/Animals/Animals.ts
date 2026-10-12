@@ -33,9 +33,9 @@ export const ANIMALS: Category = {
     },
     {
       id: "section-3",
-      title: "Servicios importantes",
+      title: "Recursos importantes",
       summary:
-        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
+        "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice, y un aviso sobre la vacuna antitetánica si un animal te mordió o te arañó.",
       Content: Section3,
     },
   ],

@@ -46,7 +46,7 @@ test("atención veterinaria has three sections (the last one without a summary y
   assert.deepEqual(ANIMALS.sections.map(({ id, title }) => [id, title]), [
     ["section-1", "Vacunación y castración"],
     ["section-2", "Cuidado y prevención"],
-    ["section-3", "Servicios importantes"],
+    ["section-3", "Recursos importantes"],
   ])
   assert.equal(ANIMALS.defaultSectionId, "section-1")
   assert.equal(ANIMALS.preparing, undefined)
@@ -229,7 +229,7 @@ test("the index of Auxi's content lists the three sections, up to date with the 
   }
 })
 
-test("cremación gratuita: a block of Servicios importantes with Pasteur's free service and its conditions, no individual cremation or ashes promised, and no schedule of the vacunatorio", () => {
+test("cremación gratuita: a block of Recursos importantes with Pasteur's free service and its conditions, no individual cremation or ashes promised, and no schedule of the vacunatorio", () => {
   const html = pages["section-3"]
   const block = html.slice(html.indexOf('aria-labelledby="an-cremation"'), html.indexOf('aria-labelledby="an-limits"'))
   const content = text(block)
@@ -244,10 +244,19 @@ test("cremación gratuita: a block of Servicios importantes with Pasteur's free 
   assert.ok(!content.includes("Texto comparado con estas fuentes") && content.includes("No traen fecha de publicación: confirmá con el Instituto antes de ir"))
   assert.deepEqual(external(block), [])
   assert.deepEqual(referencesOf("animales-pasteur").references.map(({ url }) => url), [sources.PASTEUR_INFO.url, sources.PASTEUR_SERVICIOS.url])
-  assert.equal(referencesOf("animales-pasteur").title, "Servicios importantes: cremación gratuita")
+  assert.equal(referencesOf("animales-pasteur").title, "Recursos importantes: cremación gratuita")
   // the section "Si muere tu perro o gato" is gone: its text lives here, once
   assert.ok(!ANIMALS.sections.some(({ id }) => id === "section-4"))
   assert.equal([...text(html).matchAll(/Perder a un perro o a un gato es difícil/g)].length, 1)
-  // the order inside Servicios importantes: the free, the unconfirmed and the paid first, then the cremation, then the limits
+  // the order inside Recursos importantes: the free, the unconfirmed and the paid first, then the cremation, then the limits
   assert.ok(html.indexOf('aria-labelledby="an-uni"') < html.indexOf('aria-labelledby="an-cremation"') && html.indexOf('aria-labelledby="an-cremation"') < html.indexOf('aria-labelledby="an-limits"'))
+})
+
+test("Recursos importantes: the vacuna antitetánica block points to the guide and gives no dose", () => {
+  const html = pages["section-3"]
+  const content = text(html)
+  assert.ok(content.includes("Vacuna antitetánica") && content.includes("llevá tu carnet de vacunas") || content.includes("Llevá tu carnet de vacunas"))
+  assert.ok(html.includes('href="/primeros-auxilios/vacuna-antitetanica"'))
+  assert.ok(!/\b\d+\s?(UI|mg|ml)\b/i.test(content))
+  assert.ok(!content.includes("Servicios importantes"))
 })

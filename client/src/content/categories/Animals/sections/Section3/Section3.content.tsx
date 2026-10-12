@@ -5,7 +5,7 @@ import { CremationBlock } from "../../CremationBlock"
 import { PlaceCard } from "../../PlaceCard"
 
 /**
- * Atención veterinaria · Servicios importantes (consulta clínica y urgencias, y la cremación gratuita del Instituto Pasteur). Told inside AuxiliAR from each official page (Animals.places.ts),
+ * Atención veterinaria · Recursos importantes (consulta clínica y urgencias, y la cremación gratuita del Instituto Pasteur). Told inside AuxiliAR from each official page (Animals.places.ts),
  * apart from the castración and the vacunación:
  *  - the consultorio of the Instituto Pasteur (zoonosis only, no guardia), the Hospital Municipal and the puestos of Rosario (free for those
  *    adscriptos, a bono for the rest) and the Hospital Municipal, the Centro de Adopciones and the "Guardia y urgencias" of Salta (no hours of its own)
@@ -89,6 +89,21 @@ export default function Section3Content() {
       </section>
 
       <CremationBlock />
+
+      <section aria-labelledby="an-tetanus" className="rounded-2xl border-2 border-control-line bg-field p-4">
+        <h3 id="an-tetanus" className="m-0 text-xl font-extrabold">
+          Vacuna antitetánica
+        </h3>
+        <p className="m-0 mt-1">
+          Si un animal te mordió o te arañó, el Ministerio de Salud indica acudir rápido a un centro de salud para que te evalúe un profesional. Llevá tu carnet de vacunas: según tus dosis y cuánto pasó desde la última, te dirán si hace falta vacunarte contra el tétanos o un refuerzo.
+        </p>
+        <p className="m-0 mt-2 text-ink-soft">La vacuna doble bacteriana protege contra el tétanos y la difteria: esquema de 3 dosis y refuerzo cada 10 años, según el Calendario Nacional.</p>
+        <p className="m-0 mt-3">
+          <Link to={PATHS.firstAidGuide("vacuna-antitetanica")} className="inline-flex min-h-11 items-center font-bold">
+            Ver la guía de la vacuna antitetánica
+          </Link>
+        </p>
+      </section>
 
       <section aria-labelledby="an-limits">
         <h3 id="an-limits" className="m-0 text-xl font-extrabold">
