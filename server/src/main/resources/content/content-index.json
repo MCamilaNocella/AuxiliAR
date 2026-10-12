@@ -16,9 +16,51 @@
   {
     "title": "Salud general",
     "path": "/temas/salud-general",
-    "summary": "Controles, cuidados y calendario de vacunación.",
+    "summary": "Controles, cuidados y calendario de vacunación. Adónde ir según lo que necesitás: el centro de salud (CeSAC) para controles, consultas habituales y prevención; el hospital para especialidades, estudios y atención de mayor complejidad; y la guardia para problemas que necesitan atención en el momento. Lleva al mapa de Centros de atención. Cada cuánto conviene hacerse los controles de rutina, según recomendaciones generales del Ministerio de Salud de la Nación: salud bucal, salud visual, presión arterial y azúcar en sangre, vacunas y chequeos generales. Es información general. El Calendario Nacional de Vacunación 2026 por etapa de la vida: embarazo, recién nacidos, hasta 1 año, hasta 2 años, 5 años, 11 años, 15 a 64 años y 65 años o más; qué vacunas corresponden en cada una y cuándo se aplican. Educación alimentaria, dónde pedir orientación profesional y asistencia alimentaria, con las Guías Alimentarias para la Población Argentina y la Ley 27.642 de Promoción de la Alimentación Saludable. Cuánto moverse según la Organización Mundial de la Salud (adultos: 150 a 300 minutos por semana de actividad moderada; chicos y adolescentes: 60 minutos por día), opciones que no cuestan nada y qué tener en cuenta antes de empezar. Un quiz corto para practicar adónde conviene ir en cada situación: un control de rutina, una consulta o una emergencia.",
     "firstAid": false,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Dónde atenderme",
+    "path": "/temas/salud-general?seccion=section-1",
+    "summary": "Adónde ir según lo que necesitás: el centro de salud (CeSAC) para controles, consultas habituales y prevención; el hospital para especialidades, estudios y atención de mayor complejidad; y la guardia para problemas que necesitan atención en el momento. Lleva al mapa de Centros de atención.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Controles de salud",
+    "path": "/temas/salud-general?seccion=section-2",
+    "summary": "Cada cuánto conviene hacerse los controles de rutina, según recomendaciones generales del Ministerio de Salud de la Nación: salud bucal, salud visual, presión arterial y azúcar en sangre, vacunas y chequeos generales. Es información general.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Calendario de vacunación",
+    "path": "/temas/salud-general?seccion=section-5",
+    "summary": "El Calendario Nacional de Vacunación 2026 por etapa de la vida: embarazo, recién nacidos, hasta 1 año, hasta 2 años, 5 años, 11 años, 15 a 64 años y 65 años o más; qué vacunas corresponden en cada una y cuándo se aplican.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Alimentación y nutrición",
+    "path": "/temas/salud-general?seccion=section-6",
+    "summary": "Educación alimentaria, dónde pedir orientación profesional y asistencia alimentaria, con las Guías Alimentarias para la Población Argentina y la Ley 27.642 de Promoción de la Alimentación Saludable.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Actividad física y bienestar",
+    "path": "/temas/salud-general?seccion=section-7",
+    "summary": "Cuánto moverse según la Organización Mundial de la Salud (adultos: 150 a 300 minutos por semana de actividad moderada; chicos y adolescentes: 60 minutos por día), opciones que no cuestan nada y qué tener en cuenta antes de empezar.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud general › Quiz",
+    "path": "/temas/salud-general?seccion=section-4",
+    "summary": "Un quiz corto para practicar adónde conviene ir en cada situación: un control de rutina, una consulta o una emergencia.",
+    "firstAid": false,
+    "hasInfo": true
   },
   {
     "title": "Salud sexual y ESI",
@@ -107,9 +149,37 @@
   {
     "title": "Más recursos",
     "path": "/recursos",
-    "summary": "Derechos, leyes, FAQ, y trámites.",
+    "summary": "Derechos, leyes, FAQ, y trámites. Qué derechos reconocen las leyes al atenderte, en palabras simples: la Ley 153 (Ley Básica de Salud de la Ciudad), la Ley Nacional de Salud Mental 26.657 y la Ley 27.491 de vacunación, entre otras. No es asesoramiento legal. Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), cómo tramitar el CUD (Certificado Único de Discapacidad) y los servicios de salud que pasan por tu barrio. AuxiliAR no saca turnos ni pide datos personales. Respuestas cortas a dudas frecuentes: si hace falta orden médica para vacunarse, si hay que anotarse antes de sacar turno en un CeSAC, si te atienden en la Ciudad sin vivir ahí, si los anticonceptivos se pagan, qué significa «Gratuita» en el mapa y más. Palabras de salud explicadas con lo que dicen las fuentes oficiales: CeSAC, empadronamiento, atención primaria, consentimiento informado, Calendario Nacional de Vacunación, ESI, anticoncepción de emergencia, zoonosis, prestación y otras.",
     "firstAid": false,
-    "hasInfo": false
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos › Tus derechos en salud",
+    "path": "/recursos?seccion=section-1",
+    "summary": "Qué derechos reconocen las leyes al atenderte, en palabras simples: la Ley 153 (Ley Básica de Salud de la Ciudad), la Ley Nacional de Salud Mental 26.657 y la Ley 27.491 de vacunación, entre otras. No es asesoramiento legal.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos › Trámites",
+    "path": "/recursos?seccion=section-2",
+    "summary": "Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), cómo tramitar el CUD (Certificado Único de Discapacidad) y los servicios de salud que pasan por tu barrio. AuxiliAR no saca turnos ni pide datos personales.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos › Preguntas frecuentes",
+    "path": "/recursos?seccion=section-3",
+    "summary": "Respuestas cortas a dudas frecuentes: si hace falta orden médica para vacunarse, si hay que anotarse antes de sacar turno en un CeSAC, si te atienden en la Ciudad sin vivir ahí, si los anticonceptivos se pagan, qué significa «Gratuita» en el mapa y más.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Más recursos › Glosario",
+    "path": "/recursos?seccion=section-4",
+    "summary": "Palabras de salud explicadas con lo que dicen las fuentes oficiales: CeSAC, empadronamiento, atención primaria, consentimiento informado, Calendario Nacional de Vacunación, ESI, anticoncepción de emergencia, zoonosis, prestación y otras.",
+    "firstAid": false,
+    "hasInfo": true
   },
   {
     "title": "Sobre AuxiliAR",

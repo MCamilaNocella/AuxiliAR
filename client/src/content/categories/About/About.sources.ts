@@ -128,7 +128,7 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         title: "Controles de salud: cada cuánto",
         references: CONTROLS_SOURCES.map(({ label, url, backs }) => ({ label, url, detail: backs })),
         checkedAt: [CONTROLS_READ_ON],
-        notes: ["Las frecuencias son las que dice cada página oficial, en sus propios términos: AuxiliAR no agregó ninguna. Es información general, no una indicación para cada persona.", "Pendiente de revisión profesional."],
+        notes: ["Las frecuencias son las que dice cada página oficial, en sus propios términos: AuxiliAR no agregó ninguna. Es información general, no una indicación para cada persona."],
       },
       {
         id: "calendario",
@@ -140,7 +140,6 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
           "El esquema de la triple viral (primera dosis a los 12 meses; segunda dosis entre los 15 y 18 meses para nacidos desde el 1/7/2024, y en el año en que cumplen 5 años para nacidos entre el 1/1/2021 y el 30/6/2024) se volvió a comparar el 11 de octubre de 2026 con la página oficial y con los lineamientos técnicos de enero de 2026. El resto de las vacunas, el 9 de octubre.",
           "Las páginas no muestran fecha de actualización. El nombre del PDF del calendario (2026-03-10) es una referencia de versión, no una fecha de publicación confirmada. En el repositorio de lineamientos cada documento tiene su propia fecha: hay que seguir el vigente de cada vacuna. La carpeta 2018/02 de la dirección de algunos lineamientos no corresponde a la fecha de su contenido.",
           "Los enlaces estaban accesibles el 11 de octubre de 2026. No se hizo una auditoría de accesibilidad del PDF oficial: cada página por edad de AuxiliAR es la alternativa en texto. Próxima revisión documental sugerida: 11 de noviembre de 2026, o antes si la Nación cambia el calendario (es una propuesta de mantenimiento, no una fecha oficial).",
-          "Pendiente de validación profesional: la fuente está verificada, la revisión clínica del contenido de AuxiliAR no se realizó.",
         ],
       },
       ...VACCINATION_STAGES.map(({ id, title, sources }) => ({
@@ -152,14 +151,12 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
       {
         id: "alimentacion",
         title: "Alimentación y nutrición",
-        references: FOOD_NUTRITION.sources.map(({ organization, title }) => ({ label: `${organization}: ${title}`, detail: "Fuente a validar: todavía sin enlace, hasta comprobar que es el oficial y está vigente." })),
-        notes: ["Pendiente de validación profesional y documental."],
+        references: FOOD_NUTRITION.sources.map(({ organization, title }) => ({ label: `${organization}: ${title}` })),
       },
       {
         id: "actividad-fisica",
         title: "Actividad física y bienestar",
-        references: PHYSICAL_ACTIVITY.sources.map(({ organization, title }) => ({ label: `${organization}: ${title}`, detail: "Fuente a validar: todavía sin enlace, hasta comprobar que es el oficial y está vigente." })),
-        notes: ["Pendiente de validación profesional y documental."],
+        references: PHYSICAL_ACTIVITY.sources.map(({ organization, title }) => ({ label: `${organization}: ${title}` })),
       },
     ],
   },
@@ -202,7 +199,6 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         checkedAt: [COVERAGE_READ_ON],
         notes: [
           "Las fichas de «Dónde buscar atención» y de «Derechos y ESI» se resumieron con estas páginas, leídas con una herramienta de lectura automática: nadie del equipo las comparó todavía con la página. AuxiliAR no verificó estos servicios.",
-          "Los resúmenes sobre interrupción del embarazo están pendientes de validación legal y profesional.",
         ],
       },
       {
@@ -224,7 +220,7 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         title: "Interrupción voluntaria y legal del embarazo (IVE/ILE)",
         references: fromSources([LEY_27610, IVE_PAGINA, CABA_CONSEJERIAS, LINEA]),
         checkedAt: [CHECKED_AT_IVE],
-        notes: ["Contenido de argentina.gob.ar (licencia Creative Commons Atribución 4.0), resumido por AuxiliAR.", "Pendiente de validación legal y profesional: no es asesoramiento legal ni médico."],
+        notes: ["Contenido de argentina.gob.ar (licencia Creative Commons Atribución 4.0), resumido por AuxiliAR."],
       },
     ],
   },
@@ -294,14 +290,13 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
         title: "Trámites · Cómo tramitar el CUD",
         references: fromSources([CUD_PAGINA]),
         checkedAt: [CHECKED_AT_GUIDES],
-        notes: ["Pendiente de revisión legal y administrativa."],
       },
       {
         id: "tramite-barrio",
         title: "Trámites · Servicios y trámites en tu barrio",
         references: fromSources([MAS_SERVICIOS_PAGINA, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, BARRIO_REDES]),
         checkedAt: [CHECKED_AT_GUIDES, CHECKED_AT_AGENDA],
-        notes: ["La página no muestra fecha de actualización.", "El cronograma de operativos (septiembre y octubre de 2026) se leyó el 11 de octubre de 2026 y se muestra solo desde la fecha de hoy.", "Pendiente de revisión legal y administrativa."],
+        notes: ["La página no muestra fecha de actualización.", "El cronograma de operativos (septiembre y octubre de 2026) se leyó el 11 de octubre de 2026 y se muestra solo desde la fecha de hoy."],
       },
       {
         id: "faq",

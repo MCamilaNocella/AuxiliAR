@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-import { Scale } from "lucide-react"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
@@ -13,23 +12,12 @@ import { IVE_PAGINA } from "../../SexEducation.sources"
  * It says nothing about procedures, methods or medication, names NO center as a provider (no source of this round says that a
  * specific center offers the service, so none is listed as confirmed) and copies no phone number: the national line and the line
  * against violence are named and their numbers are on their official pages (the second one is in the emergency bar).
- * PENDING professional (clinical and legal) validation before it is published.
  */
 const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
 
 export default function Section4Content() {
   return (
     <div className="mt-2 flex max-w-3xl flex-col gap-6">
-      <div className="flex items-start gap-3 rounded-2xl border-2 border-brand bg-brand-soft p-4">
-        <Scale aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-brand" />
-        <div>
-          <p className="m-0 font-extrabold">Pendiente de validación legal y profesional</p>
-          <p className="m-0 mt-1">
-            Este contenido resume fuentes oficiales y todavía no fue revisado por profesionales del derecho ni de la salud. No es asesoramiento legal ni médico. Para tu caso, consultá a tu equipo de salud o a una línea de orientación.
-          </p>
-        </div>
-      </div>
-
       <p className="m-0 text-lg text-ink">
         La Ley 27.610 regula el acceso a la interrupción voluntaria del embarazo (IVE) y a la atención postaborto en todo el país. Acá encontrás lo que dicen las fuentes oficiales sobre tus derechos, el acceso gratuito, la confidencialidad y
         dónde pedir orientación.

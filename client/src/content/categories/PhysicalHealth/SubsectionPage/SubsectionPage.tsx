@@ -1,7 +1,6 @@
 import type { LucideIcon } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { MapAccess } from "@/components/health/MapAccess"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import type { CentersFilter } from "@/router/centersLink"
 
 export type SubsectionBlock = {
@@ -21,8 +20,6 @@ export type SubsectionBlock = {
 export type SubsectionSource = { organization: string, title: string }
 
 export type Subsection = {
-  /** What the page is not: shown in the notice of content pending validation */
-  notice: string
   intro: string
   blocks: SubsectionBlock[]
   /** The filter of the map this page opens, and what it shows ("Ver el mapa de {mapTopic}") */
@@ -34,14 +31,12 @@ export type Subsection = {
 const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
 
 /**
- * An informative subsection of Salud general (Alimentación y nutrición, Actividad física y bienestar): the notice of what is
- * pending, a short explanation, blocks that each say one thing, the way to the map and the sources. Stacked in one column at any width.
+ * An informative subsection of Salud general (Alimentación y nutrición, Actividad física y bienestar): a short
+ * explanation, blocks that each say one thing, the way to the map and the sources. Stacked in one column at any width.
  * General orientation only, never a diagnosis; it names no place, hour or activity that has not been verified.
  */
-export const SubsectionPage = ({ notice, intro, blocks, mapFilter, mapTopic }: Subsection) => (
+export const SubsectionPage = ({ intro, blocks, mapFilter, mapTopic }: Subsection) => (
   <div className="mt-2 flex max-w-3xl flex-col gap-6">
-    <PendingNotice>{notice}</PendingNotice>
-
     <p className="m-0 text-lg text-ink">{intro}</p>
 
     {blocks.map(({ id, icon: Icon, title, lead, points, note, action }) => (

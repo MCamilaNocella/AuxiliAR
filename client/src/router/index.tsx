@@ -6,9 +6,8 @@ import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
 import { MyHealth } from "@/screens/MyHealth";
 import { NotFound } from "@/screens/NotFound";
-import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
-import { HEALTH_GENERAL_SLUG, LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
+import { LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
 
 /**
  * Prototype screens (the Auxi models comparison, the peer chat sketch, the empty login): registered only in development, so the
@@ -43,8 +42,6 @@ const router = createBrowserRouter([
           { path: PATHS.topics, element: <Navigate to={PATHS.home} replace/> },
           // Salud física was renamed Salud general: the old address redirects (before the generic :slug route)
           { path: PATHS.topic(LEGACY_PHYSICAL_HEALTH_SLUG), element: <RedirectToHealthGeneral/> },
-          // Salud general no longer has Primeros auxilios: its old section address redirects to /primeros-auxilios
-          { path: PATHS.topic(HEALTH_GENERAL_SLUG), element: <HealthGeneralRoute/> },
           { path: PATHS.topic(":slug"), element: <Category/> },
           { path: PATHS.resources, element: <Category/> },
           { path: PATHS.centers, element: <Category/> },

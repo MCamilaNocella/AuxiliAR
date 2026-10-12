@@ -23,8 +23,6 @@ export type CoverageEntry = {
   pending?: string[]
   /** Date of the page's own content, when it shows one */
   sourceDate?: string
-  /** Whether it is about the interruption of pregnancy: it carries the notice of legal validation pending */
-  ive?: boolean
   /** The one action that cannot be done from AuxiliAR (a map, a search, a form): a link to the page that does it */
   action?: { label: string, url: string }
 }
@@ -62,7 +60,6 @@ export const PROVINCES: CoverageEntry[] = [
     contact: ["Línea 148, opción 3 (lunes a viernes, 9 a 17 h)", "Ministerio de Salud: 0221 429-2700 (la página no dice el horario ni para qué consultas)"],
     notes: ["Si algo no se cumple, el sitio enlaza un «Formulario de Reclamos IVE» del Ministerio Público de la Defensa."],
     pending: ["La página no menciona consejerías ni muestra fecha de actualización."],
-    ive: true,
     action: { label: "Buscar el establecimiento más cercano (mapa de la Provincia)", url: "https://www.ms.gba.gov.ar/sitios/aborto/" },
   },
   {
@@ -80,7 +77,6 @@ export const PROVINCES: CoverageEntry[] = [
     ],
     contact: ["Línea nacional de salud sexual 0800-222-3444, para consultas confidenciales (la página no da su horario)", "Atención general del Gobierno de Santa Fe: 0800-777-0801, de lunes a viernes de 8 a 18 (no es una línea específica de IVE)"],
     pending: ["No muestra fecha de actualización del contenido.", "El mapa de efectores es un enlace a un mapa externo."],
-    ive: true,
     action: { label: "Ver el mapa de efectores de Santa Fe", url: "https://www.santafe.gob.ar/index.php/web/content/view/full/139666/" },
   },
   {

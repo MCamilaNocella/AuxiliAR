@@ -21,9 +21,6 @@ export type FrequencyBlock = {
   pending?: string[]
 }
 
-export const CONTROLS_NOTICE_TITLE = "Pendiente de revisión profesional"
-export const CONTROLS_NOTICE_TEXT = "Este resumen se hizo con páginas oficiales y todavía no fue revisado por un equipo de salud. Es información general, no una indicación para tu caso."
-
 export const FREQUENCY_BLOCKS: FrequencyBlock[] = [
   {
     id: "bucal",

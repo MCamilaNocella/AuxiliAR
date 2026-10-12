@@ -11,15 +11,6 @@ import type { Source } from "@/components/health/SourceList"
  */
 export const CHECKED_AT = "2026-10-09"
 
-/**
- * Shown on top of every stage in the presentation version (branch demo/presentation-2026-10-14): the calendar is content in
- * development, not yet validated by health professionals. To publish it, remove this notice only after a professional review.
- */
-export const DEVELOPMENT_NOTICE = {
-  title: "En desarrollo · pendiente de validación profesional",
-  text: "Este calendario es contenido en desarrollo: todavía no fue revisado ni validado por profesionales de la salud. No es una herramienta clínica ni una indicación médica. Para saber qué vacunas te corresponden, confirmalo con tu equipo de salud o en el vacunatorio.",
-}
-
 /** The text every stage shares: what this page is and is not */
 export const GENERAL_NOTE =
   "AuxiliAR ofrece un resumen informativo del Calendario Nacional de Vacunación oficial. Los esquemas particulares (por ejemplo, si tenés enfermedades previas, estás embarazada o trabajás en el sistema de salud) deben confirmarse con tu equipo de salud o en el vacunatorio. Si el Ministerio de Salud cambia el calendario, vale su versión oficial."

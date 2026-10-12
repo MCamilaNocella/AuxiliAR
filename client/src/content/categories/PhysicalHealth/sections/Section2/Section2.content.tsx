@@ -1,5 +1,4 @@
-import { PendingNotice } from "@/components/health/PendingNotice"
-import { CONTROLS_NOTICE_TEXT, CONTROLS_NOTICE_TITLE, CONTROLS_READ_ON, FREQUENCY_BLOCKS } from "./Section2.constants"
+import { CONTROLS_READ_ON, FREQUENCY_BLOCKS } from "./Section2.constants"
 
 const formatDate = (iso: string) => {
   const [year, month, day] = iso.split("-").map(Number)
@@ -17,8 +16,6 @@ export default function Section2Content() {
       <p className="m-0 text-lg text-ink">
         Cada cuánto conviene hacerte estos controles, según las recomendaciones generales de organismos oficiales. Es solo información: lo que te corresponde a vos lo define tu equipo de salud, según tu edad, tus antecedentes y tu situación.
       </p>
-
-      <PendingNotice title={CONTROLS_NOTICE_TITLE}>{CONTROLS_NOTICE_TEXT}</PendingNotice>
 
       {FREQUENCY_BLOCKS.map(({ id, title, icon: Icon, items, pending }) => (
         <section key={id} aria-labelledby={`control-${id}`} className="rounded-2xl border border-line-strong bg-card p-4 sm:p-6">

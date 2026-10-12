@@ -2,13 +2,12 @@ import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
 import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
 import { NeighborhoodAgenda } from "./NeighborhoodAgenda"
-import { CUD_GUIDE, NEIGHBORHOOD_GUIDE, PENDING_NOTICE_TEXT, PENDING_NOTICE_TITLE } from "./Section2.constants"
+import { CUD_GUIDE, NEIGHBORHOOD_GUIDE } from "./Section2.constants"
 
 /**
  * Más recursos · Trámites. What each procedure needs, explained here; the official page is a source and, for the appointment, the
@@ -82,9 +81,6 @@ export default function Section2Content() {
         <h3 id="tr-cud" className="m-0 text-xl font-extrabold">
           {CUD_GUIDE.title}
         </h3>
-        <div className="mt-3">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
-        </div>
         <p className="m-0 mt-3">{CUD_GUIDE.intro}</p>
         <p className="m-0 mt-2">{CUD_GUIDE.uses}</p>
         <h4 className="m-0 mt-4 text-base font-extrabold">Pasos</h4>
@@ -107,9 +103,6 @@ export default function Section2Content() {
         <h3 id="tr-neighborhood" className="m-0 text-xl font-extrabold">
           {NEIGHBORHOOD_GUIDE.title}
         </h3>
-        <div className="mt-3">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
-        </div>
         <p className="m-0 mt-3">{NEIGHBORHOOD_GUIDE.intro}</p>
         <p className="m-0 mt-2">{NEIGHBORHOOD_GUIDE.variable}</p>
         <div className="mt-3">

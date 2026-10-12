@@ -22,8 +22,7 @@ export const AppLayout = () => {
   useEmergencyAutoScroll(contentRef)
 
   return (
-    // The extra space at the end is Auxi's: the end of every page can scroll clear of it
-    <div className="pb-[calc(var(--bottom-nav-h)+6.5rem)]">
+    <div className="pb-(--bottom-nav-h)">
       <SkipLink targetId={CONTENT_ID} />
 
       <Header />
