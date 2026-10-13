@@ -47,6 +47,10 @@ const tooltipOf = ({ kind, purpose }: MapPin) => {
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
+/** The Ciudad Autónoma de Buenos Aires, as a box: the map opens framed on the pins inside it, not on the whole country */
+const CABA_BOX = { south: -34.706, west: -58.536, north: -34.525, east: -58.33 }
+const inCaba = ({ lat, lng }: { lat: number, lng: number }) => lat >= CABA_BOX.south && lat <= CABA_BOX.north && lng >= CABA_BOX.west && lng <= CABA_BOX.east
+
 /**
  * The map: Leaflet inside our own wrapper (no react-leaflet). It only draws what it is given: the pins of the places
  * with verified coordinates. It never looks coordinates up. Imperative on purpose: Leaflet owns its DOM, React only
@@ -135,7 +139,9 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
       markers.set(pin.id, marker)
     }
     if (pins.length > 0) {
-      map.fitBounds(L.latLngBounds(pins.map(({ lat, lng }) => [lat, lng] as [number, number])), { padding: [48, 48], maxZoom: 16, animate: !prefersReducedMotion() })
+      // First view: the pins of the Ciudad when there are some (a closer view); the others stay on the map, one zoom out away. With none in the Ciudad, all of them
+      const framed = pins.some(inCaba) ? pins.filter(inCaba) : pins
+      map.fitBounds(L.latLngBounds(framed.map(({ lat, lng }) => [lat, lng] as [number, number])), { padding: [48, 48], maxZoom: 16, animate: !prefersReducedMotion() })
     }
   }, [pins])
 
