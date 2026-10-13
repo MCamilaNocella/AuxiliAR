@@ -70,7 +70,7 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMa
           {selected && (
             <aside
               aria-label={`Información de ${selected.place.name}`}
-              className="absolute inset-x-2 bottom-2 z-[1001] flex max-h-[62%] flex-col overflow-hidden rounded-2xl border-2 border-line-strong bg-card shadow-lg lg:static lg:order-first lg:z-auto lg:h-[min(62dvh,32rem)] lg:max-h-none lg:min-h-80 lg:w-96 lg:flex-none lg:shadow-none"
+              className="absolute inset-x-2 bottom-2 z-[1001] flex max-h-[62%] flex-col overflow-hidden rounded-2xl border-2 border-line-strong bg-card shadow-lg lg:static lg:order-first lg:z-auto lg:h-[max(36rem,calc(100dvh-9rem))] lg:max-h-none lg:w-[26rem] lg:flex-none lg:shadow-none"
             >
               <div className="flex justify-end border-b border-line px-2 py-1">
                 <button

@@ -172,7 +172,7 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
       ref={containerRef}
       role="region"
       aria-label="Mapa de centros de atención. La lista tiene los mismos lugares."
-      className="places-map h-[min(62dvh,32rem)] min-h-80 w-full overflow-hidden rounded-2xl border-2 border-line-strong"
+      className="places-map h-[min(70dvh,36rem)] min-h-80 w-full lg:h-[max(36rem,calc(100dvh-9rem))] overflow-hidden rounded-2xl border-2 border-line-strong"
     />
   )
 }
