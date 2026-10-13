@@ -12,8 +12,7 @@ import { Section6 } from "./sections/Section6"
 export const MENTAL_HEALTH: Category = {
   id: "salud-mental",
   title: "Salud mental",
-  description: "Orientación, acompañamiento y recursos",
-  subtitle: "Dónde pedir ayuda, tus derechos y cómo cuidarte, con fuentes oficiales",
+  description: "Herramientas de autocuidado, y orientación: cómo pedir ayuda",
   icon: Brain,
   to: PATHS.topic("salud-mental"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -63,6 +62,4 @@ export const MENTAL_HEALTH: Category = {
       Content: Section5,
     },
   ],
-  /** It opens straight on the first section: no banner first */
-  defaultSectionId: "section-1",
 }

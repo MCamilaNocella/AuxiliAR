@@ -6,9 +6,8 @@ import { Category } from "@/screens/RenderCategory";
 import { Home } from "@/screens/Home";
 import { MyHealth } from "@/screens/MyHealth";
 import { NotFound } from "@/screens/NotFound";
-import { HealthGeneralRoute } from "./HealthGeneralRoute";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
-import { HEALTH_GENERAL_SLUG, LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
+import { LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
 
 /**
  * Prototype screens (the Auxi models comparison, the peer chat sketch, the empty login): registered only in development, so the
@@ -25,6 +24,12 @@ const prototypeRoutes: RouteObject[] = PROTOTYPES_ENABLED
 
 const loginRoutes: RouteObject[] = PROTOTYPES_ENABLED ? [{ path: PATHS.login, lazy: async () => ({ Component: (await import("@/screens/Login")).Login }) }] : []
 
+// Local design pages in src/sandbox (git-ignored): each folder's route.tsx exports `sandboxRoute`.
+// In a clone without that folder the glob is empty and nothing changes.
+const sandboxRoutes = Object.values(
+  import.meta.glob<{ sandboxRoute: RouteObject }>("../sandbox/*/route.tsx", { eager: true }),
+).map(({ sandboxRoute }) => sandboxRoute);
+
 const router = createBrowserRouter([
   {
     element: <RootLayout/>,
@@ -37,10 +42,7 @@ const router = createBrowserRouter([
           { path: PATHS.topics, element: <Navigate to={PATHS.home} replace/> },
           // Salud física was renamed Salud general: the old address redirects (before the generic :slug route)
           { path: PATHS.topic(LEGACY_PHYSICAL_HEALTH_SLUG), element: <RedirectToHealthGeneral/> },
-          // Salud general no longer has Primeros auxilios: its old section address redirects to /primeros-auxilios
-          { path: PATHS.topic(HEALTH_GENERAL_SLUG), element: <HealthGeneralRoute/> },
           { path: PATHS.topic(":slug"), element: <Category/> },
-          // Más recursos: a "Próximamente" page (it has no published information yet), no longer a redirect
           { path: PATHS.resources, element: <Category/> },
           { path: PATHS.centers, element: <Category/> },
           { path: PATHS.myHealth, element: <MyHealth/> },
@@ -56,6 +58,7 @@ const router = createBrowserRouter([
           },
           { path: PATHS.about, element: <Category/> },
           ...prototypeRoutes,
+          ...sandboxRoutes,
           // Last: any other address
           { path: "*", element: <NotFound/> },
         ],

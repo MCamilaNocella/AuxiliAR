@@ -1,5 +1,4 @@
-import { PendingNotice } from "@/components/health/PendingNotice"
-import { CONTROLS_NOTICE_TEXT, CONTROLS_NOTICE_TITLE, CONTROLS_READ_ON, FREQUENCY_BLOCKS } from "./Section2.constants"
+import { CONTROLS_READ_ON, FREQUENCY_BLOCKS } from "./Section2.constants"
 
 const formatDate = (iso: string) => {
   const [year, month, day] = iso.split("-").map(Number)
@@ -41,8 +40,6 @@ export default function Section2Content() {
           )}
         </section>
       ))}
-
-      <PendingNotice title={CONTROLS_NOTICE_TITLE}>{CONTROLS_NOTICE_TEXT}</PendingNotice>
 
       <p className="m-0 text-sm text-ink-soft">
         {`Datos de páginas oficiales del Ministerio de Salud de la Nación y del Gobierno de la Ciudad de Buenos Aires, consultadas el ${formatDate(CONTROLS_READ_ON)}. Las fuentes están en Sobre AuxiliAR. Esta información es orientativa y no reemplaza la consulta con un equipo de salud.`}

@@ -4,7 +4,7 @@ import type { ChatLinksProps } from "./ChatLinks.types"
 
 /** AuxiliAR pages suggested under one of Auxi's answers, lined up with its bubble */
 export const ChatLinks = ({ links, onNavigate }: ChatLinksProps) => (
-  <li className="pl-11">
+  <li className="pl-11 motion-safe:animate-message-in">
     <ul aria-label="Páginas de AuxiliAR relacionadas" className="m-0 flex list-none flex-wrap gap-2 p-0">
       {links.map(({ title, path }) => (
         <li key={path}>

@@ -13368,7 +13368,7 @@
         "precision": "approximate",
         "status": "verified",
         "method": "official-dataset-reprojected",
-        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs). Controlado el 11/10/2026 contra el normalizador USIG de la Ciudad para «Combate de los Pozos 1881»: el punto cae a unos 104 m (el complejo ocupa unos 113 mil m²). Es una ubicación aproximada del hospital, no de una entrada: los pacientes y sus familias ingresan por Pichincha 1890.",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0. Controlado el 11/10/2026 contra el normalizador USIG de la Ciudad para «Combate de los Pozos 1881»: el punto cae a unos 104 m (el complejo ocupa unos 113 mil m²). Es una ubicación aproximada del hospital, no de una entrada: los pacientes y sus familias ingresan por Pichincha 1890.",
         "verifiedAt": "2026-10-11",
         "verifiedBy": "equipo-auxiliar"
       },
@@ -15249,7 +15249,7 @@
         "precision": "approximate",
         "status": "verified",
         "method": "official-dataset-reprojected",
-        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
         "verifiedAt": "2026-10-07",
         "verifiedBy": "equipo-auxiliar"
       },
@@ -15355,7 +15355,7 @@
         "precision": "approximate",
         "status": "verified",
         "method": "official-dataset-reprojected",
-        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
         "verifiedAt": "2026-10-07",
         "verifiedBy": "equipo-auxiliar"
       },
@@ -15450,7 +15450,7 @@
         "precision": "approximate",
         "status": "verified",
         "method": "official-dataset-reprojected",
-        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0 (curation/crs).",
+        "note": "Fuente: Buenos Aires Data, Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires, dataset «Hospitales», licencia CC-BY-2.5-AR. Reproyectado de EPSG:9498 a WGS84 con proj4@2.22.0.",
         "verifiedAt": "2026-10-07",
         "verifiedBy": "equipo-auxiliar"
       },

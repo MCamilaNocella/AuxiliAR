@@ -1,7 +1,6 @@
 import type { ReactNode } from "react"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import type { CoverageEntry, EsiEntry } from "./SexEducation.coverage"
 
 const labelClass = "m-0 mt-3 text-base font-extrabold"
@@ -13,9 +12,6 @@ const Lines = ({ items }: { items: string[] }) => (
     ))}
   </ul>
 )
-
-/** What a card says about where its text comes from: only the date of the page's own content, when it has one (the day AuxiliAR read it and that nobody checked it in person are said once, on the page) */
-const Footing = ({ sourceDate }: { sourceDate?: string }) => (sourceDate ? <p className="m-0 mt-3 text-sm text-ink-soft">{`Fecha de su contenido: ${sourceDate}.`}</p> : null)
 
 /** What a service of another province or organization offers, for whom, at what cost, how to get it and how to reach it: all inside AuxiliAR */
 export const CoverageCard = ({ entry, children }: { entry: CoverageEntry, children?: ReactNode }) => (
@@ -44,14 +40,6 @@ export const CoverageCard = ({ entry, children }: { entry: CoverageEntry, childr
         <OutLink href={entry.action.url}>{entry.action.label}</OutLink>
       </div>
     )}
-    {entry.ive && (
-      <div className="mt-3">
-        <PendingNotice title="Pendiente de validación legal y profesional">
-          Este resumen sobre la interrupción del embarazo se hizo con la página oficial y todavía no fue revisado. No es asesoramiento legal ni médico.
-        </PendingNotice>
-      </div>
-    )}
-    <Footing sourceDate={entry.sourceDate} />
   </Disclosure>
 )
 
@@ -71,6 +59,5 @@ export const EsiCard = ({ entry }: { entry: EsiEntry }) => (
     <Lines items={entry.contact} />
     <h5 className={labelClass}>Para confirmar</h5>
     <Lines items={entry.pending} />
-    <Footing sourceDate={entry.sourceDate} />
   </Disclosure>
 )

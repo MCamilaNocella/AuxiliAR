@@ -9,8 +9,7 @@ import { Section3 } from "./sections/Section3"
 export const ANIMALS: Category = {
   id: "animales",
   title: "Atención veterinaria",
-  description: "Cuidados preventivos y orientación veterinaria",
-  subtitle: "Campañas gratuitas, cuidados y cómo buscar atención, con fuentes oficiales",
+  description: "Prevención, chequeos, castración gratuita y más",
   icon: PawPrint,
   to: PATHS.topic("animales"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -39,6 +38,4 @@ export const ANIMALS: Category = {
       Content: Section3,
     },
   ],
-  /** It opens straight on the first section: no banner first */
-  defaultSectionId: "section-1",
 }

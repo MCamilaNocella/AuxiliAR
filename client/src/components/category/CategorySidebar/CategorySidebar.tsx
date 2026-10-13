@@ -3,10 +3,10 @@ import { Menu, X } from "lucide-react"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { onEntryScrollSettled } from "@/utils/entryScrollSettled"
 import { categoryIconTransition, categoryTitleTransition } from "@/utils/viewTransition"
+import { CategoryDoodles } from "../CategoryDoodles"
 import { CategorySectionList } from "../CategorySectionList"
-import { CategorySectionTabs } from "../CategorySectionTabs"
 import { CategorySectionsDrawer } from "../CategorySectionsDrawer"
-import { DESKTOP_QUERY, MAX_TABS, type DrawerState } from "./CategorySidebar.constants"
+import { DESKTOP_QUERY, type DrawerState } from "./CategorySidebar.constants"
 import type { CategorySidebarProps } from "./CategorySidebar.types"
 
 // Once per page load (resets on reload): the first category visited opens the drawer by itself,
@@ -15,81 +15,72 @@ let sectionsHintShown = false
 
 /**
  * Category menu.
- *  - Large screens: column pinned to the left with icon + name and the sections below. A category with a single section has nothing to
- *    list: on large screens it reserves no column, and the name is the heading of the page, over the full width.
- *  - Small screens: bar stuck under the header, menu button on one end and icon + name
+ *  - Large screens: column pinned to the left with icon + name and the sections below.
+ *  - Small screens: bar stuck under the header, on the category banner's gradient, menu button on one end and icon + name
  *    on the other; the button opens the sections in a drawer below the bar. The first
  *    time in the visit it also opens by itself, once the entry scroll has settled.
  */
 export const CategorySidebar = ({ category, sections, activeSectionId, onSelectSection, onShowIntro }: CategorySidebarProps) => {
   const { id, title, icon: Icon } = category
-  // A category with a single section has nothing to choose: no menu button, no list, no drawer
-  const hasMenu = sections.length > 1
-  // Two or three sections: tabs always in sight on small screens (one tap). More than that: the drawer
-  const tabs = hasMenu && sections.length <= MAX_TABS
-  const drawer = hasMenu && !tabs
   const barRef = useRef<HTMLDivElement>(null)
   const headingId = useId()
   const drawerId = useId()
   const [drawerState, setDrawerState] = useState<DrawerState>("closed")
   // If the screen grows to desktop size with the drawer open, it closes (the column takes over)
   const isDesktop = useMediaQuery(DESKTOP_QUERY)
-  const showDrawer = drawer && drawerState !== "closed" && !isDesktop
+  const showDrawer = drawerState !== "closed" && !isDesktop
   const closeDrawer = useCallback(() => setDrawerState("closed"), [])
+  // Small screens: the bar turns into the category banner once a section is open (on the intro, the wallpaper is the banner)
+  const banner = activeSectionId !== null
 
   // Layout effect: it must subscribe before the entry scroll (a parent layout effect) settles,
   // which with reduced motion or a restored position happens right away
-  // A category that opens straight on a section (Centros de atención: its map) doesn't cover it with the hint
-  const opensOnSection = Boolean(category.defaultSectionId) || !drawer
   useLayoutEffect(() => {
-    if (sectionsHintShown || opensOnSection) return
+    if (sectionsHintShown) return
     return onEntryScrollSettled(() => {
       if (sectionsHintShown || window.matchMedia(DESKTOP_QUERY).matches) return
       sectionsHintShown = true
       setDrawerState("auto")
     })
-  }, [opensOnSection])
+  }, [])
 
   return (
     // Small screens: the whole block is the sticky bar.
     // Large: the column stretches to the full content height; the menu inside stays in view while scrolling.
     <div
       ref={barRef}
-      className={
-        hasMenu
-          ? "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]"
-          : "sticky top-(--header-h) z-20 border-b border-line bg-surface-alt lg:static lg:border-line-strong lg:px-(--page-inset)"
-      }
+      className={`sticky top-(--header-h) z-20 border-b bg-surface-alt transition-colors duration-300 motion-reduce:transition-none lg:border-line lg:text-ink lg:static ${banner ? "border-category-edge text-on-category" : "border-line text-ink"} lg:box-content lg:w-64 lg:flex-none lg:border-r lg:border-b-0 lg:pl-[calc(var(--page-inset)-1.25rem)]`}
     >
+      {/* Small screens: the banner (gradient and faint drawings) fades in behind the bar */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 overflow-hidden bg-category-banner transition-opacity duration-300 motion-reduce:transition-none lg:hidden ${banner ? "opacity-100" : "opacity-0"}`}
+      >
+        <CategoryDoodles categoryId={id} layout="banner" />
+      </div>
       <nav
         aria-labelledby={headingId}
-        className={
-          hasMenu
-            ? "@container px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
-            : "@container px-(--page-gutter) py-2 lg:px-0 lg:py-4"
-        }
+        className="@container relative px-(--page-gutter) py-2 lg:sticky lg:top-(--header-h) lg:max-h-(--content-min-h) lg:overflow-y-auto lg:px-3 lg:py-4"
       >
-        <div className={hasMenu ? "flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3" : "flex items-center gap-3"}>
-          {drawer && (
+        <div className="flex items-center gap-3 lg:mb-2 lg:border-b lg:border-line-strong lg:px-2 lg:pb-3">
           <button
             type="button"
             onClick={() => setDrawerState((state) => (state === "closed" ? "user" : "closed"))}
             aria-label="Secciones"
             aria-expanded={showDrawer}
             aria-controls={drawerId}
-            className="-ml-2 flex size-11 flex-none cursor-pointer items-center justify-center rounded-xl text-ink transition-colors hover:bg-field lg:hidden"
+            className={`-ml-2 flex size-11 flex-none cursor-pointer items-center justify-center rounded-xl transition-colors duration-300 motion-reduce:transition-none lg:hidden ${banner ? "text-on-category hover:bg-on-category/10 focus-visible:outline-on-category" : "text-ink hover:bg-field"}`}
           >
             {showDrawer ? <X aria-hidden="true" className="size-6" /> : <Menu aria-hidden="true" className="size-6" />}
           </button>
-          )}
 
           {/* Small screens: pushed to the other end of the bar. Tapping the name goes back to the category intro */}
-          <h1 id={headingId} className={`m-0 min-w-0 lg:ml-0 lg:flex-1 ${drawer ? "ml-auto" : ""}`}>
+          <h1 id={headingId} className="m-0 ml-auto min-w-0 lg:ml-0 lg:flex-1">
             <button
               type="button"
               onClick={onShowIntro}
               aria-current={activeSectionId === null ? "true" : undefined}
-              className="-m-1 flex cursor-pointer items-center gap-3 rounded-xl p-1 text-ink transition-colors hover:bg-field"
+              className={`-m-1 flex cursor-pointer items-center gap-3 rounded-xl p-1 transition-colors duration-300 motion-reduce:transition-none lg:text-ink lg:hover:bg-field ${banner ? "text-on-category hover:bg-on-category/10 max-lg:focus-visible:outline-on-category" : "text-ink hover:bg-field"}`}
             >
               {/* Very narrow bar (small phone + largest text): the icon gives its space to the name */}
               <span
@@ -109,16 +100,11 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
           </h1>
         </div>
 
-        {tabs && <CategorySectionTabs sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />}
-
-        {hasMenu && (
-          <div className="hidden lg:block">
-            <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
-          </div>
-        )}
+        <div className="hidden lg:block">
+          <CategorySectionList sections={sections} activeSectionId={activeSectionId} onSelectSection={onSelectSection} />
+        </div>
       </nav>
 
-      {drawer && (
       <CategorySectionsDrawer
         id={drawerId}
         label={`Secciones de ${title}`}
@@ -130,7 +116,6 @@ export const CategorySidebar = ({ category, sections, activeSectionId, onSelectS
         activeSectionId={activeSectionId}
         onSelectSection={onSelectSection}
       />
-      )}
     </div>
   )
 }

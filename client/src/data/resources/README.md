@@ -5,7 +5,7 @@ Una única fuente de verdad para los recursos de ayuda de AuxiliAR: líneas tele
 > **Estado (verificación del 11/10/2026):** hay datos cargados y la app los usa.
 > - **Mapa (`places/`):** **133 establecimientos con 339 servicios registrados**: 94 de la Ciudad de Buenos Aires (`places/ar-c.json`) y 39 de otras provincias (`ar-a`, `ar-b`, `ar-e`, `ar-f`, `ar-n`, `ar-r`, `ar-s`, `ar-t`, `ar-v` y `ar-x`). **315 de esos 339 servicios están visibles** para las personas según la verificación actual: son los que tienen la gratuidad documentada para esa prestación y siguen vigentes. Los otros 24 se conservan en los datos para investigaciones futuras, pero no se muestran. Todo esto cambia con la fecha: la prestación del Centro Fijo Veterinario Costanera Sur vence el 8/11/2026, la del Hospital Garrahan el 10/11/2026 y las demás el 5/1/2027.
 > - **Líneas de ayuda (`lines/`):** 14 líneas en `lines/nacional.json`, que son la fuente única de los números (barra de emergencias, chat y botones de llamada; ver más abajo).
-> - **Quién lee estos datos:** el mapa de Centros de atención y los botones de llamada. Un inventario fila por fila del mapa y una explicación de sus reglas están en `docs/investigacion/inventario-mapa-servicios.csv` y `docs/investigacion/estructura-del-mapa-y-reglas-de-inclusion.md`.
+> - **Quién lee estos datos:** el mapa de Centros de atención y los botones de llamada.
 >
 > (Hasta octubre de 2026 esta cabecera decía que todavía no había datos cargados: era de la etapa de infraestructura y quedó desactualizada.)
 
@@ -25,7 +25,6 @@ client/src/data/resources/        ← LO ÚNICO QUE SE EDITA
 client/scripts/resources-sync.mjs        valida y genera la copia del servidor
 client/scripts/resources-validate.mjs    las reglas de validación
 client/scripts/resources-resolve.mjs     herencia de las prestaciones y categorías derivadas
-client/scripts/resources-sync.test.mjs   tests (datos de prueba en scripts/__fixtures__)
 
 server/src/main/resources/data/resources.json   COPIA GENERADA para el servidor: no se edita
 server/src/main/java/.../resources/             ResourceCatalog: la lee y valida al arrancar
@@ -97,11 +96,7 @@ Un establecimiento (un hospital, un CeSAC, una veterinaria pública) se carga **
 - **Categorías:** por id (`salud-mental`, `centros`…). Las secciones (`sections`) se pueden indicar, pero hoy sus ids son genéricos (`section-1`…) y no se verifica que existan.
 - **Dirección y coordenadas:** solo de establecimientos públicos, nunca de personas. `precision` dice si el punto es exacto o aproximado.
 - **Fuente (`source`):** además de `organization`, `url` y `note`, puede llevar `retrievedAt` (el día en que se consultó o descargó, AAAA-MM-DD) y `license` (la licencia con la que el organismo publica el dato, por ejemplo `CC-BY-2.5-AR`). Lo que viene de un dataset con licencia los lleva siempre.
-- **Método de las coordenadas:** `official-dataset` es un punto que el dataset publica ya en latitud y longitud; `official-dataset-reprojected` es uno que el dataset publica en otro sistema (por ejemplo EPSG:9498, en metros) y se convirtió a WGS84 con un procedimiento reproducible (ver `client/curation`). Nunca se convierte a mano.
-
-## Cargar muchos establecimientos desde datasets oficiales
-
-No se escriben a mano: el pipeline de `client/curation/` (ver su README) ingiere el dataset, normaliza, genera **candidatos** —que no se publican— y solo escribe en `places/` lo que una persona decidió. No pisa lo ya curado y valida con este mismo validador antes de escribir.
+- **Método de las coordenadas:** `official-dataset` es un punto que el dataset publica ya en latitud y longitud; `official-dataset-reprojected` es uno que el dataset publica en otro sistema (por ejemplo EPSG:9498, en metros) y se convirtió a WGS84 con un procedimiento reproducible. Nunca se convierte a mano.
 
 ## Comandos (desde `client/`)
 
@@ -109,7 +104,6 @@ No se escriben a mano: el pipeline de `client/curation/` (ver su README) ingiere
 |---|---|
 | `npm run resources:sync` | Valida y escribe la copia del servidor. |
 | `npm run resources:check` | Valida y **falla** si la copia del servidor no está al día (no escribe nada). Pensado para el CI. |
-| `npm run resources:test` | Tests del validador y del generador. |
 
 También se valida que `taxonomy.categories` coincida con las categorías reales de la app.
 
@@ -120,11 +114,11 @@ También se valida que `taxonomy.categories` coincida con las categorías reales
 
 ## Qué viene después
 
-**Ya hecho:** las líneas de ayuda se cargaron, se verificaron con fuentes oficiales y son la fuente única de los números (barra de emergencias, chat, servidor y tarjeta de ayuda urgente), y se cargó un piloto de establecimientos en la Ciudad de Buenos Aires (7 establecimientos, 34 servicios, 9 visibles). **Lo que sigue**, cada cosa en su propio cambio: sumar establecimientos y servicios a partir de investigaciones con fuente oficial (sin duplicar establecimientos: ver `docs/investigacion/estructura-del-mapa-y-reglas-de-inclusion.md`), documentar la gratuidad de las prestaciones que hoy están registradas sin ella, y sumar otras provincias de a una. Los establecimientos viven en `places/<provincia>.json`.
+**Ya hecho:** las líneas de ayuda se cargaron, se verificaron con fuentes oficiales y son la fuente única de los números (barra de emergencias, chat, servidor y tarjeta de ayuda urgente), y se cargó un piloto de establecimientos en la Ciudad de Buenos Aires (7 establecimientos, 34 servicios, 9 visibles). **Lo que sigue**, cada cosa en su propio cambio: sumar establecimientos y servicios a partir de investigaciones con fuente oficial (sin duplicar establecimientos), documentar la gratuidad de las prestaciones que hoy están registradas sin ella, y sumar otras provincias de a una. Los establecimientos viven en `places/<provincia>.json`.
 
 ## Datos de prueba
 
-Los tests usan datos inventados, que nunca van en `lines/`: `client/scripts/__fixtures__/` y `server/src/test/resources/data/resources-fixture.json` (este último se regenera con `UPDATE_FIXTURE=1 npm run resources:test`).
+Los tests del servidor usan datos inventados, que nunca van en `lines/`: `server/src/test/resources/data/resources-fixture.json`.
 
 ## Índice de cobertura (`coverage.json`)
 
@@ -145,7 +139,7 @@ Todos los números de ayuda de AuxiliAR salen de **`lines/nacional.json`**. No h
 - **`SafetyRules.java` y el CI:** lo que esa clase supone de la tabla (los números de PAMI 138 y 139 y que el 139 es del AMBA y Rosario) se comprueba en `resources:check`, que lo corre el CI, y no al arrancar el servidor: un servidor que no arranca no le responde a nadie. Si falta, el servidor solo lo registra en el log.
 - **Servidor:** `resources.json` lleva estas líneas, y `prompts/numeros.md` (la tabla que lee Auxi y con la que se validan los botones de llamada) se **genera** con `npm run resources:sync` a partir de ellas y de `numeros.template.md`. `resources:check` falla si no coinciden. Las instrucciones del template nombran las líneas por id (`{{n:id}}`, `{{h:id}}`) y no llevan números escritos a mano. Las filas que el template todavía lleva a mano (100, 101, 103, 106, 149, 0800-444-8694, 0800-222-7264 y 0800-222-0381) están marcadas "(sin verificar)" para el chat: cuando se verifiquen, se pasan a `lines/` y se borran del template (si una se repite en las dos partes, la generación falla). `SafetyRules.java` comprueba al arrancar que la tabla trae el 138 y el 139 de PAMI y que el 139 es del AMBA y Rosario.
 - **Contradicciones entre fuentes oficiales** (se registran en `verification.notes` de la línea, con las URL de cada una, y se decide cómo mostrarlas): el 107 (la página nacional lo limita a CABA y localidades de Buenos Aires; páginas oficiales de Córdoba y Jujuy lo muestran funcionando allí), el 102 (16 jurisdicciones en una nota de 2020; todas en una de 2022) y la tabla del chat sobre el 139 de PAMI (decía que en el resto del país era el 107 o el 911; PAMI dice que cada afiliado tiene el número de su prestador).
-- **Cómo agregar una línea:** abrir la página oficial, anotar la URL, la fecha en que se consultó y la frase que dice el número, el alcance y el horario; cargar solo lo que esa frase dice; `npm run resources:sync`; `npm run emergency:test`.
+- **Cómo agregar una línea:** abrir la página oficial, anotar la URL, la fecha en que se consultó y la frase que dice el número, el alcance y el horario; cargar solo lo que esa frase dice; `npm run resources:sync`.
 
 ## Revisión periódica de los números
 
@@ -155,7 +149,7 @@ Los números de `lines/` se verifican por fecha (`verification.nextReviewDue`, h
 2. **Para cada línea:** abrir `source.url` y comparar, con lo que dice la página hoy, el número, el alcance (`coverage`, `scope`), el horario (`hours`, y que siga sin afirmarse lo que la fuente no dice), la gratuidad (`cost`, solo si la página lo dice) y, si cambia, `shortName` y `whenToUse`.
 3. **Si coincide:** actualizar `verification.verifiedAt` (hoy), `verification.nextReviewDue` (90 días después) y `source.retrievedAt` (hoy). **Si cambió algo:** corregir el dato, citar en `source.note` la frase nueva y anotarlo en `verification.notes`. **Si dos páginas oficiales se contradicen:** no elegir en silencio; registrarlo en `verification.notes` con las URL (como el 107 o el 102) y decidir cómo mostrarlo.
 4. **Si no se puede comprobar** (la página no está, cambió de sitio, no dice lo que decía): **no renovar la fecha**. Dejar que venza (se avisa) o pasar la línea a `needs-review`, que la saca de la barra y del chat: eso es una decisión editorial, no un descuido.
-5. `npm run resources:sync`, `npm run emergency:test`, `npm run resources:check` y el commit de **los dos** (el dato y las copias generadas: `resources.json` y `numeros.md`).
+5. `npm run resources:sync`, `npm run resources:check` y el commit de **los dos** (el dato y las copias generadas: `resources.json` y `numeros.md`).
 6. **Líneas nuevas:** solo con una página oficial que diga el número; ver "Cómo agregar una línea".
 
 ## Las ocho filas "(sin verificar)" de la tabla del chat
@@ -176,7 +170,7 @@ Borrarlas sin analizarlo dejaría a Auxi sin bomberos, defensa civil, policía f
 ## Si cambia el formato
 
 1. Actualizá `resource.schema.json` y, si agregás valores permitidos, `taxonomy.json`.
-2. Actualizá `resources.types.ts` (el test `resources:test` falla si sus listas dejan de coincidir con la taxonomía).
+2. Actualizá `resources.types.ts` (sus listas tienen que coincidir con la taxonomía).
 3. Actualizá `HealthResource.java`.
 4. Si el cambio rompe lo existente, subí `schemaVersion` (hoy está en **2**: la fase 1 hizo obligatorio `coordinates.status`) en `taxonomy.json` y `SCHEMA_VERSION` en `ResourceCatalog.java`: un servidor viejo se niega a leer un formato que no conoce.
 5. `npm run resources:sync`.

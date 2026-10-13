@@ -1,19 +1,21 @@
-import { getEmergencyBarResources, getHelpLine, lineContact } from "@/data/resources/lines"
+import { getHelpLine, lineContact } from "@/data/resources/lines"
 import { callButton } from "@/utils/helpLines"
 import type { EmergencyNumber, FirstAidGuide } from "@/types/emergency"
 
+export const EMERGENCY_NUMBERS: EmergencyNumber[] = [
+  { number: "107", label: "SAME" },
+  { number: "911", label: "Policía" },
+  { number: "100", label: "Bomberos" },
+  { number: "135", label: "Apoyo emocional/crisis" },
+  { number: "102", label: "Protección al menor" },
+  { number: "144", label: "Violencia de género" },
+]
+
 /*
- * The numbers are NOT written here: they come from the verified help lines (data/resources/lines/nacional.json), the one
- * source for the emergency bar, the chat and everything else that names a number. Add or change a number there.
- * The label is the line's short name; where it works and when it answers (the part after " · " of the short name, and the
- * hours) are added by the buttons through callButton, so the same number says the same everywhere.
+ * Numbers named in the chat, the map's urgent help and the call notices. They come from the verified help lines
+ * (data/resources/lines/nacional.json), so the same number says the same everywhere.
  */
-
 const numberOf = (display: string): EmergencyNumber => ({ number: display, label: callButton(display).label })
-
-/** The emergency bar, in its order: the first contact of each line */
-export const EMERGENCY_NUMBERS: EmergencyNumber[] = getEmergencyBarResources().map((line) => numberOf(lineContact(line).display))
-
 const displayOf = (id: string) => lineContact(getHelpLine(id)).display
 
 /** The one that works all over the country (Central de Emergencias Nacional): what to say when only one number can be said */
@@ -27,8 +29,8 @@ export const BASIC_EMERGENCY_NUMBERS: EmergencyNumber[] = [numberOf(AMBULANCE_NU
 
 /** First aid guides (/primeros-auxilios/:slug) */
 export const FIRST_AID_GUIDES: FirstAidGuide[] = [
-  { slug: "rcp", title: "RCP · no respira" },
-  { slug: "atragantamiento", title: "Atragantamiento" },
+  { slug: "reacciones-alergicas", title: "Reacciones alérgicas" },
+  { slug: "heridas", title: "Heridas y cortes" },
   { slug: "quemaduras", title: "Quemaduras" },
 ]
 

@@ -10,8 +10,7 @@ import { Section4 } from "./sections/Section4"
 export const SEX_EDUCATION: Category = {
   id: "esi",
   title: "Salud sexual y ESI",
-  description: "Anticoncepción, derechos y acceso a atención",
-  subtitle: "Dónde pedir orientación, métodos y pruebas, y tus derechos, con fuentes oficiales",
+  description: "Anticonceptivos, prevención y derechos sexuales",
   icon: HeartHandshake,
   to: PATHS.topic("esi"),
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -45,6 +44,4 @@ export const SEX_EDUCATION: Category = {
       Content: Section3,
     },
   ],
-  /** It opens straight on the first section: no banner first */
-  defaultSectionId: "section-1",
 }

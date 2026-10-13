@@ -1,6 +1,6 @@
 /*
  * Types of the resources dataset. They mirror resource.schema.json; the allowed values of each union
- * are the ids of taxonomy.json (client/scripts/resources-sync.test.mjs fails if they stop matching).
+ * are the ids of taxonomy.json.
  */
 
 export type ResourceKind = "emergency" | "urgent-support" | "orientation" | "service"

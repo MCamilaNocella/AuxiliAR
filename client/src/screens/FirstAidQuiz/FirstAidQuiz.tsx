@@ -1,5 +1,4 @@
 import { Page } from "@/components/layout/Page"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import { Quiz } from "@/components/quiz/Quiz"
 import { FIRST_AID_HUB_PATH } from "@/content/firstAid"
 import { FIRST_AID_QUIZ } from "@/content/firstAid/quiz"
@@ -14,9 +13,6 @@ export const FirstAidQuizScreen = () => (
         {`${FIRST_AID_QUIZ.length} situaciones para repasar lo que dicen las guías, una por pantalla. No hay respuestas “malas”: en cada una te explicamos por qué y te mostramos la guía.`}
       </p>
       <Quiz questions={FIRST_AID_QUIZ} exits={EXITS} />
-      <PendingNotice>
-        Este quiz repasa el contenido de las guías y todavía no fue revisado por un profesional de la salud. No reemplaza un curso de primeros auxilios ni la atención de un equipo de salud. En una emergencia, llamá a emergencias.
-      </PendingNotice>
     </div>
   </Page>
 )

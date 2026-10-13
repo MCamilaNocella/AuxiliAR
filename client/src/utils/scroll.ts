@@ -1,10 +1,18 @@
 export const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
+const rootVar = (name: string) => parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0
+
+/** Whether `element` is fully on screen, between the sticky header and the bottom navigation. */
+export const isFullyVisible = (element: HTMLElement) => {
+  const { top, bottom } = element.getBoundingClientRect()
+  return top >= rootVar("--header-h") && bottom <= window.innerHeight - rootVar("--bottom-nav-h")
+}
+
 const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2)
 
 /** Scroll position that puts `element` right below the sticky header. */
 export const scrollTopBelowHeader = (element: HTMLElement) => {
-  const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 0
+  const headerHeight = rootVar("--header-h")
   const target = element.getBoundingClientRect().top + window.scrollY - headerHeight
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight
   return Math.max(0, Math.min(target, maxScroll))

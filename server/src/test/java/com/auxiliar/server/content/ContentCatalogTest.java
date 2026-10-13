@@ -29,25 +29,29 @@ class ContentCatalogTest {
 
     @Test
     void knowsWhichPagesHaveContent() {
-        // Encontrar atención (its map and "Sobre los datos"), Salud mental, Salud sexual y ESI and Atención veterinaria (their three sections each),
-        // Primeros auxilios and Sobre AuxiliAR have a summary. Update this list when another section gets one
+        // Every category and every section with a summary (Salud sexual y ESI's IVE/ILE section has none on purpose:
+        // it is pending professional review). Update this list when a section gets or loses one
         assertThat(catalog.pages()).filteredOn(ContentPage::hasInfo).extracting(ContentPage::path)
-                .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1", "/centros?seccion=section-2",
+                .containsExactlyInAnyOrder("/centros", "/centros?seccion=section-1",
+                        "/temas/salud-general", "/temas/salud-general?seccion=section-1", "/temas/salud-general?seccion=section-2",
+                        "/temas/salud-general?seccion=section-4", "/temas/salud-general?seccion=section-5",
+                        "/temas/salud-general?seccion=section-6", "/temas/salud-general?seccion=section-7",
                         "/temas/salud-mental", "/temas/salud-mental?seccion=section-1", "/temas/salud-mental?seccion=section-2",
                         "/temas/salud-mental?seccion=section-3",
                         "/temas/esi", "/temas/esi?seccion=section-1", "/temas/esi?seccion=section-2", "/temas/esi?seccion=section-3",
                         "/temas/animales", "/temas/animales?seccion=section-1", "/temas/animales?seccion=section-2", "/temas/animales?seccion=section-3",
+                        "/recursos", "/recursos?seccion=section-1", "/recursos?seccion=section-2", "/recursos?seccion=section-3",
+                        "/recursos?seccion=section-4",
                         "/primeros-auxilios", "/primeros-auxilios?seccion=section-1",
                         "/sobre-auxiliar", "/sobre-auxiliar?seccion=section-1");
     }
 
     @Test
-    void findsTheCentersCategoryAndItsDataSection() {
-        assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Encontrar atención");
-        assertThat(catalog.findByPath("/centros?seccion=section-2")).hasValueSatisfying(page -> {
-            assertThat(page.title()).isEqualTo("Encontrar atención › Sobre los datos");
+    void findsTheCentersCategoryAndItsMap() {
+        assertThat(catalog.findByPath("/centros")).map(ContentPage::title).contains("Centros de atención");
+        assertThat(catalog.findByPath("/centros?seccion=section-1")).hasValueSatisfying(page -> {
+            assertThat(page.title()).isEqualTo("Centros de atención › Mapa AuxiliAR");
             assertThat(page.hasInfo()).isTrue();
-            assertThat(page.summary()).contains("verifica").contains("gratuito").contains("fecha de verificación");
         });
     }
 

@@ -2,17 +2,16 @@ import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
 import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
 import { NeighborhoodAgenda } from "./NeighborhoodAgenda"
-import { CUD_GUIDE, NEIGHBORHOOD_GUIDE, PENDING_NOTICE_TEXT, PENDING_NOTICE_TITLE } from "./Section2.constants"
+import { CUD_GUIDE, NEIGHBORHOOD_GUIDE } from "./Section2.constants"
 
 /**
  * Más recursos · Trámites. What each procedure needs, explained here; the official page is a source and, for the appointment, the
  * place where the person does it (an action AuxiliAR cannot do for them). The CeSAC appointment text repeats the Gobierno de la
- * Ciudad's "Solicitud de turnos en CESAC" (read on 2026-10-08, saved in docs/investigacion/evidencia/caba-turnos-cesac-tramite.txt).
+ * Ciudad's "Solicitud de turnos en CESAC" (read on 2026-10-08).
  * Phone numbers are not copied except the 147, the Ciudad's line named by that page for this procedure.
  */
 const cardClass = "rounded-2xl border border-line-strong bg-card p-4 sm:p-6"
@@ -53,7 +52,7 @@ export default function Section2Content() {
           El primer nivel de atención lo forman los CeSAC y los Centros Médicos Barriales. Por teléfono se puede pedir turno de clínica médica o medicina general, pediatría y odontología. Para algunas especialidades piden
           estudios previos o una derivación.
         </p>
-        <p className="m-0 mt-2 text-ink-soft">Los turnos disponibles dependen de cada centro: consultalo allí.</p>
+        <p className="m-0 mt-2 text-ink-soft">Los turnos disponibles dependen de cada centro.</p>
 
         <div className="mt-3">
           <OutLink href={TURNOS_CESAC.url}>Ir al trámite oficial para sacar el turno</OutLink>
@@ -95,9 +94,6 @@ export default function Section2Content() {
         </ul>
         <div className="mt-3">
           <OutLink href={CUD_PAGINA.url}>Ir al trámite oficial del CUD</OutLink>
-        </div>
-        <div className="mt-4">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
         </div>
       </section>
 
@@ -141,9 +137,6 @@ export default function Section2Content() {
             <OutLink href={BARRIO_REDES.url}>Ver si el operativo se suspendió (redes del programa)</OutLink>
           </li>
         </ul>
-        <div className="mt-4">
-          <PendingNotice title={PENDING_NOTICE_TITLE}>{PENDING_NOTICE_TEXT}</PendingNotice>
-        </div>
       </section>
 
       <section aria-labelledby="tr-refused" className={cardClass}>

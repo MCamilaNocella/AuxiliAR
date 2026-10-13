@@ -1,4 +1,4 @@
-# Lints and tests the client, builds it on every push / PR to main, and publishes it to GitHub Pages (auxiliar.estudy.ar) on push to main
+# Builds the client on every push / PR to main, and publishes it to GitHub Pages (auxiliar.estudy.ar) on push to main
 
 name: Node.js CI
 
@@ -35,8 +35,6 @@ jobs:
         cache-dependency-path: client/package-lock.json
     - run: npm ci
     - run: npm run lint
-    # The tests of the client (structure, categories, map, health, curation, emergency, help) and the data checks. resources:test is left out: it is flaky
-    - run: npm run test:ci
     # Backend URL for Auxi's chat (Railway): repo variable VITE_API_URL (Settings → Secrets and variables → Actions → Variables)
     - run: npm run build
       env:

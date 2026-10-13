@@ -2,26 +2,14 @@ import type { Source } from "@/components/health/SourceList"
 
 /**
  * Calendario Nacional de Vacunación 2026, by stage of life: the eight stages of the Ministerio de Salud de la Nación.
- * Written from docs/investigacion/ronda-contenido-3/calendario-2026-texto-propuesto.md. What is here is what the official
- * documents state explicitly (the pages by stage and by vaccine, the 2026 poster, the antigripal and VSR technical guidelines
+ * What is here is what the official documents state explicitly (the pages by stage and by vaccine, the 2026 poster, the antigripal and VSR technical guidelines
  * and the Resolución 339/2026), read on 2026-10-09.
  *
- * What is NOT here on purpose (it is in docs/investigacion/ronda-contenido-3/matriz-p1-p16-calendario.md): every statement the
- * review found contradictory between official sources or backed by a single source. Where a condition cannot be said safely
+ * What is NOT here on purpose: every statement the review found contradictory between official sources or backed by a single source. Where a condition cannot be said safely
  * without choosing between sources, the stage carries ONE short note (`toConfirm`) that sends to the official source or the
  * vacunatorio. Nothing here is a clinical approval: it is an informative summary.
  */
 export const CHECKED_AT = "2026-10-09"
-
-/**
- * Shown on top of every stage in the presentation version (branch demo/presentation-2026-10-14): the calendar is content in
- * development, not yet validated by health professionals. To publish it, remove this notice only after the professional review
- * listed in docs/investigacion/ronda-contenido-3/matriz-p1-p16-calendario.md.
- */
-export const DEVELOPMENT_NOTICE = {
-  title: "En desarrollo · pendiente de validación profesional",
-  text: "Este calendario es contenido en desarrollo: todavía no fue revisado ni validado por profesionales de la salud. No es una herramienta clínica ni una indicación médica. Para saber qué vacunas te corresponden, confirmalo con tu equipo de salud o en el vacunatorio.",
-}
 
 /** The text every stage shares: what this page is and is not */
 export const GENERAL_NOTE =
@@ -52,8 +40,6 @@ export type VaccineGroup = {
   display?: "open" | "collapsible" | "split"
   paragraphs?: string[]
   items?: VaccineItem[]
-  /** Shown in a box of its own (a section inside the stage) */
-  aside?: boolean
 }
 
 export type VaccinationStage = {

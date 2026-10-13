@@ -7,8 +7,7 @@ import { Section1 } from "./sections/Section1"
 export const FIRST_AID: Category = {
   id: "primeros-auxilios",
   title: "Primeros auxilios",
-  description: "Qué hacer ya ante una emergencia",
-  subtitle: "Guías paso a paso para actuar en emergencias",
+  description: "Guías paso a paso para actuar en emergencias",
   icon: Bandage,
   to: PATHS.firstAid,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -22,6 +21,4 @@ export const FIRST_AID: Category = {
       Content: Section1,
     },
   ],
-  /** It opens straight on the guides: no banner first */
-  defaultSectionId: "section-1",
 }

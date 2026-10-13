@@ -72,7 +72,6 @@ export const PlaceCard = ({ place, kinds, statuses, title, showAction = true, ch
           <OutLink href={place.action.url}>{place.action.label}</OutLink>
         </div>
       )}
-      {place.sourceDate && <p className="m-0 mt-3 text-sm text-ink-soft">{`Fecha de su contenido: ${place.sourceDate}.`}</p>}
     </Disclosure>
   )
 }

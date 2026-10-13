@@ -2,6 +2,7 @@ import { useState } from "react"
 import { sendChat, type ChatTurn } from "@/api/chat"
 import { BASIC_EMERGENCY_NUMBERS, EMERGENCY_NUMBERS } from "@/data/emergency"
 import { loadProfile, saveProfile } from "@/utils/profileStorage"
+import { wait } from "@/utils/wait"
 import {
   CONNECTION_ERROR_REPLY,
   EMERGENCY_LABELS,
@@ -16,8 +17,6 @@ import type { Message, MessageDraft } from "./ChatConversation.types"
 
 let lastId = 0
 const withId = (draft: MessageDraft): Message => ({ ...draft, id: ++lastId })
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 /** One message of the list at random, never the same as the previous one */
 const pickRandom = (messages: string[], previous: string | null = null) => {
@@ -36,6 +35,8 @@ export const useChatConversation = () => {
     WELCOME_MESSAGES.map(({ text }) => ({ role: "assistant", text })),
   )
   const [typing, setTyping] = useState(false)
+  // Waiting for the model: the only time the "typing" dots show (local answers don't need thinking)
+  const [thinking, setThinking] = useState(false)
   // The Sí / No buttons stay until something is said
   const [askingEmergency, setAskingEmergency] = useState(true)
   // Pressed "Sí": the backend treats everything as an emergency
@@ -50,7 +51,7 @@ export const useChatConversation = () => {
 
   const add = (draft: MessageDraft) => setMessages((current) => [...current, withId(draft)])
 
-  /** Runs one turn with the "typing" dots on, and Sí / No hidden from then on */
+  /** Runs one turn: sending waits until it's over, and Sí / No are hidden from then on */
   const turn = async (userText: string, run: () => Promise<void>) => {
     setAskingEmergency(false)
     add({ from: "user", text: userText })
@@ -98,8 +99,10 @@ export const useChatConversation = () => {
       setLastWorkingMessage(working)
       add({ from: "auxi", text: working })
       const question: ChatTurn = { role: "user", text }
+      setThinking(true)
       try {
         const reply = await sendChat([...history, question], emergencyButton, profile)
+        setThinking(false)
         const { replies, links, emergency, phones } = reply
         setProfile(reply.profile)
         saveProfile(reply.profile)
@@ -109,18 +112,18 @@ export const useChatConversation = () => {
         const picked = phones.length > 0 ? phones : emergency ? BASIC_EMERGENCY_NUMBERS : []
         const calls = picked.filter(({ number }) => !shownNumbers.includes(number))
         setShownNumbers((current) => [...current, ...calls.map(({ number }) => number)])
-        // One bubble after another, with the "typing" dots in between: the numbers to call
-        // under the first one (it's the one telling to call), the suggested pages under the last one
+        // One bubble each (the chat shows them one after another): the numbers to call under the first one
+        // (it's the one telling to call), the suggested pages under the last one
         for (const [index, text] of replies.entries()) {
-          if (index > 0) await wait(LOCAL_REPLY_DELAY_MS)
           const last = index === replies.length - 1
           add({ from: "auxi", text, phones: index === 0 ? calls : undefined, links: last ? links : undefined })
         }
       } catch {
+        setThinking(false)
         add({ from: "auxi", text: CONNECTION_ERROR_REPLY })
       }
     })
   }
 
-  return { messages, typing, askingEmergency: askingEmergency && !typing, asksLocation, answerEmergency, write }
+  return { messages, typing, thinking, askingEmergency: askingEmergency && !typing, asksLocation, answerEmergency, write }
 }

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Local design pages (git-ignored, so Tailwind would skip them otherwise); nothing there in a fresh clone */
+@source "./sandbox";
 @import "@fontsource-variable/nunito";
 @import "@fontsource/dm-serif-display";
 
@@ -19,6 +21,8 @@
 
   /* Surfaces and borders */
   --color-surface: #faf8f6;
+  /* "Done" green (Mi Salud: the check of a piece of data just completed) */
+  --color-success: #2b8a3e;
   /* Warm off-white (not pure white): easier on the eyes and in tune with the warm palette */
   --color-card: #f7f2ee;
   --color-surface-alt: #f4f0ee;
@@ -34,7 +38,8 @@
   --color-brand-dark: #5a1f1f;
   /* Icon tiles and active nav item: must stand out on card (brand text on it ≥7:1) */
   --color-brand-soft: #f1ded9;
-  --color-on-brand: #ffffff;
+  /* Light text on dark fills: #f5f5f5, never pure white (on a phone at full brightness #fff glares) */
+  --color-on-brand: #f5f5f5;
 
   /* Emergencies */
   --color-alert: #b3261e;
@@ -43,21 +48,14 @@
   --color-alert-soft: #fcedec;
   --color-alert-line: #f3d6d3;
   --color-alert-card-line: #e8c9c6;
-  --color-on-alert: #ffffff;
-
-  /* Primeros auxilios highlight on the home: a deep teal, clearly not the red of the emergencies (white on it ≥7:1) */
-  --color-aid: #0b5566;
-  --color-aid-line: #7fd0e0;
-  --color-on-aid: #ffffff;
-  /* Text on the band's white button */
-  --color-aid-ink: #073b4c;
-  /* Text on the home background (white passes 4.5:1 on every gradient stop) */
-  --color-on-home: #ffffff;
+  --color-on-alert: #f5f5f5;
+  /* Text on the home background (passes 4.5:1 on every gradient stop) */
+  --color-on-home: #f5f5f5;
   /* Secondary text on the home background: ≥4.9:1 on every gradient stop, clearly dimmer than the title */
   --color-on-home-muted: #e0d2cf;
 
-  /* Text on the category banner / wallpaper (white passes 4.5:1 wherever text sits, see below) */
-  --color-on-category: #ffffff;
+  /* Text on the category banner / wallpaper (passes 4.5:1 wherever text sits, see below) */
+  --color-on-category: #f5f5f5;
   /* Border around the category banner: only visible in high contrast */
   --color-category-edge: transparent;
 
@@ -65,13 +63,24 @@
   --color-auxi-motion: #000000;
 
   /* Metallic glint that sweeps over the "Ver mejor" gear and label on load: light on the dark (light theme) gear, a darker sheen on the white one */
-  --color-shine: #ffffff;
+  --color-shine: #f5f5f5;
 
   /* Dimmed backdrop behind a side panel (e.g. a place's information) */
   --color-scrim: rgb(0 0 0 / 0.5);
 
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  /* Each new chat message (and the buttons under it) fades in, rising a little */
+  --animate-message-in: message-in 350ms ease-out both;
+
+  /* Mi Salud, a piece of data just completed: its check draws itself (the path needs pathLength="1"), then the
+     item fades out. Keep step-done's length in sync with DONE_VISIBLE_MS (MissingSteps.constants) */
+  --animate-check-draw: check-draw 800ms ease-in-out both;
+  --animate-step-done: step-done 3.2s ease-in-out both;
+
+  /* Mi Salud, the emergency card switching between showing and editing: the new content fades in calmly */
+  --animate-calm-in: calm-in 500ms ease-out both;
 
   /*
    * "Ver mejor" button in the header: on page load, once the label is out, a metallic glint sweeps
@@ -160,6 +169,47 @@
     }
   }
 
+  @keyframes check-draw {
+    from {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes step-done {
+    0%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes calm-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes message-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   @keyframes bubble-in {
     from {
       opacity: 0;
@@ -186,6 +236,7 @@
   --color-muted: #b8aba8;
 
   --color-surface: #171313;
+  --color-success: #69db7c;
   --color-card: #221c1c;
   --color-surface-alt: #1f1a1a;
   --color-field: #2a2323;
@@ -204,14 +255,8 @@
   --color-alert-soft: #2a1817;
   --color-alert-line: #4a2724;
   --color-alert-card-line: #5c302c;
-  --color-on-alert: #ffffff;
 
-  --color-aid: #0d4a59;
-  --color-aid-line: #7fd0e0;
-  --color-on-aid: #ffffff;
-  --color-aid-ink: #073b4c;
-
-  --color-auxi-motion: #ffffff;
+  --color-auxi-motion: #f5f5f5;
   --color-shine: #8a817f;
 }
 
@@ -223,6 +268,7 @@
   --color-muted: #f0f0f0;
 
   --color-surface: #000000;
+  --color-success: #4cff7e;
   --color-card: #000000;
   --color-surface-alt: #000000;
   --color-field: #000000;
@@ -241,12 +287,10 @@
   --color-alert-soft: #000000;
   --color-alert-line: #ffffff;
   --color-alert-card-line: #ffffff;
+  /* High contrast keeps pure white on purpose: maximum contrast is the point of this theme */
   --color-on-alert: #ffffff;
-
-  --color-aid: #000000;
-  --color-aid-line: #ffffff;
-  --color-on-aid: #ffffff;
-  --color-aid-ink: #000000;
+  --color-on-home: #ffffff;
+  --color-on-category: #ffffff;
 
   --color-auxi-motion: #ffffff;
   --color-shine: #8a8a8a;
@@ -342,6 +386,71 @@
   mask-size: 300% 100%;
   mask-repeat: no-repeat;
   mask-position: 100% 0;
+}
+
+/*
+ * Thin scrollbar in the page's colors.
+ * Touch screens: the phone's own scrollbar (shows up while scrolling, then fades) with the soft color, brand once
+ * the list is tapped. Anything custom there would turn it into a fixed bar, so it only gets the standard properties.
+ * Mouse: made to look like the phone's: very thin, rounded, no track, no arrows; it fades in slowly when the pointer
+ * is over the list (or the focus is inside) and fades out slowly after. The thumb color is registered so it can fade.
+ * Chrome and Safari take the ::-webkit ones (the only way to drop the arrows there); Firefox, the standard ones.
+ */
+@property --scrollbar-thumb {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@utility scrollbar-soft {
+  --scrollbar-thumb: color-mix(in srgb, var(--color-muted) 45%, transparent);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+
+  &:hover {
+    --scrollbar-thumb: var(--color-brand);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    --scrollbar-thumb: transparent;
+    transition: --scrollbar-thumb 0.6s ease-out 0.5s;
+
+    /* The page's main color (follows the theme) */
+    &:hover,
+    &:focus-within {
+      --scrollbar-thumb: var(--color-brand);
+      transition: --scrollbar-thumb 0.3s ease-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &:hover,
+      &:focus-within {
+        transition: none;
+      }
+    }
+
+    @supports selector(::-webkit-scrollbar) {
+      scrollbar-width: auto;
+      scrollbar-color: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.25rem;
+      }
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-button {
+        display: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 9999px;
+        background: var(--scrollbar-thumb);
+      }
+    }
+  }
 }
 
 /* ---------- Large cursor ("Ver mejor" → Mouse) ---------- */
@@ -456,10 +565,4 @@
   :focus-visible {
     @apply outline-3 outline-offset-2 outline-brand;
   }
-}
-
-/* Sin bordes: toda la web se separa por color y espacio. El contorno de foco (outline) no se toca: es lo que muestra dónde está el teclado. */
-*, ::before, ::after {
-  border-width: 0 !important;
-  border-color: transparent !important;
 }

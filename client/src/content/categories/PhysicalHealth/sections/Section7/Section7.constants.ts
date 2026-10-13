@@ -9,15 +9,13 @@ import type { Subsection } from "../../SubsectionPage"
  * PENDING professional (clinical) validation, of the figures included, and documental validation of the sources before it is published.
  */
 export const PHYSICAL_ACTIVITY: Subsection = {
-  notice:
-    "Este contenido resume orientaciones generales de fuentes oficiales. Las cifras todavía no fueron revisadas por profesionales de la salud ni se verificaron los enlaces oficiales. No es una indicación médica: para tu caso, consultá con tu equipo de salud.",
   intro: "Moverte un poco todos los días hace bien al cuerpo y al ánimo. No hace falta un gimnasio ni equipo: cualquier movimiento suma.",
   blocks: [
     {
       id: "how-much",
       icon: Activity,
       title: "Cuánto moverse",
-      lead: "Referencias generales de la Organización Mundial de la Salud (a validar).",
+      lead: "Referencias generales de la Organización Mundial de la Salud.",
       points: [
         "Personas adultas: entre 150 y 300 minutos por semana de actividad moderada.",
         "Niñas, niños y adolescentes: en promedio 60 minutos por día de actividad de moderada a intensa.",

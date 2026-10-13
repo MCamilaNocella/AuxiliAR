@@ -12,8 +12,7 @@ import {
 
 /**
  * What each method is, in the words of its own page of the Ministerio de Salud de la Nación (argentina.gob.ar/salud/sexual,
- * Creative Commons Atribución 4.0), read on 2026-10-09; the text is saved in
- * docs/investigacion/evidencia/nacion-metodos-anticonceptivos-y-preservativo-vaginal.txt. It repeats the page: no dose, no
+ * Creative Commons Atribución 4.0), read on 2026-10-09. It repeats the page: no dose, no
  * efficacy figure and no indication of its own. Which method suits a person is for their health team to say.
  * Marked for clinical review before the presentation (see the report of the round).
  */
@@ -144,8 +143,7 @@ export const VAGINAL_CONDOM = {
  * «Anticonceptivos gratuitos: cuáles son y cómo conseguirlos». Four things that are usually mixed up, kept apart: gratuity (what the
  * Ciudad says), legal coverage (the laws and what the Ministerio says), conditions of access (by method) and concrete availability
  * (what AuxiliAR does NOT know). Every sentence repeats a statement of the Gobierno de la Ciudad ("Métodos anticonceptivos",
- * "Consejerías"), of the pages of each method of the Ministerio de Salud or of its "Preguntas frecuentes" (texts saved in
- * docs/investigacion/evidencia). It invents no stock, no appointment and no center. Pending professional validation.
+ * "Consejerías"), of the pages of each method of the Ministerio de Salud or of its "Preguntas frecuentes". It invents no stock, no appointment and no center. Pending professional validation.
  */
 export const FREE_ACCESS = {
   intro:

@@ -8,7 +8,7 @@ import type { CategoryWallpaperProps } from "./CategoryWallpaper.types"
  * on top (same texts as the desktop banner).
  * Needs a `data-category` ancestor (category colors).
  */
-export const CategoryWallpaper = ({ category: { id, title, subtitle, icon: Icon }, className }: CategoryWallpaperProps) => {
+export const CategoryWallpaper = ({ category: { id, title, description, icon: Icon }, className }: CategoryWallpaperProps) => {
   const titleId = useId()
 
   return (
@@ -29,7 +29,7 @@ export const CategoryWallpaper = ({ category: { id, title, subtitle, icon: Icon 
           {title}
         </h2>
         <span aria-hidden="true" className="h-1 w-10 rounded-full bg-on-category/60" />
-        <p className="m-0 text-base text-pretty">{subtitle}</p>
+        <p className="m-0 text-base text-pretty">{description}</p>
       </div>
     </section>
   )

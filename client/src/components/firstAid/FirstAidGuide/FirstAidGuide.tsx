@@ -1,8 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router"
 import { ArrowLeft, OctagonX, Phone } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { VideoEmbed } from "@/components/health/VideoEmbed"
-import { CALL_INFO, FIRST_AID_HUB_PATH, getFirstAidGuide, isVideoShown } from "@/content/firstAid"
+import { CALL_INFO, FIRST_AID_HUB_PATH, getFirstAidGuide } from "@/content/firstAid"
 import type { FirstAidGuideContent } from "@/content/firstAid"
 import { PATHS } from "@/router/paths"
 import { GuideIcon } from "../guideIcons"
@@ -35,9 +34,8 @@ const BackLink = () => {
 
 /**
  * One first aid guide, always laid out the same way: what it is → important signs → what to do now (numbered steps)
- * → what NOT to do → when to ask for help → (an approved video) → source and review. Pure presentation of the content in
- * src/content/firstAid; it adds no instruction of its own. The video, when the guide has one with its whole approval record, comes after the
- * written steps and the call block: the steps and the way to call never depend on it, and without the record nothing is shown.
+ * → what NOT to do → when to ask for help → source and review. Pure presentation of the content in
+ * src/content/firstAid; it adds no instruction of its own.
  */
 export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
   const related = (guide.related ?? []).map((slug) => getFirstAidGuide(slug)).filter((item) => item !== undefined)
@@ -189,29 +187,6 @@ export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
               <li key={item}>{item}</li>
             ))}
           </ul>
-        </section>
-      )}
-
-      {isVideoShown(guide.video) && (
-        <section aria-labelledby="guide-video" className="mt-8">
-          <h2 id="guide-video" className="m-0 mb-3 text-xl font-extrabold">
-            Video de apoyo
-          </h2>
-          <p className="m-0 mb-3 text-ink-soft">{`Complementa los pasos escritos, no los reemplaza. Revisado por ${guide.video.approval?.clinicalReview.by} el ${formatDate(guide.video.approval?.clinicalReview.date ?? guide.checkedAt)}.`}</p>
-          <VideoEmbed
-            videoId={guide.video.videoId}
-            title={guide.video.title}
-            originalUrl={guide.video.originalUrl}
-            publisher={guide.video.publisher}
-            publishedAt={guide.video.publishedAt}
-            duration={guide.video.duration}
-            hasCheckedCaptions={guide.video.hasCheckedCaptions}
-            transcript={guide.video.transcript?.map((paragraph) => (
-              <p key={paragraph} className="m-0 mt-2">
-                {paragraph}
-              </p>
-            ))}
-          />
         </section>
       )}
 

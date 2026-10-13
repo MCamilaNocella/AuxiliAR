@@ -8,7 +8,6 @@ export const ABOUT: Category = {
   id: "sobre-auxiliar",
   title: "Sobre AuxiliAR",
   description: "Quiénes somos y de dónde sale la información",
-  subtitle: "Información de salud verificada, gratuita y para todas las personas",
   icon: Info,
   to: PATHS.about,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
@@ -23,6 +22,4 @@ export const ABOUT: Category = {
       Content: Section1,
     },
   ],
-  /** It opens straight on the page: no banner first */
-  defaultSectionId: "section-1",
 }

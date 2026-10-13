@@ -3,7 +3,6 @@ import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { callButton, describeHelpContacts, describeHelpLine, telHref, uncheckedNotice } from "@/utils/helpLines"
 import type { HelpLineView } from "@/utils/helpLines"
 import type { MentalHealthContext } from "@/utils/places"
-import { AVOID_ATTRIBUTE } from "@/utils/auxiAvoidance"
 import { revealEmergencies } from "@/utils/revealEmergencies"
 
 /*
@@ -48,7 +47,7 @@ const Card = ({ crisis }: { crisis: boolean }) => {
   // said once for the whole card, not on every line
   const notice = uncheckedNotice([general, national, caba, nationalAlternative, same].map((line) => callButton(line.display)), GENERAL_EMERGENCY_NUMBER)
   return (
-    <section {...(crisis ? { [AVOID_ATTRIBUTE]: "" } : {})} aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
+    <section aria-labelledby="urgent-help-title" className="flex max-w-prose flex-col gap-3 rounded-2xl border-2 border-brand bg-card p-4">
       <h3 id="urgent-help-title" className="m-0 text-lg font-extrabold">
         {crisis ? "Si estás en crisis o pensás en hacerte daño, no esperes: pedí ayuda ahora" : "Ayuda urgente"}
       </h3>

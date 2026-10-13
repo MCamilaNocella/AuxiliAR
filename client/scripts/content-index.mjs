@@ -30,7 +30,7 @@ try {
       {
         title: category.title,
         path: category.to,
-        summary: [`${category.description}. ${category.subtitle}`, ...sectionsWithInfo.map((section) => section.summary)].join(" "),
+        summary: [`${category.description}.`, ...sectionsWithInfo.map((section) => section.summary)].join(" "),
         firstAid: category === firstAid,
         hasInfo: sectionsWithInfo.length > 0,
       },

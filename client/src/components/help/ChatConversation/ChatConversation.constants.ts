@@ -1,4 +1,4 @@
-import { AMBULANCE_NUMBER, GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import type { MessageDraft } from "./ChatConversation.types"
 
 /** What Auxi says when the chat opens */
@@ -22,7 +22,7 @@ export const NO_EMERGENCY_REPLIES = [
 ]
 
 /** Answer to "Sí": the numbers to call show right under it */
-export const EMERGENCY_REPLY = `Llamá ahora. Si hay riesgo para la vida, el ${GENERAL_EMERGENCY_NUMBER} funciona en todo el país: pide ambulancia o policía. El ${AMBULANCE_NUMBER} (ambulancia) depende de la zona: confirmá que funcione donde estás.`
+export const EMERGENCY_REPLY = `Llamá ahora: es gratis y atienden las 24 horas. Si hay riesgo para la vida, llamá al ${GENERAL_EMERGENCY_NUMBER}.`
 
 /** Then Auxi asks what's going on, to find the right first aid guide */
 export const EMERGENCY_QUESTION = "¿Qué está pasando? Contame en pocas palabras y te digo qué hacer mientras llega la ayuda."

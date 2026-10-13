@@ -1,7 +1,6 @@
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { PendingNotice } from "@/components/health/PendingNotice"
 import { DirectoryList } from "../../DirectoryBlocks"
 import { YOGA_CABA } from "../../MentalHealth.directory"
 import { OMS_ANSIEDAD, OMS_ESTRES, OMS_GUIA } from "../../MentalHealth.sources"
@@ -28,7 +27,7 @@ const HABITS = [
   { title: "Técnicas de autoayuda", text: "Aprendelas y practicalas unos minutos por día." },
 ]
 
-/** Five short ideas of pause from the skills of the OMS guide "En tiempos de estrés, haz lo que importa": drafts of the team, not yet reviewed by a health professional (the notice says so) */
+/** Five short ideas of pause from the skills of the OMS guide "En tiempos de estrés, haz lo que importa" */
 const PAUSES = [
   { title: "Poner los pies en la tierra", text: "Apoyá los pies y registrá lo que ves y escuchás, sin exigirte eliminar la emoción." },
   { title: "Respiración pausada", text: "Probá una respiración suave, sin forzar la profundidad ni retener el aire. Si te incomoda, detené la práctica." },
@@ -64,7 +63,6 @@ export default function Section3Content() {
             </li>
           ))}
         </ul>
-        <PendingNotice>Estas frases las redactó el equipo de AuxiliAR a partir de la guía de la OMS y todavía no las revisó un profesional de la salud. No son un tratamiento ni garantizan aliviar lo que sentís.</PendingNotice>
       </section>
 
       <section aria-labelledby="mh-oms">

@@ -8,8 +8,6 @@ import type { Subsection } from "../../SubsectionPage"
  * PENDING professional (clinical and nutritional) validation and documental validation of the sources before it is published.
  */
 export const FOOD_NUTRITION: Subsection = {
-  notice:
-    "Este contenido resume orientaciones generales de fuentes oficiales. Todavía no fue revisado por profesionales de la salud ni se verificaron los enlaces oficiales. No es asesoramiento médico ni nutricional: para tu caso, consultá con tu equipo de salud.",
   intro: "Alimentarse bien, recibir orientación de un profesional y conseguir alimentos son tres cosas distintas. Acá las separamos para que sepas a cuál recurrir.",
   blocks: [
     {

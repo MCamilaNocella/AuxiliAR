@@ -6,11 +6,11 @@ import { CategoryDoodles } from "../CategoryDoodles"
 import type { CategoryBannerProps } from "./CategoryBanner.types"
 
 /**
- * Desktop banner shown when no section is chosen yet: breadcrumb, title and subtitle on the
+ * Desktop banner shown when no section is chosen yet: breadcrumb, title and description on the
  * dark side of the category gradient, translucent drawings on the light side.
  * Needs a `data-category` ancestor (category colors).
  */
-export const CategoryBanner = ({ category: { id, title, subtitle } }: CategoryBannerProps) => {
+export const CategoryBanner = ({ category: { id, title, description } }: CategoryBannerProps) => {
   const titleId = useId()
 
   return (
@@ -42,7 +42,7 @@ export const CategoryBanner = ({ category: { id, title, subtitle } }: CategoryBa
           <h2 id={titleId} className="m-0 text-3xl/tight font-extrabold tracking-[-0.01em] text-balance wrap-break-word">
             {title}
           </h2>
-          <p className="m-0 text-base text-pretty">{subtitle}</p>
+          <p className="m-0 text-base text-pretty">{description}</p>
         </div>
       </div>
     </section>

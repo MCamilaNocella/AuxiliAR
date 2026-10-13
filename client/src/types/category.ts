@@ -4,27 +4,14 @@ import type { LucideIcon } from "lucide-react"
 export type Category = {
   id: string
   title: string
+  /** One line: under the title on the home card and in the category banner */
   description: string
-  /** One line under the title in the category banner */
-  subtitle: string
   icon: LucideIcon
   to: string
   /** Decorative illustration (3:2) for the banner and the wallpaper */
   scene: ComponentType
   /** Sections listed in the category sidebar */
   sections: CategorySection[]
-  /** The section that opens when none is chosen, instead of the banner (e.g. Centros de atención opens on its map) */
-  defaultSectionId?: string
-  /** Set while the sections have no real content: the screen shows CategoryPreparing and no section menu. Remove it when they do */
-  preparing?: CategoryPreparing
-}
-
-/** What a category without published information shows instead of its sections (see CategoryPreparing) */
-export type CategoryPreparing = {
-  /** What the category will have, in a sentence */
-  will: string
-  /** What AuxiliAR already offers on the topic: only links to things that exist. Empty if there is nothing yet */
-  meanwhile: { label: string; to: string }[]
 }
 
 export type CategorySection = {
