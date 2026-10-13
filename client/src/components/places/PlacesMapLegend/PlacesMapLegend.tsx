@@ -1,12 +1,12 @@
 import { useMemo } from "react"
-import { Brain, HeartHandshake, HeartPulse, PawPrint } from "lucide-react"
+import { Brain, HeartPulse, MessagesSquare, PawPrint } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import type { CategoryId } from "@/data/resources"
 import { categoryLabel, getMapPins } from "@/utils/places"
 import type { PlaceEntry, PlaceQuery } from "@/utils/places"
 
 /** The symbol of each category on the pins (the same as in the pins of the map, drawn by PlacesMap.glyphs) */
-const LEGEND_ICONS: Partial<Record<CategoryId, LucideIcon>> = { "salud-fisica": HeartPulse, "salud-mental": Brain, esi: HeartHandshake, animales: PawPrint }
+const LEGEND_ICONS: Partial<Record<CategoryId, LucideIcon>> = { "salud-fisica": HeartPulse, "salud-mental": Brain, esi: MessagesSquare, animales: PawPrint }
 
 /** What the symbols of the map mean: only those of the pins drawn. It sits above the map, right under the count of places, a bit highlighted (a bordered strip) */
 export const PlacesMapLegend = ({ entries, query }: { entries: PlaceEntry[], query?: PlaceQuery }) => {
