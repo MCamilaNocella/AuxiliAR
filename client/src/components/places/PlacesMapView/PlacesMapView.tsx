@@ -16,6 +16,8 @@ type PlacesMapViewProps = {
   /** Opens the full information of a place (the explorer's panel) */
   onOpen: (placeId: string) => void
   onBackToList: () => void
+  /** Fills the box it is in (the explorer's full-screen map) instead of having a height of its own */
+  fill?: boolean
 }
 
 /**
@@ -24,7 +26,7 @@ type PlacesMapViewProps = {
  * the list) in a side bar next to the map (on phones, a sheet over its lower part), so the place and the map are seen
  * together. Its "Ver información" opens the full panel; the "Cerrar" button (or Esc) folds the bar.
  */
-export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMapViewProps) => {
+export const PlacesMapView = ({ entries, query, onOpen, onBackToList, fill = false }: PlacesMapViewProps) => {
   // Stable while the results are the same: the map redraws and re-frames only when the places shown change
   const pins = useMemo(() => getMapPins(entries, query), [entries, query])
   const unmapped = countUnmapped(entries)
@@ -58,19 +60,19 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMa
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className={fill ? "flex h-full flex-col" : "flex flex-col gap-3"}>
       {/* Large screens: map and side bar one next to the other. Phones: the bar is a sheet over the lower part of the map */}
-      <div className="relative lg:flex lg:gap-3">
-        <div className="min-w-0 flex-1">
+      <div className={fill ? "relative min-h-0 flex-1 lg:flex" : "relative lg:flex lg:gap-3"}>
+        <div className="h-full min-w-0 flex-1">
           <Suspense fallback={<p role="status" className="m-0 flex h-80 items-center justify-center rounded-2xl border-2 border-line-strong bg-field text-muted">Cargando mapa…</p>}>
-            <PlacesMap pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
+            <PlacesMap fill={fill} pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
           </Suspense>
         </div>
         <div aria-live="polite" className="contents">
           {selected && (
             <aside
               aria-label={`Información de ${selected.place.name}`}
-              className="absolute inset-x-2 bottom-2 z-[1001] flex max-h-[62%] flex-col overflow-hidden rounded-2xl border-2 border-line-strong bg-card shadow-lg lg:static lg:order-first lg:z-auto lg:h-[max(36rem,calc(100dvh-9rem))] lg:max-h-none lg:w-[26rem] lg:flex-none lg:shadow-none"
+              className={`absolute inset-x-2 bottom-2 z-[1001] flex max-h-[62%] flex-col overflow-hidden rounded-2xl border-2 border-line-strong bg-card shadow-lg lg:static lg:order-first lg:z-auto lg:max-h-none lg:w-[24rem] lg:flex-none lg:shadow-none ${fill ? "lg:h-full lg:rounded-none lg:border-y-0 lg:border-l-0" : "lg:h-[max(36rem,calc(100dvh-9rem))]"}`}
             >
               <div className="flex justify-end border-b border-line px-2 py-1">
                 <button
@@ -90,6 +92,8 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMa
         </div>
       </div>
 
+      {/* Full screen: the notes are one small strip under the map */}
+      <div className={fill ? "flex-none border-t border-line bg-card px-3 py-1.5 text-sm empty:hidden" : "contents"}>
       {approximate > 0 && (
         <p className="m-0 text-ink-soft">
           {approximate === 1 ? "La ubicación de este punto es aproximada: marca la dirección, no necesariamente la entrada." : "Las ubicaciones son aproximadas: marcan la dirección, no necesariamente la entrada."}
@@ -106,6 +110,7 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMa
       )}
 
       {!selected && <p className="m-0 text-muted">Tocá un punto del mapa para ver el lugar. La lista tiene los mismos lugares y todas las acciones.</p>}
+      </div>
     </div>
   )
 }

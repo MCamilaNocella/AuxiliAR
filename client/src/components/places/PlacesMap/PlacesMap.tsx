@@ -10,6 +10,8 @@ type PlacesMapProps = {
   pins: MapPin[]
   selectedId: string | null
   onSelect: (placeId: string) => void
+  /** Takes the whole height of the box it is in (the full-screen map), square and without a border */
+  fill?: boolean
 }
 
 /** The head of the pin is drawn at (12, 10) with radius 8: the symbol of the category goes inside it, 11 units wide, centered (24 x 24 icons scaled by 0.46) */
@@ -59,7 +61,7 @@ const inCaba = ({ lat, lng }: { lat: number, lng: number }) => lat >= CABA_BOX.s
  *  - The list has the same places and every action, so nothing depends on this map.
  *  - Loaded on demand (this file brings Leaflet and its CSS with it).
  */
-export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps) {
+export default function PlacesMap({ pins, selectedId, onSelect, fill = false }: PlacesMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const markersRef = useRef(new Map<string, L.Marker>())
@@ -172,7 +174,7 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
       ref={containerRef}
       role="region"
       aria-label="Mapa de centros de atención. La lista tiene los mismos lugares."
-      className="places-map h-[min(70dvh,36rem)] min-h-80 w-full lg:h-[max(36rem,calc(100dvh-9rem))] overflow-hidden rounded-2xl border-2 border-line-strong"
+      className={`places-map w-full overflow-hidden ${fill ? "h-full" : "h-[min(70dvh,36rem)] min-h-80 rounded-2xl border-2 border-line-strong lg:h-[max(36rem,calc(100dvh-9rem))]"}`}
     />
   )
 }

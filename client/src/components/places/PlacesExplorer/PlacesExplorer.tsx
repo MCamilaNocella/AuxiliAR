@@ -228,12 +228,23 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         ? ""
         : `${results.length} ${results.length === 1 ? "lugar encontrado" : "lugares encontrados"}${where}`
 
-  return (
-    <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
+  // The map in full screen (like a map app): the controls go in a column at the left (on phones, a strip above the map) and the map takes the rest
+  const fullMap = map && view === "map" && results.length > 0
+  useEffect(() => {
+    if (!fullMap) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [fullMap])
+
+  const controls = (
+    <>
       {intro && <p className="m-0 text-muted">{intro}</p>}
 
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
-        <div className="lg:max-w-xl lg:flex-1">
+      <div className={`flex flex-col gap-3 ${fullMap ? "" : "lg:flex-row lg:items-end"}`}>
+        <div className={fullMap ? "" : "lg:max-w-xl lg:flex-1"}>
           <PlacesToolbar filters={NO_FILTERS} query={draft} onQueryChange={typeText} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
         </div>
         {/* Wraps: at 320 px the view switch and the filters button do not fit in one row, and the page grew wider than the screen */}
@@ -278,7 +289,11 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         {count}
       </p>
 
-      {map && view === "map" && results.length > 0 && <PlacesMapLegend entries={results} query={query} />}
+      {map && view === "map" && results.length > 0 && (
+        <div className="hidden lg:block">
+          <PlacesMapLegend entries={results} query={query} />
+        </div>
+      )}
 
       {state.status === "error" && (
         <div className="flex flex-col items-start gap-3">
@@ -357,6 +372,25 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
           )}
         </div>
       )}
+
+    </>
+  )
+
+  if (fullMap) {
+    return (
+      <div className="fixed inset-x-0 top-(--header-h) bottom-(--bottom-nav-h) z-30 flex flex-col bg-surface lg:flex-row">
+        <div className="flex max-h-[38%] flex-none flex-col gap-3 overflow-y-auto overscroll-contain border-b border-line-strong bg-card p-3 lg:max-h-none lg:w-[22rem] lg:border-r lg:border-b-0">{controls}</div>
+        <div className="min-h-0 min-w-0 flex-1">
+          <PlacesMapView entries={results} query={query} onOpen={open} onBackToList={() => changeView("list")} fill />
+        </div>
+        {activeEntry && <PlaceDetail entry={activeEntry} matchingIds={matchingIds} onClose={close} />}
+      </div>
+    )
+  }
+
+  return (
+    <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
+      {controls}
 
       {results.length > 0 && view === "list" && <PlaceList entries={results} onOpen={open} />}
       {results.length > 0 && view === "map" && <PlacesMapView entries={results} query={query} onOpen={open} onBackToList={() => changeView("list")} />}
