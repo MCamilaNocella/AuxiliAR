@@ -3,7 +3,6 @@ import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import { PendingNotice } from "@/components/health/PendingNotice"
-import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
 import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
@@ -74,7 +73,6 @@ export default function Section2Content() {
           <ActionLink to={`${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-5`} variant="primary">
             Ver el Calendario de vacunación
           </ActionLink>
-          <ActionLink to={centersLink({ filter: "vaccination" })}>Encontrar vacunatorio</ActionLink>
         </div>
       </section>
 
