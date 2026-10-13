@@ -32,7 +32,7 @@ export type PlaceFilterId =
 export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceType[] | null, onlyWithData?: true }[] = [
   { id: "all", label: "Todos", types: null },
   { id: "medical", label: "Atención médica", types: ["primary-care", "specialty-care", "ophthalmology", "diagnostic-imaging", "laboratory", "pharmacy"] },
-  { id: "mental-health", label: "Salud mental", types: ["mental-health-care", "mental-health-emergency"] },
+  { id: "mental-health", label: "Salud mental", types: ["mental-health-care", "mental-health-emergency", "wellbeing-activity"] },
   {
     id: "sexual-health",
     label: "Salud sexual",

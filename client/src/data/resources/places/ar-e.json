@@ -1,0 +1,440 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "crespo-centro-comunitario-dr-salustiano-minguillon",
+      "name": "Centro Comunitario Dr. Salustiano Minguillón",
+      "shortName": "Centro Comunitario Dr. Salustiano Minguillón",
+      "kind": "service",
+      "facilityType": "community-organization",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-E",
+        "organization": "Municipalidad de Crespo"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543434951160",
+          "display": "0343 495-1160",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "España",
+        "number": "748",
+        "locality": "Crespo",
+        "province": "AR-E"
+      },
+      "services": [
+        {
+          "id": "atencion-psicologica",
+          "type": "mental-health-care",
+          "name": "Atención psicológica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
+          "requirements": [
+            "Consultá edades y admisión."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543434951160",
+              "display": "0343 495-1160",
+              "label": "Central, interno 237"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493434050027",
+              "display": "+54 9 343 405-0027",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 237, o WhatsApp +54 9 343 405-0027."
+          },
+          "source": {
+            "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+            "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Atención psicológica» en Centro Comunitario Dr. Salustiano Minguillón."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 237, o WhatsApp +54 9 343 405-0027. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+        "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de salud mental y adicciones de Crespo: servicios, domicilio y contactos. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "crespo-nido-dr-adolfo-goldenberg",
+      "name": "NIDO Dr. Adolfo Goldenberg",
+      "shortName": "NIDO Dr. Adolfo Goldenberg",
+      "kind": "service",
+      "facilityType": "family-action-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-E",
+        "organization": "Municipalidad de Crespo"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543434951160",
+          "display": "0343 495-1160",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Mendoza",
+        "number": "855",
+        "locality": "Crespo",
+        "province": "AR-E"
+      },
+      "services": [
+        {
+          "id": "atencion-psicologica",
+          "type": "mental-health-care",
+          "name": "Atención psicológica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
+          "requirements": [
+            "Consultá edades y admisión."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543434951160",
+              "display": "0343 495-1160",
+              "label": "Central, interno 216"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493434574434",
+              "display": "+54 9 343 457-4434",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 216, o WhatsApp +54 9 343 457-4434."
+          },
+          "source": {
+            "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+            "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Atención psicológica» en NIDO Dr. Adolfo Goldenberg."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 216, o WhatsApp +54 9 343 457-4434. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "padres-en-accion",
+          "type": "mental-health-care",
+          "name": "Padres en Acción",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
+          "requirements": [
+            "Madres, padres y personas responsables de crianza."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543434951160",
+              "display": "0343 495-1160",
+              "label": "Central, interno 105"
+            }
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá con la Dirección de Desarrollo Humano (central 0343 495-1160, interno 105). Miércoles a las 14 h según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+            "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Padres en Acción» en NIDO Dr. Adolfo Goldenberg."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá con la Dirección de Desarrollo Humano (central 0343 495-1160, interno 105). Miércoles a las 14 h según la página. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "orientacion-familiar",
+          "type": "mental-health-care",
+          "name": "Orientación familiar",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
+          "requirements": [
+            "Familias."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543434951160",
+              "display": "0343 495-1160",
+              "label": "Central, interno 105"
+            }
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá con la Dirección de Desarrollo Humano (central 0343 495-1160, interno 105). Viernes en horario rotativo: confirmá la sede."
+          },
+          "source": {
+            "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+            "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Orientación familiar» en NIDO Dr. Adolfo Goldenberg."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá con la Dirección de Desarrollo Humano (central 0343 495-1160, interno 105). Viernes en horario rotativo: confirmá la sede. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+        "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de salud mental y adicciones de Crespo: servicios, domicilio y contactos. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "crespo-centro-de-salud-municipal-san-miguel",
+      "name": "Centro de Salud Municipal San Miguel",
+      "shortName": "Centro de Salud Municipal San Miguel",
+      "kind": "service",
+      "facilityType": "health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-E",
+        "organization": "Municipalidad de Crespo"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543434951160",
+          "display": "0343 495-1160",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Los Reseros y Linares Cardozo",
+        "locality": "Crespo",
+        "province": "AR-E"
+      },
+      "services": [
+        {
+          "id": "atencion-psicologica",
+          "type": "mental-health-care",
+          "name": "Atención psicológica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
+          "requirements": [
+            "Consultá edades y admisión."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543434951160",
+              "display": "0343 495-1160",
+              "label": "Central, interno 235"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493434678470",
+              "display": "+54 9 343 467-8470",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 235, o WhatsApp +54 9 343 467-8470."
+          },
+          "source": {
+            "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+            "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Atención psicológica» en Centro de Salud Municipal San Miguel."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+              "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Solicitar turno por los contactos publicados: central 0343 495-1160, interno 235, o WhatsApp +54 9 343 467-8470. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Crespo: Salud mental y adicciones",
+        "url": "https://www.crespo.gob.ar/salud-mental-y-adicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de salud mental y adicciones de Crespo: servicios, domicilio y contactos. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

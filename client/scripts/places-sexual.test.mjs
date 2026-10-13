@@ -86,7 +86,7 @@ test("condoms only where the official map has the place: 6 centers do not have i
 test("nothing about IVE/ILE or surgical contraception, and no contact of the IVE/ILE directory as the phone of a place", () => {
   for (const place of onlyBatch) {
     assert.ok(place.services.filter(isSexualBatchService).every(({ type }) => ["sexual-health-counseling", "contraception", "condoms"].includes(type)), place.id)
-    assert.ok(place.services.every(({ type }) => ["sexual-health-counseling", "contraception", "condoms", "vaccination"].includes(type)), place.id)
+    assert.ok(place.services.every(({ type }) => ["sexual-health-counseling", "contraception", "condoms", "vaccination", "mental-health-emergency"].includes(type)), place.id)
     const text = JSON.stringify(place)
     assert.ok(!/ligadura|vasectom/i.test(text), place.id)
   }
@@ -128,7 +128,7 @@ test("the symbol: a place whose services are of sexual health has its own pin, a
   const filtered = pinsOf({ filterId: "sexual-health" })
   assert.ok([...filtered.values()].every((category) => category === "esi"), "with the filter, every pin is the sexual health one")
   const unfiltered = pinsOf({})
-  for (const place of onlyBatch) assert.equal(unfiltered.get(place.id), place.services.some(({ type }) => type === "vaccination") ? "salud-fisica" : "esi", `${place.id}: Salud general when it also has a vaccination point, the sexual health symbol when it has only those services`)
+  for (const place of onlyBatch) assert.equal(unfiltered.get(place.id), place.services.some(({ type }) => type === "vaccination") ? "salud-fisica" : place.services.some(({ type }) => type === "mental-health-emergency") ? "salud-mental" : "esi", `${place.id}: Salud general with a vaccination point, Salud mental with a guardia, the sexual health symbol with only these services`)
   for (const id of ["cesac-3", "cesac-41", "hospital-general-de-ninos-pedro-de-elizalde"]) assert.equal(unfiltered.get(id), "salud-fisica", `${id} has general services too`)
   for (const id of ["cesac-3", "cesac-41", "hospital-general-de-ninos-pedro-de-elizalde"]) assert.equal(filtered.get(id), "esi", `${id} with the filter on`)
 })
@@ -136,6 +136,7 @@ test("the symbol: a place whose services are of sexual health has its own pin, a
 test("a search for sexual health finds the batch, and the sector of a boca (Salud Mental, Infectología) does not make a hospital a mental health result", () => {
   assert.ok(shown({ text: "anticonceptivos" }).length >= 44)
   assert.ok(shown({ text: "preservativos gratis" }).length >= 38)
-  assert.deepEqual(shown({ filterId: "mental-health" }).map(({ place }) => place.id).filter((id) => id.startsWith("hospital-d") || id.startsWith("hospital-r")), [])
-  assert.ok(!shown({ text: "salud mental" }).some(({ place }) => ["hospital-durand", "hospital-rivadavia"].includes(place.id)))
+  // since the report of 12/10/2026 Durand and Rivadavia do have a guardia de salud mental: they are a mental health result for that service, not for the sector of their condoms' boca
+  const durand = shown({ filterId: "mental-health" }).find(({ place }) => place.id === "hospital-durand")
+  assert.deepEqual(places.matchingServices(durand, { ...EMPTY, filterId: "mental-health" }).map(({ id }) => id), ["guardia-de-salud-mental"])
 })

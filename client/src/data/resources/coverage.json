@@ -2,6 +2,25 @@
   "schemaVersion": 2,
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
+    "AR-A": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
     "AR-B": {
       "places": 3,
       "currentUntil": "2026-11-12",
@@ -34,7 +53,7 @@
       }
     },
     "AR-C": {
-      "places": 68,
+      "places": 94,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -52,6 +71,7 @@
         "ive-ile-care",
         "laboratory",
         "mental-health-care",
+        "mental-health-emergency",
         "pharmacy",
         "pregnancy-care",
         "primary-care",
@@ -62,6 +82,7 @@
         "specialty-care",
         "sti-testing-care",
         "vaccination",
+        "wellbeing-activity",
         "zoonosis"
       ],
       "divisions": [
@@ -89,6 +110,10 @@
           "list": "2027-01-05",
           "map": "2027-01-05"
         },
+        "mental-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
         "sexual-health": {
           "list": "2026-11-12",
           "map": "2026-11-12"
@@ -107,13 +132,34 @@
         }
       }
     },
-    "AR-F": {
-      "places": 1,
+    "AR-E": {
+      "places": 3,
       "currentUntil": "2026-11-12",
       "categories": [
-        "salud-fisica"
+        "salud-mental"
       ],
       "serviceTypes": [
+        "mental-health-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-F": {
+      "places": 5,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care",
         "specialty-care"
       ],
       "divisions": [
@@ -127,6 +173,9 @@
         "medical": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
         }
       }
     },
@@ -174,21 +223,26 @@
       }
     },
     "AR-S": {
-      "places": 5,
+      "places": 6,
       "currentUntil": "2026-11-12",
       "categories": [
-        "animales"
+        "animales",
+        "salud-mental"
       ],
       "serviceTypes": [
         "rabies-vaccination",
         "spaying-neutering",
-        "veterinary-care"
+        "veterinary-care",
+        "wellbeing-activity"
       ],
       "divisions": [],
       "quickFilters": {
         "all": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
         },
         "animal-health": {
           "list": "2026-11-12",
@@ -242,15 +296,18 @@
       }
     },
     "AR-X": {
-      "places": 4,
+      "places": 16,
       "currentUntil": "2026-11-12",
       "categories": [
         "animales",
-        "salud-fisica"
+        "salud-fisica",
+        "salud-mental"
       ],
       "serviceTypes": [
+        "mental-health-care",
         "spaying-neutering",
-        "specialty-care"
+        "specialty-care",
+        "wellbeing-activity"
       ],
       "divisions": [
         "Capital"
@@ -263,6 +320,9 @@
         "medical": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
         },
         "animal-health": {
           "list": "2026-11-12",

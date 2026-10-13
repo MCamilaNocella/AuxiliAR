@@ -10,7 +10,7 @@ Descarga: 2026-10-07 (actualizado por el publicador el 2026-10-02), sha256 00576
 - T1 (todo en orden): 26 · T2 (necesitan revisión): 10 · T3 (bloqueados): 0
 - Con coordenadas utilizables: 36
 - **Publicables hoy: 0** (necesitan al menos una prestación con mapeo aprobado y tipo de establecimiento aprobado)
-- Ya publicados / enlazados: 23 · parecidos a uno publicado: 0
+- Ya publicados / enlazados: 27 · parecidos a uno publicado: 0
 
 ## Avisos (cuentan para el tier)
 
@@ -46,8 +46,12 @@ No hay una descarga anterior con la que comparar.
 | lugar | campo | publicado | la fuente dice |
 |---|---|---|---|
 | hospital-de-pediatria-dr-j-garrahan | contacts | 541141226002, 5491163979781 | sin publicar: 4941-8772, 4942-7475, 4941-8702 |
+| hospital-alvear | contacts | null | sin publicar: 4521-0273, 4521-5555 |
 | hospital-especializado-de-infecciosas-f-muniz | contacts | null | sin publicar: 4304-2180, 4306-7855, 4304-5555, 4304-3380 |
 | hospital-oftalmologico-santa-lucia | contacts | 541141273100 | sin publicar: 4941-5555, 4941-8081 |
+| hospital-moyano | contacts | null | sin publicar: 4301-3655, 4301-4522 |
+| hospital-borda | contacts | null | sin publicar: 4305-6485, 4305-6666 |
+| hospital-tobar | contacts | null | sin publicar: 4305-6108, 4304-6666 |
 | hospital-sarda | coordinates | -34.634822, -58.402539 | -34.6348549, -58.4027533 |
 | hospital-sarda | contacts | 541149433567 | sin publicar: 4943-4250 |
 | hospital-odontologia-carrillo | contacts | 541148055521 | sin publicar: 4805-6407 |
@@ -86,7 +90,7 @@ No hay una descarga anterior con la que comparar.
 | clave | id | tier | enlace | avisos | publicable |
 |---|---|---|---|---|---|
 | hospital-de-pediatria-dr-j-garrahan | hospital-de-pediatria-dr-j-garrahan | T1 | enlazado (hospital-de-pediatria-dr-j-garrahan) | — | facility-type-not-approved, no-approved-service |
-| hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear | hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear | T1 | new | — | facility-type-not-approved, no-approved-service |
+| hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear | hospital-alvear | T1 | enlazado (hospital-alvear) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-gastroenterologia-b-udaondo | hospital-especializado-de-gastroenterologia-b-udaondo | T1 | new | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-infecciosas-f-muniz | hospital-especializado-de-infecciosas-f-muniz | T1 | enlazado (hospital-especializado-de-infecciosas-f-muniz) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-odontologia-j-duenas | hospital-odontologia-duenas | T1 | enlazado (hospital-odontologia-duenas) | — | facility-type-not-approved, no-approved-service |
@@ -95,9 +99,9 @@ No hay una descarga anterior con la que comparar.
 | hospital-especializado-de-quemados-dr-arturo-umberto-illia | hospital-especializado-de-quemados-dr-arturo-umberto-illia | T2 | new | address-street-inverted | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-rehabilitacion-m-rocca | hospital-especializado-de-rehabilitacion-m-rocca | T1 | new | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-rehabilitacion-respiratoria-maria-ferrer | hospital-especializado-de-rehabilitacion-respiratoria-maria-ferrer | T1 | new | — | facility-type-not-approved, no-approved-service |
-| hospital-especializado-de-salud-mental-braulio-moyano | hospital-especializado-de-salud-mental-braulio-moyano | T1 | new | — | facility-type-not-approved, no-approved-service |
-| hospital-especializado-de-salud-mental-j-borda | hospital-especializado-de-salud-mental-j-borda | T2 | new | address-street-inverted | facility-type-not-approved, no-approved-service |
-| hospital-especializado-infanto-juvenil-c-tobar-garcia | hospital-especializado-infanto-juvenil-c-tobar-garcia | T2 | new | address-street-inverted | facility-type-not-approved, no-approved-service |
+| hospital-especializado-de-salud-mental-braulio-moyano | hospital-moyano | T1 | enlazado (hospital-moyano) | — | facility-type-not-approved, no-approved-service |
+| hospital-especializado-de-salud-mental-j-borda | hospital-borda | T2 | enlazado (hospital-borda) | address-street-inverted | facility-type-not-approved, no-approved-service |
+| hospital-especializado-infanto-juvenil-c-tobar-garcia | hospital-tobar | T2 | enlazado (hospital-tobar) | address-street-inverted | facility-type-not-approved, no-approved-service |
 | hospital-especializado-materno-infantil-r-sarda | hospital-sarda | T2 | enlazado (hospital-sarda) | address-street-inverted | facility-type-not-approved, no-approved-service |
 | hospital-especializado-odontologico-dr-r-carrillo-ex-nacional | hospital-odontologia-carrillo | T1 | enlazado (hospital-odontologia-carrillo) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-oftalmologico-dr-p-lagleyze | hospital-especializado-oftalmologico-dr-p-lagleyze | T2 | new | address-street-inverted | facility-type-not-approved, no-approved-service |

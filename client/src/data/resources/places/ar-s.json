@@ -1410,6 +1410,389 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
       }
+    },
+    {
+      "id": "rosario-hospital-carrasco",
+      "name": "Laboratorio Cultural Carrasco - Hospital Intendente Carrasco",
+      "shortName": "Laboratorio Cultural Carrasco",
+      "kind": "service",
+      "facilityType": "other",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Rosario"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543413924666",
+          "display": "0341 392-4666",
+          "label": "Teléfono (interno 228)"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5493416247294",
+          "display": "341 624-7294",
+          "label": "WhatsApp"
+        }
+      ],
+      "address": {
+        "street": "Bv. Avellaneda",
+        "number": "1402",
+        "locality": "Rosario",
+        "province": "AR-S",
+        "reference": "Ingreso por Avellaneda y 9 de Julio. Correo: labcultcarrasco@rosario.gob.ar."
+      },
+      "services": [
+        {
+          "id": "yoga-a",
+          "type": "wellbeing-activity",
+          "name": "Yoga A (pacientes de la red municipal)",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "requirements": [
+            "Mayores de 16 años, solo pacientes del Hospital Carrasco y de los centros de salud municipales.",
+            "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
+            "Certificado de salud."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543413924666",
+              "display": "0341 392-4666",
+              "label": "Teléfono (interno 228)"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493416247294",
+              "display": "341 624-7294",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Miércoles a las 8:30 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+            "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+            "retrievedAt": "2026-10-12",
+            "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Yoga A (pacientes de la red municipal)» en Laboratorio Cultural Carrasco - Hospital Intendente Carrasco."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Miércoles a las 8:30 h. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "yoga-b",
+          "type": "wellbeing-activity",
+          "name": "Yoga B (quienes no son pacientes de la red)",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "requirements": [
+            "Mayores de 16 años que no sean pacientes del Hospital Carrasco ni de los centros municipales.",
+            "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
+            "Certificado de salud."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543413924666",
+              "display": "0341 392-4666",
+              "label": "Teléfono (interno 228)"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493416247294",
+              "display": "341 624-7294",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Miércoles a las 10 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+            "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+            "retrievedAt": "2026-10-12",
+            "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Yoga B (quienes no son pacientes de la red)» en Laboratorio Cultural Carrasco - Hospital Intendente Carrasco."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Miércoles a las 10 h. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "tai-chi-chi-kung",
+          "type": "wellbeing-activity",
+          "name": "Tai Chi / Chi Kung",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "requirements": [
+            "Mayores de 16 años.",
+            "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
+            "Certificado de salud."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543413924666",
+              "display": "0341 392-4666",
+              "label": "Teléfono (interno 228)"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493416247294",
+              "display": "341 624-7294",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Martes a las 10:30 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+            "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+            "retrievedAt": "2026-10-12",
+            "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Tai Chi / Chi Kung» en Laboratorio Cultural Carrasco - Hospital Intendente Carrasco."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Martes a las 10:30 h. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "biodanza",
+          "type": "wellbeing-activity",
+          "name": "Biodanza",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "requirements": [
+            "Mayores de 16 años.",
+            "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
+            "Certificado de salud."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543413924666",
+              "display": "0341 392-4666",
+              "label": "Teléfono (interno 228)"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493416247294",
+              "display": "341 624-7294",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Martes a las 14 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+            "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+            "retrievedAt": "2026-10-12",
+            "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Biodanza» en Laboratorio Cultural Carrasco - Hospital Intendente Carrasco."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Martes a las 14 h. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "fogones-de-palabras",
+          "type": "wellbeing-activity",
+          "name": "Fogones de Palabras",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "requirements": [
+            "Mayores de 16 años.",
+            "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
+            "Consultá la inclusión y los cupos."
+          ],
+          "contacts": [
+            {
+              "type": "phone",
+              "dial": "+543413924666",
+              "display": "0341 392-4666",
+              "label": "Teléfono (interno 228)"
+            },
+            {
+              "type": "whatsapp",
+              "dial": "+5493416247294",
+              "display": "341 624-7294",
+              "label": "WhatsApp"
+            }
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Tercer miércoles de cada mes a las 10 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+            "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+            "retrievedAt": "2026-10-12",
+            "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Fogones de Palabras» en Laboratorio Cultural Carrasco - Hospital Intendente Carrasco."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+              "url": "https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco",
+              "retrievedAt": "2026-10-12",
+              "note": "Preinscripción por el formulario del Laboratorio (https://www.rosario.gob.ar/inicio/webform/preinscripcion_lab_carrasco) y confirmación de cupo. Tercer miércoles de cada mes a las 10 h. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Rosario: Laboratorio Cultural Carrasco",
+        "url": "https://www.rosario.gob.ar/inicio/laboratorio-cultural-carrasco",
+        "retrievedAt": "2026-10-12",
+        "note": "Página municipal del Laboratorio Cultural Carrasco: actividades, requisitos e inscripción. Son actividades de bienestar, no psicoterapia. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
     }
   ]
 }

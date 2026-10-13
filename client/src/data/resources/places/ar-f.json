@@ -102,6 +102,385 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Domicilio sin número: se publica así («s/n»)."
       }
+    },
+    {
+      "id": "la-rioja-centro-de-dia-comunitario-infantil",
+      "name": "Centro de Día Comunitario Infantil",
+      "shortName": "Centro de Día Comunitario Infantil",
+      "kind": "service",
+      "facilityType": "day-center",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-F",
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+5493804250599",
+          "display": "0380 15-425-0599",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Calle El Chacho",
+        "number": "s/n",
+        "neighborhood": "Barrio Hospital",
+        "locality": "La Rioja",
+        "province": "AR-F"
+      },
+      "services": [
+        {
+          "id": "acompanamiento-psicosocial",
+          "type": "mental-health-care",
+          "name": "Acompañamiento y tratamiento psicosocial",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
+          "requirements": [
+            "Niñas, niños y adolescentes de 3 a 14 años y 11 meses.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios."
+          },
+          "source": {
+            "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+            "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Acompañamiento y tratamiento psicosocial» en Centro de Día Comunitario Infantil."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+        "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Directorio provincial de salud mental y adicciones de La Rioja: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente. San Agustín y DTC Solar no se cargan: publican la misma esquina con grafías distintas y falta confirmar si comparten edificio."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "la-rioja-hospital-de-dia-en-adicciones",
+      "name": "Hospital de Día en Adicciones",
+      "shortName": "Hospital de Día en Adicciones",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-F",
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+5493804250602",
+          "display": "0380 15-425-0602",
+          "label": "Teléfono del dispositivo"
+        },
+        {
+          "type": "phone",
+          "dial": "+543804439439",
+          "display": "0380 443-9439",
+          "label": "Teléfono fijo"
+        }
+      ],
+      "address": {
+        "street": "Dalmacio Vélez y Adolfo E. Dávila 416",
+        "locality": "La Rioja",
+        "province": "AR-F"
+      },
+      "services": [
+        {
+          "id": "orientacion-y-tratamiento-ambulatorio",
+          "type": "mental-health-care",
+          "name": "Orientación y tratamiento ambulatorio",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
+          "requirements": [
+            "Mayores de 14 años con consumos problemáticos.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios."
+          },
+          "source": {
+            "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+            "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Orientación y tratamiento ambulatorio» en Hospital de Día en Adicciones."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+        "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Directorio provincial de salud mental y adicciones de La Rioja: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente. San Agustín y DTC Solar no se cargan: publican la misma esquina con grafías distintas y falta confirmar si comparten edificio."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "la-rioja-dispositivo-asistencial-en-socioadicciones",
+      "name": "Dispositivo Asistencial en Socioadicciones",
+      "shortName": "Dispositivo Asistencial en Socioadicciones",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-F",
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+5493804250601",
+          "display": "3804 15-425-0601",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Santa Fe",
+        "number": "1199",
+        "locality": "La Rioja",
+        "reference": "Esquina Coronel Lagos.",
+        "province": "AR-F"
+      },
+      "services": [
+        {
+          "id": "atencion-socioadicciones",
+          "type": "mental-health-care",
+          "name": "Atención y acompañamiento por socioadicciones",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
+          "requirements": [
+            "Personas con socioadicciones (juego, tecnología, trabajo, etc.).",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios."
+          },
+          "source": {
+            "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+            "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Atención y acompañamiento por socioadicciones» en Dispositivo Asistencial en Socioadicciones."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+        "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Directorio provincial de salud mental y adicciones de La Rioja: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente. San Agustín y DTC Solar no se cargan: publican la misma esquina con grafías distintas y falta confirmar si comparten edificio."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "la-rioja-centro-terapeutico-munay",
+      "name": "Centro Terapéutico Munay",
+      "shortName": "Centro Terapéutico Munay",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-F",
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543825660191",
+          "display": "03825 66-0191",
+          "label": "Teléfono del centro"
+        }
+      ],
+      "address": {
+        "street": "Calle Principal",
+        "number": "s/n",
+        "neighborhood": "San Lorenzo",
+        "locality": "Chilecito",
+        "province": "AR-F"
+      },
+      "services": [
+        {
+          "id": "orientacion-y-tratamiento-ambulatorio",
+          "type": "mental-health-care",
+          "name": "Orientación y tratamiento ambulatorio",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
+          "requirements": [
+            "Personas con consumos problemáticos; consultá la admisión."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios."
+          },
+          "source": {
+            "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+            "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Orientación y tratamiento ambulatorio» en Centro Terapéutico Munay."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+              "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad por teléfono: la fuente no explica turnos ni horarios. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de La Rioja: Salud mental y adicciones",
+        "url": "https://larioja.gob.ar/salud/saludmentalyadicciones/",
+        "retrievedAt": "2026-10-12",
+        "note": "Directorio provincial de salud mental y adicciones de La Rioja: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente. San Agustín y DTC Solar no se cargan: publican la misma esquina con grafías distintas y falta confirmar si comparten edificio."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
     }
   ]
 }

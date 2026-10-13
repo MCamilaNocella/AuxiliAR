@@ -6,6 +6,7 @@
  */
 import assert from "node:assert/strict"
 import { readdirSync, readFileSync } from "node:fs"
+import { isBatchService } from "./places-sexual-batch.mjs"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
@@ -134,9 +135,10 @@ test("the pages of the topics have no block of sources, no note of verification 
 test("the sources of the map's establishments and of the first aid guides are here, with their dates, and the panels only point here", () => {
   const places = about.REFERENCE_GROUPS.find(({ id }) => id === "centros-mapa")
   // the places the map shows (those with a service of documented gratuity): the hidden one is not listed
-  // the 57 places of the batches of 12/10/2026 (44 of sexual health, 13 of the page of vacunatorios) are listed too: they are the ones whose services are all of a batch
-  const batch = JSON.parse(readFileSync(new URL("../src/data/resources/places/ar-c.json", import.meta.url), "utf8")).resources.filter(({ services }) => services.every(({ id, verification }) => ["consejeria-salud-sexual", "metodos-anticonceptivos", "preservativos", "vacunacion"].includes(id) && verification?.verifiedAt === "2026-10-12")).map(({ id }) => `centro-${id}`)
-  assert.equal(batch.length, 57)
+  // the places of the batches of 12/10/2026 (sexual health, the page of vacunatorios and the mental health report) are listed too: they are the ones whose services are all of a batch
+  const placesDirB = new URL("../src/data/resources/places/", import.meta.url)
+  const batch = readdirSync(placesDirB).flatMap((name) => JSON.parse(readFileSync(new URL(name, placesDirB), "utf8")).resources).filter(({ services }) => services.every(isBatchService)).map(({ id }) => `centro-${id}`)
+  assert.equal(batch.length, 104, "57 of sexual health and vaccination, and the 47 of the mental health report")
   // the free veterinary places of the report of 13/10/2026 (every province file) are listed too
   const placesDir = new URL("../src/data/resources/places/", import.meta.url)
   const vet = readdirSync(placesDir).flatMap((name) => JSON.parse(readFileSync(new URL(name, placesDir), "utf8")).resources).filter((place) => place.verification?.verifiedAt === "2026-10-13").map(({ id }) => `centro-${id}`)

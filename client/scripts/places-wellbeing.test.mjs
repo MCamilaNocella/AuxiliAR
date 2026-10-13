@@ -66,7 +66,7 @@ test("the two filters group exactly the new service types, all of Salud general"
 test("'Atención médica' and the other filters are exactly as they were", () => {
   const expected = {
     medical: ["primary-care", "specialty-care", "ophthalmology", "diagnostic-imaging", "laboratory", "pharmacy"],
-    "mental-health": ["mental-health-care", "mental-health-emergency"],
+    "mental-health": ["mental-health-care", "mental-health-emergency", "wellbeing-activity"],
     "sexual-health": ["sexual-reproductive-health", "contraception", "emergency-contraception", "condoms", "pregnancy-care", "sti-testing-care", "ive-ile-care", "sexual-health-counseling"],
     vaccination: ["vaccination"],
     dentistry: ["dentistry"],

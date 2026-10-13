@@ -13,7 +13,10 @@ export const isSexualBatchService = (service) => SEXUAL_SERVICE_IDS.has(service.
 /** A vaccination service of the batch of the page of vacunatorios (CeSAC 3, 41 and 47 had their own before it) */
 export const isVaccinationBatchService = (service) => service.id === "vacunacion" && service.verification?.verifiedAt === BATCH_DAY
 
-export const isBatchService = (service) => isSexualBatchService(service) || isVaccinationBatchService(service)
+/** A mental health or wellbeing service of the batch of the report of 12/10/2026 (guardias, Estaciones Saludables, yoga, red municipal...; tested in places-mental.test.mjs) */
+export const isMentalBatchService = (service) => ["mental-health-emergency", "wellbeing-activity", "mental-health-care"].includes(service.type) && service.verification?.verifiedAt === BATCH_DAY
+
+export const isBatchService = (service) => isSexualBatchService(service) || isVaccinationBatchService(service) || isMentalBatchService(service)
 
 /** The places of the batch of free veterinary centres (13/10/2026, tested in places-veterinary.test.mjs) */
 export const isVeterinaryBatchPlace = (place) => place.verification?.verifiedAt === "2026-10-13"

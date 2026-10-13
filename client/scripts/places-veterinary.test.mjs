@@ -42,7 +42,7 @@ test("15 places in 8 jurisdictions, one file each, apart from the Costanera Sur 
 
 test("what the report leaves out is not loaded: urgencias, conditioned gratuity, temporary operativos, Salta, the tarifed microchip", () => {
   const ids = Object.values(files).flat().map(({ id }) => id).join(" ")
-  for (const left of ["hospital-municipal-de-salud-animal", "gimnasio", "mendoza", "salta", "godoy", "neuquen", "trelew", "vecinal"]) assert.ok(!new RegExp(left, "i").test(ids), left)
+  for (const left of ["hospital-municipal-de-salud-animal", "gimnasio", "mendoza", "salud-animal-de-salta", "godoy", "neuquen", "trelew", "vecinal"]) assert.ok(!new RegExp(left, "i").test(ids), left)
   for (const { place } of batch) {
     for (const service of place.services) {
       assert.ok(ANIMAL_TYPES.includes(service.type), `${place.id}/${service.id}`)

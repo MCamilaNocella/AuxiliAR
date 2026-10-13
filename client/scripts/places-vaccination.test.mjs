@@ -27,7 +27,8 @@ const PAGE = "https://buenosaires.gob.ar/gcaba_historico/lugares-y-horarios-de-v
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, getMapPins } = places
 
 const withVaccination = file.filter(({ services }) => services.some(isVaccinationBatchService))
-const newOnes = withVaccination.filter(({ services }) => services.every(isBatchService) && !services.some(({ id }) => id !== "vacunacion"))
+const NEW_IDS = ["cesac-2", "cesac-21", "cesac-24", "cesac-27", "cesac-29", "cesac-31", "cesac-37", "cesac-46", "cesac-50", "cesac-7", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-d-velez-sarsfield", "hospital-general-de-agudos-j-a-penna"]
+const newOnes = withVaccination.filter(({ id }) => NEW_IDS.includes(id))
 const vaccinationOf = (id) => file.find((place) => place.id === id).services.find(({ id: serviceId }) => serviceId === "vacunacion")
 
 test("55 places have the vaccination point of the page: 42 that were already there for sexual health, 13 new ones, and 3 that had their own are kept", () => {
@@ -106,7 +107,9 @@ test("the new places come from the official datasets: point, comuna and link to 
     assert.ok(place.address.department?.startsWith("Comuna "), place.id)
     assert.equal(Object.keys(place.externalIds).length, 1, place.id)
     assert.deepEqual(place.contacts, [], `${place.id}: the dataset's phones are not published`)
-    assert.equal(place.services.length, 1, place.id)
+    assert.equal(place.services.filter(isVaccinationBatchService).length, 1, place.id)
+    // Muñiz and Penna have, besides, their guardia de salud mental (report of 12/10/2026)
+    assert.ok(place.services.length === 1 || place.services.length === 2, place.id)
   }
 })
 

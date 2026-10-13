@@ -3,7 +3,7 @@
 Una única fuente de verdad para los recursos de ayuda de AuxiliAR: líneas telefónicas hoy y, más adelante, hospitales, centros y otros servicios. De acá van a leer las categorías, el buscador, los mapas, Auxi y los botones de llamada.
 
 > **Estado (verificación del 11/10/2026):** hay datos cargados y la app los usa.
-> - **Mapa (`places/`):** **86 establecimientos con 272 servicios registrados**: 68 de la Ciudad de Buenos Aires (`places/ar-c.json`) y 18 de otras provincias (`ar-b`, `ar-f`, `ar-n`, `ar-r`, `ar-s`, `ar-t`, `ar-v` y `ar-x`). **248 de esos 272 servicios están visibles** para las personas según la verificación actual: son los que tienen la gratuidad documentada para esa prestación y siguen vigentes. Los otros 24 se conservan en los datos para investigaciones futuras, pero no se muestran. Todo esto cambia con la fecha: la prestación del Centro Fijo Veterinario Costanera Sur vence el 8/11/2026, la del Hospital Garrahan el 10/11/2026 y las demás el 5/1/2027.
+> - **Mapa (`places/`):** **133 establecimientos con 339 servicios registrados**: 94 de la Ciudad de Buenos Aires (`places/ar-c.json`) y 39 de otras provincias (`ar-a`, `ar-b`, `ar-e`, `ar-f`, `ar-n`, `ar-r`, `ar-s`, `ar-t`, `ar-v` y `ar-x`). **315 de esos 339 servicios están visibles** para las personas según la verificación actual: son los que tienen la gratuidad documentada para esa prestación y siguen vigentes. Los otros 24 se conservan en los datos para investigaciones futuras, pero no se muestran. Todo esto cambia con la fecha: la prestación del Centro Fijo Veterinario Costanera Sur vence el 8/11/2026, la del Hospital Garrahan el 10/11/2026 y las demás el 5/1/2027.
 > - **Líneas de ayuda (`lines/`):** 14 líneas en `lines/nacional.json`, que son la fuente única de los números (barra de emergencias, chat y botones de llamada; ver más abajo).
 > - **Quién lee estos datos:** el mapa de Centros de atención y los botones de llamada. Un inventario fila por fila del mapa y una explicación de sus reglas están en `docs/investigacion/inventario-mapa-servicios.csv` y `docs/investigacion/estructura-del-mapa-y-reglas-de-inclusion.md`.
 >
@@ -20,7 +20,7 @@ client/src/data/resources/        ← LO ÚNICO QUE SE EDITA
   index.ts                        cómo lo lee la app (consultas)
   lines/*.json                    líneas telefónicas (hoy: nacional.json, con 14 líneas). Van siempre en el build
   places/<provincia>.json         establecimientos, un archivo por provincia (ar-c.json, ar-b.json…). Se cargan bajo demanda
-                                  (hoy: 86 establecimientos y 272 servicios; 248 servicios visibles)
+                                  (hoy: 133 establecimientos y 339 servicios; 315 servicios visibles)
 
 client/scripts/resources-sync.mjs        valida y genera la copia del servidor
 client/scripts/resources-validate.mjs    las reglas de validación

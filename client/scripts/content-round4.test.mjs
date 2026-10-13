@@ -206,10 +206,10 @@ test("VideoEmbed is used only by the first aid guide (and only with an approved 
 
 /* ── 5. README of the data ── */
 
-test("the README of the data says what there is today: 86 establishments, 272 services, 248 visible, and no longer says there is no data", () => {
+test("the README of the data says what there is today: 133 establishments, 339 services, 315 visible, and no longer says there is no data", () => {
   const readme = read("src/data/resources/README.md")
-  assert.ok(readme.includes("86 establecimientos con 272 servicios registrados"))
-  assert.ok(readme.includes("248 de esos 272 servicios están visibles"))
+  assert.ok(readme.includes("133 establecimientos con 339 servicios registrados"))
+  assert.ok(readme.includes("315 de esos 339 servicios están visibles"))
   assert.ok(!/todavía no hay datos cargados\*\* y/.test(readme))
   assert.ok(!readme.includes("(hoy no hay ninguno)") && !readme.includes("nacional.json, vacío"))
   assert.ok(readme.includes("14 líneas"))

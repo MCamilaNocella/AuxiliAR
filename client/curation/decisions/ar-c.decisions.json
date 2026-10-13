@@ -739,6 +739,42 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-13",
       "reason": "Se carga a mano el Instituto de Zoonosis Luis Pasteur con el informe de atención veterinaria pública y gratuita (13/10/2026): servicios y gratuidad de las páginas oficiales del Instituto. El punto, el barrio y la comuna salen del dataset oficial de Hospitales (reproyección EPSG:9498 → WGS84) y coinciden con el mapa oficial de programas de salud en hospitales. El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear",
+      "resourceId": "hospital-alvear",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano la guardia de salud mental de la página oficial de guardias hospitalarias (informe de salud mental y bienestar, 12/10/2026): el lugar se enlaza con su registro del dataset oficial de Hospitales; el punto, el barrio y la comuna salen del dataset (reproyección EPSG:9498 → WGS84) y se cotejaron con el punto del informe (a menos de 300 m). El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-salud-mental-j-borda",
+      "resourceId": "hospital-borda",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano la guardia de salud mental de la página oficial de guardias hospitalarias (informe de salud mental y bienestar, 12/10/2026): el lugar se enlaza con su registro del dataset oficial de Hospitales; el punto, el barrio y la comuna salen del dataset (reproyección EPSG:9498 → WGS84) y se cotejaron con el punto del informe (a menos de 300 m). El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-salud-mental-braulio-moyano",
+      "resourceId": "hospital-moyano",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano la guardia de salud mental de la página oficial de guardias hospitalarias (informe de salud mental y bienestar, 12/10/2026): el lugar se enlaza con su registro del dataset oficial de Hospitales; el punto, el barrio y la comuna salen del dataset (reproyección EPSG:9498 → WGS84) y se cotejaron con el punto del informe (a menos de 300 m). El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-infanto-juvenil-c-tobar-garcia",
+      "resourceId": "hospital-tobar",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano la guardia de salud mental de la página oficial de guardias hospitalarias (informe de salud mental y bienestar, 12/10/2026): el lugar se enlaza con su registro del dataset oficial de Hospitales; el punto, el barrio y la comuna salen del dataset (reproyección EPSG:9498 → WGS84) y se cotejaron con el punto del informe (a menos de 300 m). El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»."
     }
   ]
 }

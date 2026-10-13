@@ -67,7 +67,7 @@ test("service types: the new ones are there, counseling was renamed, and a type 
   for (const id of ["laboratory", "diagnostic-imaging", "specialty-care", "pharmacy"]) assert.deepEqual(types[id], ["salud-fisica"], id)
   for (const id of ["pregnancy-care", "sti-testing-care", "emergency-contraception", "ive-ile-care", "sexual-health-counseling"]) assert.deepEqual(types[id], ["esi"], id)
   assert.equal(types.counseling, undefined)
-  assert.equal(taxonomy.serviceTypes.length, 27)
+  assert.equal(taxonomy.serviceTypes.length, 28)
 
   // food, nutrition and physical activity are subsections of Salud general, not categories of their own
   for (const id of ["nutrition-care", "food-assistance", "food-program-enrollment", "physical-activity"]) assert.deepEqual(types[id], ["salud-fisica"], id)

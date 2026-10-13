@@ -411,12 +411,12 @@ test("GOLDEN hospitals: the three hospitals of the first batch are linked and th
 
 test("the places published by the pipeline are exactly the 6 of the first batch (plus the hand-made veterinary centre, the Hospital Garrahan and the Elizalde); nothing new was imported", () => {
   assert.deepEqual(published.map((r) => r.id), ["cesac-3", "cesac-41", "cesac-47", "hospital-oftalmologico-santa-lucia", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "centro-fijo-veterinario-costanera-sur", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde"])
-  assert.equal(publishedAll.length, 68, "plus the 44 of the sexual health batch the 13 of the page of vacunatorios and the Indoamericano and the Pasteur of the veterinary report, also loaded by hand and each linked to its record")
-  // the veterinary centre is hand-made from the Animales BA page: it is in no official dataset, so it has no externalIds
-  for (const place of publishedAll.filter(({ facilityType }) => facilityType !== "public-veterinary")) assert.equal(Object.keys(place.externalIds).length, 1)
+  assert.equal(publishedAll.length, 94, "plus the 44 of the sexual health batch the 13 of the page of vacunatorios and the Indoamericano and the Pasteur of the veterinary report and the 26 of the mental health report, also loaded by hand and each linked to its record")
+  // the veterinary centres, the Estaciones Saludables and the Plazas Activas yoga are in no official dataset of the pipeline, so they have no externalIds; the rest, one each
+  for (const place of publishedAll.filter((candidate) => !["public-veterinary", "health-promotion-station", "other"].includes(candidate.facilityType) || candidate.externalIds)) assert.equal(Object.keys(place.externalIds).length, 1, place.id)
   const server = JSON.parse(readFileSync(join(clientRoot, "../server/src/main/resources/data/resources.json"), "utf8"))
   // the server copy also carries the help lines (lines/): what is counted here are the places
-  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 86, "the 68 of the Ciudad and the 18 of other provinces")
+  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 133, "the 94 of the Ciudad and the 39 of other provinces")
 })
 
 // ─── Publish: protection of manual curation ───────────────────────────────────────────────────────
@@ -599,7 +599,7 @@ test("serialization: untouched places keep their exact text; a link adds one lin
   const relinked = serializePlacesPreserving(originalWithout, unlinked, publishedAll)
   assert.equal(relinked, text.replace(/\r\n/g, "\n"), "volver a enlazar reproduce el archivo línea por línea")
   const added = serializePlacesPreserving(text, publishedAll, [...publishedAll, { ...structuredClone(publishedAll[0]), id: "cesac-999", externalIds: { "caba-cesac": "999" } }])
-  assert.equal(JSON.parse(added).resources.length, 69)
+  assert.equal(JSON.parse(added).resources.length, 95)
   assert.ok(added.startsWith(text.replace(/\r\n/g, "\n").slice(0, text.replace(/\r\n/g, "\n").indexOf('      "aliases": ["CeSAC 47", "Retiro 3"') )))
 })
 

@@ -95,6 +95,7 @@ export type ServiceType =
   | "physical-activity"
   | "mental-health-care"
   | "mental-health-emergency"
+  | "wellbeing-activity"
   | "sexual-reproductive-health"
   | "contraception"
   | "condoms"

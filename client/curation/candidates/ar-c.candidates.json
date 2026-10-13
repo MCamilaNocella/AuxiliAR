@@ -19241,7 +19241,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear",
+      "id": "hospital-alvear",
       "source": "caba-hospitales",
       "key": "hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear",
       "tier": "T1",
@@ -19258,7 +19258,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-alvear",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -20554,7 +20556,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-especializado-de-salud-mental-braulio-moyano",
+      "id": "hospital-moyano",
       "source": "caba-hospitales",
       "key": "hospital-especializado-de-salud-mental-braulio-moyano",
       "tier": "T1",
@@ -20571,7 +20573,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-moyano",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -20707,7 +20711,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-especializado-de-salud-mental-j-borda",
+      "id": "hospital-borda",
       "source": "caba-hospitales",
       "key": "hospital-especializado-de-salud-mental-j-borda",
       "tier": "T2",
@@ -20729,7 +20733,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-borda",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -20870,7 +20876,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-especializado-infanto-juvenil-c-tobar-garcia",
+      "id": "hospital-tobar",
       "source": "caba-hospitales",
       "key": "hospital-especializado-infanto-juvenil-c-tobar-garcia",
       "tier": "T2",
@@ -20887,7 +20893,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-tobar",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",

@@ -41,21 +41,21 @@ test("the names of the division depend on the province, and are never the neighb
 test("the provinces offered are those with a places file: the Ciudad de Buenos Aires and the provinces of the verified lists", () => {
   const files = readdirSync(join(root, "src/data/resources/places")).filter((name) => name.endsWith(".json")).map((name) => name.replace(".json", "").toUpperCase()).sort()
   assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], files)
-  assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], ["AR-B", "AR-C", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"])
+  assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], ["AR-A", "AR-B", "AR-C", "AR-E", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"])
 })
 
 test("the real places: every one has its division, apart from barrio and locality, and the divisions are comunas", async () => {
   const resources = await data.loadPlaces("AR-C")
   const day = data.todayInArgentina()
   const entries = places.selectPlaces(resources, day, places.EMPTY_PLACE_QUERY)
-  assert.equal(entries.length, 68)
+  assert.equal(entries.length, 94)
   const facets = places.getPlaceFacets(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-C" })
-  assert.deepEqual(Object.fromEntries(facets.zones.map(({ value, count }) => [value, count])), { "Comuna 1": 3, "Comuna 2": 3, "Comuna 3": 4, "Comuna 4": 16, "Comuna 5": 2, "Comuna 6": 2, "Comuna 7": 7, "Comuna 8": 10, "Comuna 9": 5, "Comuna 10": 2, "Comuna 11": 3, "Comuna 12": 4, "Comuna 14": 4, "Comuna 15": 2 })
-  assert.deepEqual(places.getPlaceFacets(resources, day, places.EMPTY_PLACE_QUERY).provinces, [{ value: "AR-C", count: 68 }])
+  assert.deepEqual(Object.fromEntries(facets.zones.map(({ value, count }) => [value, count])), { "Comuna 1": 3, "Comuna 2": 5, "Comuna 3": 6, "Comuna 4": 20, "Comuna 5": 3, "Comuna 6": 4, "Comuna 7": 9, "Comuna 8": 12, "Comuna 9": 6, "Comuna 10": 2, "Comuna 11": 4, "Comuna 12": 5, "Comuna 14": 6, "Comuna 15": 4 })
+  assert.deepEqual(places.getPlaceFacets(resources, day, places.EMPTY_PLACE_QUERY).provinces, [{ value: "AR-C", count: 94 }])
   // choosing a division returns exactly those places, and the map shows the same ones
   const inComuna4 = places.selectPlaces(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-C", zone: "Comuna 4" })
-  assert.deepEqual(inComuna4.map(({ place }) => place.id).sort(), ["cesac-1", "cesac-10", "cesac-16", "cesac-32", "cesac-35", "cesac-39", "cesac-41", "cesac-46", "cesac-8", "cesac-9", "hospital-argerich", "hospital-de-pediatria-dr-j-garrahan", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-j-a-penna", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-sarda"])
-  assert.deepEqual(places.getMapPins(inComuna4).map(({ id }) => id).sort(), ["cesac-1", "cesac-10", "cesac-16", "cesac-32", "cesac-35", "cesac-39", "cesac-41", "cesac-46", "cesac-8", "cesac-9", "hospital-argerich", "hospital-de-pediatria-dr-j-garrahan", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-j-a-penna", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-sarda"])
+  assert.deepEqual(inComuna4.map(({ place }) => place.id).sort(), ["cesac-1", "cesac-10", "cesac-16", "cesac-32", "cesac-35", "cesac-39", "cesac-41", "cesac-46", "cesac-8", "cesac-9", "estacion-saludable-parque-patricios", "hospital-argerich", "hospital-borda", "hospital-de-pediatria-dr-j-garrahan", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-j-a-penna", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-moyano", "hospital-sarda", "hospital-tobar"])
+  assert.deepEqual(places.getMapPins(inComuna4).map(({ id }) => id).sort(), ["cesac-1", "cesac-10", "cesac-16", "cesac-32", "cesac-35", "cesac-39", "cesac-41", "cesac-46", "cesac-8", "cesac-9", "estacion-saludable-parque-patricios", "hospital-argerich", "hospital-borda", "hospital-de-pediatria-dr-j-garrahan", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-j-a-penna", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-moyano", "hospital-sarda", "hospital-tobar"])
   // a division of another province, or none, is not a comuna of the Ciudad
   assert.equal(places.selectPlaces(resources, day, { ...places.EMPTY_PLACE_QUERY, province: "AR-B", zone: "Comuna 4" }).length, 0)
 })
@@ -127,7 +127,7 @@ test("the explorer reads the territory from the URL and keeps the other params, 
   const render = (url, props = {}) => renderToStaticMarkup(createElement(MemoryRouter, { initialEntries: [url] }, createElement(PlacesExplorer, { map: true, ...props })))
   const html = render("/centros?provincia=AR-C&zona=Comuna%204&vista=lista")
   assert.match(html, /aria-pressed="true"[^>]*>(?:<[^>]+>)*Lista</)
-  assert.ok(text(html).includes("16 lugares encontrados en Comuna 4"))
+  assert.ok(text(html).includes("20 lugares encontrados en Comuna 4"))
   assert.ok(html.includes('data-place-trigger="cesac-41"') && html.includes('data-place-trigger="hospital-de-pediatria-dr-j-garrahan"') && html.includes('data-place-trigger="hospital-general-de-ninos-pedro-de-elizalde"') && !html.includes('data-place-trigger="cesac-3"'))
   // a search that finds nothing says so without saying there are no services
   const none = text(render("/centros?provincia=AR-C&zona=Comuna%204&buscar=zzzz&vista=lista"))
@@ -147,7 +147,7 @@ test("the explorer reads the territory from the URL and keeps the other params, 
   // with a covered province chosen, there is no such block
   assert.ok(!text(render("/centros?provincia=AR-C&buscar=zzzz")).includes("Qué podés hacer mientras tanto"))
   // an invalid province in the URL is just ignored
-  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("85 lugares encontrados"))
+  assert.ok(text(render("/centros?provincia=XX&zona=Comuna%204")).includes("132 lugares encontrados"))
   // the links that already exist keep working
   const legacy = text(render("/centros?filtro=emergency&buscar=oftalm", { filters: ["emergency"] }))
   assert.ok(legacy.includes("Tipo: Guardias") && legacy.includes("Búsqueda: «oftalm»"))
@@ -162,7 +162,7 @@ test("the app's coverage index names the same provinces as the places files, and
   const files = readdirSync(join(root, "src/data/resources/places")).filter((name) => name.endsWith(".json")).map((name) => name.replace(".json", "").toUpperCase()).sort()
   assert.deepEqual(Object.keys(data.COVERAGE).sort(), files)
   assert.deepEqual([...data.PROVINCES_WITH_PLACE_FILES], files)
-  assert.equal(data.COVERAGE["AR-C"].places, 68)
+  assert.equal(data.COVERAGE["AR-C"].places, 94)
 })
 
 test("load plan: opening /centros downloads the covered files only, and a province asked for downloads only its own", () => {
@@ -182,7 +182,7 @@ test("load plan: opening /centros downloads the covered files only, and a provin
   // nothing to plan with an empty index
   assert.deepEqual(places.planLoad({ coverage: {}, day: DAY, province: null }), { covered: [], toLoad: [], needsProvince: false })
   // the real index, today
-  assert.deepEqual(places.planLoad({ day: DAY, province: null }), { covered: ["AR-B", "AR-C", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"], toLoad: ["AR-B", "AR-C", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"], needsProvince: false })
+  assert.deepEqual(places.planLoad({ day: DAY, province: null }), { covered: ["AR-A", "AR-B", "AR-C", "AR-E", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"], toLoad: ["AR-A", "AR-B", "AR-C", "AR-E", "AR-F", "AR-N", "AR-R", "AR-S", "AR-T", "AR-V", "AR-X"], needsProvince: false })
 })
 
 test("the explorer does not download the other provinces: it asks the plan, and never lists the files itself", async () => {
