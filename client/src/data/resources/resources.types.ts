@@ -95,6 +95,7 @@ export type ServiceType =
   | "physical-activity"
   | "mental-health-care"
   | "mental-health-emergency"
+  | "wellbeing-activity"
   | "sexual-reproductive-health"
   | "contraception"
   | "condoms"
@@ -120,6 +121,7 @@ export type CoordinateMethod =
   | "geocoded-usig"
   | "geocoded-georef"
   | "geocoded-other"
+  | "official-map-link"
   | "manual-map"
   | "gps-survey"
 

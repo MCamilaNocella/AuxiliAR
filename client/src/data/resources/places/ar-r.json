@@ -1,0 +1,167 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "sanidad-animal-sede-central-bariloche",
+      "name": "Sanidad Animal - sede central",
+      "shortName": "Sanidad Animal Bariloche",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-R",
+        "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+542944426262",
+          "display": "0294 442-6262",
+          "label": "Sanidad Animal"
+        }
+      ],
+      "address": {
+        "street": "San José",
+        "number": "130",
+        "locality": "San Carlos de Bariloche",
+        "province": "AR-R"
+      },
+      "coordinates": {
+        "lat": -41.1332393,
+        "lng": -71.2790589,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): el objeto «Veterinaria Municipal - Zoonosis - Sanidad Animal» sobre la calle San José, que es la sede de la nota municipal. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "12:00",
+                "to": "13:30"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Vacunación sin turno, de lunes a viernes de 12 a 13:30 h."
+          },
+          "source": {
+            "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+            "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+            "retrievedAt": "2026-10-13",
+            "note": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en Sanidad Animal - sede central."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "Vacunación sin turno, de lunes a viernes de 12 a 13:30 h. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se pide turno por teléfono (0294 442-6262). Los turnos de castración: consultá por teléfono."
+          },
+          "source": {
+            "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+            "url": "https://barilocheinforma.gob.ar/mas-y-mejores-servicios-gratuitos-de-sanidad-animal-para-los-vecinos-de-bariloche/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota institucional confirma la castración gratuita de Sanidad Animal. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/mas-y-mejores-servicios-gratuitos-de-sanidad-animal-para-los-vecinos-de-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "La nota institucional confirma la castración gratuita de Sanidad Animal."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Sanidad Animal - sede central."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+              "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+              "retrievedAt": "2026-10-13",
+              "note": "Se pide turno por teléfono (0294 442-6262). Los turnos de castración: consultá por teléfono. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+        "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+        "retrievedAt": "2026-10-13",
+        "note": "Notas institucionales de la Municipalidad: sede, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

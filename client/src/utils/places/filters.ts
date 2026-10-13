@@ -2,6 +2,8 @@ import taxonomy from "@/data/resources/taxonomy.json"
 import { getCurrentPlaces, getCurrentServices } from "@/data/resources"
 import type { CategoryId, ProvinceCode, ResolvedService, Resource, ServiceType } from "@/data/resources"
 import { isVerifiedFree, serviceName } from "./format"
+import { kindsOf } from "./kinds"
+import type { PlaceKindId } from "./kinds"
 import { alternativesOf, normalizeText, stemOf } from "./text"
 
 /** A place with the services that can be shown today (the verified, not expired ones) */
@@ -32,7 +34,7 @@ export type PlaceFilterId =
 export const PLACE_FILTERS: { id: PlaceFilterId, label: string, types: ServiceType[] | null, onlyWithData?: true }[] = [
   { id: "all", label: "Todos", types: null },
   { id: "medical", label: "Atención médica", types: ["primary-care", "specialty-care", "ophthalmology", "diagnostic-imaging", "laboratory", "pharmacy"] },
-  { id: "mental-health", label: "Salud mental", types: ["mental-health-care", "mental-health-emergency"] },
+  { id: "mental-health", label: "Salud mental", types: ["mental-health-care", "mental-health-emergency", "wellbeing-activity"] },
   {
     id: "sexual-health",
     label: "Salud sexual",
@@ -102,6 +104,7 @@ const matchesFilter = (service: ResolvedService, filterId: PlaceFilterId) => {
  *    data writes it in address.department; it only makes sense with a province
  *  - category: the places that have a verified service of that category (a place can be in several)
  *  - type: the places that have that service (prestación)
+ *  - kind: the kind of place (hospital, centro de salud, vacunatorio, guardia…); vacunatorio and guardia are the places whose services that answer the other criteria are of that kind
  *  - free: only services whose gratuity is verified for that very service (see isVerifiedFree); never inferred
  * Each criterion narrows the others (AND). The service criteria (filter, category, type, free) must hold for the same service.
  * "gratis", "gratuita"… typed in the search mean `free` too (see conditionsOf): the words are not looked for as free text.
@@ -113,10 +116,11 @@ export type PlaceQuery = {
   zone: string | null
   category: CategoryId | null
   type: ServiceType | null
+  kind: PlaceKindId | null
   free: boolean
 }
 
-export const EMPTY_PLACE_QUERY: PlaceQuery = { text: "", filterId: "all", province: null, zone: null, category: null, type: null, free: false }
+export const EMPTY_PLACE_QUERY: PlaceQuery = { text: "", filterId: "all", province: null, zone: null, category: null, type: null, kind: null, free: false }
 
 /** The words that ask for gratuity. They are a condition, not something a place's text says */
 const FREE_WORDS = new RegExp("(^|[^a-z])(gratis|gratuit[oa]s?|sin costo)(?![a-z])", "gi")
@@ -143,6 +147,10 @@ export const effectiveQuery = (query: PlaceQuery): PlaceQuery => {
 
 const matchesServiceCriteria = (place: Resource, service: ResolvedService, { filterId, category, type, free }: PlaceQuery) =>
   matchesFilter(service, filterId) && (!category || service.categories.includes(category)) && (!type || service.type === type) && (!free || isVerifiedFree(place, service))
+
+/** Whether the place is of that kind, looking at the services that answer the other criteria (a vacunatorio is one only through its vaccination service) */
+const matchesKind = (place: Resource, services: readonly ResolvedService[], query: PlaceQuery) =>
+  !query.kind || kindsOf(place, services.filter((service) => matchesServiceCriteria(place, service, query))).includes(query.kind)
 
 const matchesTerritory = (place: Resource, { province, zone }: PlaceQuery) =>
   (!province || place.address?.province === province) && (!zone || place.address?.department === zone)
@@ -204,6 +212,7 @@ export const selectPlaces = (places: readonly Resource[], day: string, asked: Pl
     .flatMap((place) => {
       const services = getCurrentServices(place, day).filter((service) => (!allowed || allowed.has(service.type)) && (!scope.confirmedOnly || isVerifiedFree(place, service)))
       if (!services.some((service) => matchesServiceCriteria(place, service, query))) return []
+      if (!matchesKind(place, services, query)) return []
       if (query.free && searchTerms(query.text).length > 0 && !freeServiceAnswersWords({ place, services }, query)) return []
       // Stable sort: inside each group the data's order is kept
       const sorted = [...services].sort((a, b) => Number(matchesServiceCriteria(place, b, query)) - Number(matchesServiceCriteria(place, a, query)))
@@ -241,12 +250,14 @@ export type PlaceFacets = {
   zones: PlaceFacet<string>[]
   categories: PlaceFacet<CategoryId>[]
   types: PlaceFacet<ServiceType>[]
+  /** The kinds of place of what is listed (hospitales, centros de salud, vacunatorios…), under the other criteria */
+  kinds: PlaceFacet<PlaceKindId>[]
   /** How many places have a service with verified gratuity under the other criteria (0: the filter is not offered) */
   free: number
 }
 
 /** Whether any option of the filters shows a number: the note that explains the numbers only makes sense then */
-export const hasVisibleCounts = (facets: PlaceFacets) => facets.categories.length > 0 || facets.types.length > 0 || facets.zones.length > 0 || facets.free > 0
+export const hasVisibleCounts = (facets: PlaceFacets) => facets.categories.length > 0 || facets.types.length > 0 || facets.kinds.length > 0 || facets.zones.length > 0 || facets.free > 0
 
 const tally = <T>(groups: T[][]): PlaceFacet<T>[] => {
   const counts = new Map<T, number>()
@@ -270,6 +281,7 @@ export const getPlaceFacets = (places: readonly Resource[], day: string, asked: 
   const byZone = query.province ? without({ zone: null }) : []
   const byCategory = without({ category: null })
   const byType = without({ type: null })
+  const byKind = without({ kind: null })
   const byFree = without({ free: false })
 
   return {
@@ -277,6 +289,7 @@ export const getPlaceFacets = (places: readonly Resource[], day: string, asked: 
     zones: tally(byZone.map(({ place }) => (place.address?.department ? [place.address.department] : []))),
     categories: tally(matching(byCategory, { ...query, category: null }).map((services) => services.flatMap((service) => service.categories))),
     types: tally(matching(byType, { ...query, type: null }).map((services) => services.map((service) => service.type))),
+    kinds: tally(byKind.map(({ place, services }) => kindsOf(place, services.filter((service) => matchesServiceCriteria(place, service, { ...query, kind: null }))))),
     free: byFree.filter((entry) => freeServiceAnswersWords(entry, { ...query, free: true })).length,
   }
 }

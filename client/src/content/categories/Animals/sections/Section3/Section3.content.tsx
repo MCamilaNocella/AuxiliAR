@@ -5,7 +5,7 @@ import { CremationBlock } from "../../CremationBlock"
 import { PlaceCard } from "../../PlaceCard"
 
 /**
- * Atención veterinaria · Servicios importantes (consulta clínica y urgencias, y la cremación gratuita del Instituto Pasteur). Told inside AuxiliAR from each official page (Animals.places.ts),
+ * Atención veterinaria · Recursos importantes (consulta clínica y urgencias, y la cremación gratuita del Instituto Pasteur). Told inside AuxiliAR from each official page (Animals.places.ts),
  * apart from the castración and the vacunación:
  *  - the consultorio of the Instituto Pasteur (zoonosis only, no guardia), the Hospital Municipal and the puestos of Rosario (free for those
  *    adscriptos, a bono for the rest) and the Hospital Municipal, the Centro de Adopciones and the "Guardia y urgencias" of Salta (no hours of its own)
@@ -24,11 +24,11 @@ export default function Section3Content() {
 
       <section aria-labelledby="an-how">
         <h3 id="an-how" className="m-0 text-xl font-extrabold">
-          Cómo buscar atención veterinaria gratuita
+          Cómo buscar atención veterinaria
         </h3>
         <ol className="m-0 mt-2 flex list-decimal flex-col gap-2 pl-5">
           <li>Consultá en tu municipalidad por el área de bienestar animal o por el centro de zoonosis de tu zona. Para perros y gatos, Senasa indica que se manejan a nivel municipal o provincial.</li>
-          <li>Preguntá qué servicios son gratuitos, quién puede usarlos (por ejemplo, si piden domicilio en el municipio) y cómo se pide el turno.</li>
+          <li>Preguntá qué servicios hay, quién puede usarlos (por ejemplo, si piden domicilio en el municipio) y cómo se pide el turno.</li>
           <li>Pedí que te indiquen la página oficial donde figura, y leela antes de ir.</li>
         </ol>
         <p className="m-0 mt-3">
@@ -42,7 +42,7 @@ export default function Section3Content() {
         <h3 id="an-free3" className="m-0 text-xl font-extrabold">
           Gratuitos, según la página oficial
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice si es gratuita siempre o solo con una condición (por ejemplo, estar adscripto al sistema de salud municipal).</p>
+        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice si tiene una condición (por ejemplo, estar adscripto al sistema de salud municipal).</p>
         <h4 className="m-0 mt-3 text-lg font-extrabold">Ciudad de Buenos Aires</h4>
         <div className="mt-2 flex flex-col gap-2">
           <PlaceCard place={PASTEUR} kinds={kinds} statuses={FREE_STATUSES} title="Instituto de Zoonosis Luis Pasteur: consultorio" showAction={false} />
@@ -59,7 +59,7 @@ export default function Section3Content() {
         <h3 id="an-unconfirmed3" className="m-0 text-xl font-extrabold">
           Costo no confirmado
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">La página no dice si tienen costo. No los tomes como gratuitos hasta confirmarlo.</p>
+        <p className="m-0 mt-1 text-ink-soft">La página no dice si tienen costo: confirmalo antes de ir.</p>
         <div className="mt-2 flex flex-col gap-2">
           <PlaceCard place={SALTA} kinds={kinds} statuses={UNCONFIRMED_STATUSES} title="Ciudad de Salta: CIC y «Guardia y urgencias»" showAction={false} />
         </div>
@@ -76,10 +76,10 @@ export default function Section3Content() {
 
       <section aria-labelledby="an-uni" className="rounded-2xl border-2 border-control-line bg-field p-4">
         <h3 id="an-uni" className="m-0 text-xl font-extrabold">
-          Arancelados: alternativas identificadas, no gratuitas
+          Arancelados: alternativas identificadas
         </h3>
         <p className="m-0 mt-1">
-          Los hospitales escuela de veterinaria de la UBA y de la UNLP publican en sus páginas que sus servicios son arancelados. Ser de una universidad pública no los hace gratuitos. No los incluimos como atención gratuita: están acá para que sepas que existen y cómo son.
+          Los hospitales escuela de veterinaria de la UBA y de la UNLP publican en sus páginas que sus servicios son arancelados. Ser de una universidad pública no cambia eso. Están acá para que sepas que existen y cómo son.
         </p>
         <div className="mt-2 flex flex-col gap-2">
           {UNIVERSITY_HOSPITALS.map((place) => (
@@ -89,6 +89,25 @@ export default function Section3Content() {
       </section>
 
       <CremationBlock />
+
+      <section aria-labelledby="an-tetanus" className="rounded-2xl border-2 border-control-line bg-field p-4">
+        <h3 id="an-tetanus" className="m-0 text-xl font-extrabold">
+          Vacuna antitetánica
+        </h3>
+        <p className="m-0 mt-1">Si un animal te mordió o te arañó, el Ministerio de Salud de la Nación indica:</p>
+        <ul className="m-0 mt-2 flex list-disc flex-col gap-1.5 pl-5">
+          <li>Lavar la herida con abundante agua y jabón.</li>
+          <li>No colocar alcohol ni otro desinfectante.</li>
+          <li>Concurrir rápidamente al centro de salud más cercano, para que un profesional de la salud evalúe si hace falta una profilaxis antibiótica, antitetánica y/o antirrábica, de acuerdo a las características del accidente.</li>
+        </ul>
+        <p className="m-0 mt-2">Llevá tu carnet de vacunas: es lo que permite saber si te falta alguna dosis. Qué corresponde en cada caso lo define el profesional que te atienda.</p>
+        <p className="m-0 mt-2 text-ink-soft">La vacuna doble bacteriana protege contra el tétanos y la difteria: esquema de 3 dosis y refuerzo cada 10 años, según el Calendario Nacional.</p>
+        <p className="m-0 mt-3">
+          <Link to={PATHS.firstAidGuide("vacuna-antitetanica")} className="inline-flex min-h-11 items-center font-bold">
+            Ver la guía de la vacuna antitetánica
+          </Link>
+        </p>
+      </section>
 
       <section aria-labelledby="an-limits">
         <h3 id="an-limits" className="m-0 text-xl font-extrabold">
@@ -101,7 +120,7 @@ export default function Section3Content() {
         </ul>
       </section>
 
-      <p className="m-0 text-sm text-ink-soft">Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular.</p>
+      <p className="m-0 text-sm text-ink-soft">Los datos salen de la página oficial de cada organismo. Es orientación general: AuxiliAR no atiende animales ni recomienda un veterinario en particular.</p>
     </div>
   )
 }

@@ -1,14 +1,8 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { ActionLink } from "@/components/health/ActionLink"
-import { Brain, HeartHandshake, HeartPulse, PawPrint } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
-import type { CategoryId } from "@/data/resources"
-import { categoryLabel, countApproximate, countUnmapped, getMapPins } from "@/utils/places"
-import type { PlaceEntry } from "@/utils/places"
+import { countApproximate, countUnmapped, getMapPins } from "@/utils/places"
+import type { PlaceEntry, PlaceQuery } from "@/utils/places"
 import { PlaceCard } from "../PlaceCard"
-
-/** The symbol of each category on the pins (the same as in the pins of the map, drawn by PlacesMap.glyphs) */
-const LEGEND_ICONS: Partial<Record<CategoryId, LucideIcon>> = { "salud-fisica": HeartPulse, "salud-mental": Brain, esi: HeartHandshake, animales: PawPrint }
 
 // Leaflet and its styles are downloaded only when the map is opened
 const PlacesMap = lazy(() => import("../PlacesMap/PlacesMap"))
@@ -16,6 +10,8 @@ const PlacesMap = lazy(() => import("../PlacesMap/PlacesMap"))
 type PlacesMapViewProps = {
   /** The places of the current search and filter: the same ones as the list */
   entries: PlaceEntry[]
+  /** What was searched and filtered: the symbol of a pin follows the services that answer it */
+  query?: PlaceQuery
   /** Opens the full information of a place (the explorer's panel) */
   onOpen: (placeId: string) => void
   onBackToList: () => void
@@ -26,13 +22,11 @@ type PlacesMapViewProps = {
  * results can't be on the map; those are still in the list. A tapped pin shows the place's summary (the same card as
  * the list) and its "Ver información" opens the full panel.
  */
-export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewProps) => {
+export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMapViewProps) => {
   // Stable while the results are the same: the map redraws and re-frames only when the places shown change
-  const pins = useMemo(() => getMapPins(entries), [entries])
+  const pins = useMemo(() => getMapPins(entries, query), [entries, query])
   const unmapped = countUnmapped(entries)
   const approximate = countApproximate(entries)
-  // What the symbols on this map mean: only those of the pins drawn
-  const legend = [...new Set(pins.map(({ category }) => category))]
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const summaryRef = useRef<HTMLDivElement>(null)
   // A new search or filter that leaves the selected place out simply has nothing selected
@@ -63,18 +57,6 @@ export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewPr
       <Suspense fallback={<p role="status" className="m-0 flex h-80 items-center justify-center rounded-2xl border-2 border-line-strong bg-field text-muted">Cargando mapa…</p>}>
         <PlacesMap pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
       </Suspense>
-
-      <ul role="list" aria-label="Qué significa el símbolo de cada punto" className="m-0 flex list-none flex-wrap gap-x-4 gap-y-1 p-0 text-ink-soft">
-        {legend.map((category) => {
-          const Icon = LEGEND_ICONS[category] ?? HeartPulse
-          return (
-            <li key={category} className="inline-flex items-center gap-1.5">
-              <Icon aria-hidden="true" className="size-5 shrink-0 text-brand" />
-              {categoryLabel(category)}
-            </li>
-          )
-        })}
-      </ul>
 
       {approximate > 0 && (
         <p className="m-0 text-ink-soft">

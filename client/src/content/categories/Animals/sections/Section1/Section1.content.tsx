@@ -32,7 +32,7 @@ export default function Section1Content() {
         <h3 id="an-free" className="m-0 text-xl font-extrabold">
           Gratuitos, según la página oficial
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice si la página la describe como gratuita siempre o solo en algunos casos. Cada servicio vale solo para su lugar.</p>
+        <p className="m-0 mt-1 text-ink-soft">Cada prestación dice en qué casos aplica. Cada servicio vale solo para su lugar.</p>
         <h4 className="m-0 mt-3 text-lg font-extrabold">Ciudad de Buenos Aires</h4>
         <div className="mt-2 flex flex-col gap-2">
           <PlaceCard place={CABA} kinds={kinds} statuses={FREE_STATUSES} title="Castración y vacunación con Animales BA">
@@ -54,7 +54,7 @@ export default function Section1Content() {
         <h3 id="an-unconfirmed" className="m-0 text-xl font-extrabold">
           Costo no confirmado
         </h3>
-        <p className="m-0 mt-1 text-ink-soft">En estos casos la página no dice si el servicio tiene costo. No los tomes como gratuitos hasta confirmarlo con el servicio.</p>
+        <p className="m-0 mt-1 text-ink-soft">La página no dice si estos servicios tienen costo: confirmalo con el servicio antes de ir.</p>
         <div className="mt-2 flex flex-col gap-2">
           <PlaceCard place={SALTA} kinds={kinds} statuses={UNCONFIRMED_STATUSES} title="Ciudad de Salta: hospital y CIC" showAction={false} />
         </div>
@@ -64,14 +64,14 @@ export default function Section1Content() {
         <h3 id="an-paid" className="m-0 text-xl font-extrabold">
           Arancelados
         </h3>
-        <p className="m-0 mt-1">Ninguna castración ni vacunación de esta página figura como arancelada. Los hospitales escuela de la UBA y de la UNLP, que sí lo son, están en «Servicios importantes» como alternativas pagas: no son gratuitos.</p>
+        <p className="m-0 mt-1">Ninguna castración ni vacunación de esta página figura como arancelada. Los hospitales escuela de la UBA y de la UNLP, que sí lo son, están en «Recursos importantes» como alternativas pagas.</p>
       </section>
 
       <section aria-labelledby="an-other">
         <h3 id="an-other" className="m-0 text-xl font-extrabold">
           Si tu ciudad no aparece
         </h3>
-        <p className="m-0 mt-1">Para perros y gatos, Senasa indica que se manejan a nivel municipal o provincial: consultá en tu municipalidad o en el centro de zoonosis de tu zona. Preguntá si el servicio es gratuito, quién puede usarlo y cómo se pide.</p>
+        <p className="m-0 mt-1">Para perros y gatos, Senasa indica que se manejan a nivel municipal o provincial: consultá en tu municipalidad o en el centro de zoonosis de tu zona. Preguntá qué incluye, quién puede usarlo y cómo se pide.</p>
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder puede variar según el lugar. Algunos servicios requieren turno, registro o domicilio en el municipio.</p>
         <p className="m-0 mt-2">
           <Link to={`${PATHS.topic("animales")}?${SECTION_PARAM}=section-3`} className="inline-flex min-h-11 items-center font-bold">
@@ -80,7 +80,7 @@ export default function Section1Content() {
         </p>
       </section>
 
-      <p className="m-0 text-sm text-ink-soft">Cada dato es de la página de un organismo oficial: AuxiliAR no responde por cambios posteriores.</p>
+      <p className="m-0 text-sm text-ink-soft">Los datos salen de la página oficial de cada organismo.</p>
     </div>
   )
 }

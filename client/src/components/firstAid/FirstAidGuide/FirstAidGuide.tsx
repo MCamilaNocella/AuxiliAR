@@ -1,10 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router"
-import { ArrowLeft, OctagonX, Phone, Siren } from "lucide-react"
+import { ArrowLeft, OctagonX, Phone } from "lucide-react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { CALL_INFO, FIRST_AID_HUB_PATH, getFirstAidGuide } from "@/content/firstAid"
 import type { FirstAidGuideContent } from "@/content/firstAid"
 import { PATHS } from "@/router/paths"
-import { revealEmergencies } from "@/utils/revealEmergencies"
 import { GuideIcon } from "../guideIcons"
 
 const formatDate = (date: string) => {
@@ -13,24 +12,6 @@ const formatDate = (date: string) => {
 }
 
 const Heading = ({ children }: { children: React.ReactNode }) => <h2 className="m-0 mb-3 text-xl font-extrabold">{children}</h2>
-
-/** The call-for-help block: it doesn't name a number (they depend on where you are) but opens the app's emergency numbers */
-const CallForHelp = () => (
-  <div className="mt-5 rounded-2xl border-2 border-alert-card-line bg-alert-soft p-4">
-    <p className="m-0 flex items-start gap-2 text-lg font-extrabold text-alert-text">
-      <Siren aria-hidden="true" className="mt-0.5 size-6 shrink-0" />
-      Si es una emergencia, llamá o pedí que llamen al número de emergencias de tu localidad.
-    </p>
-    <button
-      type="button"
-      onClick={revealEmergencies}
-      className="mt-3 inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-xl bg-alert px-4 py-2 font-extrabold text-on-alert hover:bg-alert-dark"
-    >
-      <Phone aria-hidden="true" className="size-5 shrink-0" />
-      Ver números de emergencia
-    </button>
-  </div>
-)
 
 const BackLink = () => {
   const navigate = useNavigate()
@@ -68,8 +49,6 @@ export const FirstAidGuide = ({ guide }: { guide: FirstAidGuideContent }) => {
         {guide.title}
       </h1>
       <p className="m-0 mt-3 text-lg text-ink-soft">{guide.summary}</p>
-
-      {guide.callFirst && <CallForHelp />}
 
       {guide.signs && (
         <section aria-labelledby="guide-signs" className="mt-8">

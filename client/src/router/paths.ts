@@ -6,6 +6,7 @@ export const PATHS = {
   centers: "/centros",
   myHealth: "/mi-salud",
   firstAid: "/primeros-auxilios",
+  firstAidQuiz: "/primeros-auxilios/quiz",
   firstAidGuide: (slug: string) => `/primeros-auxilios/${slug}`,
   about: "/sobre-auxiliar",
   login: "/login",
@@ -32,6 +33,8 @@ export const PLACE_PROVINCE_PARAM = "provincia"
 export const PLACE_ZONE_PARAM = "zona"
 export const PLACE_CATEGORY_PARAM = "categoria"
 export const PLACE_TYPE_PARAM = "prestacion"
+/** The kind of place within a kind of care: hospitales, centros de salud, vacunatorios, guardias… (/centros?categoria=salud-fisica&tipo=hospital) */
+export const PLACE_KIND_PARAM = "tipo"
 /** Only services whose gratuity is verified: /centros?gratuito=1 */
 export const PLACE_FREE_PARAM = "gratuito"
 

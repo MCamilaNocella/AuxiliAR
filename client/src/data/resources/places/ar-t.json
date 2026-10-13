@@ -1,0 +1,104 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-de-clinicas-nicolas-avellaneda",
+      "name": "Hospital de Clínicas Presidente Dr. Nicolás Avellaneda",
+      "shortName": "Hospital de Clínicas (Tucumán)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-T",
+        "organization": "Ministerio de Salud Pública de Tucumán / SIPROSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543814533700",
+          "display": "453-3700",
+          "label": "Central"
+        }
+      ],
+      "address": {
+        "street": "Catamarca",
+        "number": "2000",
+        "locality": "San Miguel de Tucumán",
+        "department": "Capital",
+        "province": "AR-T"
+      },
+      "coordinates": {
+        "lat": -26.8011683,
+        "lng": -65.2049075,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Catamarca 2000, San Miguel de Tucumán»: el punto de OpenStreetMap es el hospital con ese nombre y esa calle y número. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-salud-adolescente",
+          "type": "specialty-care",
+          "name": "Consulta de salud adolescente",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El Programa Provincial de Salud Integral del Adolescente del Ministerio de Salud lo incluye, con su domicilio, en su listado de lugares gratuitos para consultar sobre salud adolescente. Alcanza a esta consulta, no a toda la cartera del hospital.",
+          "audience": [
+            "adolescents"
+          ],
+          "requirements": [
+            "Para adolescentes; el listado no fija un rango de edad.",
+            "La ficha del hospital publica ginecología infantojuvenil y de la adolescencia."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá en la central por el circuito de adolescencia y sus turnos: las páginas no los explican ni confirman cupos."
+          },
+          "source": {
+            "organization": "Ministerio de Salud Pública de Tucumán",
+            "url": "https://msptucuman.gov.ar/programas-nacionales/dpto-maternidad-e-infancia/programa-provincial-de-salud-integral-del-adolescente/lugares-gratuitos-para-consultar-sobre-salud-adolescente/",
+            "retrievedAt": "2026-10-12",
+            "note": "Listado «Lugares gratuitos para consultar sobre salud adolescente»: incluye al Hospital de Clínicas Nicolás Avellaneda (Catamarca 2000). El listado trae un teléfono distinto del de la ficha del hospital; se carga el de la ficha, que es la fuente primaria del contacto."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Ministerio de Salud Pública de Tucumán",
+              "url": "https://msptucuman.gov.ar/programas-nacionales/dpto-maternidad-e-infancia/programa-provincial-de-salud-integral-del-adolescente/lugares-gratuitos-para-consultar-sobre-salud-adolescente/",
+              "retrievedAt": "2026-10-12",
+              "note": "Listado de lugares gratuitos para consultar sobre salud adolescente: «Hospital de Clínicas Nicolás Avellaneda · Catamarca 2000 · (San Miguel de Tucumán)»."
+            },
+            {
+              "kind": "existence",
+              "organization": "Ministerio de Salud Pública de Tucumán",
+              "url": "https://msptucuman.gov.ar/hospitales/hospital-de-clinicas-presidente-dr-nicolas-avellaneda/",
+              "retrievedAt": "2026-10-12",
+              "note": "Ficha del hospital: oferta (ginecología infantojuvenil y de la adolescencia) y central."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). No se certifica la gratuidad del resto de las prestaciones del hospital."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Ministerio de Salud Pública de Tucumán",
+        "url": "https://msptucuman.gov.ar/hospitales/hospital-de-clinicas-presidente-dr-nicolas-avellaneda/",
+        "note": "Ficha del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Un solo servicio cargado (salud adolescente)."
+      }
+    }
+  ]
+}

@@ -173,7 +173,7 @@ export const ROSARIO: AnimalPlace = {
       cost: { status: "gratuita", text: "La página dice: «colocamos de forma gratuita la vacuna contra la rabia»." },
       who: "Perros y gatos desde los 3 meses de edad, con refuerzo anual.",
       where: ["En los cuatro puestos fijos (direcciones en «Esterilización») y en los operativos de castración barrial."],
-      when: ["En los puestos, en sus horarios de atención; la vacunación del hospital municipal se cuenta en «Servicios importantes»."],
+      when: ["En los puestos, en sus horarios de atención; la vacunación del hospital municipal se cuenta en «Recursos importantes»."],
       how: ["Acercate sin turno previo."],
       contact: ["WhatsApp 341 383-5121."],
       pending: ["La página del hospital municipal condiciona su atención a estar adscripto al sistema de salud pública municipal: ahí no está dicho que la vacuna sea sin costo para todas las personas."],

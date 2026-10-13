@@ -1,0 +1,97 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "salta-consulta-orientacion",
+      "name": "Centro de Consulta y Orientación",
+      "shortName": "Consulta y Orientación (Salta)",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-A",
+        "organization": "Gobierno de Salta: Salud mental y adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543874318400",
+          "display": "0387 431-8400",
+          "label": "Teléfono del centro"
+        }
+      ],
+      "address": {
+        "street": "Av. Sarmiento",
+        "number": "491",
+        "locality": "Salta",
+        "province": "AR-A"
+      },
+      "services": [
+        {
+          "id": "orientacion-consumos",
+          "type": "mental-health-care",
+          "name": "Orientación, contención y asesoramiento por consumos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La gratuidad figura en la fuente de 2023: confirmá que siga vigente.",
+          "requirements": [
+            "Niños, adolescentes, jóvenes, adultos y familiares."
+          ],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Demanda espontánea o derivación. Horario de la fuente de 2023: lunes a viernes de 8 a 17 h (confirmá antes de ir)."
+          },
+          "source": {
+            "organization": "Gobierno de Salta: Salud mental y adicciones",
+            "url": "https://www.salta.gob.ar/prensa/noticias/la-provincia-cuenta-con-un-servicio-de-orientacion-en-casos-de-consumos-problematicos-87412",
+            "retrievedAt": "2026-10-12",
+            "note": "Una nota oficial de 2023 declara el servicio gratuito; una nota de julio de 2026 corrobora su existencia, domicilio y teléfono. Existencia corroborada en una publicación del 14/07/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de Salta: Salud mental y adicciones",
+              "url": "https://www.salta.gob.ar/prensa/noticias/la-provincia-cuenta-con-un-servicio-de-orientacion-en-casos-de-consumos-problematicos-87412",
+              "retrievedAt": "2026-10-12",
+              "note": "Una nota oficial de 2023 declara el servicio gratuito; una nota de julio de 2026 corrobora su existencia, domicilio y teléfono."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de Salta: Salud mental y adicciones",
+              "url": "https://www.salta.gob.ar/prensa/noticias/el-gobierno-fortalece-la-red-de-atencion-en-salud-mental-y-adicciones-con-un-enfoque-territorial-y-comunitario-108932",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Orientación, contención y asesoramiento por consumos» en Centro de Consulta y Orientación."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de Salta: Salud mental y adicciones",
+              "url": "https://www.salta.gob.ar/prensa/noticias/el-gobierno-fortalece-la-red-de-atencion-en-salud-mental-y-adicciones-con-un-enfoque-territorial-y-comunitario-108932",
+              "retrievedAt": "2026-10-12",
+              "note": "Demanda espontánea o derivación. Horario de la fuente de 2023: lunes a viernes de 8 a 17 h (confirmá antes de ir). No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de Salta: Salud mental y adicciones",
+        "url": "https://www.salta.gob.ar/prensa/noticias/el-gobierno-fortalece-la-red-de-atencion-en-salud-mental-y-adicciones-con-un-enfoque-territorial-y-comunitario-108932",
+        "retrievedAt": "2026-10-12",
+        "note": "Publicación oficial de julio de 2026: existencia, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

@@ -2,8 +2,58 @@
   "schemaVersion": 2,
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
+    "AR-A": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-B": {
+      "places": 3,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales",
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering",
+        "specialty-care",
+        "veterinary-care"
+      ],
+      "divisions": [
+        "Florencio Varela",
+        "La Matanza"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
     "AR-C": {
-      "places": 8,
+      "places": 94,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -21,14 +71,19 @@
         "ive-ile-care",
         "laboratory",
         "mental-health-care",
+        "mental-health-emergency",
         "pharmacy",
         "pregnancy-care",
         "primary-care",
+        "rabies-vaccination",
+        "sexual-health-counseling",
         "sexual-reproductive-health",
         "spaying-neutering",
         "specialty-care",
         "sti-testing-care",
-        "vaccination"
+        "vaccination",
+        "wellbeing-activity",
+        "zoonosis"
       ],
       "divisions": [
         "Comuna 1",
@@ -36,7 +91,15 @@
         "Comuna 3",
         "Comuna 4",
         "Comuna 5",
-        "Comuna 8"
+        "Comuna 6",
+        "Comuna 7",
+        "Comuna 8",
+        "Comuna 9",
+        "Comuna 10",
+        "Comuna 11",
+        "Comuna 12",
+        "Comuna 14",
+        "Comuna 15"
       ],
       "quickFilters": {
         "all": {
@@ -47,6 +110,14 @@
           "list": "2027-01-05",
           "map": "2027-01-05"
         },
+        "mental-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "sexual-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
         "vaccination": {
           "list": "2027-01-05",
           "map": "2027-01-05"
@@ -56,8 +127,206 @@
           "map": "2027-01-05"
         },
         "animal-health": {
-          "list": "2026-11-08",
-          "map": "2026-11-08"
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-E": {
+      "places": 3,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-F": {
+      "places": 5,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care",
+        "specialty-care"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-N": {
+      "places": 2,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering",
+        "veterinary-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-R": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-S": {
+      "places": 6,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering",
+        "veterinary-care",
+        "wellbeing-activity"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-T": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-V": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "spaying-neutering",
+        "veterinary-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-X": {
+      "places": 16,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales",
+        "salud-fisica",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care",
+        "spaying-neutering",
+        "specialty-care",
+        "wellbeing-activity"
+      ],
+      "divisions": [
+        "Capital"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "mental-health": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
         }
       }
     }

@@ -100,6 +100,7 @@
     { "id": "physical-activity", "label": "Actividad física", "categories": ["salud-fisica"] },
     { "id": "mental-health-care", "label": "Atención de salud mental", "categories": ["salud-mental"] },
     { "id": "mental-health-emergency", "label": "Guardia de salud mental", "categories": ["salud-mental"] },
+    { "id": "wellbeing-activity", "label": "Bienestar y encuentro comunitario", "categories": ["salud-mental"] },
     { "id": "sexual-reproductive-health", "label": "Salud sexual y reproductiva", "categories": ["esi"] },
     { "id": "contraception", "label": "Anticonceptivos", "categories": ["esi"] },
     { "id": "condoms", "label": "Preservativos", "categories": ["esi"] },
@@ -135,6 +136,7 @@
     { "id": "geocoded-usig", "label": "Geocodificado con USIG" },
     { "id": "geocoded-georef", "label": "Geocodificado con Georef" },
     { "id": "geocoded-other", "label": "Geocodificado con otro servicio" },
+    { "id": "official-map-link", "label": "Enlace oficial a un mapa" },
     { "id": "manual-map", "label": "Marcado a mano en un mapa" },
     { "id": "gps-survey", "label": "Medido con GPS" }
   ],

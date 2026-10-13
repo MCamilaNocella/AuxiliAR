@@ -1,0 +1,1634 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-infantil-municipal-sixto-gerardo-gonzalez",
+      "name": "Hospital Infantil Municipal Sixto Gerardo González",
+      "shortName": "Hospital Infantil Municipal (Córdoba)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Secretaría de Salud de la Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543514708800",
+          "display": "470-8800",
+          "label": "Central"
+        },
+        {
+          "type": "whatsapp",
+          "dial": "+5493516100406",
+          "display": "351 6100406",
+          "label": "WhatsApp de la ficha institucional"
+        }
+      ],
+      "address": {
+        "street": "Juan Antonio Lavalleja",
+        "number": "3050",
+        "neighborhood": "Alta Córdoba",
+        "locality": "Ciudad de Córdoba",
+        "department": "Capital",
+        "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.3799181,
+        "lng": -64.1817872,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 12/10/2026) para «Hospital Infantil Municipal, Juan Lavalleja 3050, Córdoba»: el nombre del hospital, la calle Juan Lavalleja y el número 3050 coinciden con el domicilio oficial. Aproximado (el punto marca el hospital, no una entrada). Controlado a ojo en el mapa de la app contra el nombre del hospital y la calle de la base de OpenStreetMap.",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-pediatrica",
+          "type": "specialty-care",
+          "name": "Atención pediátrica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La Municipalidad de Córdoba informó en febrero de 2026 que el Hospital Infantil integra su red de instituciones públicas y gratuitas.",
+          "audience": [
+            "children",
+            "adolescents"
+          ],
+          "requirements": [
+            "Para población pediátrica; la ficha no publica un límite de edad.",
+            "La ficha publica los internos 5029 y 5083 (de 7:30 a 13:30) y un call center de turnos: consultá por la especialidad que necesitás."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "La ficha del hospital publica un call center de turnos y los internos 5029 y 5083. No confirma que haya turnos disponibles."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba",
+            "url": "https://cordoba.gob.ar/2025-salud-gratuita-14-millones-de-atenciones/",
+            "retrievedAt": "2026-10-12",
+            "note": "Nota del 03/02/2026 sobre la atención gratuita en la red municipal: incluye al Hospital Infantil. La ficha del hospital (salud.cordoba.gob.ar) publica especialidades y contactos. Una noticia de donación usa otra dirección (Luis Góngora 550): no se carga como ingreso."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba",
+              "url": "https://cordoba.gob.ar/2025-salud-gratuita-14-millones-de-atenciones/",
+              "retrievedAt": "2026-10-12",
+              "note": "La atención gratuita de la red municipal «en hospitales de Pronta Atención, Infantil, Príncipe de Asturias, Urgencia…» (nota del 03/02/2026)."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba",
+              "url": "https://salud.cordoba.gob.ar/hospital-infantil/",
+              "retrievedAt": "2026-10-12",
+              "note": "Ficha del Hospital Infantil: especialidades, domicilio y contactos."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Los teléfonos de contactos específicos de la ficha no son líneas de emergencia."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba",
+        "url": "https://salud.cordoba.gob.ar/hospital-infantil/",
+        "note": "Ficha del hospital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Dirección de la ficha coincidente con el directorio de la Red Federal Garrahan."
+      }
+    },
+    {
+      "id": "centro-castraciones-alberdi-cordoba",
+      "name": "Centro de Castraciones Alberdi",
+      "shortName": "Castraciones Alberdi",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Francisco Muñiz",
+        "number": "60",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.4073992,
+        "lng": -64.2097763,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): la casa nº 60 de la calle Doctor Francisco Muñiz, barrio Alberdi, que es el domicilio de la ficha del programa. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones Alberdi."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "centro-castraciones-la-france-cordoba",
+      "name": "Centro de Castraciones La France",
+      "shortName": "Castraciones La France",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Concepción del Bermejo",
+        "number": "3129",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones La France."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa. Una nota anterior da el número 3179: se usa el domicilio de la ficha actual del programa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "centro-castraciones-villa-allende-parque-cordoba",
+      "name": "Centro de Castraciones Villa Allende Parque",
+      "shortName": "Castraciones Villa Allende Parque",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Maloca",
+        "number": "8321",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones Villa Allende Parque."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-tramas",
+      "name": "Red municipal - Tramas",
+      "shortName": "Tramas",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543512266003",
+          "display": "351-2266003",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "San Jerónimo",
+        "number": "2573",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Según una fuente complementaria de 2024, Tramas atiende a mayores de 16 años.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-2266003. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - Tramas."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-2266003. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-lazos",
+      "name": "Red municipal - Lazos",
+      "shortName": "Lazos",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543515081286",
+          "display": "351-5081286",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Castro Barros",
+        "number": "559",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-5081286. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - Lazos."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-5081286. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-las-aldeas-pec-arguello",
+      "name": "Red municipal - Las Aldeas / PEC Argüello",
+      "shortName": "Las Aldeas / PEC Argüello",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543516100335",
+          "display": "351-6100335",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Gabriel Ortega",
+        "number": "8050",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": null,
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-6100335. La página no explica turnos. Horarios distintos por dispositivo: consultá. La fuente lista Las Aldeas y PEC Argüello con el mismo domicilio y teléfono: se carga un solo establecimiento."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - Las Aldeas / PEC Argüello."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-6100335. La página no explica turnos. Horarios distintos por dispositivo: consultá. La fuente lista Las Aldeas y PEC Argüello con el mismo domicilio y teléfono: se carga un solo establecimiento. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-jaire",
+      "name": "Red municipal - Jaire",
+      "shortName": "Jaire",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543516100536",
+          "display": "351-6100536",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Ancasti",
+        "number": "5750",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1
+                ],
+                "from": "14:30",
+                "to": "19:30"
+              },
+              {
+                "days": [
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "09:00",
+                "to": "19:30"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-6100536. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - Jaire."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-6100536. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-raices",
+      "name": "Red municipal - Raíces",
+      "shortName": "Raíces",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543513902601",
+          "display": "351-3902601",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Aruba",
+        "number": "3447",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-3902601. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - Raíces."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-3902601. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-pec-yapeyu",
+      "name": "Red municipal - PEC Yapeyú",
+      "shortName": "PEC Yapeyú",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543515907343",
+          "display": "351-5907343",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Bailén",
+        "number": "196",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "09:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-5907343. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - PEC Yapeyú."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-5907343. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-pec-los-robles",
+      "name": "Red municipal - PEC Los Robles",
+      "shortName": "PEC Los Robles",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543513277545",
+          "display": "351-3277545",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Docentes Argentinos",
+        "number": "5908",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1
+                ],
+                "from": "09:30",
+                "to": "15:00"
+              },
+              {
+                "days": [
+                  3,
+                  5
+                ],
+                "from": "10:00",
+                "to": "15:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-3277545. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - PEC Los Robles."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-3277545. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-pec-maldonado",
+      "name": "Red municipal - PEC Maldonado",
+      "shortName": "PEC Maldonado",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543513277614",
+          "display": "351-3277614",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Martín Cartechini",
+        "number": "428",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "09:00",
+                "to": "15:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-3277614. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - PEC Maldonado."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-3277614. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-pec-comercial",
+      "name": "Red municipal - PEC Comercial",
+      "shortName": "PEC Comercial",
+      "kind": "service",
+      "facilityType": "mental-health-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518646066",
+          "display": "351-8646066",
+          "label": "Teléfono del dispositivo"
+        }
+      ],
+      "address": {
+        "street": "Río Quinto",
+        "number": "180",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "escucha-y-acompanamiento",
+          "type": "mental-health-care",
+          "name": "Escucha y acompañamiento en salud mental y consumos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "09:00",
+                "to": "16:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "requirements": [
+            "Residentes de Córdoba Capital.",
+            "Consultá la admisión y la disponibilidad."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá la admisión y la disponibilidad al 351-8646066. La página no explica turnos."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+            "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Fuente publicada el 13/01/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Escucha y acompañamiento en salud mental y consumos» en Red municipal - PEC Comercial."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+              "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Consultá la admisión y la disponibilidad al 351-8646066. La página no explica turnos. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Red de Salud Mental y Adicciones",
+        "url": "https://cordoba.gob.ar/dia-mundial-de-lucha-contra-la-depresion-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de la Municipalidad de Córdoba sobre la red de salud mental: dispositivos, domicilio y teléfono. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-club-municipalidad-de-cordoba",
+      "name": "Club Municipalidad de Córdoba",
+      "shortName": "Club Municipalidad de Córdoba",
+      "kind": "service",
+      "facilityType": "sports-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518957442",
+          "display": "351 895-7442",
+          "label": "Teléfono del club"
+        }
+      ],
+      "address": {
+        "street": "Avellaneda",
+        "number": "2751",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "yoga-mayores-60",
+          "type": "wellbeing-activity",
+          "name": "Yoga para personas mayores de 60 años",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Alcanza al yoga para mayores de 60 años; no se verificó la gratuidad de los estudios médicos que se piden.",
+          "requirements": [
+            "Solo gratuito para mayores de 60 años.",
+            "Inscripción presencial con DNI, ergometría/ECG con informe y ficha médica autorizada.",
+            "Consultá el polideportivo."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+            "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Fuente publicada el 21/03/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Yoga para personas mayores de 60 años» en Club Municipalidad de Córdoba."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+        "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de polideportivos municipales: oferta de yoga por sede y exención por edad. Es una actividad de bienestar, no psicoterapia. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-polideportivo-corral-de-palos",
+      "name": "Polideportivo Corral de Palos",
+      "shortName": "Polideportivo Corral de Palos",
+      "kind": "service",
+      "facilityType": "sports-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales"
+      },
+      "address": {
+        "street": "Cabo Enrique Guastoni",
+        "number": "3400",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "yoga-mayores-60",
+          "type": "wellbeing-activity",
+          "name": "Yoga para personas mayores de 60 años",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Alcanza al yoga para mayores de 60 años; no se verificó la gratuidad de los estudios médicos que se piden.",
+          "requirements": [
+            "Solo gratuito para mayores de 60 años.",
+            "Inscripción presencial con DNI, ergometría/ECG con informe y ficha médica autorizada.",
+            "Consultá el polideportivo."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+            "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Fuente publicada el 21/03/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Yoga para personas mayores de 60 años» en Polideportivo Corral de Palos."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+        "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de polideportivos municipales: oferta de yoga por sede y exención por edad. Es una actividad de bienestar, no psicoterapia. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cordoba-polideportivo-los-gigantes",
+      "name": "Polideportivo Los Gigantes",
+      "shortName": "Polideportivo Los Gigantes",
+      "kind": "service",
+      "facilityType": "sports-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543515007870",
+          "display": "0351 500-7870",
+          "label": "Teléfono del polideportivo"
+        }
+      ],
+      "address": {
+        "street": "Fray Cayetano Rodríguez",
+        "number": "290",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "yoga-mayores-60",
+          "type": "wellbeing-activity",
+          "name": "Yoga para personas mayores de 60 años",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Alcanza al yoga para mayores de 60 años; no se verificó la gratuidad de los estudios médicos que se piden.",
+          "requirements": [
+            "Solo gratuito para mayores de 60 años.",
+            "Inscripción presencial con DNI, ergometría/ECG con informe y ficha médica autorizada.",
+            "Consultá el polideportivo."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+            "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+            "retrievedAt": "2026-10-12",
+            "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas. Fuente publicada el 21/03/2026. Servicio y condiciones según la fuente oficial; no confirma cupos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "La fuente conserva la exención para mayores de 60 años en el yoga de este lugar. Para otras edades solo dice que la mayoría de las actividades son gratis: no se afirma gratuidad para ellas."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Lista «Yoga para personas mayores de 60 años» en Polideportivo Los Gigantes."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+              "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+              "retrievedAt": "2026-10-12",
+              "note": "Inscripción presencial. Turno de la mañana: confirmá días y hora en el polideportivo. No confirma que haya lugar ni turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-12",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Polideportivos municipales",
+        "url": "https://cordoba.gob.ar/polideportivos-municipales-2026/",
+        "retrievedAt": "2026-10-12",
+        "note": "Página oficial de polideportivos municipales: oferta de yoga por sede y exención por edad. Es una actividad de bienestar, no psicoterapia. Sin punto en el mapa: geolocalización pendiente."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-12",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 12/10/2026 (informe de salud mental y bienestar; páginas oficiales, sin llamadas ni visitas). No confirma cupos, agenda ni disponibilidad del día. Solo se cargan los servicios con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

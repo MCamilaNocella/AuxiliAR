@@ -1,18 +1,20 @@
 import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
+import { Disclosure } from "@/components/health/Disclosure"
 import { centersLink } from "@/router/centersLink"
 import { PATHS, SECTION_PARAM } from "@/router/paths"
+import { DirectoryList, HospitalList, NationalLine } from "../../DirectoryBlocks"
+import { GUARDIAS_CABA, GUARDIAS_CABA_INFANTIL, LINEAS_CABA } from "../../MentalHealth.directory"
+import { GUARDIAS_PAGINA } from "../../MentalHealth.sources"
 
 /**
- * Salud mental · Dónde buscar ayuda. This section is information and orientation: it offers no appointments and
- * recommends no service as free care (no service of the map has its gratuity verified for mental health yet). What it
- * says and where it comes from:
+ * Salud mental · Dónde buscar ayuda. Short on purpose: what a person needs first (lines and guardias) and the way to the rest. Information and orientation: it offers no appointments and
+ * promises no place or availability. What it says and where it comes from:
  *  - "si no tenés cobertura podés acercarte a un hospital o centro de salud cercano a tu domicilio": argentina.gob.ar, Derechos Humanos
- *  - "ser atendida en el hospital general": Ley simple (Derecho Fácil)
- *  - "equipo interdisciplinario integrado por profesionales, técnicos…": Ley 26.657, art. 8
- * The map button only explores: the map itself marks gratuity only when it is verified for that very service and says
- * when the source does not inform the cost. It shows no phone line and no emergency notice of its own: the help numbers are the work of
- * the Emergencias team and are always one tap away in the emergency bar and in the bottom navigation.
+ *  - "ser atendida en el hospital general": Ley simple (Derecho Fácil); "equipo interdisciplinario…": Ley 26.657, art. 8
+ *  - the national lines come from data/resources/lines (the same ones of the emergency bar); the Ciudad's line and guardias from MentalHealth.directory.ts (the team's
+ *    research of 12 October 2026, confirmed from the official pages, not by phone). The CeSAC, the Centro de Salud Mental Nº 1 and the Bonaparte hospital are in section 6
+ * The map button only explores. The help numbers of the emergency bar stay where they are.
  */
 export default function Section1Content() {
   return (
@@ -21,6 +23,46 @@ export default function Section1Content() {
         Estamos para ayudarte a encontrar orientación y recursos de salud mental. Acá vas a conocer tus derechos y descubrir dónde buscar atención. AuxiliAR no otorga turnos ni realiza consultas médicas
         directamente.
       </p>
+
+      <section aria-labelledby="mh-lines">
+        <h3 id="mh-lines" className="m-0 text-xl font-extrabold">
+          Si necesitás hablar con alguien ahora
+        </h3>
+        <p className="m-0 mt-1 text-ink-soft">Son líneas de escucha y orientación: no reemplazan una guardia ni la atención presencial.</p>
+        <ul role="list" className="m-0 mt-3 flex list-none flex-col gap-3 p-0">
+          <NationalLine id="urgencias-salud-mental-0800" />
+          <NationalLine id="prevencion-suicidio-cas" />
+        </ul>
+        <div className="mt-3">
+          <DirectoryList items={LINEAS_CABA.filter(({ id }) => id !== "linea-caba-108-3")} />
+        </div>
+        <p className="m-0 mt-3 text-ink-soft">
+          Otras provincias:{" "}
+          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-5`} className="font-bold">
+            Otras provincias
+          </Link>
+          . Consumos de alcohol, drogas o medicamentos:{" "}
+          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-4`} className="font-bold">
+            Consumos y acompañamiento
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section aria-labelledby="mh-guardias" className="flex flex-col gap-3">
+        <div>
+          <h3 id="mh-guardias" className="m-0 text-xl font-extrabold">
+            Guardias de salud mental en la Ciudad
+          </h3>
+          <p className="m-0 mt-1">Estos hospitales de la Ciudad tienen guardia de salud mental las 24 horas, todos los días del año. Se va sin turno, por una urgencia.</p>
+        </div>
+        <Disclosure title={`Ver los ${GUARDIAS_CABA.length} hospitales`}>
+          <HospitalList items={GUARDIAS_CABA} url={GUARDIAS_PAGINA} />
+          <h4 className="m-0 mt-2 text-base font-extrabold">Hospitales de niños</h4>
+          <p className="m-0 text-ink-soft">Tienen la misma guardia, pero la página no dice hasta qué edad atienden: consultalo antes. Los demás hospitales no se presentan como atención para niñas y niños.</p>
+          <HospitalList items={GUARDIAS_CABA_INFANTIL} url={GUARDIAS_PAGINA} />
+        </Disclosure>
+      </section>
 
       <section aria-labelledby="mh-near">
         <h3 id="mh-near" className="m-0 text-xl font-extrabold">
@@ -31,10 +73,11 @@ export default function Section1Content() {
           hospital general.
         </p>
         <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
-        <div className="mt-3">
+        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
           <ActionLink to={centersLink({ filter: "mental-health" })} variant="primary">
             Ver el mapa
           </ActionLink>
+          <ActionLink to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-6`}>Atención en la Ciudad: CeSAC y más</ActionLink>
         </div>
         <p className="m-0 mt-2 text-ink-soft">Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.</p>
       </section>
@@ -50,7 +93,6 @@ export default function Section1Content() {
           </Link>
         </p>
       </section>
-
     </div>
   )
 }

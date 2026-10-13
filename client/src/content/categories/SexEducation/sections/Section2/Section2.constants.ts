@@ -102,8 +102,8 @@ export const METHODS: Method[] = [
   },
 ]
 
-/** The Ministerio's own sentence, repeated on the page of every method except the condom and the AHE (which has its own) */
-export const NO_STI_PROTECTION = "Este método no protege del VIH ni de otras infecciones de transmisión sexual: por eso se recomienda la doble protección con preservativo."
+/** The Ministerio's own sentence about the methods that do not protect from the STIs: said once, above the list of methods (the AHE has its own) */
+export const NO_STI_PROTECTION = "Ningún método de esta lista, salvo el preservativo, protege del VIH ni de otras infecciones de transmisión sexual: por eso se recomienda la doble protección con preservativo."
 
 /** The Ministerio's own text on the vaginal condom, by question. Repeats its page; nothing is added */
 export const VAGINAL_CONDOM = {
@@ -180,7 +180,7 @@ export const FREE_ACCESS = {
       title: "Disponibilidad concreta",
       paragraphs: [
         "Que un método sea gratuito y esté cubierto no asegura que haya turno, stock o un profesional disponible en un centro en particular.",
-        "AuxiliAR no tiene confirmados turnos, stock ni centros concretos que entreguen cada método. El mapa muestra solo las prestaciones con la gratuidad documentada para esa prestación; si no aparece un centro cerca tuyo, no significa que no exista. Consultá antes de ir.",
+        "AuxiliAR no confirma turnos ni disponibilidad de cada método. El mapa muestra los centros de la Ciudad de Buenos Aires que figuran en el directorio oficial de consejerías; si no aparece un centro cerca tuyo, no significa que no exista. Consultá antes de ir.",
       ],
     },
   ],

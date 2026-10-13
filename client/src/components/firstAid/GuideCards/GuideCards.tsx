@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, ListChecks } from "lucide-react"
 import { GUIDE_GROUPS, getGuidesOfGroup } from "@/content/firstAid"
 import type { GuideGroupId } from "@/content/firstAid"
 import { PATHS } from "@/router/paths"
@@ -43,6 +43,18 @@ export const GuideCards = ({ groups = GUIDE_GROUPS.map(({ id }) => id), headingL
                 </li>
               )
             })}
+            {id === "prepare" && (
+              <li>
+                <Link
+                  to={PATHS.firstAidQuiz}
+                  className="flex min-h-20 w-full items-center gap-3 rounded-2xl border-2 border-line-strong bg-card px-4 py-3 font-extrabold text-ink no-underline hover:border-control-line hover:text-ink"
+                >
+                  <ListChecks aria-hidden="true" className="size-7 shrink-0 text-brand" />
+                  <span className="flex-1">Quiz de primeros auxilios</span>
+                  <ChevronRight aria-hidden="true" className="size-5 shrink-0 text-brand" />
+                </Link>
+              </li>
+            )}
           </ul>
         </section>
       ))}

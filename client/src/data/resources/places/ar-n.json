@@ -1,0 +1,485 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "imusa-zaiman-posadas",
+      "name": "IMUSA Zaimán",
+      "shortName": "IMUSA Zaimán",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-N",
+        "organization": "Municipalidad de Posadas: IMUSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543764669841",
+          "display": "376 466-9841",
+          "label": "WhatsApp"
+        }
+      ],
+      "address": {
+        "street": "Ruta 12 (km 5 1/2)",
+        "locality": "Posadas",
+        "province": "AR-N"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Castración desde los 6 meses."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 466-9841."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en IMUSA Zaimán."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 466-9841. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Vacuna desde los 3 meses."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en IMUSA Zaimán."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-clinica-basica",
+          "type": "veterinary-care",
+          "name": "Atención clínica básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención clínica básica en IMUSA Zaimán."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Posadas: IMUSA",
+        "url": "https://posadas.gov.ar/imusa",
+        "retrievedAt": "2026-10-13",
+        "note": "Sitio oficial del IMUSA: sedes, prestaciones, contacto y horario. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "imusa-base-115-posadas",
+      "name": "IMUSA Base 115",
+      "shortName": "IMUSA Base 115",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-N",
+        "organization": "Municipalidad de Posadas: IMUSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543765062610",
+          "display": "376 506-2610",
+          "label": "WhatsApp"
+        }
+      ],
+      "address": {
+        "street": "Av. 115 y Acevedo",
+        "locality": "Posadas",
+        "province": "AR-N"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Castración desde los 6 meses."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 506-2610."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en IMUSA Base 115."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 506-2610. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Vacuna desde los 3 meses."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en IMUSA Base 115."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-clinica-basica",
+          "type": "veterinary-care",
+          "name": "Atención clínica básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno."
+          },
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención clínica básica en IMUSA Base 115."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Posadas: IMUSA",
+              "url": "https://posadas.gov.ar/imusa",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Posadas: IMUSA",
+        "url": "https://posadas.gov.ar/imusa",
+        "retrievedAt": "2026-10-13",
+        "note": "Sitio oficial del IMUSA: sedes, prestaciones, contacto y horario. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

@@ -99,6 +99,8 @@ export default function Section2Content() {
               <p className="m-0 text-ink-soft">Por la Ley 25.673, los preservativos están incluidos en la cobertura de salud obligatoria: se piden en hospitales, centros de salud, obras sociales y prepagas.</p>
           </Disclosure>
 
+          <p className="m-0 text-ink-soft">{NO_STI_PROTECTION}</p>
+
           {METHODS.map(({ id, title, about }) => (
             <Disclosure key={id} title={title}>
                 {about.map((paragraph) => (
@@ -106,7 +108,7 @@ export default function Section2Content() {
                     {paragraph}
                   </p>
                 ))}
-                <p className="m-0 text-ink-soft">{id === "ahe" ? "La AHE no protege del VIH ni de otras ITS: se recomienda el uso de preservativo." : NO_STI_PROTECTION}</p>
+                {id === "ahe" && <p className="m-0 text-ink-soft">La AHE no protege del VIH ni de otras ITS: se recomienda el uso de preservativo.</p>}
               </Disclosure>
           ))}
         </div>

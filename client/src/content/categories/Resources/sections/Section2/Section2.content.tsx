@@ -2,7 +2,6 @@ import { Link } from "react-router"
 import { ActionLink } from "@/components/health/ActionLink"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
-import { centersLink } from "@/router/centersLink"
 import { HEALTH_GENERAL_SLUG, PATHS, SECTION_PARAM } from "@/router/paths"
 import { REFUSED } from "../../../MentalHealth/MentalHealth.rights"
 import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CUD_PAGINA, MAS_SERVICIOS_PAGINA, TURNOS_CESAC } from "../../Resources.sources"
@@ -53,7 +52,7 @@ export default function Section2Content() {
           El primer nivel de atención lo forman los CeSAC y los Centros Médicos Barriales. Por teléfono se puede pedir turno de clínica médica o medicina general, pediatría y odontología. Para algunas especialidades piden
           estudios previos o una derivación.
         </p>
-        <p className="m-0 mt-2 text-ink-soft">Que el trámite sea gratuito no asegura que haya turnos disponibles: consultalo en el centro.</p>
+        <p className="m-0 mt-2 text-ink-soft">Los turnos disponibles dependen de cada centro.</p>
 
         <div className="mt-3">
           <OutLink href={TURNOS_CESAC.url}>Ir al trámite oficial para sacar el turno</OutLink>
@@ -73,7 +72,6 @@ export default function Section2Content() {
           <ActionLink to={`${PATHS.topic(HEALTH_GENERAL_SLUG)}?${SECTION_PARAM}=section-5`} variant="primary">
             Ver el Calendario de vacunación
           </ActionLink>
-          <ActionLink to={centersLink({ filter: "vaccination" })}>Encontrar vacunatorio</ActionLink>
         </div>
       </section>
 

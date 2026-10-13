@@ -29,3 +29,28 @@ export const OMS_ESTRES: Source = {
   label: "Estrés · Organización Mundial de la Salud",
   url: "https://www.who.int/es/news-room/questions-and-answers/item/stress",
 }
+
+/** The day the team's research (places, lines and activities of Salud mental) read the official pages of MentalHealth.directory.ts. Documentary: nobody phoned or visited */
+export const DIRECTORY_CHECKED_AT = "2026-10-12"
+
+/** Ley 153 (Ciudad), arts. 2 and 3.g: the "exención de cualquier forma de pago directo en el área estatal" the Ciudad's services rest on. A general norm, not a phrase of each center */
+export const LEY_153_MENTAL: Source = {
+  label: "Ley 153, Ley Básica de Salud de la Ciudad de Buenos Aires (arts. 2 y 3.g) · Boletín Oficial de la Ciudad",
+  url: "https://boletinoficial.buenosaires.gob.ar/normativaba/norma/3800",
+}
+
+/** "Guardias hospitalarias", Gobierno de la Ciudad: the hospitals with a 24-hour mental health guardia */
+export const GUARDIAS_PAGINA = "https://buenosaires.gob.ar/gcaba_historico/salud/guardias-hospitalarias"
+
+/** "Red de adicciones", Gobierno de la Ciudad: where problematic substance use is attended */
+export const RED_ADICCIONES = "https://buenosaires.gob.ar/gcaba_historico/adicciones/red-de-adicciones"
+
+/** OMS: "En tiempos de estrés, haz lo que importa" (2020), the free illustrated guide; and the OMS pages on stress (OMS_ESTRES) and anxiety */
+export const OMS_GUIA: Source = {
+  label: "En tiempos de estrés, haz lo que importa · guía ilustrada, Organización Mundial de la Salud (2020)",
+  url: "https://cdn.who.int/media/docs/default-source/mental-health/sh-2020-spa-3-web.pdf",
+}
+export const OMS_ANSIEDAD: Source = {
+  label: "Trastornos de ansiedad · Organización Mundial de la Salud",
+  url: "https://www.who.int/es/news-room/fact-sheets/detail/anxiety-disorders",
+}

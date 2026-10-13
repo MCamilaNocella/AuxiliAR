@@ -48,6 +48,10 @@ const router = createBrowserRouter([
           { path: PATHS.myHealth, element: <MyHealth/> },
           { path: PATHS.firstAid, element: <Category/> },
           {
+            path: PATHS.firstAidQuiz,
+            lazy: async () => ({ Component: (await import("@/screens/FirstAidQuiz")).FirstAidQuizScreen }),
+          },
+          {
             path: PATHS.firstAidGuide(":slug"),
             // Downloaded when a guide is opened: the guides are not part of the first load
             lazy: async () => ({ Component: (await import("@/screens/FirstAidGuide")).FirstAidGuideScreen }),

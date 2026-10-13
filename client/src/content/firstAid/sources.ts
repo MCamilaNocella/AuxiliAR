@@ -18,6 +18,30 @@ export const RCP_ADULTOS: GuideSource = {
   url: "https://www.argentina.gob.ar/salud/primerosauxilios/rcp/adultos",
 }
 
+/** "Reanimación cardiopulmonar (RCP)" · Primeros auxilios: the four steps, the DEA, the course; read 2026-10-12. The page has no date */
+export const RCP_PAGINA: GuideSource = {
+  label: "Reanimación cardiopulmonar (RCP) · Primeros auxilios, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/primerosauxilios/RCP",
+}
+
+/** Its "Preguntas frecuentes": when to do RCP, what a heart attack is and what to do, why compressions, the breaths, the DEA and where to find it; read 2026-10-12 */
+export const RCP_PREGUNTAS: GuideSource = {
+  label: "Preguntas frecuentes sobre RCP · Primeros auxilios, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/primerosauxilios/RCP/preguntas",
+}
+
+/** Ley 26.835 (2013), "Ley de promoción y capacitación en las técnicas de reanimación cardiopulmonar básicas": art. 1 (promover aprender la RCP básica, de forma voluntaria, altruista, desinteresada y solidaria) and art. 2 (capacitar a estudiantes del nivel medio y superior). Read 2026-10-12 */
+export const LEY_26835: GuideSource = {
+  label: "Ley 26.835 · Promoción y capacitación en las técnicas de reanimación cardiopulmonar básicas, argentina.gob.ar/normativa",
+  url: "https://www.argentina.gob.ar/normativa/nacional/ley-26835-207654",
+}
+
+/** "Enfermedades cardiovasculares" (glosario): the signs of a heart attack and "el tiempo lo es todo"; read 2026-10-12 */
+export const CARDIOVASCULAR: GuideSource = {
+  label: "Enfermedades cardiovasculares · Glosario, argentina.gob.ar/salud",
+  url: "https://www.argentina.gob.ar/salud/glosario/enfermedadcardiovascular",
+}
+
 /**
  * Temporarily out of the guides (9/10/2026): the whole /salud/primerosauxilios/situaciones/ section of argentina.gob.ar answers
  * an error page ("500 - Error", sent as 403) to every request we made, so the link could not be verified. The guides that cited it
@@ -58,6 +82,27 @@ export const ANMAT_ALERGIAS: GuideSource = {
 export const CABA_ALERGIAS: GuideSource = {
   label: "Dónde acudir ante un ataque de alergia · Gobierno de la Ciudad de Buenos Aires (2 de enero de 2020)",
   url: "https://buenosaires.gob.ar/gcaba_historico/noticias/donde-acudir-ante-un-ataque-de-alergia",
+}
+
+export const DOBLE_BACTERIANA: GuideSource = {
+  label: "Doble bacteriana · Calendario Nacional de Vacunación, Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/vacunas/doblebacteriana",
+}
+
+export const VACUNACION_ADULTOS: GuideSource = {
+  label: "Calendario Nacional de Vacunación · 15 a 64 años · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/salud/vacunas/vacunacion-adultos",
+}
+
+export const RABIA_MORDEDURAS: GuideSource = {
+  label: "Rabia (qué hacer ante una mordedura) · Ministerio de Salud de la Nación",
+  url: "https://www.argentina.gob.ar/node/29491",
+}
+
+/** Tabla 1 of the dT section ("Esquema recomendado según tipo de herida y antecedente de vacunación"): it is an image in the official text, read on 2026-10-12. Replaces the 1997 table (different years) */
+export const NORMAS_VACUNACION_2008: GuideSource = {
+  label: "Normas Nacionales de Vacunación, Resolución 498/2008 (doble bacteriana: manejo de heridas) · Ministerio de Salud",
+  url: "https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-498-2008-141074/texto",
 }
 
 /** Centro Nacional de Intoxicaciones (Hospital Posadas): free line given by the Manual and by the app's help numbers */

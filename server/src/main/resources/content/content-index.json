@@ -2,14 +2,14 @@
   {
     "title": "Centros de atención",
     "path": "/centros",
-    "summary": "Mapa de hospitales y centros de salud. Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
+    "summary": "Mapa de hospitales y centros de salud. Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, Entre Ríos, La Rioja, Misiones, Río Negro, Salta, Santa Fe, Tierra del Fuego y Tucumán; todavía no cubrimos todo el país.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Centros de atención › Mapa AuxiliAR",
     "path": "/centros?seccion=section-1",
-    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora solo hay centros verificados en la Ciudad de Buenos Aires.",
+    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, Entre Ríos, La Rioja, Misiones, Río Negro, Salta, Santa Fe, Tierra del Fuego y Tucumán; todavía no cubrimos todo el país.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -93,7 +93,7 @@
   {
     "title": "Atención veterinaria",
     "path": "/temas/animales",
-    "summary": "Prevención, chequeos, castración gratuita y más. Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
+    "summary": "Prevención, chequeos, castración gratuita y más. Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice, y un aviso sobre la vacuna antitetánica si un animal te mordió o te arañó.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -112,23 +112,30 @@
     "hasInfo": true
   },
   {
-    "title": "Atención veterinaria › Servicios importantes",
+    "title": "Atención veterinaria › Recursos importantes",
     "path": "/temas/animales?seccion=section-3",
-    "summary": "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice.",
+    "summary": "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice, y un aviso sobre la vacuna antitetánica si un animal te mordió o te arañó.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Herramientas de autocuidado, y orientación: cómo pedir ayuda. Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "summary": "Herramientas de autocuidado, y orientación: cómo pedir ayuda. Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas. Dónde pedir atención programada de salud mental en la Ciudad de Buenos Aires: 33 CeSAC con psicología o psiquiatría (por comuna), el Centro de Salud Mental Nº 1 y el Hospital Nacional Laura Bonaparte. Datos de páginas oficiales; no se asegura turno ni horario. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo). Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional. Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud mental › Dónde buscar ayuda",
     "path": "/temas/salud-mental?seccion=section-1",
-    "summary": "Dónde pedir ayuda en salud mental: acercarse a un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y cómo explorar en el mapa centros de salud cercanos. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "summary": "Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Atención en la Ciudad",
+    "path": "/temas/salud-mental?seccion=section-6",
+    "summary": "Dónde pedir atención programada de salud mental en la Ciudad de Buenos Aires: 33 CeSAC con psicología o psiquiatría (por comuna), el Centro de Salud Mental Nº 1 y el Hospital Nacional Laura Bonaparte. Datos de páginas oficiales; no se asegura turno ni horario.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -142,7 +149,21 @@
   {
     "title": "Salud mental › Herramientas para cuidarte",
     "path": "/temas/salud-mental?seccion=section-3",
-    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) y cuándo conviene pedir ayuda profesional.",
+    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo).",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Consumos y acompañamiento",
+    "path": "/temas/salud-mental?seccion=section-4",
+    "summary": "Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Otras provincias",
+    "path": "/temas/salud-mental?seccion=section-5",
+    "summary": "Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
     "firstAid": false,
     "hasInfo": true
   },

@@ -1,23 +1,42 @@
 import { PATHS } from "@/router/paths"
-import { ANMAT_ALERGIAS, CABA_ALERGIAS, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, RCP_ADULTOS } from "../sources"
+import { ANMAT_ALERGIAS, CABA_ALERGIAS, CARDIOVASCULAR, CHECKED_AT, MANUAL, MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, MINI_GUIA_RCP, LEY_26835, RCP_ADULTOS, RCP_PAGINA, RCP_PREGUNTAS } from "../sources"
 import type { FirstAidGuideContent } from "../types"
 
-/** "Necesito actuar ahora": situations where a life can be at risk */
+/** "Necesito actuar ahora": situations where a life can be at risk. In order of urgency: what stops the breathing or the heart or empties the body of blood in minutes first (RCP, choking, severe bleeding, anaphylaxis), then what is time-critical (ACV), then convulsions and burns */
 export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
   {
     slug: "rcp",
-    title: "RCP: la persona no responde y no respira",
+    title: "Infarto y paro cardíaco (RCP)",
     group: "now",
     summary:
-      "La RCP (reanimación cardiopulmonar) son presiones rítmicas sobre el pecho de una persona que sufre un paro cardíaco. Mantiene la sangre circulando hasta que llega la atención médica.",
+      "Un infarto y un paro cardíaco no son lo mismo y no se actúa igual. Si la persona no responde y no respira, o jadea, hay que hacer RCP (reanimación cardiopulmonar): presiones rítmicas sobre el pecho que mantienen la sangre circulando hasta que llega la atención médica. Si tiene señales de infarto pero responde, no es para RCP: se pide ayuda de inmediato.",
     callFirst: true,
     signs: {
-      title: "Señales importantes",
-      items: ["No responde cuando le hablás ni cuando la sacudís suavemente de los hombros.", "No respira, jadea o respira con mucha dificultad."],
+      title: "Paro cardíaco: cuándo hacer RCP",
+      items: ["No responde cuando le hablás ni cuando la sacudís suavemente de los hombros.", "No respira, jadea o respira de forma anormal."],
     },
+    extraSigns: [
+      {
+        title: "Infarto (ataque cardíaco): señales",
+        items: [
+          "Presión o dolor fuerte en el centro del pecho, que no se va y puede irradiarse a los hombros, el cuello, la mandíbula o los brazos.",
+          "Molestia en el pecho con mareos, desmayo, sudor, náuseas o falta de aire.",
+          "No siempre aparecen todas las señales.",
+        ],
+      },
+    ],
     stepSets: [
       {
-        label: "Adultos y niños",
+        label: "Si tiene señales de infarto y responde",
+        steps: [
+          "Pedile que se siente o se acueste.",
+          "Llamá al número de emergencias de tu localidad o pedí que lo hagan: en un infarto el tiempo lo es todo. Si no es posible llamar, llevala al hospital más cercano.",
+          "Quedate con la persona y fijate si responde y si respira.",
+          "Si deja de responder y no respira, o jadea, es un paro cardíaco: empezá con la RCP.",
+        ],
+      },
+      {
+        label: "Adultos y niños: no responde y no respira",
         steps: [
           "Fijate que el lugar sea seguro. Si hay gases tóxicos, riesgo de electrocución, incendio o explosión, no te acerques y esperá a que llegue el servicio de emergencias.",
           "Sacudila suavemente de los hombros y preguntale en voz alta: “¿Me escuchás?”.",
@@ -26,7 +45,7 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
           "Apoyá el talón de una mano en el centro del pecho y poné la otra mano encima, con los dedos entrelazados.",
           "Con los brazos estirados, presioná hacia abajo hasta hundir el pecho de 5 a 6 cm y soltá. Hacelo rápido y con ritmo: entre 100 y 120 veces por minuto.",
           "Seguí sin interrumpir las compresiones. Cada 2 minutos, fijate si la persona reacciona.",
-          "Si hay un desfibrilador (DEA) cerca, pedí que lo traigan y usalo: encendelo y seguí las instrucciones de su voz.",
+          "Las compresiones son lo más importante. Si sabés dar respiraciones, podés darlas con la cabeza inclinada hacia atrás y el mentón levantado; si no sabés o no podés, seguí solo con compresiones.",
           "Seguí hasta que llegue el equipo de emergencias. Si la persona recupera la conciencia, acostala de costado (posición de seguridad) hasta que llegue la ayuda.",
         ],
       },
@@ -41,12 +60,26 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
           "Si empieza a respirar solo, ponelo de costado (posición de recuperación) hasta que llegue la ayuda.",
         ],
       },
+      {
+        label: "Si hay un DEA (desfibrilador externo automático)",
+        steps: [
+          "Pedí que lo traigan mientras seguís con las compresiones. Los DEA suelen estar en oficinas públicas, hipermercados, estadios, clínicas, aeropuertos y terminales, en gabinetes señalizados cerca de los matafuegos.",
+          "Encendelo y seguí las instrucciones de su voz: el uso inmediato es vital, dentro de los 5 minutos.",
+          "Antes de la descarga, fijate que nadie esté tocando a la persona.",
+        ],
+      },
     ],
-    dont: ["No te acerques si el lugar no es seguro.", "No dobles los codos al presionar: mantené los brazos estirados.", "No cortes la llamada hasta que la persona que te atiende te lo indique."],
+    dont: [
+      "No hagas RCP a una persona que responde y respira con normalidad: la RCP es para cuando no responde y no respira, o jadea.",
+      "No te acerques si el lugar no es seguro.",
+      "No dobles los codos al presionar: mantené los brazos estirados.",
+      "No cortes la llamada hasta que la persona que te atiende te lo indique.",
+    ],
     whileWaiting: ["Seguí con las compresiones hasta que llegue el equipo de emergencias."],
+    note: "Según el Ministerio de Salud, empezar la RCP de inmediato, aunque no seas profesional, puede aumentar en un 40% las posibilidades de supervivencia. Esta guía no reemplaza un curso de RCP básico: el Ministerio recomienda hacerlo y repetir el entrenamiento. La Ley 26.835 promueve que se aprenda la RCP básica, de forma voluntaria y solidaria, y busca capacitar a las y los estudiantes del nivel medio y del superior.",
     related: ["atragantamiento", "electrocucion"],
-    sources: [MINI_GUIA_RCP, RCP_ADULTOS, MANUAL],
-    checkedAt: CHECKED_AT,
+    sources: [RCP_PAGINA, RCP_PREGUNTAS, CARDIOVASCULAR, MINI_GUIA_RCP, RCP_ADULTOS, MANUAL, LEY_26835],
+    checkedAt: "2026-10-12",
   },
   {
     slug: "atragantamiento",
@@ -102,39 +135,6 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
     checkedAt: CHECKED_AT,
   },
   {
-    slug: "acv",
-    title: "ACV: accidente cerebrovascular",
-    group: "now",
-    summary: "Ocurre cuando se tapa o se rompe una arteria del cerebro. Puede ser mortal o dejar secuelas. Actuar rápido es clave.",
-    callFirst: true,
-    signs: {
-      title: "Señales importantes",
-      items: [
-        "Debilidad repentina o adormecimiento de la cara, el brazo o la pierna, sobre todo de un solo lado del cuerpo.",
-        "Confusión de golpe, o problemas para hablar o entender.",
-        "Problema repentino de la vista, en uno o en los dos ojos.",
-        "Problema de golpe para caminar, mareo, pérdida del equilibrio o de la coordinación.",
-        "Dolor de cabeza muy fuerte sin causa conocida.",
-      ],
-    },
-    stepSets: [
-      {
-        steps: [
-          "Reconocé las señales. El comienzo puede ser sutil, y la persona puede negar lo que le pasa o no darse cuenta.",
-          "Ante la sospecha, llamá de inmediato al número de emergencias de tu localidad o pedí que lo hagan.",
-          "No dejes sola a la persona: tranquilizala y abrigala.",
-          "Si responde, acostala de costado (posición de seguridad).",
-          "Si deja de respirar, empezá con RCP (mirá la guía de RCP).",
-        ],
-      },
-    ],
-    whenToCall: ["Siempre que sospeches un ACV. Los síntomas pueden empeorar, quedarse igual o disminuir."],
-    whileWaiting: ["Quedate con la persona, tranquilizala y abrigala hasta que llegue la ayuda."],
-    related: ["rcp"],
-    sources: [MANUAL],
-    checkedAt: CHECKED_AT,
-  },
-  {
     slug: "hemorragia-grave",
     title: "Hemorragia grave",
     group: "now",
@@ -155,73 +155,6 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
     dont: ["No uses torniquete.", "No pongas algodón sobre la herida: se pega al tejido.", "No muevas a la persona si hubo un golpe fuerte o una caída grave."],
     whileWaiting: ["Quedate con la persona y seguí presionando hasta que llegue la ayuda."],
     related: ["heridas", "accidentes-de-transito"],
-    sources: [MANUAL],
-    checkedAt: CHECKED_AT,
-  },
-  {
-    slug: "convulsiones",
-    title: "Convulsiones",
-    group: "now",
-    summary:
-      "Son una pérdida súbita del conocimiento con movimientos bruscos de todo el cuerpo. Los primeros auxilios consisten en mantener segura a la persona hasta que la convulsión termine.",
-    signs: {
-      title: "Señales importantes",
-      items: [
-        "Pierde el conocimiento de golpe y mueve todo el cuerpo con sacudidas.",
-        "La mandíbula se pone muy dura y puede salir espuma o un hilo de sangre por la boca.",
-        "A veces se orina encima.",
-      ],
-    },
-    stepSets: [
-      {
-        steps: [
-          "Mantené la calma y tranquilizá a las demás personas.",
-          "Evitá que se lastime: sacá objetos duros o filosos que tenga cerca. Si podés, protegela poniendo algo blando en el piso o la pared, y sacale los anteojos y aflojale la corbata o la ropa ajustada.",
-          "Fijate cuánto dura la convulsión.",
-          "Cuando termine, girala suavemente de costado (posición de seguridad).",
-          "No te vayas hasta que se recupere. No le des agua ni comida hasta que esté bien despierta. Si está confusa, ofrecele ayuda para volver a su casa.",
-        ],
-      },
-    ],
-    dont: [
-      "No intentes sujetarla ni evitar que se mueva.",
-      "No le pongas nada en la boca: la lengua no se puede tragar.",
-      "No le hagas respiración boca a boca, salvo que esté inconsciente y deje de respirar cuando pase la convulsión (ahí, RCP).",
-    ],
-    whenToCall: [
-      "La convulsión dura más de 5 minutos.",
-      "Respira mal cuando termina, o no se recupera de forma normal.",
-      "Las convulsiones se repiten.",
-      "No se despierta, se lastimó durante la convulsión o está dentro del agua.",
-      "Tiene otra enfermedad (diabetes, enfermedad cardíaca) o está embarazada.",
-    ],
-    whileWaiting: ["Hablale con calma y mantenela lejos de cualquier peligro."],
-    related: ["rcp"],
-    sources: [MANUAL],
-    checkedAt: CHECKED_AT,
-  },
-  {
-    slug: "quemaduras",
-    title: "Quemaduras",
-    group: "now",
-    summary: "Pueden ser por líquidos calientes, fuego, electricidad, vapor, plancha o líquidos inflamables. Son muy frecuentes en el hogar, sobre todo en la cocina.",
-    stepSets: [
-      {
-        steps: [
-          "Tranquilizá a la persona.",
-          "Sacale la ropa, los anillos, las pulseras y los cinturones que no estén pegados a la lesión.",
-          "Poné agua sobre la lesión. Si la quemadura es leve, usá agua a temperatura de la canilla: calma el dolor y evita que la lesión avance.",
-          "Llamá al número de emergencias de tu localidad o andá al centro de salud más cercano.",
-        ],
-      },
-    ],
-    dont: [
-      "No uses agua caliente ni muy fría.",
-      "No pongas hielo, cremas, dentífrico ni otros remedios caseros: pueden empeorar la lesión y causar una infección.",
-      "No abras las ampollas.",
-    ],
-    whenToCall: ["En niños y adultos mayores las quemaduras pueden ser más graves aunque sean del mismo tamaño y profundidad."],
-    related: ["electrocucion"],
     sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },
@@ -293,6 +226,106 @@ export const EMERGENCY_GUIDES: FirstAidGuideContent[] = [
     clinicalReview: { status: "pending", note: "Pendiente de revisión clínica antes de publicarse. Las fuentes argentinas halladas no traen una guía de primeros auxilios para alergias; los pasos vienen de MedlinePlus (NIH)." },
     related: ["rcp", "intoxicaciones"],
     sources: [MEDLINEPLUS_ALERGIAS, MEDLINEPLUS_ANAFILAXIA, ANMAT_ALERGIAS, CABA_ALERGIAS],
+    checkedAt: CHECKED_AT,
+  },
+  {
+    slug: "acv",
+    title: "ACV: accidente cerebrovascular",
+    group: "now",
+    summary: "Ocurre cuando se tapa o se rompe una arteria del cerebro. Puede ser mortal o dejar secuelas. Actuar rápido es clave.",
+    callFirst: true,
+    signs: {
+      title: "Señales importantes",
+      items: [
+        "Debilidad repentina o adormecimiento de la cara, el brazo o la pierna, sobre todo de un solo lado del cuerpo.",
+        "Confusión de golpe, o problemas para hablar o entender.",
+        "Problema repentino de la vista, en uno o en los dos ojos.",
+        "Problema de golpe para caminar, mareo, pérdida del equilibrio o de la coordinación.",
+        "Dolor de cabeza muy fuerte sin causa conocida.",
+      ],
+    },
+    stepSets: [
+      {
+        steps: [
+          "Reconocé las señales. El comienzo puede ser sutil, y la persona puede negar lo que le pasa o no darse cuenta.",
+          "Ante la sospecha, llamá de inmediato al número de emergencias de tu localidad o pedí que lo hagan.",
+          "No dejes sola a la persona: tranquilizala y abrigala.",
+          "Si responde, acostala de costado (posición de seguridad).",
+          "Si deja de respirar, empezá con RCP (mirá la guía de RCP).",
+        ],
+      },
+    ],
+    whenToCall: ["Siempre que sospeches un ACV. Los síntomas pueden empeorar, quedarse igual o disminuir."],
+    whileWaiting: ["Quedate con la persona, tranquilizala y abrigala hasta que llegue la ayuda."],
+    related: ["rcp"],
+    sources: [MANUAL],
+    checkedAt: CHECKED_AT,
+  },
+  {
+    slug: "convulsiones",
+    title: "Convulsiones",
+    group: "now",
+    summary:
+      "Son una pérdida súbita del conocimiento con movimientos bruscos de todo el cuerpo. Los primeros auxilios consisten en mantener segura a la persona hasta que la convulsión termine.",
+    signs: {
+      title: "Señales importantes",
+      items: [
+        "Pierde el conocimiento de golpe y mueve todo el cuerpo con sacudidas.",
+        "La mandíbula se pone muy dura y puede salir espuma o un hilo de sangre por la boca.",
+        "A veces se orina encima.",
+      ],
+    },
+    stepSets: [
+      {
+        steps: [
+          "Mantené la calma y tranquilizá a las demás personas.",
+          "Evitá que se lastime: sacá objetos duros o filosos que tenga cerca. Si podés, protegela poniendo algo blando en el piso o la pared, y sacale los anteojos y aflojale la corbata o la ropa ajustada.",
+          "Fijate cuánto dura la convulsión.",
+          "Cuando termine, girala suavemente de costado (posición de seguridad).",
+          "No te vayas hasta que se recupere. No le des agua ni comida hasta que esté bien despierta. Si está confusa, ofrecele ayuda para volver a su casa.",
+        ],
+      },
+    ],
+    dont: [
+      "No intentes sujetarla ni evitar que se mueva.",
+      "No le pongas nada en la boca: la lengua no se puede tragar.",
+      "No le hagas respiración boca a boca, salvo que esté inconsciente y deje de respirar cuando pase la convulsión (ahí, RCP).",
+    ],
+    whenToCall: [
+      "La convulsión dura más de 5 minutos.",
+      "Respira mal cuando termina, o no se recupera de forma normal.",
+      "Las convulsiones se repiten.",
+      "No se despierta, se lastimó durante la convulsión o está dentro del agua.",
+      "Tiene otra enfermedad (diabetes, enfermedad cardíaca) o está embarazada.",
+    ],
+    whileWaiting: ["Hablale con calma y mantenela lejos de cualquier peligro."],
+    related: ["rcp"],
+    sources: [MANUAL],
+    checkedAt: CHECKED_AT,
+  },
+  {
+    slug: "quemaduras",
+    title: "Quemaduras",
+    group: "now",
+    summary: "Pueden ser por líquidos calientes, fuego, electricidad, vapor, plancha o líquidos inflamables. Son muy frecuentes en el hogar, sobre todo en la cocina.",
+    stepSets: [
+      {
+        steps: [
+          "Tranquilizá a la persona.",
+          "Sacale la ropa, los anillos, las pulseras y los cinturones que no estén pegados a la lesión.",
+          "Poné agua sobre la lesión. Si la quemadura es leve, usá agua a temperatura de la canilla: calma el dolor y evita que la lesión avance.",
+          "Llamá al número de emergencias de tu localidad o andá al centro de salud más cercano.",
+        ],
+      },
+    ],
+    dont: [
+      "No uses agua caliente ni muy fría.",
+      "No pongas hielo, cremas, dentífrico ni otros remedios caseros: pueden empeorar la lesión y causar una infección.",
+      "No abras las ampollas.",
+    ],
+    whenToCall: ["En niños y adultos mayores las quemaduras pueden ser más graves aunque sean del mismo tamaño y profundidad."],
+    related: ["electrocucion"],
+    sources: [MANUAL],
     checkedAt: CHECKED_AT,
   },
 ]

@@ -2,7 +2,6 @@ import type { ReactNode } from "react"
 import { Disclosure } from "@/components/health/Disclosure"
 import { OutLink } from "@/components/health/OutLink"
 import type { AnimalPlace, CostStatus, Kind, Prestacion } from "./Animals.places"
-import { READ_ON } from "./Animals.places"
 
 const labelClass = "m-0 mt-3 text-base font-extrabold"
 
@@ -12,11 +11,6 @@ const COST_LABEL: Record<CostStatus, string> = {
   "no-informada": "La página no informa el costo",
   arancelada: "Arancelada",
   "no-aplica": "El servicio no existe, según la página",
-}
-
-const formatDate = (iso: string) => {
-  const [year, month, day] = iso.split("-").map(Number)
-  return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
 }
 
 const Lines = ({ items }: { items: string[] }) => (
@@ -37,11 +31,11 @@ const Block = ({ label, items }: { label: string, items?: string[] }) =>
     </>
   ) : null
 
-/** One prestación of a place: who, cost and conditions, where, when, how and contact, apart from the others */
+/** One prestación of a place: who, cost and conditions, where, when, how and contact, apart from the others. The plain "gratuita" gets no label of its own (the Costo block says it, with its source): the others do */
 const PrestacionBlock = ({ item }: { item: Prestacion }) => (
   <div className="rounded-xl border border-line-strong bg-card p-3">
     <h5 className="m-0 text-lg font-extrabold">{item.title}</h5>
-    <p className="m-0 mt-1 text-sm font-bold text-ink-soft">{COST_LABEL[item.cost.status]}</p>
+    {item.cost.status !== "gratuita" && <p className="m-0 mt-1 text-sm font-bold text-ink-soft">{COST_LABEL[item.cost.status]}</p>}
     <h6 className={labelClass}>Para quién</h6>
     <p className="m-0 mt-1">{item.who}</p>
     <h6 className={labelClass}>Costo</h6>
@@ -78,9 +72,6 @@ export const PlaceCard = ({ place, kinds, statuses, title, showAction = true, ch
           <OutLink href={place.action.url}>{place.action.label}</OutLink>
         </div>
       )}
-      <p className="m-0 mt-3 text-sm text-ink-soft">
-        {`Datos de la página oficial de ese organismo, consultada el ${formatDate(READ_ON)}.${place.sourceDate ? ` Fecha de su contenido: ${place.sourceDate}.` : " La página no muestra fecha de actualización."} AuxiliAR no los verificó: confirmá requisitos, costo y horarios con el servicio.`}
-      </p>
     </Disclosure>
   )
 }
