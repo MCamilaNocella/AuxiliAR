@@ -1,0 +1,1395 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "imusa-parque-garay-santa-fe",
+      "name": "IMUSA Parque Garay",
+      "shortName": "IMUSA Parque Garay",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+5493425394576",
+          "display": "0342 15 539-4576",
+          "label": "Teléfono del servicio"
+        }
+      ],
+      "address": {
+        "street": "Obispo Gelabert",
+        "number": "3691",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "coordinates": {
+        "lat": -31.633639,
+        "lng": -60.718916,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-map-link",
+        "note": "Ubicación publicada por la agenda oficial de la Ciudad de Santa Fe (https://agenda.santafeciudad.gov.ar/ubicaciones/imusa-parque-garay/), corroborada con el domicilio de la ficha del programa el 13/10/2026. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en IMUSA Parque Garay."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención veterinaria básica en IMUSA Parque Garay."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en IMUSA Parque Garay."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en IMUSA Parque Garay."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "imusa-jardin-botanico-santa-fe",
+      "name": "IMUSA Jardín Botánico",
+      "shortName": "IMUSA Jardín Botánico",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "address": {
+        "street": "Av. Gorriti",
+        "number": "3900",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en IMUSA Jardín Botánico."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención veterinaria básica en IMUSA Jardín Botánico."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en IMUSA Jardín Botánico."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en IMUSA Jardín Botánico."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "imusa-alto-verde-santa-fe",
+      "name": "IMUSA Alto Verde",
+      "shortName": "IMUSA Alto Verde",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "address": {
+        "street": "Plaza Evita (D. Gómez y J. Cantero)",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en IMUSA Alto Verde."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención veterinaria básica en IMUSA Alto Verde."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en IMUSA Alto Verde."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en IMUSA Alto Verde."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Santa Fe: Bienestar animal",
+              "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno previo por el enlace de la página municipal. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "cmd-oeste-red-salud-animal-rosario",
+      "name": "CMD Oeste - Red de Salud Animal",
+      "shortName": "CMD Oeste - Red de Salud Animal",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Rosario: Red de Salud Animal"
+      },
+      "address": {
+        "street": "Pte. Perón",
+        "number": "4602",
+        "locality": "Rosario",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria primaria",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención veterinaria primaria en CMD Oeste - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en CMD Oeste - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en CMD Oeste - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Rosario: Red de Salud Animal",
+        "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+        "retrievedAt": "2026-10-13",
+        "note": "Página municipal de atención veterinaria para perros y gatos: puestos de la Red de Salud Animal, horario y acceso. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "centro-de-salud-pasteur-red-salud-animal-rosario",
+      "name": "Centro de Salud Pasteur - Red de Salud Animal",
+      "shortName": "Centro de Salud Pasteur - Red de Salud Animal",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Rosario: Red de Salud Animal"
+      },
+      "address": {
+        "street": "Ayolas y Ayacucho",
+        "locality": "Rosario",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria primaria",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención veterinaria primaria en Centro de Salud Pasteur - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en Centro de Salud Pasteur - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en Centro de Salud Pasteur - Red de Salud Animal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Rosario: Red de Salud Animal",
+              "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+              "retrievedAt": "2026-10-13",
+              "note": "Sin turno previo, según la página. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Rosario: Red de Salud Animal",
+        "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+        "retrievedAt": "2026-10-13",
+        "note": "Página municipal de atención veterinaria para perros y gatos: puestos de la Red de Salud Animal, horario y acceso. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}

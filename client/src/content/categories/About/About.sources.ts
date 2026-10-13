@@ -1,5 +1,5 @@
 import type { Source } from "@/components/health/SourceList"
-import { getCurrentPlaces, getCurrentServices, isMappable } from "@/data/resources"
+import { getCurrentPlaces, getCurrentServices } from "@/data/resources"
 import type { Resource } from "@/data/resources"
 import { buildPlaceView, isVerifiedFree } from "@/utils/places"
 import { FIRST_AID_GUIDE_CONTENT, isVideoShown } from "../../firstAid"
@@ -91,8 +91,7 @@ const MAP_PLACES: Resource[] = Object.values(placeFiles).flatMap((file) => file.
  */
 const placeBlocks = (): ReferenceBlock[] =>
   getCurrentPlaces(undefined, MAP_PLACES)
-    .filter(isMappable)
-    // only the places the map shows: those with at least one service of documented gratuity
+    // only the places the explorer shows (the map and the list): those with at least one service of documented gratuity; a place with no verified point is in the list only, and its sources are here too
     .filter((place) => getCurrentServices(place).some((service) => isVerifiedFree(place, service)))
     .map((place) => {
       const services = getCurrentServices(place).filter((service) => isVerifiedFree(place, service))

@@ -137,7 +137,11 @@ test("the sources of the map's establishments and of the first aid guides are he
   // the 57 places of the batches of 12/10/2026 (44 of sexual health, 13 of the page of vacunatorios) are listed too: they are the ones whose services are all of a batch
   const batch = JSON.parse(readFileSync(new URL("../src/data/resources/places/ar-c.json", import.meta.url), "utf8")).resources.filter(({ services }) => services.every(({ id, verification }) => ["consejeria-salud-sexual", "metodos-anticonceptivos", "preservativos", "vacunacion"].includes(id) && verification?.verifiedAt === "2026-10-12")).map(({ id }) => `centro-${id}`)
   assert.equal(batch.length, 57)
-  assert.deepEqual(places.blocks.map(({ id }) => id).sort(), [...["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-de-alta-complejidad-el-cruce", "centro-hospital-de-clinicas-nicolas-avellaneda", "centro-hospital-de-la-madre-y-el-nino", "centro-hospital-de-pediatria-dr-j-garrahan", "centro-hospital-general-de-ninos-pedro-de-elizalde", "centro-hospital-infantil-municipal-sixto-gerardo-gonzalez", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas", "centro-hospital-samic-rene-favaloro"], ...batch].sort())
+  // the free veterinary places of the report of 13/10/2026 (every province file) are listed too
+  const placesDir = new URL("../src/data/resources/places/", import.meta.url)
+  const vet = readdirSync(placesDir).flatMap((name) => JSON.parse(readFileSync(new URL(name, placesDir), "utf8")).resources).filter((place) => place.verification?.verifiedAt === "2026-10-13").map(({ id }) => `centro-${id}`)
+  assert.equal(vet.length, 15)
+  assert.deepEqual(places.blocks.map(({ id }) => id).sort(), [...["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-de-alta-complejidad-el-cruce", "centro-hospital-de-clinicas-nicolas-avellaneda", "centro-hospital-de-la-madre-y-el-nino", "centro-hospital-de-pediatria-dr-j-garrahan", "centro-hospital-general-de-ninos-pedro-de-elizalde", "centro-hospital-infantil-municipal-sixto-gerardo-gonzalez", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas", "centro-hospital-samic-rene-favaloro"], ...batch, ...vet].sort())
   for (const block of places.blocks) {
     assert.equal(block.checkedKind, "place")
     assert.equal(block.checkedAt.length, 1, block.id)

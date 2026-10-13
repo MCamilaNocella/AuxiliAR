@@ -107,6 +107,285 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). Dirección de la ficha coincidente con el directorio de la Red Federal Garrahan."
       }
+    },
+    {
+      "id": "centro-castraciones-alberdi-cordoba",
+      "name": "Centro de Castraciones Alberdi",
+      "shortName": "Castraciones Alberdi",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Francisco Muñiz",
+        "number": "60",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones Alberdi."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "centro-castraciones-la-france-cordoba",
+      "name": "Centro de Castraciones La France",
+      "shortName": "Castraciones La France",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Concepción del Bermejo",
+        "number": "3129",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones La France."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa. Una nota anterior da el número 3179: se usa el domicilio de la ficha actual del programa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    },
+    {
+      "id": "centro-castraciones-villa-allende-parque-cordoba",
+      "name": "Centro de Castraciones Villa Allende Parque",
+      "shortName": "Castraciones Villa Allende Parque",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Maloca",
+        "number": "8321",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro de Castraciones Villa Allende Parque."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+              "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+              "retrievedAt": "2026-10-13",
+              "note": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
     }
   ]
 }

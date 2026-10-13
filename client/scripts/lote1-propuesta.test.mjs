@@ -20,7 +20,7 @@ const proposal = JSON.parse(await readFile(join(root, "curation/proposals/lote-1
 const realFile = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8"))
 // This proposal is about the first places: the 44 of the sexual health batch have their own test (places-sexual.test.mjs)
 const realPlaces = { ...realFile, resources: withoutSexualBatch(realFile.resources) }
-// The drafts of the proposal that are not in the data yet (Costanera Sur was loaded after approval; the Indoamericano is still a draft)
+// The drafts of the proposal that are not in the data yet (Costanera Sur was loaded after approval; the Indoamericano was loaded later, with the veterinary report of 13/10/2026)
 const pendingDrafts = proposal.newPlaces.filter(({ draft }) => !realPlaces.resources.some(({ id }) => id === draft.id))
 
 const { createServer } = await import("vite")

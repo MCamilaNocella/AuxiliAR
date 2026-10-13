@@ -15,7 +15,11 @@ export const isVaccinationBatchService = (service) => service.id === "vacunacion
 
 export const isBatchService = (service) => isSexualBatchService(service) || isVaccinationBatchService(service)
 
+/** The places of the batch of free veterinary centres (13/10/2026, tested in places-veterinary.test.mjs) */
+export const isVeterinaryBatchPlace = (place) => place.verification?.verifiedAt === "2026-10-13"
+
 export const withoutSexualBatch = (resources) =>
   resources
+    .filter((place) => !isVeterinaryBatchPlace(place))
     .filter((place) => !(place.services ?? []).every(isBatchService))
     .map((place) => ({ ...place, services: place.services.filter((service) => !isBatchService(service)) }))

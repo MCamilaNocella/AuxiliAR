@@ -2,7 +2,7 @@
  * The first veterinary place of the map: the Centro Fijo Veterinario Costanera Sur (Animales BA), only for castration. What the data
  * says, where it shows (the Atención veterinaria filter and never the filters for people), that its gratuity is the castration's and not
  * "any veterinary care", that card and panel explain the conditions, that the point is said to be approximate, and that nothing
- * is made up (hours, phone, residence, other services). The Indoamericano centre is NOT in the data.
+ * is made up (hours, phone, residence, other services). The Indoamericano centre was loaded later (13/10/2026): these tests look at the data without that batch.
  *   npm run places:test
  */
 import assert from "node:assert/strict"
@@ -35,7 +35,7 @@ const ID = "centro-fijo-veterinario-costanera-sur"
 const PAGE = "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
 const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
-for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
+for (const province of data.PROVINCES_WITH_PLACE_FILES) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, isVerifiedFree, buildPlaceView } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const centre = raw.find(({ id }) => id === ID)
@@ -161,7 +161,7 @@ test("official links: the page once in Sobre AuxiliAR with what it backs; the pa
   ])
 })
 
-test("the Indoamericano centre is not in the data, and the other places did not change", () => {
+test("the places loaded before the veterinary report (the Indoamericano centre came after) did not change", () => {
   assert.equal(raw.some(({ id }) => id === "centro-fijo-veterinario-indoamericano"), false)
   assert.equal(raw.length, 9)
   assert.deepEqual(raw.map(({ id }) => id).sort(), ["centro-fijo-veterinario-costanera-sur", "cesac-3", "cesac-41", "cesac-47", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "hospital-oftalmologico-santa-lucia"])
@@ -178,7 +178,7 @@ test("the server copy has the centre, without the evidence (the server does not 
   assert.ok(copy)
   assert.equal(copy.services[0].cost, "free")
   assert.equal(copy.services[0].evidence, undefined)
-  assert.equal(server.length, 85)
+  assert.equal(server.length, 100)
 })
 
 /* ── Search by verb: «castrar» finds the castration, and nothing else is widened ── */

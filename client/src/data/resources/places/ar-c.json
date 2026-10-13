@@ -13754,6 +13754,410 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 12/10/2026 (página oficial y dataset oficial; sin llamadas ni visitas). Solo se carga el vacunatorio: no se certifica el resto de las prestaciones del establecimiento."
       }
+    },
+    {
+      "id": "centro-fijo-veterinario-indoamericano",
+      "name": "Centro Fijo Veterinario Indoamericano (Animales BA)",
+      "shortName": "Centro Fijo Indoamericano",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+      },
+      "address": {
+        "street": "Paseo Islas Malvinas y Av. Escalada",
+        "neighborhood": "Villa Soldati",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "province": "AR-C"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede. Alcanza a este servicio; no a otras prestaciones: la página no informa consulta general ni vacunación fija en el centro. Los días con turnos cambian por semana.",
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno online desde el sitio oficial. Los días y centros con turnos cambian por semana: mirá el calendario en la página oficial. Horario según el calendario oficial."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+            "retrievedAt": "2026-10-13",
+            "note": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-13",
+              "note": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Centro Fijo Veterinario Indoamericano (Animales BA)."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+              "retrievedAt": "2026-10-13",
+              "note": "Turno online desde el sitio oficial. Los días y centros con turnos cambian por semana: mirá el calendario en la página oficial. Horario según el calendario oficial. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+        "retrievedAt": "2026-10-13",
+        "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: sede y cronograma del centro fijo. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "aliases": [
+        "Animales BA Indoamericano",
+        "Castraciones gratuitas Indoamericano"
+      ]
+    },
+    {
+      "id": "instituto-de-zoonosis-luis-pasteur",
+      "name": "Instituto de Zoonosis Luis Pasteur",
+      "shortName": "Instituto Pasteur",
+      "kind": "service",
+      "facilityType": "zoonosis-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541149589900",
+          "display": "4958-9900",
+          "label": "Conmutador (lunes a viernes de 10 a 17 h)"
+        }
+      ],
+      "address": {
+        "street": "Av. Díaz Vélez",
+        "number": "4821",
+        "neighborhood": "Caballito",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 6",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6084714,
+        "lng": -58.4349448,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Buenos Aires Data, dataset «Hospitales», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR, reproyectado de EPSG:9498 a WGS84 (curation/crs). Coincide con el punto del mapa oficial de programas de salud en hospitales (EPOK, programas_de_salud_en_hospitales_gcba|8) y con el domicilio de la página del Instituto. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-diagnostico-zoonosis",
+          "type": "zoonosis",
+          "name": "Consulta y diagnóstico de zoonosis",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se solicita presencialmente de lunes a viernes a las 8 o a las 13 h. Es una clínica orientada a la sospecha de zoonosis: sin guardia ni urgencias."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista consulta y diagnóstico de zoonosis en Instituto de Zoonosis Luis Pasteur."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Se solicita presencialmente de lunes a viernes a las 8 o a las 13 h. Es una clínica orientada a la sospecha de zoonosis: sin guardia ni urgencias. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "observacion-antirrabica",
+          "type": "zoonosis",
+          "name": "Observación antirrábica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá en el Instituto cómo se hace: la página no explica el circuito."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista observación antirrábica en Instituto de Zoonosis Luis Pasteur."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá en el Instituto cómo se hace: la página no explica el circuito. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "recepcion-muestras",
+          "type": "zoonosis",
+          "name": "Recepción de muestras",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "requirements": [
+            "Hay que llevar orden veterinaria."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Con orden veterinaria. La página no indica horario."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista recepción de muestras en Instituto de Zoonosis Luis Pasteur."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Con orden veterinaria. La página no indica horario. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "from": "08:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Vacunación sin turno, todos los días de 8 a 18 h según la ficha específica. La página general da otro horario (de 9 a 12 y de 14 a 17 h): confirmá antes de ir."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+              "retrievedAt": "2026-10-13",
+              "note": "Ficha de vacunación del Instituto: vacuna antirrábica, todos los días de 8 a 18 h, sin turno."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Vacunación sin turno, todos los días de 8 a 18 h según la ficha específica. La página general da otro horario (de 9 a 12 y de 14 a 17 h): confirmá antes de ir. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "recepcion-animales-fallecidos",
+          "type": "zoonosis",
+          "name": "Recepción de animales fallecidos",
+          "hours": {
+            "open24h": true
+          },
+          "cost": "free",
+          "costNote": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis. No se verificó cremación individual ni devolución de cenizas.",
+          "requirements": [
+            "La persona tiene que ser mayor de edad y llevar DNI."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Funciona todos los días, las 24 horas. La recepción sanitaria no garantiza cremación individual ni devolución de cenizas."
+          },
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/informacion-util",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/informacion-util",
+              "retrievedAt": "2026-10-13",
+              "note": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo."
+            },
+            {
+              "kind": "existence",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/informacion-util",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista recepción de animales fallecidos en Instituto de Zoonosis Luis Pasteur."
+            },
+            {
+              "kind": "access",
+              "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+              "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+              "retrievedAt": "2026-10-13",
+              "note": "Funciona todos los días, las 24 horas. La recepción sanitaria no garantiza cremación individual ni devolución de cenizas. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "externalIds": { "caba-hospitales": "inst-de-zoonosis-l-pasteur" },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur",
+        "retrievedAt": "2026-10-13",
+        "note": "Páginas oficiales del Instituto: domicilio, servicios, vacunación e información útil. El conmutador 4958-9900 figura en la página de servicios (el dataset de la Ciudad tiene otro orden de cifras: se usa el de la página)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
     }
   ]
 }

@@ -2,14 +2,14 @@
   {
     "title": "Encontrar atención",
     "path": "/centros",
-    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja y Tucumán; todavía no cubrimos todo el país.",
+    "summary": "Centros de salud y hospitales verificados, en mapa o lista. Buscá centros de salud, hospitales y guardias con información verificada Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja, Misiones, Río Negro, Santa Fe, Tierra del Fuego y Tucumán; todavía no cubrimos todo el país.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Encontrar atención › Mapa AuxiliAR",
     "path": "/centros?seccion=section-1",
-    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja y Tucumán; todavía no cubrimos todo el país.",
+    "summary": "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja, Misiones, Río Negro, Santa Fe, Tierra del Fuego y Tucumán; todavía no cubrimos todo el país.",
     "firstAid": false,
     "hasInfo": true
   },

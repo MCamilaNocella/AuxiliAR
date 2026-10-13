@@ -11,7 +11,7 @@ Verificación: 2026-10-07, próxima revisión 2027-01-05 (90 días), por equipo-
 |---|---|---|---|---|
 | CeSAC | 50 | 43 | 3 | 4 |
 | Hospitales Generales de Agudos | 14 | 14 | 0 | 0 |
-| Otros hospitales | 22 | 8 | 0 | 14 |
+| Otros hospitales | 22 | 9 | 0 | 13 |
 
 - Con coordenadas (irían al mapa): 3 CeSAC y 0 hospitales propuestos.
 - No se afirma gratuidad, horarios, turnos ni requisitos. Única excepción: la guardia 24 h de los Hospitales Generales de Agudos, que una página oficial afirma textualmente (con su cita).
@@ -66,7 +66,7 @@ La guardia de salud mental de estos hospitales (página «Guardias hospitalarias
 
 ## Otros hospitales
 
-22 hospitales especializados e institutos de la fuente (8 ya publicados): **ninguno se propone**. El dataset da una sola "especialidad" por hospital, sin horarios ni guardia confirmada, y no se infieren prestaciones desde el tipo de hospital.
+22 hospitales especializados e institutos de la fuente (9 ya publicados): **ninguno se propone**. El dataset da una sola "especialidad" por hospital, sin horarios ni guardia confirmada, y no se infieren prestaciones desde el tipo de hospital.
 
 ## Cobertura geográfica (por comuna)
 
@@ -77,7 +77,7 @@ La guardia de salud mental de estos hospitales (página «Guardias hospitalarias
 | Comuna 3 | 4 | 0 |
 | Comuna 4 | 16 | 0 |
 | Comuna 5 | 2 | 0 |
-| Comuna 6 | 1 | 0 |
+| Comuna 6 | 2 | 0 |
 | Comuna 7 | 7 | 0 |
 | Comuna 8 | 10 | 0 |
 | Comuna 9 | 5 | 0 |

@@ -19,7 +19,7 @@ export const HEALTH_CENTERS: Category = {
       id: "section-1",
       title: "Mapa AuxiliAR",
       summary:
-        "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja y Tucumán; todavía no cubrimos todo el país.",
+        "Mapa y lista de centros de atención verificados (hospitales, centros de salud, guardias) para buscar por provincia, tipo de atención y prestación. Por ahora hay centros verificados en la Ciudad de Buenos Aires y en pocos lugares de Buenos Aires, Córdoba, La Rioja, Misiones, Río Negro, Santa Fe, Tierra del Fuego y Tucumán; todavía no cubrimos todo el país.",
       Content: Section1,
     },
   ],

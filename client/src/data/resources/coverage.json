@@ -3,13 +3,17 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
     "AR-B": {
-      "places": 2,
+      "places": 3,
       "currentUntil": "2026-11-12",
       "categories": [
+        "animales",
         "salud-fisica"
       ],
       "serviceTypes": [
-        "specialty-care"
+        "rabies-vaccination",
+        "spaying-neutering",
+        "specialty-care",
+        "veterinary-care"
       ],
       "divisions": [
         "Florencio Varela",
@@ -23,11 +27,14 @@
         "medical": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
         }
       }
     },
     "AR-C": {
-      "places": 66,
+      "places": 68,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -48,12 +55,14 @@
         "pharmacy",
         "pregnancy-care",
         "primary-care",
+        "rabies-vaccination",
         "sexual-health-counseling",
         "sexual-reproductive-health",
         "spaying-neutering",
         "specialty-care",
         "sti-testing-care",
-        "vaccination"
+        "vaccination",
+        "zoonosis"
       ],
       "divisions": [
         "Comuna 1",
@@ -93,8 +102,8 @@
           "map": "2027-01-05"
         },
         "animal-health": {
-          "list": "2026-11-08",
-          "map": "2026-11-08"
+          "list": "2026-11-12",
+          "map": "2026-11-12"
         }
       }
     },
@@ -116,6 +125,70 @@
           "map": "2026-11-12"
         },
         "medical": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-N": {
+      "places": 2,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering",
+        "veterinary-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-R": {
+      "places": 1,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-S": {
+      "places": 5,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "rabies-vaccination",
+        "spaying-neutering",
+        "veterinary-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        },
+        "animal-health": {
           "list": "2026-11-12",
           "map": "2026-11-12"
         }
@@ -144,13 +217,35 @@
         }
       }
     },
-    "AR-X": {
+    "AR-V": {
       "places": 1,
       "currentUntil": "2026-11-12",
       "categories": [
+        "animales"
+      ],
+      "serviceTypes": [
+        "spaying-neutering",
+        "veterinary-care"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
+        }
+      }
+    },
+    "AR-X": {
+      "places": 4,
+      "currentUntil": "2026-11-12",
+      "categories": [
+        "animales",
         "salud-fisica"
       ],
       "serviceTypes": [
+        "spaying-neutering",
         "specialty-care"
       ],
       "divisions": [
@@ -164,6 +259,9 @@
         "medical": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        },
+        "animal-health": {
+          "list": "2026-11-12"
         }
       }
     }

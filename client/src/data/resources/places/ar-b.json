@@ -198,6 +198,230 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 12/10/2026 (lectura automática de las páginas oficiales; sin llamadas ni visitas). El punto del mapa es el que OpenStreetMap da para el hospital; el domicilio oficial dice Av. Eva Perón 5200."
       }
+    },
+    {
+      "id": "clinica-veterinaria-municipal-berazategui",
+      "name": "Clínica Veterinaria Municipal",
+      "shortName": "Clínica Veterinaria Berazategui",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-B",
+        "organization": "Municipalidad de Berazategui"
+      },
+      "address": {
+        "street": "Av. Ranelagh entre Av. Milazzo y calle 45",
+        "locality": "Berazategui",
+        "province": "AR-B"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "La nota municipal enumera expresamente los cuatro servicios sin costo."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Clínica Veterinaria Municipal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "La nota municipal enumera expresamente los cuatro servicios sin costo."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista vacuna antirrábica en Clínica Veterinaria Municipal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "La nota municipal enumera expresamente los cuatro servicios sin costo."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista desparasitación en Clínica Veterinaria Municipal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "atencion-clinica-primaria",
+          "type": "veterinary-care",
+          "name": "Atención clínica primaria",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "La nota municipal enumera expresamente los cuatro servicios sin costo."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista atención clínica primaria en Clínica Veterinaria Municipal."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Berazategui",
+              "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Berazategui",
+        "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+        "retrievedAt": "2026-10-13",
+        "note": "Nota municipal sobre la clínica veterinaria: domicilio y servicios sin costo. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
     }
   ]
 }

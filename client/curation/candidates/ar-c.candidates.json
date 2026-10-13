@@ -26125,7 +26125,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "inst-de-zoonosis-l-pasteur",
+      "id": "instituto-de-zoonosis-luis-pasteur",
       "source": "caba-hospitales",
       "key": "inst-de-zoonosis-l-pasteur",
       "tier": "T1",
@@ -26147,7 +26147,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "instituto-de-zoonosis-luis-pasteur",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",

@@ -414,7 +414,7 @@ test("coordinates of Santa Lucía, Carrillo and Dueñas: official, reprojected b
   assert.deepEqual(result.errors, [])
   assert.equal(result.changed, false, "todo lo decidido ya está aplicado")
   const decisions = (await readJson(join(PATHS.decisions, "ar-c.decisions.json"))).decisions
-  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "link", "link", ...Array(57).fill("link")])
+  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "link", "link", ...Array(58).fill("link")])
   // three coordinates (the hospitals) and six divisions: each one tied to its row, its batch and a reviewer
   const applies = decisions.filter((d) => d.action === "apply")
   assert.ok(applies.every((d) => d.fields.length === 1 && d.batch === "caba-2" && d.rowHash && d.reviewer && d.decidedAt && d.reason))

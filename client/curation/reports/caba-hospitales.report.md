@@ -10,7 +10,7 @@ Descarga: 2026-10-07 (actualizado por el publicador el 2026-10-02), sha256 00576
 - T1 (todo en orden): 26 · T2 (necesitan revisión): 10 · T3 (bloqueados): 0
 - Con coordenadas utilizables: 36
 - **Publicables hoy: 0** (necesitan al menos una prestación con mapeo aprobado y tipo de establecimiento aprobado)
-- Ya publicados / enlazados: 22 · parecidos a uno publicado: 0
+- Ya publicados / enlazados: 23 · parecidos a uno publicado: 0
 
 ## Avisos (cuentan para el tier)
 
@@ -79,6 +79,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-general-de-ninos-pedro-de-elizalde | contacts | 541143632100 | sin publicar: 4307-5842, 4307-5442, 4300-1700 |
 | hospital-gutierrez | coordinates | -34.594523, -58.410732 | -34.5941915, -58.4120726 |
 | hospital-gutierrez | contacts | 541149629247 | sin publicar: 4962-9232 |
+| instituto-de-zoonosis-luis-pasteur | contacts | 541149589900 | sin publicar: 4598-9900, 4982-8421 |
 
 ## Detalle
 
@@ -117,6 +118,6 @@ No hay una descarga anterior con la que comparar.
 | hospital-general-de-ninos-p-de-elizalde | hospital-general-de-ninos-pedro-de-elizalde | T2 | enlazado (hospital-general-de-ninos-pedro-de-elizalde) | address-street-inverted | facility-type-not-approved, no-approved-service |
 | hospital-general-de-ninos-r-gutierrez | hospital-gutierrez | T1 | enlazado (hospital-gutierrez) | — | facility-type-not-approved, no-approved-service |
 | hospital-municipal-de-oncologia-m-curie | hospital-municipal-de-oncologia-m-curie | T1 | new | — | facility-type-not-approved, no-approved-service |
-| inst-de-zoonosis-l-pasteur | inst-de-zoonosis-l-pasteur | T1 | new | — | facility-type-not-approved, no-approved-service |
+| inst-de-zoonosis-l-pasteur | instituto-de-zoonosis-luis-pasteur | T1 | enlazado (instituto-de-zoonosis-luis-pasteur) | — | facility-type-not-approved, no-approved-service |
 | instituto-de-rehabilitacion-psicofisica-i-r-e-p | instituto-de-rehabilitacion-psicofisica-i-r-e-p | T1 | new | — | facility-type-not-approved, no-approved-service |
 | talleres-protegidos-de-rehabilitacion-psiquiatrica | talleres-protegidos-de-rehabilitacion-psiquiatrica | T1 | new | — | facility-type-not-approved, no-approved-service |

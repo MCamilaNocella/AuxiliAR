@@ -3,6 +3,413 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources. No editar a mano: se pisa con npm run resources:sync.",
   "resources": [
     {
+      "id": "centro-castraciones-alberdi-cordoba",
+      "name": "Centro de Castraciones Alberdi",
+      "shortName": "Castraciones Alberdi",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Francisco Muñiz",
+        "number": "60",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "centro-castraciones-la-france-cordoba",
+      "name": "Centro de Castraciones La France",
+      "shortName": "Castraciones La France",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Concepción del Bermejo",
+        "number": "3129",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa. Una nota anterior da el número 3179: se usa el domicilio de la ficha actual del programa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "centro-castraciones-villa-allende-parque-cordoba",
+      "name": "Centro de Castraciones Villa Allende Parque",
+      "shortName": "Castraciones Villa Allende Parque",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543518606269",
+          "display": "351 860-6269",
+          "label": "WhatsApp del programa"
+        }
+      ],
+      "address": {
+        "street": "Maloca",
+        "number": "8321",
+        "locality": "Córdoba",
+        "province": "AR-X"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Vecinos de la ciudad de Córdoba.",
+            "La disponibilidad de turnos es limitada."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Por WhatsApp al 351 860-6269; el turnero abre los jueves hábiles desde las 8 h. Horario: consultá el que te asignen."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+            "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Córdoba: Control de reproducción de animales de compañía",
+        "url": "https://cordoba.gob.ar/programa/control-de-reproduccion-de-animales-de-compania/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial del programa: sedes, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "centro-de-salud-pasteur-red-salud-animal-rosario",
+      "name": "Centro de Salud Pasteur - Red de Salud Animal",
+      "shortName": "Centro de Salud Pasteur - Red de Salud Animal",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Rosario: Red de Salud Animal"
+      },
+      "address": {
+        "street": "Ayolas y Ayacucho",
+        "locality": "Rosario",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria primaria",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Rosario: Red de Salud Animal",
+        "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+        "retrievedAt": "2026-10-13",
+        "note": "Página municipal de atención veterinaria para perros y gatos: puestos de la Red de Salud Animal, horario y acceso. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
       "id": "centro-fijo-veterinario-costanera-sur",
       "name": "Centro Fijo Veterinario Costanera Sur (Animales BA)",
       "shortName": "Centro Fijo Costanera Sur",
@@ -88,6 +495,77 @@
       "aliases": [
         "Animales BA Costanera Sur",
         "Castraciones gratuitas Costanera Sur"
+      ],
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "centro-fijo-veterinario-indoamericano",
+      "name": "Centro Fijo Veterinario Indoamericano (Animales BA)",
+      "shortName": "Centro Fijo Indoamericano",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA"
+      },
+      "address": {
+        "street": "Paseo Islas Malvinas y Av. Escalada",
+        "neighborhood": "Villa Soldati",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "province": "AR-C"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede. Alcanza a este servicio; no a otras prestaciones: la página no informa consulta general ni vacunación fija en el centro. Los días con turnos cambian por semana.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno online desde el sitio oficial. Los días y centros con turnos cambian por semana: mirá el calendario en la página oficial. Horario según el calendario oficial."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+            "retrievedAt": "2026-10-13",
+            "note": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Animales BA",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas",
+        "retrievedAt": "2026-10-13",
+        "note": "Página oficial «Atención veterinaria y castraciones gratuitas»: sede y cronograma del centro fijo. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "aliases": [
+        "Animales BA Indoamericano",
+        "Castraciones gratuitas Indoamericano"
       ],
       "derivedCategories": [
         "animales"
@@ -8327,6 +8805,372 @@
       ]
     },
     {
+      "id": "clinica-veterinaria-municipal-berazategui",
+      "name": "Clínica Veterinaria Municipal",
+      "shortName": "Clínica Veterinaria Berazategui",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-B",
+        "organization": "Municipalidad de Berazategui"
+      },
+      "address": {
+        "street": "Av. Ranelagh entre Av. Milazzo y calle 45",
+        "locality": "Berazategui",
+        "province": "AR-B"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-clinica-primaria",
+          "type": "veterinary-care",
+          "name": "Atención clínica primaria",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá el mecanismo de acceso en la web municipal: la fuente no lo detalla. El horario clínico actual no está confirmado."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Berazategui",
+            "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota municipal enumera expresamente los cuatro servicios sin costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Berazategui",
+        "url": "https://berazategui.gob.ar/noticias/la-1ra-clinica-veterinaria-municipal-es-de-berazategui/",
+        "retrievedAt": "2026-10-13",
+        "note": "Nota municipal sobre la clínica veterinaria: domicilio y servicios sin costo. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "cmd-oeste-red-salud-animal-rosario",
+      "name": "CMD Oeste - Red de Salud Animal",
+      "shortName": "CMD Oeste - Red de Salud Animal",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Rosario: Red de Salud Animal"
+      },
+      "address": {
+        "street": "Pte. Perón",
+        "number": "4602",
+        "locality": "Rosario",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "atencion-primaria",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria primaria",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:30",
+                "to": "12:30"
+              },
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "13:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Sin turno previo, según la página."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Rosario: Red de Salud Animal",
+            "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+            "retrievedAt": "2026-10-13",
+            "note": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Rosario: Red de Salud Animal",
+        "url": "https://www.rosario.gob.ar/inicio/solicitar-atencion-veterinaria-para-perros-y-gatos",
+        "retrievedAt": "2026-10-13",
+        "note": "Página municipal de atención veterinaria para perros y gatos: puestos de la Red de Salud Animal, horario y acceso. Contacto no publicado en la fuente específica. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
       "id": "consumos-problematicos-141",
       "name": "Consumos problemáticos",
       "kind": "urgent-support",
@@ -8358,6 +9202,147 @@
         "verifiedBy": "equipo-auxiliar",
         "nextReviewDue": "2027-01-06"
       }
+    },
+    {
+      "id": "direccion-de-zoonosis-ushuaia",
+      "name": "Dirección de Zoonosis",
+      "shortName": "Zoonosis Ushuaia",
+      "kind": "service",
+      "facilityType": "zoonosis-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-V",
+        "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+542901422377",
+          "display": "02901 422377",
+          "label": "Teléfono de la Dirección"
+        }
+      ],
+      "address": {
+        "street": "Vito Dumas",
+        "number": "220",
+        "locality": "Ushuaia",
+        "province": "AR-V"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "requirements": [
+            "Perros, perras y gatas desde los 5 meses; gatos desde los 8 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se pide turno por teléfono. Esta es la sede de contacto y gestión: confirmá en qué quirófano se hace la intervención. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "antiparasitarios",
+          "type": "veterinary-care",
+          "name": "Antiparasitarios",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por teléfono cómo se entregan: la página no lo explica. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "microchip-perros",
+          "type": "veterinary-care",
+          "name": "Microchip para perros",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "requirements": [
+            "Solo perros, desde los 3 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por teléfono cómo se pide. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+        "url": "https://www.ushuaia.gob.ar/zoonosis",
+        "retrievedAt": "2026-10-13",
+        "note": "Página oficial de la Dirección de Zoonosis: sede, servicios gratuitos y contacto (también figura el 2901 613278). Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
     },
     {
       "id": "emergencias-107",
@@ -12618,6 +13603,1328 @@
       ]
     },
     {
+      "id": "imusa-alto-verde-santa-fe",
+      "name": "IMUSA Alto Verde",
+      "shortName": "IMUSA Alto Verde",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "address": {
+        "street": "Plaza Evita (D. Gómez y J. Cantero)",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "08:00",
+                "to": "12:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "imusa-base-115-posadas",
+      "name": "IMUSA Base 115",
+      "shortName": "IMUSA Base 115",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-N",
+        "organization": "Municipalidad de Posadas: IMUSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543765062610",
+          "display": "376 506-2610",
+          "label": "WhatsApp"
+        }
+      ],
+      "address": {
+        "street": "Av. 115 y Acevedo",
+        "locality": "Posadas",
+        "province": "AR-N"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Castración desde los 6 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 506-2610."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Vacuna desde los 3 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-clinica-basica",
+          "type": "veterinary-care",
+          "name": "Atención clínica básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 506-2610: la página no dice si hace falta turno."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Posadas: IMUSA",
+        "url": "https://posadas.gov.ar/imusa",
+        "retrievedAt": "2026-10-13",
+        "note": "Sitio oficial del IMUSA: sedes, prestaciones, contacto y horario. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "imusa-jardin-botanico-santa-fe",
+      "name": "IMUSA Jardín Botánico",
+      "shortName": "IMUSA Jardín Botánico",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "address": {
+        "street": "Av. Gorriti",
+        "number": "3900",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "17:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "imusa-parque-garay-santa-fe",
+      "name": "IMUSA Parque Garay",
+      "shortName": "IMUSA Parque Garay",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-S",
+        "organization": "Municipalidad de Santa Fe: Bienestar animal"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+5493425394576",
+          "display": "0342 15 539-4576",
+          "label": "Teléfono del servicio"
+        }
+      ],
+      "address": {
+        "street": "Obispo Gelabert",
+        "number": "3691",
+        "locality": "Santa Fe",
+        "province": "AR-S"
+      },
+      "coordinates": {
+        "lat": -31.633639,
+        "lng": -60.718916,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-map-link",
+        "note": "Ubicación publicada por la agenda oficial de la Ciudad de Santa Fe (https://agenda.santafeciudad.gov.ar/ubicaciones/imusa-parque-garay/), corroborada con el domicilio de la ficha del programa el 13/10/2026. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "Castración desde los 6 meses.",
+            "El responsable tiene que ser mayor de edad y llevar DNI.",
+            "El equipo evalúa las condiciones clínicas del animal."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-basica",
+          "type": "veterinary-care",
+          "name": "Atención veterinaria básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "desparasitacion",
+          "type": "veterinary-care",
+          "name": "Desparasitación",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "14:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "requirements": [
+            "El responsable tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Turno previo por el enlace de la página municipal."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Santa Fe: Bienestar animal",
+            "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Santa Fe: Bienestar animal",
+        "url": "https://santafeciudad.gov.ar/ambiente/bienestar-animal/",
+        "retrievedAt": "2026-10-13",
+        "note": "Ficha oficial de bienestar animal de la Municipalidad de Santa Fe: sedes, prestaciones, horario y acceso."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "imusa-zaiman-posadas",
+      "name": "IMUSA Zaimán",
+      "shortName": "IMUSA Zaimán",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-N",
+        "organization": "Municipalidad de Posadas: IMUSA"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+543764669841",
+          "display": "376 466-9841",
+          "label": "WhatsApp"
+        }
+      ],
+      "address": {
+        "street": "Ruta 12 (km 5 1/2)",
+        "locality": "Posadas",
+        "province": "AR-N"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Castración desde los 6 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Los turnos para castración se piden desde el sitio oficial; consultá por WhatsApp al 376 466-9841."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas.",
+            "Vacuna desde los 3 meses."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "atencion-clinica-basica",
+          "type": "veterinary-care",
+          "name": "Atención clínica básica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "07:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "requirements": [
+            "Contribuyentes mayores de 18 años residentes en Posadas."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por WhatsApp al 376 466-9841: la página no dice si hace falta turno."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Posadas: IMUSA",
+            "url": "https://posadas.gov.ar/imusa",
+            "retrievedAt": "2026-10-13",
+            "note": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Posadas: IMUSA",
+        "url": "https://posadas.gov.ar/imusa",
+        "retrievedAt": "2026-10-13",
+        "note": "Sitio oficial del IMUSA: sedes, prestaciones, contacto y horario. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
+      "id": "instituto-de-zoonosis-luis-pasteur",
+      "name": "Instituto de Zoonosis Luis Pasteur",
+      "shortName": "Instituto Pasteur",
+      "kind": "service",
+      "facilityType": "zoonosis-center",
+      "jurisdiction": {
+        "level": "other",
+        "province": "AR-C",
+        "organization": "Ministerio de Salud del Gobierno de la Ciudad de Buenos Aires"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+541149589900",
+          "display": "4958-9900",
+          "label": "Conmutador (lunes a viernes de 10 a 17 h)"
+        }
+      ],
+      "address": {
+        "street": "Av. Díaz Vélez",
+        "number": "4821",
+        "neighborhood": "Caballito",
+        "locality": "Ciudad Autónoma de Buenos Aires",
+        "department": "Comuna 6",
+        "province": "AR-C"
+      },
+      "coordinates": {
+        "lat": -34.6084714,
+        "lng": -58.4349448,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset-reprojected",
+        "note": "Buenos Aires Data, dataset «Hospitales», Ministerio de Salud del GCBA, licencia CC-BY-2.5-AR, reproyectado de EPSG:9498 a WGS84 (curation/crs). Coincide con el punto del mapa oficial de programas de salud en hospitales (EPOK, programas_de_salud_en_hospitales_gcba|8) y con el domicilio de la página del Instituto. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "consulta-diagnostico-zoonosis",
+          "type": "zoonosis",
+          "name": "Consulta y diagnóstico de zoonosis",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se solicita presencialmente de lunes a viernes a las 8 o a las 13 h. Es una clínica orientada a la sospecha de zoonosis: sin guardia ni urgencias."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "observacion-antirrabica",
+          "type": "zoonosis",
+          "name": "Observación antirrábica",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá en el Instituto cómo se hace: la página no explica el circuito."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "recepcion-muestras",
+          "type": "zoonosis",
+          "name": "Recepción de muestras",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "requirements": [
+            "Hay que llevar orden veterinaria."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Con orden veterinaria. La página no indica horario."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur/servicios",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "from": "08:00",
+                "to": "18:00"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Vacunación sin turno, todos los días de 8 a 18 h según la ficha específica. La página general da otro horario (de 9 a 12 y de 14 a 17 h): confirmá antes de ir."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/vacunacion",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "recepcion-animales-fallecidos",
+          "type": "zoonosis",
+          "name": "Recepción de animales fallecidos",
+          "hours": {
+            "open24h": true
+          },
+          "cost": "free",
+          "costNote": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis. No se verificó cremación individual ni devolución de cenizas.",
+          "requirements": [
+            "La persona tiene que ser mayor de edad y llevar DNI."
+          ],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Funciona todos los días, las 24 horas. La recepción sanitaria no garantiza cremación individual ni devolución de cenizas."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/hospitales-y-establecimientos-de-salud/instituto-de-zoonosis-luis-pasteur/informacion-util",
+            "retrievedAt": "2026-10-13",
+            "note": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "externalIds": {
+        "caba-hospitales": "inst-de-zoonosis-l-pasteur"
+      },
+      "source": {
+        "organization": "Gobierno de la Ciudad de Buenos Aires: Instituto de Zoonosis Luis Pasteur",
+        "url": "https://buenosaires.gob.ar/gcaba_historico/institutopasteur",
+        "retrievedAt": "2026-10-13",
+        "note": "Páginas oficiales del Instituto: domicilio, servicios, vacunación e información útil. El conmutador 4958-9900 figura en la página de servicios (el dataset de la Ciudad tiene otro orden de cifras: se usa el de la página)."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
+    },
+    {
       "id": "intoxicaciones-cni-posadas",
       "name": "Intoxicaciones",
       "kind": "urgent-support",
@@ -12914,6 +15221,127 @@
         "verifiedBy": "equipo-auxiliar",
         "nextReviewDue": "2027-01-06"
       }
+    },
+    {
+      "id": "sanidad-animal-sede-central-bariloche",
+      "name": "Sanidad Animal - sede central",
+      "shortName": "Sanidad Animal Bariloche",
+      "kind": "service",
+      "facilityType": "public-veterinary",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-R",
+        "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+542944426262",
+          "display": "0294 442-6262",
+          "label": "Sanidad Animal"
+        }
+      ],
+      "address": {
+        "street": "San José",
+        "number": "130",
+        "locality": "San Carlos de Bariloche",
+        "province": "AR-R"
+      },
+      "services": [
+        {
+          "id": "vacuna-antirrabica",
+          "type": "rabies-vaccination",
+          "name": "Vacuna antirrábica",
+          "hours": {
+            "open24h": false,
+            "schedule": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "from": "12:00",
+                "to": "13:30"
+              }
+            ]
+          },
+          "cost": "free",
+          "costNote": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "not-required",
+            "howTo": "Vacunación sin turno, de lunes a viernes de 12 a 13:30 h."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+            "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+            "retrievedAt": "2026-10-13",
+            "note": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        },
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La nota institucional confirma la castración gratuita de Sanidad Animal. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se pide turno por teléfono (0294 442-6262). Los turnos de castración: consultá por teléfono."
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+            "url": "https://barilocheinforma.gob.ar/mas-y-mejores-servicios-gratuitos-de-sanidad-animal-para-los-vecinos-de-bariloche/",
+            "retrievedAt": "2026-10-13",
+            "note": "La nota institucional confirma la castración gratuita de Sanidad Animal. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          },
+          "categories": [
+            "animales"
+          ]
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de San Carlos de Bariloche: Sanidad Animal",
+        "url": "https://barilocheinforma.gob.ar/comenzo-la-campana-de-vacunacion-antirrabica-2026-en-bariloche/",
+        "retrievedAt": "2026-10-13",
+        "note": "Notas institucionales de la Municipalidad: sede, contacto y acceso. Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      },
+      "derivedCategories": [
+        "animales"
+      ]
     },
     {
       "id": "trata-145",

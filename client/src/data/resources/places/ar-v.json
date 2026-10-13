@@ -1,0 +1,196 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "direccion-de-zoonosis-ushuaia",
+      "name": "Dirección de Zoonosis",
+      "shortName": "Zoonosis Ushuaia",
+      "kind": "service",
+      "facilityType": "zoonosis-center",
+      "jurisdiction": {
+        "level": "municipal",
+        "province": "AR-V",
+        "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis"
+      },
+      "contacts": [
+        {
+          "type": "phone",
+          "dial": "+542901422377",
+          "display": "02901 422377",
+          "label": "Teléfono de la Dirección"
+        }
+      ],
+      "address": {
+        "street": "Vito Dumas",
+        "number": "220",
+        "locality": "Ushuaia",
+        "province": "AR-V"
+      },
+      "services": [
+        {
+          "id": "castracion",
+          "type": "spaying-neutering",
+          "name": "Castración de perros y gatos",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "requirements": [
+            "Perros, perras y gatas desde los 5 meses; gatos desde los 8 meses."
+          ],
+          "appointment": {
+            "mode": "required",
+            "howTo": "Se pide turno por teléfono. Esta es la sede de contacto y gestión: confirmá en qué quirófano se hace la intervención. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista castración de perros y gatos en Dirección de Zoonosis."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Se pide turno por teléfono. Esta es la sede de contacto y gestión: confirmá en qué quirófano se hace la intervención. La sede atiende al público de lunes a viernes de 7 a 19 h. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "antiparasitarios",
+          "type": "veterinary-care",
+          "name": "Antiparasitarios",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por teléfono cómo se entregan: la página no lo explica. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista antiparasitarios en Dirección de Zoonosis."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por teléfono cómo se entregan: la página no lo explica. La sede atiende al público de lunes a viernes de 7 a 19 h. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        },
+        {
+          "id": "microchip-perros",
+          "type": "veterinary-care",
+          "name": "Microchip para perros",
+          "hours": null,
+          "cost": "free",
+          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "requirements": [
+            "Solo perros, desde los 3 meses."
+          ],
+          "appointment": {
+            "mode": "unknown",
+            "howTo": "Consultá por teléfono cómo se pide. La sede atiende al público de lunes a viernes de 7 a 19 h."
+          },
+          "source": {
+            "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+            "url": "https://www.ushuaia.gob.ar/zoonosis",
+            "retrievedAt": "2026-10-13",
+            "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Servicio y condiciones según la ficha oficial; no confirma turnos ni disponibilidad."
+          },
+          "evidence": [
+            {
+              "kind": "cost",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica."
+            },
+            {
+              "kind": "existence",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Lista microchip para perros en Dirección de Zoonosis."
+            },
+            {
+              "kind": "access",
+              "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+              "url": "https://www.ushuaia.gob.ar/zoonosis",
+              "retrievedAt": "2026-10-13",
+              "note": "Consultá por teléfono cómo se pide. La sede atiende al público de lunes a viernes de 7 a 19 h. No confirma que haya turnos disponibles."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-13",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-12",
+            "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día."
+          }
+        }
+      ],
+      "source": {
+        "organization": "Municipalidad de Ushuaia: Dirección de Zoonosis",
+        "url": "https://www.ushuaia.gob.ar/zoonosis",
+        "retrievedAt": "2026-10-13",
+        "note": "Página oficial de la Dirección de Zoonosis: sede, servicios gratuitos y contacto (también figura el 2901 613278). Pendiente de geolocalización: no tiene punto en el mapa."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-12",
+        "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
+      }
+    }
+  ]
+}
