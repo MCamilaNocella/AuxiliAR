@@ -44,7 +44,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -122,7 +122,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -200,7 +200,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -294,7 +294,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -340,7 +340,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -386,7 +386,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -544,7 +544,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "El programa declara castración y vacunación antirrábica sin costo, y el calendario asigna la castración a esta sede. Alcanza a este servicio; no a otras prestaciones: la página no informa consulta general ni vacunación fija en el centro. Los días con turnos cambian por semana.",
+          "costNote": "Alcanza a este servicio; no a otras prestaciones: la página no informa consulta general ni vacunación fija en el centro. Los días con turnos cambian por semana.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -635,12 +635,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -666,12 +665,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -697,12 +695,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -833,12 +830,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -864,12 +860,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -895,12 +890,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -1037,12 +1031,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1068,12 +1061,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1099,12 +1091,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -1246,12 +1237,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1277,12 +1267,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1308,12 +1297,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -1455,12 +1443,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1486,12 +1473,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1517,12 +1503,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -1670,12 +1655,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1701,12 +1685,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1732,12 +1715,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -1879,12 +1861,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -1910,12 +1891,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2046,12 +2026,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2077,12 +2056,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2219,12 +2197,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2250,12 +2227,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2281,12 +2257,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -2535,12 +2510,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2566,12 +2540,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2810,12 +2783,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2841,12 +2813,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -2872,12 +2843,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -3115,12 +3085,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -3146,12 +3115,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -3177,12 +3145,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -3421,12 +3388,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -3452,12 +3418,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -3483,12 +3448,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -3944,12 +3908,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -3975,12 +3938,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4006,12 +3968,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -4207,12 +4168,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4238,12 +4198,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4269,12 +4228,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -4405,12 +4363,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4436,12 +4393,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4467,12 +4423,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -4620,12 +4575,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4651,12 +4605,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4682,12 +4635,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -4828,12 +4780,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4859,12 +4810,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -4890,12 +4840,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -5026,12 +4975,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5057,12 +5005,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5088,12 +5035,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -5331,12 +5277,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5362,12 +5307,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5393,12 +5337,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -5540,12 +5483,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5571,12 +5513,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5602,12 +5543,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -5738,12 +5678,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5769,12 +5708,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5905,12 +5843,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5936,12 +5873,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -5967,12 +5903,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -6366,12 +6301,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6397,12 +6331,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6428,12 +6361,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -6539,12 +6471,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6570,12 +6501,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6659,12 +6589,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6690,12 +6619,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6721,12 +6649,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -6880,12 +6807,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6911,12 +6837,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -6942,12 +6867,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -7649,12 +7573,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -7680,12 +7603,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -7711,12 +7633,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -7858,12 +7779,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -7889,12 +7809,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -7920,12 +7839,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -8175,12 +8093,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8206,12 +8123,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8237,12 +8153,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -8480,12 +8395,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8511,12 +8425,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8647,12 +8560,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8678,12 +8590,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -8709,12 +8620,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -8847,7 +8757,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "costNote": "Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -8878,7 +8788,7 @@
           "name": "Vacuna antirrábica",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "costNote": "Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -8909,7 +8819,7 @@
           "name": "Desparasitación",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "costNote": "Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -8940,7 +8850,7 @@
           "name": "Atención clínica primaria",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota municipal enumera expresamente los cuatro servicios sin costo. Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
+          "costNote": "Alcanza a este servicio; la guardia pasiva de 24 h que anuncia la web municipal no se carga: la gratuidad de las urgencias solo se encontró en una guía de 2024 y no hay confirmación actual.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -9043,7 +8953,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -9100,7 +9010,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -9157,7 +9067,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La sección de puestos descentralizados de la página municipal está identificada sin costo; son sedes de gestión pública. Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
+          "costNote": "Alcanza a este servicio; no incluye urgencias, cirugías ni otras prestaciones: el Hospital Municipal de Salud Animal tiene gratuidad solo para personas adscritas al sistema municipal.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -9365,7 +9275,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9443,7 +9352,6 @@
           "name": "Escucha y acompañamiento en salud mental y consumos",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9536,7 +9444,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9629,7 +9536,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9726,7 +9632,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9819,7 +9724,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -9912,7 +9816,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -10155,7 +10058,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -10248,7 +10150,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Según una fuente complementaria de 2024, Tramas atiende a mayores de 16 años.",
@@ -10327,7 +10228,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],
@@ -10416,7 +10316,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],
@@ -10506,7 +10405,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],
@@ -10552,7 +10450,6 @@
           "name": "Padres en Acción",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Madres, padres y personas responsables de crianza."
           ],
@@ -10592,7 +10489,6 @@
           "name": "Orientación familiar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Familias."
           ],
@@ -10686,7 +10582,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "requirements": [
             "Perros, perras y gatas desde los 5 meses; gatos desde los 8 meses."
           ],
@@ -10719,7 +10615,7 @@
           "name": "Antiparasitarios",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -10750,7 +10646,7 @@
           "name": "Microchip para perros",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "requirements": [
             "Solo perros, desde los 3 meses."
           ],
@@ -10959,7 +10855,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11046,7 +10942,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11133,7 +11029,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11210,7 +11106,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11297,7 +11193,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11374,7 +11270,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11418,7 +11314,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "Plazas Activas declara gratuita la actividad y exige inscripción previa. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
           "requirements": [
             "Mayores de 18 años.",
             "Inscripción previa por email y aceptación de términos y condiciones."
@@ -11496,7 +11392,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11583,7 +11479,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11670,7 +11566,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11757,7 +11653,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11844,7 +11740,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -11931,7 +11827,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12018,7 +11914,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12105,7 +12001,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12192,7 +12088,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12279,7 +12175,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12366,7 +12262,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12453,7 +12349,7 @@
           "name": "Talleres recreativos y actividad física para el bienestar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente del programa declara gratuitas las actividades de las Estaciones Saludables. No se afirma yoga, meditación ni atención psicológica en cada estación: la oferta es la grilla vigente del programa.",
+          "costNote": "La oferta es la grilla vigente del programa: no se afirma yoga, meditación ni atención psicológica en cada estación.",
           "requirements": [
             "Consultá las actividades según la edad."
           ],
@@ -12542,12 +12438,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -12573,12 +12468,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -12604,12 +12498,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -12683,7 +12576,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -12777,7 +12670,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -12876,12 +12769,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -12907,12 +12799,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -12938,12 +12829,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -13017,7 +12907,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -13111,7 +13001,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -13607,12 +13497,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -13638,12 +13527,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -13669,12 +13557,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -13756,7 +13643,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -13910,7 +13797,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -14015,12 +13902,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14046,12 +13932,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14077,12 +13962,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -14156,7 +14040,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -14411,7 +14295,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -14546,12 +14430,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14577,12 +14460,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14608,12 +14490,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -14744,12 +14625,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14775,12 +14655,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -14806,12 +14685,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -14896,7 +14774,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -14996,12 +14874,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15027,12 +14904,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15058,12 +14934,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -15286,7 +15161,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -15681,12 +15556,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15712,12 +15586,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15743,12 +15616,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -15883,12 +15755,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15914,12 +15785,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -15945,12 +15815,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -16024,7 +15893,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -16130,12 +15999,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16161,12 +16029,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16192,12 +16059,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -16271,7 +16137,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -16371,12 +16237,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16402,12 +16267,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16433,12 +16297,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -16466,7 +16329,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -16655,12 +16518,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16686,12 +16548,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16717,12 +16578,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -16750,7 +16610,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -16849,12 +16709,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16880,12 +16739,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -16911,12 +16769,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -17041,7 +16898,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -17140,12 +16997,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -17171,12 +17027,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -17202,12 +17057,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -17292,7 +17146,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -17392,12 +17246,11 @@
           "name": "Consejería en salud sexual",
           "hours": null,
           "cost": "free",
-          "costNote": "La página del programa dice que la atención y el asesoramiento en salud sexual son gratuitos en los centros públicos de la Ciudad. No confirma turnos, horarios ni disponibilidad. No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -17423,12 +17276,11 @@
           "name": "Acceso a métodos anticonceptivos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial de métodos anticonceptivos dice: «La atención y los métodos son gratuitos en el sistema público». No confirma que haya stock ni todos los métodos el día que vayas.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar."
+            "howTo": "Consultá en el centro cómo es el circuito: la página no explica turnos ni confirma que haya lugar. No confirma que haya stock ni todos los métodos."
           },
           "contacts": [],
           "source": {
@@ -17454,12 +17306,11 @@
           "name": "Preservativos gratis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página oficial dice que los preservativos se reparten gratis en la Ciudad y remite al mapa de bocas de distribución, donde figura este centro. No confirma stock del día ni tipos de preservativo.",
           "requirements": [],
           "audience": [],
           "appointment": {
             "mode": "unknown",
-            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios."
+            "howTo": "Preguntá en el centro dónde se retiran: la página no indica horarios. No confirma stock del día ni tipos de preservativo."
           },
           "contacts": [],
           "source": {
@@ -17533,7 +17384,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha del hospital declara gratuito el sistema público de salud de la Ciudad. Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
+          "costNote": "Alcanza a la guardia de salud mental; no a otras prestaciones del hospital.",
           "requirements": [
             "Consultá los criterios de admisión según la edad."
           ],
@@ -17633,7 +17484,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "Castración desde los 6 meses.",
             "El responsable tiene que ser mayor de edad y llevar DNI.",
@@ -17683,7 +17534,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -17731,7 +17582,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -17779,7 +17630,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -17870,7 +17721,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas.",
             "Castración desde los 6 meses."
@@ -17919,7 +17770,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas.",
             "Vacuna desde los 3 meses."
@@ -17968,7 +17819,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas."
           ],
@@ -18052,7 +17903,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "Castración desde los 6 meses.",
             "El responsable tiene que ser mayor de edad y llevar DNI.",
@@ -18102,7 +17953,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18150,7 +18001,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18198,7 +18049,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18300,7 +18151,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "Castración desde los 6 meses.",
             "El responsable tiene que ser mayor de edad y llevar DNI.",
@@ -18350,7 +18201,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18398,7 +18249,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18446,7 +18297,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha oficial de bienestar animal atribuye gratuidad a sus tres sedes y especifica las prestaciones de cada una. Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones en esta sede.",
           "requirements": [
             "El responsable tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18537,7 +18388,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas.",
             "Castración desde los 6 meses."
@@ -18586,7 +18437,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas.",
             "Vacuna desde los 3 meses."
@@ -18635,7 +18486,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "El listado institucional de prestaciones y sedes del IMUSA declara acceso gratuito. Alcanza a este servicio; la ficha no informa otras prestaciones.",
+          "costNote": "Alcanza a este servicio; la ficha no informa otras prestaciones.",
           "requirements": [
             "Contribuyentes mayores de 18 años residentes en Posadas."
           ],
@@ -18724,7 +18575,7 @@
           "name": "Consulta y diagnóstico de zoonosis",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "costNote": "Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -18755,7 +18606,7 @@
           "name": "Observación antirrábica",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "costNote": "Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -18786,7 +18637,7 @@
           "name": "Recepción de muestras",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de servicios del Instituto presenta los servicios clínicos de zoonosis y la vacuna antirrábica como gratuitos. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "costNote": "Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
           "requirements": [
             "Hay que llevar orden veterinaria."
           ],
@@ -18836,7 +18687,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La ficha de vacunación del Instituto declara gratuita la vacuna antirrábica. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
+          "costNote": "Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -18869,7 +18720,7 @@
             "open24h": true
           },
           "cost": "free",
-          "costNote": "La ficha de información útil del Instituto confirma que la disposición final no tiene costo. Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis. No se verificó cremación individual ni devolución de cenizas.",
+          "costNote": "Alcanza a este servicio; no incluye guardia ni urgencias clínicas: la fuente excluye expresamente la guardia médica y el Instituto atiende solo lo orientado a zoonosis. No se verificó cremación individual ni devolución de cenizas.",
           "requirements": [
             "La persona tiene que ser mayor de edad y llevar DNI."
           ],
@@ -18984,7 +18835,6 @@
           "name": "Acompañamiento y tratamiento psicosocial",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Niñas, niños y adolescentes de 3 a 14 años y 11 meses.",
             "Consultá la admisión y la disponibilidad."
@@ -19063,7 +18913,6 @@
           "name": "Orientación y tratamiento ambulatorio",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Personas con consumos problemáticos; consultá la admisión."
           ],
@@ -19141,7 +18990,6 @@
           "name": "Atención y acompañamiento por socioadicciones",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Personas con socioadicciones (juego, tecnología, trabajo, etc.).",
             "Consultá la admisión y la disponibilidad."
@@ -19224,7 +19072,6 @@
           "name": "Orientación y tratamiento ambulatorio",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Mayores de 14 años con consumos problemáticos.",
             "Consultá la admisión y la disponibilidad."
@@ -19451,7 +19298,7 @@
           "name": "Yoga (Plazas Activas)",
           "hours": null,
           "cost": "free",
-          "costNote": "Plazas Activas declara gratuita la actividad y exige inscripción previa. El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
+          "costNote": "El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
           "requirements": [
             "Mayores de 18 años.",
             "Inscripción previa por email y aceptación de términos y condiciones."
@@ -19541,7 +19388,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "Plazas Activas declara gratuita la actividad y exige inscripción previa. El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
+          "costNote": "El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
           "requirements": [
             "Mayores de 18 años.",
             "Inscripción previa por email y aceptación de términos y condiciones."
@@ -19632,7 +19479,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "Plazas Activas declara gratuita la actividad y exige inscripción previa. El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
+          "costNote": "El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
           "requirements": [
             "Mayores de 18 años.",
             "Inscripción previa por email y aceptación de términos y condiciones."
@@ -19722,7 +19569,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "Plazas Activas declara gratuita la actividad y exige inscripción previa. El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
+          "costNote": "El punto es el de encuentro del yoga, que puede diferir del de la Estación Saludable del mismo parque.",
           "requirements": [
             "Mayores de 18 años.",
             "Inscripción previa por email y aceptación de términos y condiciones."
@@ -19863,7 +19710,7 @@
           "name": "Yoga A (pacientes de la red municipal)",
           "hours": null,
           "cost": "free",
-          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "costNote": "El formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
           "requirements": [
             "Mayores de 16 años, solo pacientes del Hospital Carrasco y de los centros de salud municipales.",
             "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
@@ -19911,7 +19758,7 @@
           "name": "Yoga B (quienes no son pacientes de la red)",
           "hours": null,
           "cost": "free",
-          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "costNote": "El formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
           "requirements": [
             "Mayores de 16 años que no sean pacientes del Hospital Carrasco ni de los centros municipales.",
             "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
@@ -19959,7 +19806,7 @@
           "name": "Tai Chi / Chi Kung",
           "hours": null,
           "cost": "free",
-          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "costNote": "El formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
           "requirements": [
             "Mayores de 16 años.",
             "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
@@ -20007,7 +19854,7 @@
           "name": "Biodanza",
           "hours": null,
           "cost": "free",
-          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "costNote": "El formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
           "requirements": [
             "Mayores de 16 años.",
             "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
@@ -20055,7 +19902,7 @@
           "name": "Fogones de Palabras",
           "hours": null,
           "cost": "free",
-          "costNote": "La página municipal declara gratuitas las actividades 2026; el formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
+          "costNote": "El formulario prioriza pacientes municipales y personas en situación de calle. Los requisitos de salud no implican que los estudios externos sean gratuitos.",
           "requirements": [
             "Mayores de 16 años.",
             "Preinscripción y confirmación de cupo: la preinscripción no garantiza lugar.",
@@ -20147,7 +19994,7 @@
           "name": "Orientación, contención y asesoramiento por consumos",
           "hours": null,
           "cost": "free",
-          "costNote": "Una nota oficial de 2023 declara el servicio gratuito; una nota de julio de 2026 corrobora su existencia, domicilio y teléfono. La gratuidad figura en la fuente de 2023: confirmá que siga vigente.",
+          "costNote": "La gratuidad figura en la fuente de 2023: confirmá que siga vigente.",
           "requirements": [
             "Niños, adolescentes, jóvenes, adultos y familiares."
           ],
@@ -20309,7 +20156,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
           "requirements": [],
           "audience": [],
           "appointment": {
@@ -20340,7 +20187,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota institucional confirma la castración gratuita de Sanidad Animal. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
           "requirements": [],
           "audience": [],
           "appointment": {

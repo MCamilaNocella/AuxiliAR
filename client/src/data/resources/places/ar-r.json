@@ -58,7 +58,7 @@
             ]
           },
           "cost": "free",
-          "costNote": "La campaña de vacunación antirrábica 2026 confirma la vacunación gratuita permanente en la sede. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
           "appointment": {
             "mode": "not-required",
             "howTo": "Vacunación sin turno, de lunes a viernes de 12 a 13:30 h."
@@ -106,7 +106,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La nota institucional confirma la castración gratuita de Sanidad Animal. Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
+          "costNote": "Alcanza a este servicio; la consulta clínica general y una guardia de emergencias no están verificadas.",
           "appointment": {
             "mode": "required",
             "howTo": "Se pide turno por teléfono (0294 442-6262). Los turnos de castración: consultá por teléfono."

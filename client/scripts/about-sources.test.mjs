@@ -6,7 +6,7 @@
  */
 import assert from "node:assert/strict"
 import { readdirSync, readFileSync } from "node:fs"
-import { isBatchService } from "./places-sexual-batch.mjs"
+import { isBatchService } from "./places-batches.mjs"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"

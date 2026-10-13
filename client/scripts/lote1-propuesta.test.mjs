@@ -12,14 +12,14 @@ import { tmpdir } from "node:os"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath, pathToFileURL } from "node:url"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
 const proposal = JSON.parse(await readFile(join(root, "curation/proposals/lote-1.cambios-propuestos.json"), "utf8"))
 const realFile = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8"))
 // This proposal is about the first places: the 44 of the sexual health batch have their own test (places-sexual.test.mjs)
-const realPlaces = { ...realFile, resources: withoutSexualBatch(realFile.resources) }
+const realPlaces = { ...realFile, resources: withoutBatches(realFile.resources) }
 // The drafts of the proposal that are not in the data yet (Costanera Sur was loaded after approval; the Indoamericano was loaded later, with the veterinary report of 13/10/2026)
 const pendingDrafts = proposal.newPlaces.filter(({ draft }) => !realPlaces.resources.some(({ id }) => id === draft.id))
 

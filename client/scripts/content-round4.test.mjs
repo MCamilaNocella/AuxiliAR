@@ -10,7 +10,7 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -105,7 +105,7 @@ test("IVE/ILE: no center is presented as a confirmed provider, no phone number i
 })
 
 test("the map has no IVE/ILE service shown as free: the services added since are the Garrahan's and the Elizalde's pediatric ones", () => {
-  const data = { resources: withoutSexualBatch(JSON.parse(read("src/data/resources/places/ar-c.json")).resources) }
+  const data = { resources: withoutBatches(JSON.parse(read("src/data/resources/places/ar-c.json")).resources) }
   assert.equal(data.resources.length, 9)
   assert.equal(data.resources.reduce((total, place) => total + place.services.length, 0), 35)
   const ive = data.resources.flatMap((place) => place.services.filter((service) => service.type === "ive-ile-care"))

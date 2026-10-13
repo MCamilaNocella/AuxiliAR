@@ -136,7 +136,6 @@
           "name": "Acompañamiento y tratamiento psicosocial",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Niñas, niños y adolescentes de 3 a 14 años y 11 meses.",
             "Consultá la admisión y la disponibilidad."
@@ -234,7 +233,6 @@
           "name": "Orientación y tratamiento ambulatorio",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Mayores de 14 años con consumos problemáticos.",
             "Consultá la admisión y la disponibilidad."
@@ -328,7 +326,6 @@
           "name": "Atención y acompañamiento por socioadicciones",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Personas con socioadicciones (juego, tecnología, trabajo, etc.).",
             "Consultá la admisión y la disponibilidad."
@@ -422,7 +419,6 @@
           "name": "Orientación y tratamiento ambulatorio",
           "hours": null,
           "cost": "free",
-          "costNote": "El directorio provincial de salud mental y adicciones afirma atención gratuita de estos dispositivos. Alcanza a este dispositivo; la dirección está transcrita del directorio, sin completar calles ni alturas.",
           "requirements": [
             "Personas con consumos problemáticos; consultá la admisión."
           ],

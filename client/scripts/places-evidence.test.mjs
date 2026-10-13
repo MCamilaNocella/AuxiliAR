@@ -12,7 +12,7 @@ import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
 import { validateDataset } from "./resources-validate.mjs"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -37,7 +37,7 @@ const explorer = await vite.ssrLoadModule("/src/components/places/PlacesExplorer
 const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
 
 const DAY = data.todayInArgentina()
-const real = withoutSexualBatch(file.resources)
+const real = withoutBatches(file.resources)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, buildPlaceView, isVerifiedFree } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const find = (id) => real.find((place) => place.id === id)

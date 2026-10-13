@@ -20,12 +20,12 @@ import { buildProposal, mappingReview } from "./curation/proposal.mjs"
 import { planPublish, validateBatch } from "./curation/publish.mjs"
 import { PATHS, loadManifest, loadSnapshot } from "./curation/sources.mjs"
 import { fetchSupplements, loadSupplements } from "./curation/supplements.mjs"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const FIXTURES = join(clientRoot, "scripts/__fixtures__/curation")
 // The pipeline tests are about the places of the first batches: the 44 places of the sexual health batch (loaded by hand with a link each) are in `publishedAll`
 const publishedAll = (await readJson(join(DATASET_DIR, "places/ar-c.json"))).resources
-const published = withoutSexualBatch(publishedAll)
+const published = withoutBatches(publishedAll)
 const { schema, taxonomy, otherFiles } = await loadDataset({ province: "AR-C" })
 
 const cesacManifest = await loadManifest("caba-cesac")

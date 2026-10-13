@@ -33,7 +33,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],
@@ -139,7 +138,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],
@@ -204,7 +202,6 @@
           "name": "Padres en Acción",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Madres, padres y personas responsables de crianza."
           ],
@@ -263,7 +260,6 @@
           "name": "Orientación familiar",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Familias."
           ],
@@ -362,7 +358,6 @@
           "name": "Atención psicológica",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la prestación listada; no a otras del establecimiento.",
           "requirements": [
             "Consultá edades y admisión."
           ],

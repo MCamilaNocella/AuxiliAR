@@ -11,7 +11,7 @@ import { readdir, readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { isMentalBatchService } from "./places-sexual-batch.mjs"
+import { isMentalBatchService } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -27,7 +27,6 @@ const files = Object.fromEntries(await Promise.all((await readdir(dir)).filter((
 const all = Object.entries(files).flatMap(([file, resources]) => resources.map((place) => ({ file, place })))
 const withMental = all.filter(({ place }) => place.services.some(isMentalBatchService))
 const find = (id) => all.find(({ place }) => place.id === id)?.place
-const mentalOf = (id) => find(id).services.filter(isMentalBatchService)
 const DAY = data.todayInArgentina()
 for (const province of data.PROVINCES_WITH_PLACE_FILES) await data.loadPlaces(province)
 const everyPlace = (await Promise.all(data.PROVINCES_WITH_PLACE_FILES.map((province) => data.loadPlaces(province)))).flat()
@@ -55,7 +54,7 @@ test("each guardia is free only as the hospital's ficha says, 24 hours without a
     const guardia = find(id).services.find(({ id: serviceId }) => serviceId === "guardia-de-salud-mental")
     assert.equal(guardia.type, "mental-health-emergency", id)
     assert.equal(guardia.cost, "free", id)
-    assert.ok(guardia.costNote.includes("declara gratuito el sistema público"), id)
+    assert.ok(guardia.evidence.find(({ kind }) => kind === "cost").note.includes("declara gratuito el sistema público"), id)
     assert.ok(guardia.costNote.includes("Alcanza a la guardia de salud mental; no a otras prestaciones del hospital"), id)
     assert.equal(guardia.hours.open24h, true, id)
     assert.equal(guardia.appointment.mode, "not-required", id)
@@ -80,7 +79,7 @@ test("Estaciones Saludables and yoga: wellbeing activities with their own type, 
   for (const station of stations) {
     assert.equal(station.facilityType, "health-promotion-station", station.id)
     assert.equal(station.services[0].type, "wellbeing-activity", station.id)
-    assert.ok(station.services[0].costNote.includes("No se afirma yoga, meditación ni atención psicológica en cada estación"), station.id)
+    assert.ok(station.services[0].costNote.includes("no se afirma yoga, meditación ni atención psicológica en cada estación"), station.id)
     assert.ok(station.address.department.startsWith("Comuna "), station.id)
     assert.ok(station.services[0].appointment.howTo.includes("11 3161-9798"), station.id)
   }

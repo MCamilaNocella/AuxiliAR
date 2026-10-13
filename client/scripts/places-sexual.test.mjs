@@ -11,7 +11,7 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { isBatchService, isSexualBatchService } from "./places-sexual-batch.mjs"
+import { isBatchService, isSexualBatchService } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -48,7 +48,9 @@ test("each service declares free by itself, with the sources of the existence an
     for (const service of place.services.filter(isSexualBatchService)) {
       const where = `${place.id}/${service.id}`
       assert.equal(service.cost, "free", where)
-      assert.ok(service.source?.note && service.costNote, `${where}: the note of the source and of the cost`)
+      assert.ok(service.source?.note, `${where}: the note of the source`)
+      // who says it is free is in the source and the evidence; the card keeps a note only for what limits the gratuity (here nothing does)
+      assert.equal(service.costNote, undefined, where)
       const kinds = service.evidence.map(({ kind }) => kind).sort()
       assert.deepEqual(kinds, ["cost", "existence"], where)
       const cost = service.evidence.find(({ kind }) => kind === "cost")
@@ -64,10 +66,14 @@ test("each service declares free by itself, with the sources of the existence an
 test("the gratuity is said as the sources say it, and never as a guarantee of stock", () => {
   const counseling = onlyBatch[0].services.find(({ id }) => id === "consejeria-salud-sexual")
   const methods = onlyBatch[0].services.find(({ id }) => id === "metodos-anticonceptivos")
-  assert.ok(methods.costNote.includes("«La atención y los métodos son gratuitos en el sistema público»"))
-  assert.ok(methods.costNote.includes("No confirma que haya stock"))
-  assert.ok(counseling.costNote.includes("No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica"))
-  for (const place of withBatch) for (const service of place.services.filter(isSexualBatchService)) assert.ok(!/siempre|garantiza|hay stock|disponible hoy/i.test(service.costNote.replace("No confirma que haya stock", "")), `${place.id}/${service.id}`)
+  assert.ok(methods.source.note.includes("«La atención y los métodos son gratuitos en el sistema público»"))
+  assert.ok(methods.evidence.find(({ kind }) => kind === "cost").note.includes("«La atención y los métodos son gratuitos en el sistema público»"))
+  assert.ok(methods.appointment.howTo.includes("No confirma que haya stock ni todos los métodos"))
+  assert.ok(counseling.source.note.includes("No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica"))
+  for (const place of withBatch) for (const service of place.services.filter(isSexualBatchService)) assert.ok(!/siempre|garantiza|hay stock|disponible hoy/i.test(JSON.stringify([service.source.note, service.appointment.howTo]).replace(/No confirma (que haya )?stock/g, "")), `${place.id}/${service.id}`)
+  // each page that backs a service has its own name (they were all «Gobierno de la Ciudad de Buenos Aires»)
+  const names = new Set(methods.evidence.map(({ organization }) => organization).concat(counseling.evidence.map(({ organization }) => organization)))
+  assert.ok([...names].every((name) => name.startsWith("Gobierno de la Ciudad de Buenos Aires: ")), [...names].join(" | "))
 })
 
 test("condoms only where the official map has the place: 6 centers do not have it corroborated and keep the other two services", () => {

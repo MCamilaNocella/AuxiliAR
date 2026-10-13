@@ -150,7 +150,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -243,7 +243,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -336,7 +336,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La ficha oficial del programa confirma castraciones gratuitas y enumera las tres sedes. Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
+          "costNote": "Alcanza a este servicio; la ficha del programa no informa otras prestaciones en esta sede.",
           "requirements": [
             "Vecinos de la ciudad de Córdoba.",
             "La disponibilidad de turnos es limitada."
@@ -444,7 +444,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Según una fuente complementaria de 2024, Tramas atiende a mayores de 16 años.",
@@ -553,7 +552,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -646,7 +644,6 @@
           "name": "Escucha y acompañamiento en salud mental y consumos",
           "hours": null,
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -760,7 +757,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -868,7 +864,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -976,7 +971,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -1088,7 +1082,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -1196,7 +1189,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."
@@ -1304,7 +1296,6 @@
             ]
           },
           "cost": "free",
-          "costNote": "La fuente oficial (13/01/2026) declara gratuita esta prestación o el programa específico que la ofrece. Alcanza a la escucha y el acompañamiento; no a otras prestaciones.",
           "requirements": [
             "Residentes de Córdoba Capital.",
             "Consultá la admisión y la disponibilidad."

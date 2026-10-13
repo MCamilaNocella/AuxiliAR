@@ -9,7 +9,7 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -27,7 +27,7 @@ const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxono
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
-const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
+const real = withoutBatches(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of data.PROVINCES_WITH_PLACE_FILES) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces, quickFilterHasData, offeredQuickFilters } = places

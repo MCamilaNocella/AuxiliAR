@@ -43,7 +43,7 @@
           "name": "Castración de perros y gatos",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "requirements": [
             "Perros, perras y gatas desde los 5 meses; gatos desde los 8 meses."
           ],
@@ -94,7 +94,7 @@
           "name": "Antiparasitarios",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "appointment": {
             "mode": "unknown",
             "howTo": "Consultá por teléfono cómo se entregan: la página no lo explica. La sede atiende al público de lunes a viernes de 7 a 19 h."
@@ -142,7 +142,7 @@
           "name": "Microchip para perros",
           "hours": null,
           "cost": "free",
-          "costNote": "La página de zoonosis declara gratuitos los servicios listados; el microchip canino tiene confirmación específica. Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
+          "costNote": "Alcanza a este servicio; el microchip para gatos es arancelado y no está incluido.",
           "requirements": [
             "Solo perros, desde los 3 meses."
           ],

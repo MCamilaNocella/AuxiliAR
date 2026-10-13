@@ -8,7 +8,6 @@ import assert from "node:assert/strict"
 import { dirname, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -31,7 +30,7 @@ after(() => vite.close())
 const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
-const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
+await data.loadPlaces("AR-C")
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of data.PROVINCES_WITH_PLACE_FILES) await data.loadPlaces(province)
 const visibility = { selectPlaces, PLACE_FILTERS, EMPTY_PLACE_QUERY: EMPTY, isMappable: data.isMappable }

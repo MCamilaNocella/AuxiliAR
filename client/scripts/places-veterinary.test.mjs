@@ -10,7 +10,7 @@ import { readdir, readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { isVeterinaryBatchPlace } from "./places-sexual-batch.mjs"
+import { isVeterinaryBatchPlace } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")

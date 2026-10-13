@@ -8,7 +8,7 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -27,11 +27,11 @@ const { ActiveFilters } = await vite.ssrLoadModule("/src/components/places/Activ
 const { PlacesExplorer } = await vite.ssrLoadModule("/src/components/places/PlacesExplorer/index.ts")
 const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
 const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxonomy.json"), "utf8"))
-const raw = withoutSexualBatch(JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources)
+const raw = withoutBatches(JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources)
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
-const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
+const real = withoutBatches(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of data.PROVINCES_WITH_PLACE_FILES) await data.loadPlaces(province)
 // CeSAC 3 as it was before the first batch of verified gratuity: no cost, requirements, appointment or source of its own on its services.

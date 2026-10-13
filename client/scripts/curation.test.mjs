@@ -21,7 +21,7 @@ import { checkCuration, DATASET_DIR, loadDataset, runPublish } from "./curation/
 import { planPublish, serializePlacesPreserving, validateBatch } from "./curation/publish.mjs"
 import { formatProfile, profileText } from "./curation/profile.mjs"
 import { PATHS, ingest, listManifests, loadManifest, looksLikeDataset, normalizeText, validateManifest } from "./curation/sources.mjs"
-import { withoutSexualBatch } from "./places-sexual-batch.mjs"
+import { withoutBatches } from "./places-batches.mjs"
 
 const FIXTURES = join(clientRoot, "scripts/__fixtures__/curation")
 const fixture = (name) => readFile(join(FIXTURES, name), "utf8")
@@ -36,7 +36,7 @@ const cesacMapping = await readJson(join(PATHS.mappings, "caba-cesac.json"))
 const hospMapping = await readJson(join(PATHS.mappings, "caba-hospitales.json"))
 // The pipeline tests are about the places of the first batches: the 44 places of the sexual health batch (loaded by hand with a link each) are in `publishedAll`
 const publishedAll = (await readJson(placesPath)).resources
-const published = withoutSexualBatch(publishedAll)
+const published = withoutBatches(publishedAll)
 const byKey = (records, key) => records.find((record) => record.key === key)
 
 const snapshot = (records) => ({ source: "x", retrievedAt: "2026-10-07", records })
