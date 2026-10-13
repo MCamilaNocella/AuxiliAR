@@ -932,6 +932,16 @@
         "locality": "Rosario",
         "province": "AR-S"
       },
+      "coordinates": {
+        "lat": -32.9577472,
+        "lng": -60.6911298,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): el objeto «Distrito Oeste Felipe Moré» (oficina de gobierno) en Av. Presidente Perón 4602, que es el domicilio de la página municipal. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "atencion-primaria",
@@ -1185,6 +1195,16 @@
         "street": "Ayolas y Ayacucho",
         "locality": "Rosario",
         "province": "AR-S"
+      },
+      "coordinates": {
+        "lat": -32.9786459,
+        "lng": -60.6341124,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): el objeto «Centro de Salud Luis Pasteur» sobre la calle Ayolas (barrio La Tablada), que es el centro de la página municipal. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
       },
       "services": [
         {

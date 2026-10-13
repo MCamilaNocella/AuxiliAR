@@ -26,6 +26,16 @@
         "locality": "San Carlos de Bariloche",
         "province": "AR-R"
       },
+      "coordinates": {
+        "lat": -41.1332393,
+        "lng": -71.2790589,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): el objeto «Veterinaria Municipal - Zoonosis - Sanidad Animal» sobre la calle San José, que es la sede de la nota municipal. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "vacuna-antirrabica",

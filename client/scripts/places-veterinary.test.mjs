@@ -112,18 +112,24 @@ test("the contacts are the published ones: none where the report says they are n
   for (const id of ["centro-fijo-veterinario-indoamericano", "imusa-jardin-botanico-santa-fe", "imusa-alto-verde-santa-fe", "cmd-oeste-red-salud-animal-rosario", "centro-de-salud-pasteur-red-salud-animal-rosario", "clinica-veterinaria-municipal-berazategui"]) assert.deepEqual(phones[id], [], id)
 })
 
-test("only the places whose point is backed by a source have a pin; the rest are in the list and none is guessed", () => {
+test("only the places whose point is backed have a pin (2 from official sources, 5 from OpenStreetMap checked on the map); the rest are in the list and none is guessed", () => {
   const withPoint = batch.filter(({ place }) => place.coordinates).map(({ place }) => place.id).sort()
-  assert.deepEqual(withPoint, ["imusa-parque-garay-santa-fe", "instituto-de-zoonosis-luis-pasteur"])
+  assert.deepEqual(withPoint, ["centro-castraciones-alberdi-cordoba", "centro-de-salud-pasteur-red-salud-animal-rosario", "cmd-oeste-red-salud-animal-rosario", "direccion-de-zoonosis-ushuaia", "imusa-parque-garay-santa-fe", "instituto-de-zoonosis-luis-pasteur", "sanidad-animal-sede-central-bariloche"])
+  for (const id of ["centro-castraciones-alberdi-cordoba", "centro-de-salud-pasteur-red-salud-animal-rosario", "cmd-oeste-red-salud-animal-rosario", "direccion-de-zoonosis-ushuaia", "sanidad-animal-sede-central-bariloche"]) {
+    const point = find(id).coordinates
+    assert.equal(point.method, "geocoded-other", id)
+    assert.equal(point.precision, "approximate", id)
+    assert.ok(point.note.includes("OpenStreetMap") && point.note.includes("Controlado a ojo") && point.note.includes("no viene del informe"), `${id}: the origin of the point is said`)
+  }
   for (const { place } of batch) assert.ok(!place.coordinates || place.coordinates.status === "verified", place.id)
   assert.equal(find("instituto-de-zoonosis-luis-pasteur").coordinates.method, "official-dataset-reprojected")
   assert.equal(find("instituto-de-zoonosis-luis-pasteur").address.department, "Comuna 6")
   assert.equal(find("imusa-parque-garay-santa-fe").coordinates.method, "official-map-link")
   const visible = selectPlaces(everyPlace, DAY, { ...EMPTY, filterId: "animal-health" }, { confirmedOnly: true })
   assert.equal(visible.length, 16, "the 15 and the Costanera Sur centre")
-  assert.deepEqual(getMapPins(visible).map(({ id }) => id).sort(), ["centro-fijo-veterinario-costanera-sur", "imusa-parque-garay-santa-fe", "instituto-de-zoonosis-luis-pasteur"])
+  assert.equal(getMapPins(visible).length, 8, "the 7 of the batch with a point and the Costanera Sur")
   assert.ok(getMapPins(visible).every(({ category }) => category === "animales"))
-  assert.equal(places.countUnmapped(visible), 13)
+  assert.equal(places.countUnmapped(visible), 8)
 })
 
 test("the filter «Atención veterinaria» finds each service type, and a human health filter never shows these places", () => {

@@ -133,6 +133,16 @@
         "locality": "Córdoba",
         "province": "AR-X"
       },
+      "coordinates": {
+        "lat": -31.4073992,
+        "lng": -64.2097763,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto de OpenStreetMap (Nominatim, consultado el 13/10/2026): la casa nº 60 de la calle Doctor Francisco Muñiz, barrio Alberdi, que es el domicilio de la ficha del programa. Controlado a ojo en el mapa de la app contra el nombre y la calle de la base de OpenStreetMap. Aproximado: marca la dirección, no la entrada. Este punto no viene del informe de la fuente oficial.",
+        "verifiedAt": "2026-10-13",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
