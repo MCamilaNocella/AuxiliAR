@@ -183,8 +183,9 @@ test("the directory: no repeated place, nothing with a disputed address, and wha
   for (const id of ["hospital-pinero", "hospital-tornu"]) assert.ok(![...directory.GUARDIAS_CABA, ...directory.GUARDIAS_CABA_INFANTIL].some((hospital) => hospital.id === id), id)
   assert.ok(!ids.some((id) => /^cemar-1|^cas-otras|^tucuman-guardia|^na-pendiente|evento|vencido|covid/.test(id)), "pending, historic or one-day entries stay out")
   // the places of the map (ar-c.json) are marked here and the other way round: CeSAC 3 and 41 are on both, never with different data
-  const onMap = new Set(places.map(({ id }) => id))
-  for (const cesac of directory.CESAC_MENTAL) assert.equal(Boolean(cesac.onMap), onMap.has("cesac-" + cesac.n), "CeSAC " + cesac.n)
+  // "También está en el mapa" only where the map has a mental health service of that CeSAC (the CeSACs that are on the map only for sexual health are not marked)
+  const withMentalHealth = new Set(places.filter(({ services }) => services.some(({ type }) => type === "mental-health-care")).map(({ id }) => id))
+  for (const cesac of directory.CESAC_MENTAL) assert.equal(Boolean(cesac.onMap), withMentalHealth.has("cesac-" + cesac.n), "CeSAC " + cesac.n)
   assert.equal(directory.BONAPARTE.length, 3)
   assert.equal(directory.CSM_3.length, 1)
   // the CeSAC 10 appears once in the list of care and once as the Biedak center of consumos (two services), never with the same text

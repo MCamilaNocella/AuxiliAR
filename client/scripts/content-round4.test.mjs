@@ -107,7 +107,7 @@ test("IVE/ILE: no center is presented as a confirmed provider, no phone number i
 test("the map has no IVE/ILE service shown as free: the services added since are the Garrahan's and the Elizalde's pediatric ones", () => {
   const data = { resources: withoutSexualBatch(JSON.parse(read("src/data/resources/places/ar-c.json")).resources) }
   assert.equal(data.resources.length, 9)
-  assert.equal(data.resources.reduce((total, place) => total + place.services.length, 0), 36)
+  assert.equal(data.resources.reduce((total, place) => total + place.services.length, 0), 35)
   const ive = data.resources.flatMap((place) => place.services.filter((service) => service.type === "ive-ile-care"))
   assert.ok(ive.length > 0 && ive.every((service) => service.cost !== "free"), "the IVE/ILE services that exist are not documented as free")
 })
@@ -206,10 +206,10 @@ test("VideoEmbed is used only by the first aid guide (and only with an approved 
 
 /* ── 5. README of the data ── */
 
-test("the README of the data says what there is today: 58 establishments, 176 services, 151 visible, and no longer says there is no data", () => {
+test("the README of the data says what there is today: 58 establishments, 175 services, 151 visible, and no longer says there is no data", () => {
   const readme = read("src/data/resources/README.md")
-  assert.ok(readme.includes("58 establecimientos con 176 servicios registrados"))
-  assert.ok(readme.includes("151 de esos 176 servicios están visibles"))
+  assert.ok(readme.includes("58 establecimientos con 175 servicios registrados"))
+  assert.ok(readme.includes("151 de esos 175 servicios están visibles"))
   assert.ok(!/todavía no hay datos cargados\*\* y/.test(readme))
   assert.ok(!readme.includes("(hoy no hay ninguno)") && !readme.includes("nacional.json, vacío"))
   assert.ok(readme.includes("14 líneas"))

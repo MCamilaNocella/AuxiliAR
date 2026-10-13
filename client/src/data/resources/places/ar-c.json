@@ -131,7 +131,6 @@
         },
         { "id": "odontologia", "type": "dentistry", "name": "Odontología", "hours": null },
         { "id": "salud-mental", "type": "mental-health-care", "name": "Psicología (adultos e infanto-juvenil)", "hours": null },
-        { "id": "anticonceptivos", "type": "contraception", "name": "Anticonceptivos", "hours": null },
         { "id": "ive-ile", "type": "ive-ile-care", "name": "IVE/ILE", "hours": null },
         { "id": "vih", "type": "sti-testing-care", "name": "Pruebas de VIH", "hours": null },
         { "id": "ecografia", "type": "diagnostic-imaging", "name": "Ecografía", "hours": null },

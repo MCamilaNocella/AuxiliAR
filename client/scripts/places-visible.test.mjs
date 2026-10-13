@@ -40,9 +40,9 @@ const serviceIds = (entries, id) => entries.find(({ place }) => place.id === id)
 
 test("the data keeps every record: nothing pending was deleted", () => {
   assert.equal(raw.length, 9)
-  assert.equal(raw.flatMap(({ services }) => services).length, 36, "the 36 prestaciones are still in the dataset")
+  assert.equal(raw.flatMap(({ services }) => services).length, 35, "the 35 prestaciones are still in the dataset")
   const withoutGratuity = raw.flatMap((place) => place.services.filter((service) => !(service.cost === "free" && service.source?.note)).map((service) => `${place.id}/${service.id}`))
-  assert.equal(withoutGratuity.length, 25, "the 25 with no documented gratuity are kept for research")
+  assert.equal(withoutGratuity.length, 24, "the 24 with no documented gratuity are kept for research")
 })
 
 test("only documented gratuity is visible: 8 places and 11 prestaciones, the place with none is out", () => {

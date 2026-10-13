@@ -2121,33 +2121,6 @@
           ]
         },
         {
-          "id": "anticonceptivos",
-          "type": "contraception",
-          "name": "Anticonceptivos",
-          "hours": null,
-          "cost": "unknown",
-          "requirements": [],
-          "audience": [],
-          "appointment": {
-            "mode": "unknown"
-          },
-          "contacts": [],
-          "source": {
-            "organization": "Gobierno de la Ciudad de Buenos Aires",
-            "url": "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-3",
-            "note": "Ficha del establecimiento. No publica horarios ni cómo se pide turno."
-          },
-          "verification": {
-            "status": "verified",
-            "verifiedAt": "2026-10-07",
-            "verifiedBy": "equipo-auxiliar",
-            "nextReviewDue": "2027-01-05"
-          },
-          "categories": [
-            "esi"
-          ]
-        },
-        {
           "id": "ive-ile",
           "type": "ive-ile-care",
           "name": "IVE/ILE",
