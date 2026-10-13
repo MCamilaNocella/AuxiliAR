@@ -135,6 +135,7 @@
     { "id": "geocoded-usig", "label": "Geocodificado con USIG" },
     { "id": "geocoded-georef", "label": "Geocodificado con Georef" },
     { "id": "geocoded-other", "label": "Geocodificado con otro servicio" },
+    { "id": "official-map-link", "label": "Enlace oficial a un mapa" },
     { "id": "manual-map", "label": "Marcado a mano en un mapa" },
     { "id": "gps-survey", "label": "Medido con GPS" }
   ],

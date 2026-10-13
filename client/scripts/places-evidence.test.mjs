@@ -12,6 +12,7 @@ import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
 import { validateDataset } from "./resources-validate.mjs"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -36,7 +37,7 @@ const explorer = await vite.ssrLoadModule("/src/components/places/PlacesExplorer
 const about = await vite.ssrLoadModule("/src/content/categories/About/About.sources.ts")
 
 const DAY = data.todayInArgentina()
-const real = file.resources
+const real = withoutSexualBatch(file.resources)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, buildPlaceView, isVerifiedFree } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const find = (id) => real.find((place) => place.id === id)
@@ -116,8 +117,8 @@ const urlCount = (html, url) => html.split(`href="${url}"`).length - 1
 
 test("'Fuentes oficiales': each link once, saying what it backs for which service", () => {
   for (const id of ["cesac-3", "cesac-41", "cesac-47"]) {
-    const html = panel(id)
-    const view = buildPlaceView(entryOf(id))
+    const html = panel(id, file.resources)
+    const view = buildPlaceView(entryOf(id, file.resources))
     // the panel has no list of sources: it points to Sobre AuxiliAR, where each link is once, with what it backs
     assert.ok(!text(html).includes("Fuentes oficiales") && text(html).includes("están en Sobre AuxiliAR"), id)
     assert.equal(new Set(view.sources.map(({ url }) => url)).size, view.sources.length, "no repeated link in the list")

@@ -40,7 +40,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-1",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -1434,7 +1436,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-4",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -1791,7 +1795,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-5",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -2275,7 +2281,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-6",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -3135,7 +3143,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-8",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -3472,7 +3482,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-9",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -3886,7 +3898,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-10",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -4282,7 +4296,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-11",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -4730,7 +4746,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-12",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -5154,7 +5172,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-13",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -5597,7 +5617,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-14",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -6340,7 +6362,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-16",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -6820,7 +6844,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-17",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -7637,7 +7663,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-19",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -8017,7 +8045,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-20",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -8837,7 +8867,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-22",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -10396,7 +10428,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-26",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -11195,7 +11229,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-28",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -12878,7 +12914,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-32",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -13270,7 +13308,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-33",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -13620,7 +13660,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-34",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -14012,7 +14054,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-35",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -14439,7 +14483,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-36",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -15306,7 +15352,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-38",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -15739,7 +15787,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-39",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -16126,7 +16176,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-40",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -16849,7 +16901,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-43",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -17183,7 +17237,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-44",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -17631,7 +17687,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-45",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -18391,7 +18449,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-48",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -19039,7 +19099,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-de-pediatria-dr-j-garrahan",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -20942,7 +21004,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-especializado-materno-infantil-r-sarda",
+      "id": "hospital-sarda",
       "source": "caba-hospitales",
       "key": "hospital-especializado-materno-infantil-r-sarda",
       "tier": "T2",
@@ -20964,7 +21026,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-sarda",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -21393,7 +21457,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-general-de-agudos-a-zubizarreta",
+      "id": "hospital-zubizarreta",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-a-zubizarreta",
       "tier": "T1",
@@ -21420,7 +21484,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-zubizarreta",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -21624,7 +21690,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-a-zubizarreta",
+        "id": "hospital-zubizarreta",
         "name": "Hospital General de Agudos A. Zubizarreta",
         "kind": "service",
         "facilityType": "hospital",
@@ -21692,7 +21758,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-b-rivadavia",
+      "id": "hospital-rivadavia",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-b-rivadavia",
       "tier": "T1",
@@ -21719,7 +21785,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-rivadavia",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -21921,7 +21989,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-b-rivadavia",
+        "id": "hospital-rivadavia",
         "name": "Hospital General de Agudos B. Rivadavia",
         "kind": "service",
         "facilityType": "hospital",
@@ -21989,7 +22057,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-cecilia-grierson",
+      "id": "hospital-grierson",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-cecilia-grierson",
       "tier": "T2",
@@ -22011,7 +22079,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-grierson",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -22189,7 +22259,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-cecilia-grierson",
+        "id": "hospital-grierson",
         "name": "Hospital General de Agudos Cecilia Grierson",
         "kind": "service",
         "facilityType": "hospital",
@@ -22546,7 +22616,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-donacion-f-santojanni",
+      "id": "hospital-santojanni",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-donacion-f-santojanni",
       "tier": "T1",
@@ -22573,7 +22643,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-santojanni",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -22785,7 +22857,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-donacion-f-santojanni",
+        "id": "hospital-santojanni",
         "name": "Hospital General de Agudos Donacion F. Santojanni",
         "kind": "service",
         "facilityType": "hospital",
@@ -22853,7 +22925,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-c-argerich",
+      "id": "hospital-argerich",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-c-argerich",
       "tier": "T2",
@@ -22885,7 +22957,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-argerich",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -23086,7 +23160,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-c-argerich",
+        "id": "hospital-argerich",
         "name": "Hospital General de Agudos Dr C. Argerich",
         "kind": "service",
         "facilityType": "hospital",
@@ -23154,7 +23228,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-c-durand",
+      "id": "hospital-durand",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-c-durand",
       "tier": "T1",
@@ -23186,7 +23260,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-durand",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -23404,7 +23480,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-c-durand",
+        "id": "hospital-durand",
         "name": "Hospital General de Agudos Dr. C. Durand",
         "kind": "service",
         "facilityType": "hospital",
@@ -23478,7 +23554,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-e-tornu",
+      "id": "hospital-tornu",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-e-tornu",
       "tier": "T2",
@@ -23515,7 +23591,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-tornu",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -23721,7 +23799,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-e-tornu",
+        "id": "hospital-tornu",
         "name": "Hospital General de Agudos Dr. E. Tornu",
         "kind": "service",
         "facilityType": "hospital",
@@ -23789,7 +23867,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-i-pirovano",
+      "id": "hospital-pirovano",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-i-pirovano",
       "tier": "T1",
@@ -23816,7 +23894,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-pirovano",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -24015,7 +24095,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-i-pirovano",
+        "id": "hospital-pirovano",
         "name": "Hospital General de Agudos Dr. I. Pirovano",
         "kind": "service",
         "facilityType": "hospital",
@@ -24083,7 +24163,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-j-a-fernandez",
+      "id": "hospital-fernandez",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-j-a-fernandez",
       "tier": "T1",
@@ -24115,7 +24195,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-fernandez",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -24324,7 +24406,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-j-a-fernandez",
+        "id": "hospital-fernandez",
         "name": "Hospital General de Agudos Dr. J. A. Fernandez",
         "kind": "service",
         "facilityType": "hospital",
@@ -24398,7 +24480,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-dr-t-alvarez",
+      "id": "hospital-alvarez",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-dr-t-alvarez",
       "tier": "T1",
@@ -24425,7 +24507,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-alvarez",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -24628,7 +24712,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-dr-t-alvarez",
+        "id": "hospital-alvarez",
         "name": "Hospital General de Agudos Dr. T. Alvarez",
         "kind": "service",
         "facilityType": "hospital",
@@ -24990,7 +25074,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-j-m-ramos-mejia",
+      "id": "hospital-ramos",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-j-m-ramos-mejia",
       "tier": "T1",
@@ -25022,7 +25106,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-ramos",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -25221,7 +25307,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-j-m-ramos-mejia",
+        "id": "hospital-ramos",
         "name": "Hospital General de Agudos J. M. Ramos Mejia",
         "kind": "service",
         "facilityType": "hospital",
@@ -25283,7 +25369,7 @@
       }
     },
     {
-      "id": "hospital-general-de-agudos-p-pinero",
+      "id": "hospital-pinero",
       "source": "caba-hospitales",
       "key": "hospital-general-de-agudos-p-pinero",
       "tier": "T1",
@@ -25315,7 +25401,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-pinero",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -25517,7 +25605,7 @@
       },
       "proposal": null,
       "proposalIfApproved": {
-        "id": "hospital-general-de-agudos-p-pinero",
+        "id": "hospital-pinero",
         "name": "Hospital General de Agudos P. Piñero",
         "kind": "service",
         "facilityType": "hospital",
@@ -25585,7 +25673,7 @@
       }
     },
     {
-      "id": "hospital-general-de-ninos-p-de-elizalde",
+      "id": "hospital-general-de-ninos-pedro-de-elizalde",
       "source": "caba-hospitales",
       "key": "hospital-general-de-ninos-p-de-elizalde",
       "tier": "T2",
@@ -25612,7 +25700,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-general-de-ninos-pedro-de-elizalde",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -25741,7 +25831,7 @@
       "proposalIfApproved": null
     },
     {
-      "id": "hospital-general-de-ninos-r-gutierrez",
+      "id": "hospital-gutierrez",
       "source": "caba-hospitales",
       "key": "hospital-general-de-ninos-r-gutierrez",
       "tier": "T1",
@@ -25763,7 +25853,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-gutierrez",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",

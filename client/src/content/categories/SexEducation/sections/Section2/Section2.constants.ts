@@ -182,7 +182,7 @@ export const FREE_ACCESS = {
       title: "Disponibilidad concreta",
       paragraphs: [
         "Que un método sea gratuito y esté cubierto no asegura que haya turno, stock o un profesional disponible en un centro en particular.",
-        "AuxiliAR no tiene confirmados turnos, stock ni centros concretos que entreguen cada método. El mapa muestra solo las prestaciones con la gratuidad documentada para esa prestación; si no aparece un centro cerca tuyo, no significa que no exista. Consultá antes de ir.",
+        "AuxiliAR no confirma turnos ni disponibilidad de cada método. El mapa muestra los centros de la Ciudad de Buenos Aires que figuran en el directorio oficial de consejerías; si no aparece un centro cerca tuyo, no significa que no exista. Consultá antes de ir.",
       ],
     },
   ],

@@ -27,7 +27,7 @@
       }
     },
     "AR-C": {
-      "places": 9,
+      "places": 53,
       "currentUntil": "2027-01-05",
       "categories": [
         "animales",
@@ -48,6 +48,7 @@
         "pharmacy",
         "pregnancy-care",
         "primary-care",
+        "sexual-health-counseling",
         "sexual-reproductive-health",
         "spaying-neutering",
         "specialty-care",
@@ -60,7 +61,15 @@
         "Comuna 3",
         "Comuna 4",
         "Comuna 5",
-        "Comuna 8"
+        "Comuna 6",
+        "Comuna 7",
+        "Comuna 8",
+        "Comuna 9",
+        "Comuna 10",
+        "Comuna 11",
+        "Comuna 12",
+        "Comuna 14",
+        "Comuna 15"
       ],
       "quickFilters": {
         "all": {
@@ -70,6 +79,10 @@
         "medical": {
           "list": "2027-01-05",
           "map": "2027-01-05"
+        },
+        "sexual-health": {
+          "list": "2026-11-12",
+          "map": "2026-11-12"
         },
         "vaccination": {
           "list": "2027-01-05",

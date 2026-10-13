@@ -120,6 +120,7 @@ export type CoordinateMethod =
   | "geocoded-usig"
   | "geocoded-georef"
   | "geocoded-other"
+  | "official-map-link"
   | "manual-map"
   | "gps-survey"
 

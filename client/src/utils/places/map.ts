@@ -1,6 +1,7 @@
 import { isMappable } from "@/data/resources"
 import type { CategoryId } from "@/data/resources"
-import type { PlaceEntry } from "./filters"
+import { matchingServices } from "./filters"
+import type { PlaceEntry, PlaceQuery } from "./filters"
 import { facilityTypeLabel, serviceName } from "./format"
 
 /** A place that can be drawn on the map: its coordinates were verified. Nothing is ever geocoded in the browser */
@@ -42,9 +43,14 @@ const purposeOf = (services: PlaceEntry["services"]) => {
 /**
  * The pins of the places shown (the same results as the list: search and filters already applied).
  * Only verified coordinates produce a pin; a place without them stays in the list only, and is never given a guessed point.
+ * With a search or a filter on (`asked`), the symbol and the purpose come from the services that answer it: a CeSAC that is Salud general without filters
+ * is a point of Salud sexual when that is what was asked for.
  */
-export const getMapPins = (entries: PlaceEntry[]): MapPin[] =>
-  entries.flatMap(({ place, services }) => {
+export const getMapPins = (entries: PlaceEntry[], asked?: PlaceQuery): MapPin[] =>
+  entries.flatMap((entry) => {
+    const { place } = entry
+    const answering = asked ? matchingServices(entry, asked) : []
+    const services = answering.length > 0 ? answering : entry.services
     const coordinates = place.coordinates
     if (!isMappable(place) || !coordinates || !Number.isFinite(coordinates.lat) || !Number.isFinite(coordinates.lng)) return []
     return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng, kind: shortKind(place.facilityType), category: pinCategory(services), purpose: purposeOf(services) }]

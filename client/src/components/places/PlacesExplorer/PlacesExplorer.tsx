@@ -270,7 +270,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         {count}
       </p>
 
-      {map && view === "map" && results.length > 0 && <PlacesMapLegend entries={results} />}
+      {map && view === "map" && results.length > 0 && <PlacesMapLegend entries={results} query={query} />}
 
       {state.status === "error" && (
         <div className="flex flex-col items-start gap-3">
@@ -351,7 +351,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
       )}
 
       {results.length > 0 && view === "list" && <PlaceList entries={results} onOpen={open} />}
-      {results.length > 0 && view === "map" && <PlacesMapView entries={results} onOpen={open} onBackToList={() => changeView("list")} />}
+      {results.length > 0 && view === "map" && <PlacesMapView entries={results} query={query} onOpen={open} onBackToList={() => changeView("list")} />}
 
       {activeEntry && <PlaceDetail entry={activeEntry} matchingIds={matchingIds} onClose={close} />}
     </div>

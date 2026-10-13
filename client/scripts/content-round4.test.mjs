@@ -10,6 +10,7 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -72,7 +73,7 @@ test("«Anticonceptivos gratuitos: cuáles son y cómo conseguirlos» replaces t
   assert.ok(content.includes("Ley 25.673") && content.includes("Ley 26.130"))
   // what AuxiliAR does not know is said, and nothing is invented
   assert.ok(content.includes("no asegura que haya turno, stock o un profesional disponible"))
-  assert.ok(content.includes("AuxiliAR no tiene confirmados turnos, stock ni centros concretos"))
+  assert.ok(content.includes("AuxiliAR no confirma turnos ni disponibilidad de cada método"))
   assert.ok(!/rivadavia|hay stock|siempre hay|turnos? disponibles? (en|hoy)/i.test(content.replace("no asegura que haya turno, stock o un profesional disponible", "")))
   assert.ok(!/\b(0800|100|102|107|135|144|911)\b/.test(content), "no phone number")
 })
@@ -104,7 +105,7 @@ test("IVE/ILE: no center is presented as a confirmed provider, no phone number i
 })
 
 test("the map has no IVE/ILE service shown as free: the services added since are the Garrahan's and the Elizalde's pediatric ones", () => {
-  const data = JSON.parse(read("src/data/resources/places/ar-c.json"))
+  const data = { resources: withoutSexualBatch(JSON.parse(read("src/data/resources/places/ar-c.json")).resources) }
   assert.equal(data.resources.length, 9)
   assert.equal(data.resources.reduce((total, place) => total + place.services.length, 0), 36)
   const ive = data.resources.flatMap((place) => place.services.filter((service) => service.type === "ive-ile-care"))
@@ -205,10 +206,10 @@ test("VideoEmbed is used only by the first aid guide (and only with an approved 
 
 /* ── 5. README of the data ── */
 
-test("the README of the data says what there is today: 14 establishments, 41 services, 16 visible, and no longer says there is no data", () => {
+test("the README of the data says what there is today: 58 establishments, 176 services, 151 visible, and no longer says there is no data", () => {
   const readme = read("src/data/resources/README.md")
-  assert.ok(readme.includes("14 establecimientos con 41 servicios registrados"))
-  assert.ok(readme.includes("16 de esos 41 servicios están visibles"))
+  assert.ok(readme.includes("58 establecimientos con 176 servicios registrados"))
+  assert.ok(readme.includes("151 de esos 176 servicios están visibles"))
   assert.ok(!/todavía no hay datos cargados\*\* y/.test(readme))
   assert.ok(!readme.includes("(hoy no hay ninguno)") && !readme.includes("nacional.json, vacío"))
   assert.ok(readme.includes("14 líneas"))

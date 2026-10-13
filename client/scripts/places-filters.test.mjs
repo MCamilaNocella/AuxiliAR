@@ -8,6 +8,7 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -26,11 +27,11 @@ const { ActiveFilters } = await vite.ssrLoadModule("/src/components/places/Activ
 const { PlacesExplorer } = await vite.ssrLoadModule("/src/components/places/PlacesExplorer/index.ts")
 const { FreeFilter } = await vite.ssrLoadModule("/src/components/places/FreeFilter/index.ts")
 const taxonomy = JSON.parse(await readFile(join(root, "src/data/resources/taxonomy.json"), "utf8"))
-const raw = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
+const raw = withoutSexualBatch(JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources)
 
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
-const real = await data.loadPlaces("AR-C")
+const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 // CeSAC 3 as it was before the first batch of verified gratuity: no cost, requirements, appointment or source of its own on its services.
@@ -185,7 +186,7 @@ test("the explorer with the real places: filters from the URL, active chips, cou
   // no filters: no active chips, no count on the button
   const plain = text(render("/centros?vista=lista"))
   assert.ok(!plain.includes("Borrar filtros") && !plain.includes("activos)"))
-  assert.ok(plain.includes("13 lugares encontrados"), "13 visible places (8 of the Ciudad, 5 of other provinces): Santa Lucía has no prestación with documented gratuity, so it is not shown")
+  assert.ok(plain.includes("57 lugares encontrados"), "57 visible places (52 of the Ciudad, 5 of other provinces): Santa Lucía has no prestación with documented gratuity, so it is not shown")
   // the search box does not count: it is always in sight
   const searched = text(render("/centros?vista=lista&buscar=cesac"))
   assert.ok(!searched.includes("activo)") && searched.includes("Búsqueda: «cesac» Quitar filtro"))
@@ -199,7 +200,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
   assert.ok(animals.includes("1 lugar encontrado") && animals.includes("Animales Quitar filtro"))
   assert.ok(/Castración/.test(animals) && !/zoonosis|antirrábica|guardia veterinaria/i.test(animals), "only the castration of the centre is there: no other animal service is made up")
   // an invalid category or service in the URL is ignored
-  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("13 lugares encontrados"))
+  assert.ok(text(render("/centros?vista=lista&categoria=magia&prestacion=nada")).includes("57 lugares encontrados"))
 })
 
 test("URL: every filter and the view travel together, and clearing keeps the view and the open place", () => {
@@ -395,7 +396,7 @@ test("the explorer: gratuity from the search or the filter is one visible filter
   assert.ok(typed.includes("2 lugares encontrados") && typed.includes("Gratuidad verificada Quitar filtro") && typed.includes("Búsqueda: «odontologia gratuita»"))
   assert.ok(typed.includes("Filtros 1 (1 activo)"), "the button counts the gratuity, the search does not")
   const chosen = render("/centros?vista=lista&gratuito=1")
-  assert.ok(chosen.includes("13 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
+  assert.ok(chosen.includes("57 lugares encontrados") && chosen.includes("Gratuidad verificada Quitar filtro"))
   const none = render("/centros?vista=lista&gratuito=1&categoria=salud-mental")
   for (const piece of ["0 lugares encontrados", "No encontramos prestaciones con gratuidad documentada para esta búsqueda", "Que no aparezcan no quiere decir que no existan ni que no sean gratuitas", "Borrar filtros"]) assert.ok(none.includes(piece), piece)
   assert.ok(!none.includes("costo desconocido"), "no claim about what the others cost")

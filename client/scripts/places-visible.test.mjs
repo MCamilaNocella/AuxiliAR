@@ -9,10 +9,11 @@ import { readFile, readdir } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
-const raw = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
+const raw = withoutSexualBatch(JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources)
 
 const { createServer } = await import("vite")
 const vite = await createServer({ root, logLevel: "error", server: { middlewareMode: true }, appType: "custom" })
@@ -27,7 +28,7 @@ const { PlaceCard } = await vite.ssrLoadModule("/src/components/places/PlaceCard
 const { PlaceDetail } = await vite.ssrLoadModule("/src/components/places/PlaceDetail/index.ts")
 
 const DAY = data.todayInArgentina()
-const real = await data.loadPlaces("AR-C")
+const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, getPlaceFacets, isVerifiedFree } = places

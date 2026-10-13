@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { ActionLink } from "@/components/health/ActionLink"
 import { countApproximate, countUnmapped, getMapPins } from "@/utils/places"
-import type { PlaceEntry } from "@/utils/places"
+import type { PlaceEntry, PlaceQuery } from "@/utils/places"
 import { PlaceCard } from "../PlaceCard"
 
 // Leaflet and its styles are downloaded only when the map is opened
@@ -10,6 +10,8 @@ const PlacesMap = lazy(() => import("../PlacesMap/PlacesMap"))
 type PlacesMapViewProps = {
   /** The places of the current search and filter: the same ones as the list */
   entries: PlaceEntry[]
+  /** What was searched and filtered: the symbol of a pin follows the services that answer it */
+  query?: PlaceQuery
   /** Opens the full information of a place (the explorer's panel) */
   onOpen: (placeId: string) => void
   onBackToList: () => void
@@ -20,9 +22,9 @@ type PlacesMapViewProps = {
  * results can't be on the map; those are still in the list. A tapped pin shows the place's summary (the same card as
  * the list) and its "Ver información" opens the full panel.
  */
-export const PlacesMapView = ({ entries, onOpen, onBackToList }: PlacesMapViewProps) => {
+export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMapViewProps) => {
   // Stable while the results are the same: the map redraws and re-frames only when the places shown change
-  const pins = useMemo(() => getMapPins(entries), [entries])
+  const pins = useMemo(() => getMapPins(entries, query), [entries, query])
   const unmapped = countUnmapped(entries)
   const approximate = countApproximate(entries)
   const [selectedId, setSelectedId] = useState<string | null>(null)

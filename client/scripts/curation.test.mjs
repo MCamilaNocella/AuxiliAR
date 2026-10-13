@@ -21,6 +21,7 @@ import { checkCuration, DATASET_DIR, loadDataset, runPublish } from "./curation/
 import { planPublish, serializePlacesPreserving, validateBatch } from "./curation/publish.mjs"
 import { formatProfile, profileText } from "./curation/profile.mjs"
 import { PATHS, ingest, listManifests, loadManifest, looksLikeDataset, normalizeText, validateManifest } from "./curation/sources.mjs"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const FIXTURES = join(clientRoot, "scripts/__fixtures__/curation")
 const fixture = (name) => readFile(join(FIXTURES, name), "utf8")
@@ -33,7 +34,9 @@ const cesacRecords = await normalizeText({ manifest: cesacManifest, text: await 
 const hospRecords = await normalizeText({ manifest: hospManifest, text: await fixture("hospitales.sample.csv") })
 const cesacMapping = await readJson(join(PATHS.mappings, "caba-cesac.json"))
 const hospMapping = await readJson(join(PATHS.mappings, "caba-hospitales.json"))
-const published = (await readJson(placesPath)).resources
+// The pipeline tests are about the places of the first batches: the 44 places of the sexual health batch (loaded by hand with a link each) are in `publishedAll`
+const publishedAll = (await readJson(placesPath)).resources
+const published = withoutSexualBatch(publishedAll)
 const byKey = (records, key) => records.find((record) => record.key === key)
 
 const snapshot = (records) => ({ source: "x", retrievedAt: "2026-10-07", records })
@@ -408,11 +411,12 @@ test("GOLDEN hospitals: the three hospitals of the first batch are linked and th
 
 test("the places published by the pipeline are exactly the 6 of the first batch (plus the hand-made veterinary centre, the Hospital Garrahan and the Elizalde); nothing new was imported", () => {
   assert.deepEqual(published.map((r) => r.id), ["cesac-3", "cesac-41", "cesac-47", "hospital-oftalmologico-santa-lucia", "hospital-odontologia-carrillo", "hospital-odontologia-duenas", "centro-fijo-veterinario-costanera-sur", "hospital-de-pediatria-dr-j-garrahan", "hospital-general-de-ninos-pedro-de-elizalde"])
+  assert.equal(publishedAll.length, 53, "plus the 44 of the sexual health batch, also loaded by hand and each linked to its record")
   // the veterinary centre is hand-made from the Animales BA page: it is in no official dataset, so it has no externalIds
-  for (const place of published.filter(({ facilityType }) => facilityType !== "public-veterinary")) assert.equal(Object.keys(place.externalIds).length, 1)
+  for (const place of publishedAll.filter(({ facilityType }) => facilityType !== "public-veterinary")) assert.equal(Object.keys(place.externalIds).length, 1)
   const server = JSON.parse(readFileSync(join(clientRoot, "../server/src/main/resources/data/resources.json"), "utf8"))
   // the server copy also carries the help lines (lines/): what is counted here are the places
-  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 14, "the 9 of the Ciudad and the 5 of other provinces")
+  assert.equal(server.resources.filter((resource) => resource.kind === "service").length, 58, "the 53 of the Ciudad and the 5 of other provinces")
 })
 
 // ─── Publish: protection of manual curation ───────────────────────────────────────────────────────
@@ -588,14 +592,14 @@ test("publish: batches need real dates and a later review", () => {
 
 test("serialization: untouched places keep their exact text; a link adds one line; a new place is appended whole", async () => {
   const text = await readFile(placesPath, "utf8")
-  const same = serializePlacesPreserving(text, published, published)
+  const same = serializePlacesPreserving(text, publishedAll, publishedAll)
   assert.equal(same, text.replace(/\r\n/g, "\n"))
-  const unlinked = structuredClone(published).map(({ externalIds: _externalIds, ...rest }) => rest)
+  const unlinked = structuredClone(publishedAll).map(({ externalIds: _externalIds, ...rest }) => rest)
   const originalWithout = text.replace(/\r\n/g, "\n").split("\n").filter((line) => !line.startsWith('      "externalIds"')).join("\n")
-  const relinked = serializePlacesPreserving(originalWithout, unlinked, published)
+  const relinked = serializePlacesPreserving(originalWithout, unlinked, publishedAll)
   assert.equal(relinked, text.replace(/\r\n/g, "\n"), "volver a enlazar reproduce el archivo línea por línea")
-  const added = serializePlacesPreserving(text, published, [...published, { ...structuredClone(published[0]), id: "cesac-999", externalIds: { "caba-cesac": "999" } }])
-  assert.equal(JSON.parse(added).resources.length, 10)
+  const added = serializePlacesPreserving(text, publishedAll, [...publishedAll, { ...structuredClone(publishedAll[0]), id: "cesac-999", externalIds: { "caba-cesac": "999" } }])
+  assert.equal(JSON.parse(added).resources.length, 54)
   assert.ok(added.startsWith(text.replace(/\r\n/g, "\n").slice(0, text.replace(/\r\n/g, "\n").indexOf('      "aliases": ["CeSAC 47", "Retiro 3"') )))
 })
 
@@ -765,7 +769,7 @@ test("department: apply adds only that key to the address and leaves every other
 
 test("department: the text of the file changes by one line per place", () => {
   const text = readFileSync(placesPath, "utf8").replace(/\r\n/g, "\n")
-  const before = noDivision(published)
+  const before = noDivision(publishedAll)
   const candidates = candidatesOf(cesacManifest, cesacRecords, cesacMapping)
   const result = plan({ decisions: LINKED.map(([key, id, value]) => departmentDecision(key, id, value)), candidates, resources: before })
   const withoutLines = text.split("\n").filter((line) => !line.includes('"department"')).join("\n")

@@ -10,10 +10,11 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
-const raw = JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources
+const raw = withoutSexualBatch(JSON.parse(await readFile(join(root, "src/data/resources/places/ar-c.json"), "utf8")).resources)
 const server = JSON.parse(await readFile(resolve(root, "../server/src/main/resources/data/resources.json"), "utf8")).resources
 
 const { createServer } = await import("vite")
@@ -32,7 +33,7 @@ const { PlacesMapView } = await vite.ssrLoadModule("/src/components/places/Place
 const DAY = data.todayInArgentina()
 const ID = "centro-fijo-veterinario-costanera-sur"
 const PAGE = "https://buenosaires.gob.ar/gcaba_historico/atencion-veterinaria-y-castraciones-gratuitas"
-const real = await data.loadPlaces("AR-C")
+const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, matchingServices, isVerifiedFree, buildPlaceView } = places
@@ -177,7 +178,7 @@ test("the server copy has the centre, without the evidence (the server does not 
   assert.ok(copy)
   assert.equal(copy.services[0].cost, "free")
   assert.equal(copy.services[0].evidence, undefined)
-  assert.equal(server.length, 28)
+  assert.equal(server.length, 72)
 })
 
 /* ── Search by verb: «castrar» finds the castration, and nothing else is widened ── */

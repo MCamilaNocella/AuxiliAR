@@ -217,6 +217,402 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-12",
       "reason": "Se carga a mano el Hospital General de Niños Pedro de Elizalde (atención de diabetes pediátrica, con gratuidad documentada por el directorio del Programa de Diabetes), con las coordenadas y la comuna del dataset oficial de Hospitales (reproyección EPSG:9498 → WGS84) controladas contra USIG. El dataset no tiene id: la clave es el slug de su nombre. Sin decisiones «apply»: el pipeline pisaría la fecha y la nota de las coordenadas."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "38",
+      "resourceId": "cesac-38",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "11",
+      "resourceId": "cesac-11",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-j-m-ramos-mejia",
+      "resourceId": "hospital-ramos",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "1",
+      "resourceId": "cesac-1",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "8",
+      "resourceId": "cesac-8",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "16",
+      "resourceId": "cesac-16",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "35",
+      "resourceId": "cesac-35",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-c-durand",
+      "resourceId": "hospital-durand",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-i-pirovano",
+      "resourceId": "hospital-pirovano",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "19",
+      "resourceId": "cesac-19",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "20",
+      "resourceId": "cesac-20",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "40",
+      "resourceId": "cesac-40",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "47",
+      "resourceId": "cesac-48",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-t-alvarez",
+      "resourceId": "hospital-alvarez",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-p-pinero",
+      "resourceId": "hospital-pinero",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "36",
+      "resourceId": "cesac-36",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "9",
+      "resourceId": "cesac-9",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-c-argerich",
+      "resourceId": "hospital-argerich",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "34",
+      "resourceId": "cesac-34",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "22",
+      "resourceId": "cesac-22",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-donacion-f-santojanni",
+      "resourceId": "hospital-santojanni",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "4",
+      "resourceId": "cesac-4",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "32",
+      "resourceId": "cesac-32",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "17",
+      "resourceId": "cesac-17",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "26",
+      "resourceId": "cesac-26",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "33",
+      "resourceId": "cesac-33",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-j-a-fernandez",
+      "resourceId": "hospital-fernandez",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "13",
+      "resourceId": "cesac-13",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "10",
+      "resourceId": "cesac-10",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "39",
+      "resourceId": "cesac-39",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-materno-infantil-r-sarda",
+      "resourceId": "hospital-sarda",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-b-rivadavia",
+      "resourceId": "hospital-rivadavia",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-ninos-r-gutierrez",
+      "resourceId": "hospital-gutierrez",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "44",
+      "resourceId": "cesac-45",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-a-zubizarreta",
+      "resourceId": "hospital-zubizarreta",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "5",
+      "resourceId": "cesac-5",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "14",
+      "resourceId": "cesac-14",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "42",
+      "resourceId": "cesac-43",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "43",
+      "resourceId": "cesac-44",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "28",
+      "resourceId": "cesac-28",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-dr-e-tornu",
+      "resourceId": "hospital-tornu",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "6",
+      "resourceId": "cesac-6",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-cecilia-grierson",
+      "resourceId": "hospital-grierson",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "12",
+      "resourceId": "cesac-12",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
     }
   ]
 }

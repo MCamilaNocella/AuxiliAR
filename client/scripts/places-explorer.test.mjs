@@ -8,13 +8,14 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const sourceDir = resolve(here, "../src/data/resources")
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"))
 // The places of these tests are the ones for people: the first veterinary centre has its own tests (places-vet.test.mjs) and the
 // panel, cards and filters here are about human health
-const places = (await readJson(join(sourceDir, "places/ar-c.json"))).resources.filter(({ facilityType }) => facilityType !== "public-veterinary")
+const places = withoutSexualBatch((await readJson(join(sourceDir, "places/ar-c.json"))).resources).filter(({ facilityType }) => facilityType !== "public-veterinary")
 const taxonomy = await readJson(join(sourceDir, "taxonomy.json"))
 
 const { createServer } = await import("vite")

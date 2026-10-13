@@ -8,6 +8,7 @@ import assert from "node:assert/strict"
 import { dirname, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -30,7 +31,7 @@ after(() => vite.close())
 const { EMPTY_PLACE_QUERY: EMPTY, PLACE_FILTERS, selectPlaces } = places
 const text = (html) => html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ")
 const DAY = data.todayInArgentina()
-const real = await data.loadPlaces("AR-C")
+const real = withoutSexualBatch(await data.loadPlaces("AR-C"))
 // the other provinces with places are loaded too (the explorer shows them all); `real` stays the Ciudad's places
 for (const province of ["AR-B", "AR-F", "AR-T", "AR-X"]) await data.loadPlaces(province)
 const visibility = { selectPlaces, PLACE_FILTERS, EMPTY_PLACE_QUERY: EMPTY, isMappable: data.isMappable }
@@ -127,13 +128,14 @@ test("the pins and the list are told apart: a place without a verified point is 
   assert.equal(explorerSays(both, "nutrition-food", "2027-01-10"), "list")
 })
 
-test("the real index agrees with the explorer on the real places, around every real review date", () => {
+test("the real index agrees with the explorer on the real places, around every real review date", async () => {
   const index = { ...data.COVERAGE }
-  const dates = reviewDatesOf(real)
+  const everyPlace = await data.loadPlaces("AR-C") // the index counts every place, the sexual health batch too
+  const dates = reviewDatesOf(everyPlace)
   assert.ok(dates.length >= 2)
   for (const { id } of PLACE_FILTERS) {
     for (const day of ["2000-01-01", DAY, ...dates.flatMap((date) => [dayBefore(date), date])]) {
-      assert.equal(quickFilterAvailability(id, day, index), explorerSays(real, id, day), `${id} on ${day}`)
+      assert.equal(quickFilterAvailability(id, day, index), explorerSays(everyPlace, id, day), `${id} on ${day}`)
     }
   }
   // and the new subsections have nothing today
