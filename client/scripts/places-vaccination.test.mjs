@@ -30,8 +30,8 @@ const withVaccination = file.filter(({ services }) => services.some(isVaccinatio
 const newOnes = withVaccination.filter(({ services }) => services.every(isBatchService) && !services.some(({ id }) => id !== "vacunacion"))
 const vaccinationOf = (id) => file.find((place) => place.id === id).services.find(({ id: serviceId }) => serviceId === "vacunacion")
 
-test("57 places have the vaccination point of the page: 44 that were already there for sexual health, 13 new ones, and 3 that had their own are kept", () => {
-  assert.equal(withVaccination.length, 57)
+test("55 places have the vaccination point of the page: 42 that were already there for sexual health, 13 new ones, and 3 that had their own are kept", () => {
+  assert.equal(withVaccination.length, 55)
   assert.deepEqual(newOnes.map(({ id }) => id).sort(), ["cesac-2", "cesac-21", "cesac-24", "cesac-27", "cesac-29", "cesac-31", "cesac-37", "cesac-46", "cesac-50", "cesac-7", "hospital-especializado-de-infecciosas-f-muniz", "hospital-general-de-agudos-d-velez-sarsfield", "hospital-general-de-agudos-j-a-penna"])
   // CeSAC 3, 41 and 47 had a vaccination service of their own: the batch does not add a second one, nor changes theirs
   for (const id of ["cesac-3", "cesac-41", "cesac-47"]) assert.equal(file.find((place) => place.id === id).services.filter(({ id: serviceId }) => serviceId === "vacunacion").length, 1, id)
@@ -39,8 +39,8 @@ test("57 places have the vaccination point of the page: 44 that were already the
 })
 
 test("what the page cannot back stays out: points that do not match, CeSACs listed twice, places without a ficha", () => {
-  // CeSAC 18 and 43 appear twice with different schedules; 15, 25, 42 and CeSAC 23 (its point is another CeSAC's) have no usable point; CeSAC 30's point is 535 m from the official dataset's; the two CCI have no ficha
-  for (const id of ["cesac-15", "cesac-18", "cesac-23", "cesac-25", "cesac-30", "cesac-42"]) assert.ok(!file.some((place) => place.id === id && place.services.some(isVaccinationBatchService)), id)
+  // CeSAC 18 and 43 appear twice with different schedules; 15, 25, 42 and CeSAC 23 (its point is another CeSAC's) have no usable point; CeSAC 30's point is 535 m from the official dataset's; the two CCI have no ficha; the page crosses the points of Rivadavia and Santojanni, so their vaccination is not loaded either
+  for (const id of ["cesac-15", "cesac-18", "cesac-23", "cesac-25", "cesac-30", "cesac-42", "hospital-rivadavia", "hospital-santojanni"]) assert.ok(!file.some((place) => place.id === id && place.services.some(isVaccinationBatchService)), id)
   assert.ok(!file.some((place) => /^cci-|rodrigo-bueno|fraga/i.test(place.id)))
   // CeSAC 43 is in the map for sexual health: the vaccination of its two listings with different hours is not loaded
   assert.ok(!file.find((place) => place.id === "cesac-43").services.some(isVaccinationBatchService))
@@ -112,9 +112,9 @@ test("the new places come from the official datasets: point, comuna and link to 
 
 test("in the map and the list: the vaccination filter finds the points, with their schedule, and they are Salud general", () => {
   const visible = selectPlaces(all, DAY, { ...EMPTY, filterId: "vaccination" }, { confirmedOnly: true })
-  assert.equal(visible.length, 59, "the 57 of the batch plus CeSAC 3 and 41 (CeSAC 47 has its vaccination unconfirmed: not shown)")
+  assert.equal(visible.length, 57, "the 55 of the batch plus CeSAC 3 and 41 (CeSAC 47 has its vaccination unconfirmed: not shown)")
   const pins = getMapPins(visible, { ...EMPTY, filterId: "vaccination" })
-  assert.equal(pins.length, 59)
+  assert.equal(pins.length, 57)
   assert.ok(pins.every(({ category }) => category === "salud-fisica"), "vaccination is Salud general")
   for (const place of newOnes) assert.ok(visible.some((entry) => entry.place.id === place.id), place.id)
 })
