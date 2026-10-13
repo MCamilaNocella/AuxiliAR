@@ -7,13 +7,14 @@ import type { Resource } from "@/data/resources"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { usePlacesOf } from "@/hooks/usePlaces"
 import { PATHS, PLACE_PARAM, PLACE_VIEW_LIST, PLACE_VIEW_MAP, PLACE_VIEW_PARAM } from "@/router/paths"
-import { EMPTY_PLACE_QUERY, categoryLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyGuideOf, emptyStateOf, planLoad, provinceLabel, offeredQuickFilters, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
+import { EMPTY_PLACE_QUERY, categoryLabel, placeKindLabel, hasVisibleCounts, mentalHealthContextOf, effectiveQuery, getPlaceFacets, matchingServices, withoutConditionWords, placeQueryFromParams, placeQueryToParams, emptyGuideOf, emptyStateOf, planLoad, provinceLabel, offeredQuickFilters, quickFilterHasData, quickFilterLabel, resolveView, selectPlaces, serviceTypeLabel } from "@/utils/places"
 import type { PlaceFilterId, PlaceQuery, PlacesScope } from "@/utils/places"
 import { ActiveFilters } from "../ActiveFilters"
 import { NoCoverageHelp } from "../NoCoverageHelp"
 import type { ActiveFilter } from "../ActiveFilters/ActiveFilters"
 import { CategoryFilter } from "../CategoryFilter"
 import { FiltersToggle } from "../FiltersToggle"
+import { KindFilter } from "../KindFilter"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapLegend } from "../PlacesMapLegend"
@@ -202,6 +203,7 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
     ...(query.province ? [{ key: "province", label: provinceLabel(query.province), onRemove: () => changeQuery({ province: null, zone: null }) }] : []),
     ...(query.zone ? [{ key: "zone", label: query.zone, onRemove: () => changeQuery({ zone: null }) }] : []),
     ...(query.category ? [{ key: "category", label: categoryLabel(query.category), onRemove: () => changeQuery({ category: null }) }] : []),
+    ...(query.kind ? [{ key: "kind", label: placeKindLabel(query.kind), onRemove: () => changeQuery({ kind: null }) }] : []),
     ...(query.type ? [{ key: "type", label: serviceTypeLabel(query.type), onRemove: () => changeQuery({ type: null }) }] : []),
     ...(freeOn ? [{ key: "free", label: "Gratuidad verificada", onRemove: () => setFree(false) }] : []),
   ]
@@ -247,8 +249,14 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         <div id={panelId} onKeyDown={foldOnEscape} className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           <div className="col-span-full">
             <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
-              onChange={(category) => changeQuery({ category, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
+              onChange={(category) => changeQuery({ category, kind: null, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
           </div>
+          {/* Inside a kind of care: what kind of place it lists (hospitales, centros de salud, vacunatorios, guardias…) */}
+          {query.category && (
+            <div className="col-span-full">
+              <KindFilter facets={facets.kinds} value={query.kind} onChange={(kind) => changeQuery({ kind })} />
+            </div>
+          )}
           <TerritoryFilters
             coverage={coverage}
             province={query.province}

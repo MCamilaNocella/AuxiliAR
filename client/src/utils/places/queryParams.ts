@@ -4,6 +4,7 @@ import {
   PLACE_CATEGORY_PARAM,
   PLACE_FILTER_PARAM,
   PLACE_FREE_PARAM,
+  PLACE_KIND_PARAM,
   PLACE_PROVINCE_PARAM,
   PLACE_QUERY_PARAM,
   PLACE_TYPE_PARAM,
@@ -11,6 +12,8 @@ import {
 } from "@/router/paths"
 import { EMPTY_PLACE_QUERY, PLACE_FILTERS } from "./filters"
 import type { PlaceFilterId, PlaceQuery } from "./filters"
+import { isPlaceKind } from "./kinds"
+import type { PlaceKindId } from "./kinds"
 
 /** The categories a service can belong to (the others of the taxonomy are screens of the app, not kinds of care) */
 const CARE_CATEGORIES = new Set<string>(taxonomy.serviceTypes.flatMap(({ categories }) => categories))
@@ -39,6 +42,8 @@ export const placeQueryFromParams = (params: URLSearchParams): PlaceQuery => {
     zone: validProvince && zone ? zone.slice(0, MAX_TEXT) : null,
     category: category && CARE_CATEGORIES.has(category) ? (category as CategoryId) : null,
     type: type && SERVICE_TYPES.has(type) ? (type as ServiceType) : null,
+    // The kind of place is a step inside a kind of care: alone it means nothing
+    kind: category && CARE_CATEGORIES.has(category) && isPlaceKind(params.get(PLACE_KIND_PARAM)) ? (params.get(PLACE_KIND_PARAM) as PlaceKindId) : null,
     free: params.get(PLACE_FREE_PARAM) === "1",
   }
 }
@@ -53,6 +58,7 @@ export const placeQueryToParams = (previous: URLSearchParams, query: PlaceQuery)
   set(PLACE_ZONE_PARAM, query.province ? query.zone : null)
   set(PLACE_CATEGORY_PARAM, query.category)
   set(PLACE_TYPE_PARAM, query.type)
+  set(PLACE_KIND_PARAM, query.category ? query.kind : null)
   set(PLACE_FREE_PARAM, query.free ? "1" : null)
   return params
 }

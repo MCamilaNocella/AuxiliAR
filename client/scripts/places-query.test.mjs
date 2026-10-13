@@ -148,7 +148,7 @@ test("the older entry points are the same query: one copy of the logic", () => {
 })
 
 test("URL: a query goes into the params and comes back the same, keeping the other params", () => {
-  const query = { text: "guardia", filterId: "emergency", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "emergency-room", free: false }
+  const query = { text: "guardia", filterId: "emergency", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "emergency-room", kind: "hospital", free: false }
   const params = placeQueryToParams(new URLSearchParams("lugar=cesac-3&vista=mapa"), query)
   assert.equal(params.get("lugar"), "cesac-3")
   assert.equal(params.get("vista"), "mapa")
@@ -156,6 +156,7 @@ test("URL: a query goes into the params and comes back the same, keeping the oth
   assert.equal(params.get("zona"), "Comuna 4")
   assert.equal(params.get("categoria"), "salud-fisica")
   assert.equal(params.get("prestacion"), "emergency-room")
+  assert.equal(params.get("tipo"), "hospital")
   assert.equal(params.get("filtro"), "emergency")
   assert.equal(params.get("buscar"), "guardia")
   assert.deepEqual(placeQueryFromParams(params), query)

@@ -206,7 +206,7 @@ test("the explorer: combinations with nothing, and animal care that does not exi
 test("URL: every filter and the view travel together, and clearing keeps the view and the open place", () => {
   const asked = "provincia=AR-C&zona=Comuna+4&categoria=salud-fisica&prestacion=vaccination&buscar=cesac&filtro=vaccination&vista=mapa&lugar=cesac-41"
   const query = places.placeQueryFromParams(new URLSearchParams(asked))
-  assert.deepEqual(query, { text: "cesac", filterId: "vaccination", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "vaccination", free: false })
+  assert.deepEqual(query, { text: "cesac", filterId: "vaccination", province: "AR-C", zone: "Comuna 4", category: "salud-fisica", type: "vaccination", kind: null, free: false })
   const cleared = places.placeQueryToParams(new URLSearchParams(asked), EMPTY)
   assert.equal(cleared.toString(), "vista=mapa&lugar=cesac-41")
   // the older link still means the same
@@ -591,8 +591,8 @@ test("the note about the numbers is shown only when some filter shows numbers", 
   assert.equal(places.hasVisibleCounts(facetsOf({})), true)
   // a province with no places loaded: no options, no numbers, so no note about them
   assert.equal(places.hasVisibleCounts(places.getPlaceFacets([], DAY, { ...EMPTY, province: "AR-B" })), false)
-  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 0 }), false)
-  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], free: 2 }), true)
+  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], kinds: [], free: 0 }), false)
+  assert.equal(places.hasVisibleCounts({ provinces: [], zones: [], categories: [], types: [], kinds: [], free: 2 }), true)
 })
 
 /* ── Search: psicólogo, psicóloga, psicólogos and psicología find the same ── */
