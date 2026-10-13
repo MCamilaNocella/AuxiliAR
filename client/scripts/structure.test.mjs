@@ -55,7 +55,7 @@ test("the home has the six approved cards, exactly these and in this order, each
   })
   assert.ok(text(html).includes("¿Qué necesitás hoy?"))
   // Centros de atención is the same map as Encontrar atención, and the categories' own data did not change
-  assert.equal(HOME[0][2], NAV_ITEMS.find(({ label }) => label === "Encontrar atención").to)
+  assert.equal(HOME[0][2], NAV_ITEMS.find(({ label }) => label === "Dónde atenderme").to)
   assert.deepEqual(CATEGORIES.map(({ title, to }) => [title, to]), [
     ["Encontrar atención", "/centros"],
     ["Cuidar mi salud", "/temas/salud-general"],
@@ -99,10 +99,10 @@ test("no empty or provisional page is visible: no 'Sección N', no 'en construcc
   }
 })
 
-test("the navigation: Inicio, Encontrar atención, Mi salud (under construction) and the emergency button; Primeros auxilios is not in it", () => {
+test("the navigation: Inicio, Dónde atenderme, Mi salud (under construction) and the emergency button; Primeros auxilios is not in it", () => {
   assert.deepEqual(NAV_ITEMS.map(({ label, to }) => [label, to]), [
     ["Inicio", "/"],
-    ["Encontrar atención", "/centros"],
+    ["Dónde atenderme", "/centros"],
     ["Mi salud", "/mi-salud"],
   ])
   assert.ok(!NAV_ITEMS.some(({ to, label }) => to === PATHS.firstAid || /primeros auxilios/i.test(label)))

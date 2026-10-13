@@ -88,8 +88,12 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     L.control.zoom({ position: "topright" }).addTo(map)
     L.control.attribution({ position: "bottomleft", prefix: LEAFLET_PREFIX }).addTo(map)
     mapRef.current = map
+    // The box changes size when the side bar opens or closes: the map follows
+    const resize = new ResizeObserver(() => map.invalidateSize({ pan: false }))
+    resize.observe(container)
     const markers = markersRef.current
     return () => {
+      resize.disconnect()
       map.remove()
       mapRef.current = null
       markers.clear()
@@ -150,6 +154,18 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     const categories = new Map(pins.map(({ id, category }) => [id, category]))
     for (const [id, marker] of markersRef.current) marker.setIcon(pinIcon(categories.get(id) ?? "salud-fisica", id === selectedId))
   }, [selectedId, pins])
+
+  // A selected pin that the side bar would leave out of view is brought back into it
+  useEffect(() => {
+    const map = mapRef.current
+    const marker = selectedId ? markersRef.current.get(selectedId) : undefined
+    if (!map || !marker) return
+    const frame = requestAnimationFrame(() => {
+      map.invalidateSize({ pan: false })
+      map.panInside(marker.getLatLng(), { padding: [64, 64], animate: !prefersReducedMotion() })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [selectedId])
 
   return (
     <div

@@ -9,6 +9,6 @@ import type { NavItem } from "./BottomNav.types"
  */
 export const NAV_ITEMS: NavItem[] = [
   { to: PATHS.home, label: "Inicio", icon: House, end: true },
-  { to: PATHS.centers, label: "Encontrar atención", icon: MapPin },
+  { to: PATHS.centers, label: "Dónde atenderme", icon: MapPin },
   { to: PATHS.myHealth, label: "Mi salud", icon: HeartPulse },
 ]
