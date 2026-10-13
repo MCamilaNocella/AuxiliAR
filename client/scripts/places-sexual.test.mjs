@@ -11,7 +11,7 @@ import { readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
-import { isBatchService } from "./places-sexual-batch.mjs"
+import { isBatchService, isSexualBatchService } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
@@ -27,8 +27,9 @@ const all = await data.loadPlaces("AR-C")
 const DAY = data.todayInArgentina()
 const { EMPTY_PLACE_QUERY: EMPTY, selectPlaces, getMapPins } = places
 
-const withBatch = file.filter(({ services }) => services.some(isBatchService))
-const onlyBatch = file.filter(({ services }) => services.every(isBatchService))
+// the places with a sexual health service of the batch; `onlyBatch` are the new ones (every service of theirs is of a batch: they have a vaccination point too since the page of vacunatorios)
+const withBatch = file.filter(({ services }) => services.some(isSexualBatchService))
+const onlyBatch = withBatch.filter(({ services }) => services.every(isBatchService))
 const shown = (query = {}) => selectPlaces(all, DAY, { ...EMPTY, ...query }, { confirmedOnly: true })
 
 test("44 new places and 3 that already existed (CeSAC 3, CeSAC 41, Elizalde) now have the sexual health services", () => {
@@ -39,12 +40,12 @@ test("44 new places and 3 that already existed (CeSAC 3, CeSAC 41, Elizalde) now
   // each place of the batch is once: the ids of the existing three were not duplicated
   assert.equal(new Set(file.map(({ id }) => id)).size, file.length)
   // 15 centers of the directory were left out for their address or location
-  for (const id of ["cesac-30", "cesac-31", "cesac-37", "hospital-velez-sarsfield", "hospital-penna", "cesac-21", "cesac-25", "cesac-27", "cesac-15", "cesac-7", "cesac-18", "cesac-29", "cesac-2", "cesac-24"]) assert.ok(!file.some((place) => place.id === id), id)
+  for (const id of ["cesac-30", "cesac-31", "cesac-37", "hospital-velez-sarsfield", "hospital-penna", "cesac-21", "cesac-25", "cesac-27", "cesac-15", "cesac-7", "cesac-18", "cesac-29", "cesac-2", "cesac-24"]) assert.ok(!file.some((place) => place.id === id && place.services.some(isSexualBatchService)), `${id}: not with sexual health services (some are in the map now for their vaccination point)`)
 })
 
 test("each service declares free by itself, with the sources of the existence and of the gratuity apart", () => {
   for (const place of withBatch) {
-    for (const service of place.services.filter(isBatchService)) {
+    for (const service of place.services.filter(isSexualBatchService)) {
       const where = `${place.id}/${service.id}`
       assert.equal(service.cost, "free", where)
       assert.ok(service.source?.note && service.costNote, `${where}: the note of the source and of the cost`)
@@ -66,13 +67,13 @@ test("the gratuity is said as the sources say it, and never as a guarantee of st
   assert.ok(methods.costNote.includes("«La atención y los métodos son gratuitos en el sistema público»"))
   assert.ok(methods.costNote.includes("No confirma que haya stock"))
   assert.ok(counseling.costNote.includes("No incluye procedimientos de IVE/ILE ni anticoncepción quirúrgica"))
-  for (const place of withBatch) for (const service of place.services.filter(isBatchService)) assert.ok(!/siempre|garantiza|hay stock|disponible hoy/i.test(service.costNote.replace("No confirma que haya stock", "")), `${place.id}/${service.id}`)
+  for (const place of withBatch) for (const service of place.services.filter(isSexualBatchService)) assert.ok(!/siempre|garantiza|hay stock|disponible hoy/i.test(service.costNote.replace("No confirma que haya stock", "")), `${place.id}/${service.id}`)
 })
 
 test("condoms only where the official map has the place: 6 centers do not have it corroborated and keep the other two services", () => {
   const without = onlyBatch.filter(({ services }) => !services.some(({ id }) => id === "preservativos"))
   assert.deepEqual(without.map(({ id }) => id).sort(), ["cesac-16", "cesac-17", "cesac-20", "cesac-4", "cesac-43", "cesac-8"])
-  for (const place of without) assert.deepEqual(place.services.map(({ id }) => id), ["consejeria-salud-sexual", "metodos-anticonceptivos"], place.id)
+  for (const place of without) assert.deepEqual(place.services.filter(isSexualBatchService).map(({ id }) => id), ["consejeria-salud-sexual", "metodos-anticonceptivos"], place.id)
   const withCondoms = onlyBatch.filter(({ services }) => services.some(({ id }) => id === "preservativos"))
   assert.equal(withCondoms.length, 38)
   for (const place of withCondoms) {
@@ -84,7 +85,8 @@ test("condoms only where the official map has the place: 6 centers do not have i
 
 test("nothing about IVE/ILE or surgical contraception, and no contact of the IVE/ILE directory as the phone of a place", () => {
   for (const place of onlyBatch) {
-    assert.ok(place.services.every(({ type }) => ["sexual-health-counseling", "contraception", "condoms"].includes(type)), place.id)
+    assert.ok(place.services.filter(isSexualBatchService).every(({ type }) => ["sexual-health-counseling", "contraception", "condoms"].includes(type)), place.id)
+    assert.ok(place.services.every(({ type }) => ["sexual-health-counseling", "contraception", "condoms", "vaccination"].includes(type)), place.id)
     const text = JSON.stringify(place)
     assert.ok(!/ligadura|vasectom/i.test(text), place.id)
   }
@@ -126,7 +128,7 @@ test("the symbol: a place whose services are of sexual health has its own pin, a
   const filtered = pinsOf({ filterId: "sexual-health" })
   assert.ok([...filtered.values()].every((category) => category === "esi"), "with the filter, every pin is the sexual health one")
   const unfiltered = pinsOf({})
-  for (const place of onlyBatch) assert.equal(unfiltered.get(place.id), "esi", `${place.id}: only sexual health services, own symbol`)
+  for (const place of onlyBatch) assert.equal(unfiltered.get(place.id), place.services.some(({ type }) => type === "vaccination") ? "salud-fisica" : "esi", `${place.id}: Salud general when it also has a vaccination point, the sexual health symbol when it has only those services`)
   for (const id of ["cesac-3", "cesac-41", "hospital-general-de-ninos-pedro-de-elizalde"]) assert.equal(unfiltered.get(id), "salud-fisica", `${id} has general services too`)
   for (const id of ["cesac-3", "cesac-41", "hospital-general-de-ninos-pedro-de-elizalde"]) assert.equal(filtered.get(id), "esi", `${id} with the filter on`)
 })

@@ -24,32 +24,6 @@
     },
     {
       "source": "caba-cesac",
-      "key": "21",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "0d5cd1ff2653dce4",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [
-        "address-from-page-only"
-      ],
-      "proposes": {
-        "id": "cesac-21",
-        "name": "CeSAC Nº 21",
-        "services": [
-          "diagnostic-imaging",
-          "specialty-care",
-          "primary-care",
-          "dentistry",
-          "mental-health-care",
-          "vaccination",
-          "sexual-reproductive-health",
-          "sti-testing-care"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
       "key": "23",
       "action": "accept",
       "batch": "caba-2",
@@ -73,29 +47,6 @@
     },
     {
       "source": "caba-cesac",
-      "key": "24",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "42e197588086f849",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [
-        "address-from-page-only"
-      ],
-      "proposes": {
-        "id": "cesac-24",
-        "name": "CeSAC Nº 24",
-        "services": [
-          "primary-care",
-          "mental-health-care",
-          "dentistry",
-          "sti-testing-care",
-          "sexual-reproductive-health"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
       "key": "25",
       "action": "accept",
       "batch": "caba-2",
@@ -114,144 +65,6 @@
           "pharmacy",
           "sexual-reproductive-health",
           "ive-ile-care"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
-      "key": "27",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "5cb5693a44054ebe",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [],
-      "proposes": {
-        "id": "cesac-27",
-        "name": "CeSAC Nº 27",
-        "services": [
-          "primary-care",
-          "mental-health-care",
-          "dentistry",
-          "pharmacy",
-          "specialty-care",
-          "vaccination",
-          "sexual-reproductive-health",
-          "sti-testing-care"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
-      "key": "29",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "fe61f4d4a93d510a",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [
-        "address-from-page-only"
-      ],
-      "proposes": {
-        "id": "cesac-29",
-        "name": "CeSAC Nº 29",
-        "services": [
-          "primary-care",
-          "specialty-care",
-          "mental-health-care",
-          "vaccination",
-          "ive-ile-care",
-          "sti-testing-care",
-          "sexual-reproductive-health"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
-      "key": "31",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "cab875ced4c78da6",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [
-        "address-from-page-only"
-      ],
-      "proposes": {
-        "id": "cesac-31",
-        "name": "CeSAC Nº 31",
-        "services": [
-          "pharmacy",
-          "specialty-care",
-          "primary-care",
-          "dentistry",
-          "laboratory",
-          "mental-health-care",
-          "sti-testing-care",
-          "ive-ile-care",
-          "vaccination",
-          "sexual-reproductive-health"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
-      "key": "37",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "951b067ed3d3b0b0",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [],
-      "proposes": {
-        "id": "cesac-37",
-        "name": "CeSAC Nº 37",
-        "services": [
-          "primary-care",
-          "specialty-care",
-          "mental-health-care",
-          "dentistry",
-          "pharmacy",
-          "sexual-reproductive-health",
-          "ive-ile-care",
-          "vaccination"
-        ]
-      }
-    },
-    {
-      "source": "caba-cesac",
-      "key": "45",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "fa06d7237e913113",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [],
-      "proposes": {
-        "id": "cesac-46",
-        "name": "CeSAC Nº 46",
-        "services": [
-          "dentistry",
-          "primary-care",
-          "specialty-care",
-          "mental-health-care"
-        ]
-      }
-    },
-    {
-      "source": "caba-hospitales",
-      "key": "hospital-general-de-agudos-j-a-penna",
-      "action": "accept",
-      "batch": "caba-2",
-      "rowHash": "ce7f5b26920f8425",
-      "reviewer": null,
-      "decidedAt": null,
-      "acknowledged": [],
-      "proposes": {
-        "id": "hospital-general-de-agudos-j-a-penna",
-        "name": "Hospital General de Agudos J. A. Penna",
-        "services": [
-          "emergency-room"
         ]
       }
     }

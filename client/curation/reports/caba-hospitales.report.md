@@ -10,7 +10,7 @@ Descarga: 2026-10-07 (actualizado por el publicador el 2026-10-02), sha256 00576
 - T1 (todo en orden): 26 · T2 (necesitan revisión): 10 · T3 (bloqueados): 0
 - Con coordenadas utilizables: 36
 - **Publicables hoy: 0** (necesitan al menos una prestación con mapeo aprobado y tipo de establecimiento aprobado)
-- Ya publicados / enlazados: 19 · parecidos a uno publicado: 0
+- Ya publicados / enlazados: 22 · parecidos a uno publicado: 0
 
 ## Avisos (cuentan para el tier)
 
@@ -46,6 +46,7 @@ No hay una descarga anterior con la que comparar.
 | lugar | campo | publicado | la fuente dice |
 |---|---|---|---|
 | hospital-de-pediatria-dr-j-garrahan | contacts | 541141226002, 5491163979781 | sin publicar: 4941-8772, 4942-7475, 4941-8702 |
+| hospital-especializado-de-infecciosas-f-muniz | contacts | null | sin publicar: 4304-2180, 4306-7855, 4304-5555, 4304-3380 |
 | hospital-oftalmologico-santa-lucia | contacts | 541141273100 | sin publicar: 4941-5555, 4941-8081 |
 | hospital-sarda | coordinates | -34.634822, -58.402539 | -34.6348549, -58.4027533 |
 | hospital-sarda | contacts | 541149433567 | sin publicar: 4943-4250 |
@@ -55,6 +56,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-rivadavia | coordinates | -34.584355, -58.400811 | -34.5847656, -58.4005166 |
 | hospital-rivadavia | contacts | 541148092000 | sin publicar: 4809-2002 |
 | hospital-grierson | coordinates | -34.673753, -58.459025 | -34.6717508, -58.4568069 |
+| hospital-general-de-agudos-d-velez-sarsfield | contacts | null | sin publicar: 4639-8700 |
 | hospital-santojanni | coordinates | -34.649353, -58.515801 | -34.6491855, -58.515627 |
 | hospital-santojanni | contacts | 541146305500 | sin publicar: 4630-5673 |
 | hospital-argerich | coordinates | -34.627781, -58.366027 | -34.6278425, -58.365939 |
@@ -69,6 +71,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-fernandez | contacts | 541148082600 | sin publicar: 4808-5555 |
 | hospital-alvarez | coordinates | -34.624292, -58.469422 | -34.6241696, -58.469502 |
 | hospital-alvarez | contacts | 541146116666 | sin publicar: 4630-2900 |
+| hospital-general-de-agudos-j-a-penna | contacts | null | sin publicar: 4912-1085, 4911-5555 |
 | hospital-ramos | coordinates | -34.617634, -58.409436 | -34.6176588, -58.4096132 |
 | hospital-ramos | contacts | 541141270400 | sin publicar: 4127-0200 |
 | hospital-pinero | coordinates | -34.644118, -58.453681 | -34.6438927, -58.4541172 |
@@ -84,7 +87,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-de-pediatria-dr-j-garrahan | hospital-de-pediatria-dr-j-garrahan | T1 | enlazado (hospital-de-pediatria-dr-j-garrahan) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear | hospital-especializado-de-emerg-psiquiatricas-torcuato-de-alvear | T1 | new | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-gastroenterologia-b-udaondo | hospital-especializado-de-gastroenterologia-b-udaondo | T1 | new | — | facility-type-not-approved, no-approved-service |
-| hospital-especializado-de-infecciosas-f-muniz | hospital-especializado-de-infecciosas-f-muniz | T1 | new | — | facility-type-not-approved, no-approved-service |
+| hospital-especializado-de-infecciosas-f-muniz | hospital-especializado-de-infecciosas-f-muniz | T1 | enlazado (hospital-especializado-de-infecciosas-f-muniz) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-odontologia-j-duenas | hospital-odontologia-duenas | T1 | enlazado (hospital-odontologia-duenas) | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-odontologia-infantil-don-benito-quinquela-martin | hospital-especializado-de-odontologia-infantil-don-benito-quinquela-martin | T1 | new | — | facility-type-not-approved, no-approved-service |
 | hospital-especializado-de-oftalmologia-santa-lucia | hospital-oftalmologico-santa-lucia | T1 | enlazado (hospital-oftalmologico-santa-lucia) | — | facility-type-not-approved, no-approved-service |
@@ -100,7 +103,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-general-de-agudos-a-zubizarreta | hospital-zubizarreta | T1 | enlazado (hospital-zubizarreta) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-b-rivadavia | hospital-rivadavia | T1 | enlazado (hospital-rivadavia) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-cecilia-grierson | hospital-grierson | T2 | enlazado (hospital-grierson) | ficha-unavailable, address-street-inverted | facility-type-not-approved, no-approved-service |
-| hospital-general-de-agudos-d-velez-sarsfield | hospital-general-de-agudos-d-velez-sarsfield | T2 | new | address-conflict, address-street-inverted | facility-type-not-approved, no-approved-service |
+| hospital-general-de-agudos-d-velez-sarsfield | hospital-general-de-agudos-d-velez-sarsfield | T2 | enlazado (hospital-general-de-agudos-d-velez-sarsfield) | address-conflict, address-street-inverted | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-donacion-f-santojanni | hospital-santojanni | T1 | enlazado (hospital-santojanni) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-dr-c-argerich | hospital-argerich | T2 | enlazado (hospital-argerich) | address-list-differs | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-dr-c-durand | hospital-durand | T1 | enlazado (hospital-durand) | — | facility-type-not-approved, no-approved-service |
@@ -108,7 +111,7 @@ No hay una descarga anterior con la que comparar.
 | hospital-general-de-agudos-dr-i-pirovano | hospital-pirovano | T1 | enlazado (hospital-pirovano) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-dr-j-a-fernandez | hospital-fernandez | T1 | enlazado (hospital-fernandez) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-dr-t-alvarez | hospital-alvarez | T1 | enlazado (hospital-alvarez) | — | facility-type-not-approved, no-approved-service |
-| hospital-general-de-agudos-j-a-penna | hospital-general-de-agudos-j-a-penna | T1 | new | — | facility-type-not-approved, no-approved-service |
+| hospital-general-de-agudos-j-a-penna | hospital-general-de-agudos-j-a-penna | T1 | enlazado (hospital-general-de-agudos-j-a-penna) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-j-m-ramos-mejia | hospital-ramos | T1 | enlazado (hospital-ramos) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-agudos-p-pinero | hospital-pinero | T1 | enlazado (hospital-pinero) | — | facility-type-not-approved, no-approved-service |
 | hospital-general-de-ninos-p-de-elizalde | hospital-general-de-ninos-pedro-de-elizalde | T2 | enlazado (hospital-general-de-ninos-pedro-de-elizalde) | address-street-inverted | facility-type-not-approved, no-approved-service |

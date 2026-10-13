@@ -178,7 +178,7 @@ test("the server copy has the centre, without the evidence (the server does not 
   assert.ok(copy)
   assert.equal(copy.services[0].cost, "free")
   assert.equal(copy.services[0].evidence, undefined)
-  assert.equal(server.length, 72)
+  assert.equal(server.length, 85)
 })
 
 /* ── Search by verb: «castrar» finds the castration, and nothing else is widened ── */

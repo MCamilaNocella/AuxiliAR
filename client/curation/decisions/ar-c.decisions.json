@@ -613,6 +613,123 @@
       "reviewer": "equipo-auxiliar",
       "decidedAt": "2026-10-12",
       "reason": "Se carga a mano con la lista de salud sexual verificada el 12/10/2026 (consejería, acceso a métodos anticonceptivos y bocas de preservativos de la Ciudad): el lugar se enlaza con su registro del dataset oficial (domicilio coincidente; la comuna y el barrio salen del dataset). Las coordenadas son las del enlace oficial del programa, controladas contra la ficha del establecimiento. Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "45",
+      "resourceId": "cesac-46",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "21",
+      "resourceId": "cesac-21",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-especializado-de-infecciosas-f-muniz",
+      "resourceId": "hospital-especializado-de-infecciosas-f-muniz",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-j-a-penna",
+      "resourceId": "hospital-general-de-agudos-j-a-penna",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "24",
+      "resourceId": "cesac-24",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "31",
+      "resourceId": "cesac-31",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "2",
+      "resourceId": "cesac-2",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "27",
+      "resourceId": "cesac-27",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "7",
+      "resourceId": "cesac-7",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "29",
+      "resourceId": "cesac-29",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "37",
+      "resourceId": "cesac-37",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-hospitales",
+      "key": "hospital-general-de-agudos-d-velez-sarsfield",
+      "resourceId": "hospital-general-de-agudos-d-velez-sarsfield",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
+    },
+    {
+      "source": "caba-cesac",
+      "key": "92",
+      "resourceId": "cesac-50",
+      "action": "link",
+      "reviewer": "equipo-auxiliar",
+      "decidedAt": "2026-10-12",
+      "reason": "Se carga a mano el vacunatorio de la página oficial «Lugares y horarios de vacunatorios» (12/10/2026): el lugar se enlaza con su registro del dataset oficial; las coordenadas, la comuna y el barrio salen del dataset y se cotejaron con el punto de la página (a menos de 300 m). Sin decisiones «apply»: el pipeline no toca los datos de este lote."
     }
   ]
 }

@@ -468,7 +468,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-2",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -2653,7 +2655,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-7",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -8421,7 +8425,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-21",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -9705,7 +9711,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-24",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -10811,7 +10819,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-27",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -11564,7 +11574,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-29",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -12413,7 +12425,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-31",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -14913,7 +14927,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-37",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -17831,7 +17847,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-46",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -18902,7 +18920,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "cesac-50",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-cesac",
@@ -19527,7 +19547,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-especializado-de-infecciosas-f-muniz",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -22353,7 +22375,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-general-de-agudos-d-velez-sarsfield",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",
@@ -24811,7 +24835,9 @@
         }
       ],
       "link": {
-        "status": "new"
+        "status": "linked",
+        "resourceId": "hospital-general-de-agudos-j-a-penna",
+        "via": "externalIds"
       },
       "record": {
         "source": "caba-hospitales",

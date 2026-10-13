@@ -414,7 +414,7 @@ test("coordinates of Santa Lucía, Carrillo and Dueñas: official, reprojected b
   assert.deepEqual(result.errors, [])
   assert.equal(result.changed, false, "todo lo decidido ya está aplicado")
   const decisions = (await readJson(join(PATHS.decisions, "ar-c.decisions.json"))).decisions
-  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "link", "link", ...Array(44).fill("link")])
+  assert.deepEqual(decisions.map((d) => d.action), ["link", "link", "link", "link", "link", "link", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "apply", "link", "link", ...Array(57).fill("link")])
   // three coordinates (the hospitals) and six divisions: each one tied to its row, its batch and a reviewer
   const applies = decisions.filter((d) => d.action === "apply")
   assert.ok(applies.every((d) => d.fields.length === 1 && d.batch === "caba-2" && d.rowHash && d.reviewer && d.decidedAt && d.reason))
@@ -448,7 +448,7 @@ test("batch caba-2: review in 90 days, and the proposed decisions live in propos
   const days = (Date.parse(`${batch.nextReviewDue}T00:00:00Z`) - Date.parse(`${batch.verifiedAt}T00:00:00Z`)) / 86400000
   assert.equal(days, 90)
   const proposed = await readJson(join(clientRoot, "curation/proposals/caba-2.decisions.proposed.json"))
-  assert.equal(proposed.decisions.length, 11)
+  assert.equal(proposed.decisions.length, 3)
   assert.ok(proposed.decisions.every((d) => d.reviewer === null && d.decidedAt === null))
   const real = (await readJson(join(PATHS.decisions, "ar-c.decisions.json"))).decisions
   assert.ok(real.every((d) => d.action !== "accept"), "ninguna decisión de alta está en decisions/: no se publicó nada nuevo")

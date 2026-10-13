@@ -134,9 +134,9 @@ test("the pages of the topics have no block of sources, no note of verification 
 test("the sources of the map's establishments and of the first aid guides are here, with their dates, and the panels only point here", () => {
   const places = about.REFERENCE_GROUPS.find(({ id }) => id === "centros-mapa")
   // the places the map shows (those with a service of documented gratuity): the hidden one is not listed
-  // the 44 places of the sexual health batch (12/10/2026) are listed too: they are the ones whose services are all of that batch
-  const batch = JSON.parse(readFileSync(new URL("../src/data/resources/places/ar-c.json", import.meta.url), "utf8")).resources.filter(({ services }) => services.every(({ id, verification }) => ["consejeria-salud-sexual", "metodos-anticonceptivos", "preservativos"].includes(id) && verification?.verifiedAt === "2026-10-12")).map(({ id }) => `centro-${id}`)
-  assert.equal(batch.length, 44)
+  // the 57 places of the batches of 12/10/2026 (44 of sexual health, 13 of the page of vacunatorios) are listed too: they are the ones whose services are all of a batch
+  const batch = JSON.parse(readFileSync(new URL("../src/data/resources/places/ar-c.json", import.meta.url), "utf8")).resources.filter(({ services }) => services.every(({ id, verification }) => ["consejeria-salud-sexual", "metodos-anticonceptivos", "preservativos", "vacunacion"].includes(id) && verification?.verifiedAt === "2026-10-12")).map(({ id }) => `centro-${id}`)
+  assert.equal(batch.length, 57)
   assert.deepEqual(places.blocks.map(({ id }) => id).sort(), [...["centro-centro-fijo-veterinario-costanera-sur", "centro-cesac-3", "centro-cesac-41", "centro-cesac-47", "centro-hospital-de-alta-complejidad-el-cruce", "centro-hospital-de-clinicas-nicolas-avellaneda", "centro-hospital-de-la-madre-y-el-nino", "centro-hospital-de-pediatria-dr-j-garrahan", "centro-hospital-general-de-ninos-pedro-de-elizalde", "centro-hospital-infantil-municipal-sixto-gerardo-gonzalez", "centro-hospital-odontologia-carrillo", "centro-hospital-odontologia-duenas", "centro-hospital-samic-rene-favaloro"], ...batch].sort())
   for (const block of places.blocks) {
     assert.equal(block.checkedKind, "place")

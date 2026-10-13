@@ -8,11 +8,12 @@ import { readdir, readFile } from "node:fs/promises"
 import { dirname, join, resolve } from "node:path"
 import test, { after } from "node:test"
 import { fileURLToPath } from "node:url"
+import { withoutSexualBatch } from "./places-sexual-batch.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = resolve(here, "..")
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"))
-const realPlaces = (await readJson(join(root, "src/data/resources/places/ar-c.json"))).resources
+const realPlaces = withoutSexualBatch((await readJson(join(root, "src/data/resources/places/ar-c.json"))).resources)
 // These tests are about HOW the map treats a place with and without a verified point. The first batch had three hospitals without
 // coordinates; the data now has them (reprojected by the curation pipeline), so that case is built here explicitly instead of
 // depending on the state of the dataset. The test "with the real data" below checks what is published today.
