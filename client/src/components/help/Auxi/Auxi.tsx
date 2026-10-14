@@ -7,7 +7,7 @@ import type { AuxiProps } from "./Auxi.types"
  * Thin black outline + soft shadow on every background; the wave lines use currentColor
  * (text-auxi-motion: black on light themes, white on dark ones).
  */
-export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyExtras, headExtras, face, still = false, frame }: AuxiProps) => {
+export const Auxi = ({ onDark = false, className, face, still = false, frame }: AuxiProps) => {
   const id = useId()
   const shadowId = `${id}-shadow`
   const headClipId = `${id}-head`
@@ -19,7 +19,7 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
       {...frame}
       aria-hidden="true"
       focusable="false"
-      // Accessories may stick out of the box (e.g. something held up high)
+      // The shadow may stick out of the box
       overflow="visible"
       className={`${onDark ? "text-on-home" : "text-auxi-motion"} ${className ?? ""}`}
     >
@@ -33,31 +33,23 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
       </defs>
 
       <g filter={`url(#${shadowId})`}>
-        {backExtras}
-        {arms ?? (
-          <>
-            {!still && (
-              <g fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round">
-                {AUXI_MOTION_LINES.map((d) => (
-                  <path key={d} d={d} />
-                ))}
-              </g>
-            )}
-            <path d={P.handLeft} fill={C.white} {...outline} />
-            <path d={P.sleeveLeft} fill={C.maroon} {...outline} />
-            <path d={P.handRight} fill={C.white} {...outline} />
-            <path d={P.sleeveRight} fill={C.maroon} {...outline} />
-          </>
-        )}
-        <path d={P.body} fill={C.maroon} {...outline} />
-        {/* Default belly: white cross (model 12 of "Modelos de Auxi") */}
-        {belly ?? (
-          <g fill={C.white}>
-            <rect x={AUXI_BELLY.x - 6} y={AUXI_BELLY.y - 2} width="12" height="4" rx="0.8" />
-            <rect x={AUXI_BELLY.x - 2} y={AUXI_BELLY.y - 6} width="4" height="12" rx="0.8" />
+        {!still && (
+          <g fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round">
+            {AUXI_MOTION_LINES.map((d) => (
+              <path key={d} d={d} />
+            ))}
           </g>
         )}
-        {bodyExtras}
+        <path d={P.handLeft} fill={C.white} {...outline} />
+        <path d={P.sleeveLeft} fill={C.maroon} {...outline} />
+        <path d={P.handRight} fill={C.white} {...outline} />
+        <path d={P.sleeveRight} fill={C.maroon} {...outline} />
+        <path d={P.body} fill={C.maroon} {...outline} />
+        {/* Belly: white cross */}
+        <g fill={C.white}>
+          <rect x={AUXI_BELLY.x - 6} y={AUXI_BELLY.y - 2} width="12" height="4" rx="0.8" />
+          <rect x={AUXI_BELLY.x - 2} y={AUXI_BELLY.y - 6} width="4" height="12" rx="0.8" />
+        </g>
 
         <rect x="77.1" y="19" width="1.9" height="13" fill={C.stem} {...outline} />
         <circle cx="78.45" cy="16.9" r="3.55" fill={C.antenna} {...outline} />
@@ -81,7 +73,6 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
             <ellipse cx="89.4" cy="59.3" rx="1.8" ry="1.85" fill="#ffffff" />
           </>
         )}
-        {headExtras}
       </g>
     </svg>
   )
