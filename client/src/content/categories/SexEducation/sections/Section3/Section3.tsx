@@ -1,4 +1,4 @@
 import { lazyContent } from "@/components/health/LazyContent"
 
-/** Salud sexual y ESI · section 3 — see Section3.content.tsx (downloaded when the section is opened) */
+/** Salud sexual y ESI · Métodos anticonceptivos — see Section3.content.tsx (downloaded when the category opens) */
 export const Section3 = lazyContent(() => import("./Section3.content"))

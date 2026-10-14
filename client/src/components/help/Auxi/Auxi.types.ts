@@ -17,6 +17,12 @@ export type AuxiProps = {
   bodyExtras?: ReactNode
   /** Drawn over the face (e.g. a head mirror) */
   headExtras?: ReactNode
+  /** Replaces the face (brows, eyes and mouth), e.g. a happy one with closed eyes */
+  face?: ReactNode
+  /** Without the little wave lines next to its hand */
+  still?: boolean
+  /** Where it goes when drawn inside another SVG (its x, y, width and height there) */
+  frame?: { x: number, y: number, width: number, height: number }
 }
 
 /** Everything that can be drawn on top of the base Auxi */

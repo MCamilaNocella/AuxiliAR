@@ -3,9 +3,10 @@ import { ActionLink } from "@/components/health/ActionLink"
 import { countApproximate, countUnmapped, getMapPins } from "@/utils/places"
 import type { PlaceEntry, PlaceQuery } from "@/utils/places"
 import { PlaceCard } from "../PlaceCard"
+import { preloadPlacesMap } from "./PlacesMapView.preload"
 
-// Leaflet and its styles are downloaded only when the map is opened
-const PlacesMap = lazy(() => import("../PlacesMap/PlacesMap"))
+// Until the map is downloaded its place is an empty box of the same size
+const PlacesMap = lazy(preloadPlacesMap)
 
 type PlacesMapViewProps = {
   /** The places of the current search and filter: the same ones as the list */
@@ -54,7 +55,7 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList }: PlacesMa
 
   return (
     <div className="flex flex-col gap-3">
-      <Suspense fallback={<p role="status" className="m-0 flex h-80 items-center justify-center rounded-2xl border-2 border-line-strong bg-field text-muted">Cargando mapa…</p>}>
+      <Suspense fallback={<div aria-hidden="true" className="h-80 rounded-2xl border-2 border-line-strong bg-field" />}>
         <PlacesMap pins={pins} selectedId={selected?.place.id ?? null} onSelect={setSelectedId} />
       </Suspense>
 

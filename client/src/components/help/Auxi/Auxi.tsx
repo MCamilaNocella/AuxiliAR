@@ -7,7 +7,7 @@ import type { AuxiProps } from "./Auxi.types"
  * Thin black outline + soft shadow on every background; the wave lines use currentColor
  * (text-auxi-motion: black on light themes, white on dark ones).
  */
-export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyExtras, headExtras }: AuxiProps) => {
+export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyExtras, headExtras, face, still = false, frame }: AuxiProps) => {
   const id = useId()
   const shadowId = `${id}-shadow`
   const headClipId = `${id}-head`
@@ -16,6 +16,7 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
   return (
     <svg
       viewBox={AUXI_VIEWBOX}
+      {...frame}
       aria-hidden="true"
       focusable="false"
       // Accessories may stick out of the box (e.g. something held up high)
@@ -35,11 +36,13 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
         {backExtras}
         {arms ?? (
           <>
-            <g fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round">
-              {AUXI_MOTION_LINES.map((d) => (
-                <path key={d} d={d} />
-              ))}
-            </g>
+            {!still && (
+              <g fill="none" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round">
+                {AUXI_MOTION_LINES.map((d) => (
+                  <path key={d} d={d} />
+                ))}
+              </g>
+            )}
             <path d={P.handLeft} fill={C.white} {...outline} />
             <path d={P.sleeveLeft} fill={C.maroon} {...outline} />
             <path d={P.handRight} fill={C.white} {...outline} />
@@ -68,12 +71,16 @@ export const Auxi = ({ onDark = false, className, arms, belly, backExtras, bodyE
         <path d={P.head} fill="none" {...outline} />
         <path d={P.shine} fill="#ffffff" />
 
-        <path d={P.brows} fill={C.face} stroke={C.face} strokeWidth="0.5" strokeLinejoin="round" />
-        <path d={P.mouth} fill={C.face} />
-        <ellipse cx="63.1" cy="58.8" rx="5.3" ry="5.5" fill={C.face} />
-        <ellipse cx="90.5" cy="61" rx="5.4" ry="5.7" fill={C.face} />
-        <ellipse cx="62.6" cy="57.05" rx="1.8" ry="1.95" fill="#ffffff" />
-        <ellipse cx="89.4" cy="59.3" rx="1.8" ry="1.85" fill="#ffffff" />
+        {face ?? (
+          <>
+            <path d={P.brows} fill={C.face} stroke={C.face} strokeWidth="0.5" strokeLinejoin="round" />
+            <path d={P.mouth} fill={C.face} />
+            <ellipse cx="63.1" cy="58.8" rx="5.3" ry="5.5" fill={C.face} />
+            <ellipse cx="90.5" cy="61" rx="5.4" ry="5.7" fill={C.face} />
+            <ellipse cx="62.6" cy="57.05" rx="1.8" ry="1.95" fill="#ffffff" />
+            <ellipse cx="89.4" cy="59.3" rx="1.8" ry="1.85" fill="#ffffff" />
+          </>
+        )}
         {headExtras}
       </g>
     </svg>

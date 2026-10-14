@@ -1,98 +1,103 @@
-import { Link } from "react-router"
-import { ActionLink } from "@/components/health/ActionLink"
-import { Disclosure } from "@/components/health/Disclosure"
-import { centersLink } from "@/router/centersLink"
-import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { DirectoryList, HospitalList, NationalLine } from "../../DirectoryBlocks"
-import { GUARDIAS_CABA, GUARDIAS_CABA_INFANTIL, LINEAS_CABA } from "../../MentalHealth.directory"
-import { GUARDIAS_PAGINA } from "../../MentalHealth.sources"
+import { Info, MapPin, MessageCircle, Phone, Users } from "lucide-react"
+import { ActivityCards } from "@/components/sectionBlocks/ActivityCards"
+import { BlockMap } from "@/components/sectionBlocks/BlockMap"
+import { CallCard } from "@/components/sectionBlocks/CallCard"
+import { Fold } from "@/components/sectionBlocks/Fold"
+import { NoteBox } from "@/components/sectionBlocks/NoteBox"
+import { RowsList } from "@/components/sectionBlocks/RowsList"
+import { SectionBody } from "@/components/sectionBlocks/SectionBody"
+import { SubLabel } from "@/components/sectionBlocks/SubLabel"
+import { TOOL_BUTTON } from "@/components/sectionBlocks/ToolCard"
+import { ToneBlock } from "@/components/sectionBlocks/ToneBlock"
+import type { RowData } from "@/types/blocks"
+import { MH_CONSUMOS, MH_NUMBERS, MH_OTHER_LINES, MH_PLACES, MH_PROVINCES, MH_SOURCES } from "../../MentalHealth.model"
 
-/**
- * Salud mental · Dónde buscar ayuda. Short on purpose: what a person needs first (lines and guardias) and the way to the rest. Information and orientation: it offers no appointments and
- * promises no place or availability. What it says and where it comes from:
- *  - "si no tenés cobertura podés acercarte a un hospital o centro de salud cercano a tu domicilio": argentina.gob.ar, Derechos Humanos
- *  - "ser atendida en el hospital general": Ley simple (Derecho Fácil); "equipo interdisciplinario…": Ley 26.657, art. 8
- *  - the national lines come from data/resources/lines (the same ones of the emergency bar); the Ciudad's line and guardias from MentalHealth.directory.ts (the team's
- *    research of 12 October 2026, confirmed from the official pages, not by phone). The CeSAC, the Centro de Salud Mental Nº 1 and the Bonaparte hospital are in section 6
- * The map button only explores. The help numbers of the emergency bar stay where they are.
- */
+const FILTERS: [string, string][] = [
+  ["all", "Todos"],
+  ["guard24", "Guardia 24 h"],
+  ["prog", "Atención programada"],
+  ["kids", "Niñas, niños y adolescentes"],
+]
+
+const lineRow = ({ title, what, phone, hours, note, url }: (typeof MH_OTHER_LINES)[number]): RowData => ({ title, text: what, phone, meta: [["clock", hours ?? ""]], note, url })
+
+/** Salud mental · Dónde buscar ayuda, as the chosen model: the lines to call now, the map of places and support for problematic use */
 export default function Section1Content() {
+  const { urgent, items } = MH_NUMBERS
+  const meta = ({ hours, where, cost }: typeof urgent) => [hours, where, cost].filter((item): item is string => !!item)
   return (
-    <div className="mt-2 flex max-w-3xl flex-col gap-6">
-      <p className="m-0 text-lg text-ink">
-        Estamos para ayudarte a encontrar orientación y recursos de salud mental. Acá vas a conocer tus derechos y descubrir dónde buscar atención. AuxiliAR no otorga turnos ni realiza consultas médicas
-        directamente.
-      </p>
-
-      <section aria-labelledby="mh-lines">
-        <h3 id="mh-lines" className="m-0 text-xl font-extrabold">
-          Si necesitás hablar con alguien ahora
-        </h3>
-        <p className="m-0 mt-1 text-ink-soft">Son líneas de escucha y orientación: no reemplazan una guardia ni la atención presencial.</p>
-        <ul role="list" className="m-0 mt-3 flex list-none flex-col gap-3 p-0">
-          <NationalLine id="urgencias-salud-mental-0800" />
-          <NationalLine id="prevencion-suicidio-cas" />
-        </ul>
+    <SectionBody sources={MH_SOURCES.ayuda}>
+      <ToneBlock icon={Phone} tone={1} title="Para hablar ahora">
+        <div className="mt-3 grid gap-3">
+          <CallCard variant="urgent" number={urgent.number} dial={urgent.dial} name={urgent.name} text={urgent.text} meta={meta(urgent)} />
+        </div>
+        <div className="mt-3 grid grid-cols-[repeat(auto-fill,minmax(min(100%,20rem),1fr))] gap-3">
+          {items.map((line) => (
+            <CallCard key={line.number} variant={line.main ? "main" : undefined} number={line.number} dial={line.dial} name={line.name} text={line.text} meta={meta(line)} />
+          ))}
+        </div>
+        <Fold label="Líneas de otras provincias y un chat de escucha" count={`${MH_OTHER_LINES.length} líneas`}>
+          <RowsList phoneFirst items={MH_OTHER_LINES.map(lineRow)} />
+        </Fold>
+      </ToneBlock>
+      <ToneBlock icon={MapPin} tone={2} title="Guardias y lugares de atención" lead={["Guardias de salud mental las 24 horas y lugares con atención programada (turnos y admisión), como los centros de salud de la Ciudad."]}>
         <div className="mt-3">
-          <DirectoryList items={LINEAS_CABA.filter(({ id }) => id !== "linea-caba-108-3")} />
+          <BlockMap
+            places={MH_PLACES}
+            provinces={MH_PROVINCES}
+            filters={FILTERS}
+            empty={{ title: "Todavía no tenemos lugares verificados en {prov}.", text: "Eso no quiere decir que no haya: estamos sumando provincias de a poco. Mientras tanto:" }}
+            emptyExtra={
+              <>
+                <ul className="m-0 grid list-disc gap-1 pl-[1.2rem]">
+                  <li>Podés ir a la guardia de cualquier hospital general: la ley dice que tenés derecho a que te atiendan ahí.</li>
+                  <li>La línea 0800-999-0091 atiende las 24 horas en todo el país y te puede orientar.</li>
+                </ul>
+                <div>
+                  <a href="tel:08009990091" className={TOOL_BUTTON}>
+                    <Phone aria-hidden="true" />
+                    Llamar al 0800-999-0091
+                  </a>
+                </div>
+              </>
+            }
+          />
         </div>
-        <p className="m-0 mt-3 text-ink-soft">
-          Otras provincias:{" "}
-          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-5`} className="font-bold">
-            Otras provincias
-          </Link>
-          . Consumos de alcohol, drogas o medicamentos:{" "}
-          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-4`} className="font-bold">
-            Consumos y acompañamiento
-          </Link>
-          .
-        </p>
-      </section>
-
-      <section aria-labelledby="mh-guardias" className="flex flex-col gap-3">
-        <div>
-          <h3 id="mh-guardias" className="m-0 text-xl font-extrabold">
-            Guardias de salud mental en la Ciudad
-          </h3>
-          <p className="m-0 mt-1">Estos hospitales de la Ciudad tienen guardia de salud mental las 24 horas, todos los días del año. Se va sin turno, por una urgencia.</p>
-        </div>
-        <Disclosure title={`Ver los ${GUARDIAS_CABA.length} hospitales`}>
-          <HospitalList items={GUARDIAS_CABA} url={GUARDIAS_PAGINA} />
-          <h4 className="m-0 mt-2 text-base font-extrabold">Hospitales de niños</h4>
-          <p className="m-0 text-ink-soft">Tienen la misma guardia, pero la página no dice hasta qué edad atienden: consultalo antes. Los demás hospitales no se presentan como atención para niñas y niños.</p>
-          <HospitalList items={GUARDIAS_CABA_INFANTIL} url={GUARDIAS_PAGINA} />
-        </Disclosure>
-      </section>
-
-      <section aria-labelledby="mh-near">
-        <h3 id="mh-near" className="m-0 text-xl font-extrabold">
-          Un hospital o centro de salud cerca de tu casa
-        </h3>
-        <p className="m-0 mt-1">
-          Si no tenés cobertura de salud, podés acercarte a un hospital o centro de salud cercano a tu domicilio. La ley establece que las personas con padecimiento mental tienen derecho a ser atendidas en el
-          hospital general.
-        </p>
-        <p className="m-0 mt-2 text-ink-soft">La forma de acceder a la atención puede variar según el centro. Algunos servicios requieren admisión, turno o derivación.</p>
-        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-          <ActionLink to={centersLink({ filter: "mental-health" })} variant="primary">
-            Ver el mapa
-          </ActionLink>
-          <ActionLink to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-6`}>Atención en la Ciudad: CeSAC y más</ActionLink>
-        </div>
-        <p className="m-0 mt-2 text-ink-soft">Consultá cada ficha para saber qué servicios gratuitos están confirmados. Todavía no cubrimos todo el país.</p>
-      </section>
-
-      <section aria-labelledby="mh-team">
-        <h3 id="mh-team" className="m-0 text-xl font-extrabold">
-          Quién te atiende
-        </h3>
-        <p className="m-0 mt-1">La ley establece que la atención en salud mental esté a cargo de un equipo interdisciplinario, integrado por profesionales y técnicos.</p>
-        <p className="m-0 mt-2">
-          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-2`} className="font-bold">
-            Conocé tus derechos
-          </Link>
-        </p>
-      </section>
-    </div>
+      </ToneBlock>
+      <ToneBlock
+        icon={MessageCircle}
+        tone={4}
+        title="Apoyo ante el consumo problemático"
+        lead={["Alcohol, drogas o medicamentos: podés pedir orientación por teléfono o acercarte a la red de la Ciudad. También están el 141, en los números de arriba."]}
+      >
+        <RowsList phoneFirst items={[lineRow(MH_CONSUMOS.line)]} />
+        <Fold label="Centros de la Red de adicciones (Ciudad)" count={`${MH_CONSUMOS.network.length} lugares`}>
+          <RowsList
+            items={MH_CONSUMOS.network.map(({ title, what, address, hours, phone, how }) => ({
+              title,
+              text: what,
+              meta: [
+                ["map-pin", address ?? ""],
+                ["clock", hours ?? ""],
+              ],
+              phone,
+              note: how,
+            }))}
+          />
+        </Fold>
+        <SubLabel className="mt-5">Grupos de apoyo mutuo</SubLabel>
+        <ActivityCards
+          items={MH_CONSUMOS.groups.map(({ title, who, how, url }) => ({
+            title: title.replace(/ de Argentina| Argentina/, ""),
+            rows: [
+              { icon: Users, text: (who ?? "").replace(/\.$/, "") },
+              { icon: Info, text: how ?? "" },
+            ],
+            link: { label: "Buscar un grupo", url },
+          }))}
+        />
+        <NoteBox>{MH_CONSUMOS.groups[0].note}</NoteBox>
+      </ToneBlock>
+    </SectionBody>
   )
 }

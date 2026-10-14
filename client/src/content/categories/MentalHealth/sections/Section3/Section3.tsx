@@ -1,4 +1,4 @@
 import { lazyContent } from "@/components/health/LazyContent"
 
-/** Salud mental · section 3 — see Section3.content.tsx (downloaded when the section is opened) */
+/** Salud mental · Relajación muscular — see Section3.content.tsx (downloaded when the category opens) */
 export const Section3 = lazyContent(() => import("./Section3.content"))

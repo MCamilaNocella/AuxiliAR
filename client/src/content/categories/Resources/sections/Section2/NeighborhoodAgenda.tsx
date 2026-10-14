@@ -1,47 +1,52 @@
-import { NEIGHBORHOOD_AGENDA, NEIGHBORHOOD_AGENDA_READ_ON, NEIGHBORHOOD_AGENDA_UNTIL } from "./Section2.constants"
-
-const longDate = (iso: string) => {
-  const [year, month, day] = iso.split("-").map(Number)
-  return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
-}
-
-const weekday = (iso: string) => {
-  const [year, month, day] = iso.split("-").map(Number)
-  return new Intl.DateTimeFormat("es-AR", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
-}
+import { Fold } from "@/components/sectionBlocks/Fold"
+import { NEIGHBORHOOD_AGENDA } from "./Section2.constants"
 
 const today = () => {
   const now = new Date()
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`
 }
 
+/** "Miércoles, 14 de octubre" */
+const dayName = (iso: string) => {
+  const [year, month, day] = iso.split("-").map(Number)
+  const text = new Intl.DateTimeFormat("es-AR", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+const cell = "border-b border-line px-2 py-[0.55rem] align-top [overflow-wrap:anywhere] max-sm:border-0 max-sm:px-0 max-sm:py-[0.1rem]"
+
 /**
- * The operativos of «Más servicios en tu barrio» that the official cronograma lists, shown from today on, with the day it was read. It changes
- * every week and the operativos can be suspended by weather: what already passed is not shown, and when nothing is left it says so.
- * `from` is a day YYYY-MM-DD, today by default.
+ * «Próximas fechas»: the operativos of the official cronograma from today on (by the viewer's own date). What already passed is not
+ * shown; when nothing is left it sends to the official cronograma. `from` is a day YYYY-MM-DD, today by default.
  */
 export const NeighborhoodAgenda = ({ from = today() }: { from?: string }) => {
   const upcoming = NEIGHBORHOOD_AGENDA.filter(({ date }) => date >= from)
-  const expired = from > NEIGHBORHOOD_AGENDA_UNTIL
   return (
-    <div className="rounded-xl border border-line-strong bg-field p-3">
-      <h4 className="m-0 text-base font-extrabold">Próximos operativos del cronograma</h4>
-      <p className="m-0 mt-1 text-sm text-ink-soft">
-        {`Leído el ${longDate(NEIGHBORHOOD_AGENDA_READ_ON)}: el cronograma llega hasta el ${longDate(NEIGHBORHOOD_AGENDA_UNTIL)}. Las fechas pasadas no se muestran. Los operativos pueden suspenderse: confirmá en las redes del programa.`}
-      </p>
-      {expired || upcoming.length === 0 ? (
-        <p className="m-0 mt-2 font-bold">El cronograma que leímos ya venció: consultá el actual en la página oficial.</p>
+    <Fold label="Próximas fechas" count={upcoming.length ? `${upcoming.length} ${upcoming.length === 1 ? "fecha" : "fechas"}` : undefined}>
+      {upcoming.length ? (
+        <table className="mt-3 w-full border-collapse text-[0.95rem]">
+          <thead className="max-sm:hidden">
+            <tr>
+              {["Día", "Dónde", "Horario"].map((heading) => (
+                <th key={heading} className="border-b-2 border-line-strong px-2 py-[0.4rem] text-left text-[0.8rem] tracking-[0.05em] text-muted uppercase">
+                  {heading}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {upcoming.map(({ date, hours, place, note }) => (
+              <tr key={`${date}-${place}`} className="max-sm:grid max-sm:border-b max-sm:border-line max-sm:py-2">
+                <td className={`${cell} font-extrabold`}>{dayName(date)}</td>
+                <td className={cell}>{note ? `${place} (${note})` : place}</td>
+                <td className={cell}>{hours}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <ul role="list" className="m-0 mt-2 flex list-none flex-col gap-1.5 p-0">
-          {upcoming.map(({ date, hours, place, note }) => (
-            <li key={`${date}-${place}`} className="break-words">
-              <b className="capitalize">{weekday(date)}</b>
-              {`, de ${hours}: ${place}${note ? ` (${note})` : ""}`}
-            </li>
-          ))}
-        </ul>
+        <p className="m-0">Ya pasaron las fechas que teníamos: mirá las próximas en el cronograma oficial.</p>
       )}
-      <p className="m-0 mt-2 text-sm text-ink-soft">Cada semana la página también lista qué servicios hay y qué días. Odontología y oftalmología son con turno y cupos limitados.</p>
-    </div>
+    </Fold>
   )
 }

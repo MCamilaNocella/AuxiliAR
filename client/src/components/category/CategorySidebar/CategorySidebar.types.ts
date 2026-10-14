@@ -5,7 +5,8 @@ export type CategorySidebarProps = {
   sections: CategorySection[]
   /** null: no section chosen, the category intro (banner / wallpaper) is showing */
   activeSectionId: string | null
-  onSelectSection: (id: string) => void
+  /** May return a promise that resolves once the section is in (the drawer closes after it) */
+  onSelectSection: (id: string) => void | Promise<void>
   /** Back to the category intro (tapping the category name) */
-  onShowIntro: () => void
+  onShowIntro: () => void | Promise<void>
 }

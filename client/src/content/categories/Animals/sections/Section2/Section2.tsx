@@ -1,4 +1,4 @@
 import { lazyContent } from "@/components/health/LazyContent"
 
-/** Atención veterinaria · section 2 — see Section2.content.tsx (downloaded when the section is opened) */
+/** Atención veterinaria · Calendario de vacunación — see Section2.content.tsx (downloaded when the category opens) */
 export const Section2 = lazyContent(() => import("./Section2.content"))

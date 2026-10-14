@@ -18,7 +18,7 @@ import { KindFilter } from "../KindFilter"
 import { PlaceDetail } from "../PlaceDetail"
 import { PlaceList } from "../PlaceList"
 import { PlacesMapLegend } from "../PlacesMapLegend"
-import { PlacesMapView } from "../PlacesMapView"
+import { PlacesMapView, preloadPlacesMap } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
 import type { PlacesView } from "../PlacesViewSwitch"
@@ -48,6 +48,11 @@ type PlacesExplorerProps = {
 }
 
 export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, intro = PLACES_EXPLORER_INTRO, map = false }: PlacesExplorerProps) => {
+  // The map downloads ahead (it is a separate file), so opening it never shows a loading message
+  useEffect(() => {
+    if (map) preloadPlacesMap().catch(() => {})
+  }, [map])
+
   // The visible policy: only prestaciones with documented gratuity, wherever the explorer is embedded. The others stay in the data
   const scope = useMemo<PlacesScope>(() => ({ ...embeddedScope, confirmedOnly: true }), [embeddedScope])
   // One day for the whole visit: what expires is decided against it
