@@ -4,14 +4,18 @@ import { BASIC_EMERGENCY_NUMBERS, EMERGENCY_NUMBERS } from "@/data/emergency"
 import { loadProfile, saveProfile } from "@/utils/profileStorage"
 import { wait } from "@/utils/wait"
 import {
+  BACK_FROM_PERSON_NOTE,
   CONNECTION_ERROR_REPLY,
   EMERGENCY_LABELS,
   EMERGENCY_QUESTION,
   EMERGENCY_REPLY,
+  KEEP_WITH_AUXI_REPLY,
   LOCAL_REPLY_DELAY_MS,
   NO_EMERGENCY_REPLIES,
+  OFFER_LABELS,
+  PERSON_OFFER,
+  WELCOME_BACK_REPLY,
   WELCOME_MESSAGES,
-  WORKING_MESSAGES,
 } from "./ChatConversation.constants"
 import type { Message, MessageDraft } from "./ChatConversation.types"
 
@@ -47,13 +51,15 @@ export const useChatConversation = () => {
   const [profile, setProfile] = useState(loadProfile)
   // Auxi's last answer asked where they are: the text field suggests localities with their province
   const [asksLocation, setAsksLocation] = useState(false)
-  const [lastWorkingMessage, setLastWorkingMessage] = useState<string | null>(null)
+  // Auxi's last answer offered to talk with a volunteer: the buttons to say yes or no show
+  const [offeringPerson, setOfferingPerson] = useState(false)
 
   const add = (draft: MessageDraft) => setMessages((current) => [...current, withId(draft)])
 
   /** Runs one turn: sending waits until it's over, and Sí / No are hidden from then on */
   const turn = async (userText: string, run: () => Promise<void>) => {
     setAskingEmergency(false)
+    setOfferingPerson(false)
     add({ from: "user", text: userText })
     setTyping(true)
     try {
@@ -88,16 +94,12 @@ export const useChatConversation = () => {
   }
 
   /**
-   * Anything written goes to Auxi: a "working on it" message shows right away, then the answer, which may come
-   * as several messages; if Auxi decides it's an emergency, the numbers to call show with the first one.
+   * Anything written goes to Auxi: the typing dots show while it works, then the answer, which may come
+   * as two messages; if Auxi decides it's an emergency, the numbers to call show with the first one.
    */
   const write = (text: string) => {
     if (typing) return
     return turn(text, async () => {
-      // Kept out of the model's history: it's just a courtesy
-      const working = pickRandom(WORKING_MESSAGES, lastWorkingMessage)
-      setLastWorkingMessage(working)
-      add({ from: "auxi", text: working })
       const question: ChatTurn = { role: "user", text }
       setThinking(true)
       try {
@@ -107,6 +109,7 @@ export const useChatConversation = () => {
         setProfile(reply.profile)
         saveProfile(reply.profile)
         setAsksLocation(reply.asksLocation)
+        setOfferingPerson(reply.offerPerson)
         setHistory((current) => [...current, question, { role: "assistant", text: replies.join("\n\n") }])
         // The numbers for this situation (Auxi's, or ambulance and 911 in an emergency without any), not shown before
         const picked = phones.length > 0 ? phones : emergency ? BASIC_EMERGENCY_NUMBERS : []
@@ -125,5 +128,56 @@ export const useChatConversation = () => {
     })
   }
 
-  return { messages, typing, thinking, askingEmergency: askingEmergency && !typing, asksLocation, answerEmergency, write }
+  /** "Seguir con Auxi": answered right away, like Sí / No */
+  const keepWithAuxi = () =>
+    turn(OFFER_LABELS.no, async () => {
+      await wait(LOCAL_REPLY_DELAY_MS)
+      add({ from: "auxi", text: KEEP_WITH_AUXI_REPLY })
+      setHistory((current) => [...current, { role: "user", text: OFFER_LABELS.no }, { role: "assistant", text: KEEP_WITH_AUXI_REPLY }])
+    })
+
+  /** "Sí, quiero hablar con alguien": the buttons go, and the answer stays in the history for when they come back */
+  const acceptPerson = () => {
+    setOfferingPerson(false)
+    add({ from: "user", text: OFFER_LABELS.yes })
+    const withAnswer: ChatTurn[] = [...history, { role: "user", text: OFFER_LABELS.yes }]
+    setHistory(withAnswer)
+    return withAnswer
+  }
+
+  /** "¿Necesitás hablar con alguien?" in the header: Auxi asks, with the buttons to answer (and no emergency question pending) */
+  const offerPerson = () => {
+    setAskingEmergency(false)
+    setOfferingPerson(true)
+    // Nothing said yet: the greeting and straight to the offer, instead of the emergency question left unanswered
+    if (!messages.some((message) => message.from === "user")) {
+      const greeting = WELCOME_MESSAGES[0]
+      setMessages([withId(greeting), withId({ from: "auxi", text: PERSON_OFFER })])
+      setHistory([{ role: "assistant", text: greeting.text }, { role: "assistant", text: PERSON_OFFER }])
+      return
+    }
+    add({ from: "auxi", text: PERSON_OFFER })
+    setHistory((current) => [...current, { role: "assistant", text: PERSON_OFFER }])
+  }
+
+  /** Back from the chat with a person: Auxi picks up again */
+  const welcomeBack = () => {
+    add({ from: "auxi", text: WELCOME_BACK_REPLY })
+    setHistory((current) => [...current, { role: "assistant", text: `${BACK_FROM_PERSON_NOTE} ${WELCOME_BACK_REPLY}` }])
+  }
+
+  return {
+    messages,
+    typing,
+    thinking,
+    askingEmergency: askingEmergency && !typing,
+    offeringPerson: offeringPerson && !typing,
+    asksLocation,
+    answerEmergency,
+    keepWithAuxi,
+    acceptPerson,
+    offerPerson,
+    welcomeBack,
+    write,
+  }
 }

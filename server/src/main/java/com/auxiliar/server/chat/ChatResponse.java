@@ -10,9 +10,10 @@ import java.util.List;
  * @param phones help numbers to show as call buttons, chosen by Auxi for this situation
  * @param profile what's known about the person so far, for the client to keep (and Mi Salud)
  * @param asksLocation the answer asks where they are: the client suggests localities as they type
+ * @param offerPerson the answer offers to talk with a volunteer: the client shows the buttons to say yes or no
  */
 public record ChatResponse(List<String> replies, List<Link> links, boolean emergency, List<Phone> phones,
-                           ChatProfile profile, boolean asksLocation) {
+                           ChatProfile profile, boolean asksLocation, boolean offerPerson) {
 
     public record Link(String title, String path) {
     }

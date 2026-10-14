@@ -40,7 +40,8 @@ import com.auxiliar.server.helplines.HelpNumbers;
  * Auxi's conversation graph (LangGraph4j):
  * START → auxi (answers, in one or more messages, and decides: is it an emergency? which pages and numbers to show?)
  * → links (keeps only pages with content and help numbers from the list)
- * → safety (fixed rules: PAMI for older people, asking province, locality and age in an emergency) → END.
+ * → safety (fixed rules: PAMI for older people, asking province, locality and age in an emergency, the question when
+ * offering a volunteer) → END.
  * Instructions: prompts/*.md, including Argentina's help numbers (prompts/numeros.md).
  * Every decision is the model's, guided by the Markdown prompts in resources/prompts.
  */
@@ -85,14 +86,26 @@ public class AuxiGraphConfig {
                             .call()
                             .content();
                     AuxiAnswer answer = parse(answerConverter, raw);
+                    List<String> replies = withSteps(answer.messages(), answer.steps());
+                    // Once per conversation, and not when the volunteer is being offered for real (or in an emergency)
+                    boolean emergency = answer.emergency() || state.emergencyButton();
+                    // (the model sometimes writes the sentence itself too)
+                    if (answer.mentionPerson() && !answer.offerPerson() && !emergency && !mentioned(state.messages())
+                            && !replies.getLast().contains(SafetyRules.MENTION_PERSON)) {
+                        replies = appendToLast(replies, SafetyRules.MENTION_PERSON);
+                    }
                     return Map.of(
                             // The model's history keeps the bubbles as one message; the client gets them apart
-                            MessagesState.MESSAGES_STATE, new AssistantMessage(String.join("\n\n", answer.messages())),
-                            AuxiState.REPLIES, answer.messages(),
-                            AuxiState.EMERGENCY, answer.emergency() || state.emergencyButton(),
+                            MessagesState.MESSAGES_STATE, new AssistantMessage(String.join("\n\n", replies)),
+                            AuxiState.REPLIES, replies,
+                            AuxiState.EMERGENCY, emergency,
                             AuxiState.SUGGESTED_PATHS, Objects.requireNonNullElse(answer.pages(), List.of()),
                             AuxiState.SUGGESTED_PHONES, Objects.requireNonNullElse(answer.phones(), List.of()),
                             AuxiState.OLDER_ADULT, answer.olderAdult(),
+                            // Never in an emergency: there the call comes first. Someone who's feeling bad is always offered a
+                            // volunteer, once (unless they already had one, or were already offered)
+                            AuxiState.OFFER_PERSON, !emergency && (answer.offerPerson()
+                                    || answer.needsListening() && !SafetyRules.offeredBefore(state.messages())),
                             AuxiState.PROFILE, state.profile().updatedWith(answer.profile() == null ? null
                                     : answer.profile().onlyWhatWasSaid(userTexts(state.messages()))));
                 }))
@@ -124,11 +137,12 @@ public class AuxiGraphConfig {
                         }
                     }
                     List<String> replies = new ArrayList<>(withoutRepeats(state.replies(), state.messages()));
-                    if (replies.isEmpty()) {
+                    boolean allRepeats = replies.isEmpty();
+                    if (allRepeats) {
                         // Everything was a repeat: a short acknowledgement instead, explaining PAMI's line if it just showed up
                         replies.add(phones.stream().anyMatch(line -> line.number().equals(SafetyRules.PAMI_EMERGENCIES))
                                 ? SafetyRules.pamiEmergenciesNote(helpNumbers)
-                                : SafetyRules.THANKS_NOTE);
+                                : state.emergency() ? SafetyRules.THANKS_NOTE : SafetyRules.TELL_ME_MORE_NOTE);
                     }
                     // Only if Auxi didn't ask it itself (otherwise the question would show twice)
                     String question = state.emergency() && !SafetyRules.asksForData(replies)
@@ -137,15 +151,61 @@ public class AuxiGraphConfig {
                     if (question != null) {
                         replies.add(question);
                     }
+                    // A repeated offer is dropped above, and isn't brought back here (nor its buttons)
+                    boolean offerPerson = state.offerPerson() && !allRepeats;
+                    if (offerPerson && !SafetyRules.offersPerson(replies)) {
+                        // One question at the end: the offer takes the place of the model's own closing question
+                        replies.set(replies.size() - 1, SafetyRules.withoutClosingQuestion(replies.getLast()));
+                        replies.removeIf(String::isBlank);
+                        replies.add(SafetyRules.OFFER_PERSON_QUESTION);
+                    }
+                    // Two bubbles only in an emergency (first the call, then the rest): otherwise, one
+                    List<String> bubbles = state.emergency() ? replies : List.of(String.join("\n\n", replies));
                     // The client then suggests localities while the person types the answer
-                    return Map.of(AuxiState.PHONES, phones, AuxiState.REPLIES, replies,
-                            AuxiState.ASKS_LOCATION, SafetyRules.asksForLocation(replies));
+                    return Map.of(AuxiState.PHONES, phones, AuxiState.REPLIES, bubbles, AuxiState.OFFER_PERSON, offerPerson,
+                            AuxiState.ASKS_LOCATION, SafetyRules.asksForLocation(bubbles));
                 }))
                 .addEdge(START, AUXI_NODE)
                 .addEdge(AUXI_NODE, LINKS_NODE)
                 .addEdge(LINKS_NODE, SAFETY_NODE)
                 .addEdge(SAFETY_NODE, END)
                 .compile();
+    }
+
+    /** Steps per answer, at most */
+    static final int MAX_STEPS = 5;
+
+    /** The steps the model gave apart, numbered one per line at the end of its last message */
+    static List<String> withSteps(List<String> messages, List<String> steps) {
+        List<String> clean = steps == null ? List.of() : steps.stream()
+                .filter(step -> step != null && !step.isBlank())
+                .map(step -> step.strip().replaceFirst("^\\d+[.)]\\s*", ""))
+                .limit(MAX_STEPS)
+                .toList();
+        if (clean.isEmpty()) {
+            return messages;
+        }
+        List<String> numbered = new ArrayList<>();
+        for (int index = 0; index < clean.size(); index++) {
+            numbered.add((index + 1) + ". " + clean.get(index));
+        }
+        List<String> result = new ArrayList<>(messages);
+        result.set(result.size() - 1, result.getLast() + "\n" + String.join("\n", numbered));
+        return List.copyOf(result);
+    }
+
+    private static List<String> appendToLast(List<String> messages, String text) {
+        List<String> result = new ArrayList<>(messages);
+        result.set(result.size() - 1, result.getLast() + " " + text);
+        return List.copyOf(result);
+    }
+
+    /** Auxi already told them about talking with a person in this conversation */
+    static boolean mentioned(List<Message> conversation) {
+        return conversation.stream()
+                .filter(AssistantMessage.class::isInstance)
+                .map(Message::getText)
+                .anyMatch(text -> text != null && text.contains(SafetyRules.MENTION_PERSON));
     }
 
     /** Provider-specific request fields (see {@link AiProvider}) */
@@ -195,8 +255,8 @@ public class AuxiGraphConfig {
         return (double) common / (a.size() + b.size() - common);
     }
 
-    /** Messages per answer, at most (the model is asked for 1 to 3) */
-    static final int MAX_MESSAGES = 3;
+    /** Messages per answer, at most (the model is asked for one, two only in an emergency) */
+    static final int MAX_MESSAGES = 2;
 
     /** The model's JSON (empty messages dropped); if it answers in plain text instead, that text is the one message */
     private static AuxiAnswer parse(BeanOutputConverter<AuxiAnswer> converter, String raw) {
@@ -209,12 +269,13 @@ public class AuxiGraphConfig {
                     .limit(MAX_MESSAGES)
                     .toList();
             if (!messages.isEmpty()) {
-                return new AuxiAnswer(messages, answer.emergency(), answer.pages(), answer.phones(), answer.olderAdult(), answer.profile());
+                return new AuxiAnswer(messages, answer.steps(), answer.emergency(), answer.pages(), answer.phones(), answer.olderAdult(),
+                        answer.offerPerson(), answer.mentionPerson(), answer.needsListening(), answer.profile());
             }
         } catch (RuntimeException exception) {
             log.warn("Auxi answered without the expected JSON, using it as plain text: {}",
                     text.length() > 300 ? text.substring(0, 300) + "…" : text);
         }
-        return new AuxiAnswer(List.of(text), false, List.of(), List.of(), false, null);
+        return new AuxiAnswer(List.of(text), List.of(), false, List.of(), List.of(), false, false, false, false, null);
     }
 }

@@ -1,5 +1,5 @@
 import type { EmergencyNumber } from "@/types/emergency"
-import type { ChatLink } from "@/api/chat"
+import type { ChatLink, ChatTurn } from "@/api/chat"
 import type { ChatAuthor } from "../ChatMessage"
 
 export type ChatConversationProps = {
@@ -9,6 +9,14 @@ export type ChatConversationProps = {
   onNavigate: () => void
   /** Whether the person already said something (starting over would lose it) */
   onStartedChange: (started: boolean) => void
+  /** Talking with a volunteer: this conversation waits hidden, and Auxi welcomes them back */
+  away?: boolean
+  /** Auxi has to ask whether they want a volunteer ("¿Necesitás hablar con alguien?" was pressed) */
+  personOfferPending?: boolean
+  /** It asked */
+  onPersonOfferShown?: () => void
+  /** "Sí, quiero hablar con alguien", with the conversation so far (to share with the volunteer if they agree) */
+  onTalkToPerson?: (conversation: ChatTurn[]) => void
 }
 
 export type MessageDraft = {

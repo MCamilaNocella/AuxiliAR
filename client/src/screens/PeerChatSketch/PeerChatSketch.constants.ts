@@ -9,9 +9,9 @@ export const SKETCH_FLOWS: SketchFlow[] = [
     description: "Empieza en el chat con Auxi. Auxi ofrece una persona cuando hace falta, y sigue acompañando.",
     screens: [
       { id: "offer", title: "1. Auxi ofrece una persona", note: "Auxi lo ofrece cuando nota que la persona quiere hablar con alguien, o si lo pide. Las emergencias siguen yendo al 911.", Screen: AuxiOffers },
-      { id: "before", title: "2. Antes de conectar", note: "Elige el tema, un apodo y si comparte lo que habló con Auxi. Queda claro qué esperar.", Screen: BeforeConnecting },
-      { id: "waiting", title: "3. Esperando", note: "Auxi muestra cuánto falta y se puede seguir chateando con el bot mientras.", Screen: Waiting },
-      { id: "chat", title: "4. Chat con la persona voluntaria", note: "Chat de persona a persona. Auxi queda en el chat y suma links útiles. SOS siempre a mano.", Screen: PeerChat },
+      { id: "before", title: "2. Antes de conectar", note: "Recuerda qué esperar, elige un apodo y si comparte lo que habló con Auxi.", Screen: BeforeConnecting },
+      { id: "waiting", title: "3. Esperando", note: "Auxi muestra cuánto falta y recuerda que se puede salir de la conversación en cualquier momento.", Screen: Waiting },
+      { id: "chat", title: "4. Chat con la persona voluntaria", note: "Chat de persona a persona, sin Auxi. El 911 siempre a mano, y la X pregunta antes de salir.", Screen: PeerChat },
       { id: "end", title: "5. Fin del chat", note: "Cómo le fue, mensaje opcional y reporte. Vuelve al chat con Auxi.", Screen: ChatEnded },
     ],
   },

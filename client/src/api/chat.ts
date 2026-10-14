@@ -22,6 +22,8 @@ export type ChatReply = {
   profile: Profile
   /** The answer asks where they are: the text field suggests localities */
   asksLocation: boolean
+  /** The answer offers to talk with a volunteer: the buttons to say yes or no show under it */
+  offerPerson: boolean
 }
 
 export type ChatTurn = {
