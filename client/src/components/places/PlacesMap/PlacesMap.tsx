@@ -13,6 +13,8 @@ type PlacesMapProps = {
   pins: MapPin[]
   selectedId: string | null
   onSelect: (placeId: string) => void
+  /** Takes the whole height of the box it is in (the full-screen map), square and without a border */
+  fill?: boolean
 }
 
 /** The head of the pin is drawn at (12, 10) with radius 8: the symbol of the category goes inside it, 11 units wide, centered (24 x 24 icons scaled by 0.46) */
@@ -113,7 +115,7 @@ const inCaba = ({ lat, lng }: { lat: number, lng: number }) => lat >= CABA_BOX.s
  *  - The list has the same places and every action, so nothing depends on this map.
  *  - Loaded on demand (this file brings Leaflet and its CSS with it).
  */
-export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps) {
+export default function PlacesMap({ pins, selectedId, onSelect, fill = false }: PlacesMapProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const markersRef = useRef(new Map<string, L.Marker>())
@@ -142,6 +144,9 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     L.control.zoom({ position: "topright" }).addTo(map)
     L.control.attribution({ position: "bottomleft", prefix: LEAFLET_PREFIX }).addTo(map)
     mapRef.current = map
+    // The box changes size when the side bar opens or closes: the map follows
+    const resize = new ResizeObserver(() => map.invalidateSize({ pan: false }))
+    resize.observe(container)
     const markers = markersRef.current
     let fitFrame = 0
     const fitOpenTooltips = () => {
@@ -156,6 +161,7 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     map.on("move zoom resize", fitOpenTooltips)
     return () => {
       if (fitFrame) cancelAnimationFrame(fitFrame)
+      resize.disconnect()
       map.remove()
       mapRef.current = null
       markers.clear()
@@ -211,12 +217,24 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     for (const [id, marker] of markersRef.current) marker.setIcon(pinIcon(categories.get(id) ?? "salud-fisica", id === selectedId))
   }, [selectedId, pins])
 
+  // A selected pin that the side bar would leave out of view is brought back into it
+  useEffect(() => {
+    const map = mapRef.current
+    const marker = selectedId ? markersRef.current.get(selectedId) : undefined
+    if (!map || !marker) return
+    const frame = requestAnimationFrame(() => {
+      map.invalidateSize({ pan: false })
+      map.panInside(marker.getLatLng(), { padding: [64, 64], animate: !prefersReducedMotion() })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [selectedId])
+
   return (
     <div
       ref={containerRef}
       role="region"
       aria-label="Mapa de centros de atención. La lista tiene los mismos lugares."
-      className="places-map h-[min(62dvh,32rem)] min-h-80 w-full overflow-hidden rounded-2xl border-2 border-line-strong"
+      className={`places-map w-full overflow-hidden ${fill ? "h-full" : "h-[min(70dvh,36rem)] min-h-80 rounded-2xl border-2 border-line-strong lg:h-[max(36rem,calc(100dvh-9rem))]"}`}
     />
   )
 }
