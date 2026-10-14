@@ -1,18 +1,55 @@
-import type { ReactNode } from "react"
-import { ArrowLeft, Send } from "lucide-react"
+import { useRef, useState, type ReactNode } from "react"
+import { ArrowLeft, Phone as PhoneIcon, Send, X } from "lucide-react"
 import { Auxi } from "@/components/help/Auxi"
+import { ChatConfirm } from "@/components/help/ChatConfirm"
+import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import type { BubbleProps, FakeButtonProps, PhoneProps } from "./PeerChatSketch.types"
 
-// Sketch pieces: they look like the app but do nothing (spans, not buttons), so nothing in the phones is focusable
+// Sketch pieces: they look like the app but do nothing (spans, not buttons), so nothing in the phones is focusable,
+// except the X and its leave-chat question, which open and close for real
 
-/** Phone-sized screen: header on top, scrolling-looking body, footer at the bottom */
-export const Phone = ({ header, footer, children }: PhoneProps) => (
-  <div className="flex min-h-136 w-full max-w-80 flex-col overflow-hidden rounded-[2rem] border-4 border-line-strong bg-card text-ink shadow-lg">
-    <div className="flex items-center gap-2 border-b border-line px-3 py-2">{header}</div>
-    <div className="flex flex-1 flex-col gap-3 px-3 py-3">{children}</div>
-    {footer && <div className="border-t border-line px-3 py-2">{footer}</div>}
-  </div>
-)
+/**
+ * Phone-sized screen: header on top, scrolling-looking body, footer at the bottom.
+ * Every screen ends its header with the 911 and the X, which asks before leaving the chat.
+ */
+export const Phone = ({ header, footer, leaveMessage, children }: PhoneProps) => {
+  const [askingToLeave, setAskingToLeave] = useState(false)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  const closePrompt = () => {
+    setAskingToLeave(false)
+    closeRef.current?.focus()
+  }
+
+  return (
+    <div className="flex min-h-136 w-full max-w-80 flex-col overflow-hidden rounded-[2rem] border-4 border-line-strong bg-card text-ink shadow-lg">
+      <div className="flex items-center gap-2 border-b border-line px-3 py-2">
+        {header}
+        <span className="flex min-h-9 flex-none items-center gap-1 rounded-lg bg-alert px-2.5 text-sm font-bold text-on-alert">
+          <PhoneIcon aria-hidden="true" className="size-4" />
+          {GENERAL_EMERGENCY_NUMBER}
+        </span>
+        <button
+          ref={closeRef}
+          type="button"
+          aria-label="Salir de la conversación"
+          onClick={() => setAskingToLeave(true)}
+          className="flex size-9 flex-none cursor-pointer items-center justify-center rounded-full text-ink transition-colors hover:bg-field"
+        >
+          <X aria-hidden="true" className="size-5" />
+        </button>
+      </div>
+      <div className="relative flex flex-1 flex-col gap-3 px-3 py-3">
+        {children}
+        {askingToLeave && (
+          // The same question as the real chat; here both answers just close it
+          <ChatConfirm title="¿Salir de la conversación?" message={leaveMessage} backLabel="Seguir en el chat" confirmLabel="Salir" onBack={closePrompt} onConfirm={closePrompt} />
+        )}
+      </div>
+      {footer && <div className="border-t border-line px-3 py-2">{footer}</div>}
+    </div>
+  )
+}
 
 export const PhoneTitle = ({ back = false, children }: { back?: boolean, children: ReactNode }) => (
   <>

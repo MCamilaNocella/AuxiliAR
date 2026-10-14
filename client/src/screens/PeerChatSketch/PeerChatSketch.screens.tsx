@@ -1,4 +1,4 @@
-import { BadgeCheck, Clock, EllipsisVertical, Flag, Frown, HandHeart, Lock, LogOut, MapPin, Meh, Phone as PhoneIcon, ShieldCheck, Smile, Sparkles, X } from "lucide-react"
+import { BadgeCheck, Clock, Flag, Frown, HandHeart, Lock, MapPin, Meh, Phone as PhoneIcon, ShieldCheck, Smile, Sparkles, X } from "lucide-react"
 import { Auxi } from "@/components/help/Auxi"
 import { GENERAL_EMERGENCY_NUMBER } from "@/data/emergency"
 import { describeHelpLine } from "@/utils/helpLines"
@@ -11,7 +11,7 @@ const MENTAL_HEALTH_LINE = describeHelpLine("urgencias-salud-mental-0800")
 
 /** Auxi offers to bring in a person, without dropping the bot */
 export const AuxiOffers = () => (
-  <Phone header={<PhoneTitle>Chat con Auxi</PhoneTitle>} footer={<FakeInput placeholder="Escribí tu mensaje…" />}>
+  <Phone header={<PhoneTitle>Chat con Auxi</PhoneTitle>} leaveMessage="Se cierra el chat con Auxi." footer={<FakeInput placeholder="Escribí tu mensaje…" />}>
     <Bubble from="me">Estoy muy angustiada con todo, no sé con quién hablar</Bubble>
     <AuxiBubble>Gracias por contármelo. Te escucho. ¿Querés que te conecte con una persona voluntaria para charlar? Yo sigo acá igual.</AuxiBubble>
     <div className="flex flex-col gap-2 pl-10">
@@ -27,16 +27,10 @@ export const AuxiOffers = () => (
   </Phone>
 )
 
-/** Before connecting: topic, what to expect, privacy */
+/** Before connecting: what to expect, privacy */
 export const BeforeConnecting = () => (
-  <Phone header={<PhoneTitle back>Hablar con una persona</PhoneTitle>} footer={<FakeButton>Buscar a alguien</FakeButton>}>
-    <p className="m-0 font-extrabold">¿De qué querés hablar?</p>
-    <div className="flex flex-wrap gap-2">
-      <Chip selected>Salud mental</Chip>
-      <Chip>Salud general</Chip>
-      <Chip>ESI</Chip>
-      <Chip>Otra cosa</Chip>
-    </div>
+  <Phone header={<PhoneTitle back>Hablar con una persona</PhoneTitle>} leaveMessage="No te conectamos con nadie y volvés al chat con Auxi." footer={<FakeButton>Buscar a alguien</FakeButton>}>
+    <p className="m-0 font-extrabold">Recordá que:</p>
     <ul className="m-0 flex list-none flex-col gap-2 p-0 text-sm">
       <li className="flex gap-2">
         <Lock aria-hidden="true" className="size-4.5 flex-none text-brand" />
@@ -64,20 +58,20 @@ export const BeforeConnecting = () => (
 
 /** Waiting for a volunteer, with Auxi keeping company */
 export const Waiting = () => (
-  <Phone header={<PhoneTitle back>Buscando a alguien</PhoneTitle>} footer={<FakeButton variant="ghost">Cancelar y volver con Auxi</FakeButton>}>
+  <Phone header={<PhoneTitle back>Buscando a alguien</PhoneTitle>} leaveMessage="Dejamos de buscar y volvés al chat con Auxi." footer={<FakeButton variant="ghost">Cancelar y volver con Auxi</FakeButton>}>
     <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
       <Auxi className="w-28" />
-      <p className="m-0 text-lg font-extrabold">Estoy buscando una persona voluntaria</p>
+      <p className="m-0 text-lg font-extrabold">Estoy buscando a alguien que pueda ayudarte…</p>
       <p className="m-0 flex items-center gap-1.5 text-sm text-muted">
         <Clock aria-hidden="true" className="size-4" />
         Tiempo estimado: 2 minutos
       </p>
-      <p className="m-0 text-sm text-ink-soft">Hay 3 personas disponibles en Salud mental. Mientras esperás, podés seguir escribiéndome.</p>
+      <p className="m-0 text-sm text-ink-soft">Hay 3 personas disponibles. No olvides que en cualquier momento podés salir de la conversación.</p>
     </div>
   </Phone>
 )
 
-/** Chat with the volunteer: Auxi joins as a quiet helper */
+/** Chat with the volunteer, just the two of them (Auxi steps out) */
 export const PeerChat = () => (
   <Phone
     header={
@@ -88,28 +82,23 @@ export const PeerChat = () => (
             Sofi
             <BadgeCheck aria-hidden="true" className="size-4 text-brand" />
           </span>
-          <span className="text-xs text-muted">Voluntaria · Salud mental</span>
+          <span className="text-xs text-muted">Voluntaria</span>
         </span>
-        <span className="flex min-h-9 items-center gap-1 rounded-full bg-alert px-2.5 text-xs font-bold text-on-alert">
-          <PhoneIcon aria-hidden="true" className="size-3.5" />
-          SOS
-        </span>
-        <EllipsisVertical aria-label="Más opciones" className="size-5 flex-none" />
       </>
     }
     footer={<FakeInput placeholder="Escribile a Sofi…" />}
+    leaveMessage="Se termina el chat con Sofi y volvés al chat con Auxi."
   >
-    <SystemNote>Sofi se unió al chat · Auxi sigue acá</SystemNote>
+    <SystemNote>Sofi se unió al chat</SystemNote>
     <Bubble from="them" initial="S">Hola Luna, soy Sofi. Leí lo que le contaste a Auxi. ¿Cómo te sentís ahora?</Bubble>
     <Bubble from="me">Un poco mejor, gracias por escribir</Bubble>
     <Bubble from="them" initial="S">Me alegra. Contame a tu ritmo, no hay apuro.</Bubble>
-    <AuxiBubble>Si les sirve, dejo esto: <span className="font-bold text-brand underline">Ansiedad: qué hacer en el momento</span></AuxiBubble>
   </Phone>
 )
 
 /** End of the chat: how it went, report, back to Auxi */
 export const ChatEnded = () => (
-  <Phone header={<PhoneTitle>Chat terminado</PhoneTitle>} footer={<FakeButton>Volver con Auxi</FakeButton>}>
+  <Phone header={<PhoneTitle>Chat terminado</PhoneTitle>} leaveMessage="Volvés al chat con Auxi sin contarnos cómo te fue." footer={<FakeButton>Volver con Auxi</FakeButton>}>
     <div className="flex flex-col items-center gap-2 text-center">
       <Auxi className="w-24" />
       <p className="m-0 text-lg font-extrabold">¿Cómo te fue con Sofi?</p>
@@ -138,7 +127,7 @@ export const ChatEnded = () => (
 
 /** Sign up as a volunteer */
 export const VolunteerSignUp = () => (
-  <Phone header={<PhoneTitle back>Quiero ayudar</PhoneTitle>} footer={<FakeButton>Enviar solicitud</FakeButton>}>
+  <Phone header={<PhoneTitle back>Quiero ayudar</PhoneTitle>} leaveMessage="Lo que ya completaste queda guardado para seguir después." footer={<FakeButton>Enviar solicitud</FakeButton>}>
     <div className="flex items-center gap-3 rounded-2xl bg-brand-soft p-3">
       <Auxi className="w-14 flex-none" />
       <p className="m-0 text-sm">¡Gracias por sumarte! Antes de chatear, hacés una capacitación corta.</p>
@@ -172,7 +161,7 @@ export const VolunteerSignUp = () => (
 
 /** Volunteer's home: availability and people waiting */
 export const VolunteerQueue = () => (
-  <Phone header={<PhoneTitle>Panel de ayuda</PhoneTitle>}>
+  <Phone header={<PhoneTitle>Panel de ayuda</PhoneTitle>} leaveMessage="Dejás de estar disponible para ayudar.">
     <div className="flex items-center justify-between gap-2 rounded-2xl border border-line-strong p-3">
       <span className="flex flex-col">
         <span className="font-extrabold">Estoy disponible</span>
@@ -215,9 +204,9 @@ export const VolunteerChat = () => (
           <span className="font-extrabold">Luna</span>
           <span className="text-xs text-muted">16 años · Córdoba</span>
         </span>
-        <LogOut aria-label="Terminar chat" className="size-5 flex-none" />
       </>
     }
+    leaveMessage="Se termina el chat con Luna."
     footer={
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">

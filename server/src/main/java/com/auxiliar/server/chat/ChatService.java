@@ -38,7 +38,7 @@ public class ChatService {
         List<ChatResponse.Phone> phones = state.phones().stream()
                 .map(line -> new ChatResponse.Phone(line.number(), line.name()))
                 .toList();
-        return new ChatResponse(replies, links, state.emergency(), phones, state.profile(), state.asksLocation());
+        return new ChatResponse(replies, links, state.emergency(), phones, state.profile(), state.asksLocation(), state.offerPerson());
     }
 
     private static Message toMessage(ChatMessageDto message) {

@@ -2,6 +2,10 @@ package com.auxiliar.server.chat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.Message;
 
 import com.auxiliar.server.helplines.HelpNumber;
 import com.auxiliar.server.helplines.HelpNumbers;
@@ -11,7 +15,8 @@ import com.auxiliar.server.helplines.HelpNumbers;
  * - the conversation is about an older person → PAMI's number is always among the call buttons, plus PAMI's
  *   emergency line when it's an emergency in Rosario or CABA (where it surely applies; Greater Buenos Aires is left
  *   to the model, the exact area isn't confirmed);
- * - it's an emergency and the province, locality or age is unknown → a message asks for them.
+ * - it's an emergency and the province, locality or age is unknown → a message asks for them;
+ * - Auxi offers to talk with a volunteer but no message asks it → the question, so the buttons answer something.
  */
 final class SafetyRules {
 
@@ -24,6 +29,8 @@ final class SafetyRules {
     /** PAMI emergencies, only for members in AMBA and UGL Rosario */
     static final String PAMI_EMERGENCIES = "139";
     static final String THANKS_NOTE = "Gracias, ya lo tengo en cuenta. Seguí las indicaciones de arriba y, si algo cambia, contame.";
+    /** The same when it isn't an emergency (there are no instructions above to follow) */
+    static final String TELL_ME_MORE_NOTE = "Te leo. Contame un poco más así te ayudo mejor.";
     private static final java.util.List<String> PAMI_EMERGENCY_PLACES = java.util.List.of(
             "rosario", "caba", "ciudad autonoma de buenos aires", "ciudad de buenos aires", "capital federal");
 
@@ -95,6 +102,40 @@ final class SafetyRules {
 
     private static String normalize(String text) {
         return java.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase();
+    }
+
+    /** Said once in a conversation, in passing, when Auxi decides it's a good moment (no buttons) */
+    static final String MENTION_PERSON = "Si en algún momento preferís charlar con una persona, avisame.";
+
+    /** Asked when Auxi offers a volunteer without saying so (the buttons under it answer this) */
+    static final String OFFER_PERSON_QUESTION = "¿Querés que te conecte con una persona voluntaria para charlar? Yo sigo acá igual.";
+
+    /**
+     * Earlier in the conversation Auxi already offered a volunteer, or they already talked with one (the client leaves a
+     * note saying so in Auxi's history when they come back)
+     */
+    static boolean offeredBefore(List<Message> conversation) {
+        // The last message is the person's current one
+        List<String> earlier = conversation.stream()
+                .limit(Math.max(0, conversation.size() - 1))
+                .filter(AssistantMessage.class::isInstance)
+                .map(Message::getText)
+                .filter(Objects::nonNull)
+                .toList();
+        return offersPerson(earlier);
+    }
+
+    /** A question at the very end, from where its sentence starts ("Lamento eso. ¿Querés contarme más?" → "Lamento eso.") */
+    private static final java.util.regex.Pattern CLOSING_QUESTION = java.util.regex.Pattern.compile("(?s)(^|(?<=[.!?\\n]))[^.!?\\n]*\\?\\s*$");
+
+    /** The text without the question it ends with (blank if it was all one question) */
+    static String withoutClosingQuestion(String text) {
+        return CLOSING_QUESTION.matcher(text).replaceFirst("").strip();
+    }
+
+    /** Some bubble already asks whether they want to talk with a volunteer */
+    static boolean offersPerson(List<String> replies) {
+        return asks(replies, "voluntari[oa]s?|una persona|alguien");
     }
 
     /** Some bubble already asks where they are or the age */

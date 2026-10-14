@@ -17,10 +17,12 @@ export type SketchFlow = {
 }
 
 export type PhoneProps = {
-  /** Top bar of the screen (title, back, actions) */
+  /** Top bar of the screen (title, back, who's on the other side); the 911 and the X go after it */
   header: ReactNode
   /** Bottom of the screen (text field, buttons) */
   footer?: ReactNode
+  /** What happens if they leave, in the question the X opens */
+  leaveMessage: string
   children: ReactNode
 }
 

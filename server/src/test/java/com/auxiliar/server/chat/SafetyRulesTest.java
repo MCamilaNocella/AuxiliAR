@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.ai.chat.messages.AssistantMessage;
+import org.springframework.ai.chat.messages.Message;
+import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.core.io.ClassPathResource;
 
 import com.auxiliar.server.helplines.HelpNumber;
@@ -163,5 +166,39 @@ class SafetyRulesTest {
         ChatProfile known = new ChatProfile("Córdoba", "Río Cuarto", null, null);
         ChatProfile updated = known.updatedWith(new ChatProfile(null, null, 82, "abuela"));
         assertThat(updated).isEqualTo(new ChatProfile("Córdoba", "Río Cuarto", 82, "abuela"));
+    }
+
+    @Test
+    void theOfferOfAVolunteerIsAskedOnlyOnce() {
+        assertThat(SafetyRules.offersPerson(List.of("¿Querés que te conecte con una persona voluntaria?"))).isTrue();
+        assertThat(SafetyRules.offersPerson(List.of("¿Querés hablar con alguien?"))).isTrue();
+        assertThat(SafetyRules.offersPerson(List.of("Es válido sentirte así, y no estás sola."))).isFalse();
+        assertThat(SafetyRules.offersPerson(List.of(SafetyRules.OFFER_PERSON_QUESTION))).isTrue();
+    }
+
+    @Test
+    void aVolunteerIsOfferedOnlyOnceInAConversation() {
+        List<Message> said = List.of(new AssistantMessage("¿En qué puedo ayudarte?"), new UserMessage("estoy bajoneada"));
+        assertThat(SafetyRules.offeredBefore(said)).isFalse();
+        List<Message> offered = List.of(
+                new AssistantMessage("Lamento que te sientas así. " + SafetyRules.OFFER_PERSON_QUESTION),
+                new UserMessage("Seguir con Auxi"),
+                new AssistantMessage("Dale, sigo acá con vos."),
+                new UserMessage("sigo bajoneada"));
+        assertThat(SafetyRules.offeredBefore(offered)).isTrue();
+        // Back from a chat with a volunteer: the client's note in Auxi's history
+        List<Message> back = List.of(
+                new AssistantMessage("(La persona ya habló con una persona voluntaria y volvió al chat con Auxi: no le vuelvas a ofrecer hablar con una persona ni marques offerPerson, salvo que te lo pida.) Acá estoy de nuevo. ¿En qué más te puedo ayudar?"),
+                new UserMessage("sigo bajoneada"));
+        assertThat(SafetyRules.offeredBefore(back)).isTrue();
+    }
+
+    @Test
+    void theOfferReplacesTheClosingQuestion() {
+        assertThat(SafetyRules.withoutClosingQuestion("Lamento que te sientas así. A veces hablar ayuda, ¿querés contarme un poco más de lo que pasa?"))
+                .isEqualTo("Lamento que te sientas así.");
+        assertThat(SafetyRules.withoutClosingQuestion("Lamento eso.\n¿Cómo estás ahora?")).isEqualTo("Lamento eso.");
+        assertThat(SafetyRules.withoutClosingQuestion("¿Querés contarme más?")).isEmpty();
+        assertThat(SafetyRules.withoutClosingQuestion("Lamento que te sientas así.")).isEqualTo("Lamento que te sientas así.");
     }
 }

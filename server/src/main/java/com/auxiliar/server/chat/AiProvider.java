@@ -36,13 +36,13 @@ public enum AiProvider {
     }
 
     /** Both, for the answer */
-    Map<String, Object> reasoningAndJsonSchema(boolean reasoning, String name, Map<String, Object> schema) {
+    public Map<String, Object> reasoningAndJsonSchema(boolean reasoning, String name, Map<String, Object> schema) {
         Map<String, Object> body = new HashMap<>(reasoning(reasoning));
         body.putAll(jsonSchema(name, schema));
         return body;
     }
 
-    static AiProvider from(String name) {
+    public static AiProvider from(String name) {
         return valueOf(name.trim().toUpperCase());
     }
 }

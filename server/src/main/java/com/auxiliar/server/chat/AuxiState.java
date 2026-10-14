@@ -19,6 +19,7 @@ public class AuxiState extends MessagesState<Message> {
     static final String EMERGENCY_BUTTON = "emergencyButton";
     static final String PROFILE = "profile";
     static final String OLDER_ADULT = "olderAdult";
+    static final String OFFER_PERSON = "offerPerson";
     static final String ASKS_LOCATION = "asksLocation";
     static final String EMERGENCY = "emergency";
     static final String REPLIES = "replies";
@@ -49,6 +50,11 @@ public class AuxiState extends MessagesState<Message> {
     /** The model decided the conversation is about an older person */
     public boolean olderAdult() {
         return this.<Boolean>value(OLDER_ADULT).orElse(false);
+    }
+
+    /** The answer offers to talk with a volunteer */
+    public boolean offerPerson() {
+        return this.<Boolean>value(OFFER_PERSON).orElse(false);
     }
 
     /** The model decided it's an emergency (or the person said so with the button) */
