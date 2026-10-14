@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react"
+import { createElement } from "react"
+import { renderToStaticMarkup } from "react-dom/server"
 import * as L from "leaflet"
 import "leaflet/dist/leaflet.css"
 import "./PlacesMap.css"
 import { LEAFLET_PREFIX, MAP_TILES } from "@/data/mapTiles"
 import type { MapPin } from "@/utils/places"
 import { glyphOf } from "./PlacesMap.glyphs"
+import { serviceIconOf } from "../serviceIcons"
 
 type PlacesMapProps = {
   pins: MapPin[]
@@ -25,24 +28,75 @@ const pinSvg = (category: MapPin["category"]) => {
 
 const pinIcon = (category: MapPin["category"], selected: boolean) =>
   L.divIcon({
-    className: `places-pin${selected ? " is-selected" : ""}`,
+    className: `places-pin places-category--${category}${selected ? " is-selected" : ""}`,
     html: pinSvg(category),
     iconSize: [44, 44],
     iconAnchor: [22, 44],
   })
 
-/** What the pin tells when the pointer is over it or it has the keyboard focus: the kind of place and what it is for, in two short lines (built with text nodes, never HTML) */
-const tooltipOf = ({ kind, purpose }: MapPin) => {
+/** What appears when the pin is hovered or focused: place name and free-service pictograms (labels stay available to assistive technology) */
+const tooltipOf = (pin: MapPin) => {
+  const { name, purpose } = pin
   const box = document.createElement("div")
-  const type = document.createElement("strong")
-  type.textContent = kind
-  box.append(type)
+  const title = document.createElement("strong")
+  title.textContent = name
+  box.append(title)
   if (purpose) {
     const para = document.createElement("span")
-    para.textContent = `Para: ${purpose}`
+    para.textContent = purpose
     box.append(para)
   }
+  if (pin.services.length > 0) {
+    const services = document.createElement("div")
+    services.className = "places-tooltip-services"
+    services.setAttribute("aria-label", "Servicios gratuitos")
+    for (const service of pin.services) {
+      const item = document.createElement("span")
+      item.className = "places-tooltip-service"
+      item.title = service.name
+      item.setAttribute("aria-label", service.name)
+      if (service.category) item.dataset.category = service.category
+      const Icon = serviceIconOf(service.id, service.type)
+      const icon = document.createElement("span")
+      icon.innerHTML = renderToStaticMarkup(createElement(Icon, { "aria-hidden": true, className: "places-tooltip-service-icon" }))
+      item.append(icon)
+      services.append(item)
+    }
+    box.append(services)
+  }
   return box
+}
+
+/** Size an open tooltip from its content and place it around its marker within the map viewport. */
+const fitTooltipToMap = (marker: L.Marker, mapElement: HTMLElement) => {
+  const tip = marker.getTooltip()?.getElement()
+  const markerElement = marker.getElement()
+  if (!tip || !markerElement) return
+
+  const mapRect = mapElement.getBoundingClientRect()
+  const margin = 6
+  tip.style.marginLeft = "0px"
+  tip.style.marginTop = "0px"
+  tip.style.maxWidth = `${Math.max(80, Math.min(272, mapRect.width - margin * 2))}px`
+
+  const tipRect = tip.getBoundingClientRect()
+  const markerRect = markerElement.getBoundingClientRect()
+  const anchorX = markerRect.left + markerRect.width / 2
+  const placements = [
+    { left: anchorX - tipRect.width / 2, top: markerRect.top - tipRect.height - margin },
+    { left: anchorX - tipRect.width / 2, top: markerRect.bottom + margin },
+    { left: markerRect.right + margin, top: markerRect.top + (markerRect.height - tipRect.height) / 2 },
+    { left: markerRect.left - tipRect.width - margin, top: markerRect.top + (markerRect.height - tipRect.height) / 2 },
+  ]
+  const fits = ({ left, top }: { left: number, top: number }) =>
+    left >= mapRect.left + margin && left + tipRect.width <= mapRect.right - margin &&
+    top >= mapRect.top + margin && top + tipRect.height <= mapRect.bottom - margin
+  const placement = placements.find(fits) ?? {
+    left: Math.min(Math.max(placements[0].left, mapRect.left + margin), mapRect.right - margin - tipRect.width),
+    top: Math.min(Math.max(placements[0].top, mapRect.top + margin), mapRect.bottom - margin - tipRect.height),
+  }
+  tip.style.marginLeft = `${Math.round(placement.left - tipRect.left)}px`
+  tip.style.marginTop = `${Math.round(placement.top - tipRect.top)}px`
 }
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -89,7 +143,19 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
     L.control.attribution({ position: "bottomleft", prefix: LEAFLET_PREFIX }).addTo(map)
     mapRef.current = map
     const markers = markersRef.current
+    let fitFrame = 0
+    const fitOpenTooltips = () => {
+      if (fitFrame) cancelAnimationFrame(fitFrame)
+      fitFrame = requestAnimationFrame(() => {
+        fitFrame = 0
+        for (const marker of markers.values()) {
+          if (marker.isTooltipOpen()) fitTooltipToMap(marker, container)
+        }
+      })
+    }
+    map.on("move zoom resize", fitOpenTooltips)
     return () => {
+      if (fitFrame) cancelAnimationFrame(fitFrame)
       map.remove()
       mapRef.current = null
       markers.clear()
@@ -107,17 +173,11 @@ export default function PlacesMap({ pins, selectedId, onSelect }: PlacesMapProps
       // No native "title": it would show the name a second time after the tooltip. The pin is named for screen readers below
       const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon(pin.category, false), keyboard: true })
       marker.bindTooltip(tooltipOf(pin), { direction: "top", offset: [0, -40], opacity: 1, className: "places-tooltip" })
-      // A pin near the edge of the map: the tooltip is moved sideways so it is never cut off
+      // Keep the tooltip reachable when it opens and whenever the map changes around it
       marker.on("tooltipopen", () => {
         const tip = marker.getTooltip()?.getElement()
         const box = containerRef.current
-        if (!tip || !box) return
-        tip.style.marginLeft = "0px"
-        const tipRect = tip.getBoundingClientRect()
-        const mapRect = box.getBoundingClientRect()
-        const margin = 6
-        if (tipRect.left < mapRect.left + margin) tip.style.marginLeft = `${Math.round(mapRect.left + margin - tipRect.left)}px`
-        else if (tipRect.right > mapRect.right - margin) tip.style.marginLeft = `${Math.round(mapRect.right - margin - tipRect.right)}px`
+        if (tip && box) requestAnimationFrame(() => fitTooltipToMap(marker, box))
       })
       marker.on("click", () => onSelectRef.current(pin.id))
       // A focused pin is a button: Enter or Space selects it

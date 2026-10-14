@@ -22,6 +22,7 @@ import { PlacesMapView, preloadPlacesMap } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
 import type { PlacesView } from "../PlacesViewSwitch"
+import { ServiceTypeFilter } from "../ServiceTypeFilter/ServiceTypeFilter"
 import { TerritoryFilters } from "../TerritoryFilters"
 import { UrgentHelp } from "../UrgentHelp"
 import { PLACES_EXPLORER_INTRO } from "./PlacesExplorer.constants"
@@ -256,6 +257,11 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
             <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
               onChange={(category) => changeQuery({ category, kind: null, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
           </div>
+          {query.category && (
+            <div className="col-span-full">
+              <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type, kind: null })} />
+            </div>
+          )}
           {/* Inside a kind of care: what kind of place it lists (hospitales, centros de salud, vacunatorios, guardias…) */}
           {query.category && (
             <div className="col-span-full">
@@ -270,7 +276,6 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
             zone={query.zone}
             onZoneChange={(zone) => changeQuery({ zone })}
           />
-          {/* The "Prestación" selector is hidden: the quick filters, the search and, on the map, what each pin says when hovered tell the same thing */}
           {activeFilters.length > 0 && hasVisibleCounts(facets) && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}

@@ -1,7 +1,8 @@
-import { MapPin } from "lucide-react"
+import { ExternalLink, MapPin } from "lucide-react"
 import { isVerifiedFree, serviceHighlights, serviceName, shortAddress } from "@/utils/places"
 import type { PlaceEntry } from "@/utils/places"
 import { HighlightBadges } from "../HighlightBadges"
+import { serviceIconOf } from "../serviceIcons"
 
 /** Services listed on a card; the rest are counted */
 const MAX_SERVICES = 4
@@ -14,6 +15,7 @@ type PlaceCardProps = {
 /** Summary of a place: where it is, its main services and what its verified data highlights. Details open in the panel. */
 export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps) => {
   const address = shortAddress(place.address)
+  const officialSource = services.find((service) => service.source?.url)?.source
   // Gratuity is judged service by service, never for the whole place. Confirmed ones go first, each with its own badge
   // (free, or free with conditions); the ones not confirmed are grouped under a single "Gratuidad no confirmada" so the
   // warning is not repeated on every row.
@@ -24,6 +26,9 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
   const pending = shown.filter((service) => !isVerifiedFree(place, service))
   const restAllPending = rest.every((service) => !isVerifiedFree(place, service))
   const more = rest.length === 0 ? undefined : `+${rest.length} ${rest.length === 1 ? "servicio más" : "servicios más"}${restAllPending ? " con gratuidad no confirmada" : ""}`
+  const freeServiceIcons = services
+    .filter((service) => isVerifiedFree(place, service))
+    .map((service) => ({ icon: serviceIconOf(service.id, service.type), id: service.id, label: serviceName(service), categories: service.categories }))
 
   return (
     <article className="flex flex-col gap-3 rounded-2xl border border-line-strong bg-card p-4">
@@ -67,14 +72,41 @@ export const PlaceCard = ({ entry: { place, services }, onOpen }: PlaceCardProps
       )}
       {more && <p className="m-0 text-muted">{more}</p>}
 
-      <button
-        type="button"
-        data-place-trigger={place.id}
-        onClick={() => onOpen(place.id)}
-        className="mt-1 inline-flex min-h-11 cursor-pointer items-center justify-center self-start rounded-xl border border-control-line bg-brand px-4 py-2 font-extrabold text-on-brand hover:bg-brand-dark"
-      >
-        Ver información<span className="sr-only">{` de ${place.name}`}</span>
-      </button>
+      <div className="mt-1 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          data-place-trigger={place.id}
+          onClick={() => onOpen(place.id)}
+          className="inline-flex min-h-11 cursor-pointer items-center justify-center self-start rounded-xl border border-control-line bg-brand px-4 py-2 font-extrabold text-on-brand hover:bg-brand-dark"
+        >
+          Ver información<span className="sr-only">{` de ${place.name}`}</span>
+        </button>
+        {officialSource?.url && (
+          <a
+            href={officialSource.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Página oficial de ${place.name}${officialSource.organization ? `: ${officialSource.organization}` : ""} (se abre en una pestaña nueva)`}
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-control-line bg-field px-3 py-2 font-bold text-ink underline underline-offset-4 hover:bg-surface-alt"
+          >
+            Página oficial
+            <ExternalLink aria-hidden="true" className="size-4 shrink-0" />
+          </a>
+        )}
+      </div>
+      {freeServiceIcons.length > 0 && (
+        <div className="border-t border-line-strong pt-3">
+          <p className="m-0 mb-2 text-sm font-bold text-ink-soft">Servicios gratuitos</p>
+          <ul role="list" aria-label={`Servicios gratuitos confirmados de ${place.name}`} className="m-0 flex list-none flex-wrap gap-2 p-0">
+            {freeServiceIcons.map(({ id, label, icon: Icon, categories }) => (
+              <li key={id} data-category={categories[0]} className="inline-flex items-center gap-1.5 rounded-xl border border-control-line bg-field px-2.5 py-1.5 text-sm font-semibold text-ink">
+                <Icon aria-hidden="true" className="size-5 shrink-0" style={{ color: "var(--category-mid, var(--color-brand))" }} />
+                <span>{label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </article>
   )
 }

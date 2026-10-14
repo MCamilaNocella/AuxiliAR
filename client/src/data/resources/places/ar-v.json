@@ -201,6 +201,118 @@
         "nextReviewDue": "2026-11-12",
         "notes": "Verificación documental del 13/10/2026 (informe de atención veterinaria pública y gratuita; páginas oficiales, sin llamadas ni visitas). No confirma turno, horario ni disponibilidad del día. Solo se cargan las prestaciones gratuitas con respaldo: no se certifica el resto del establecimiento."
       }
+    },
+    {
+      "id": "hospital-regional-ushuaia-ernesto-campos",
+      "name": "Hospital Regional Ushuaia Gobernador Ernesto Campos",
+      "shortName": "Hospital Regional Ushuaia",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-V",
+        "organization": "Ministerio de Salud de Tierra del Fuego"
+      },
+      "address": {
+        "street": "Avenida 12 de Octubre",
+        "number": "s/n",
+        "locality": "Ushuaia",
+        "province": "AR-V"
+      },
+      "coordinates": {
+        "lat": -54.8136741,
+        "lng": -68.3232278,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Regional Ushuaia Gobernador Ernesto Campos (-54.8136741, -68.3232278), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Ministerio de Salud de Tierra del Fuego",
+            "url": "https://salud.tierradelfuego.gob.ar/hospital-regional-ushuaia/",
+            "retrievedAt": "2026-10-14",
+            "note": "La ficha ministerial sitúa el hospital en Av. 12 de Octubre y Maipú, Ushuaia. Punto aproximado del edificio hospitalario en OpenStreetMap."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Ministerio de Salud de Tierra del Fuego",
+              "url": "https://salud.tierradelfuego.gob.ar/hospital-regional-ushuaia/",
+              "retrievedAt": "2026-10-14",
+              "note": "La ficha ministerial sitúa el hospital en Av. 12 de Octubre y Maipú, Ushuaia. Punto aproximado del edificio hospitalario en OpenStreetMap."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          }
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+              "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+              "retrievedAt": "2026-10-14",
+              "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          }
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-regional-ushuaia-ernesto-campos"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Tierra del Fuego",
+        "url": "https://salud.tierradelfuego.gob.ar/hospital-regional-ushuaia/",
+        "retrievedAt": "2026-10-14",
+        "note": "La ficha ministerial sitúa el hospital en Av. 12 de Octubre y Maipú, Ushuaia. Punto aproximado del edificio hospitalario en OpenStreetMap."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      }
     }
   ]
 }

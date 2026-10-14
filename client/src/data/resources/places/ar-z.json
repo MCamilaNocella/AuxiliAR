@@ -1,0 +1,118 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-regional-rio-gallegos",
+      "name": "Hospital Regional Río Gallegos",
+      "shortName": "Hospital Regional Río Gallegos",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-Z",
+        "organization": "Ministerio de Salud y Ambiente de Santa Cruz"
+      },
+      "address": {
+        "street": "José Ingenieros",
+        "number": "98",
+        "locality": "Río Gallegos",
+        "department": "Güer Aike",
+        "province": "AR-Z"
+      },
+      "coordinates": {
+        "lat": -51.628433,
+        "lng": -69.2202862,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Regional Río Gallegos (-51.628433, -69.2202862), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Ministerio de Salud y Ambiente de Santa Cruz",
+            "url": "https://boletinoficial.santacruz.gob.ar/contrataciones/licitaciones/54728",
+            "retrievedAt": "2026-10-14",
+            "note": "Contratación oficial de Santa Cruz: José Ingenieros 98, Río Gallegos."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Ministerio de Salud y Ambiente de Santa Cruz",
+              "url": "https://boletinoficial.santacruz.gob.ar/contrataciones/licitaciones/54728",
+              "retrievedAt": "2026-10-14",
+              "note": "Contratación oficial de Santa Cruz: José Ingenieros 98, Río Gallegos."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          }
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+              "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+              "retrievedAt": "2026-10-14",
+              "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          }
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-regional-rio-gallegos"
+      },
+      "source": {
+        "organization": "Ministerio de Salud y Ambiente de Santa Cruz",
+        "url": "https://boletinoficial.santacruz.gob.ar/contrataciones/licitaciones/54728",
+        "retrievedAt": "2026-10-14",
+        "note": "Contratación oficial de Santa Cruz: José Ingenieros 98, Río Gallegos."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      }
+    }
+  ]
+}

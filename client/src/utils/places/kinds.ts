@@ -7,7 +7,8 @@ import type { ResolvedService, Resource } from "@/data/resources"
  */
 export const PLACE_KINDS = [
   { id: "hospital", label: "Hospitales" },
-  { id: "health-center", label: "Centros de salud" },
+  { id: "health-center", label: "Otros centros de salud" },
+  { id: "cesac", label: "Centros de Salud y Acción Comunitaria (CeSACs)" },
   { id: "vaccination-point", label: "Vacunatorios" },
   { id: "emergency-room", label: "Guardias" },
   { id: "mental-health-center", label: "Centros de salud mental" },
@@ -35,7 +36,9 @@ const GUARDIA_TYPES = new Set(["emergency-room", "mental-health-emergency"])
 /** The kinds a place is, given the services that answer what is asked: its facility type, and vacunatorio / guardia when one of those services does */
 export const kindsOf = (place: Resource, services: readonly ResolvedService[]): PlaceKindId[] => {
   const kinds: PlaceKindId[] = []
-  if (isPlaceKind(place.facilityType)) kinds.push(place.facilityType)
+  const isCesac = Boolean(place.externalIds?.["caba-cesac"])
+  if (isPlaceKind(place.facilityType) && !(isCesac && place.facilityType === "health-center")) kinds.push(place.facilityType)
+  if (isCesac) kinds.push("cesac")
   if (services.some(({ type }) => type === "vaccination")) kinds.push("vaccination-point")
   if (services.some(({ type }) => GUARDIA_TYPES.has(type))) kinds.push("emergency-room")
   return kinds

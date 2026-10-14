@@ -14460,6 +14460,16 @@
         "locality": "Ciudad Autónoma de Buenos Aires",
         "province": "AR-C"
       },
+      "coordinates": {
+        "lat": -34.664567,
+        "lng": -58.468717,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-map-link",
+        "note": "Punto del mapa interactivo oficial de Buenos Aires abierto desde la ficha de Animales BA para Paseo Islas Malvinas y Av. Escalada. Aproximado: marca la ubicación de la sede, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
