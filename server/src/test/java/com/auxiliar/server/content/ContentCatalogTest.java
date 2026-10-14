@@ -37,12 +37,16 @@ class ContentCatalogTest {
                         "/temas/salud-general?seccion=section-4", "/temas/salud-general?seccion=section-5",
                         "/temas/salud-general?seccion=section-6", "/temas/salud-general?seccion=section-7",
                         "/temas/salud-mental", "/temas/salud-mental?seccion=section-1", "/temas/salud-mental?seccion=section-2",
-                        "/temas/salud-mental?seccion=section-3",
+                        "/temas/salud-mental?seccion=section-3", "/temas/salud-mental?seccion=section-4", "/temas/salud-mental?seccion=section-5",
+                        "/temas/salud-mental?seccion=section-6",
                         "/temas/esi", "/temas/esi?seccion=section-1", "/temas/esi?seccion=section-2", "/temas/esi?seccion=section-3",
+                        "/temas/esi?seccion=section-4", "/temas/esi?seccion=section-6",
                         "/temas/animales", "/temas/animales?seccion=section-1", "/temas/animales?seccion=section-2", "/temas/animales?seccion=section-3",
+                        "/temas/animales?seccion=section-4", "/temas/animales?seccion=section-5",
                         "/recursos", "/recursos?seccion=section-1", "/recursos?seccion=section-2", "/recursos?seccion=section-3",
-                        "/recursos?seccion=section-4",
-                        "/primeros-auxilios", "/primeros-auxilios?seccion=section-1",
+                        "/primeros-auxilios", "/primeros-auxilios?seccion=section-1", "/primeros-auxilios?seccion=section-2",
+                        "/primeros-auxilios?seccion=section-3", "/primeros-auxilios?seccion=section-4", "/primeros-auxilios?seccion=section-5",
+                        "/primeros-auxilios?seccion=section-6", "/primeros-auxilios?seccion=section-7", "/primeros-auxilios?seccion=section-8",
                         "/sobre-auxiliar", "/sobre-auxiliar?seccion=section-1");
     }
 

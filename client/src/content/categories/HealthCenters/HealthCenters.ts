@@ -12,7 +12,9 @@ export const HEALTH_CENTERS: Category = {
   to: PATHS.centers,
   /** Illustration for the banner (desktop) and the wallpaper (mobile) */
   scene: HealthCentersScene,
-  /** Sidebar sections, in the order they are listed; each one's content lives in ./sections */
+  /** No sidebar: the map takes the whole width */
+  noSidebar: true,
+  /** Its only section, the map; its content lives in ./sections */
   sections: [
     {
       id: "section-1",

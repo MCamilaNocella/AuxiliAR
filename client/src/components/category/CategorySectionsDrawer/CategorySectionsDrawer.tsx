@@ -8,7 +8,7 @@ const transition = "duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduc
  * Mobile section menu: slides in from the left, between the category bar and the
  * bottom navigation, so neither bar gets covered. Not a modal <dialog> on purpose:
  * the top layer would cover the help bot, which must stay above everything.
- * Esc, a tap outside or choosing a section closes it.
+ * Esc, a tap outside or choosing a section closes it (choosing one: once the new section is in).
  */
 export const CategorySectionsDrawer = ({
   id,
@@ -64,8 +64,9 @@ export const CategorySectionsDrawer = ({
     }
   }, [open, focusOnOpen, onClose])
 
-  const handleSelect = (sectionId: string) => {
-    onSelectSection(sectionId)
+  // As the category models: first the content changes (it fades), then the drawer slides away
+  const handleSelect = async (sectionId: string) => {
+    await onSelectSection(sectionId)
     onClose()
   }
 

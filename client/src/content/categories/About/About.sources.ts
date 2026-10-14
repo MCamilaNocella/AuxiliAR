@@ -7,12 +7,27 @@ import { CABA, CORDOBA, NEUQUEN, PASTEUR, PROTENENCIA, READ_ON as ANIMAL_PLACES_
 import { CHECKED_AT as ANIMALS_CHECKED_AT, CHECKED_AT_PASTEUR, PASTEUR_INFO, PASTEUR_SERVICIOS, RABIA, ZOONOSIS } from "../Animals/Animals.sources"
 import { APOYO_MUTUO, BONAPARTE, CESAC_MENTAL, CONSUMOS_CABA, CSM_1, CSM_3, GUARDIAS_CABA, LINEAS_CABA, LINEAS_OTRAS, PROVINCIAS, YOGA_CABA } from "../MentalHealth/MentalHealth.directory"
 import { CHECKED_AT as MENTAL_CHECKED_AT, DIRECTORY_CHECKED_AT as MENTAL_DIRECTORY_CHECKED_AT, GUARDIAS_PAGINA, LEY_153_MENTAL, LEY_26657, LEY_SIMPLE, OMS_ANSIEDAD, OMS_ESTRES, OMS_GUIA, ORIENTACION, RED_ADICCIONES } from "../MentalHealth/MentalHealth.sources"
-import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, CHECKED_AT_TRIPLE_VIRAL, LINEAMIENTOS_REPOSITORIO, VACCINATION_STAGES } from "../PhysicalHealth/sections/Section5/Section5.constants"
-import { FOOD_NUTRITION } from "../PhysicalHealth/sections/Section6/Section6.constants"
-import { PHYSICAL_ACTIVITY } from "../PhysicalHealth/sections/Section7/Section7.constants"
-import { FAQ_REFERENCES } from "../Resources/sections/Section3/Section3.references"
-import { GLOSSARY_REFERENCES } from "../Resources/sections/Section4/Section4.references"
-import { BARRIO_REDES, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, CHECKED_AT as RESOURCES_CHECKED_AT, CHECKED_AT_AGENDA, CHECKED_AT_GUIDES, CUD_PAGINA, LEY_153, LEY_27491, MAS_SERVICIOS_PAGINA, TURNOS_CESAC, VACUNAS_PAGINA } from "../Resources/Resources.sources"
+import { CALENDAR_PDF, CALENDAR_SOURCE, CHECKED_AT as CALENDAR_CHECKED_AT, CHECKED_AT_TRIPLE_VIRAL, LINEAMIENTOS_REPOSITORIO, VACCINATION_STAGES } from "../PhysicalHealth/PhysicalHealth.vaccines"
+import { FOOD_NUTRITION } from "../PhysicalHealth/PhysicalHealth.food"
+import { PHYSICAL_ACTIVITY } from "../PhysicalHealth/PhysicalHealth.activity"
+import { FAQ_REFERENCES, GLOSSARY_REFERENCES } from "../Resources/sections/Section3/Section3.references"
+import {
+  BARRIO_REDES,
+  BARRIO_TURNO_ODONTOLOGIA,
+  BARRIO_TURNO_OFTALMOLOGIA,
+  CHECKED_AT as RESOURCES_CHECKED_AT,
+  CHECKED_AT_AGENDA,
+  CHECKED_AT_GUIDES,
+  CHECKED_AT_MODEL as RESOURCES_CHECKED_AT_MODEL,
+  CUD_PAGINA,
+  LEY_153,
+  LEY_25871,
+  LEY_26529,
+  LEY_27491,
+  MAS_SERVICIOS_PAGINA,
+  SSSALUD,
+  TURNOS_CESAC,
+} from "../Resources/Resources.sources"
 import {
   CABA_CONSEJERIAS,
   CABA_COORDINACION,
@@ -39,12 +54,12 @@ import {
   TUCUMAN_ANTICONCEPCION,
 } from "../SexEducation/SexEducation.sources"
 import { READ_ON as COVERAGE_READ_ON } from "../SexEducation/SexEducation.coverage"
-import { METHODS } from "../SexEducation/sections/Section2/Section2.constants"
-import { CONTROLS_READ_ON, CONTROLS_SOURCES } from "../PhysicalHealth/sections/Section2/Section2.constants"
+import { METHODS } from "../SexEducation/SexEducation.methods"
+import { CONTROLS_READ_ON, CONTROLS_SOURCES } from "../PhysicalHealth/PhysicalHealth.controls"
 
 /**
- * "Sobre AuxiliAR" · Fuentes y referencias. EVERY source and documentary reference of AuxiliAR is listed here, by topic, and nowhere
- * else in the pages (the pages keep only the links that take a person to a service, a procedure, a resource or a video). It
+ * "Sobre AuxiliAR" · Fuentes y referencias. EVERY source and documentary reference of AuxiliAR is listed here, by topic (Más recursos also
+ * shows its own at the end of each section, as its chosen model does; the other pages keep only the links that take a person to a service, a procedure, a resource or a video). It
  * imports the modules where each source is defined: there is one copy of every source, and a page that adds one adds it here.
  */
 export type Reference = {
@@ -315,33 +330,34 @@ export const REFERENCE_GROUPS: ReferenceGroup[] = [
     id: "mas-recursos",
     title: "Más recursos",
     blocks: [
-      { id: "recursos-ley-153", title: "Tus derechos en salud · Ciudad de Buenos Aires", references: fromSources([LEY_153]), checkedAt: [RESOURCES_CHECKED_AT], notes: ["Es una ley de la Ciudad de Buenos Aires."] },
-      { id: "recursos-salud-mental", title: "Tus derechos en salud · Salud mental", references: fromSources([LEY_26657, LEY_SIMPLE]), checkedAt: [MENTAL_CHECKED_AT] },
-      { id: "recursos-salud-sexual", title: "Tus derechos en salud · Salud sexual", references: fromSources([LEY_25673, LEY_26150]), checkedAt: [SEXUAL_CHECKED_AT] },
-      { id: "recursos-vacunas", title: "Tus derechos en salud · Vacunación", references: fromSources([LEY_27491]), checkedAt: [RESOURCES_CHECKED_AT] },
-      { id: "tramite-cesac", title: "Trámites · Cómo pedir turno en un CeSAC", references: fromSources([TURNOS_CESAC]), checkedAt: [RESOURCES_CHECKED_AT] },
-      { id: "tramite-vacunas", title: "Trámites · Vacunarte", references: fromSources([VACUNAS_PAGINA]), checkedAt: [RESOURCES_CHECKED_AT] },
+      { id: "recursos-paciente", title: "Derechos · Al atenderte, en todo el país", references: fromSources([LEY_26529]), checkedAt: [RESOURCES_CHECKED_AT_MODEL] },
+      { id: "recursos-todos", title: "Derechos · Seas de donde seas", references: fromSources([LEY_25871, LEY_153]), checkedAt: [RESOURCES_CHECKED_AT_MODEL, RESOURCES_CHECKED_AT], notes: ["La Ley 153 es de la Ciudad de Buenos Aires."] },
+      { id: "recursos-salud-mental", title: "Derechos · Salud mental", references: fromSources([LEY_26657, LEY_SIMPLE]), checkedAt: [MENTAL_CHECKED_AT] },
+      { id: "recursos-otros", title: "Derechos · Vacunas y salud sexual", references: fromSources([LEY_27491, LEY_25673, LEY_26150]), checkedAt: [RESOURCES_CHECKED_AT, SEXUAL_CHECKED_AT] },
+      { id: "recursos-reclamar", title: "Derechos · Si tu obra social o prepaga no cumple", references: fromSources([SSSALUD]), checkedAt: [RESOURCES_CHECKED_AT_MODEL] },
+      { id: "tramite-cesac", title: "Trámites · Turno en un CeSAC", references: fromSources([TURNOS_CESAC]), checkedAt: [RESOURCES_CHECKED_AT] },
+      { id: "tramite-historia", title: "Trámites · Pedir tu historia clínica", references: fromSources([LEY_26529]), checkedAt: [RESOURCES_CHECKED_AT_MODEL] },
       {
         id: "tramite-cud",
-        title: "Trámites · Cómo tramitar el CUD",
+        title: "Trámites · Tramitar el CUD",
         references: fromSources([CUD_PAGINA]),
         checkedAt: [CHECKED_AT_GUIDES],
       },
       {
         id: "tramite-barrio",
-        title: "Trámites · Servicios y trámites en tu barrio",
+        title: "Trámites · Más servicios en tu barrio",
         references: fromSources([MAS_SERVICIOS_PAGINA, BARRIO_TURNO_ODONTOLOGIA, BARRIO_TURNO_OFTALMOLOGIA, BARRIO_REDES]),
         checkedAt: [CHECKED_AT_GUIDES, CHECKED_AT_AGENDA],
         notes: ["La página no muestra fecha de actualización.", "El cronograma de operativos (septiembre y octubre de 2026) se leyó el 11 de octubre de 2026 y se muestra solo desde la fecha de hoy."],
       },
       {
         id: "faq",
-        title: "Preguntas frecuentes",
+        title: "Dudas · Preguntas frecuentes",
         references: FAQ_REFERENCES.map(({ question, source }) => ({ label: source, detail: `Respalda: ${question}` })),
       },
       {
         id: "glosario",
-        title: "Glosario",
+        title: "Dudas · Glosario",
         references: GLOSSARY_REFERENCES.map(({ term, source }) => ({ label: source, detail: `Respalda: ${term}` })),
       },
     ],

@@ -12,6 +12,8 @@ export type Category = {
   scene: ComponentType
   /** Sections listed in the category sidebar */
   sections: CategorySection[]
+  /** Without the sidebar: the first section opens right away across the whole width (Centros, whose only section is the map) */
+  noSidebar?: boolean
 }
 
 export type CategorySection = {
@@ -23,6 +25,10 @@ export type CategorySection = {
    * only then can Auxi's chat send people here (without it, Auxi answers on its own)
    */
   summary?: string
-  /** Body of the section (the heading is rendered by the category screen) */
-  Content: ComponentType
+  /** Icon next to the heading. With it, the heading shows the icon tile and the `lead` under the title (design of the category models) */
+  icon?: LucideIcon
+  /** One or two sentences under the heading, shown with `icon` */
+  lead?: string
+  /** Body of the section (the heading is rendered by the category screen). With `preload` (lazyContent), the screen downloads it ahead */
+  Content: ComponentType & { preload?: () => Promise<unknown> }
 }

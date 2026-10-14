@@ -1,65 +1,73 @@
-import { Link } from "react-router"
-import { Disclosure } from "@/components/health/Disclosure"
-import { PATHS, SECTION_PARAM } from "@/router/paths"
-import { DirectoryList } from "../../DirectoryBlocks"
-import { LINEAS_OTRAS, PROVINCIAS } from "../../MentalHealth.directory"
-import { DIRECTORY_CHECKED_AT } from "../../MentalHealth.sources"
+import { CalendarClock, Footprints, HandHeart, Heart, MapPin, Users } from "lucide-react"
+import { ActivityCards, type ActivityCard } from "@/components/sectionBlocks/ActivityCards"
+import { BlockButton } from "@/components/sectionBlocks/BlockButton"
+import { Fold } from "@/components/sectionBlocks/Fold"
+import { NumberedCards } from "@/components/sectionBlocks/NumberedCards"
+import { PriorityBanner } from "@/components/sectionBlocks/PriorityBanner"
+import { RotatingPhrases } from "@/components/sectionBlocks/RotatingPhrases"
+import { SectionBody } from "@/components/sectionBlocks/SectionBody"
+import { SideCallout } from "@/components/sectionBlocks/SideCallout"
+import { StationsList } from "@/components/sectionBlocks/StationsList"
+import { SubLabel } from "@/components/sectionBlocks/SubLabel"
+import { ToneBlock } from "@/components/sectionBlocks/ToneBlock"
+import { blockIcon } from "@/utils/blockIcons"
+import { MH_ACTIVITIES, MH_SOURCES, MH_WELLBEING } from "../../MentalHealth.model"
 
-const formatDate = (date: string) => {
-  const [year, month, day] = date.split("-").map(Number)
-  return new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, month - 1, day)))
-}
+const PHRASES = ["Así como cuidás tu cuerpo, tu mente también merece cuidado.", "Tu bienestar también empieza por cómo te sentís."]
 
-/**
- * Salud mental · Otras provincias: the lines and places outside the Ciudad that the team's research of 12 October 2026 confirmed from official pages (MentalHealth.directory.ts).
- * It is NOT every service of the country: a province without an entry has not been checked, which does not mean it has no services, and the section says so. Each page says its own cost;
- * what a page calls free is the institution's statement. Nobody phoned or visited.
- */
+/** A class or space: when, where and who, and what the page says of its cost */
+const activity = (place?: string) => ({ title, hours, address, who, note }: (typeof MH_ACTIVITIES.yoga)[number]): ActivityCard => ({
+  title: place ?? title,
+  rows: [
+    { icon: CalendarClock, text: hours ?? "" },
+    ...(address ? [{ icon: MapPin, text: address }] : []),
+    ...(who ? [{ icon: Users, text: who.replace(/\.$/, "") }] : []),
+  ],
+  note,
+})
+
+/** Salud mental · Hábitos antiestrés, as the chosen model: a breath in your day, habits, moving with others, routines and when to ask for help */
 export default function Section5Content() {
   return (
-    <div className="mt-2 flex max-w-3xl flex-col gap-6">
-      <p className="m-0 text-lg text-ink">
-        Líneas y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires, tomados de páginas oficiales y leídos el {formatDate(DIRECTORY_CHECKED_AT)}. Nadie llamó ni fue a los lugares: confirmá con el servicio antes de ir.
-      </p>
-
-      <section aria-labelledby="mh-prov-note" className="rounded-2xl border-2 border-control-line bg-field p-4">
-        <h3 id="mh-prov-note" className="m-0 text-xl font-extrabold">
-          Qué no está acá
-        </h3>
-        <p className="m-0 mt-1">
-          Todavía no revisamos todas las provincias. Que una provincia no aparezca no quiere decir que no tenga servicios. Para todo el país, las líneas nacionales están en{" "}
-          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-1`} className="font-bold">
-            Dónde buscar ayuda
-          </Link>{" "}
-          y en{" "}
-          <Link to={`${PATHS.topic("salud-mental")}?${SECTION_PARAM}=section-4`} className="font-bold">
-            Consumos y acompañamiento
-          </Link>
-          .
-        </p>
-      </section>
-
-      <section aria-labelledby="mh-prov-lines">
-        <h3 id="mh-prov-lines" className="m-0 text-xl font-extrabold">
-          Líneas de escucha y orientación
-        </h3>
-        <p className="m-0 mt-1 text-ink-soft">Cada línea es de su provincia. El 135, por ejemplo, no es la misma línea en todos lados: depende de quién la atiende.</p>
-        <div className="mt-3">
-          <DirectoryList items={LINEAS_OTRAS} />
+    <SectionBody sources={MH_SOURCES.bienestar}>
+      <PriorityBanner icon={Heart} title="Un respiro en tu día" text={<RotatingPhrases phrases={PHRASES} />} />
+      <ToneBlock tone={1} title="Hábitos para reducir el estrés">
+        <NumberedCards balanced items={MH_WELLBEING.ideas.map(({ icon, title, text }) => ({ icon: blockIcon(icon), title, text }))} />
+      </ToneBlock>
+      <ToneBlock icon={Footprints} tone={2} title="Moverte con otros, cerca tuyo" lead={["Moverte y compartir con otras personas ayuda a bajar el estrés. Hay clases y espacios en parques y plazas."]}>
+        <Fold label="Ver clases de yoga y Estaciones Saludables">
+          <div className="grid gap-2">
+            <SubLabel>Yoga en parques de la Ciudad (Plazas Activas)</SubLabel>
+            <ActivityCards items={MH_ACTIVITIES.yoga.map((item) => activity(item.title.replace(/^Yoga en /, ""))(item))} />
+            <SubLabel className="mt-2">Estaciones Saludables de la Ciudad</SubLabel>
+            <p className="m-0 [overflow-wrap:anywhere] text-ink-soft">{MH_ACTIVITIES.estacionesNote}</p>
+            <StationsList items={MH_ACTIVITIES.estaciones.map(({ name, address, zone }) => ({ name, address: zone ? `${address} · ${zone}` : address }))} />
+            <SubLabel className="mt-2">En otras provincias</SubLabel>
+            <ActivityCards items={MH_ACTIVITIES.provinces.map((item) => activity()(item))} />
+          </div>
+        </Fold>
+      </ToneBlock>
+      <ToneBlock icon={CalendarClock} tone={1} title="Rutinas que cuidan tu bienestar">
+        <ul role="list" className="m-0 list-none p-0">
+          {MH_WELLBEING.habits.map(({ icon, title, text }) => {
+            const Icon = blockIcon(icon)
+            return (
+              <li key={title} className="flex items-start gap-3 border-b border-line-strong py-[0.85rem]">
+                {Icon && <Icon aria-hidden="true" className="mt-[0.15rem] size-[1.25em] shrink-0" />}
+                <span>
+                  <b className="font-black">{`${title}.`}</b> {text}
+                </span>
+              </li>
+            )
+          })}
+        </ul>
+      </ToneBlock>
+      <SideCallout tone="brand" title="Cuándo pedir ayuda" icon={HandHeart}>
+        <p className="m-0">{MH_WELLBEING.help}</p>
+        <div className="mt-2">
+          <BlockButton button={{ go: "section-1", label: "Dónde buscar ayuda" }} />
         </div>
-      </section>
-
-      <section aria-labelledby="mh-prov-places" className="flex flex-col gap-3">
-        <h3 id="mh-prov-places" className="m-0 text-xl font-extrabold">
-          Lugares de atención y actividades, por provincia
-        </h3>
-        {PROVINCIAS.map(({ name, intro, items }) => (
-          <Disclosure key={name} title={`${name} (${items.length})`}>
-            {intro && <p className="m-0 text-ink-soft">{intro}</p>}
-            <DirectoryList items={items} />
-          </Disclosure>
-        ))}
-      </section>
-    </div>
+      </SideCallout>
+    </SectionBody>
   )
 }

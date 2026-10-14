@@ -68,6 +68,21 @@
   /* Dimmed backdrop behind a side panel (e.g. a place's information) */
   --color-scrim: rgb(0 0 0 / 0.5);
 
+  /* Soft tones that tell the blocks of a section apart (tone-* classes): a pale background and its readable ink */
+  --color-tint-1: #f6e3de;
+  --color-tint-2: #e5ecf3;
+  --color-tint-3: #f6e6e6;
+  --color-tint-4: #e4efe8;
+  --color-tint-5: #efe7f3;
+  --color-tint-ink-1: #7b2d2d;
+  --color-tint-ink-2: #22476b;
+  --color-tint-ink-3: #8a1c2b;
+  --color-tint-ink-4: #1d5a3a;
+  --color-tint-ink-5: #5b2e73;
+
+  /* A tab panel of the category models appears: a quick fade, rising a little */
+  --animate-tab-in: tab-in 300ms ease-out;
+
   /* Help bot speech bubble: pops out from Auxi as soon as the screen renders */
   --animate-bubble-in: bubble-in 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
@@ -81,6 +96,9 @@
 
   /* Mi Salud, the emergency card switching between showing and editing: the new content fades in calmly */
   --animate-calm-in: calm-in 500ms ease-out both;
+
+  /* Salud mental, the guided breathing: two little bubbles float around the big one */
+  --animate-bg-float: bg-float 5s ease-in-out infinite;
 
   /*
    * "Ver mejor" button in the header: on page load, once the label is out, a metallic glint sweeps
@@ -190,6 +208,12 @@
     }
   }
 
+  @keyframes bg-float {
+    50% {
+      transform: translateY(-0.5rem);
+    }
+  }
+
   @keyframes calm-in {
     from {
       opacity: 0;
@@ -258,6 +282,16 @@
 
   --color-auxi-motion: #f5f5f5;
   --color-shine: #8a817f;
+  --color-tint-1: #3a2523;
+  --color-tint-2: #1f2a35;
+  --color-tint-3: #3a2224;
+  --color-tint-4: #1c2e24;
+  --color-tint-5: #2e2335;
+  --color-tint-ink-1: #f4b8ad;
+  --color-tint-ink-2: #a9c8e8;
+  --color-tint-ink-3: #f5a9b3;
+  --color-tint-ink-4: #9fd8b5;
+  --color-tint-ink-5: #d5b4ea;
 }
 
 :root[data-theme="contrast"] {
@@ -295,7 +329,30 @@
   --color-auxi-motion: #ffffff;
   --color-shine: #8a8a8a;
   --color-category-edge: #ffffff;
+  --color-tint-1: #000000;
+  --color-tint-2: #000000;
+  --color-tint-3: #000000;
+  --color-tint-4: #000000;
+  --color-tint-5: #000000;
+  --color-tint-ink-1: #ffff00;
+  --color-tint-ink-2: #ffff00;
+  --color-tint-ink-3: #ffff00;
+  --color-tint-ink-4: #ffff00;
+  --color-tint-ink-5: #ffff00;
 }
+
+/* ---------- Block tones ---------- */
+
+/* A block takes one tone; its children read it as --tone (background) and --tone-ink (text), e.g. bg-(--tone) text-(--tone-ink) */
+.tone-1 { --tone: var(--color-tint-1); --tone-ink: var(--color-tint-ink-1); }
+.tone-2 { --tone: var(--color-tint-2); --tone-ink: var(--color-tint-ink-2); }
+.tone-3 { --tone: var(--color-tint-3); --tone-ink: var(--color-tint-ink-3); }
+.tone-4 { --tone: var(--color-tint-4); --tone-ink: var(--color-tint-ink-4); }
+.tone-5 { --tone: var(--color-tint-5); --tone-ink: var(--color-tint-ink-5); }
+/* The category's own color as a block tone (Salud mental, "Respiración guiada") */
+.tone-category { --tone: color-mix(in srgb, var(--category-light) 16%, transparent); --tone-ink: var(--category-mid); }
+:root[data-theme="dark"] .tone-category { --tone: color-mix(in srgb, #a9b6ff 18%, transparent); --tone-ink: #a9b6ff; }
+:root[data-theme="contrast"] .tone-category { --tone: var(--color-tint-1); --tone-ink: var(--color-tint-ink-1); }
 
 /* ---------- Home background ---------- */
 
@@ -311,6 +368,12 @@
 @utility bg-home {
   background: var(--home-background);
 }
+
+/* ---------- Category accent (markers, step numbers, small labels of the category models) ---------- */
+
+/* The category's own color for small details: its mid stop on light backgrounds, its light stop on dark ones */
+[data-category] { --category-accent: var(--category-mid); }
+:root[data-theme="dark"] [data-category] { --category-accent: var(--category-light); }
 
 /* ---------- Category colors (banner on desktop, wallpaper on mobile) ---------- */
 
@@ -479,7 +542,7 @@
 
 /* Shared elements (category icon and title) glide to their new place */
 ::view-transition-group(*) {
-  animation-duration: 450ms;
+  animation-duration: 600ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -495,11 +558,11 @@
 }
 
 ::view-transition-old(page-content) {
-  animation: 200ms ease-out both view-fade-out;
+  animation: 260ms ease-out both view-fade-out;
 }
 
 ::view-transition-new(page-content) {
-  animation: 350ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both view-fade-in;
+  animation: 480ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both view-fade-in;
 }
 
 @keyframes view-fade-out {
@@ -564,5 +627,12 @@
 
   :focus-visible {
     @apply outline-3 outline-offset-2 outline-brand;
+  }
+}
+
+@keyframes tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
   }
 }

@@ -65,140 +65,161 @@
   {
     "title": "Salud sexual y ESI",
     "path": "/temas/esi",
-    "summary": "Anticonceptivos, prevención y derechos sexuales. Dónde pedir orientación y atención en salud sexual y reproductiva: consultar en un centro de salud u hospital, la línea nacional de salud sexual del Ministerio de Salud, cómo explorar centros en el mapa, y la diferencia entre información gratuita, orientación y atención gratuita confirmada. AuxiliAR no otorga turnos ni realiza consultas médicas. Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos. Derechos sexuales y reproductivos según las leyes nacionales 25.673, 26.150 y 27.610, qué es la Educación Sexual Integral (ESI) y dónde leer materiales oficiales de ESI.",
+    "summary": "Anticonceptivos, prevención y derechos sexuales. Qué es la educación sexual integral (Ley 26.150): sus aspectos biológicos, psicológicos, sociales, afectivos y éticos, los 5 ejes del Programa Nacional de ESI, para quién es (todas las escuelas, del nivel inicial al superior) y qué busca. Dónde pedir orientación en salud sexual: la línea nacional 0800-222-3444, un mapa con los centros de salud de la Ciudad con consejería, anticonceptivos o preservativos, lo que ofrecen otras provincias y la Fundación Huésped. Los métodos anticonceptivos gratuitos, cómo conseguirlos, cómo funciona cada uno (pastillas, inyectables, implante, DIU, ligadura, vasectomía) y la anticoncepción hormonal de emergencia («pastilla del día después»). Cómo usar el preservativo peneano y el vaginal, el test de VIH y sífilis gratis y confidencial con los centros de testeo de la Ciudad, y qué hacer si el preservativo se rompió (profilaxis post exposición dentro de las 72 horas). Tus derechos en salud sexual y reproductiva según las leyes 25.673, 26.150 y 27.610, y materiales oficiales de ESI para estudiantes, docentes y familias.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud sexual y ESI › Dónde buscar atención",
+    "title": "Salud sexual y ESI › ¿Qué es la ESI?",
     "path": "/temas/esi?seccion=section-1",
-    "summary": "Dónde pedir orientación y atención en salud sexual y reproductiva: consultar en un centro de salud u hospital, la línea nacional de salud sexual del Ministerio de Salud, cómo explorar centros en el mapa, y la diferencia entre información gratuita, orientación y atención gratuita confirmada. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "summary": "Qué es la educación sexual integral (Ley 26.150): sus aspectos biológicos, psicológicos, sociales, afectivos y éticos, los 5 ejes del Programa Nacional de ESI, para quién es (todas las escuelas, del nivel inicial al superior) y qué busca.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud sexual y ESI › Anticoncepción y prevención",
+    "title": "Salud sexual y ESI › Orientación y ayuda",
     "path": "/temas/esi?seccion=section-2",
-    "summary": "Métodos anticonceptivos que nombra el Ministerio de Salud de la Nación, el preservativo, único método anticonceptivo que además ayuda a reducir el riesgo de infecciones de transmisión sexual (no lo elimina por completo), y qué informa el Gobierno de la Ciudad sobre el test de VIH y sífilis y los preservativos.",
+    "summary": "Dónde pedir orientación en salud sexual: la línea nacional 0800-222-3444, un mapa con los centros de salud de la Ciudad con consejería, anticonceptivos o preservativos, lo que ofrecen otras provincias y la Fundación Huésped.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud sexual y ESI › Derechos y ESI",
+    "title": "Salud sexual y ESI › Métodos anticonceptivos",
     "path": "/temas/esi?seccion=section-3",
-    "summary": "Derechos sexuales y reproductivos según las leyes nacionales 25.673, 26.150 y 27.610, qué es la Educación Sexual Integral (ESI) y dónde leer materiales oficiales de ESI.",
+    "summary": "Los métodos anticonceptivos gratuitos, cómo conseguirlos, cómo funciona cada uno (pastillas, inyectables, implante, DIU, ligadura, vasectomía) y la anticoncepción hormonal de emergencia («pastilla del día después»).",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud sexual y ESI › Prevención y test de ITS",
+    "path": "/temas/esi?seccion=section-4",
+    "summary": "Cómo usar el preservativo peneano y el vaginal, el test de VIH y sífilis gratis y confidencial con los centros de testeo de la Ciudad, y qué hacer si el preservativo se rompió (profilaxis post exposición dentro de las 72 horas).",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud sexual y ESI › Derechos y recursos",
+    "path": "/temas/esi?seccion=section-6",
+    "summary": "Tus derechos en salud sexual y reproductiva según las leyes 25.673, 26.150 y 27.610, y materiales oficiales de ESI para estudiantes, docentes y familias.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Atención veterinaria",
     "path": "/temas/animales",
-    "summary": "Prevención, chequeos, castración gratuita y más. Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales. Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña. Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice, y un aviso sobre la vacuna antitetánica si un animal te mordió o te arañó.",
+    "summary": "Prevención, chequeos, castración gratuita y más. Cuidados de perros y gatos: cómo pasearlo sin lastimarlo (pechera, no collares de ahorque), adiestradores que trabajan desde lo positivo, los cuidados de todos los días y los controles veterinarios. El calendario de vacunas de perros y gatos: séxtuple, triple felina y antirrábica (la única obligatoria), las de cachorro y los refuerzos anuales. Dónde castrar gratis, vacunar contra la rabia o hacer una consulta veterinaria: un mapa por provincia y cómo pedir el turno en la Ciudad de Buenos Aires, Rosario, Córdoba, Neuquén, Salta y otras ciudades. Qué hacer si un animal te muerde o te araña (rabia, antitetánica) y cómo prevenir las zoonosis: enfermedades que pasan de los animales a las personas. Qué hacer si muere tu perro o tu gato (cremación, el Instituto Pasteur) y cómo denunciar el maltrato animal.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Atención veterinaria › Vacunación y castración",
+    "title": "Atención veterinaria › Bienestar y cuidados",
     "path": "/temas/animales?seccion=section-1",
-    "summary": "Dónde castrar y vacunar contra la rabia a perros y gatos, según la página oficial de cada lugar: Ciudad de Buenos Aires (centros fijos, móviles e Instituto Pasteur), Rosario, Córdoba, Salta, Neuquén y operativos de Protenencia. Para cada uno: para quién es, costo y condiciones, dónde, cómo pedir el turno y contacto, y el cronograma de la Ciudad, separados en gratuitos y costo no confirmado. Una campaña gratuita no es atención veterinaria gratuita. AuxiliAR no otorga turnos ni atiende animales.",
+    "summary": "Cuidados de perros y gatos: cómo pasearlo sin lastimarlo (pechera, no collares de ahorque), adiestradores que trabajan desde lo positivo, los cuidados de todos los días y los controles veterinarios.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Atención veterinaria › Cuidado y prevención",
+    "title": "Atención veterinaria › Calendario de vacunación",
     "path": "/temas/animales?seccion=section-2",
-    "summary": "Información general del Ministerio de Salud de la Nación y de Senasa: vacunar cada año a perros y gatos contra la rabia desde los 3 meses de edad, qué es una zoonosis y acudir a un centro de salud si un animal muerde o araña.",
+    "summary": "El calendario de vacunas de perros y gatos: séxtuple, triple felina y antirrábica (la única obligatoria), las de cachorro y los refuerzos anuales.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Atención veterinaria › Recursos importantes",
+    "title": "Atención veterinaria › Dónde atenderlo",
     "path": "/temas/animales?seccion=section-3",
-    "summary": "Consulta veterinaria y urgencias según las páginas oficiales: el consultorio del Instituto Pasteur (sin guardia ni urgencias), el hospital y los puestos de Rosario (sin costo para quienes están adscritos al sistema municipal), el hospital de Salta y su apartado «Guardia y urgencias» (sin horario propio) y los hospitales universitarios de la UBA y la UNLP, que son arancelados. Separados en gratuitos, costo no confirmado y arancelados. No hay guardias gratuitas confirmadas. Incluye la cremación gratuita de perros y gatos del Instituto Pasteur (Ciudad de Buenos Aires), con lo que su página no dice, y un aviso sobre la vacuna antitetánica si un animal te mordió o te arañó.",
+    "summary": "Dónde castrar gratis, vacunar contra la rabia o hacer una consulta veterinaria: un mapa por provincia y cómo pedir el turno en la Ciudad de Buenos Aires, Rosario, Córdoba, Neuquén, Salta y otras ciudades.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Atención veterinaria › Mordeduras y zoonosis",
+    "path": "/temas/animales?seccion=section-4",
+    "summary": "Qué hacer si un animal te muerde o te araña (rabia, antitetánica) y cómo prevenir las zoonosis: enfermedades que pasan de los animales a las personas.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Atención veterinaria › Más recursos",
+    "path": "/temas/animales?seccion=section-5",
+    "summary": "Qué hacer si muere tu perro o tu gato (cremación, el Instituto Pasteur) y cómo denunciar el maltrato animal.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud mental",
     "path": "/temas/salud-mental",
-    "summary": "Herramientas de autocuidado, y orientación: cómo pedir ayuda. Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas. Dónde pedir atención programada de salud mental en la Ciudad de Buenos Aires: 33 CeSAC con psicología o psiquiatría (por comuna), el Centro de Salud Mental Nº 1 y el Hospital Nacional Laura Bonaparte. Datos de páginas oficiales; no se asegura turno ni horario. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención. Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo). Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional. Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
+    "summary": "Herramientas de autocuidado, y orientación: cómo pedir ayuda. Dónde pedir ayuda en salud mental: el 911 si hay peligro, la línea nacional de urgencias de salud mental 0800-999-0091 (24 h, gratis y confidencial), Salud Mental Responde de la Ciudad, la línea bonaerense, el 135 y el 0800-345-1435 de prevención del suicidio y el 141 por consumos; líneas de otras provincias; un mapa de guardias de salud mental 24 h y lugares con atención programada; y apoyo ante el consumo problemático (Línea 108 opción 3, la Red de adicciones de la Ciudad y grupos de apoyo mutuo). AuxiliAR no otorga turnos ni realiza consultas médicas. Ejercicios guiados para la ansiedad y el estrés: respiración 4-7-8 (inhalar en 4, mantener en 7, soltar en 8) y respiración lenta (5 y 5, al menos 5 minutos), y «poner los pies en la tierra» paso a paso (notar, bajar el ritmo, mirar 5 cosas, escuchar 3, oler y tocar, volver), de la guía de la OMS. Relajación muscular progresiva guiada con temporizador: tensar 5 segundos y soltar 15, en 12 partes del cuerpo de la cara a las piernas; lleva unos 5 minutos. Cuatro ejercicios cortos de la guía de la OMS para momentos de estrés: notá y nombrá lo que te engancha, una taza con toda tu atención, hacer lugar como el cielo y hablarte con amabilidad. Hábitos para bajar el estrés según la OMS (conectar con otras personas, moverse, ocupar la cabeza y las manos, dar a los demás, prestar atención al presente), rutinas que cuidan el bienestar (horarios, sueño, hablar, moverse, comer, límites a las noticias), clases de yoga y Estaciones Saludables de la Ciudad y de otras provincias, y cuándo pedir ayuda. Qué derechos reconoce la Ley Nacional de Salud Mental 26.657: el mejor tratamiento, estar acompañado, acceder a la historia clínica, no ser discriminado, ser atendido en un hospital general y que la medicación nunca se use como castigo; y que rechazar la atención por un padecimiento mental es discriminación.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Salud mental › Dónde buscar ayuda",
     "path": "/temas/salud-mental?seccion=section-1",
-    "summary": "Dónde pedir ayuda en salud mental: líneas de escucha y orientación (nacionales y de la Ciudad), guardias de salud mental las 24 horas de hospitales de la Ciudad, un hospital o centro de salud cercano si no hay cobertura, qué establece la ley sobre quién atiende y el mapa. AuxiliAR no otorga turnos ni realiza consultas médicas.",
+    "summary": "Dónde pedir ayuda en salud mental: el 911 si hay peligro, la línea nacional de urgencias de salud mental 0800-999-0091 (24 h, gratis y confidencial), Salud Mental Responde de la Ciudad, la línea bonaerense, el 135 y el 0800-345-1435 de prevención del suicidio y el 141 por consumos; líneas de otras provincias; un mapa de guardias de salud mental 24 h y lugares con atención programada; y apoyo ante el consumo problemático (Línea 108 opción 3, la Red de adicciones de la Ciudad y grupos de apoyo mutuo). AuxiliAR no otorga turnos ni realiza consultas médicas.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud mental › Atención en la Ciudad",
-    "path": "/temas/salud-mental?seccion=section-6",
-    "summary": "Dónde pedir atención programada de salud mental en la Ciudad de Buenos Aires: 33 CeSAC con psicología o psiquiatría (por comuna), el Centro de Salud Mental Nº 1 y el Hospital Nacional Laura Bonaparte. Datos de páginas oficiales; no se asegura turno ni horario.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Salud mental › Conocé tus derechos",
+    "title": "Salud mental › Respirá y conectá",
     "path": "/temas/salud-mental?seccion=section-2",
-    "summary": "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657 al pedir atención: tratamiento, acompañamiento, historia clínica, no discriminación, atención en hospital general y medicación; y qué hacer si rechazan la atención.",
+    "summary": "Ejercicios guiados para la ansiedad y el estrés: respiración 4-7-8 (inhalar en 4, mantener en 7, soltar en 8) y respiración lenta (5 y 5, al menos 5 minutos), y «poner los pies en la tierra» paso a paso (notar, bajar el ritmo, mirar 5 cosas, escuchar 3, oler y tocar, volver), de la guía de la OMS.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud mental › Herramientas para cuidarte",
+    "title": "Salud mental › Relajación muscular",
     "path": "/temas/salud-mental?seccion=section-3",
-    "summary": "Hábitos para cuidar el bienestar y manejar el estrés según la OMS (rutina, sueño, vínculos, movimiento, alimentación, noticias) cuándo conviene pedir ayuda profesional, cinco ideas de pausa basadas en la guía de la OMS, materiales gratuitos de la OMS y clases de yoga de la Ciudad (la página no informa su costo).",
+    "summary": "Relajación muscular progresiva guiada con temporizador: tensar 5 segundos y soltar 15, en 12 partes del cuerpo de la cara a las piernas; lleva unos 5 minutos.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud mental › Consumos y acompañamiento",
+    "title": "Salud mental › Ejercicios de calma",
     "path": "/temas/salud-mental?seccion=section-4",
-    "summary": "Líneas de orientación por consumos, los centros y hospitales de la Red de adicciones de la Ciudad, y grupos de apoyo mutuo (Alcohólicos Anónimos, Al-Anon, Alateen). Los grupos no son atención profesional.",
+    "summary": "Cuatro ejercicios cortos de la guía de la OMS para momentos de estrés: notá y nombrá lo que te engancha, una taza con toda tu atención, hacer lugar como el cielo y hablarte con amabilidad.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Salud mental › Otras provincias",
+    "title": "Salud mental › Hábitos antiestrés",
     "path": "/temas/salud-mental?seccion=section-5",
-    "summary": "Líneas de escucha y lugares de atención de salud mental fuera de la Ciudad de Buenos Aires que se confirmaron en páginas oficiales (Buenos Aires, Córdoba, Entre Ríos, Jujuy, La Rioja, Neuquén, Tucumán, Corrientes, Santa Fe, Mendoza y Formosa). No es todo el país: que una provincia no figure no significa que no tenga servicios.",
+    "summary": "Hábitos para bajar el estrés según la OMS (conectar con otras personas, moverse, ocupar la cabeza y las manos, dar a los demás, prestar atención al presente), rutinas que cuidan el bienestar (horarios, sueño, hablar, moverse, comer, límites a las noticias), clases de yoga y Estaciones Saludables de la Ciudad y de otras provincias, y cuándo pedir ayuda.",
+    "firstAid": false,
+    "hasInfo": true
+  },
+  {
+    "title": "Salud mental › Tus derechos",
+    "path": "/temas/salud-mental?seccion=section-6",
+    "summary": "Qué derechos reconoce la Ley Nacional de Salud Mental 26.657: el mejor tratamiento, estar acompañado, acceder a la historia clínica, no ser discriminado, ser atendido en un hospital general y que la medicación nunca se use como castigo; y que rechazar la atención por un padecimiento mental es discriminación.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Más recursos",
     "path": "/recursos",
-    "summary": "Derechos, leyes, FAQ, y trámites. Qué derechos reconocen las leyes al atenderte, en palabras simples: la Ley 153 (Ley Básica de Salud de la Ciudad), la Ley Nacional de Salud Mental 26.657 y la Ley 27.491 de vacunación, entre otras. No es asesoramiento legal. Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), cómo tramitar el CUD (Certificado Único de Discapacidad) y los servicios de salud que pasan por tu barrio. AuxiliAR no saca turnos ni pide datos personales. Respuestas cortas a dudas frecuentes: si hace falta orden médica para vacunarse, si hay que anotarse antes de sacar turno en un CeSAC, si te atienden en la Ciudad sin vivir ahí, si los anticonceptivos se pagan, qué significa «Gratuita» en el mapa y más. Palabras de salud explicadas con lo que dicen las fuentes oficiales: CeSAC, empadronamiento, atención primaria, consentimiento informado, Calendario Nacional de Vacunación, ESI, anticoncepción de emergencia, zoonosis, prestación y otras.",
+    "summary": "Derechos, trámites y dudas. Qué derechos te reconocen las leyes al atenderte, en simple: los del paciente en todo el país (Ley 26.529), que te atiendan aunque seas de otro país (Ley 25.871) o no vivas en la Ciudad (Ley 153), los de salud mental (Ley 26.657), vacunas y salud sexual, y dónde reclamar si tu obra social o prepaga no cumple (Superintendencia de Servicios de Salud). No es asesoramiento legal. Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), pedir tu historia clínica, tramitar el CUD (Certificado Único de Discapacidad) y las próximas fechas de «Más servicios en tu barrio». AuxiliAR no saca turnos ni pide datos. Respuestas cortas a dudas frecuentes: si te pueden negar la atención, si te atienden sin DNI o sin vivir en la Ciudad, si hace falta orden médica para vacunarse, si los anticonceptivos se pagan, dónde reclamar a la obra social o prepaga y qué significa «Gratuita» en el mapa. Y un glosario con buscador: CeSAC, empadronamiento, CUD, consentimiento informado, historia clínica y más.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Más recursos › Tus derechos en salud",
+    "title": "Más recursos › Derechos",
     "path": "/recursos?seccion=section-1",
-    "summary": "Qué derechos reconocen las leyes al atenderte, en palabras simples: la Ley 153 (Ley Básica de Salud de la Ciudad), la Ley Nacional de Salud Mental 26.657 y la Ley 27.491 de vacunación, entre otras. No es asesoramiento legal.",
+    "summary": "Qué derechos te reconocen las leyes al atenderte, en simple: los del paciente en todo el país (Ley 26.529), que te atiendan aunque seas de otro país (Ley 25.871) o no vivas en la Ciudad (Ley 153), los de salud mental (Ley 26.657), vacunas y salud sexual, y dónde reclamar si tu obra social o prepaga no cumple (Superintendencia de Servicios de Salud). No es asesoramiento legal.",
     "firstAid": false,
     "hasInfo": true
   },
   {
     "title": "Más recursos › Trámites",
     "path": "/recursos?seccion=section-2",
-    "summary": "Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), cómo tramitar el CUD (Certificado Único de Discapacidad) y los servicios de salud que pasan por tu barrio. AuxiliAR no saca turnos ni pide datos personales.",
+    "summary": "Qué necesitás para los trámites de salud más comunes: empadronarte y sacar turno en un CeSAC de la Ciudad (por el 147 o en persona), pedir tu historia clínica, tramitar el CUD (Certificado Único de Discapacidad) y las próximas fechas de «Más servicios en tu barrio». AuxiliAR no saca turnos ni pide datos.",
     "firstAid": false,
     "hasInfo": true
   },
   {
-    "title": "Más recursos › Preguntas frecuentes",
+    "title": "Más recursos › Dudas",
     "path": "/recursos?seccion=section-3",
-    "summary": "Respuestas cortas a dudas frecuentes: si hace falta orden médica para vacunarse, si hay que anotarse antes de sacar turno en un CeSAC, si te atienden en la Ciudad sin vivir ahí, si los anticonceptivos se pagan, qué significa «Gratuita» en el mapa y más.",
-    "firstAid": false,
-    "hasInfo": true
-  },
-  {
-    "title": "Más recursos › Glosario",
-    "path": "/recursos?seccion=section-4",
-    "summary": "Palabras de salud explicadas con lo que dicen las fuentes oficiales: CeSAC, empadronamiento, atención primaria, consentimiento informado, Calendario Nacional de Vacunación, ESI, anticoncepción de emergencia, zoonosis, prestación y otras.",
+    "summary": "Respuestas cortas a dudas frecuentes: si te pueden negar la atención, si te atienden sin DNI o sin vivir en la Ciudad, si hace falta orden médica para vacunarse, si los anticonceptivos se pagan, dónde reclamar a la obra social o prepaga y qué significa «Gratuita» en el mapa. Y un glosario con buscador: CeSAC, empadronamiento, CUD, consentimiento informado, historia clínica y más.",
     "firstAid": false,
     "hasInfo": true
   },
@@ -219,14 +240,63 @@
   {
     "title": "Primeros auxilios",
     "path": "/primeros-auxilios",
-    "summary": "Guías paso a paso para actuar en emergencias. Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "summary": "Guías paso a paso para actuar en emergencias. Cómo hacer RCP (reanimación cardiopulmonar) en adultos, niños y bebés, cómo usar un DEA (desfibrilador) y la posición de seguridad, y qué decir cuando llamás a emergencias. Qué hacer ante un atragantamiento (adultos, chicos, bebés y si estás solo) y si una persona estuvo bajo el agua (ahogamiento). Cómo reconocer y qué hacer ante un infarto, un ACV (accidente cerebrovascular), una convulsión o un desmayo. Qué hacer ante un sangrado fuerte, cortes y raspones, sangrado de nariz o algo en el ojo, el oído o la nariz. Qué hacer ante quemaduras, electrocución y golpe de calor, y cómo prevenirlos. Qué hacer después de golpes y caídas (incluido un golpe en la cabeza), ante posibles fracturas y en accidentes de tránsito. Qué hacer ante intoxicaciones (tragada, respirada, en la piel o en el ojo; Centro Nacional de Intoxicaciones 0800-333-0160), reacciones alérgicas y picaduras o mordeduras de perro, gato, alacrán o víbora. Qué tener en el botiquín de primeros auxilios, con una lista para tildar lo que ya tenés, y dónde y cómo guardarlo.",
     "firstAid": true,
     "hasInfo": true
   },
   {
-    "title": "Primeros auxilios › Guías de primeros auxilios",
+    "title": "Primeros auxilios › RCP",
     "path": "/primeros-auxilios?seccion=section-1",
-    "summary": "Las guías, ordenadas por urgencia: las que se necesitan ya, las de accidentes y lesiones frecuentes y las de prepararte con anticipación. Cada guía se abre con sus pasos.",
+    "summary": "Cómo hacer RCP (reanimación cardiopulmonar) en adultos, niños y bebés, cómo usar un DEA (desfibrilador) y la posición de seguridad, y qué decir cuando llamás a emergencias.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Ahogos",
+    "path": "/primeros-auxilios?seccion=section-2",
+    "summary": "Qué hacer ante un atragantamiento (adultos, chicos, bebés y si estás solo) y si una persona estuvo bajo el agua (ahogamiento).",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Malestares",
+    "path": "/primeros-auxilios?seccion=section-3",
+    "summary": "Cómo reconocer y qué hacer ante un infarto, un ACV (accidente cerebrovascular), una convulsión o un desmayo.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Heridas",
+    "path": "/primeros-auxilios?seccion=section-4",
+    "summary": "Qué hacer ante un sangrado fuerte, cortes y raspones, sangrado de nariz o algo en el ojo, el oído o la nariz.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Quemaduras",
+    "path": "/primeros-auxilios?seccion=section-5",
+    "summary": "Qué hacer ante quemaduras, electrocución y golpe de calor, y cómo prevenirlos.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Golpes",
+    "path": "/primeros-auxilios?seccion=section-6",
+    "summary": "Qué hacer después de golpes y caídas (incluido un golpe en la cabeza), ante posibles fracturas y en accidentes de tránsito.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Intoxicaciones",
+    "path": "/primeros-auxilios?seccion=section-7",
+    "summary": "Qué hacer ante intoxicaciones (tragada, respirada, en la piel o en el ojo; Centro Nacional de Intoxicaciones 0800-333-0160), reacciones alérgicas y picaduras o mordeduras de perro, gato, alacrán o víbora.",
+    "firstAid": true,
+    "hasInfo": true
+  },
+  {
+    "title": "Primeros auxilios › Botiquín",
+    "path": "/primeros-auxilios?seccion=section-8",
+    "summary": "Qué tener en el botiquín de primeros auxilios, con una lista para tildar lo que ya tenés, y dónde y cómo guardarlo.",
     "firstAid": true,
     "hasInfo": true
   },

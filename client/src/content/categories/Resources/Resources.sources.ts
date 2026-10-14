@@ -50,3 +50,19 @@ export const BARRIO_TURNO_ODONTOLOGIA: Source = { label: "Turno de odontología 
 export const BARRIO_TURNO_OFTALMOLOGIA: Source = { label: "Turno de oftalmología en Más servicios en tu barrio · Gobierno de la Ciudad de Buenos Aires", url: "https://serviciosba.buenosaires.gob.ar/servicio/16" }
 export const BARRIO_REDES: Source = { label: "Redes de Más servicios en tu barrio (Instagram)", url: "https://www.instagram.com/masserviciosentubarrio/" }
 export const CHECKED_AT_AGENDA = "2026-10-11"
+
+/*
+ * Sources listed under each section ("Fuentes oficiales"), with the labels of the model (recursos-1). Added on 2026-10-14 with the
+ * rights for migrants (Ley 25.871, art. 8), the right to be attended (Ley 26.529, art. 2 a) and the Superintendencia de Servicios de Salud.
+ */
+export const CHECKED_AT_MODEL = "2026-10-14"
+
+export const LEY_26529: Source = { label: "Ley 26.529, Derechos del Paciente · argentina.gob.ar", url: "https://www.argentina.gob.ar/normativa/nacional/ley-26529-160432/texto" }
+export const LEY_25871: Source = { label: "Ley 25.871 de Migraciones (art. 8) · argentina.gob.ar", url: "https://www.argentina.gob.ar/normativa/nacional/ley-25871-92016/texto" }
+export const LEY_26657_MODEL: Source = { label: "Ley Nacional de Salud Mental 26.657 · argentina.gob.ar", url: "https://www.argentina.gob.ar/normativa/nacional/ley-26657-175977/texto" }
+export const LEY_25673_MODEL: Source = { label: "Ley 25.673, Salud Sexual y Procreación Responsable · argentina.gob.ar", url: "https://www.argentina.gob.ar/normativa/nacional/ley-25673-79831/texto" }
+export const LEY_26150_MODEL: Source = { label: "Ley 26.150, Educación Sexual Integral · argentina.gob.ar", url: "https://www.argentina.gob.ar/normativa/nacional/ley-26150-121222/texto" }
+/** The Superintendencia de Servicios de Salud: controls obras sociales and prepagas; consultations and complaints by phone (0800-222-72583, 8 to 16 h), its Centro de Atención Virtual or with an appointment */
+export const SSSALUD: Source = { label: "Superintendencia de Servicios de Salud · argentina.gob.ar", url: "https://www.argentina.gob.ar/sssalud" }
+export const ANTICONCEPTIVOS_CABA: Source = { label: "Métodos anticonceptivos · Gobierno de la Ciudad de Buenos Aires", url: "https://buenosaires.gob.ar/gcaba_historico/salud-sexual-y-reproductiva/metodos-anticonceptivos" }
+export const TURNOS_CESAC_MODEL: Source = { label: "Solicitud de turnos en Centros de Salud y Acción Comunitaria (CeSAC) · Gobierno de la Ciudad de Buenos Aires", url: TURNOS_CESAC.url }
