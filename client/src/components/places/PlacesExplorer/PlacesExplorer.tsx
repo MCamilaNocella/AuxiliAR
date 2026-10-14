@@ -22,6 +22,7 @@ import { PlacesMapView, preloadPlacesMap } from "../PlacesMapView"
 import { PlacesToolbar } from "../PlacesToolbar"
 import { PlacesViewSwitch } from "../PlacesViewSwitch"
 import type { PlacesView } from "../PlacesViewSwitch"
+import { ServiceTypeFilter } from "../ServiceTypeFilter/ServiceTypeFilter"
 import { TerritoryFilters } from "../TerritoryFilters"
 import { UrgentHelp } from "../UrgentHelp"
 import { PLACES_EXPLORER_INTRO } from "./PlacesExplorer.constants"
@@ -233,12 +234,23 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         ? ""
         : `${results.length} ${results.length === 1 ? "lugar encontrado" : "lugares encontrados"}${where}`
 
-  return (
-    <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
+  // The map in full screen (like a map app): the controls go in a column at the left (on phones, a strip above the map) and the map takes the rest
+  const fullMap = map && view === "map" && results.length > 0
+  useEffect(() => {
+    if (!fullMap) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [fullMap])
+
+  const controls = (
+    <>
       {intro && <p className="m-0 text-muted">{intro}</p>}
 
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
-        <div className="lg:max-w-xl lg:flex-1">
+      <div className={`flex flex-col gap-3 ${fullMap ? "" : "lg:flex-row lg:items-end"}`}>
+        <div className={fullMap ? "" : "lg:max-w-xl lg:flex-1"}>
           <PlacesToolbar filters={NO_FILTERS} query={draft} onQueryChange={typeText} filterId={query.filterId} onFilterChange={(filterId) => changeQuery({ filterId })} />
         </div>
         {/* Wraps: at 320 px the view switch and the filters button do not fit in one row, and the page grew wider than the screen */}
@@ -248,6 +260,13 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         </div>
       </div>
 
+      {/* On the map: what each symbol means, at hand, right under the search */}
+      {map && view === "map" && results.length > 0 && (
+        <div className="hidden lg:block">
+          <PlacesMapLegend entries={results} query={query} />
+        </div>
+      )}
+
       {mentalHealth === "crisis" && <UrgentHelp context="crisis" />}
 
       {showFilters && (
@@ -256,6 +275,11 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
             <CategoryFilter facets={facets.categories} value={query.category} // A service that does not belong to the new kind of care would leave nothing to show: it is dropped, any other stays
               onChange={(category) => changeQuery({ category, kind: null, type: category && query.type && !categoriesOfServiceType(query.type).includes(category) ? null : query.type })} />
           </div>
+          {query.category && (
+            <div className="col-span-full">
+              <ServiceTypeFilter facets={facets.types} value={query.type} onChange={(type) => changeQuery({ type, kind: null })} />
+            </div>
+          )}
           {/* Inside a kind of care: what kind of place it lists (hospitales, centros de salud, vacunatorios, guardias…) */}
           {query.category && (
             <div className="col-span-full">
@@ -270,7 +294,6 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
             zone={query.zone}
             onZoneChange={(zone) => changeQuery({ zone })}
           />
-          {/* The "Prestación" selector is hidden: the quick filters, the search and, on the map, what each pin says when hovered tell the same thing */}
           {activeFilters.length > 0 && hasVisibleCounts(facets) && <p className="order-last col-span-full m-0 text-ink-soft">Los números muestran cuántos lugares cumplen tu búsqueda y los demás filtros.</p>}
         </div>
       )}
@@ -282,8 +305,6 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
       <p ref={countRef} role="status" aria-live="polite" tabIndex={-1} className="m-0 font-bold outline-none">
         {count}
       </p>
-
-      {map && view === "map" && results.length > 0 && <PlacesMapLegend entries={results} query={query} />}
 
       {state.status === "error" && (
         <div className="flex flex-col items-start gap-3">
@@ -362,6 +383,25 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
           )}
         </div>
       )}
+
+    </>
+  )
+
+  if (fullMap) {
+    return (
+      <div className="fixed inset-x-0 top-(--header-h) bottom-(--bottom-nav-h) z-30 flex flex-col bg-surface lg:flex-row">
+        <div className="flex max-h-[38%] flex-none flex-col gap-3 overflow-y-auto overscroll-contain border-b border-line-strong bg-card p-3 lg:max-h-none lg:w-[22rem] lg:border-r lg:border-b-0">{controls}</div>
+        <div className="min-h-0 min-w-0 flex-1">
+          <PlacesMapView entries={results} query={query} onOpen={open} onBackToList={() => changeView("list")} fill />
+        </div>
+        {activeEntry && <PlaceDetail entry={activeEntry} matchingIds={matchingIds} onClose={close} />}
+      </div>
+    )
+  }
+
+  return (
+    <div className="mt-2 flex flex-col gap-3 lg:gap-3.5">
+      {controls}
 
       {results.length > 0 && view === "list" && <PlaceList entries={results} onOpen={open} />}
       {results.length > 0 && view === "map" && <PlacesMapView entries={results} query={query} onOpen={open} onBackToList={() => changeView("list")} />}

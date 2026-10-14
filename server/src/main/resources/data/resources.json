@@ -115,6 +115,16 @@
         "locality": "Córdoba",
         "province": "AR-X"
       },
+      "coordinates": {
+        "lat": -31.375097381616694,
+        "lng": -64.21145853929788,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-georef",
+        "note": "Dirección Concepción del Bermejo 3129 geocodificada con Georef, coincidente con la ficha municipal. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
@@ -192,6 +202,16 @@
         "number": "8321",
         "locality": "Córdoba",
         "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.31007420852024,
+        "lng": -64.28034914814653,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-georef",
+        "note": "Dirección Maloca 8321 geocodificada con Georef, coincidente con la ficha municipal. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
       },
       "services": [
         {
@@ -537,6 +557,16 @@
         "locality": "Ciudad Autónoma de Buenos Aires",
         "province": "AR-C"
       },
+      "coordinates": {
+        "lat": -34.664567,
+        "lng": -58.468717,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-map-link",
+        "note": "Punto del mapa interactivo oficial de Buenos Aires abierto desde la ficha de Animales BA para Paseo Islas Malvinas y Av. Escalada. Aproximado: marca la ubicación de la sede, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
@@ -589,6 +619,117 @@
       ],
       "derivedCategories": [
         "animales"
+      ]
+    },
+    {
+      "id": "cepsi-eva-peron-santiago-del-estero",
+      "name": "Centro Provincial de Salud Infantil Eva Perón (CePSI)",
+      "shortName": "CePSI Eva Perón",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-G",
+        "organization": "Ministerio de Salud de Santiago del Estero"
+      },
+      "address": {
+        "street": "Misiones",
+        "number": "1087",
+        "locality": "Santiago del Estero",
+        "province": "AR-G"
+      },
+      "coordinates": {
+        "lat": -27.7792666,
+        "lng": -64.2733716,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Centro Provincial de Salud Infantil Eva Perón (CePSI) (-27.7792666, -64.2733716), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de Santiago del Estero",
+            "url": "https://msaludsgo.gov.ar/web/hospitales-de-capital-y-la-banda/",
+            "retrievedAt": "2026-10-14",
+            "note": "Directorio oficial provincial: CePSI Eva Perón, Misiones 108; otra página del Ministerio publica Misiones 1087. Se conserva la altura corroborada por el punto cartográfico."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:cepsi-eva-peron-santiago-del-estero"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Santiago del Estero",
+        "url": "https://msaludsgo.gov.ar/web/hospitales-de-capital-y-la-banda/",
+        "retrievedAt": "2026-10-14",
+        "note": "Directorio oficial provincial: CePSI Eva Perón, Misiones 108; otra página del Ministerio publica Misiones 1087. Se conserva la altura corroborada por el punto cartográfico."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
       ]
     },
     {
@@ -8750,6 +8891,16 @@
         "locality": "Berazategui",
         "province": "AR-B"
       },
+      "coordinates": {
+        "lat": -34.79073561964611,
+        "lng": -58.18025416396534,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-georef",
+        "note": "Punto geocodificado con Georef para Av. Ranelagh 4200, consistente con la ubicación municipal publicada entre Av. Milazzo y calle 45. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
@@ -13454,6 +13605,228 @@
       ]
     },
     {
+      "id": "hospital-del-nino-jesus-tucuman",
+      "name": "Hospital del Niño Jesús",
+      "shortName": "Hospital del Niño Jesús (Tucumán)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-T",
+        "organization": "Ministerio de Salud Pública de Tucumán"
+      },
+      "address": {
+        "street": "Pasaje Albert Sabín",
+        "number": "750",
+        "locality": "San Miguel de Tucumán",
+        "province": "AR-T"
+      },
+      "coordinates": {
+        "lat": -26.8408209,
+        "lng": -65.2110994,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital del Niño Jesús (-26.8408209, -65.2110994), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud Pública de Tucumán",
+            "url": "https://msptucuman.gov.ar/hospitales/hospital-del-nino-jesus/",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha oficial del hospital: Sabín 750, San Miguel de Tucumán."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-del-nino-jesus-tucuman"
+      },
+      "source": {
+        "organization": "Ministerio de Salud Pública de Tucumán",
+        "url": "https://msptucuman.gov.ar/hospitales/hospital-del-nino-jesus/",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha oficial del hospital: Sabín 750, San Miguel de Tucumán."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-dr-guillermo-rawson-san-juan",
+      "name": "Hospital Dr. Guillermo Rawson",
+      "shortName": "Hospital Rawson (San Juan)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-J",
+        "organization": "Ministerio de Salud de San Juan"
+      },
+      "address": {
+        "street": "Avenida Rawson",
+        "number": "494 Sur",
+        "locality": "San Juan",
+        "province": "AR-J"
+      },
+      "coordinates": {
+        "lat": -31.5394128,
+        "lng": -68.5132342,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Dr. Guillermo Rawson (-31.5394128, -68.5132342), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de San Juan",
+            "url": "https://salud.sanjuan.gob.ar/?uid=CUMV-VIEW-CentrosDeSalud",
+            "retrievedAt": "2026-10-14",
+            "note": "Directorio oficial de instituciones: Av. Rawson 494 Sur, San Juan."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-dr-guillermo-rawson-san-juan"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de San Juan",
+        "url": "https://salud.sanjuan.gob.ar/?uid=CUMV-VIEW-CentrosDeSalud",
+        "retrievedAt": "2026-10-14",
+        "note": "Directorio oficial de instituciones: Av. Rawson 494 Sur, San Juan."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
       "id": "hospital-durand",
       "name": "Hospital Durand",
       "shortName": "Hospital Durand",
@@ -15026,6 +15399,117 @@
       ]
     },
     {
+      "id": "hospital-humberto-notti-mendoza",
+      "name": "Hospital Pediátrico Dr. Humberto Notti",
+      "shortName": "Hospital Notti",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-M",
+        "organization": "Ministerio de Salud y Deportes de Mendoza"
+      },
+      "address": {
+        "street": "Bandera de los Andes",
+        "number": "2603",
+        "locality": "Guaymallén",
+        "province": "AR-M"
+      },
+      "coordinates": {
+        "lat": -32.8979731,
+        "lng": -68.804459,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Pediátrico Dr. Humberto Notti (-32.8979731, -68.804459), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud y Deportes de Mendoza",
+            "url": "https://salud.mendoza.gov.ar/hospital-humberto-notti/",
+            "retrievedAt": "2026-10-14",
+            "note": "El domicilio Bandera de los Andes 2603, Guaymallén, figura en publicaciones oficiales del Gobierno de Mendoza; la ficha oficial del hospital aporta sus datos institucionales."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-humberto-notti-mendoza"
+      },
+      "source": {
+        "organization": "Ministerio de Salud y Deportes de Mendoza",
+        "url": "https://salud.mendoza.gov.ar/hospital-humberto-notti/",
+        "retrievedAt": "2026-10-14",
+        "note": "El domicilio Bandera de los Andes 2603, Guaymallén, figura en publicaciones oficiales del Gobierno de Mendoza; la ficha oficial del hospital aporta sus datos institucionales."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
       "id": "hospital-infantil-municipal-sixto-gerardo-gonzalez",
       "name": "Hospital Infantil Municipal Sixto Gerardo González",
       "shortName": "Hospital Infantil Municipal (Córdoba)",
@@ -15124,6 +15608,229 @@
       ]
     },
     {
+      "id": "hospital-materno-infantil-hector-quintana-jujuy",
+      "name": "Hospital Materno Infantil Dr. Héctor Quintana",
+      "shortName": "Hospital Héctor Quintana (Jujuy)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-Y",
+        "organization": "Ministerio de Salud de Jujuy"
+      },
+      "address": {
+        "street": "José Hernández",
+        "number": "624",
+        "locality": "San Salvador de Jujuy",
+        "province": "AR-Y"
+      },
+      "coordinates": {
+        "lat": -24.1812027,
+        "lng": -65.3151528,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Materno Infantil Dr. Héctor Quintana (-24.1812027, -65.3151528), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de Jujuy",
+            "url": "https://salud.jujuy.gob.ar/2022/05/19/el-hospital-materno-infantil-celebra-62-anos-al-servicio-de-jujuy/",
+            "retrievedAt": "2026-10-14",
+            "note": "Sede hospitalaria en José Hernández 624, según la fuente oficial de Jujuy."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-materno-infantil-hector-quintana-jujuy"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Jujuy",
+        "url": "https://salud.jujuy.gob.ar/2022/05/19/el-hospital-materno-infantil-celebra-62-anos-al-servicio-de-jujuy/",
+        "retrievedAt": "2026-10-14",
+        "note": "Sede hospitalaria en José Hernández 624, según la fuente oficial de Jujuy."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-materno-infantil-san-roque-parana",
+      "name": "Hospital Materno Infantil San Roque",
+      "shortName": "Hospital San Roque (Paraná)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-E",
+        "organization": "Hospital Materno Infantil San Roque / Ministerio de Salud de Entre Ríos"
+      },
+      "address": {
+        "street": "La Paz",
+        "number": "435",
+        "locality": "Paraná",
+        "department": "Paraná",
+        "province": "AR-E"
+      },
+      "coordinates": {
+        "lat": -31.73,
+        "lng": -60.5217,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Materno Infantil San Roque (-31.73, -60.5217), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Materno Infantil San Roque / Ministerio de Salud de Entre Ríos",
+            "url": "https://hospitalsanroque.gob.ar/",
+            "retrievedAt": "2026-10-14",
+            "note": "Sitio oficial del hospital: La Paz 435, Paraná."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-materno-infantil-san-roque-parana"
+      },
+      "source": {
+        "organization": "Hospital Materno Infantil San Roque / Ministerio de Salud de Entre Ríos",
+        "url": "https://hospitalsanroque.gob.ar/",
+        "retrievedAt": "2026-10-14",
+        "note": "Sitio oficial del hospital: La Paz 435, Paraná."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
       "id": "hospital-moyano",
       "name": "Hospital Neuropsiquiátrico Dr. Braulio A. Moyano",
       "shortName": "Hospital Dr. Braulio A. Moyano",
@@ -15214,6 +15921,230 @@
       },
       "derivedCategories": [
         "salud-mental"
+      ]
+    },
+    {
+      "id": "hospital-ninos-orlando-alassia-santa-fe",
+      "name": "Hospital de Niños Dr. Orlando Alassia",
+      "shortName": "Hospital Alassia",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-S",
+        "organization": "Gobierno de la Provincia de Santa Fe"
+      },
+      "address": {
+        "street": "Mendoza",
+        "number": "4151",
+        "locality": "Santa Fe",
+        "department": "La Capital",
+        "province": "AR-S"
+      },
+      "coordinates": {
+        "lat": -31.6450941,
+        "lng": -60.7279453,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital de Niños Dr. Orlando Alassia (-31.6450941, -60.7279453), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Provincia de Santa Fe",
+            "url": "https://www.santafe.gov.ar/gestionesdecompras/site/gestion.php?idGestion=138438",
+            "retrievedAt": "2026-10-14",
+            "note": "Gestión de compras oficial: Hospital de Niños Dr. Orlando Alassia, Mendoza 4151, Santa Fe."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-ninos-orlando-alassia-santa-fe"
+      },
+      "source": {
+        "organization": "Gobierno de la Provincia de Santa Fe",
+        "url": "https://www.santafe.gov.ar/gestionesdecompras/site/gestion.php?idGestion=138438",
+        "retrievedAt": "2026-10-14",
+        "note": "Gestión de compras oficial: Hospital de Niños Dr. Orlando Alassia, Mendoza 4151, Santa Fe."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-ninos-santisima-trinidad-cordoba",
+      "name": "Hospital de Niños de la Santísima Trinidad",
+      "shortName": "Hospital de Niños (Córdoba)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-X",
+        "organization": "Municipalidad de Córdoba / Gobierno de Córdoba"
+      },
+      "address": {
+        "street": "Bajada Pucará",
+        "number": "787",
+        "locality": "Córdoba",
+        "department": "Capital",
+        "province": "AR-X"
+      },
+      "coordinates": {
+        "lat": -31.4274951,
+        "lng": -64.1684198,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital de Niños de la Santísima Trinidad (-31.4274951, -64.1684198), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Municipalidad de Córdoba / Gobierno de Córdoba",
+            "url": "https://turismo.cordoba.gob.ar/hospital-de-ninos-de-la-santisima-trinidad/",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha institucional municipal: Bajada Pucará 787, Córdoba."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-ninos-santisima-trinidad-cordoba"
+      },
+      "source": {
+        "organization": "Municipalidad de Córdoba / Gobierno de Córdoba",
+        "url": "https://turismo.cordoba.gob.ar/hospital-de-ninos-de-la-santisima-trinidad/",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha institucional municipal: Bajada Pucará 787, Córdoba."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
       ]
     },
     {
@@ -15508,6 +16439,450 @@
         "Santa Lucía",
         "Oftalmológico Santa Lucía"
       ],
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-pediatria-fernando-barreyro-misiones",
+      "name": "Hospital de Pediatría Dr. Fernando Barreyro",
+      "shortName": "Hospital Barreyro",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-N",
+        "organization": "Ministerio de Salud Pública de Misiones"
+      },
+      "address": {
+        "street": "Mariano Moreno",
+        "number": "110",
+        "locality": "Posadas",
+        "province": "AR-N"
+      },
+      "coordinates": {
+        "lat": -27.3828775,
+        "lng": -55.8907536,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital de Pediatría Dr. Fernando Barreyro (-27.3828775, -55.8907536), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud Pública de Misiones",
+            "url": "https://salud.misiones.gob.ar/hospital-de-pediatria-dr-fernando-barreyro/",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha oficial del Ministerio: Mariano Moreno 110, Posadas."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-pediatria-fernando-barreyro-misiones"
+      },
+      "source": {
+        "organization": "Ministerio de Salud Pública de Misiones",
+        "url": "https://salud.misiones.gob.ar/hospital-de-pediatria-dr-fernando-barreyro/",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha oficial del Ministerio: Mariano Moreno 110, Posadas."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-pediatrico-avelino-castelan-chaco",
+      "name": "Hospital Pediátrico Dr. Avelino Castelán",
+      "shortName": "Hospital Avelino Castelán",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-H",
+        "organization": "Gobierno de la Provincia del Chaco"
+      },
+      "address": {
+        "street": "Avenida Vélez Sarsfield",
+        "number": "180",
+        "locality": "Resistencia",
+        "province": "AR-H"
+      },
+      "coordinates": {
+        "lat": -27.4570017,
+        "lng": -58.9773793,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Pediátrico Dr. Avelino Castelán (-27.4570017, -58.9773793), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Gobierno de la Provincia del Chaco",
+            "url": "https://compras.chaco.gob.ar/organismos/6/licitaciones/2026/4848",
+            "retrievedAt": "2026-10-14",
+            "note": "Contratación oficial del Chaco, octubre de 2026: Hospital Pediátrico Avelino Castelán, Av. Vélez Sarsfield 180, Resistencia."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-pediatrico-avelino-castelan-chaco"
+      },
+      "source": {
+        "organization": "Gobierno de la Provincia del Chaco",
+        "url": "https://compras.chaco.gob.ar/organismos/6/licitaciones/2026/4848",
+        "retrievedAt": "2026-10-14",
+        "note": "Contratación oficial del Chaco, octubre de 2026: Hospital Pediátrico Avelino Castelán, Av. Vélez Sarsfield 180, Resistencia."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-pediatrico-juan-pablo-ii-corrientes",
+      "name": "Hospital Pediátrico Juan Pablo II",
+      "shortName": "Hospital Juan Pablo II",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-W",
+        "organization": "Hospital Pediátrico Juan Pablo II / Ministerio de Salud Pública de Corrientes"
+      },
+      "address": {
+        "street": "Avenida Artigas",
+        "number": "1435",
+        "locality": "Corrientes",
+        "province": "AR-W"
+      },
+      "coordinates": {
+        "lat": -27.4756751,
+        "lng": -58.8184078,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Pediátrico Juan Pablo II (-27.4756751, -58.8184078), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Pediátrico Juan Pablo II / Ministerio de Salud Pública de Corrientes",
+            "url": "https://hospitaljuanpablo.gob.ar/historia/",
+            "retrievedAt": "2026-10-14",
+            "note": "La ficha oficial confirma que está en la capital de Corrientes; la dirección y el punto corresponden al establecimiento identificado en OpenStreetMap."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-pediatrico-juan-pablo-ii-corrientes"
+      },
+      "source": {
+        "organization": "Hospital Pediátrico Juan Pablo II / Ministerio de Salud Pública de Corrientes",
+        "url": "https://hospitaljuanpablo.gob.ar/historia/",
+        "retrievedAt": "2026-10-14",
+        "note": "La ficha oficial confirma que está en la capital de Corrientes; la dirección y el punto corresponden al establecimiento identificado en OpenStreetMap."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-pediatrico-san-luis",
+      "name": "Hospital Pediátrico San Luis",
+      "shortName": "Hospital Pediátrico San Luis",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-D",
+        "organization": "Ministerio de Salud de San Luis"
+      },
+      "address": {
+        "street": "Héroes de Malvinas",
+        "number": "110",
+        "locality": "San Luis",
+        "province": "AR-D"
+      },
+      "coordinates": {
+        "lat": -33.2961918,
+        "lng": -66.3193138,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Pediátrico San Luis (-33.2961918, -66.3193138), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de San Luis",
+            "url": "https://boletinoficial.sanluis.gov.ar/Boletins/VerBoletin/16154",
+            "retrievedAt": "2026-10-14",
+            "note": "El Gobierno provincial lo identifica como Hospital Pediátrico San Luis; la dirección Héroes de Malvinas 110 consta en el registro público de establecimientos y del sistema provincial."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-pediatrico-san-luis"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de San Luis",
+        "url": "https://boletinoficial.sanluis.gov.ar/Boletins/VerBoletin/16154",
+        "retrievedAt": "2026-10-14",
+        "note": "El Gobierno provincial lo identifica como Hospital Pediátrico San Luis; la dirección Héroes de Malvinas 110 consta en el registro público de establecimientos y del sistema provincial."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
       "derivedCategories": [
         "salud-fisica"
       ]
@@ -15956,6 +17331,229 @@
       ]
     },
     {
+      "id": "hospital-provincial-neuquen-castro-rendon",
+      "name": "Hospital Provincial Neuquén Dr. Eduardo Castro Rendón",
+      "shortName": "Hospital Castro Rendón",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-Q",
+        "organization": "Ministerio de Salud de Neuquén"
+      },
+      "address": {
+        "street": "Antártida Argentina",
+        "number": "1245",
+        "locality": "Neuquén",
+        "department": "Confluencia",
+        "province": "AR-Q"
+      },
+      "coordinates": {
+        "lat": -38.9502025,
+        "lng": -68.0569109,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Provincial Neuquén Dr. Eduardo Castro Rendón (-38.9502025, -68.0569109), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de Neuquén",
+            "url": "https://salud.neuquen.gob.ar/lugar/hospital-provincial-neuquen-dr-eduardo-castro-rendon/",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha oficial: Antártida Argentina 1245, edificio 3, Neuquén."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-provincial-neuquen-castro-rendon"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Neuquén",
+        "url": "https://salud.neuquen.gob.ar/lugar/hospital-provincial-neuquen-dr-eduardo-castro-rendon/",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha oficial: Antártida Argentina 1245, edificio 3, Neuquén."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-publico-materno-infantil-salta",
+      "name": "Hospital Público Materno Infantil",
+      "shortName": "Hospital Materno Infantil (Salta)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-A",
+        "organization": "Ministerio de Salud Pública de Salta"
+      },
+      "address": {
+        "street": "Avenida Sarmiento",
+        "number": "1301",
+        "locality": "Salta",
+        "province": "AR-A"
+      },
+      "coordinates": {
+        "lat": -24.7721645,
+        "lng": -65.4156215,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Público Materno Infantil (-24.7721645, -65.4156215), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud Pública de Salta",
+            "url": "https://aonorte.gob.ar/ao-norte-salta/hospital/",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha oficial del Área Operativa Norte: Sarmiento 1301, Salta Capital."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-publico-materno-infantil-salta"
+      },
+      "source": {
+        "organization": "Ministerio de Salud Pública de Salta",
+        "url": "https://aonorte.gob.ar/ao-norte-salta/hospital/",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha oficial del Área Operativa Norte: Sarmiento 1301, Salta Capital."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
       "id": "hospital-ramos",
       "name": "Hospital Ramos Mejía",
       "shortName": "Hospital Ramos Mejía",
@@ -16191,6 +17789,341 @@
         "esi",
         "salud-fisica",
         "salud-mental"
+      ]
+    },
+    {
+      "id": "hospital-regional-rio-gallegos",
+      "name": "Hospital Regional Río Gallegos",
+      "shortName": "Hospital Regional Río Gallegos",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-Z",
+        "organization": "Ministerio de Salud y Ambiente de Santa Cruz"
+      },
+      "address": {
+        "street": "José Ingenieros",
+        "number": "98",
+        "locality": "Río Gallegos",
+        "department": "Güer Aike",
+        "province": "AR-Z"
+      },
+      "coordinates": {
+        "lat": -51.628433,
+        "lng": -69.2202862,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Regional Río Gallegos (-51.628433, -69.2202862), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud y Ambiente de Santa Cruz",
+            "url": "https://boletinoficial.santacruz.gob.ar/contrataciones/licitaciones/54728",
+            "retrievedAt": "2026-10-14",
+            "note": "Contratación oficial de Santa Cruz: José Ingenieros 98, Río Gallegos."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-regional-rio-gallegos"
+      },
+      "source": {
+        "organization": "Ministerio de Salud y Ambiente de Santa Cruz",
+        "url": "https://boletinoficial.santacruz.gob.ar/contrataciones/licitaciones/54728",
+        "retrievedAt": "2026-10-14",
+        "note": "Contratación oficial de Santa Cruz: José Ingenieros 98, Río Gallegos."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-regional-ushuaia-ernesto-campos",
+      "name": "Hospital Regional Ushuaia Gobernador Ernesto Campos",
+      "shortName": "Hospital Regional Ushuaia",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-V",
+        "organization": "Ministerio de Salud de Tierra del Fuego"
+      },
+      "address": {
+        "street": "Avenida 12 de Octubre",
+        "number": "s/n",
+        "locality": "Ushuaia",
+        "province": "AR-V"
+      },
+      "coordinates": {
+        "lat": -54.8136741,
+        "lng": -68.3232278,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Regional Ushuaia Gobernador Ernesto Campos (-54.8136741, -68.3232278), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de Tierra del Fuego",
+            "url": "https://salud.tierradelfuego.gob.ar/hospital-regional-ushuaia/",
+            "retrievedAt": "2026-10-14",
+            "note": "La ficha ministerial sitúa el hospital en Av. 12 de Octubre y Maipú, Ushuaia. Punto aproximado del edificio hospitalario en OpenStreetMap."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-regional-ushuaia-ernesto-campos"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Tierra del Fuego",
+        "url": "https://salud.tierradelfuego.gob.ar/hospital-regional-ushuaia/",
+        "retrievedAt": "2026-10-14",
+        "note": "La ficha ministerial sitúa el hospital en Av. 12 de Octubre y Maipú, Ushuaia. Punto aproximado del edificio hospitalario en OpenStreetMap."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-regional-victor-manuel-sanguinetti-comodoro",
+      "name": "Hospital Regional Dr. Víctor Manuel Sanguinetti",
+      "shortName": "Hospital Regional (Comodoro Rivadavia)",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-U",
+        "organization": "Secretaría de Salud del Chubut"
+      },
+      "address": {
+        "street": "Avenida Hipólito Yrigoyen",
+        "number": "950",
+        "locality": "Comodoro Rivadavia",
+        "department": "Escalante",
+        "province": "AR-U"
+      },
+      "coordinates": {
+        "lat": -45.868359,
+        "lng": -67.487542,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "official-dataset",
+        "note": "Punto candidato de OpenStreetMap para Hospital Regional Dr. Víctor Manuel Sanguinetti (-45.868359, -67.487542), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Secretaría de Salud del Chubut",
+            "url": "https://secretariadesalud.chubut.gov.ar/admin/pages/24",
+            "retrievedAt": "2026-10-14",
+            "note": "Ficha oficial del hospital: Av. Hipólito Yrigoyen 950. Punto tomado del relevamiento municipal publicado para ese domicilio."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-regional-victor-manuel-sanguinetti-comodoro"
+      },
+      "source": {
+        "organization": "Secretaría de Salud del Chubut",
+        "url": "https://secretariadesalud.chubut.gov.ar/admin/pages/24",
+        "retrievedAt": "2026-10-14",
+        "note": "Ficha oficial del hospital: Av. Hipólito Yrigoyen 950. Punto tomado del relevamiento municipal publicado para ese domicilio."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
+        "salud-fisica"
       ]
     },
     {
@@ -16857,6 +18790,118 @@
       },
       "derivedCategories": [
         "esi",
+        "salud-fisica"
+      ]
+    },
+    {
+      "id": "hospital-sor-maria-ludovica-la-plata",
+      "name": "Hospital Interzonal de Agudos Especializado en Pediatría Sor María Ludovica",
+      "shortName": "Hospital Sor María Ludovica",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-B",
+        "organization": "Ministerio de Salud de la Provincia de Buenos Aires"
+      },
+      "address": {
+        "street": "Calle 14",
+        "number": "1631",
+        "locality": "La Plata",
+        "department": "La Plata",
+        "province": "AR-B"
+      },
+      "coordinates": {
+        "lat": -34.9323346,
+        "lng": -57.9430549,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Interzonal de Agudos Especializado en Pediatría Sor María Ludovica (-34.9323346, -57.9430549), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Ministerio de Salud de la Provincia de Buenos Aires",
+            "url": "https://www.ms.gba.gov.ar/sitios/hsormarialudovica/contacto/",
+            "retrievedAt": "2026-10-14",
+            "note": "Contacto oficial del hospital: Calle 14 N° 1631, La Plata."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "hours": null,
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "requirements": [],
+          "audience": [],
+          "appointment": {
+            "mode": "unknown"
+          },
+          "contacts": [],
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          },
+          "categories": [
+            "salud-fisica"
+          ]
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-sor-maria-ludovica-la-plata"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de la Provincia de Buenos Aires",
+        "url": "https://www.ms.gba.gov.ar/sitios/hsormarialudovica/contacto/",
+        "retrievedAt": "2026-10-14",
+        "note": "Contacto oficial del hospital: Calle 14 N° 1631, La Plata."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      },
+      "derivedCategories": [
         "salud-fisica"
       ]
     },
@@ -17699,6 +19744,16 @@
         "locality": "Posadas",
         "province": "AR-N"
       },
+      "coordinates": {
+        "lat": -27.3655740930894,
+        "lng": -55.931454126578,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-georef",
+        "note": "Intersección Av. Lucas B. Areco (Av. 115) y Padre Acevedo geocodificada con Georef; coincide con el domicilio oficial de IMUSA Base 115. Aproximado: marca la esquina, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
       "services": [
         {
           "id": "castracion",
@@ -17876,10 +19931,20 @@
         "organization": "Municipalidad de Santa Fe: Bienestar animal"
       },
       "address": {
-        "street": "Av. Gorriti",
-        "number": "3900",
+        "street": "San José",
+        "number": "8400",
         "locality": "Santa Fe",
         "province": "AR-S"
+      },
+      "coordinates": {
+        "lat": -31.5874591824761,
+        "lng": -60.7058166975323,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-georef",
+        "note": "Dirección actual de IMUSA Jardín Botánico (San José 8400), publicada por la Municipalidad de Santa Fe y geocodificada con Georef. Aproximado: marca la dirección, no la entrada.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
       },
       "services": [
         {

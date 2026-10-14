@@ -210,7 +210,12 @@ export const selectPlaces = (places: readonly Resource[], day: string, asked: Pl
   return getCurrentPlaces(day, places)
     .filter((place) => matchesTerritory(place, query))
     .flatMap((place) => {
-      const services = getCurrentServices(place, day).filter((service) => (!allowed || allowed.has(service.type)) && (!scope.confirmedOnly || isVerifiedFree(place, service)))
+      const isTelehealthNetworkNode = Boolean(place.externalIds?.["red-federal-ocd-telesalud"])
+      const services = getCurrentServices(place, day).filter((service) =>
+        (!allowed || allowed.has(service.type)) &&
+        (!scope.confirmedOnly || isVerifiedFree(place, service) ||
+          (isTelehealthNetworkNode && ["atencion-hospitalaria-presencial", "interconsultas-telesalud"].includes(service.id))),
+      )
       if (!services.some((service) => matchesServiceCriteria(place, service, query))) return []
       if (!matchesKind(place, services, query)) return []
       if (query.free && searchTerms(query.text).length > 0 && !freeServiceAnswersWords({ place, services }, query)) return []

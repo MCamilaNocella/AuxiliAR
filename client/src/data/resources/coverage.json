@@ -3,18 +3,26 @@
   "notice": "GENERADO por client/scripts/resources-sync.mjs desde client/src/data/resources/places. No editar a mano: se pisa con npm run resources:sync. Dice qué hay en cada provincia, no qué está vigente hoy (eso se decide con los datos), salvo quickFilters: hasta qué día el mapa puede mostrar algo de cada filtro rápido, calculado con las reglas de la app: list = en la lista, map = con pines; se muestra mientras la fecha de hoy sea anterior.",
   "provinces": {
     "AR-A": {
-      "places": 1,
-      "currentUntil": "2026-11-12",
+      "places": 2,
+      "currentUntil": "2026-11-13",
       "categories": [
+        "salud-fisica",
         "salud-mental"
       ],
       "serviceTypes": [
-        "mental-health-care"
+        "mental-health-care",
+        "specialty-care",
+        "telesalud"
       ],
       "divisions": [],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "mental-health": {
           "list": "2026-11-12"
@@ -22,8 +30,8 @@
       }
     },
     "AR-B": {
-      "places": 3,
-      "currentUntil": "2026-11-12",
+      "places": 4,
+      "currentUntil": "2026-11-13",
       "categories": [
         "animales",
         "salud-fisica"
@@ -32,23 +40,26 @@
         "rabies-vaccination",
         "spaying-neutering",
         "specialty-care",
+        "telesalud",
         "veterinary-care"
       ],
       "divisions": [
         "Florencio Varela",
-        "La Matanza"
+        "La Matanza",
+        "La Plata"
       ],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "medical": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "animal-health": {
-          "list": "2026-11-12"
+          "list": "2026-11-12",
+          "map": "2026-11-12"
         }
       }
     },
@@ -132,19 +143,51 @@
         }
       }
     },
-    "AR-E": {
-      "places": 3,
-      "currentUntil": "2026-11-12",
+    "AR-D": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
       "categories": [
-        "salud-mental"
+        "salud-fisica"
       ],
       "serviceTypes": [
-        "mental-health-care"
+        "specialty-care",
+        "telesalud"
       ],
       "divisions": [],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-E": {
+      "places": 4,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica",
+        "salud-mental"
+      ],
+      "serviceTypes": [
+        "mental-health-care",
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [
+        "Paraná"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "mental-health": {
           "list": "2026-11-12"
@@ -179,24 +222,145 @@
         }
       }
     },
-    "AR-N": {
-      "places": 2,
-      "currentUntil": "2026-11-12",
+    "AR-G": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
       "categories": [
-        "animales"
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-H": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-J": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-M": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-N": {
+      "places": 3,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "animales",
+        "salud-fisica"
       ],
       "serviceTypes": [
         "rabies-vaccination",
         "spaying-neutering",
+        "specialty-care",
+        "telesalud",
         "veterinary-care"
       ],
       "divisions": [],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "animal-health": {
-          "list": "2026-11-12"
+          "list": "2026-11-12",
+          "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-Q": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [
+        "Confluencia"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         }
       }
     },
@@ -223,23 +387,32 @@
       }
     },
     "AR-S": {
-      "places": 6,
-      "currentUntil": "2026-11-12",
+      "places": 7,
+      "currentUntil": "2026-11-13",
       "categories": [
         "animales",
+        "salud-fisica",
         "salud-mental"
       ],
       "serviceTypes": [
         "rabies-vaccination",
         "spaying-neutering",
+        "specialty-care",
+        "telesalud",
         "veterinary-care",
         "wellbeing-activity"
       ],
-      "divisions": [],
+      "divisions": [
+        "La Capital"
+      ],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "mental-health": {
           "list": "2026-11-12"
@@ -251,43 +424,75 @@
       }
     },
     "AR-T": {
-      "places": 1,
-      "currentUntil": "2026-11-12",
+      "places": 2,
+      "currentUntil": "2026-11-13",
       "categories": [
         "salud-fisica"
       ],
       "serviceTypes": [
-        "specialty-care"
+        "specialty-care",
+        "telesalud"
       ],
       "divisions": [
         "Capital"
       ],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "medical": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-U": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [
+        "Escalante"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         }
       }
     },
     "AR-V": {
-      "places": 1,
-      "currentUntil": "2026-11-12",
+      "places": 2,
+      "currentUntil": "2026-11-13",
       "categories": [
-        "animales"
+        "animales",
+        "salud-fisica"
       ],
       "serviceTypes": [
         "spaying-neutering",
+        "specialty-care",
+        "telesalud",
         "veterinary-care"
       ],
       "divisions": [],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "animal-health": {
           "list": "2026-11-12",
@@ -295,9 +500,31 @@
         }
       }
     },
+    "AR-W": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
     "AR-X": {
-      "places": 16,
-      "currentUntil": "2026-11-12",
+      "places": 17,
+      "currentUntil": "2026-11-13",
       "categories": [
         "animales",
         "salud-fisica",
@@ -307,6 +534,7 @@
         "mental-health-care",
         "spaying-neutering",
         "specialty-care",
+        "telesalud",
         "wellbeing-activity"
       ],
       "divisions": [
@@ -314,12 +542,12 @@
       ],
       "quickFilters": {
         "all": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "medical": {
-          "list": "2026-11-12",
-          "map": "2026-11-12"
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         },
         "mental-health": {
           "list": "2026-11-12"
@@ -327,6 +555,52 @@
         "animal-health": {
           "list": "2026-11-12",
           "map": "2026-11-12"
+        }
+      }
+    },
+    "AR-Y": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        }
+      }
+    },
+    "AR-Z": {
+      "places": 1,
+      "currentUntil": "2026-11-13",
+      "categories": [
+        "salud-fisica"
+      ],
+      "serviceTypes": [
+        "specialty-care",
+        "telesalud"
+      ],
+      "divisions": [
+        "Güer Aike"
+      ],
+      "quickFilters": {
+        "all": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
+        },
+        "medical": {
+          "list": "2026-11-13",
+          "map": "2026-11-13"
         }
       }
     }

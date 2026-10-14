@@ -131,14 +131,6 @@ export const callButton = (number: string, fallbackLabel?: string, day: string =
   return { number, dial: key, label: (fallbackLabel ?? number).replace(UNVERIFIED_TAG, ""), free: false, unverified: true, stale: false }
 }
 
-/** What a button adds under its name, in order: where, when, and whether the call is free - each only if it is recorded; "sin verificar" if it is not */
-export const callButtonDetail = (button: CallButton) =>
-  [button.scope, button.hours ? `de ${button.hours}` : undefined, button.free ? "gratuita" : undefined, button.unverified ? "sin verificar" : undefined].filter(Boolean).join(" · ")
-
-/** What a screen reader says for a call button: everything the button shows, in one sentence (the review notice is said once, above the buttons) */
-export const callButtonLabel = (button: CallButton) =>
-  [`Llamar al ${button.number}`, button.label, button.scope, button.hours ? `de ${button.hours}` : undefined, button.free ? "gratuita" : undefined, button.unverified ? "sin verificar" : undefined].filter(Boolean).join(", ")
-
 /* ── The notice of lines past their review date: said once, not on every button ── */
 
 const DAY_WORDS = new Intl.DateTimeFormat("es-AR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })

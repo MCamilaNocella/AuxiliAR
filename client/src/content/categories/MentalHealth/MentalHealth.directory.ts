@@ -46,13 +46,6 @@ export const GUARDIAS_CABA: Hospital[] = [
   { id: "hospital-muniz", title: "Hospital Muñiz", address: "Uspallata 2272", comuna: "Comuna 4" },
 ]
 
-/** Children's hospitals with the same guardia: the page does not say up to which age they attend ("confirmar límite etario") */
-export const GUARDIAS_CABA_INFANTIL: Hospital[] = [
-  { id: "hospital-tobar-garcia", title: "Hospital Tobar García", address: "Dr. Ramón Carrillo 315", comuna: "Comuna 4" },
-  { id: "hospital-elizalde", title: "Hospital de Niños Pedro de Elizalde", address: "Av. Montes de Oca 40", comuna: "Comuna 1" },
-  { id: "hospital-gutierrez", title: "Hospital de Niños Ricardo Gutiérrez", address: "Gallo 1330", comuna: "Comuna 2" },
-]
-
 /** CeSAC whose own official page lists mental health care (psychology or psychiatry) and whose address is not disputed. Hours are not published for these services */
 export const CESAC_MENTAL: CesacItem[] = [
   { n: 1, title: "CeSAC Nº 1", barrio: "Barracas 1", what: "Psicología", address: "Vélez Sarsfield 1271", comuna: "Comuna 4", phone: "2821-3601", url: "https://buenosaires.gob.ar/gcaba_historico/salud/cesac-1" },

@@ -75,7 +75,6 @@ export const PROCEDURES_SOURCES = [TURNOS_CESAC_MODEL, LEY_26529, CUD_PAGINA, MA
  * each week are on the page). The operativos are suspended by weather: that is said where the agenda is shown.
  */
 export const NEIGHBORHOOD_AGENDA_READ_ON = "2026-10-11"
-export const NEIGHBORHOOD_AGENDA_UNTIL = "2026-10-31"
 
 export type AgendaOperativo = { date: string, hours: string, place: string, note?: string }
 

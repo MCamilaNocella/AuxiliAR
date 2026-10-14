@@ -1,0 +1,117 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "hospital-humberto-notti-mendoza",
+      "name": "Hospital Pediátrico Dr. Humberto Notti",
+      "shortName": "Hospital Notti",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-M",
+        "organization": "Ministerio de Salud y Deportes de Mendoza"
+      },
+      "address": {
+        "street": "Bandera de los Andes",
+        "number": "2603",
+        "locality": "Guaymallén",
+        "province": "AR-M"
+      },
+      "coordinates": {
+        "lat": -32.8979731,
+        "lng": -68.804459,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Hospital Pediátrico Dr. Humberto Notti (-32.8979731, -68.804459), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Ministerio de Salud y Deportes de Mendoza",
+            "url": "https://salud.mendoza.gov.ar/hospital-humberto-notti/",
+            "retrievedAt": "2026-10-14",
+            "note": "El domicilio Bandera de los Andes 2603, Guaymallén, figura en publicaciones oficiales del Gobierno de Mendoza; la ficha oficial del hospital aporta sus datos institucionales."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Ministerio de Salud y Deportes de Mendoza",
+              "url": "https://salud.mendoza.gov.ar/hospital-humberto-notti/",
+              "retrievedAt": "2026-10-14",
+              "note": "El domicilio Bandera de los Andes 2603, Guaymallén, figura en publicaciones oficiales del Gobierno de Mendoza; la ficha oficial del hospital aporta sus datos institucionales."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          }
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+              "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+              "retrievedAt": "2026-10-14",
+              "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          }
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:hospital-humberto-notti-mendoza"
+      },
+      "source": {
+        "organization": "Ministerio de Salud y Deportes de Mendoza",
+        "url": "https://salud.mendoza.gov.ar/hospital-humberto-notti/",
+        "retrievedAt": "2026-10-14",
+        "note": "El domicilio Bandera de los Andes 2603, Guaymallén, figura en publicaciones oficiales del Gobierno de Mendoza; la ficha oficial del hospital aporta sus datos institucionales."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      }
+    }
+  ]
+}

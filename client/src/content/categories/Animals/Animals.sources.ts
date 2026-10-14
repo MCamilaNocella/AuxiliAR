@@ -43,6 +43,3 @@ export const PASTEUR_SERVICIOS: Source = {
 }
 export const CHECKED_AT_PASTEUR = "2026-10-09"
 
-/** A free campaign is not free veterinary care. One copy: "Vacunación y castración gratuitas" and "Más recursos" both show it */
-export const CAMPAIGN_NOT_CARE =
-  "Que una vacunación o una castración sea gratuita no significa que la consulta, los estudios o los tratamientos también lo sean. Tampoco quiere decir que atiendan urgencias. Cada servicio dice qué incluye: leelo en su página."

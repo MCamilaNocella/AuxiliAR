@@ -29,20 +29,6 @@ export type CoverageEntry = {
 
 export const READ_ON = "2026-10-10"
 
-/** The national line of the Ministerio de Salud (SS01) */
-export const NATIONAL_LINE = {
-  title: "Línea 0800 de Salud Sexual",
-  by: "Ministerio de Salud de la Nación",
-  what: "Un servicio de consulta sobre salud sexual y salud reproductiva, pensado para facilitar el acceso a estos servicios en todo el país. La página dice que contiene, orienta y asesora a la población.",
-  forWhom: "A la población en general y a los equipos de salud.",
-  phone: "0800-222-3444",
-  tel: "08002223444",
-  email: "saludsexual@msal.gov.ar",
-  hours: ["De lunes a viernes de 9 a 20 hs.", "Sábados, domingos y feriados: 10 a 18 hs."],
-  notes: ["La página dice: «La llamada es confidencial».", "Atiende un equipo técnico especializado en salud sexual y reproductiva y en salud integral."],
-  pending: ["La página no aclara si la llamada es gratuita ni da una lista de los temas que se pueden consultar.", "No muestra fecha de actualización."],
-}
-
 /** Provinces (SS05, SS09 and the page of Tucumán) */
 export const PROVINCES: CoverageEntry[] = [
   {
@@ -118,9 +104,6 @@ export const HUESPED: CoverageEntry = {
   action: { label: "Buscar servicios cerca tuyo (buscador de Fundación Huésped)", url: "https://donde.huesped.org.ar/" },
 }
 
-/** The buscador «Dónde», said as what it is (SS12) */
-export const HUESPED_SEARCH = "El buscador «Dónde», creado por Fundación Huésped, permite buscar por tu ubicación preservativos, métodos anticonceptivos, vacunatorios, interrupción voluntaria del embarazo y testeo de VIH y otras ITS. La página no dice qué zonas cubre ni cada cuánto se actualiza."
-
 export type EsiEntry = {
   id: string
   title: string
@@ -134,52 +117,3 @@ export type EsiEntry = {
   sourceDate?: string
 }
 
-/** ESI materials and programs (SS14 national note, PBA, Chaco) */
-export const ESI_ENTRIES: EsiEntry[] = [
-  {
-    id: "nacion",
-    title: "Materiales del Ministerio de Educación de la Nación",
-    by: "Ministerio de Educación de la Nación (Programa Nacional de Educación Sexual Integral)",
-    what: "Una nota del 4 de octubre de 2022 presenta nuevos materiales educativos de ESI.",
-    forWhom: ["Niñas, niños y adolescentes con discapacidad intelectual (láminas y folleto).", "Docentes y referentes escolares de nivel inicial, primario y secundario (cuadernillos).", "Niñas y niños de 3 a 5 y de 6 a 9 años (serie animada)."],
-    materials: [
-      "Láminas «Aprendemos a tomar nuestras propias decisiones» y «Hablemos de abuso sexual», y el folleto «La ESI y la discapacidad intelectual», con producciones audiovisuales en Lengua de Señas Argentina.",
-      "Cuadernillos para Referentes Escolares ESI, y la colección «Derechos Humanos, Género y ESI en la escuela».",
-      "«Efemérides para trabajar la ESI».",
-      "«Yo quiero saber ¿y vos?», serie animada hecha junto con Pakapaka.",
-      "«ESI en primera persona», cinco producciones audiovisuales para el nivel secundario.",
-      "Micros de la jornada «Educar en Igualdad», con propuestas para los tres niveles.",
-    ],
-    access: "La nota enlaza archivos y listas de reproducción en otros sitios del Estado y en YouTube; no explica un procedimiento de descarga.",
-    contact: ["La nota no trae datos de contacto."],
-    pending: ["Cómo acceder a cada material: pendiente."],
-    sourceDate: "4 de octubre de 2022",
-  },
-  {
-    id: "buenos-aires",
-    title: "Provincia de Buenos Aires · Dirección de Educación Sexual Integral",
-    by: "Subsecretaría de Educación de la Dirección General de Cultura y Educación (DGCyE)",
-    what: "La Dirección, creada en 2022, busca «fortalecer la implementación de la ESI en las escuelas bonaerenses de todos los niveles y modalidades», con la Ley 26.150 y la Ley provincial 14.744. Sus líneas de acción son la institucionalización de la ESI, la formación docente, la participación estudiantil, el desarrollo curricular y de materiales, el trabajo con familias y comunidad, y la Ley Micaela bonaerense (15.134).",
-    forWhom: ["Escuelas de todos los niveles y modalidades.", "Docentes (formación inicial y continua).", "Estudiantes y familias."],
-    materials: ["Lineamientos curriculares, comunicaciones y documentos, la colección #ESI, el Canal ESI, «Continuemos Estudiando» y el 1° Congreso Provincial de ESI.", "La página no detalla títulos, cursos, fechas ni modalidad de la formación."],
-    access: "La página no explica cómo acceder a cada material.",
-    contact: ["Correo: direccionesi@abc.gob.ar", "No figura un teléfono propio de la Dirección; la página muestra solo el conmutador general (0221) 429-7600."],
-    pending: ["Acceso a cada material y detalle de la formación: pendiente."],
-  },
-  {
-    id: "chaco",
-    title: "Chaco · recursos de ESI",
-    by: "Ministerio de Educación del Chaco",
-    what: "Recursos de ESI publicados por el Ministerio de Educación de la provincia.",
-    forWhom: ["Docentes de nivel inicial, primario y secundario, y equipos de supervisión.", "Estudiantes.", "Familias."],
-    materials: [
-      "Referentes Escolares ESI para nivel inicial, primario y secundario.",
-      "Cuadernillo para estudiantes de ESI y colección para estudiantes.",
-      "Materiales para docentes y «Educación Sexual Integral para compartir en familia».",
-      "Materiales de ESI en lenguas indígenas, y «La ESI y los equipos de supervisión».",
-    ],
-    access: "La página no indica cómo se accede a cada recurso (descarga o consulta) y remite al sitio nacional de recursos de ESI.",
-    contact: ["Gob. Bosch N° 99 – Nave 9, Resistencia, Chaco", "Teléfono 441984, internos 4194 y 4175", "WhatsApp 3624-555579", "Correo: dirdocuypc@gmail.com"],
-    pending: ["Forma de acceso a cada recurso: pendiente."],
-  },
-]

@@ -1,0 +1,117 @@
+{
+  "$schema": "../resource.schema.json",
+  "resources": [
+    {
+      "id": "cepsi-eva-peron-santiago-del-estero",
+      "name": "Centro Provincial de Salud Infantil Eva Perón (CePSI)",
+      "shortName": "CePSI Eva Perón",
+      "kind": "service",
+      "facilityType": "hospital",
+      "jurisdiction": {
+        "level": "provincial",
+        "province": "AR-G",
+        "organization": "Ministerio de Salud de Santiago del Estero"
+      },
+      "address": {
+        "street": "Misiones",
+        "number": "1087",
+        "locality": "Santiago del Estero",
+        "province": "AR-G"
+      },
+      "coordinates": {
+        "lat": -27.7792666,
+        "lng": -64.2733716,
+        "precision": "approximate",
+        "status": "verified",
+        "method": "geocoded-other",
+        "note": "Punto candidato de OpenStreetMap para Centro Provincial de Salud Infantil Eva Perón (CePSI) (-27.7792666, -64.2733716), controlado contra el nombre del establecimiento y la dirección publicada en la fuente oficial. Aproximado: marca el predio/domicilio, no la entrada. La coordenada de Comodoro Rivadavia procede del relevamiento público de la Municipalidad.",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar"
+      },
+      "services": [
+        {
+          "id": "atencion-hospitalaria-presencial",
+          "type": "specialty-care",
+          "name": "Atención hospitalaria presencial",
+          "description": "Establecimiento hospitalario de referencia provincial o regional.",
+          "cost": "unknown",
+          "costNote": "La fuente citada confirma el hospital, pero no permite confirmar la gratuidad de esta prestación en particular.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Ministerio de Salud de Santiago del Estero",
+            "url": "https://msaludsgo.gov.ar/web/hospitales-de-capital-y-la-banda/",
+            "retrievedAt": "2026-10-14",
+            "note": "Directorio oficial provincial: CePSI Eva Perón, Misiones 108; otra página del Ministerio publica Misiones 1087. Se conserva la altura corroborada por el punto cartográfico."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Ministerio de Salud de Santiago del Estero",
+              "url": "https://msaludsgo.gov.ar/web/hospitales-de-capital-y-la-banda/",
+              "retrievedAt": "2026-10-14",
+              "note": "Directorio oficial provincial: CePSI Eva Perón, Misiones 108; otra página del Ministerio publica Misiones 1087. Se conserva la altura corroborada por el punto cartográfico."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "La fuente oficial confirma la existencia del establecimiento y/o sus funciones. La gratuidad de la atención no se afirma."
+          }
+        },
+        {
+          "id": "interconsultas-telesalud",
+          "type": "telesalud",
+          "name": "Nodo de la Red Federal OCD Telesalud (interconsultas entre equipos)",
+          "description": "Función de referencia e interconsulta para equipos de salud; no es un turno de consulta directa para pacientes.",
+          "cost": "unknown",
+          "costNote": "La fuente no informa el costo de esta prestación. No se presenta como servicio gratuito confirmado.",
+          "appointment": {
+            "mode": "unknown"
+          },
+          "source": {
+            "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+            "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+            "retrievedAt": "2026-10-14",
+            "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+          },
+          "evidence": [
+            {
+              "kind": "existence",
+              "organization": "Hospital Garrahan: Red Federal OCD Telesalud",
+              "url": "https://www.garrahan.gov.ar/red-federal-ocd-telesalud",
+              "retrievedAt": "2026-10-14",
+              "note": "La página oficial describe una red de Oficinas de Comunicación a Distancia que conecta equipos de salud públicos de todas las provincias mediante teleconsultas. La pertenencia de cada hospital a la lista de nodos sigue el listado aportado para esta actualización; la página enlaza un directorio externo cuya consulta no expone la nómina sin iniciar sesión."
+            }
+          ],
+          "verification": {
+            "status": "verified",
+            "verifiedAt": "2026-10-14",
+            "verifiedBy": "equipo-auxiliar",
+            "nextReviewDue": "2026-11-13",
+            "notes": "Se conserva como nodo según el listado aportado para esta actualización. La fuente oficial explica el funcionamiento general de la Red, pero el directorio enlazado requiere inicio de sesión y no permitió comprobar aquí la nómina individual."
+          }
+        }
+      ],
+      "externalIds": {
+        "red-federal-ocd-telesalud": "garrahan-node:cepsi-eva-peron-santiago-del-estero"
+      },
+      "source": {
+        "organization": "Ministerio de Salud de Santiago del Estero",
+        "url": "https://msaludsgo.gov.ar/web/hospitales-de-capital-y-la-banda/",
+        "retrievedAt": "2026-10-14",
+        "note": "Directorio oficial provincial: CePSI Eva Perón, Misiones 108; otra página del Ministerio publica Misiones 1087. Se conserva la altura corroborada por el punto cartográfico."
+      },
+      "verification": {
+        "status": "verified",
+        "verifiedAt": "2026-10-14",
+        "verifiedBy": "equipo-auxiliar",
+        "nextReviewDue": "2026-11-13",
+        "notes": "La identidad, el domicilio y el punto se registran con las fuentes indicadas. La gratuidad de las prestaciones y la modalidad de acceso a las interconsultas no se infieren."
+      }
+    }
+  ]
+}

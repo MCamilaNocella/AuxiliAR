@@ -88,6 +88,7 @@ export type ServiceType =
   | "laboratory"
   | "diagnostic-imaging"
   | "specialty-care"
+  | "telesalud"
   | "pharmacy"
   | "nutrition-care"
   | "food-assistance"

@@ -11,12 +11,6 @@ import type { Source } from "@/components/health/SourceList"
  */
 export const CHECKED_AT = "2026-10-09"
 
-/** The text every stage shares: what this page is and is not */
-export const GENERAL_NOTE =
-  "AuxiliAR ofrece un resumen informativo del Calendario Nacional de Vacunación oficial. Los esquemas particulares (por ejemplo, si tenés enfermedades previas, estás embarazada o trabajás en el sistema de salud) deben confirmarse con tu equipo de salud o en el vacunatorio. Si el Ministerio de Salud cambia el calendario, vale su versión oficial."
-
-export const TO_CONFIRM_INTRO = "Estos puntos no se pueden resumir de forma segura: las fuentes oficiales los expresan de forma distinta o necesitan una indicación profesional. Confirmalos antes de vacunarte."
-
 /** One thing to confirm: which aspect it is (the topic) and what the person should confirm, and where */
 export type ConfirmNote = { topic: string, what: string }
 
@@ -425,9 +419,3 @@ export const VACCINATION_STAGES: VaccinationStage[] = [
   },
 ]
 
-/**
- * The order the pages of the calendar are read in, from the youngest to the oldest (the person turns the page, there is no filter by age):
- * recién nacidos → hasta un año → hasta 2 años → 5 años → 11 años → 15 a 64 años → embarazo → 65 años o más. VACCINATION_STAGES keeps its own order
- * (the sources and the direct links of ?etapa= do not depend on it).
- */
-export const STAGE_PAGE_ORDER = ["recien-nacidos", "hasta-un-ano", "hasta-2-anios", "5-anios", "11-anios", "15-a-64", "embarazo", "65-o-mas"]

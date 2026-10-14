@@ -17,12 +17,6 @@ export const PORTAL: Source = {
   url: "https://www.argentina.gob.ar/salud/sexual",
 }
 
-/** SS03: the nine methods it names, the condom as the only one that also prevents ITS, and the right of access (Ley 25.673). No date */
-export const METODOS: Source = {
-  label: "Métodos anticonceptivos · Ministerio de Salud de la Nación",
-  url: "https://www.argentina.gob.ar/salud/sexual/metodos-anticonceptivos",
-}
-
 /** SS04: where methods are obtained (centros de salud, hospitales, obras sociales y prepagas). No date */
 export const PREGUNTAS: Source = {
   label: "Preguntas frecuentes de salud sexual · Ministerio de Salud de la Nación",
@@ -123,20 +117,6 @@ export const HUESPED_DONDE: Pointer = {
   label: "Dónde: buscador de servicios de salud sexual y reproductiva y vacunatorios",
   by: "Fundación Huésped (organización civil)",
   url: "https://donde.huesped.org.ar/",
-}
-
-/** SS06: testing and counseling service of Fundación Huésped in the Ciudad. Its own page says its services are free; no address, hour or contact is copied here */
-export const HUESPED_SERVICIOS: Pointer = {
-  label: "Testeo de VIH y sífilis y consejería en Fundación Huésped (CABA)",
-  by: "Fundación Huésped (organización civil)",
-  url: "https://new.huesped.org.ar/servicios",
-}
-
-/** SS07: educational guide on methods and rights (information, not care) */
-export const HUESPED_METODOS: Pointer = {
-  label: "Guía de métodos anticonceptivos",
-  by: "Fundación Huésped (organización civil)",
-  url: "https://huesped.org.ar/informacion/metodos-anticonceptivos",
 }
 
 /** ── Round 3 (9/10/2026): the pages of the Nación and the Ciudad that the "Anticoncepción y prevención" section explains in its own words ── */
