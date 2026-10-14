@@ -100,15 +100,6 @@ export const PlacesMapView = ({ entries, query, onOpen, onBackToList, fill = fal
         </p>
       )}
 
-      {unmapped > 0 && (
-        <p className="m-0 text-ink-soft">
-          {unmapped === 1 ? "1 lugar no tiene una ubicación verificada y no aparece en el mapa." : `${unmapped} lugares no tienen una ubicación verificada y no aparecen en el mapa.`}{" "}
-          <button type="button" onClick={onBackToList} className="cursor-pointer border-0 bg-transparent p-0 font-bold text-brand underline underline-offset-4">
-            Verlos en la lista
-          </button>
-        </p>
-      )}
-
       {!selected && <p className="m-0 text-muted">Tocá un punto del mapa para ver el lugar. La lista tiene los mismos lugares y todas las acciones.</p>}
       </div>
     </div>

@@ -140,8 +140,7 @@ test("map view: pins for what has them, a clear note for what doesn't, a way bac
   const html = renderToStaticMarkup(createElement(PlacesMapView, { entries: entries(), onOpen() {}, onBackToList() {} }))
   const page = text(html)
   assert.ok(page.includes("Cargando mapa"), "the map is loaded on demand (lazy): a placeholder shows first")
-  assert.ok(page.includes("3 lugares no tienen una ubicación verificada y no aparecen en el mapa."))
-  assert.ok(page.includes("Verlos en la lista"))
+  assert.ok(!page.includes("no tienen una ubicación") && !page.includes("Verlos en la lista"), "the map does not repeat the places without a point: they are in the list")
   assert.ok(page.includes("Tocá un punto del mapa"))
   // all mapped: no note about missing places
   const mapped = text(renderToStaticMarkup(createElement(PlacesMapView, { entries: entries("all", "la boca"), onOpen() {}, onBackToList() {} })))
