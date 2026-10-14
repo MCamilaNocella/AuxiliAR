@@ -19,16 +19,6 @@ export const todayInArgentina = (now: Date = new Date()) => DAY_FORMAT.format(no
 export const dialKey = (dial: string) => dial.replace(/\D/g, "")
 
 /**
- * The lines of the emergency bar, in its order (display.emergencyBarOrder). Verified lines only, but NOT filtered by
- * their review date: a number a person may need must not vanish from the bar, or from the chat that reads the same list,
- * because nobody has re-verified it yet. `npm run resources:check` warns when a review is near or past; the page stays.
- */
-export const getEmergencyBarResources = (): Resource[] =>
-  RESOURCES.filter((resource) => resource.verification.status === "verified" && resource.display?.emergencyBarOrder !== undefined).sort(
-    (a, b) => (a.display?.emergencyBarOrder ?? 0) - (b.display?.emergencyBarOrder ?? 0),
-  )
-
-/**
  * A help line by id (lines/*.json), with the same rule as the bar: verified, whatever its review date. It throws when the
  * id does not exist, so a consumer that names a line the dataset does not have fails in the build and the tests, not in front of a person.
  */

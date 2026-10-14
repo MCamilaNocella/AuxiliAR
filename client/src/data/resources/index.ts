@@ -4,7 +4,7 @@ import taxonomy from "./taxonomy.json"
 import type { CategoryId, Contact, ProvinceCode, ResolvedService, Resource, Service, ServiceType, Verification } from "./resources.types"
 
 export type * from "./resources.types"
-export { RESOURCES, dialKey, getEmergencyBarResources, getHelpLine, lineContact, todayInArgentina } from "./lines"
+export { RESOURCES, dialKey, getHelpLine, lineContact, todayInArgentina } from "./lines"
 
 /*
  * Verified resources (help lines, and places with their services): the one place the app reads them from.

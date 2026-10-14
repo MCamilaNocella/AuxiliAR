@@ -15,12 +15,6 @@ export type Kind = "castracion" | "vacunacion" | "consulta" | "urgencias"
 /** How the page tells the cost of a prestación; "no-aplica" is a service the page says does not exist (it has no cost to tell) */
 export type CostStatus = "gratuita" | "condicionada" | "no-informada" | "arancelada" | "no-aplica"
 
-/** The three groups a person is shown, apart: free according to the page (with the condition said where it applies), cost not confirmed, and arancelados */
-export const FREE_STATUSES: CostStatus[] = ["gratuita", "condicionada"]
-export const UNCONFIRMED_STATUSES: CostStatus[] = ["no-informada"]
-export const PAID_STATUSES: CostStatus[] = ["arancelada"]
-export const NOT_OFFERED_STATUSES: CostStatus[] = ["no-aplica"]
-
 export type Prestacion = {
   kind: Kind
   title: string
@@ -451,37 +445,3 @@ export const UNIVERSITY_HOSPITALS: AnimalPlace[] = [
 /** The agenda the Ciudad's page publishes (read on READ_ON): operativos and centers by day, which change every week */
 export type AgendaEntry = { date: string, service: "castracion" | "vacunacion", place: string, hours?: string, kind: "fijo" | "movil" }
 
-export const CABA_AGENDA_UNTIL = "2026-10-17"
-
-export const CABA_AGENDA: AgendaEntry[] = [
-  { date: "2026-10-01", service: "castracion", kind: "movil", place: "Plaza Monseñor Miguel de Andrea (Recoleta)" },
-  { date: "2026-10-01", service: "castracion", kind: "movil", place: "Plaza Gral. Pueyrredón (Flores)" },
-  { date: "2026-10-02", service: "vacunacion", kind: "movil", place: "Plaza San Miguel de Garicoits, Av. Álvarez Thomas 1231 (Colegiales)", hours: "9 a 12.30 h" },
-  { date: "2026-10-03", service: "castracion", kind: "fijo", place: "Centro Fijo Indoamericano" },
-  { date: "2026-10-03", service: "vacunacion", kind: "movil", place: "Plaza Ciudad de Banff, Av. Arregui y Roma (Versalles)", hours: "9 a 12.30 h" },
-  { date: "2026-10-03", service: "vacunacion", kind: "movil", place: "Parque Avellaneda, Av. Directorio 4147 (Parque Avellaneda)", hours: "9 a 12.30 h" },
-  { date: "2026-10-04", service: "vacunacion", kind: "movil", place: "Plaza Cañitas, Báez y Clay (Palermo)", hours: "9 a 12.30 h" },
-  { date: "2026-10-04", service: "vacunacion", kind: "movil", place: "Barrio Tres Rosas, Orma y Agustín Magaldi (Barracas)", hours: "9 a 12.30 h" },
-  { date: "2026-10-04", service: "vacunacion", kind: "movil", place: "Plaza 1° de Mayo, Pasco y Alsina (Balvanera)", hours: "14 a 17.30 h" },
-  { date: "2026-10-05", service: "castracion", kind: "movil", place: "Plaza Benito Nazar (Villa Crespo)" },
-  { date: "2026-10-06", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-06", service: "castracion", kind: "movil", place: "Plaza Martín Rodríguez (Villa Pueyrredón)" },
-  { date: "2026-10-06", service: "castracion", kind: "movil", place: "Parque Florentino Ameghino (Parque Patricios)" },
-  { date: "2026-10-07", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-08", service: "castracion", kind: "fijo", place: "Centro Fijo Indoamericano" },
-  { date: "2026-10-08", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-08", service: "castracion", kind: "movil", place: "Plaza Aristóbulo del Valle (Villa del Parque)" },
-  { date: "2026-10-09", service: "castracion", kind: "movil", place: "Plaza Corralón Floresta (Floresta)" },
-  { date: "2026-10-09", service: "vacunacion", kind: "movil", place: "Plazoleta Nueva Pompeya, Av. Sáenz y Traful (Nueva Pompeya)", hours: "9 a 12.30 h" },
-  { date: "2026-10-10", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-10", service: "vacunacion", kind: "movil", place: "Parque Lezama, Av. Martín García y Defensa (San Telmo)", hours: "9 a 12.30 h" },
-  { date: "2026-10-10", service: "vacunacion", kind: "movil", place: "Plaza Houssay, Paraguay y Junín (Recoleta)", hours: "9 a 12.30 h" },
-  { date: "2026-10-11", service: "vacunacion", kind: "movil", place: "Centro de Jubilados Lugano, Murguiondo 3386 (Villa Lugano)", hours: "9 a 12.30 h" },
-  { date: "2026-10-11", service: "vacunacion", kind: "movil", place: "Plaza Manzana 66, Av. Belgrano y Av. Jujuy (Balvanera)", hours: "9 a 12.30 h" },
-  { date: "2026-10-13", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-13", service: "castracion", kind: "movil", place: "Barrio Castex (Flores)" },
-  { date: "2026-10-13", service: "castracion", kind: "movil", place: "Parque Onega (Villa Devoto)" },
-  { date: "2026-10-15", service: "castracion", kind: "fijo", place: "Centro Fijo Indoamericano" },
-  { date: "2026-10-15", service: "castracion", kind: "fijo", place: "Centro Fijo Costanera Sur" },
-  { date: "2026-10-17", service: "castracion", kind: "fijo", place: "Centro Fijo Indoamericano" },
-]
