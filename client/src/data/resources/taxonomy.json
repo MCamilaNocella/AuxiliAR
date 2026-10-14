@@ -93,6 +93,7 @@
     { "id": "laboratory", "label": "Laboratorio", "categories": ["salud-fisica"] },
     { "id": "diagnostic-imaging", "label": "Diagnóstico por imágenes", "categories": ["salud-fisica"] },
     { "id": "specialty-care", "label": "Atención de especialidades", "categories": ["salud-fisica"] },
+    { "id": "telesalud", "label": "Telesalud e interconsultas", "categories": ["salud-fisica"] },
     { "id": "pharmacy", "label": "Farmacia", "categories": ["salud-fisica"] },
     { "id": "nutrition-care", "label": "Nutrición", "categories": ["salud-fisica"] },
     { "id": "food-assistance", "label": "Asistencia alimentaria", "categories": ["salud-fisica"] },
@@ -143,7 +144,7 @@
   "categories": [
     { "id": "salud-fisica", "label": "Salud general" },
     { "id": "salud-mental", "label": "Salud mental" },
-    { "id": "esi", "label": "Educación sexual (ESI)" },
+    { "id": "esi", "label": "Salud Sexual y Reproductiva (SSyR)" },
     { "id": "animales", "label": "Animales" },
     { "id": "centros", "label": "Centros de atención" },
     { "id": "recursos", "label": "Mis recursos" },

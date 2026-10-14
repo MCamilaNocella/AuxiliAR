@@ -1,8 +1,8 @@
 import { isMappable } from "@/data/resources"
-import type { CategoryId } from "@/data/resources"
+import type { CategoryId, ServiceType } from "@/data/resources"
 import { matchingServices } from "./filters"
 import type { PlaceEntry, PlaceQuery } from "./filters"
-import { facilityTypeLabel, serviceName } from "./format"
+import { facilityTypeLabel, isVerifiedFree, serviceName } from "./format"
 
 /** A place that can be drawn on the map: its coordinates were verified. Nothing is ever geocoded in the browser */
 export type MapPin = {
@@ -14,6 +14,8 @@ export type MapPin = {
   kind: string
   /** The category of the place, for the symbol of its pin (see pinCategory) */
   category: CategoryId
+  /** Services with verified free access, for the icons shown in the map tooltip */
+  services: { id: string, type: ServiceType, name: string, category: CategoryId | undefined }[]
   /** What it is for: the services of the place that the map shows (the ones of documented gratuity, as in its card), at most three */
   purpose: string
 }
@@ -53,7 +55,17 @@ export const getMapPins = (entries: PlaceEntry[], asked?: PlaceQuery): MapPin[] 
     const services = answering.length > 0 ? answering : entry.services
     const coordinates = place.coordinates
     if (!isMappable(place) || !coordinates || !Number.isFinite(coordinates.lat) || !Number.isFinite(coordinates.lng)) return []
-    return [{ id: place.id, name: place.name, lat: coordinates.lat, lng: coordinates.lng, kind: shortKind(place.facilityType), category: pinCategory(services), purpose: purposeOf(services) }]
+    const confirmedFree = services.filter((service) => isVerifiedFree(place, service))
+    return [{
+      id: place.id,
+      name: place.name,
+      lat: coordinates.lat,
+      lng: coordinates.lng,
+      kind: shortKind(place.facilityType),
+      category: pinCategory(services),
+      services: confirmedFree.map((service) => ({ id: service.id, type: service.type, name: serviceName(service), category: service.categories[0] })),
+      purpose: purposeOf(services),
+    }]
   })
 
 /**
