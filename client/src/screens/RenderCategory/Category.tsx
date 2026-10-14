@@ -1,20 +1,22 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useLocation, useSearchParams, type URLSearchParamsInit } from "react-router"
 import { CategoryBanner } from "@/components/category/CategoryBanner"
 import { CategoryIntro } from "@/components/category/CategoryIntro"
 import { CategorySidebar } from "@/components/category/CategorySidebar"
+import { DESKTOP_QUERY } from "@/components/category/CategorySidebar/CategorySidebar.constants"
 import { SectionHeading } from "@/components/category/SectionHeading"
 import { Page } from "@/components/layout/Page"
 import { TransitionContent } from "@/components/layout/TransitionContent"
 import { SectionNavContext } from "@/components/sectionBlocks/BlockLook"
 import { ALL_CATEGORIES } from "@/content/categories"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { SECTION_PARAM } from "@/router/paths"
 import { changeContent } from "@/utils/contentTransition"
 import { scrollTopBelowHeader } from "@/utils/scroll"
 
 /**
  * Category screen: sidebar with the category's sections + content.
- * Until a section is chosen it shows the category intro (banner on desktop, wallpaper on mobile).
+ * On a computer it opens on the first section; on a phone, until a section is chosen, it shows the category intro (wallpaper).
  * The open section lives in the URL (?seccion=…), so links (e.g. from Auxi) can open it and Back returns to the previous one.
  */
 export const Category = () => {
@@ -24,6 +26,9 @@ export const Category = () => {
   const category = ALL_CATEGORIES.find(({ to }) => to === path)
   const [searchParams, setSearchParams] = useSearchParams()
   const rootRef = useRef<HTMLDivElement>(null)
+  const isDesktop = useMediaQuery(DESKTOP_QUERY)
+  // The category whose intro was asked for (its name in the sidebar): on a computer, only then does the intro show
+  const [introFor, setIntroFor] = useState<string | null>(null)
 
   // Changing section keeps the page where it is (no jump to the top and auto-scroll again), but never further down than the
   // top of the category, its banner: otherwise the new section would open in its middle
@@ -60,8 +65,11 @@ export const Category = () => {
   }
 
   const { sections } = category
-  // Without a sidebar there is nothing to choose: the first section is always open
-  const activeSection = category.noSidebar ? sections[0] : sections.find(({ id }) => id === searchParams.get(SECTION_PARAM))
+  // Without a sidebar there is nothing to choose: the first section is always open. On a computer, the first one too
+  // while none is chosen, unless the intro was asked for
+  const chosenSection = sections.find(({ id }) => id === searchParams.get(SECTION_PARAM))
+  const opensOnFirst = category.noSidebar || (isDesktop && introFor !== category.id)
+  const activeSection = chosenSection ?? (opensOnFirst ? sections[0] : undefined)
   const activeSectionId = activeSection?.id ?? null
 
   return (
@@ -72,7 +80,10 @@ export const Category = () => {
           sections={sections}
           activeSectionId={activeSectionId}
           onSelectSection={(sectionId) => showSection({ [SECTION_PARAM]: sectionId })}
-          onShowIntro={() => showSection({})}
+          onShowIntro={() => {
+            setIntroFor(category.id)
+            void showSection({})
+          }}
         />
       )}
       <div className="flex min-w-0 flex-1 flex-col">
