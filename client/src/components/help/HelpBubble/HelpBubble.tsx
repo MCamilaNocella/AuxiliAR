@@ -6,8 +6,8 @@ import type { HelpBubbleProps } from "./HelpBubble.types"
  * Border in control-line (≥3:1 on every theme) plus a dark shadow, so it stands out from the page;
  * high contrast gets a 2px border. The close badge is inverted (ink background) to be easy to spot.
  */
-export const HelpBubble = ({ message, onOpen, onClose }: HelpBubbleProps) => (
-  <div className="relative w-max max-w-[calc(100vw-5rem)] origin-bottom-right animate-bubble-in rounded-2xl border border-control-line bg-card px-3.5 py-2 text-ink shadow-[0_6px_20px_rgba(0,0,0,.28)] motion-reduce:animate-none in-data-[theme=contrast]:border-2">
+export const HelpBubble = ({ message, onOpen, onClose, side = "left" }: HelpBubbleProps) => (
+  <div className={`relative w-max max-w-[calc(100vw-5rem)] ${side === "left" ? "origin-bottom-right" : "origin-bottom-left"} animate-bubble-in rounded-2xl border border-control-line bg-card px-3.5 py-2 text-ink shadow-[0_6px_20px_rgba(0,0,0,.28)] motion-reduce:animate-none in-data-[theme=contrast]:border-2`}>
     {/* Tapping the text also opens the chat; keyboard users reach the same action through Auxi's button */}
     <button
       type="button"
@@ -30,7 +30,7 @@ export const HelpBubble = ({ message, onOpen, onClose }: HelpBubbleProps) => (
     {/* Tail pointing down at Auxi's head */}
     <span
       aria-hidden="true"
-      className="absolute right-4 -bottom-1.5 size-3 rotate-45 border-r border-b border-control-line bg-card in-data-[theme=contrast]:-bottom-2 in-data-[theme=contrast]:border-r-2 in-data-[theme=contrast]:border-b-2"
+      className={`absolute ${side === "left" ? "right-4" : "left-4"} -bottom-1.5 size-3 rotate-45 border-r border-b border-control-line bg-card in-data-[theme=contrast]:-bottom-2 in-data-[theme=contrast]:border-r-2 in-data-[theme=contrast]:border-b-2`}
     />
   </div>
 )

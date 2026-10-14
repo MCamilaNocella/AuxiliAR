@@ -27,7 +27,10 @@ export const AccessibilityControls = () => {
 
   return (
     <>
-      <AccessibilityButton expanded={open} spun={spun} onClick={handleOpen} />
+      {/* The button sits on the always-red header; the panel keeps the page theme */}
+      <span className="on-header contents">
+        <AccessibilityButton expanded={open} spun={spun} onClick={handleOpen} />
+      </span>
       <AccessibilityPanel open={open} onClose={handleClose} />
     </>
   )
