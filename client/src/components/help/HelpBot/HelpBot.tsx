@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from "react"
-import { useAuxiPreview } from "@/hooks/useAuxiPreview"
 import { useIsOverDarkBackground } from "@/hooks/useIsOverDarkBackground"
 import { useLongPressDrag } from "@/hooks/useLongPressDrag"
 import { AUXI_MOTION_POINT, Auxi } from "../Auxi"
@@ -22,8 +21,6 @@ export const HelpBot = ({ onOpen }: HelpBotProps) => {
   const [bubbleSide, setBubbleSide] = useState<"left" | "right">("left")
   // Auxi floats over the page: its wave lines follow whatever is behind them (e.g. bg-home vs. a card)
   const onDark = useIsOverDarkBackground(buttonRef, containerRef, AUXI_MOTION_POINT)
-  // Only set while the "Modelos de Auxi" page is open
-  const preview = useAuxiPreview()
 
   const hideBubble = () => setBubbleVisible(false)
 
@@ -71,7 +68,7 @@ export const HelpBot = ({ onOpen }: HelpBotProps) => {
         // touch-none + select-none: a long press drags Auxi instead of scrolling the page or selecting it
         className={`block size-18 lg:size-22 touch-none select-none rounded-full transition-transform [-webkit-touch-callout:none] focus-visible:ring-3 focus-visible:ring-card motion-reduce:transition-none ${dragging ? "scale-110 cursor-grabbing drop-shadow-[0_8px_12px_rgba(0,0,0,.35)]" : "cursor-pointer hover:scale-105"}`}
       >
-        <Auxi onDark={onDark} className="size-full" {...preview} />
+        <Auxi onDark={onDark} className="size-full" />
       </button>
     </div>
   )

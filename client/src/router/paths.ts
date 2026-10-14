@@ -9,9 +9,6 @@ export const PATHS = {
   firstAidQuiz: "/primeros-auxilios/quiz",
   firstAidGuide: (slug: string) => `/primeros-auxilios/${slug}`,
   about: "/sobre-auxiliar",
-  login: "/login",
-  auxiModels: "/auxi-modelos",
-  peerChatSketch: "/boceto-chat-personas",
 } as const
 
 /** Salud general (before: Salud física). The old address keeps working: it redirects, with its query, to the new one */

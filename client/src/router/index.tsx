@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, type RouteObject } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
@@ -9,27 +9,6 @@ import { NotFound } from "@/screens/NotFound";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
 import { LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
 
-/**
- * Prototype screens (the Auxi models comparison, the peer chat sketch, the empty login): registered only in development, so the
- * demo and production builds answer them with the 404. Their code is kept, and loaded only when one of them is opened.
- */
-const PROTOTYPES_ENABLED = import.meta.env.DEV
-
-const prototypeRoutes: RouteObject[] = PROTOTYPES_ENABLED
-  ? [
-      { path: PATHS.auxiModels, lazy: async () => ({ Component: (await import("@/screens/AuxiModels")).AuxiModels }) },
-      { path: PATHS.peerChatSketch, lazy: async () => ({ Component: (await import("@/screens/PeerChatSketch")).PeerChatSketch }) },
-    ]
-  : []
-
-const loginRoutes: RouteObject[] = PROTOTYPES_ENABLED ? [{ path: PATHS.login, lazy: async () => ({ Component: (await import("@/screens/Login")).Login }) }] : []
-
-// Local design pages in src/sandbox (git-ignored): each folder's route.tsx exports `sandboxRoute`.
-// In a clone without that folder the glob is empty and nothing changes.
-const sandboxRoutes = Object.values(
-  import.meta.glob<{ sandboxRoute: RouteObject }>("../sandbox/*/route.tsx", { eager: true }),
-).map(({ sandboxRoute }) => sandboxRoute);
-
 const router = createBrowserRouter([
   {
     element: <RootLayout/>,
@@ -38,7 +17,7 @@ const router = createBrowserRouter([
         element: <AppLayout/>,
         children: [
           { path: PATHS.home, element: <Home/> },
-          // Addresses whose pages are still empty (and not in the navigation) send people to the home instead of to a blank page; their code is kept
+          // /temas alone has no page (each category is /temas/<slug>): it sends people to the home
           { path: PATHS.topics, element: <Navigate to={PATHS.home} replace/> },
           // Salud física was renamed Salud general: the old address redirects (before the generic :slug route)
           { path: PATHS.topic(LEGACY_PHYSICAL_HEALTH_SLUG), element: <RedirectToHealthGeneral/> },
@@ -57,13 +36,10 @@ const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import("@/screens/FirstAidGuide")).FirstAidGuideScreen }),
           },
           { path: PATHS.about, element: <Category/> },
-          ...prototypeRoutes,
-          ...sandboxRoutes,
           // Last: any other address
           { path: "*", element: <NotFound/> },
         ],
       },
-      ...loginRoutes,
     ],
   },
 ]);
