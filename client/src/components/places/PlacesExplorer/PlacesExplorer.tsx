@@ -254,6 +254,13 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
         </div>
       </div>
 
+      {/* On the map: what each symbol means, at hand, right under the search */}
+      {map && view === "map" && results.length > 0 && (
+        <div className="hidden lg:block">
+          <PlacesMapLegend entries={results} query={query} />
+        </div>
+      )}
+
       {mentalHealth === "crisis" && <UrgentHelp context="crisis" />}
 
       {showFilters && (
@@ -288,12 +295,6 @@ export const PlacesExplorer = ({ scope: embeddedScope, filters = NO_FILTERS, int
       <p ref={countRef} role="status" aria-live="polite" tabIndex={-1} className="m-0 font-bold outline-none">
         {count}
       </p>
-
-      {map && view === "map" && results.length > 0 && (
-        <div className="hidden lg:block">
-          <PlacesMapLegend entries={results} query={query} />
-        </div>
-      )}
 
       {state.status === "error" && (
         <div className="flex flex-col items-start gap-3">
