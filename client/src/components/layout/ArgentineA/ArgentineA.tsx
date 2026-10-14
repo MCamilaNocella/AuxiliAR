@@ -14,18 +14,22 @@ const SUN_EDGE = "#d97c0a"
 const SUN_FEATURES = "#a35a00"
 
 /** The logo's "A": light blue, with the Sol de Mayo in its white counter and a red cross on the right shoulder */
-export const ArgentineA = ({ outline, outlineWidth = 4, crossOutlineWidth = outlineWidth, ...svg }: ArgentineAProps) => {
+export const ArgentineA = ({
+  outline,
+  crossOutline,
+  outlineWidth = 4,
+  crossOutlineWidth = outlineWidth,
+  ...svg
+}: ArgentineAProps) => {
   const maskId = useId()
 
   return (
     // overflow visible: the outline goes past the A's box
     <svg viewBox={A_VIEWBOX} overflow="visible" aria-hidden="true" {...svg}>
       {/* Outline behind everything: the A's edge and the cross's, stroked (their inner half hides under them) */}
-      {outline && (
-        <>
-          <path d={A_OUTER} fill="none" stroke={outline} strokeWidth={outlineWidth * 2} strokeLinejoin="round" />
-          <path d={A_CROSS} fill="none" stroke={outline} strokeWidth={crossOutlineWidth * 2} strokeLinejoin="round" />
-        </>
+      {outline && <path d={A_OUTER} fill="none" stroke={outline} strokeWidth={outlineWidth * 2} strokeLinejoin="round" />}
+      {crossOutline && (
+        <path d={A_CROSS} fill="none" stroke={crossOutline} strokeWidth={crossOutlineWidth * 2} strokeLinejoin="round" />
       )}
       {/* The cross cuts the A with a gap around it (transparent: the background shows through) */}
       <mask id={maskId} maskUnits="userSpaceOnUse">

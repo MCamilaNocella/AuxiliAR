@@ -6,9 +6,7 @@ export const LOCKUP_HEIGHT = 317
 /** The A's size relative to the letters' capitals */
 export const A_SCALE = 1.45
 
-/** Visible outline thickness of the A and the letters, in wordmark pixels (the letters are 317 tall) */
-export const OUTLINE_WIDTH = 11
-/** The cross's outline, a bit thicker */
+/** Visible thickness of the white outline around the cross, in wordmark pixels (the letters are 317 tall) */
 export const CROSS_OUTLINE_WIDTH = 13
 
 /** The letters' baseline; a bigger A grows from it, upwards and to the right */
@@ -19,7 +17,7 @@ export const A_RIGHT = 350.8
 export const A_BOX = { x: -5.17, y: -1.17, width: 361.66, height: 322.92 }
 
 /** "uxiliAR": the traced letters (without the first A, which the Argentine A replaces) */
-/* Edges smoothed (no pixel steps from the tracing), so the outline looks clean. The holes of the last A and R are redrawn clean (no pixel steps) and bigger than traced, so the outline inside them looks neat; the A's follows its legs */
+/* Edges smoothed (no pixel steps from the tracing). The holes of the last A and R are redrawn clean and a bit bigger than traced; the A's follows its legs */
 export const LETTERS = [
   {
     "char": "u",
