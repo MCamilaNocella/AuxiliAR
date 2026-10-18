@@ -10,6 +10,13 @@
  */
 @theme {
   --font-sans: "Nunito Variable", "Nunito", system-ui, sans-serif;
+  /*
+   * The header's row (a container, in rem so it follows the text size). Logo, "¿Querés hablar con alguien?" and the
+   * gear with its "Ajustes" label out (on load) take 21.9rem on one line: narrower than header-icon, the talk button
+   * drops its icon and "Ajustes" gets smaller (19.4rem); narrower than header-row, the talk button goes to a second row.
+   */
+  --container-header-icon: 22rem;
+  --container-header-row: 19.5rem;
   --font-display: "DM Serif Display", Georgia, serif;
 
   /* Text */

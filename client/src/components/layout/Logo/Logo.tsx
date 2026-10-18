@@ -22,18 +22,21 @@ const ALIGNMENT_MARGINS: Record<Exclude<HeaderLogoAlignment, "top">, string> = {
   center: "mt-[0.16em] -mb-[0.15em]",
 }
 
+/* Smaller on phones, and smaller still when the header is tight (the talk button under it): "Ajustes" fits beside it (and the narrowest one, a small phone with the biggest text, a bit more) */
+const HEADER_SIZE = "text-[1.375rem] sm:text-[1.625rem] @max-header-row:text-[1.125rem] @max-[14.5rem]:text-[1rem]"
+
 /**
- * The logo at the header's size, sitting as `alignment` says. The room for the cross goes around it, not in it (padding
+ * The logo at the header's size (see HEADER_SIZE), sitting as `alignment` says. The room for the cross goes around it, not in it (padding
  * would lift the cross off "AR").
  */
 export const HeaderWordmark = ({ alignment = DEFAULT_HEADER_LOGO_ALIGNMENT }: { alignment?: HeaderLogoAlignment }) =>
   alignment === "top" ? (
     <span className="py-2">
-      <Wordmark className="text-[1.625rem]" />
+      <Wordmark className={HEADER_SIZE} />
     </span>
   ) : (
     <span className="flex py-2">
-      <Wordmark className={`${ALIGNMENT_MARGINS[alignment]} text-[1.625rem]`} />
+      <Wordmark className={`${ALIGNMENT_MARGINS[alignment]} ${HEADER_SIZE}`} />
     </span>
   )
 
