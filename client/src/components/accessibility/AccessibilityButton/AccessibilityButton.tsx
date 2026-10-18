@@ -24,7 +24,7 @@ const hoverGlint = "shine-mask text-shine group-hover:animate-shine-hover group-
  *  - Mouse over / keyboard focus (computers): the label slides out and stays while hovered, and the
  *    glint sweeps once across both.
  *  - Press: the gear turns half a turn; on close it turns back once the panel has slid away.
- * The button is anchored to the right, so it grows leftwards.
+ * The button is anchored to the right, so it grows leftwards. On a tight header (a container) the label is smaller, and on the tightest one (a small phone with the biggest text) the gear too.
  * Glint: a copy of the gear/text in the shine color on top, visible only through a moving mask.
  * The gear's mask sits outside its spin, so the light always travels the same way as the label's.
  */
@@ -45,29 +45,29 @@ export const AccessibilityButton = ({ expanded, spun, onClick }: AccessibilityBu
       className="-mr-1 grid animate-label-reveal grid-cols-[0fr] transition-[grid-template-columns] duration-700 ease-in-out group-hover:grid-cols-[1fr] group-hover:duration-300 group-hover:ease-out group-focus-visible:duration-300 group-focus-visible:grid-cols-[1fr] motion-reduce:animate-none motion-reduce:transition-none"
     >
       <span className="min-w-0 overflow-hidden">
-        <span className="relative block translate-x-full animate-label-roll pl-3.5 text-base font-bold whitespace-nowrap opacity-0 transition-[translate,opacity] duration-700 ease-in-out group-hover:translate-x-0 group-hover:duration-300 group-hover:ease-out group-focus-visible:duration-300 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:animate-none motion-reduce:transition-none">
+        <span className="relative block translate-x-full animate-label-roll pl-3.5 text-base font-bold @max-header-icon:pl-2.5 @max-header-icon:text-sm whitespace-nowrap opacity-0 transition-[translate,opacity] duration-700 ease-in-out group-hover:translate-x-0 group-hover:duration-300 group-hover:ease-out group-focus-visible:duration-300 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:animate-none motion-reduce:transition-none">
           Ajustes
-          <span className="absolute inset-y-0 right-0 left-3.5 shine-mask animate-shine-sweep text-shine motion-reduce:hidden">
+          <span className="absolute inset-y-0 right-0 left-3.5 shine-mask animate-shine-sweep @max-header-icon:left-2.5 text-shine motion-reduce:hidden">
             Ajustes
           </span>
-          <span className={`absolute inset-y-0 right-0 left-3.5 ${hoverGlint}`}>Ajustes</span>
+          <span className={`absolute inset-y-0 right-0 left-3.5 @max-header-icon:left-2.5 ${hoverGlint}`}>Ajustes</span>
         </span>
       </span>
     </span>
-    <span className="grid size-11 flex-none place-items-center">
+    <span className="grid size-11 flex-none place-items-center @max-[14.5rem]:size-9">
       <span className="col-start-1 row-start-1">
         <GearSpin spun={spun}>
-          <Settings aria-hidden="true" className="size-6.5" />
+          <Settings aria-hidden="true" className="size-6.5 @max-[14.5rem]:size-5.5" />
         </GearSpin>
       </span>
       <span className="col-start-1 row-start-1 shine-mask animate-shine-sweep text-shine motion-reduce:hidden">
         <GearSpin spun={spun}>
-          <Settings aria-hidden="true" className="size-6.5" />
+          <Settings aria-hidden="true" className="size-6.5 @max-[14.5rem]:size-5.5" />
         </GearSpin>
       </span>
       <span className={`col-start-1 row-start-1 ${hoverGlint}`}>
         <GearSpin spun={spun}>
-          <Settings aria-hidden="true" className="size-6.5" />
+          <Settings aria-hidden="true" className="size-6.5 @max-[14.5rem]:size-5.5" />
         </GearSpin>
       </span>
     </span>

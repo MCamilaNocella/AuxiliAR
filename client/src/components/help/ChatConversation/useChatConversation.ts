@@ -145,7 +145,7 @@ export const useChatConversation = () => {
     return withAnswer
   }
 
-  /** "¿Necesitás hablar con alguien?" in the header: Auxi asks, with the buttons to answer (and no emergency question pending) */
+  /** "¿Querés hablar con alguien?" in the header: Auxi asks, with the buttons to answer (and no emergency question pending) */
   const offerPerson = () => {
     setAskingEmergency(false)
     setOfferingPerson(true)

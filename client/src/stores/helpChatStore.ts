@@ -25,7 +25,7 @@ type HelpChatState = {
   conversation: number
   /** Set: the chat shows the chat with a volunteer instead of Auxi's */
   person: PersonTalk | null
-  /** "¿Necesitás hablar con alguien?" was pressed: Auxi's conversation asks it as soon as it's on screen */
+  /** "¿Querés hablar con alguien?" was pressed: Auxi's conversation asks it as soon as it's on screen */
   personOfferPending: boolean
 }
 
@@ -59,7 +59,7 @@ export const helpChatStore = {
   /** Back to Auxi's conversation, as it was left */
   backToAuxi: () => set({ person: null }),
   /**
-   * "¿Necesitás hablar con alguien?" (header): opens the chat and Auxi asks whether they want a volunteer. Already talking
+   * "¿Querés hablar con alguien?" (header): opens the chat and Auxi asks whether they want a volunteer. Already talking
    * with one: it just opens. Completing a Mi Salud profile: back to the usual conversation first.
    */
   askAboutPerson: () =>

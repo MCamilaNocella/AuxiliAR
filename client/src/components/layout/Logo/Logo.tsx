@@ -1,41 +1,59 @@
+import { lazy, Suspense } from "react"
 import { Link } from "react-router"
+import { DEFAULT_HEADER_LOGO_ALIGNMENT } from "@/data/headerStyle"
+import { useHeaderLogo } from "@/hooks/useHeaderLogo"
+import { useHeaderLogoAlignment } from "@/hooks/useHeaderLogoAlignment"
 import { PATHS } from "@/router/paths"
-import { ArgentineA } from "../ArgentineA"
-import {
-  A_BOX,
-  A_RIGHT,
-  A_SCALE,
-  BASELINE,
-  CROSS_OUTLINE_WIDTH,
-  LETTERS,
-  LOCKUP_HEIGHT,
-  LOCKUP_WIDTH,
-} from "./Logo.constants"
+import type { HeaderLogoAlignment } from "@/types/headerStyle"
+import { Wordmark } from "../Wordmark"
 
-/* Fixed logo colors (same in every theme): "uxili" in the A's white, "AR" in its light blue, a white outline only around the cross */
-const WHITE = "#ffffff"
-const BLUE = "#59a5de"
+/** In development, a logo sketch chosen on /logos can take the logo's place (loaded only then) */
+const HeaderSketchLogo = import.meta.env.DEV
+  ? lazy(async () => ({ default: (await import("@/screens/LogoSketches/LogoSketches.headerLogo")).HeaderSketchLogo }))
+  : null
 
-/* The bigger A grows from the baseline, upwards and to the right, and pushes "uxiliAR" by its extra width */
-const SHIFT = A_RIGHT * (A_SCALE - 1)
-const TOP = BASELINE - (BASELINE - A_BOX.y) * A_SCALE
-const A_POSITION = { x: A_BOX.x * A_SCALE, y: TOP, width: A_BOX.width * A_SCALE, height: A_BOX.height * A_SCALE }
-/** The A's own units per wordmark pixel, at its size */
-const A_UNITS = 140 / (A_BOX.width * A_SCALE)
-/** Room for the cross's outline */
-const PAD = CROSS_OUTLINE_WIDTH
-const VIEWBOX = `${-PAD} ${TOP - PAD} ${LOCKUP_WIDTH + SHIFT + PAD * 2} ${LOCKUP_HEIGHT - TOP + PAD * 2}`
+/*
+ * Centered as one piece, the logo's box goes from the cross's top (0.16em over the word) to the letters' bottom
+ * (Poppins' baseline, 0.15em over the word's bottom); halfway, half of each. Margins, not a shift, so the letters stay
+ * sharp; in em, so it holds at every text size. Flex: no line box under it.
+ */
+const ALIGNMENT_MARGINS: Record<Exclude<HeaderLogoAlignment, "top">, string> = {
+  middle: "mt-[0.08em] -mb-[0.075em]",
+  center: "mt-[0.16em] -mb-[0.15em]",
+}
 
-/** "AR": the last two letters, in light blue */
-const isAr = (index: number) => index >= LETTERS.length - 2
+/* Smaller on phones, and smaller still when the header is tight (the talk button under it): "Ajustes" fits beside it (and the narrowest one, a small phone with the biggest text, a bit more) */
+const HEADER_SIZE = "text-[1.375rem] sm:text-[1.625rem] @max-header-row:text-[1.125rem] @max-[14.5rem]:text-[1rem]"
 
-export const Logo = () => (
-  <Link to={PATHS.home} className="flex flex-none items-center no-underline" aria-label="AuxiliAR, ir al inicio">
-    <svg viewBox={VIEWBOX} aria-hidden="true" className="h-7 w-auto sm:h-8">
-      <ArgentineA {...A_POSITION} crossOutline={WHITE} crossOutlineWidth={CROSS_OUTLINE_WIDTH * A_UNITS} />
-      {LETTERS.map(({ x, d }, i) => (
-        <path key={i} d={d} transform={`translate(${x + SHIFT} 0)`} fill={isAr(i) ? BLUE : WHITE} />
-      ))}
-    </svg>
-  </Link>
-)
+/**
+ * The logo at the header's size (see HEADER_SIZE), sitting as `alignment` says. The room for the cross goes around it, not in it (padding
+ * would lift the cross off "AR").
+ */
+export const HeaderWordmark = ({ alignment = DEFAULT_HEADER_LOGO_ALIGNMENT }: { alignment?: HeaderLogoAlignment }) =>
+  alignment === "top" ? (
+    <span className="py-2">
+      <Wordmark className={HEADER_SIZE} />
+    </span>
+  ) : (
+    <span className="flex py-2">
+      <Wordmark className={`${ALIGNMENT_MARGINS[alignment]} ${HEADER_SIZE}`} />
+    </span>
+  )
+
+export const Logo = () => {
+  const { headerLogo } = useHeaderLogo()
+  const { headerLogoAlignment } = useHeaderLogoAlignment()
+  const realLogo = <HeaderWordmark alignment={headerLogoAlignment} />
+
+  return (
+    <Link to={PATHS.home} className="flex flex-none items-center no-underline" aria-label="AuxiliAR, ir al inicio">
+      {HeaderSketchLogo && headerLogo ? (
+        <Suspense fallback={realLogo}>
+          <HeaderSketchLogo id={headerLogo} />
+        </Suspense>
+      ) : (
+        realLogo
+      )}
+    </Link>
+  )
+}

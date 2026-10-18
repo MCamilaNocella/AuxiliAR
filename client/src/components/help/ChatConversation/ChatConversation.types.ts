@@ -11,7 +11,7 @@ export type ChatConversationProps = {
   onStartedChange: (started: boolean) => void
   /** Talking with a volunteer: this conversation waits hidden, and Auxi welcomes them back */
   away?: boolean
-  /** Auxi has to ask whether they want a volunteer ("¿Necesitás hablar con alguien?" was pressed) */
+  /** Auxi has to ask whether they want a volunteer ("¿Querés hablar con alguien?" was pressed) */
   personOfferPending?: boolean
   /** It asked */
   onPersonOfferShown?: () => void
