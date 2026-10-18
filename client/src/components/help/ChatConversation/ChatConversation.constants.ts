@@ -36,7 +36,7 @@ export const CONNECTION_ERROR_REPLY = `Perdón, no me pude conectar en este mome
 /** Buttons under Auxi's offer to talk with a volunteer */
 export const OFFER_LABELS = { yes: "Sí, quiero hablar con alguien", no: "Seguir con Auxi" }
 
-/** When they press "¿Necesitás hablar con alguien?" in the header */
+/** When they press "¿Querés hablar con alguien?" in the header */
 export const PERSON_OFFER = "¿Querés hablar con alguien? Te puedo conectar con una persona voluntaria para charlar. Yo sigo acá igual."
 
 /** Answer to "Seguir con Auxi" */

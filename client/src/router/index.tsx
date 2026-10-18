@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router";
+import { createBrowserRouter, Navigate, type RouteObject } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { AppLayout } from "@/components/layout/AppLayout";
 import { RootLayout } from "@/components/layout/RootLayout";
@@ -8,6 +8,11 @@ import { MyHealth } from "@/screens/MyHealth";
 import { NotFound } from "@/screens/NotFound";
 import { RedirectToHealthGeneral } from "./RedirectToHealthGeneral";
 import { LEGACY_PHYSICAL_HEALTH_SLUG, PATHS } from "./paths";
+
+/** Design pages: registered only in development (the demo and production builds answer them with the 404), loaded when opened */
+const devRoutes: RouteObject[] = import.meta.env.DEV
+  ? [{ path: PATHS.logoSketches, lazy: async () => ({ Component: (await import("@/screens/LogoSketches")).LogoSketches }) }]
+  : [];
 
 const router = createBrowserRouter([
   {
@@ -36,6 +41,7 @@ const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import("@/screens/FirstAidGuide")).FirstAidGuideScreen }),
           },
           { path: PATHS.about, element: <Category/> },
+          ...devRoutes,
           // Last: any other address
           { path: "*", element: <NotFound/> },
         ],

@@ -19,8 +19,13 @@
 
   /* Surfaces and borders */
   --color-surface: #faf8f6;
-  /* Header background: always the brand red, in every theme (what sits on it uses .on-header) */
+  /* Header background: the brand red in every theme (what sits on it uses .on-header); data-header="theme" gives it the theme's card instead */
   --color-header: #7b2d2d;
+  /* Logo letters: "uxili" and "AR" (the A has its own fixed colors) */
+  --color-logo-letters: #ffffff;
+  --color-logo-ar: #59a5de;
+  /* "Auxili" in the logo (Wordmark): white on the bordó; on the header "según el tema", see below */
+  --color-logo-ink: #ffffff;
   /* "Done" green (Mi Salud: the check of a piece of data just completed) */
   --color-success: #2b8a3e;
   /* Warm off-white (not pure white): easier on the eyes and in tune with the warm palette */
@@ -342,12 +347,26 @@
 }
 
 /*
- * What sits on the always-red header (same in every theme): light text, and the light theme's
+ * Header color "según el tema" (data-header="theme", the default; the bordó can be tried on /logos): the theme's card.
+ * The .on-header colors below don't apply then; "Auxili" takes the theme's text color (black on the light card), and
+ * the old logo's "uxili" goes brand red on the light card so it reads.
+ */
+:root[data-header="theme"] {
+  --color-header: var(--color-card);
+  --color-logo-ink: var(--color-ink);
+}
+
+:root[data-header="theme"]:not([data-theme="dark"], [data-theme="contrast"]) {
+  --color-logo-letters: var(--color-brand);
+}
+
+/*
+ * What sits on the red header (same in every theme): light text, and the light theme's
  * pale pill with a darker red so it stands out from the header (high contrast keeps its own),
  * with the header's background as "card". Only on the header's contents, never on the header
  * itself: the "Ver mejor" panel lives inside it and must keep the page theme.
  */
-.on-header {
+:root:not([data-header="theme"]) .on-header {
   --color-ink: #f5f5f5;
   --color-ink-soft: #f5f5f5;
   --color-muted: #e0d2cf;
@@ -364,7 +383,7 @@
   --color-shine: #8a817f;
 }
 
-:root[data-theme="contrast"] .on-header {
+:root[data-theme="contrast"]:not([data-header="theme"]) .on-header {
   --color-ink: #ffffff;
   --color-ink-soft: #ffffff;
   --color-muted: #f0f0f0;

@@ -4,7 +4,7 @@ import { useElementHeightVar } from "@/hooks/useElementHeightVar"
 import { Logo } from "../Logo"
 import { TalkToSomeoneButton } from "../TalkToSomeoneButton"
 
-/** Always brand red, whatever the theme. Logo on the left; on the right, "¿Necesitás hablar con alguien?" and the "Ver mejor" gear, inside the header's max width */
+/** Bordó in every theme, or the theme's background (data-header, see index.css). Logo on the left; on the right, "¿Querés hablar con alguien?" and the "Ver mejor" gear, inside the header's max width */
 export const Header = () => {
   const ref = useRef<HTMLElement>(null)
   useElementHeightVar(ref, "--header-h")
